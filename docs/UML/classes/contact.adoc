@@ -1,0 +1,45 @@
+=== CONTACT Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*CONTACT*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Description of a means of contact of a party. Actual structure is archetyped.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|LOCATABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*addresses*: `List<ADDRESS>`
+{set:cellbgcolor!}
+|A set of address alternatives for this purpose and time validity.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*time_validity*: 
+{set:cellbgcolor!}
+|Valid time interval for this contact descriptor.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*purpose*: `DV_TEXT`
+{set:cellbgcolor!}
+|Purpose for which this contact is used, e.g.  mail ,  daytime phone , etc. Taken from value of inherited name attribute.
+|===

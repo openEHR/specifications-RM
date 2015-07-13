@@ -1,0 +1,70 @@
+=== DV_ORDERED Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_DV_ORDERED (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  <' and is_strictly_comparable_to, the latter of which must evaluate to True for instances being compared with the  <' function, or used as limits in the DV_INTERVAL<T> class.  +
+Data value types which are to be used as limits in the DV_INTERVAL<T> class must inherit from this class, and implement the function is_strictly_comparable_to to ensure that instances compare meaningfully. For example, instances of DV_QUANTITY can only be compared if they measure the same kind of physical quantity. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DATA_VALUE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*normal_status*: `CODE_PHRASE`
+{set:cellbgcolor!}
+|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  normal status . 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*normal_range*: `DV_INTERVAL`
+{set:cellbgcolor!}
+|Optional normal range. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*other_reference_ranges*: `List<REFERENCE_RANGE>`
+{set:cellbgcolor!}
+|Optional tagged other reference ranges for this value in its particular measurement context.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*is_strictly_comparable_to* (other: `DV_ORDERED`): `Boolean`
+{set:cellbgcolor!}
+|Test if two instances are strictly comparable.
+
+|
+{set:cellbgcolor:lightblue}
+|*operator<* (other_quantity: `DV_ORDERED`): `Boolean`
+{set:cellbgcolor!}
+|Tests if this item is less than other, which must be of the same concrete type. 
+
+|
+{set:cellbgcolor:lightblue}
+|*is_simple*: `Boolean`
+{set:cellbgcolor!}
+|True if this quantity has no reference ranges.
+
+|
+{set:cellbgcolor:lightblue}
+|*is_normal*: `Boolean`
+{set:cellbgcolor!}
+|Value is in the normal range, determined by comparison of the value to the normal_range if present, or by the normal_status marker if present. 
+|===

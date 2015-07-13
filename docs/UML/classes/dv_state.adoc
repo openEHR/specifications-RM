@@ -1,0 +1,39 @@
+=== DV_STATE Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*DV_STATE*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|For representing state values which obey a defined state machine, such as a variable  +
+representing the states of an instruction or care process.  +
+DV_STATE is expressed as a String but its values are driven by archetype-defined  +
+state machines. This provides a powerful way of capturing stateful complex processes  +
+in simple data. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DATA_VALUE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*value*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|The state name. State names are determined by a state/event table defined in archetypes, and coded using openEHR Terminology or local archetype terms, as specified by the archetype. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*is_terminal*: `Boolean`
+{set:cellbgcolor!}
+|Indicates whether this state is a terminal state, such as  aborted ,  completed  etc. from which no further transitions are possible.
+|===

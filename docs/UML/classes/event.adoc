@@ -1,0 +1,52 @@
+=== EVENT Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_EVENT (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Defines the abstract notion of a single event in a series. This class is generic, allowing types to be generated which are locked to particular spatial types, such as EVENT<ITEM_LIST>. Subtypes express point or intveral data. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|LOCATABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*time*: `DV_DATE_TIME`
+{set:cellbgcolor!}
+|Time of this event. If the width is non-zero, it is the time point of the trailing edge of the event. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*state*: `ITEM_STRUCTURE`
+{set:cellbgcolor!}
+|Optional state data for this event.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*data*: `ITEM_STRUCTURE`
+{set:cellbgcolor!}
+|The data of this event. 
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*offset*: `DV_DURATION` +
+*_Post_condition_*: Result = time.diff(parent.origin)
+{set:cellbgcolor!}
+|Offset of this event from origin, computed as time.diff(parent.origin).
+|===

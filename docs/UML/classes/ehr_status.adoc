@@ -1,0 +1,47 @@
+=== EHR_STATUS Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*EHR_STATUS*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Single object per EHR giving various EHR-wide information. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|LOCATABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*subject*: `PARTY_SELF`
+{set:cellbgcolor!}
+|The subject of this EHR. The external_ref attribute can be used to contain a direct reference to the subject in a demographic or identity service. Alternatively, the association between patients and their records may be done elsewhere for security reasons. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*is_queryable*: `Boolean`
+{set:cellbgcolor!}
+|True if this EHR should be included in population queries, i.e. if this EHR is considered active in the population.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*is_modifiable*: `Boolean`
+{set:cellbgcolor!}
+|True if this EHR is allowed to be written to. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*other_details*: `ITEM_STRUCTURE`
+{set:cellbgcolor!}
+|Any other details of the EHR summary object, in the form of an archetyped Item_structure.
+|===

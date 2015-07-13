@@ -1,0 +1,40 @@
+=== FOLDER Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*FOLDER*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|The concept of a named folder.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|LOCATABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*items*: `List<OBJECT_REF>`
+{set:cellbgcolor!}
+|The list of references to other (usually) versioned objects logically in this folder. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*folders*: `List<FOLDER>`
+{set:cellbgcolor!}
+|Sub-folders of this FOLDER. 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Folders_valid_*: not folders.is_empty
+{set:cellbgcolor!}
+|===

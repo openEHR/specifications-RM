@@ -1,0 +1,48 @@
+=== DV_PERIODIC_TIME_SPECIFICATION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*DV_PERIODIC_TIME_SPECIFICATION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Specifies periodic points in time, linked to the calendar (phase-linked), or a real world repeating event, such as  breakfast  (event-linked). Based on the HL7v3 data types PIVL<T> and EIVL<T>.  +
+Used in therapeutic prescriptions, expressed as INSTRUCTIONs in the openEHR model. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DV_TIME_SPECIFICATION
+{set:cellbgcolor!}
+
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*period*: `DV_DURATION`
+{set:cellbgcolor!}
+|The period of the repetition, computationally derived from the syntax representation. Extracted from the  value' attribute.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*calendar_alignment*: `String`
+{set:cellbgcolor!}
+|Calendar alignment extracted from value. 
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*event_alignment*: `String`
+{set:cellbgcolor!}
+|Event alignment extracted from value. 
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*institution_specified*: `Boolean`
+{set:cellbgcolor!}
+|Extracted from value.
+|===

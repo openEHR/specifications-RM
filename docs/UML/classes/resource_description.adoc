@@ -1,0 +1,85 @@
+=== RESOURCE_DESCRIPTION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*RESOURCE_DESCRIPTION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Defines the descriptive meta-data of a resource.
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*original_author*: `Hash<String, String>`
+{set:cellbgcolor!}
+|Original author of this resource, with all relevant details, including organisation.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*other_contributors*: `List<String>`
+{set:cellbgcolor!}
+|Other contributors to the resource, probably listed in  name <email>  form. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*lifecycle_state*: `String`
+{set:cellbgcolor!}
+|Lifecycle state of the resource, typically including states such as: initial, submitted, experimental, awaiting_approval, approved, superseded, obsolete. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*resource_package_uri*: `String`
+{set:cellbgcolor!}
+|URI of package to which this resource belongs.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*other_details*: `Hash<String, String>`
+{set:cellbgcolor!}
+|Additional non language-senstive resource meta-data, as a list of name/value pairs. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*parent_resource*: `AUTHORED_RESOURCE{nbsp}={nbsp}0..1`
+{set:cellbgcolor!}
+|Reference to owning resource. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*details*: `List<RESOURCE_DESCRIPTION_ITEM>`
+{set:cellbgcolor!}
+|Details of all parts of resource description that are natural language-dependent, keyed by language code. 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Original_author_valid_*: not original_author.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Lifecycle_state_valid_*: not lifecycle_state.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Details_valid_*: not details.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Language_valid_*: parent_resource /= Void implies details.for_all (d | parent_resource.languages_available.has (d.language.code_string))
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Parent_resource_valid_*: parent_resource /= Void implies parent_resource.description = self
+{set:cellbgcolor!}
+|===

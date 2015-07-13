@@ -1,0 +1,58 @@
+=== AUDIT_DETAILS Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*AUDIT_DETAILS*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|The set of attributes required to document the committal of an information item to a repository. 
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*system_id*: `String`
+{set:cellbgcolor!}
+|Identity of the system where the change was committed. Ideally this is a machine- and human-processable identifier, but it may not be. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*time_committed*: `DV_DATE_TIME`
+{set:cellbgcolor!}
+|Time of committal of the item. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*change_type*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|Type of change. Coded using the openEHR Terminology  audit change type  group.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*description*: `DV_TEXT`
+{set:cellbgcolor!}
+|Reason for committal.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*committer*: `PARTY_PROXY`
+{set:cellbgcolor!}
+|Identity and optional reference into identity management service, of user who committed the item. 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_System_id_valid_*: not system_id.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Change_type_valid_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)
+{set:cellbgcolor!}
+|===

@@ -1,0 +1,45 @@
+=== DV_PARSABLE Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*DV_PARSABLE*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Encapsulated data expressed as a parsable String. The internal model of the data item is not described in the openEHR model in common with other encapsulated types, but in this case, the form of the data is assumed to be plaintext, rather than compressed or other types of large binary data. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DV_ENCAPSULATED
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*value*: `String`
+{set:cellbgcolor!}
+|The string, which may validly be empty in some syntaxes.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*formalism*: `String`
+{set:cellbgcolor!}
+|Name of the formalism, e.g.  GLIF 1.0 ,  Proforma  etc.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*size*: `Integer`
+{set:cellbgcolor!}
+|Size in bytes of value.
+|===

@@ -1,0 +1,95 @@
+=== AUTHORED_RESOURCE Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_AUTHORED_RESOURCE (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Abstract idea of an online resource created by a human author. 
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*original_language*: `CODE_PHRASE`
+{set:cellbgcolor!}
+|Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*is_controlled*: `Boolean`
+{set:cellbgcolor!}
+|True if this resource is under any kind of change control (even file copying), in which case revision history is created. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*translations*: `List<TRANSLATION_DETAILS>`
+{set:cellbgcolor!}
+|List of details for each natural translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The original_language does not appear in this list.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*description*: `RESOURCE_DESCRIPTION`
+{set:cellbgcolor!}
+|Description and lifecycle information of the resource.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*revision_history*: `REVISION_HISTORY`
+{set:cellbgcolor!}
+|The revision history of the resource. Only required if is_controlled = True (avoids large revision histories for informal or private editing situations). 
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*current_revision*: `String`
+{set:cellbgcolor!}
+|Most recent revision in revision_history if is_controlled else  (uncontrolled) . 
+
+|
+{set:cellbgcolor:lightblue}
+|*languages_available*: `List<String>`
+{set:cellbgcolor!}
+|Total list of languages available in this resource, derived from original_language and translations. 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Original_language_valid_*: code_set (Code_set_id_languages).has_code (original_language.as_string)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Languages_available_valid_*: languages_available.has (original_language)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Revision_history_valid_*: is_controlled xor revision_history = Void
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Current_revision_valid_*: (current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Translations_valid_*: translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Description_valid_*: translations /= Void implies (description.details.for_all (d |
+translations.has_key (d.language.code_string)))
+{set:cellbgcolor!}
+|===

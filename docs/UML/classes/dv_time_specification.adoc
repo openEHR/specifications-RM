@@ -1,0 +1,51 @@
+=== DV_TIME_SPECIFICATION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_DV_TIME_SPECIFICATION (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|This is an abstract class of which all timing specifications are specialisations. Specifies points in time, possibly linked to the calendar, or a real world repeating event, such as  breakfast. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DATA_VALUE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*value*: `DV_PARSABLE`
+{set:cellbgcolor!}
+|The specification, in the HL7v3 syntax for PIVL or EIVL types.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*calendar_alignment*: `String`
+{set:cellbgcolor!}
+|Indicates what prototypical point in the calendar the specification is aligned to, e.g.  5th of the month . Empty if not aligned. Extracted from the  value' attribute.
+
+|
+{set:cellbgcolor:lightblue}
+|*event_alignment*: `String`
+{set:cellbgcolor!}
+|Indicates what real-world event the specification is aligned to if any. Extracted from the  value' attribute. 
+
+|
+{set:cellbgcolor:lightblue}
+|*institution_specified*: `Boolean`
+{set:cellbgcolor!}
+|Indicates if the specification is aligned with institution schedules, e.g. a hospital nursing changeover or meal serving times. Extracted from the  value' attribute.
+|===

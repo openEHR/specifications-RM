@@ -1,0 +1,32 @@
+=== DV_DURATION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*DV_DURATION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Represents a period of time with respect to a notional point in time, which is not specified. A sign may be used to indicate the duration is  backwards  in time rather than forwards.  +
+NOTE: a deviation from ISO8601 is supported, allowing the  W' designator to be mixed with other designators. See assumed types section in the Support IM.  +
+Used for recording the duration of something in the real world, particularly when there is a need a) to represent the duration in customary format, i.e. days, hours, minutes etc, and b) if it will be used in computational operations with date/time quantities, i.e. additions, subtractions etc.  +
+Durations cannot be used to represent points in time, or intervals of time. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DV_AMOUNT
+{set:cellbgcolor!}
+
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*is_strictly_comparable_to* (other: `DV_ORDERED`): `Boolean`
+{set:cellbgcolor!}
+|
+|===

@@ -1,0 +1,91 @@
+=== LOCATABLE Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_LOCATABLE (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Root class of all information model classes that can be archetyped. Most classes in the openEHR reference model inherit from the LOCATABLE class, which defines the idea of  locatability in an archetyped structure. LOCATABLE defines a runtime name and an rchetype_node_id. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|PATHABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*name*: `DV_TEXT`
+{set:cellbgcolor!}
+|Runtime name of this fragment, used to build runtime paths. This is the term provided via a clinical application or batch process to name this EHR construct: its retention in the EHR faithfully preserves the original label by which this entry was known to end users. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*archetype_node_id*: `String`
+{set:cellbgcolor!}
+|Design-time archetype id of this node taken from its generating archetype; used to build archetype paths. Always in the form of an  at  code, e.g.  at0005 . This value enables a "standardised" name for this node to be generated, by referring to the generating archetype local ontology.  +
+At an archetype root point, the value of this attribute is always the stringified form of the archetype_id found in the archetype_details object. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*uid*: `UID_BASED_ID`
+{set:cellbgcolor!}
+|Optional globally unique object identifier for root points of archetyped structures. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*links*: `List<LINK>`
+{set:cellbgcolor!}
+|Links to other archetyped structures (data whose root object inherits from ARCHETYPED, such as ENTRY, SECTION and so on). Links may be to structures in other compositions. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*archetype_details*: `ARCHETYPED`
+{set:cellbgcolor!}
+|Details of archetyping used on this node.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*feeder_audit*: `FEEDER_AUDIT`
+{set:cellbgcolor!}
+|Audit trail from non-openEHR system of original commit of information forming the content of this node, or from a conversion gateway which has synthesised this node. 
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*concept*: `DV_TEXT`
+{set:cellbgcolor!}
+|Clinical concept of the archetype as a whole (= derived from the archetype_node_id' of the root node) 
+
+|
+{set:cellbgcolor:lightblue}
+|*is_archetype_root*: `Boolean`
+{set:cellbgcolor!}
+|True if this node is the root of an archetyped structure.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Links_valid_*: links /= Void implies not links.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Archetyped_valid_*: is_archetype_root xor archetype_details = Void
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Archetype_node_id_valid_*: not archetype_node_id.is_empty
+{set:cellbgcolor!}
+|===

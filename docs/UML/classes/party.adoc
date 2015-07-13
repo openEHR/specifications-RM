@@ -1,0 +1,70 @@
+=== PARTY Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_PARTY (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Ancestor of all party types, including real world entities and their roles. A party is any entity which can participate in an activity. The name attribute inherited from LOCATABLE is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the identities attribute, not the name attribute).
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|LOCATABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*identities*: `List<PARTY_IDENTITY>`
+{set:cellbgcolor!}
+|Identities used by the party to identify itself, such as legal name, stage names, aliases, nicknames and so on.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*contacts*: `List<CONTACT>`
+{set:cellbgcolor!}
+|Contacts for this party.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*details*: `ITEM_STRUCTURE`
+{set:cellbgcolor!}
+|All other details for this party.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*reverse_relationships*: `List<LOCATABLE_REF>`
+{set:cellbgcolor!}
+|Relationships in which this role takes part as target.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*relationships*: `List<PARTY_RELATIONSHIP>`
+{set:cellbgcolor!}
+|Relationships in which this role takes part as source.
+
+|*1..1 +
+(redefined)*
+{set:cellbgcolor:lightblue}
+|*uid*: `HIER_OBJECT_ID`
+{set:cellbgcolor!}
+|Identifier of this Party.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*type*: `ITEM_STRUCTURE`
+{set:cellbgcolor!}
+|Type of party, such as  PERSON ,  ORGANISATION , etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited name attribute.
+|===

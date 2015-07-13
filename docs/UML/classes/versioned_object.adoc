@@ -1,0 +1,141 @@
+=== VERSIONED_OBJECT Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*VERSIONED_OBJECT*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Version control abstraction, defining semantics for versioning one complex object.
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*uid*: `HIER_OBJECT_ID`
+{set:cellbgcolor!}
+|Unique identifier of this version container. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the  virtual version tree . 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*owner_id*: `OBJECT_REF`
+{set:cellbgcolor!}
+|Reference to object to which this version container belongs, e.g. the id of the containing EHR or other relevant owning entity. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*time_created*: `DV_DATE_TIME`
+{set:cellbgcolor!}
+|Time of initial creation of this versioned object. 
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*version_count*: `Integer`
+{set:cellbgcolor!}
+|Return the total number of versions in this object.
+
+|
+{set:cellbgcolor:lightblue}
+|*all_version_ids*: `List<OBJECT_VERSION_ID>`
+{set:cellbgcolor!}
+|Return a list of ids of all versions in this object. 
+
+|
+{set:cellbgcolor:lightblue}
+|*all_versions*: `List<VERSION>`
+{set:cellbgcolor!}
+|Return a list of all versions in this object. 
+
+|
+{set:cellbgcolor:lightblue}
+|*has_version_at_time* (a_ver_id: `OBJECT_VERSION_ID`): `Boolean`
+{set:cellbgcolor!}
+|True if a version for time  'a_time' exists. 
+
+|
+{set:cellbgcolor:lightblue}
+|*has_version_id* (a_ver_id: `OBJECT_VERSION_ID`): `Boolean`
+{set:cellbgcolor!}
+|True if a version with an_id exists. 
+
+|
+{set:cellbgcolor:lightblue}
+|*version_with_id* (a_ver_id: `OBJECT_VERSION_ID`): `VERSION`
+{set:cellbgcolor!}
+|Return the version with id =  'a_ver_id'. 
+
+|
+{set:cellbgcolor:lightblue}
+|*is_original_version* (a_ver_id: `OBJECT_VERSION_ID`): `Boolean`
+{set:cellbgcolor!}
+|True if version with an_id is an ORIGINAL_VERSION. 
+
+|
+{set:cellbgcolor:lightblue}
+|*version_at_time* (a_time: `DV_DATE_TIME`): `VERSION` +
+*_Pre_condition_*: has_version_at_time (a_time)
+{set:cellbgcolor!}
+|Return the version for time  'a_time'. 
+
+|
+{set:cellbgcolor:lightblue}
+|*revision_history*: `REVISION_HISTORY`
+{set:cellbgcolor!}
+|History of all audits and attestations in this versioned repository.
+
+|
+{set:cellbgcolor:lightblue}
+|*latest_version*: `VERSION`
+{set:cellbgcolor!}
+|Return the most recently added version (i.e. on trunk or any branch). 
+
+|
+{set:cellbgcolor:lightblue}
+|*latest_trunk_version*: `VERSION`
+{set:cellbgcolor!}
+|Return the most recently added trunk version. 
+
+|
+{set:cellbgcolor:lightblue}
+|*trunk_lifecycle_state*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|Return the lifecycle state from the latest trunk version. Useful for determining if the version container is logically deleted. 
+
+|
+{set:cellbgcolor:lightblue}
+|*commit_original_version* (a_contribution: `OBJECT_REF`, a_new_version_uid: `OBJECT_VERSION_ID`, a_preceding_version_id: `OBJECT_VERSION_ID`, an_audit: `AUDIT_DETAILS`, a_lifecycle_state: `DV_CODED_TEXT`, a_data: `T`, signing_key: `String`): `void` +
+*_Preceding_version_uid_valid_*: all_version_ids.has (a_preceding_version_uid) or else version_count = 0
+{set:cellbgcolor!}
+|Add a new original version. 
+
+|
+{set:cellbgcolor:lightblue}
+|*commit_original_merged_version* (a_contribution: `OBJECT_REF`, a_new_version_uid: `OBJECT_VERSION_ID`, a_preceding_version_id: `OBJECT_VERSION_ID`, an_audit: `AUDIT_DETAILS`, a_lifecycle_state: `DV_CODED_TEXT`, a_data: `T`, an_other_input_uids: `List<OBJECT_VERSION_ID>`, signing_key: `String`): `void` +
+*_Preceding_version_id_valid_*: all_version_ids.has (a_preceding_version_uid) or else version_count = 0
+{set:cellbgcolor!}
+|Add a new original merged version. This commit function adds a parameter containing the ids of other versions merged into the current one. 
+
+|
+{set:cellbgcolor:lightblue}
+|*commit_imported_version* (a_contribution: `OBJECT_REF`, an_audit: `AUDIT_DETAILS`, a_version: `ORIGINAL_VERSION`): `void`
+{set:cellbgcolor!}
+|Add a new imported version. Details of version id etc come from the ORIGINAL_VERSION being committed. 
+
+|
+{set:cellbgcolor:lightblue}
+|*commit_attestation* (an_attestation: `ATTESTATION`, a_ver_id: `OBJECT_VERSION_ID`, signing_key: `String`): `void` +
+*_Version_id_valid_*: has_version_id(a_ver_id)
+and is_original_version(a_ver_id)
+{set:cellbgcolor!}
+|Add a new attestation to a specified original version. Attestations can only be added to Original versions. 
+|===

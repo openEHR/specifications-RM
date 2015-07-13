@@ -1,0 +1,56 @@
+=== PATHABLE Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_PATHABLE (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|The PATHABLE class defines the pathing capabilities used by nearly all classes in the openEHR reference model, mostly via inheritance of LOCATABLE. The defining characteristics of PATHABLE objects are that they can locate child objects using paths, and they know their parent object in a compositional hierarchy. The parent feature is defined as abstract in the model, and may be implemented in any way convenient.
+{set:cellbgcolor!}
+
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*parent*: `PATHABLE`
+{set:cellbgcolor!}
+|Parent of this node in a compositional hierarchy. 
+
+|
+{set:cellbgcolor:lightblue}
+|*item_at_path* (a_path: `String`): `Any` +
+*_pre_condition_*: path_unique (a_path)
+{set:cellbgcolor!}
+|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. 
+
+|
+{set:cellbgcolor:lightblue}
+|*items_at_path* (a_path: `String`): `List<Any>`
+{set:cellbgcolor!}
+|List of items corresponding to a non-unique path.
+
+|
+{set:cellbgcolor:lightblue}
+|*path_exists* (a_path: `String`): `Boolean`
+{set:cellbgcolor!}
+|True if the path exists in the data with respect to the current item. 
+
+|
+{set:cellbgcolor:lightblue}
+|*path_unique* (a_path: `String`): `Boolean` +
+*_pre_condition_*: path_exists (a_path)
+{set:cellbgcolor!}
+|True if the path corresponds to a single item in the data. 
+
+|
+{set:cellbgcolor:lightblue}
+|*path_of_item* (a_loc: `PATHABLE`): `String`
+{set:cellbgcolor!}
+|The path to an item relative to the root of this archetyped structure.
+|===

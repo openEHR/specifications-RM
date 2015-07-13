@@ -1,0 +1,70 @@
+=== DV_PROPORTION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*DV_PROPORTION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Models a ratio of values, i.e. where the numerator and denominator are both pure numbers. Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary denominator), albumin:creatinine ratio, and percentages, e.g. red cell distirbution width (RDW).  +
+Should not be used to represent things like blood pressure which are often written using a  /' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. E.g. visual acuity  6/24  is not a ratio. Should not be used for formulations. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|PROPORTION_KIND
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*numerator*: `Real`
+{set:cellbgcolor!}
+|Numerator of ratio
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*denominator*: `Real`
+{set:cellbgcolor!}
+|Denominator of ratio.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*type*: `Integer`
+{set:cellbgcolor!}
+|Indicates semantic type of proportion, including percent, unitary etc.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*precision*: `Integer`
+{set:cellbgcolor!}
+|Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places. 
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*is_integral*: `Boolean`
+{set:cellbgcolor!}
+|True if the numerator and denominator values are integers, i.e. if the precision is 0.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*magnitude*: `Real`
+{set:cellbgcolor!}
+|Effective magnitude represented by ratio.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*operator=* (source: `DV_PROPORTION`): `DV_PROPORTION`
+{set:cellbgcolor!}
+|Assignment operator
+|===

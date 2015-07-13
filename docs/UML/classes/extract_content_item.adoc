@@ -1,0 +1,54 @@
+=== EXTRACT_CONTENT_ITEM Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_EXTRACT_CONTENT_ITEM (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Abstract model of a wrapper for one content item in an Extract, containing various meta-data. Indicates whether it was part of the primary set and what its original path was. Intended to be subtyped for wrappers of specific types of content.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|EXTRACT_ITEM
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*is_primary*: `Boolean`
+{set:cellbgcolor!}
+|True if the content item carried in this container was part of the primary set for the Extract, i.e. not added due to link-following.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*is_changed*: `Boolean`
+{set:cellbgcolor!}
+|True if the content item carried in this container is any kind of change since last send, in repeat sending situations.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*is_masked*: `Boolean`
+{set:cellbgcolor!}
+|True if the content of this item has not been included due to insufficient access rights of requestor.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*item*: `Any`
+{set:cellbgcolor!}
+|Content object.
+
+|*1..1 +
+(redefined)*
+{set:cellbgcolor:lightblue}
+|*uid*: `HIER_OBJECT_ID`
+{set:cellbgcolor!}
+|Unique id of this Extract item; used for all referencing from elsewhere in Extract, including from Extract Folders.
+|===

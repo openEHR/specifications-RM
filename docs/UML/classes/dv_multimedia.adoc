@@ -1,0 +1,105 @@
+=== DV_MULTIMEDIA Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*DV_MULTIMEDIA*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|A specialisation of DV_ENCAPSULATED for audiovisual and biosignal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of DV_ENCAPSULATED.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DV_ENCAPSULATED
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*alternate_text*: `String`
+{set:cellbgcolor!}
+|Text to display in lieu of multimedia display/replay.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*uri*: `DV_URI`
+{set:cellbgcolor!}
+|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*data*: `Byte`
+{set:cellbgcolor!}
+|The actual data found at uri, if supplied inline.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*media_type*: `CODE_PHRASE`
+{set:cellbgcolor!}
+|Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set). 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*compression_algorithm*: `CODE_PHRASE`
+{set:cellbgcolor!}
+|Compression type, a coded value from the openEHR  Integrity check  code set. Void means no compression. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*integrity_check*: `Byte`
+{set:cellbgcolor!}
+|Binary cryptographic integrity checksum.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*integrity_check_algorithm*: `List<CODE_PHRASE>`
+{set:cellbgcolor!}
+|Type of integrity check, a coded value from the openEHR  Integrity check  code set. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*thumbnail*: `DV_MULTIMEDIA`
+{set:cellbgcolor!}
+|The thumbnail for this item, if one exists; mainly for graphics formats.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*is_external*: `Boolean`
+{set:cellbgcolor!}
+|Computed from the value of the uri attribute: True if  the data is stored externally to the record, as indicated by `uri'. A copy may also be stored internally, in which case `is_expanded' is also true.
+
+|
+{set:cellbgcolor:lightblue}
+|*is_inline*: `Boolean`
+{set:cellbgcolor!}
+|Computed from the value of the data attribute. True if  the  data is stored  in  expanded  form, ie within the EHR itself. 
+
+|
+{set:cellbgcolor:lightblue}
+|*is_compressed*: `Boolean`
+{set:cellbgcolor!}
+|Computed from the value of the compression_algorithm attribute: True if  the  data is stored  in  compressed form. 
+
+|
+{set:cellbgcolor:lightblue}
+|*has_integrity_check*: `Boolean`
+{set:cellbgcolor!}
+|Computed from the value of the integrity_check_algorithm attribute: True if an integrity check has been computed. 
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*size*: `Integer`
+{set:cellbgcolor!}
+|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc do not change the value of this attribute.
+|===

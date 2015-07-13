@@ -1,0 +1,50 @@
+=== INSTRUCTION_DETAILS Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*INSTRUCTION_DETAILS*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Used to record details of the Instruction causing an Action. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|PATHABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*instruction_id*: `LOCATABLE_REF`
+{set:cellbgcolor!}
+|Reference to causing Instruction.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*activity_id*: `String`
+{set:cellbgcolor!}
+|Identifier of Activity within Instruction, in the form of its archetype path. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*wf_details*: `ITEM_STRUCTURE`
+{set:cellbgcolor!}
+|Various workflow engine state details, potentially including such things as:  +
+ * condition that fired to cause this Action to be done (with actual variables substituted);  +
+ * list of notifications which actually occurred (with all variables substituted);  +
+ * other workflow engine state.  +
+This specification does not currently define the actual structure or semantics of this field. 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Activity_path_valid_*: not activity_id.is_empty
+{set:cellbgcolor!}
+|===

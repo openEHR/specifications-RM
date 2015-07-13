@@ -1,0 +1,63 @@
+=== ITEM_LIST Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*ITEM_LIST*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Logical list data structure, where each item has a value and can be referred to by a name and a positional index in the list. The list may be empty. Use Used to represent any data which is logically a list of values, such as blood pressure, most protocols, many blood tests etc. Not to be used for time-based lists, which should be represented with the proper temporal class, i.e. HISTORY.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|ITEM_STRUCTURE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*items*: `List<ELEMENT>`
+{set:cellbgcolor!}
+|Physical representation of the list. 
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*item_count*: `Integer`
+{set:cellbgcolor!}
+|Count of all items.
+
+|
+{set:cellbgcolor:lightblue}
+|*names*: `List<DV_TEXT>`
+{set:cellbgcolor!}
+|Retrieve the names of all items.
+
+|
+{set:cellbgcolor:lightblue}
+|*named_item* (a_name: `String`): `ELEMENT`
+{set:cellbgcolor!}
+|Retrieve the item with name ‘a_name’.
+
+|
+{set:cellbgcolor:lightblue}
+|*ith_item* (i: `Integer`): `ELEMENT`
+{set:cellbgcolor!}
+|Retrieve the i-th item with name.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*as_hierarchy*: `CLUSTER`
+{set:cellbgcolor!}
+|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.
+|===

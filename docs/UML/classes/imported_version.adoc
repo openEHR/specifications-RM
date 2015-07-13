@@ -1,0 +1,57 @@
+=== IMPORTED_VERSION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*IMPORTED_VERSION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Versions whose content is an ORIGINAL_VERSION copied from another location; this class inherits commit_audit and contribution from VERSION<T>, providing imported versions with their own audit trail and Contribution, distinct from those of the imported ORIGINAL_VERSION. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|VERSION
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*item*: `ORIGINAL_VERSION`
+{set:cellbgcolor!}
+|The ORIGINAL_VERSION object that was imported. 
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*uid*: `OBJECT_VERSION_ID`
+{set:cellbgcolor!}
+|Computed version of inheritance precursor, derived as item.uid. 
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*preceding_version_uid*: `OBJECT_VERSION_ID`
+{set:cellbgcolor!}
+|Computed version of inheritance precursor, derived as item.preceding_version_uid. 
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*lifecycle_state*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|Lifecycle state of the content item in wrapped ORIGINAL_VERSION, derived as item.lifecycle_state. 
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*data*: `T`
+{set:cellbgcolor!}
+|Original content of this Version. 
+|===

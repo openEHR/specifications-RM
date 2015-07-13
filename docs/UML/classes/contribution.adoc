@@ -1,0 +1,36 @@
+=== CONTRIBUTION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*CONTRIBUTION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Documents a Contribution (change set) of one or more versions added to a change-controlled repository. 
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*uid*: `HIER_OBJECT_ID`
+{set:cellbgcolor!}
+|Unique identifier for this Contribution. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*versions*: `List<OBJECT_REF>`
+{set:cellbgcolor!}
+|Set of references to versions causing changes to this EHR. Each contribution contains a list of versions, which may include paths pointing to any number of VERSIONABLE items, i.e. items of type COMPOSITION and FOLDER. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*audit*: `AUDIT_DETAILS`
+{set:cellbgcolor!}
+|Audit trail corresponding to the committal of this Contribution. 
+|===

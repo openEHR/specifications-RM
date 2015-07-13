@@ -1,0 +1,65 @@
+=== EXTRACT Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*EXTRACT*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Generic model of an Extract of some information from a repository.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|LOCATABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*chapters*: `List<EXTRACT_CHAPTER>`
+{set:cellbgcolor!}
+|The content extracted and serialised from the source repository for this Extract.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*specification*: `EXTRACT_SPEC`
+{set:cellbgcolor!}
+|The specification that this Extract actually conforms to; might not be identical with the specification of the corresponding request.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*request_id*: `HIER_OBJECT_ID`
+{set:cellbgcolor!}
+|Reference to causing Request, if any.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*time_created*: `DV_DATE_TIME`
+{set:cellbgcolor!}
+|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*system_id*: `HIER_OBJECT_ID`
+{set:cellbgcolor!}
+|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*sequence_nr*: `Integer`
+{set:cellbgcolor!}
+|Number of this Extract response in sequence of responses to Extract request identified by request_id. If this is the sole response, or there was no request, value is 1.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*participations*: `List<EXTRACT_PARTICIPATION>`
+{set:cellbgcolor!}
+|Participations relevant to the creation of this Extract.
+|===

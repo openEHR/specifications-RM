@@ -1,0 +1,49 @@
+=== EXTRACT_ENTITY_MANIFEST Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*EXTRACT_ENTITY_MANIFEST*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|The manifest for one entity, identifying the entity and optionally specifying toplevel items to be included in the Extract. The list actually included may be modified by the version_spec part of the specification, and also by the link_depth attribute. In repeat (standing order) requests, the final inclusion may be modified by the send_changes_only flag of the update_spec. +
+Various identifiers may be provided for the entity; these are to be used by the receiver system to locate the entity. The extract_id_key attribute is used to record the identifier that will be used throughout the Extract for this entity, including in instances of EXTRACT_ENTITY_IDENTIFIER.
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*extract_id_key*: `String`
+{set:cellbgcolor!}
+|Identifier by which this entity is known in the Extract. May be one of the other identifiers, e.g. ehr_id or subject_id, or it may be something else, including a simple integer.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*ehr_id*: `String`
+{set:cellbgcolor!}
+|EHR / EMR identifier for the entity at the target system.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*subject_id*: `String`
+{set:cellbgcolor!}
+|Subject (i.e. patient or similar) identifier for the entity at the target system.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*other_ids*: `List<String>`
+{set:cellbgcolor!}
+|Other identifiers that may be used to find the entity at the target system, keyed by type. May include medicare numbers, drivers license number, tax number etc.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*item_list*: `List<OBJECT_REF>`
+{set:cellbgcolor!}
+|List of uids of items included in the Extract; for openEHR data, these are uids identifying the version containers.
+|===

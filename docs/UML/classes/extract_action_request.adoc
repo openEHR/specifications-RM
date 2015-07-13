@@ -1,0 +1,42 @@
+=== EXTRACT_ACTION_REQUEST Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*EXTRACT_ACTION_REQUEST*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Generic model of a Request for an Extract, containing an Extract specification.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|LOCATABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*request_id*: `OBJECT_REF`
+{set:cellbgcolor!}
+|Identifier of previous EXTRACT_REQUEST.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*action*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|Requested action: cancel, resend, send new.
+
+|*1..1 +
+(redefined)*
+{set:cellbgcolor:lightblue}
+|*uid*: `HIER_OBJECT_ID`
+{set:cellbgcolor!}
+|
+|===

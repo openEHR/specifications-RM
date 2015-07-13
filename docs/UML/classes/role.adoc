@@ -1,0 +1,41 @@
+=== ROLE Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*ROLE*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Generic description of a role performed by an actor. The role corresponds to a competency of the party. Roles are used to define the responsibilities undertaken by a party for a purpose. Roles should have credentials qualifying the performer to perform the role.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|PARTY
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*time_validity*: 
+{set:cellbgcolor!}
+|Valid time interval for this role.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*performer*: `PARTY_REF`
+{set:cellbgcolor!}
+|Reference to Version container of Actor playing the role.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*capabilities*: `List<CAPABILITY>`
+{set:cellbgcolor!}
+|
+|===

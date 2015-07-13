@@ -1,0 +1,78 @@
+=== EXTRACT_SPEC Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*EXTRACT_SPEC*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Specification of an Extract's contents. Subtypes can be used to add details specific to the type of Extract. The specification consists of attributes specifying the directory, and two further groups of attributes in their own classes, namely a version specfication (which versions of information items are to be included) and a manifest (which entities are to be included in the extract). +
+Use: Used in a request to specify an Extract, as well as to describe what is contained in an Extract.
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*version_spec*: `EXTRACT_VERSION_SPEC`
+{set:cellbgcolor!}
+|Specification of which versions of information items to include in the Extract. If Void, the default is latest versions only (which is reasonable for non-versioning systems as well).
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*manifest*: `EXTRACT_MANIFEST`
+{set:cellbgcolor!}
+|Specification of entities (e.g. records) to include in the Extract.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*extract_type*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|Coded term indicating the type of content required, e.g. +
+  |openehr-ehr| +
+  |openehr-demographic| +
+  |generic-emr| +
+  |other|
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*include_multimedia*: `Boolean`
+{set:cellbgcolor!}
+|Indicates whether inline instances of DV_MULTIMEDIA in the source data are included or not.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*priority*: `Integer`
+{set:cellbgcolor!}
+|Requested priority of this request to be handled by server. Priority schemes are likely to be local, and use values agreed by both ends. +
+TBD: alternative is standard coded terms
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*link_depth*: `Integer`
+{set:cellbgcolor!}
+|Degree of links to follow emanating from content items specified for inclusion. The kind of links to follow is dependent on the type of Extract. +
+All items at the target end of followed links at the given depth are also included in the extract; EXTRACT_CONTENT_ITEM.is_primary is used to differentiate. +
+- 0 = don't follow; +
+- 1 = follow first degree links; +
+- 2 = follow 2nd degree links; +
+- .... +
+- n = follow nth degree links
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*criteria*: `List<DV_PARSABLE>`
+{set:cellbgcolor!}
+|Queries specifying the contents of this Extract.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*other_details*: `ITEM_STRUCTURE`
+{set:cellbgcolor!}
+|Other specification items. Archetypable.
+|===

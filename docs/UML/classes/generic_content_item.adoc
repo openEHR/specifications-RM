@@ -1,0 +1,96 @@
+=== GENERIC_CONTENT_ITEM Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*GENERIC_CONTENT_ITEM*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Single item in generic extract, designed for 13606 and CDA data.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|EXTRACT_CONTENT_ITEM
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*item_type*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|Identifier of model or schema used to create the content.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*item_type_version*: `String`
+{set:cellbgcolor!}
+|Version of model or schema used to create the content item.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*author*: `String`
+{set:cellbgcolor!}
+|Reference to a demographic entity elsewhere in this Extract representing the author of the item version. The reference should be a UID corresponding to the UID of a GENERIC_CONTENT_ITEM containing the demographic information.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*creation_time*: `ISO8601_DATE_TIME`
+{set:cellbgcolor!}
+|Time of creation of this item version on the original system. This may be an earlier commit time, or it may be the time at which the item was created during the Extract generation process.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*authoriser*: `String`
+{set:cellbgcolor!}
+|Reference to a demographic entity elsewhere in this Extract representing an authoriser of the item version, if relevant. The reference should be a UID corresponding to the UID of a GENERIC_CONTENT_ITEM containing the demographic information.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*authorisation_time*: `ISO8601_DATE_TIME`
+{set:cellbgcolor!}
+|Time of authorisation of this item version on the original system where relevant.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*item_status*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|Coded lifecycle status of the item.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*version_id*: `String`
+{set:cellbgcolor!}
+|Version id of this item in original system.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*version_set_id*: `String`
+{set:cellbgcolor!}
+|Version set id of this item in original system, where applicable.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*system_id*: `String`
+{set:cellbgcolor!}
+|Identifier of EMR or other system from which the item was created / extracted. Typically in the form of a domain name.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*other_details*: `List<String>`
+{set:cellbgcolor!}
+|Other details about the content item.
+
+|*0..1 +
+(redefined)*
+{set:cellbgcolor:lightblue}
+|*item*: `LOCATABLE`
+{set:cellbgcolor!}
+|Content object.
+|===

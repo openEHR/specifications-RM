@@ -1,0 +1,66 @@
+=== ATTESTATION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*ATTESTATION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Record an attestation of a party (the committer) to item(s) of record content. An attestation is an explicit signing by one healthcare agent of particular content for various particular purposes, including:  +
+    for authorisation of a controlled substance or procedure (e.g. sectioning of patient under mental health act);  +
+    witnessing of content by senior clinical professional;  +
+    indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|AUDIT_DETAILS
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*attested_view*: `DV_MULTIMEDIA`
+{set:cellbgcolor!}
+|Optional visual representation of content attested e.g. screen image. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*proof*: `String`
+{set:cellbgcolor!}
+|Proof of attestation. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*items*: `List<DV_EHR_URI>`
+{set:cellbgcolor!}
+|Items attested, expressed as fully qualified runtime paths to the items in question. Although not recommended, these may include fine-grained items which have been attested in some other system. Otherwise it is assumed to be for the entire VERSION with which it is associated. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*reason*: `DV_TEXT`
+{set:cellbgcolor!}
+|Reason of this attestation. Optionally coded by the openEHR Terminology group  attestation reason ; includes values like  authorisation ,  witness  etc. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*is_pending*: `Boolean`
+{set:cellbgcolor!}
+|True if this attestation is outstanding; False means it has been completed.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Items_valid_*: items /= Void implies not items.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Reason_valid_*: (reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))
+{set:cellbgcolor!}
+|===

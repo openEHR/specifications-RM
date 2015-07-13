@@ -1,0 +1,69 @@
+=== DV_DATE Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*DV_DATE*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Represents an absolute point in time, as measured on the Gregorian calendar, and specified only to the day. Semantics defined by ISO 8601. Used for recording dates in real world time. The partial form is used for approximate birth dates, dates of death, etc.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DV_TEMPORAL
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*value*: `String`
+{set:cellbgcolor!}
+|ISO8601 date string.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*magnitude*: `Integer`
+{set:cellbgcolor!}
+|Numeric value of the date as days since the calendar origin point 1/1/0000.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*is_strictly_comparable_to* (other: `DV_ORDERED`): `Boolean`
+{set:cellbgcolor!}
+|Test if two instances are strictly comparable.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*operator<* (other_quantity: `DV_ORDERED`): `Boolean`
+{set:cellbgcolor!}
+|Tests if this date is earlier than the cited date.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*add* (a_diff: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
+{set:cellbgcolor!}
+|Add a time period to this date.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*subtract* (a_diif: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
+{set:cellbgcolor!}
+|Subtract a time period from this date.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*diff* (other: `DV_DATE`): `DV_DURATION`
+{set:cellbgcolor!}
+|Difference of two quantities.
+|===

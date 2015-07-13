@@ -1,0 +1,39 @@
+=== EHR_ACCESS Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*EHR_ACCESS*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|EHR-wide access contol object. All access decisions to data in the EHR must be made in accordance with the policies and rules in this object. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|LOCATABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*settings*: `ACCESS_CONTROL_SETTINGS`
+{set:cellbgcolor!}
+|Access control settings for the EHR. Instance is a subtype of the type ACCESS_CONTROL_SETTINGS, allowing for the use of different access control schemes. 
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*scheme*: `String`
+{set:cellbgcolor!}
+|The name of the access control scheme in use; corresponds to the concrete instance of the settings attribute. 
+|===

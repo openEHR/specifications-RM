@@ -1,0 +1,60 @@
+=== X_VERSIONED_OBJECT Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*X_VERSIONED_OBJECT*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Variety of Extract content that consists is a sharable data-oriented version of VERSIONED_OBJECT<T>.
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*uid*: `HIER_OBJECT_ID`
+{set:cellbgcolor!}
+|Uid of original VERSIONED_OBJECT.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*owner_id*: `OBJECT_REF`
+{set:cellbgcolor!}
+|Owner_id from original VERSIONED_OBJECT, which identifies source EHR.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*time_created*: `DV_DATE_TIME`
+{set:cellbgcolor!}
+|Creation time of original VERSIONED_OBJECT.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*total_version_count*: `Integer`
+{set:cellbgcolor!}
+|Total number of versions in original VERSIONED_OBJECT at time of creation of this X_VERSIONED_OBJECT.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*extract_version_count*: `Integer`
+{set:cellbgcolor!}
+|The number of Versions in this extract for this Versioned object, i.e. the count of items in the versions attribute. May be 0 if only revision history is requested.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*revision_history*: `REVISION_HISTORY`
+{set:cellbgcolor!}
+|Optional revision history of the original VERSIONED_OBJECT. If included, it is the complete revision history.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*versions*: `List<ORIGINAL_VERSION>`
+{set:cellbgcolor!}
+|0 or more Versions from the original VERSIONED_OBJECT, according to the Extract specification.
+|===

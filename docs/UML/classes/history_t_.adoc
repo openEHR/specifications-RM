@@ -1,0 +1,78 @@
+=== HISTORY<T> Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*HISTORY<T>*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Root object of a linear history, i.e. time series structure. For a periodic series of events, period will be set, and the time of each Event in the History must correspond; i.e. the EVENT.offset must be a multiple of period for each Event. Missing events in a period History are however allowed. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DATA_STRUCTURE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*origin*: `DV_DATE_TIME`
+{set:cellbgcolor!}
+|Time origin of this event history. The first event is not necessarily at the origin point. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*period*: `DV_DURATION`
+{set:cellbgcolor!}
+|Period between samples in this segment if periodic.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*duration*: `DV_DURATION`
+{set:cellbgcolor!}
+|Duration of the entire History; either corresponds to the duration of all the events, and/or the duration represented by the summary, if it exists. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*summary*: `ITEM_STRUCTURE`
+{set:cellbgcolor!}
+|Optional summary data expressing e.g. text or image which summarises entire History. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*events*: `List<EVENT>`
+{set:cellbgcolor!}
+|The events in the series. 
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*is_periodic*: `Boolean`
+{set:cellbgcolor!}
+|Indicates whether history is periodic. 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Events_valid_*: (events /= Void and then not events.is_empty) or summary /= Void
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Periodic_validity_*: is_periodic xor period = Void
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Period_consistency_*: is_periodic implies events.for_all (e: EVENT | e.offset. to_seconds.mod(period.to_seconds) = 0)
+{set:cellbgcolor!}
+|===

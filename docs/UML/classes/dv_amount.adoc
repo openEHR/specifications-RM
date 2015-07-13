@@ -1,0 +1,63 @@
+=== DV_AMOUNT Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_DV_AMOUNT (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Abstract class defining the concept of relative quantified  amounts'. For relative quantities, the  +' and  -' operators are defined (unlike descendants of DV_ABSOLUTE_QUANTITY, such as the date/time types). 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DV_QUANTIFIED
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*accuracy*: `Real`
+{set:cellbgcolor!}
+|Accuracy of measurement, expressed either as a half-range percent value (accuracy_is_percent = True) or a half-range quantity. A value of 0 means that accuracy was not recorded. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*accuracy_is_percent*: `Boolean`
+{set:cellbgcolor!}
+|If True, indicates that when this object was created, accuracy was recorded as a percent value; if False, as an absolute quantity value.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*valid_percentage* (number: `Ordered_Numeric`): `Boolean`
+{set:cellbgcolor!}
+|Test whether a number is a valid percentage, i.e. between 0 and 100. 
+
+|
+{set:cellbgcolor:lightblue}
+|*operator=* (source: `DV_AMOUNT`): `DV_AMOUNT`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*operator+* (other: `DV_AMOUNT`): `DV_AMOUNT`
+{set:cellbgcolor!}
+|Sum of this quantity and another whose formal type must be the difference type of this quantity.
+
+|
+{set:cellbgcolor:lightblue}
+|*operator-* (other: `DV_AMOUNT`): `DV_AMOUNT`
+{set:cellbgcolor!}
+|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
+|===

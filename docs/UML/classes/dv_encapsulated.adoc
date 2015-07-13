@@ -1,0 +1,45 @@
+=== DV_ENCAPSULATED Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_DV_ENCAPSULATED (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Abstract class defining the common meta-data of all types of encapsulated data.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DATA_VALUE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*charset*: `CODE_PHRASE`
+{set:cellbgcolor!}
+|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*language*: `CODE_PHRASE`
+{set:cellbgcolor!}
+|Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set  languages.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*size*: `Integer`
+{set:cellbgcolor!}
+|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc. do not change the value of this attribute. 
+|===

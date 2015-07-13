@@ -1,0 +1,51 @@
+=== DV_ABSOLUTE_QUANTITY Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*_DV_ABSOLUTE_QUANTITY (abstract)_*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Abstract class defining the concept of quantified entities whose values are absolute with respect to an origin. Dates and Times are the main example.
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DV_QUANTIFIED
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*accuracy*: `DV_AMOUNT`
+{set:cellbgcolor!}
+|Accuracy of measurement, expressed as a half-range value of the diff type for this quantity (i.e. an accuracy of x means + or  x).
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*diff* (other: `DV_ABSOLUTE_QUANTITY`): `DV_AMOUNT`
+{set:cellbgcolor!}
+|Difference of two quantities.
+
+|
+{set:cellbgcolor:lightblue}
+|*add* (a_diff: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
+{set:cellbgcolor!}
+|Addition of a differential amount to this quantity. 
+
+|
+{set:cellbgcolor:lightblue}
+|*subtract* (a_diif: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
+{set:cellbgcolor!}
+|Result of subtracting a differential amount from this quantity.
+|===

@@ -1,0 +1,70 @@
+=== EVENT_CONTEXT Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*EVENT_CONTEXT*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Documents the context information of a healthcare event involving the subject of care and the health system. The context information recorded here are independent of the attributes recorded in the version audit, which document the  system interaction  context, i.e. the context of a user interacting with the health record system. Healthcare events include patient contacts, and any other business activity, such as pathology investigations which take place on behalf of the patient. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|PATHABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*start_time*: `DV_DATE_TIME`
+{set:cellbgcolor!}
+|Start time of the clinical session or other kind of event during which a provider performs a service of any kind for the patient. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*end_time*: `DV_DATE_TIME`
+{set:cellbgcolor!}
+|Optional end time of the clinical session. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*location*: `String`
+{set:cellbgcolor!}
+|The actual location where the session occurred, e.g. 'microbiology lab 2', 'home', 'ward A3'  and so on.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*setting*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|The setting in which the clinical session took place. Coded using the openEHR Terminology,  setting  group. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*other_context*: `ITEM_STRUCTURE`
+{set:cellbgcolor!}
+|Other optional context which will be archetyped.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*health_care_facility*: `PARTY_IDENTIFIED`
+{set:cellbgcolor!}
+|The health care facility under whose care the event took place. This is the most specific workgroup or delivery unit within a care delivery enterprise that has an official identifier in the health system, and can be used to ensure medico-legal accountability. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*participations*: `List<PARTICIPATION>`
+{set:cellbgcolor!}
+|Parties involved in the healthcare event. These would normally include the physician(s) and often the patient (but not the latter if the clinical session is a pathology test for example). 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Setting_valid_*: Terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_setting, setting.defining_code)
+{set:cellbgcolor!}
+|===

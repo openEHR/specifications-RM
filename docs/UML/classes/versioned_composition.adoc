@@ -1,0 +1,34 @@
+=== VERSIONED_COMPOSITION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*VERSIONED_COMPOSITION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Version-controlled composition abstraction, defined by inheriting VERSIONED_OBJECT<COMPOSITION>. 
+{set:cellbgcolor!}
+
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*is_persistent*: `Boolean`
+{set:cellbgcolor!}
+|Indicates whether this composition set is persistent; derived from first version.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Archetype_node_id_valid_*: all_versions.for_all (v | v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Persistent_validity_*: all_versions.for_all (v | v.is_persistent = all_versions.first.data.is_persistent)
+{set:cellbgcolor!}
+|===

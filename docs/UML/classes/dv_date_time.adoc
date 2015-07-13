@@ -1,0 +1,76 @@
+=== DV_DATE_TIME Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*DV_DATE_TIME*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Represents an absolute point in time, specified to the second. Semantics defined by ISO 8601.  +
+Used for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a HISTORY in an OBSERVATION which is only partially known. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DV_TEMPORAL
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*value*: `String`
+{set:cellbgcolor!}
+|ISO8601 date/time string.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*operator=* (source: `DV_DATE_TIME`): `DV_DATE_TIME`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*as_string*: `String`
+{set:cellbgcolor!}
+|
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*magnitude*: `Real`
+{set:cellbgcolor!}
+|Numeric value of the date/time as seconds since the calendar origin point. 
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*is_strictly_comparable_to* (other: `DV_ORDERED`): `Boolean`
+{set:cellbgcolor!}
+|Test if two instances are strictly comparable.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*add* (a_diff: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
+{set:cellbgcolor!}
+|Add a time period to this date_time.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*subtract* (a_diif: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
+{set:cellbgcolor!}
+|Subtract a time period from this date_time.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*diff* (other: `DV_ABSOLUTE_QUANTITY`): `DV_AMOUNT`
+{set:cellbgcolor!}
+|Difference of two quantities.
+|===

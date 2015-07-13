@@ -1,0 +1,52 @@
+=== ISM_TRANSITION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*ISM_TRANSITION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Model of a transition in the Instruction State Machine, caused by a careflow step. The attributes document the careflow step as well as the ISM transition. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|PATHABLE
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*current_state*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|The ISM current state. Coded by openEHR terminology group Instruction states.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*transition*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|The ISM transition which occurred to arrive in the current_state. Coded by openEHR terminology group  Instruction transitions.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*careflow_step*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|The step in the careflow process which occurred as part of generating this action, e.g.  dispense ,  start_administration . This attribute represents the clinical  label for the activity, as  opposed to current_state which represents  the state machine (ISM)  computable form. Defined in archetype.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Current_state_valid_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_instruction_states, current_state.defining_code)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Transition_valid_*: transition /= Void implies terminology (Terminology_id_openehr).
+has_code_for_group_id (Group_id_instruction_transitions, transition.defining_code)
+{set:cellbgcolor!}
+|===

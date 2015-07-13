@@ -1,0 +1,47 @@
+=== INSTRUCTION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*INSTRUCTION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Used to specify actions in the future. Enables simple and complex specifications to be expressed, including in a fully-computable workflow form. Used for any actionable statement such as medication and therapeutic orders, monitoring, recall and review. Enough details must be provided for the specification to be directly executed by an actor, either human or machine. Not to be used for plan items which are only specified in general terms. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|CARE_ENTRY
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*narrative*: `DV_TEXT`
+{set:cellbgcolor!}
+|Mandatory human-readable version of what the Instruction is about. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*expiry_time*: `DV_DATE_TIME`
+{set:cellbgcolor!}
+|Optional expiry date/time to assist determination of when an Instruction can be assumed to have expired. This helps prevent false listing of Instructions as Active when they clearly must have been terminated in some way or other. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*wf_definition*: `DV_PARSABLE`
+{set:cellbgcolor!}
+|Optional workflow engine executable expression of the Instruction. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*activities*: `List<ACTIVITY>`
+{set:cellbgcolor!}
+|List of all activities in Instruction. 
+|===

@@ -1,0 +1,70 @@
+=== DV_TIME Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*DV_TIME*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Represents an absolute point in time from an origin usually interpreted as eaning the start of the current day, specified to the second. Semantics defined by ISO 8601.  +
+Used for recording real world times, rather than scientifically measured fine amounts of time. The partial form is used for approximate times of events and substance administrations. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|DV_TEMPORAL
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*value*: `String`
+{set:cellbgcolor!}
+|ISO8601 time string
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*operator=* (source: `DV_TIME`): `DV_TIME`
+{set:cellbgcolor!}
+|
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*magnitude*: `Real`
+{set:cellbgcolor!}
+|Numeric value of the time as seconds since the start of day. 
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*is_strictly_comparable_to* (other: `DV_ORDERED`): `Boolean`
+{set:cellbgcolor!}
+|Test if two instances are strictly comparable.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*add* (a_diff: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
+{set:cellbgcolor!}
+|Add a time period to this time.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*subtract* (a_diif: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
+{set:cellbgcolor!}
+|Subtract a duration from this time.
+
+|(effected)
+{set:cellbgcolor:lightblue}
+|*diff* (other: `DV_TIME`): `DV_DURATION`
+{set:cellbgcolor!}
+|Difference of two quantities.
+|===

@@ -1,0 +1,84 @@
+=== ORIGINAL_VERSION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*ORIGINAL_VERSION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|A Version containing locally created content and optional attestations. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|VERSION
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*uid*: `OBJECT_VERSION_ID`
+{set:cellbgcolor!}
+|Stored version of inheritance precursor. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*preceding_version_uid*: `OBJECT_VERSION_ID`
+{set:cellbgcolor!}
+|Stored version of inheritance precursor. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*other_input_version_uids*: `List<OBJECT_VERSION_ID>`
+{set:cellbgcolor!}
+|Identifiers of other versions whose content was merged into this version, if any. 
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*lifecycle_state*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|Lifecycle state of the content item in this version.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*attestations*: `List<ATTESTATION>`
+{set:cellbgcolor!}
+|Set of attestations relating to this version. 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*data*: `T`
+{set:cellbgcolor!}
+|
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*is_merged*: `Boolean`
+{set:cellbgcolor!}
+|True if this Version was created from more than just the preceding (checked out) version.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Attestations_valid_*: attestations /= Void implies not attestations.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Is_merged_validity_*: other_input_version_ids = Void xor is_merged
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Other_input_version_uids_valid_*: other_input_version_uids /= Void implies not other_input_version_uids.is_empty
+{set:cellbgcolor!}
+|===

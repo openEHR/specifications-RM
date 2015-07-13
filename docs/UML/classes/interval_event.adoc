@@ -1,0 +1,61 @@
+=== INTERVAL_EVENT Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*INTERVAL_EVENT*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Defines a single interval event in a series. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|EVENT
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*width*: `DV_DURATION`
+{set:cellbgcolor!}
+|Length of the interval during which the state was true. Void if an instantaneous event.
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*sample_count*: `Integer`
+{set:cellbgcolor!}
+|Optional count of original samples to which this event corresponds.
+
+|*1..1*
+{set:cellbgcolor:lightblue}
+|*math_function*: `DV_CODED_TEXT`
+{set:cellbgcolor!}
+|Mathematical function of the data of this event, e.g.  maximum ,  mean  etc. Coded using openEHR Terminology group  event math function.
+|*Functions*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|
+{set:cellbgcolor:lightblue}
+|*interval_start_time*: `DV_DATE_TIME`
+{set:cellbgcolor!}
+|Start time of the interval of this event.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Math_function_validity_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_event_math_function, math_function.defining_code)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Interval_start_time_valid_*: interval_start_time = time - width
+{set:cellbgcolor!}
+|===

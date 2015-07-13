@@ -1,0 +1,34 @@
+=== SECTION Class
+
+[cols="^1,2,3"]
+|===
+|*Class*
+{set:cellbgcolor:lightblue}
+2+^|*SECTION*
+
+|*Description*
+{set:cellbgcolor:lightblue}
+2+|Represents a heading in a heading structure, or  section tree .  +
+Created according to archetyped structures for typical headings such as SOAP,  +
+physical examination, but also pathology result heading structures.  +
+Should not be used instead of ENTRY hierarchical structures. 
+{set:cellbgcolor!}
+
+|*Inherit*
+{set:cellbgcolor:lightblue}
+2+|CONTENT_ITEM
+{set:cellbgcolor!}
+
+|*Attributes*
+{set:cellbgcolor:lightblue}
+^|*Signature*
+^|*Meaning*
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*items*: `List<CONTENT_ITEM>`
+{set:cellbgcolor!}
+|Ordered list of content items under this section, which may include:  +
+ more SECTIONs  +
+ ENTRYs 
+|===
