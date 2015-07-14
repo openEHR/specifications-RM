@@ -1,0 +1,221 @@
+= EHR Package
+
+== Overview
+
+The openEHR EHR is structured according to a relatively simple model. A central EHR object identified by an EHR id specifies references to a number of types of structured, versioned information, plus a list of Contribution objects that act as audits of change-sets made to the EHR. The high-level structure of the openEHR EHR is shown in below.
+
+[.text-center]
+.High-level EHR structure
+image::diagrams/high_level_ehr_structure.png[id=high_level_ehr_structure, align="center", width=80%]
+
+In this figure, the parts of the EHR are as follows:
+
+* _EHR_: the root object, identified by a globally unique EHR identifier;
+* _EHR_access (versioned)_: an object containing access control settings for the record;
+* _EHR_status (versioned)_: an object containing various status and control information, optionally including the identifier of the subject (i.e. patient) currently associated with the record;
+* _Directory (versioned)_: an optional hierarchical structure of Folders that can be used to logically organise Compositions;
+* _Compositions (versioned)_: the containers of all clinical and administrative content of the record;
+* _Contributions_: the change-set records for every change made to the health record; each Contribution references a set of one or more Versions of any of the versioned items in the record that were committed or attested together by a user to an EHR system.
+
+The `ehr` package is illustrated in the figure <<rm_ehr>> below. The classes have a more or less one-to-one correspondence with the objects shown in figure <<high_level_ehr_structure>>. Each versioned object of type `XXX` is defined by a class `VERSIONED_XXX`, which is a binding of the type `XXX` to the generic type paremeter `T` in the generic type `VERSIONED_COMPOSITION` (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).
+
+[.text-center]
+.rm.ehr package
+image::{uml_export_dir}/diagrams/RM-ehr.svg[id=rm_ehr, align="center"]
+
+== The Parts of the EHR
+
+=== Root EHR Object
+
+The root EHR object records three pieces of information that are immutable after creation: the identifier of the system in which the EHR was created, the identifier of the EHR (distinct from any identifier for the subject of care), and the time of creation of the EHR. Otherwise, it simply acts as an access point for the component parts of the EHR.
+
+References rather than containment by value are used for the relationship between the EHR and `VERSIONED_XXX` objects, reflecting the vast majority of retrieval scenarios in which only selected (usually recent) items are needed. Containment by value would lead to systems which retrieved all `VERSIONED_XXX` objects every time the EHR object was accessed.
+
+=== EHR Access
+
+Access control settings for the whole EHR are specified in the `EHR_ACCESS` object. This includes default privacy policy, lists of identified accessors (individuals and groups) and exceptions to the default policies, each one identifying a particular Composition in the EHR. All changes to the EHR Access object are versioned via the normal mechanism, ensuring that the visible view of the EHR atany previous point in time is reconstructable.
+
+Because security models for health information are still in their infancy, the openEHR model adopts a completely flexible approach. Only two hard-wired attributes are defined in the `EHR_ACCESS` class. The first is the name of the security scheme currently in use, while the second (settings attribute) is an object containing the access settings for the EHR according to that particular scheme. Each scheme is defined by an instance of a subclass of the abstract class `ACCESS_CONTROL_SETTINGS`, defined in the Security Information Model.
+
+=== EHR Status
+
+The `EHR_STATUS` object contains a small number of hard-wired attributes, and an archetyped `_other_details_` part. The former are used to indicate who is (currently understood to be) the subject of the record, and whether the EHR is actively in use, inactive, and whether it should be considered queryable. As for elsewhere in the openEHR EHR, the subject is represented by a `PARTY_SELF` object, enabling it to be made completely anonymous, or alternatively to include a patient identifier. The subject is included in the EHR Status object because it can change, due to errors being discovered in the allocation of records to patients. If the anonymous form is used, the change will be made elsewhere in a cross-reference table; otherwise the EHR Status object will be updated. Because it is versioned, all such changes are audit-trailed, and the change history can be reconstructed.
+
+Other EHR-wide meta-data may be recorded in the archetyped part of this object, including runtime environment settings, software application names and version ids, identification and versions of data resources such as terminologies and possibly even actual software tools, configuration files, keys and so on. Such information is commonly versioned in software configuration management systems, in order to enable the reconstruction of earlier versions of software with the correct tools. One reason to store such information at all is that it adds to medico-legal support when clinicians have to justify a seemingly bad decision: if it can be shown that the version of software in use at the time was faulty, they are protected, but to do this requires that such information be recorded in the first place.
+
+=== Compositions
+
+The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the Transaction concept of the GEHR project (<<GEHR_del_4>>, <<GEHR_del_7>>, <<GEHR_del_8>>, <<GEHR_del_19_20_24>>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the wellknown ACID characteristics of transactions <<Gray_reuter_1993>>):
+
+* _durability_: the need for a persistent unit of information committal in the record;
+* _atomicity_: the need for a minimal unit of integrity for clinical information, corresponding to a minimal unit for committal, transmission and security;
+* _consistency_: the need for contributions to the record to leave the record in a consistent state;
+* _isolation_: the need for contributions to the record by simultaneous users not to interfere with each other;
+* _indelibility_: the requirement that information committed to the record be indelible in order to support later investigations, for both medico-legal and process improvement purposes, and the consequent requirement to be able to access previous states of the record;
+* _modification_: the need for users to be able to modify EHR contents, in order to correct errors or update previously recorded information (e.g. current medications, family history); and
+* _traceability_: the need to record adequate auditing information at committal, in order to provide clinical and legal traceability.
+
+The Transaction concept was later been renamed to “Composition”, which is the name of the equivalent concept in the current CEN EN13606, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.
+
+==== Event Compositions
+Events record what happens during healthcare system events with or for the patient, such as patient contacts, but also sessions in which the patient is not a participant (e.g. surgery) or not present (e.g. pathology testing). The figure below illustrates a simple EHR comprising an accumulation of event Compositions.
+
+[.text-center]
+.Basic event-oriented EHR
+image::diagrams/basic_event_oriented_ehr.png[id=basic_event_oriented_ehr, align="center", width=80%]
+
+An important job of the event Composition is to record not only the data from the healthcare event, such as observations on the patient, but also to record the event context information, i.e. the who, when, where and why of the event. For this reason, a specific class representing clinical context is associated with event compositions in the formal model.
+
+==== Persistent Compositions
+In a more sophisticated EHR, there is also a need to record items of long-term interest in the record. These are often separated by clinicians into well-known categories, such as:
+
+* Problem list
+* Current medications
+* Therapeutic precautions
+* Vaccination history
+* Patient preferences
+* Lifestyle
+* Family history
+* Social history
+* Care plan
+
+Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. For example, the meaning of the “medication list” Composition is always: this is the list of medications currently being taken by patient X. Similarly for the other persistent Composition types given above. In scientific philosophy, the kind of information recorded in a persistent Composition is known as a _continuant_ (see e.g. the KR ontology in <<Sowa_2000>>). This is in contrast with event Compositions, which do not generally record continuants, but instead record _occurrents_, i.e. things that were true or did happen but have no longevity.
+
+Over time, the number of event Compositions is likely to far outstrip the number of persistent Compositions. The figure below illustrates an EHR containing persistent information as well as event information.
+
+[.text-center]
+.An EHR containing Event and Persistent Compositions
+image::diagrams/event_persistent_ehr.png[id=event_persistent_ehr, align="center", width=80%]
+
+In any clinical session, an event composition will be created, and in many cases, persistent compositions will be modified. How this works is described below in the section <<Change Control in the EHR>>.
+
+=== Directory
+
+As Compositions accumulate over time in the EHR, they form a long-term patient history. An optional directory structure can be used in the EHR to organise Compositions using a hierarchy of Folders in much the same way files in a file system are visualised by the directory Explorer tool on Windows and other platforms. In the openEHR model, Folders do not contain Compositions by value but by reference. More than one Folder can refer to the same Composition. Folders might be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped.
+
+A simple structure showing Folders referencing Compositions is shown below, in which the following folders are used:
+
+Subject:: a composition containing clinically relevant demographic data of the patient;
+Persistent:: compositions containing information which is valid in the long term;
+Event:: compositions containing information whose currency is limited to the short term after the time of committal;
+Episode_xxx:: rather than using a single ‘event’ folder, it may be convenient to group event compositions into episodes (periods of treatment at a health care facility relating to one or more identified problems) and/or other categories such as on the basis of type of healthcare (orthodox, homeopathic, etc).
+
+[.text-center]
+.Using Folders to Group Compositions
+image::diagrams/folders_for_grouping.png[id=folders_for_grouping, align="center", width=80%]
+
+A justification for these particular categories is based on patterns of access. The persistent category consists of a dozen or so compositions described above, and which are continually required by querying (particularly lifestyle, current problems and medications). The event category consists of clinical data whose relevancy fades fairly quickly, including most measurements made on the patients or in pathology. Compositions in this category are thus potentially very numerous over the patient’s lifetime, but of decreasing relevance to the clinical care of the patient in time; it therefore makes sense to separate them from the persistent compositions.
+
+Regardless of the folder structure used, the folder concept in itself poses no restrictions, nor does it add any clinical meaning to the record - it simply provides a logical navigational structure to the “lumps” of information committed to the record (remembering that inside compositions, there are other means of providing fine-grained structure in entries).
+
+Note that neither the Folder names nor the Composition names described and illustrated above are part of the openEHR EHR reference model: all such details are provided by archetypes; hence, EHR structures based on completely different conceptions of division of information, or even different types of medicine are equally possible.
+
+The EHR directory is maintained in its own versioned object, ensuring that changes to the classification structure of the Compositions are versioned over time in the same way as changes to the EHR content.
+
+== Change Control in the EHR
+
+Given an EHR in which there is an EHR Access object, EHR Status object, Event and Persistent Compositions, and possibly a directory structure, the general model of update of the EHR is that any of these might be created and/or modified during an update. The simplest, most common case is the creation of a single contact Composition. Another common case will be the creation of an Event Composition, and modification of one or more Persistent Compositions, e.g. due to facts learned in the consultation about family history, or due to prescription of new medications. Other types of updates include corrections to existing Compositions, and acquisition of Compositions from another site such as a hospital. Any of these updates might also include a change to the folder structure, or the moving of existing Compositions to other Folders. Naturally these scenarios depend on a structure of the record including event and persistent compositions, and a folder structure. In the extreme, an EHR consisting only of event Compositions and no Folders will experience only the creation of a single Composition for most updates, with acquisitions being the exception. Less often, updates will be made to the EHR Access and EHR Status objects, according to the management and access control needs of the patient and health care providers.
+
+In general, the following requirements must always be met, regardless of the particular changes made at any one time:
+
+* the record should always be in a consistent informational state;
+* all changes to the record be audit-trailed;
+* all previous states of the record be available for the purposes of medico-legal investigation.
+
+These requirements are satisfied in openEHR via the use of the change control and versioning facilities defined in the Common Information Model. A key facet of the approach is the use of change-sets, known as Contributions in openEHR. Applied to the EHR, they can be visualised as shown below:
+
+[.text-center]
+.Contributions to the EHR
+image::diagrams/ehr_contributions.png[id=ehr_contributions, align="center", width=80%]
+
+* The first is due to a patient contact, and causes the creation of a new contact composition; it also causes changes to the problem list, current medications and care plan compositions (once again, in a differently designed record, all this information might have been contained in a single event Composition; likewise, it might be been distributed into even more Compositions).
+* The next Contribution is the acquisition of test results from a pathology laboratory.
+* The third is another contact in which both family history and the folder structure are modified.
+* This fourth is an error correction (e.g. a mispelled name, wrongly entered value), and shows that there can be a Contribution even when there is no healthcare event.
+* The last is an update to the EHR status information in the EHR, due to a software upgrade.
+
+The list of Contributions made to a record is recorded along with changes to the data, so that not only are changes to top-level objects (EHR Acces, Composition etc) captured, but the list of changes forming a change set due to a user commit is always known as well.
+
+=== Versioning of Compositions
+
+Versioning of Compositions is achieved with the `VERSIONED_OBJECT<T>` type from the change_control package (Common IM), which in the composition package is explicitly bound to the `COMPOSITION` class, via the class `VERSIONED_COMPOSITION` which inherits from the type `VERSIONED<COMPOSITION>`.
+
+The effect of version control on Compositions is visualised in the figure below. The versions (each “version” being a `COMPOSITION`) shown here in a `VERSIONED_COMPOSITION` are the same versions shown along each vertical line in FIGURE 8, this time shown with their associated audit items. The set of versions should be understood as a set of successive modifications of the same data in time.
+
+[.text-center]
+.The versioned Composition
+image::diagrams/versioned_compositions.png[id=versioned_compositions, align="center", width=80%]
+
+The `VERSIONED_COMPOSITION` can be thought of as a kind of smart repository: how it stores successive versions in time is an implementation concern (there are a number of intelligent algorithms available for this sort of thing), but what is important is that its functional interface enables any version to be retrieved, whether it be the latest, the first, or any in between.
+
+=== Versioning Scenarios
+The following scenarios for creating new `COMPOSITION` versions have been identified as follows.
+
+Case 0:: information is authored locally, causing the creation of a new `VERSION<COMPOSITION>`. If this is the first version, a new `VERSIONED_COMPOSITION` will be created first.
+Case 1:: information is modified locally, such as for the correction of a wrongly entered datum in a composition. This causes the creation of a new `VERSION<COMPOSITION>` in an existing `VERSIONED_COMPOSITION`, in which the `AUDIT_DETAILS`.`_change_type_` is set to “correction”.
+Case 2:: information received from a feeder system, e.g. a test result, which will be converted and used to create a new `VERSION<COMPOSITION>`. This kind of acquisition could be done automatically. If the receiver system needs to store a copy of the original feeder system audit details, it writes it into the `COMPOSITION`.`_feeder_audit_`.
+Case 3:: a `VERSION<COMPOSITION>` (such as a family history) received as part of an `EHR_EXTRACT` from another openEHR system, which will be used by a local author to create a new `COMPOSITION` that includes some content chosen from the received item. In this case, the new `VERSION<COMPOSITION>` is considered as a locally authored one, in which some content has been obtained from elsewhere. If it is the first version, a `VERSIONED_COMPOSITION` is first created. The `AUDIT_DETAILS` documents the committal of this content, and the clinician may choose to record some details about it in the audit description.
+
+In summary, the `AUDIT_DETAILS` is always used to document the addition of information locally, regardless of where it has come from. If there is a need to record original audit details, they become part of the content of the versioned object.
+
+== EHR Creation Semantics
+
+=== EHR Identifier Allocation
+
+openEHR EHRs are created due to two types of events. The first is a new patient presenting at the provider institution. An EHR may be created due to this event, without reference to any other openEHR EHRs that may exist in the broader community or jurisdiction. In this case, the EHR will be allocated a new, globally unique EHR id. This establishes the new EHR as an intentional clone of the source EHR (or more correctly, part of the family of EHRs making up the virtual EHR for that patient).
+
+On the other hand, an openEHR EHR may be created in an organisation as a logical clone (probably partial) of an EHR for the patient in some other system. This might happen as a normal part of the front-desk registration / admission process, i.e. the local EHR system is able to interrogate an EHR location service and discover if any other EHR exists for this patient, or it may occur due to purely electronic communications between two providers, i.e. the EHR is created because an Extract of an EHR hs been sent from elsewhere as part of a referral or similar communication. In this second case, the EHR id should be a copy of the EHR id from the other institution.
+
+In theory such a scheme could guarantee one EHR id per patient, but of course in reality, various factors conspire against this, and it can only approximate it. For one thing, it is known that providers routinely create new EHRs for a patient regardless of how many other EHRs already exist for that patient, simply because they have no easy way to find out about those EHRs. Ideally, this situation would be improved in the openEHR world, but due to reliance on such things as distributed services and reliable person identification, there are no guarantees. The best that can be said is that the EHR id allocation scheme can help support an ideal EHR id-per-patient situation if and when it becomes possible.
+
+=== Creation
+
+When an EHR is created, the result should be a root EHR object, an EHR Status object, and an EHR Access object, plus any other house-keeping information the versioning implementation requires. In a normal implementation, the EHR Status and EHR Access objects would normally be created and committed in a Contribution, just as any Composition would be. The EHR Status object has a special status in the EHR, indicating whether the EHR should be included in querying, whether it is modifiable, and by implication, whether it is active. Flags might be set to indicate that it is test record, or for educational or training purposes. The initial creation operation has to supply sufficient parameters for creation of these two objects, including:
+
+* system id
+* EHR id
+* Subject id (optional; the use of `PARTY_SELF` allows completely anonymous EHRs)
+* queryable flag
+* modifiable flag
+* any other flags required by the EHR Status object in the local implementation.
+
+The EHR id will either be a new globally unique identifier, in the case of first time EHR creation for this patient in the health system, or else the same identifier as an existing EHR for the same subject in another system, in the case of an EHR move or copy. The effect of EHR copying / synchronising between systems is that EHRs with the same identifier can be found within multiple systems. However if the same patient presented at multiple provider locations with no EHR sharing capability, a new EHR with a unique identifier will be created at each place. If a later request for copying occurs (e.g. due to a request for an EHR Extract) between two providers, the requesting institution will perform the merge of the received copy into the existing EHR for the same patient.
+
+The main consequences in a distributed environment are as follows:
+
+* multiple EHR ids for a given patient indicate a mobile patient, but lack of systematic EHR sharing;
+* one EHR id everywhere for the patient indicates a seamlessly integrated distributed environment, most likely with a global identification service.
+
+Note that the first situation is not a problem, and is not the same as the situation in which two EHRs are identified as being for different patients (i.e. subject id rather than EHR id is different) when in fact they are for the same person.
+
+== Time in the EHR
+
+There are numerous times recorded in the EHR, at varying levels of granularity. Certain times are a guaranteed by-product of the scientific investigation process, including time of sampling or collection; time of measurement, time of a healthcare business event, time of data committal. The following figure indicates these times with respect to Observation recordings (generally the most numerous) in the EHR.
+
+[.text-center]
+.Time in the EHR
+image::diagrams/time_in_the_ehr.png[id=time_in_the_ehr, align="center", width=80%]
+
+The top part of the figure shows the relationship of times typical for a physical examination at a GP visit. The lower part of the figure shows different relationships common in radiology and microbiology, where the sample (imaging or specimen collection) time can be quite different from the time of assessment and reporting of the sample. The times shown in the above figure have a close correspondence with the contexts described in <<Context Model of Recording>>; they also have (as shown) concrete attributes in the reference model.
+
+Other times to do with diagnoses (time of onset, time of resolution, time of last episode) and medication management (time started taking medication, time stopped, time suspended, etc) are specific to the particular type of information (e.g. diagnosis versus prognosis versus recommendation) and are generally represented as archetyped date/time values within Evaluation objects. Basic timing information is modelled concretely in the Instruction and Action Entry types, while archetyping is used to express timing information that is specific to particular content.
+
+== Historical Views of the Record
+
+It is important to understand that the `COMPOSITION` versions at a previous point in time represent a previously available _informational state_ of the EHR, at a particular EHR node. Such previous state include only those Compositions from other sources as have been acquired by that point in time, _regardless of whether the acquired information pertains to clinical information recorded earlier_. A previous historical state of the EHR thus corresponds to what users of a system could see at a particular moment of time. It is important to differentiate this from previous clinical states of the patient: previous informational states of the EHR might include acquired information which is significantly older than the point in time when merging occurred. A previous clinical state of the patient would be a derivable view of the EHRs in all locations for the patient - what is sometimes called the virtual EHR - at a given point in time, minus acquired Compositions, since these constitute (usually out-ofdate) copies of Compositions primarily available elsewhere.
+
+It is previous informational states with which we are concerned for medico-legal purposes, since they represent the information actually available to clinicians at a health-care facility, at a point in time. But previous clinical views may be useful for reconstructing an actual sequence of events as experienced by the patient.
+
+== Class Descriptions
+
+include::{uml_export_dir}/classes/ehr.adoc[]
+
+include::{uml_export_dir}/classes/versioned_ehr_access.adoc[]
+
+include::{uml_export_dir}/classes/ehr_access.adoc[]
+
+include::{uml_export_dir}/classes/versioned_ehr_status.adoc[]
+
+include::{uml_export_dir}/classes/ehr_status.adoc[]
+
+include::{uml_export_dir}/classes/versioned_composition.adoc[]
