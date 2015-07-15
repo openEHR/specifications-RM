@@ -26,8 +26,8 @@ terminology takes the more orthodox route in terminology design, and defines val
 using meaningless codes and rubrics. These attributes are always of type `DV_CODED_TEXT`; the code
 itself is contained within the defining_code attribute.
 
-The openEHR terminology is described in the openEHR Terminology document1, with computable
-expressions available at the openEHR terminology page2.
+The openEHR terminology is described in the openEHR Terminology specification <<openehr_terminology>>, with computable
+expressions available at the openEHR terminology page <<openehr_terminology_resources>>.
 
 == Archetype Internal Terminology
 
@@ -209,27 +209,21 @@ on a patient record. SNOMED-CT includes 63 terms beginning with "adenocarcinoma"
 (and 171 terms which include the word as a secondary part of the phrase), some as children of a common
 parent. Nevertheless, the terms do not all have a single common parent; a choice has to be made
 of which terms correspond to the intent of the query. If it is to find any previous diagnosis of "adenocarcinoma",
-then at least the terms of the form "adenocarcinoma of lung" `[snomed-ct::254626006]`,
+then at least the terms of the form `[snomed-ct::254626006|adenocarcinoma of lung|]`,
 "... of liver" have to be included. These are within the "clinical finding" hierarchy, so the use of these
 latter terms should ensure that matches are not made with other uses of the same terms in the record,
 e.g. "fear of adenocarcinoma" or "minimal risk of adenocarcinoma". Such correct matching is completely
 dependent upon the correct use of SNOMED-CT terms in the first place by the software application
 and/or user creating the data. It is easy to imagine an application that saves data (including
-openEHR data) in the form of two name/value pairs: `{"principal diagnosis", `[snomed-ct::35917007]`
-("adenocarcinoma")`} and `{"site", "lung"`}. Querying using "adenocarcinoma of lung" `[snomedct::254626006]` will fail, even though this is exactly the meaning of the data. The data are not wrong
+openEHR data) in the form of two name/value pairs: `<"principal diagnosis", [snomed-ct::35917007|adenocarcinoma|])>` and `<"site", "lung">`. Querying using `[snomedct::254626006|adenocarcinoma of lung|]` will fail, even though this is exactly the meaning of the data. The data are not wrong
 as such, but the lesson is clear: coding of data and code use in queries must be governed by common
 models, otherwise there is no hope of reliably processing the data.
 
 Under the openEHR aproach, path-based querying can be used to specify (for example):
 
-----
-    EVALUATIONs based on a problem-diagnosis-histological_staging archetype
-    with a value at the path /data/items[at0002.1.1]/value/code (histological
-    diagnosis) equal-to-or-subsumed-by "clinical finding" and equal-to-or-subsumed-by
-    "adenocarcinoma".
-----
+* find `EVALUATIONs` based on a `problem-diagnosis-histological_staging` archetype with a value at the path `/data/items[at0002.1.1]/value/code` (histological diagnosis) equal-to-or-subsumed-by "clinical finding" and equal-to or-subsumed-by "adenocarcinoma".
 
-The assumption here is that the value at this path was originally restricted by the archetype from
+The assumption here is that the value at this path was _originally_ restricted by the archetype from
 which the path is taken, to conforming to the relation {is-a "clinical finding" and is-a "abnormal morphological
 mass"}. Any finding of adenocarcinoma of the lung is then forced to be from the resulting
 subsumption hierarchy; other "adenocarcinoma" terms cannot be wrongly used in this position.

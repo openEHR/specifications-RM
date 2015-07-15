@@ -5,15 +5,16 @@
 This section provides a brief overview of the requirements underpinning the openEHR architecture.
 The openEHR architecture embodies 15 years of research from numerous projects and standards from
 around the world. It has been designed based on requirements captured over many years.
+
 Because the architecture is highly generic, and particularly due to being archetype-driven, it satisfies
-many requirements outside the original concept of the “clinical EHR”. For example, the same reference
-architecture can be used for veterinary health or even “care” of public infrastructure or listed
-buildings. This is due to the fact that the reference model embodies only concepts relating to “service
-and administrative events relating to a subject of care”; it is in archetypes and templates that specifics
+many requirements outside the original concept of the "clinical EHR". For example, the same reference
+architecture can be used for veterinary health or even "care" of public infrastructure or listed
+buildings. This is due to the fact that the reference model embodies only concepts relating to "service
+and administrative events relating to a subject of care"; it is in archetypes and templates that specifics
 of the kinds of care events and subjects of care are defined. In another dimension, although one of the
-requirements for the openEHR EHR was a “patient-centric, longitudinal, shared care EHR”, it is not
+requirements for the openEHR EHR was a "patient-centric, longitudinal, shared care EHR", it is not
 limited to this, and can be used in purely episodic, specialist situations, e.g. as a radiology department
-record system. Requirements for various flavours of “health care record” can be categorised according
+record system. Requirements for various flavours of "health care record" can be categorised according
 to the two dimensions, scope, and kind of subject, as shown below.
 
 [.text-center]
@@ -25,7 +26,7 @@ bubbles contained within it. Requirements for a generic record of care for any k
 local deployment are represented by the top left bubble. The subsequent addition of requirements corresponding
 to living subjects and then human subjects is represented by the bubbles down the left side
 of the diagram. The requirements represented by the largest bubble on the left hand side correspond to
-“local health records for human care”, such as radiology records, hospital EPRs and so on. Additional
+"local health records for human care", such as radiology records, hospital EPRs and so on. Additional
 sets of requirements represented by wider bubbles going across the diagram correspond to extending
 the scope of the content of the care record first to a whole subject (resulting in a patient-centric, longitudinal
 health record) and then to populations or cohorts of subjects, as done in population health and
@@ -33,11 +34,11 @@ research. From the (human) healthcare point of view, the important requirements 
 the way to the bottom row of the diagram.
 
 Going down the diagram, requirements corresponding to increasing specificity of subject of care
-(from “any” to “human”) are mostly implemented in openEHR by the use of archetypes. Going across
+(from "any" to "human") are mostly implemented in openEHR by the use of archetypes. Going across
 the diagram, the requirements corresponding to increasing scope of record content (from episodic to
 population) are mainly expressed in different deployments, generally going from standalone to a
-shared interoperable form. One of the key aspirations for EHRs today is the “integrated care record”
-sought by many health authorities today1, which provides an informational framework for integrated
+shared interoperable form. One of the key aspirations for EHRs today is the "integrated care record" 
+sought by many health authorities today (see <<ISO_20514>> for definition of ICEHR), which provides an informational framework for integrated
 shared care.
 
 As a result of the approach taken by openEHR, components and applications built to satisfy the
@@ -99,7 +100,7 @@ summarised as:
 * Reduced hospitalisations and readmissions.
 
 One comprehensive statement of EHR requirements covering many of the above is the ISO Technical
-Report 183081 for which an openEHR profile has been created2. The requirements summarised above
+Report 18308 <<ISO_18308>> for which an openEHR profile has been created <<openehr_18308>>. The requirements summarised above
 are described in more detail in the openEHR EHR Information Model document.
 
 == Deployment Environments
@@ -110,7 +111,7 @@ the most important, the integrated shared care health record is illustrated in t
 
 [.text-center]
 .Community Shared-care Context
-image::diagrams/shared_ehr.png[id=shared_ehr, align="center", width=80%]
+image::diagrams/shared_ehr.png[id=shared_ehr, align="center", width=70%]
 
 In this form, the openEHR services are added to the existing IT infrastructure to provide a shared,
 secure health record for patients that are seen by any number of health providers in their community

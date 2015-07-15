@@ -30,7 +30,7 @@ sections provide more details
 == The Configuration Management Paradigm
 
 The “configuration management” (CM) paradigm is well-known in software engineering, and has its
-own IEEE standard1. CM is about managed control of changes to a repository of items (formally
+own IEEE standard <<IEEE_828>>. CM is about managed control of changes to a repository of items (formally
 called “configuration items” or CIs), and is relevant to any logical repository of distinct information
 items which changes in time. In health information systems, at least two types of information require
 such management: electronic health records, and demographic information. In most analyses in the
@@ -123,15 +123,17 @@ attested at one time, as implied by the figure above.
 
 === General Model of a Change-controlled Repository
 
-The following figure shows an abstract model of a change-controlled repository, which consists of:
-
-* version-controlled configuration items - instances of `VERSIONED_OBJECT<T>`;
-* `CONTRIBUTIONs`;
-* an optional directory system of folders. If folders are used, the folder structure must also be versioned as a unit.
+The following figure shows an abstract model of a change-controlled repository.
 
 [.text-center]
 .Abstract Model of Change-controlled Repository
 image::diagrams/abstract_model_repository.png[abstract_model_repository,align="center", width=60%]
+
+This consists of:
+
+* version-controlled configuration items - instances of `VERSIONED_OBJECT<T>`;
+* `CONTRIBUTIONs`;
+* an optional directory system of folders. If folders are used, the folder structure must also be versioned as a unit.
 
 The actual type of links between the controlled repository and the other entities might vary - in some
 cases it might be association, in others aggregation; cardinalities might also vary. The figure above therefore provides a guide to the definition of actual controlled repositories, such as an EHR, rather than a

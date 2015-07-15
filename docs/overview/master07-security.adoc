@@ -178,7 +178,7 @@ The following sections describe how openEHR supports the first list of policy ob
 
 ==== Versioning
 The most basic security-related feature of openEHR is its support for data integrity. This is mainly
-provided by the versioning model, specified in the change_control package in the Common Information
+provided by the versioning model, specified in the `change_control` package in the Common Information
 Model, and in the Extract Information Model. Change-set based versioning of all information
 in the EHR and demographic services constitutes a basic integrity measure for information, since no
 content is ever physically modified, only new versions are created. All logical changes and deletions
@@ -230,7 +230,7 @@ to the patient rather than to provider entities, since the latter are usually pu
 kind of object known as `PARTY_SELF` in openEHR is used to refer to the subject in the EHR. The
 only information contained in a `PARTY_SELF` instance is an optional external reference. The
 openEHR EHR can be configured to provide 3 levels of separation by controlling whether and where
-this external identifier is actually set in PARTY_SELF instances, as follows:
+this external identifier is actually set in `PARTY_SELF` instances, as follows:
 
 * Nowhere in the EHR (i.e. every `PARTY_SELF` instance is a blank placeholder). This is the most secure approach, and means that the link between the EHR and the patient has to be done outside the EHR, by associating `EHR`.`_ehr_id_` and the subject identifier. This approach is more likely for more open environments.
 * Once only in the `EHR_STATUS` object (subject attribute), and nowhere else. This is also relatively secure, if the EHR Status object is protected in some way.

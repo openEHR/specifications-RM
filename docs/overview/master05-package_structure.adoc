@@ -6,7 +6,7 @@ The following figure illustrates the package structure of the openEHR formal spe
 are defined: rm, am and sm. All packages defining detailed models appear inside one of these
 outer packages, which may also be thought of as namespaces. They are conceptually defined within
 the org.openehr namespace, which can be represented in UML as further packages. In some implementation
-technologies (e.g. Java), the org.openehr namespace may actually be used within program
+technologies (e.g. Java), the `org.openehr` namespace may actually be used within program
 texts.
 
 [.text-center]
@@ -63,7 +63,7 @@ types are defined in the data types reference model.
 
 [horizontal]
 Text:: plain text, coded text, paragraphs.
-Quantities:: any ordered type including ordinal values (used for representing symbolic ordered values such as "+", "++", "+++"), measured quantities with values and units, and so on.
+Quantities:: any ordered type including ordinal values (used for representing symbolic ordered values such as pass:["+", "++", "+++"]), measured quantities with values and units, and so on.
 Date/times:: date, time, date-time types, and partial date/time types.
 Encapsulated data:: multimedia, parsable content.
 Basic types:: boolean, state variable.
@@ -107,14 +107,14 @@ synchronisation Extract.
 The Integration model defines the class `GENERIC_ENTRY`, a subtype of `ENTRY` used to represent freeform
 legacy or external data as a tree. This Entry type has its own archetypes, known as "integration
 archetypes", which can be used in concert with clinical archetypes as the basis for a tool-based data
-integration system. See section 14 on page 72 for more details.
-Demographics Information Model
+integration system. See <<Integrating openEHR with other Systems>> for more details.
 
+==== Demographics Information Model
 The demographic model defines generic concepts of `PARTY`, `ROLE` and related details such as contact
 addresses. The archetype model defines the semantics of constraint on `PARTYs`, allowing archetypes
 for any type of person, organisation, role and role relationship to be described. This approach provides
 a flexible way of including the arbitrary demographic attributes allowed in the OMG HDTF
-PIDS standard.
+PIDS standard <<Corbamed_PIDS>>.
 
 ==== Workflow Information Model (future)
 Workflow is the dynamic side of clinical care, and consists of models to describe the semantics of

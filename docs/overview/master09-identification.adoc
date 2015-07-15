@@ -4,7 +4,7 @@
 
 In an openEHR system, each EHR has a unique identifier, known as the EHR id, found in the root
 EHR object of each EHR. EHR ids should be "strong" globally unique identifiers such as reliably created
-Oids or Guids. No single system should contain two EHRs for the same subject. If this is not
+Oids or Guids. *No single system should contain two EHRs for the same subject.* If this is not
 the case, it means that the EHR system has failed to detect the existence of an EHR for a subject, or
 failed to match provided demographic attributes to the subject.
 
@@ -53,12 +53,12 @@ image::diagrams/ids_and_references.png[ids_and_references,align="center", width=
 In order to make data items locatable from the outside, identification is supported at 3 levels in
 openEHR, as follows:
 
-* version containers: `VERSIONED_OBJECTs` (Common IM) are identified uniquely;
-* top-level content structures: content structures such as `COMPOSITION`, `EHR_STATUS`, `EHR_ACCESS`, `PARTY` etc. are uniquely identified by the association of the identifier of their containing `VERSIONED_OBJECT` and the identifier of their containing `VERSION` within the container;
-* internal nodes: nodes within top-level structures are identified using paths.
+* _version containers_: `VERSIONED_OBJECTs` (Common IM) are identified uniquely;
+* _top-level content structures_: content structures such as `COMPOSITION`, `EHR_STATUS`, `EHR_ACCESS`, `PARTY` etc. are uniquely identified by the association of the identifier of their containing `VERSIONED_OBJECT` and the identifier of their containing `VERSION` within the container;
+* _internal nodes_: nodes within top-level structures are identified using paths.
 
 Three kinds of identification are used respectively. For version containers, meaningless unique identifiers
-("uids") are used. In most cases, the type `HIER_OBJECT_ID` will be used, which contains an
+("UIDs") are used. In most cases, the type `HIER_OBJECT_ID` will be used, which contains an
 instance of a subtype of the UID class, i.e. either an ISO OID or a IETF UUID (see
 <<rfc_4122>>; also known as a GUID). In general UUIDs are favoured since they
 require no central assignment and can be generated on the spot. A versioned container can be then referenced

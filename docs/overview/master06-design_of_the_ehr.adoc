@@ -49,16 +49,16 @@ of the openEHR EHR is shown below.
 
 [.text-center]
 .High-level Structure of the openEHR EHR
-image::../ehr/diagrams/high_level_ehr_structure.png[high_level_ehr_structure,align="center",width="80%"]
+image::../ehr/diagrams/high_level_ehr_structure.png[high_level_ehr_structure,align="center",width="70%"]
 
 In this figure, the parts of the EHR are as follows:
 
-* EHR: the root object, identified by a globally unique EHR identifier;
-* EHR_access (versioned): an object containing access control settings for the record;
-* EHR_status (versioned): an object containing various status and control information, optionally including the identifier of the subject (i.e. patient) currently associated with the record;
-* Directory (versioned): an optional hierarchical structure of Folders that can be used to logically organise Compositions;
-* Compositions (versioned): the containers of all clinical and administrative content of the record;
-* Contributions: the change-set records for every change made to the health record; each Contribution references a set of one or more Versions of any of the versioned items in the record that were committed or attested together by a user to an EHR system.
+* _EHR_: the root object, identified by a globally unique EHR identifier;
+* _EHR_access (versioned)_: an object containing access control settings for the record;
+* _EHR_status (versioned)_: an object containing various status and control information, optionally including the identifier of the subject (i.e. patient) currently associated with the record;
+* _Directory (versioned)_: an optional hierarchical structure of Folders that can be used to logically organise Compositions;
+* _Compositions (versioned)_: the containers of all clinical and administrative content of the record;
+* _Contributions_: the change-set records for every change made to the health record; each Contribution references a set of one or more Versions of any of the versioned items in the record that were committed or attested together by a user to an EHR system.
 
 The internal structure of the Composition along with the Directory object correspond closely to the
 levels in internationally agreed models of health information such as the CEN EN13606 and HL7
@@ -89,7 +89,7 @@ are kinds of `CARE_ENTRY`.
 
 [.text-center]
 .The openEHR Entry model (in EHR IM)
-image::{uml_export_dir}/diagrams/RM-composition.entry-simple.svg[id=entry_model_simple, align="center"]
+image::{uml_export_dir}/diagrams/RM-composition.entry-simple.png[id=entry_model_simple, align="center",width="60%"]
 
 The choice of these types is based on the clinical problem-solving process shown below.
 
@@ -119,7 +119,7 @@ that might occur.
 ==== Ontology of Entry Types
 In the clinical world practitioners do not think in terms of only five kinds of data corresponding to the
 subtypes of Entry described above. There are many subtypes of each of these types, of which some
-are shown in the ontology below.
+are shown in the figure below.
 
 [.text-center]
 .Ontology of Recorded Information
@@ -139,7 +139,8 @@ Entry model.
 Correct representation of the categories from the ontology is enabled by using archetypes designed to
 express the information of interest (say a risk assessment) in terms of a particular Entry subtype (in
 this case, Evaluation). In a system where Entries are thus modelled, there will be no danger of incorrectly
-identifying the various kinds of Entries, as long as the Entry subtype, time, and certainty/negation are taken into account. Note that even if the ontology of FIGURE 18 is not correct (undoubtedly
+identifying the various kinds of Entries, as long as the Entry subtype, time, and certainty/negation are taken into account. 
+Note that even if the ontology shown in the <<CIR_ontology>> figure is not correct (undoubtedly
 it isn’t), archetypes will be constructed to account for each improved idea of what such categories
 should really be.
 
