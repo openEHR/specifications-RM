@@ -42,4 +42,19 @@
 |*size*: `Integer`
 {set:cellbgcolor!}
 |Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc. do not change the value of this attribute. 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Size_valid_*: size >= 0
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Language_valid_*: language /= Void implies code_set (Code_set_id_languages).has_code (language)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Charset_valid_*: charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)
+{set:cellbgcolor!}
 |===

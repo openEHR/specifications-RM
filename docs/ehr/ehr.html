@@ -1814,23 +1814,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Contributions_valid</em></strong>: contributions.for_all (c | c.type.is_equal(“CONTRIBUTION”))</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Ehr_access_valid</em></strong>: ehr_access.type.is_equal (“VERSIONED_EHR_ACCESS”)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Ehr_status_valid</em></strong>: ehr_status.type.is_equal(“VERSIONED_EHR_STATUS”)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Compositions_valid</em></strong>: compositions.for_all (c | c.type.is_equal (“VERSIONED_COMPOSITION”))</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Directory_valid</em></strong>: directory /= Void implies directory.type.is_equal (“VERSIONED_FOLDER”)</p></td>
+<td class="tableblock halign-left valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong><em>Contributions_valid</em></strong>: contributions.for_all (c</p></td>
 </tr>
 </tbody>
 </table>
@@ -1895,6 +1879,14 @@
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The name of the access control scheme in use; corresponds to the concrete instance of the settings attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Scheme_valid</em></strong>: not scheme.is_empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Is_archetype_root</em></strong>: is_archetype_root</p></td>
 </tr>
 </tbody>
 </table>
@@ -1965,6 +1957,10 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>ITEM_STRUCTURE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Any other details of the EHR summary object, in the form of an archetyped Item_structure.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Is_archetype_root</em></strong>: is_archetype_root</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1997,11 +1993,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Archetype_node_id_valid</em></strong>: all_versions.for_all (v | v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Persistent_validity</em></strong>: all_versions.for_all (v | v.is_persistent = all_versions.first.data.is_persistent)</p></td>
+<td class="tableblock halign-left valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong><em>Archetype_node_id_valid</em></strong>: all_versions.for_all (v</p></td>
 </tr>
 </tbody>
 </table>
@@ -2272,6 +2264,14 @@
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Language_valid</em></strong>: code_set(Code_set_id_languages).has_code(language)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Content_valid</em></strong>: content /= Void implies not content.is_empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Is_archetype_root</em></strong>: is_archetype_root</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2339,6 +2339,14 @@
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Setting_valid</em></strong>: Terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_setting, setting.defining_code)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Participations_validity</em></strong>: participations /= Void implies not participations.is_empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>location_valid</em></strong>: location /= Void implies not location.is_empty</p></td>
 </tr>
 </tbody>
 </table>
@@ -2428,10 +2436,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Represents a heading in a heading structure, or  section tree . <br>
-Created according to archetyped structures for typical headings such as SOAP, <br>
-physical examination, but also pathology result heading structures. <br>
-Should not be used instead of ENTRY hierarchical structures.</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Represents a heading in a heading structure, or  section tree .  Created according to archetyped structures for typical headings such as SOAP,  physical examination, but also pathology result heading structures.  Should not be used instead of ENTRY hierarchical structures.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
@@ -2446,8 +2451,12 @@ Should not be used instead of ENTRY hierarchical structures.</p></td>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;CONTENT_ITEM&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ordered list of content items under this section, which may include: <br>
- more SECTIONs <br>
- ENTRYs</p></td>
+* more SECTIONs <br>
+* ENTRYs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Items_valid</em></strong>: items /= Void implies not items.is_empty</p></td>
 </tr>
 </tbody>
 </table>
@@ -3341,6 +3350,18 @@ Generally only used when the recorder needs to make it explicit. Otherwise, Comp
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Encoding_valid</em></strong>: code_set (Code_set_id_character_sets).has_code (encoding)</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Subject_validity</em></strong>: subject_is_self implies subject.generating_type = “PARTY_SELF”</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Other_participations_valid</em></strong>: other_participations /= Void implies not other_participations.is_empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Is_archetype_root</em></strong>: is_archetype_root</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3509,7 +3530,8 @@ Should not be used for actionable statements such as medication orders - these a
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Used to specify actions in the future. Enables simple and complex specifications to be expressed, including in a fully-computable workflow form. Used for any actionable statement such as medication and therapeutic orders, monitoring, recall and review. Enough details must be provided for the specification to be directly executed by an actor, either human or machine. Not to be used for plan items which are only specified in general terms.</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Used to specify actions in the future. Enables simple and complex specifications to be expressed, including in a fully-computable workflow form. Used for any actionable statement such as medication and therapeutic orders, monitoring, recall and review. Enough details must be provided for the specification to be directly executed by an actor, either human or machine. <br>
+Not to be used for plan items which are only specified in general terms.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
@@ -3539,6 +3561,10 @@ Should not be used for actionable statements such as medication orders - these a
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>activities</strong>: <code>List&lt;ACTIVITY&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">List of all activities in Instruction.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Activities_valid</em></strong>: activities /= Void implies not activities.is_empty</p></td>
 </tr>
 </tbody>
 </table>
@@ -3584,6 +3610,10 @@ Defaults to  /.*/ , meaning any archetype.</p></td>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code>ITEM_STRUCTURE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Description of the activity, in the form of an archetyped structure.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Action_archteype_id_valid</em></strong>: not action_archetype_ids.is_empty</p></td>
 </tr>
 </tbody>
 </table>
@@ -3970,6 +4000,9 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p><a id="Beale_Heard_2007"></a>[Beale_Heard_2007] Beale T, Heard S. <strong>An Ontology-based Model of Clinical Information.</strong> 2007. pp760-764 Proceedings MedInfo 2007, K. Kuhn et al. (Eds), IOS Publishing 2007. See <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>.</p>
 </li>
 <li>
+<p><a id="Booch_1994"></a>[Booch_1994] Booch G. <strong>Object-Oriented Analysis and Design with applications. 2nd ed.</strong> Benjamin/Cummings 1994.</p>
+</li>
+<li>
 <p><a id="Browne_2005"></a>[Browne_2005] Browne E D. <strong>Workflow Modelling of Coordinated Inter-Health-Provider Care Plans.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm</a>.</p>
 </li>
 <li>
@@ -4000,6 +4033,9 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p><a id="Kifer_Lausen_Wu_1995"></a>[Kifer_Lausen_Wu_1995] Kifer M, Lausen G, Wu J. <strong>Logical Foundations of Object-Oriented and FrameBased Languages.</strong> JACM May 1995. See See <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf" class="bare">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf</a>.</p>
 </li>
 <li>
+<p><a id="Kilov_1994"></a>[Kilov_1994] Kilov H. <strong>Information Modelling - an object-oriented approach.</strong> Prentice Hall 1994.</p>
+</li>
+<li>
 <p><a id="Maier_2000"></a>[Maier_2000] Maier M. <strong>Architecting Principles for Systems-of-Systems.</strong> Technical Report, University of Alabama in Huntsville. 2000. Available at <a href="http://www.infoed.com/Open/PAPERS/systems.htm" class="bare">http://www.infoed.com/Open/PAPERS/systems.htm</a></p>
 </li>
 <li>
@@ -4010,6 +4046,9 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </li>
 <li>
 <p><a id="Rector_1994"></a>[Rector_1994] Rector A L, Nowlan W A, Kay S. <strong>Foundations for an Electronic Medical Record.</strong> The IMIA Yearbook of Medical Informatics 1992 (Eds. van Bemmel J, McRay A). Stuttgart Schattauer 1994.</p>
+</li>
+<li>
+<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
 </li>
 <li>
 <p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
@@ -4079,19 +4118,31 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p><a id="GeHR_Aus_req"></a>[GeHR_Aus_req] Beale T, Heard S. <strong>GEHR Technical Requirements.</strong> See <a href="http://www.gehr.org/technical/requirements/gehr_requirements.html" class="bare">http://www.gehr.org/technical/requirements/gehr_requirements.html</a>.</p>
 </li>
 <li>
+<p><a id="HL7v3_data_types"></a>[HL7v3_data_types] Schadow G, Biron P. <strong>HL7 version 3 deliverable: Version 3 Data Types.</strong> (2nd ballot 2002 version).</p>
+</li>
+<li>
 <p><a id="IANA"></a>[IANA] IANA. <a href="http://www.iana.org/" class="bare">http://www.iana.org/</a>.</p>
 </li>
 <li>
 <p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
 </li>
 <li>
-<p><a id="SNOMED_CT"></a>[SNOMED_CT] IHTSDO. Sytematised Nomenclature for Medicine. See <a href="http://www.ohtsdo.org" class="bare">http://www.ohtsdo.org</a>.</p>
+<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See e.g. <a href="http://www.mcs.vuw.ac.nz/technical/software/SGML/doc/iso8601/ISO8601.html" class="bare">http://www.mcs.vuw.ac.nz/technical/software/SGML/doc/iso8601/ISO8601.html</a> and <a href="http://www.cl.cam.ac.uk/~mgk25/iso-time.html" class="bare">http://www.cl.cam.ac.uk/~mgk25/iso-time.html</a>.</p>
 </li>
 <li>
 <p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
 </li>
 <li>
 <p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
+</li>
+<li>
+<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="SNOMED_CT"></a>[SNOMED_CT] IHTSDO. Sytematised Nomenclature for Medicine. See <a href="http://www.ohtsdo.org" class="bare">http://www.ohtsdo.org</a>.</p>
 </li>
 <li>
 <p><a id="Synapses_req_A"></a>[Synapses_req_A] Kalra D. (Editor). <strong>The Synapses User Requirements and Functional Specification (Part A).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1a. 6 chapters, 176 pages.</p>
@@ -4110,6 +4161,9 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </li>
 <li>
 <p><a id="rfc_4122"></a>[rfc_4122] <strong>UUIDs</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
+</li>
+<li>
+<p><a id="UCUM"></a>[UCUM] Schadow G, McDonald C J. <strong>The Unified Code for Units of Measure, Version 1.4</strong> 2000. Regenstrief Institute for Health Care, Indianapolis. See <a href="http://aurora.rg.iupui.edu/UCUM" class="bare">http://aurora.rg.iupui.edu/UCUM</a></p>
 </li>
 <li>
 <p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
@@ -4168,6 +4222,9 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </li>
 <li>
 <p><a id="openehr_rm_ehr"></a>[openehr_rm_ehr] The openEHR Foundation. <strong>The EHR Information Model</strong>. <a href="http://www.openehr.org/releases/trunk/architecture/rm/ehr_im.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/rm/ehr_im.pdf</a> .</p>
+</li>
+<li>
+<p><a id="openehr_rm_support"></a>[openehr_rm_support] openEHR. <strong>Support Information Model.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/rm/support_im.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/rm/support_im.pdf</a>.</p>
 </li>
 <li>
 <p><a id="openehr_terminology"></a>[openehr_terminology] The openEHR Foundation. <strong>The openEHR Terminology</strong> <a href="http://www.openehr.org/releases/trunk/architecture/terminology.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/terminology.pdf</a></p>

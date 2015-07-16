@@ -86,4 +86,14 @@
 {set:cellbgcolor:lightblue}
 2+|*_Language_valid_*: code_set(Code_set_id_languages).has_code(language)
 {set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Content_valid_*: content /= Void implies not content.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Is_archetype_root_*: is_archetype_root
+{set:cellbgcolor!}
 |===

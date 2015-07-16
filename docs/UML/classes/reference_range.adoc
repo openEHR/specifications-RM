@@ -37,4 +37,9 @@
 |*is_in_range* (v: `DV_ORDERED`): `Boolean`
 {set:cellbgcolor!}
 |Indicates if the value  val' is inside the range.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Range_is_simple_*: (range.lower_unbounded or else range.lower.is_simple) and (range.upper_unbounded or else range.upper.is_simple)
+{set:cellbgcolor!}
 |===

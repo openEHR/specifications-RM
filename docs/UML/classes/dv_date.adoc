@@ -45,7 +45,7 @@
 
 |(effected)
 {set:cellbgcolor:lightblue}
-|*operator<* (other_quantity: `DV_ORDERED`): `Boolean`
+|*infix <* (other_quantity: `DV_ORDERED`): `Boolean`
 {set:cellbgcolor!}
 |Tests if this date is earlier than the cited date.
 
@@ -66,4 +66,9 @@
 |*diff* (other: `DV_DATE`): `DV_DURATION`
 {set:cellbgcolor!}
 |Difference of two quantities.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Value_valid_*: valid_iso8601_date(value)
+{set:cellbgcolor!}
 |===

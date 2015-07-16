@@ -1185,7 +1185,7 @@ some classes in the openEHR architecture that do not inherit from LOCATABLE but 
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_at_path</strong> (a_path: <code>String</code>): <code>Any</code><br>
-<strong><em>pre_condition</em></strong>: path_unique (a_path)</p></td>
+<strong><em>Pre</em></strong>: path_unique (a_path)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item.</p></td>
 </tr>
 <tr>
@@ -1195,13 +1195,14 @@ some classes in the openEHR architecture that do not inherit from LOCATABLE but 
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_exists</strong> (a_path: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_exists</strong> (a_path: <code>String</code>): <code>Boolean</code><br>
+<strong><em>Pre</em></strong>: not a_path.is_empty</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">True if the path exists in the data with respect to the current item.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_unique</strong> (a_path: <code>String</code>): <code>Boolean</code><br>
-<strong><em>pre_condition</em></strong>: path_exists (a_path)</p></td>
+<strong><em>Pre</em></strong>: path_exists (a_path)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">True if the path corresponds to a single item in the data.</p></td>
 </tr>
 <tr>
@@ -1336,6 +1337,10 @@ An instance of the class ARCHETYPED contains the relevant archetype identificati
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rm_version</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Version of the openEHR reference model used to create this object. Expressed in terms of the release version string, e.g.  1.0 ,  1.2.4 .</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Rm_version_valid</em></strong>: not rm_version.is_empty</p></td>
 </tr>
 </tbody>
 </table>
@@ -2009,12 +2014,14 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version</strong>: <code>String</code><br>
+<strong><em>Post</em></strong>: Result.is_equal (items.last.version_id.value)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The version id of the most recent item, as a String.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version_time_committed</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version_time_committed</strong>: <code>String</code><br>
+<strong><em>Post</em></strong>: Result.is_equal (items.last.audits.first. time_committed.value)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The commit date/time of the most recent item, as a String.</p></td>
 </tr>
 </tbody>
@@ -2050,7 +2057,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audits</strong>: <code>List&lt;AUDIT_DETAILS&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The audits for this revision; there will always be at least one commit audit (which may itself be an ATTESTATION), there may also be fur-ther attestations.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The audits for this revision; there will always be at least one commit audit (which may itself be an ATTESTATION), there may also be further attestations.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2738,18 +2745,20 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_with_id</strong> (a_ver_id: <code>OBJECT_VERSION_ID</code>): <code>VERSION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_with_id</strong> (a_ver_id: <code>OBJECT_VERSION_ID</code>): <code>VERSION</code><br>
+<strong><em>Pre</em></strong>: has_version_id (a_ver_id)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return the version with id =  'a_ver_id'.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_original_version</strong> (a_ver_id: <code>OBJECT_VERSION_ID</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_original_version</strong> (a_ver_id: <code>OBJECT_VERSION_ID</code>): <code>Boolean</code><br>
+<strong><em>Pre</em></strong>: has_version_id(a_ver_id)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">True if version with an_id is an ORIGINAL_VERSION.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_at_time</strong> (a_time: <code>DV_DATE_TIME</code>): <code>VERSION</code><br>
-<strong><em>Pre_condition</em></strong>: has_version_at_time (a_time)</p></td>
+<strong><em>Pre</em></strong>: has_version_at_time (a_time)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return the version for time  'a_time'.</p></td>
 </tr>
 <tr>
@@ -2769,19 +2778,20 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong>: <code>DV_CODED_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong>: <code>DV_CODED_TEXT</code><br>
+<strong><em>Post</em></strong>: Result = latest_trunk_version.lifecycle_state</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return the lifecycle state from the latest trunk version. Useful for determining if the version container is logically deleted.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_original_version</strong> (a_contribution: <code>OBJECT_REF</code>, a_new_version_uid: <code>OBJECT_VERSION_ID</code>, a_preceding_version_id: <code>OBJECT_VERSION_ID</code>, an_audit: <code>AUDIT_DETAILS</code>, a_lifecycle_state: <code>DV_CODED_TEXT</code>, a_data: <code>T</code>, signing_key: <code>String</code>): <code>void</code><br>
-<strong><em>Preceding_version_uid_valid</em></strong>: all_version_ids.has (a_preceding_version_uid) or else version_count = 0</p></td>
+<strong><em>Pre</em></strong>: all_version_ids.has (a_preceding_version_uid) or else version_count = 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add a new original version.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_original_merged_version</strong> (a_contribution: <code>OBJECT_REF</code>, a_new_version_uid: <code>OBJECT_VERSION_ID</code>, a_preceding_version_id: <code>OBJECT_VERSION_ID</code>, an_audit: <code>AUDIT_DETAILS</code>, a_lifecycle_state: <code>DV_CODED_TEXT</code>, a_data: <code>T</code>, an_other_input_uids: <code>List&lt;OBJECT_VERSION_ID&gt;</code>, signing_key: <code>String</code>): <code>void</code><br>
-<strong><em>Preceding_version_id_valid</em></strong>: all_version_ids.has (a_preceding_version_uid) or else version_count = 0</p></td>
+<strong><em>Pre</em></strong>: all_version_ids.has (a_preceding_version_uid) or else version_count = 0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add a new original merged version. This commit function adds a parameter containing the ids of other versions merged into the current one.</p></td>
 </tr>
 <tr>
@@ -2792,9 +2802,25 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_attestation</strong> (an_attestation: <code>ATTESTATION</code>, a_ver_id: <code>OBJECT_VERSION_ID</code>, signing_key: <code>String</code>): <code>void</code><br>
-<strong><em>Version_id_valid</em></strong>: has_version_id(a_ver_id)
+<strong><em>Pre</em></strong>: has_version_id(a_ver_id)
 and is_original_version(a_ver_id)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Add a new attestation to a specified original version. Attestations can only be added to Original versions.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Version_count_valid</em></strong>: version_count &gt;= 0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>All_version_ids_valid</em></strong>: all_version_ids.count = version_count</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>All_versions_valid</em></strong>: all_versions.count = version_count</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Latest_version_valid</em></strong>: version_count &gt; 0 implies latest_version /= Void</p></td>
 </tr>
 </tbody>
 </table>
@@ -3011,12 +3037,14 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock">(effected)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>OBJECT_VERSION_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>OBJECT_VERSION_ID</code><br>
+<strong><em>Post</em></strong>: Result = item.uid</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Computed version of inheritance precursor, derived as item.uid.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock">(effected)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preceding_version_uid</strong>: <code>OBJECT_VERSION_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preceding_version_uid</strong>: <code>OBJECT_VERSION_ID</code><br>
+<strong><em>Post</em></strong>: Result = item.preceding_version_uid</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Computed version of inheritance precursor, derived as item.preceding_version_uid.</p></td>
 </tr>
 <tr>
@@ -3186,7 +3214,8 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong>: <code>String</code><br>
+<strong><em>Post</em></strong>: Result = revision_history.most_recent_version</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Most recent revision in revision_history if is_controlled else  (uncontrolled) .</p></td>
 </tr>
 <tr>
@@ -3300,13 +3329,67 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_namespace</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace of original author&#8217;s organisation, in reverse internet form, if applicable.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_publisher</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plain text name of organisation that originally published this artefact, if any.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_contributors</strong>: <code>List&lt;String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Other contributors to the resource, probably listed in  name &lt;email&gt;  form.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other contributors to the resource, each listed in "name &lt;email&gt;"  form.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Lifecycle state of the resource, typically including states such as: initial, submitted, experimental, awaiting_approval, approved, superseded, obsolete.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>TERMINOLOGY_CODE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lifecycle state of the resource, typically including states such as: initial, in_development, in_review, published, superseded, obsolete.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code>AUTHORED_RESOURCE&#160;=&#160;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to owning resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>List&lt;RESOURCE_DESCRIPTION_ITEM&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Details of all parts of resource description that are natural language-dependent, keyed by language code.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>custodian_namespace</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace in reverse internet id form, of current custodian organisation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>custodian_organisation</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plain text name of current custodian organisation.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>copyright</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional copyright statement for the resource as a knowledge resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>licence</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Licence of current artefact, in format "short licence name &lt;URL of licence&gt;", e.g. "Apache 2.0 License &lt;<a href="http://www.apache.org/licenses/LICENSE-2.0.html&gt;"" class="bare">http://www.apache.org/licenses/LICENSE-2.0.html&gt;"</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ip_acknowledgements</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of acknowledgements of other IP directly referenced in this archetype, typically terminology codes, ontology ids etc. Recommended keys are the widely known name or namespace for the IP source, as shown in the following example:<br>
+ip_acknowledgements = &lt;<br>
+    ["loinc"] = &lt;"This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at <a href="http://loinc.org/terms-of-use"&gt" class="bare">http://loinc.org/terms-of-use"&gt</a>;<br>
+    ["snomedct"] = &lt;"Content from SNOMED CT® is copyright © 2007 IHTSDO &lt;ihtsdo.org&gt;"&gt;<br>
+&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>references</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of references of material on which this artefact is based, as a keyed list of strings. The keys should be in a standard citation format.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
@@ -3315,38 +3398,18 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conversion_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Details related to conversion process that generated this model from an original, if relevant, as a list of name/value pairs. Typical example with recommended tags:<br>
+        conversion_details = &lt;<br>
+                ["source_model"] = &lt;"CEM model xyz <a href="http://location.in.clinicalelementmodels.com&gt;"" class="bare">http://location.in.clinicalelementmodels.com&gt;"</a><br>
+                ["tool"] = &lt;"cem2adl v6.3.0"&gt;<br>
+                ["time"] = &lt;"2014-11-03T09:05:00"&gt;<br>
+        &gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Additional non language-senstive resource meta-data, as a list of name/value pairs.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code>AUTHORED_RESOURCE&#160;=&#160;0..1</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to owning resource.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>List&lt;RESOURCE_DESCRIPTION_ITEM&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Details of all parts of resource description that are natural language-dependent, keyed by language code.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Original_author_valid</em></strong>: not original_author.is_empty</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Lifecycle_state_valid</em></strong>: not lifecycle_state.is_empty</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Details_valid</em></strong>: not details.is_empty</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Language_valid</em></strong>: parent_resource /= Void implies details.for_all (d | parent_resource.languages_available.has (d.language.code_string))</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Parent_resource_valid</em></strong>: parent_resource /= Void implies parent_resource.description = self</p></td>
 </tr>
 </tbody>
 </table>
@@ -3375,8 +3438,8 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>CODE_PHRASE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The localised language in which the items in this description item are written. Coded from openEHR Code Set  languages .</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>TERMINOLOGY_CODE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The localised language in which the items in this description item are written. Coded from openEHR Code Set  languages.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
@@ -3400,11 +3463,6 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>copyright</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional copyright statement for the resource as a knowledge resource.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_resource_uri</strong>: <code>List&lt;Hash&lt;String, String&gt;&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">URIs of original clinical document(s) or description of which resource is a formalisation, in the language of this description item; keyed by meaning.</p></td>
 </tr>
@@ -3412,26 +3470,6 @@ signature.</p></td>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Additional language-senstive resource metadata, as a list of name/value pairs.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Language_valid</em></strong>: code_set (Code_set_id_languages).has_code (language)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Purpose_valid</em></strong>: not purpose.is_empty</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Use_valid</em></strong>: use /= Void implies not use.is_empty</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>misuse_valid</em></strong>: misuse /= Void implies not misuse.is_empty</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>copyright_valid</em></strong>: copyright /= Void implies not copyright.is_empty</p></td>
 </tr>
 </tbody>
 </table>
@@ -3457,6 +3495,9 @@ signature.</p></td>
 </li>
 <li>
 <p><a id="Beale_Heard_2007"></a>[Beale_Heard_2007] Beale T, Heard S. <strong>An Ontology-based Model of Clinical Information.</strong> 2007. pp760-764 Proceedings MedInfo 2007, K. Kuhn et al. (Eds), IOS Publishing 2007. See <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Booch_1994"></a>[Booch_1994] Booch G. <strong>Object-Oriented Analysis and Design with applications. 2nd ed.</strong> Benjamin/Cummings 1994.</p>
 </li>
 <li>
 <p><a id="Browne_2005"></a>[Browne_2005] Browne E D. <strong>Workflow Modelling of Coordinated Inter-Health-Provider Care Plans.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm</a>.</p>
@@ -3489,6 +3530,9 @@ signature.</p></td>
 <p><a id="Kifer_Lausen_Wu_1995"></a>[Kifer_Lausen_Wu_1995] Kifer M, Lausen G, Wu J. <strong>Logical Foundations of Object-Oriented and FrameBased Languages.</strong> JACM May 1995. See See <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf" class="bare">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf</a>.</p>
 </li>
 <li>
+<p><a id="Kilov_1994"></a>[Kilov_1994] Kilov H. <strong>Information Modelling - an object-oriented approach.</strong> Prentice Hall 1994.</p>
+</li>
+<li>
 <p><a id="Maier_2000"></a>[Maier_2000] Maier M. <strong>Architecting Principles for Systems-of-Systems.</strong> Technical Report, University of Alabama in Huntsville. 2000. Available at <a href="http://www.infoed.com/Open/PAPERS/systems.htm" class="bare">http://www.infoed.com/Open/PAPERS/systems.htm</a></p>
 </li>
 <li>
@@ -3499,6 +3543,9 @@ signature.</p></td>
 </li>
 <li>
 <p><a id="Rector_1994"></a>[Rector_1994] Rector A L, Nowlan W A, Kay S. <strong>Foundations for an Electronic Medical Record.</strong> The IMIA Yearbook of Medical Informatics 1992 (Eds. van Bemmel J, McRay A). Stuttgart Schattauer 1994.</p>
+</li>
+<li>
+<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
 </li>
 <li>
 <p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
@@ -3568,19 +3615,31 @@ signature.</p></td>
 <p><a id="GeHR_Aus_req"></a>[GeHR_Aus_req] Beale T, Heard S. <strong>GEHR Technical Requirements.</strong> See <a href="http://www.gehr.org/technical/requirements/gehr_requirements.html" class="bare">http://www.gehr.org/technical/requirements/gehr_requirements.html</a>.</p>
 </li>
 <li>
+<p><a id="HL7v3_data_types"></a>[HL7v3_data_types] Schadow G, Biron P. <strong>HL7 version 3 deliverable: Version 3 Data Types.</strong> (2nd ballot 2002 version).</p>
+</li>
+<li>
 <p><a id="IANA"></a>[IANA] IANA. <a href="http://www.iana.org/" class="bare">http://www.iana.org/</a>.</p>
 </li>
 <li>
 <p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
 </li>
 <li>
-<p><a id="SNOMED_CT"></a>[SNOMED_CT] IHTSDO. Sytematised Nomenclature for Medicine. See <a href="http://www.ohtsdo.org" class="bare">http://www.ohtsdo.org</a>.</p>
+<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See e.g. <a href="http://www.mcs.vuw.ac.nz/technical/software/SGML/doc/iso8601/ISO8601.html" class="bare">http://www.mcs.vuw.ac.nz/technical/software/SGML/doc/iso8601/ISO8601.html</a> and <a href="http://www.cl.cam.ac.uk/~mgk25/iso-time.html" class="bare">http://www.cl.cam.ac.uk/~mgk25/iso-time.html</a>.</p>
 </li>
 <li>
 <p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
 </li>
 <li>
 <p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
+</li>
+<li>
+<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="SNOMED_CT"></a>[SNOMED_CT] IHTSDO. Sytematised Nomenclature for Medicine. See <a href="http://www.ohtsdo.org" class="bare">http://www.ohtsdo.org</a>.</p>
 </li>
 <li>
 <p><a id="Synapses_req_A"></a>[Synapses_req_A] Kalra D. (Editor). <strong>The Synapses User Requirements and Functional Specification (Part A).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1a. 6 chapters, 176 pages.</p>
@@ -3599,6 +3658,9 @@ signature.</p></td>
 </li>
 <li>
 <p><a id="rfc_4122"></a>[rfc_4122] <strong>UUIDs</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
+</li>
+<li>
+<p><a id="UCUM"></a>[UCUM] Schadow G, McDonald C J. <strong>The Unified Code for Units of Measure, Version 1.4</strong> 2000. Regenstrief Institute for Health Care, Indianapolis. See <a href="http://aurora.rg.iupui.edu/UCUM" class="bare">http://aurora.rg.iupui.edu/UCUM</a></p>
 </li>
 <li>
 <p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
@@ -3657,6 +3719,9 @@ signature.</p></td>
 </li>
 <li>
 <p><a id="openehr_rm_ehr"></a>[openehr_rm_ehr] The openEHR Foundation. <strong>The EHR Information Model</strong>. <a href="http://www.openehr.org/releases/trunk/architecture/rm/ehr_im.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/rm/ehr_im.pdf</a> .</p>
+</li>
+<li>
+<p><a id="openehr_rm_support"></a>[openehr_rm_support] openEHR. <strong>Support Information Model.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/rm/support_im.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/rm/support_im.pdf</a>.</p>
 </li>
 <li>
 <p><a id="openehr_terminology"></a>[openehr_terminology] The openEHR Foundation. <strong>The openEHR Terminology</strong> <a href="http://www.openehr.org/releases/trunk/architecture/terminology.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/terminology.pdf</a></p>

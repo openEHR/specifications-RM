@@ -8,8 +8,10 @@
 
 |*Description*
 {set:cellbgcolor:lightblue}
-2+|Models a ratio of values, i.e. where the numerator and denominator are both pure numbers. Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary denominator), albumin:creatinine ratio, and percentages, e.g. red cell distirbution width (RDW).  +
-Should not be used to represent things like blood pressure which are often written using a  /' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. E.g. visual acuity  6/24  is not a ratio. Should not be used for formulations. 
+2+|Models a ratio of values, i.e. where the numerator and denominator are both pure numbers. The valid_proportion_kind property of the PROPORTION_KIND class is +
+used to control the type attribute to be one of a defined set. +
+Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary denominator), albumin:creatinine ratio, and percentages, e.g. red cell distirbution width (RDW).  +
+Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) “6/24” in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations. 
 {set:cellbgcolor!}
 
 |*Inherit*
@@ -56,15 +58,45 @@ Should not be used to represent things like blood pressure which are often writt
 {set:cellbgcolor!}
 |True if the numerator and denominator values are integers, i.e. if the precision is 0.
 
+|
+{set:cellbgcolor:lightblue}
+|*operator=* (source: `DV_PROPORTION`): `DV_PROPORTION`
+{set:cellbgcolor!}
+|Assignment operator
+
 |(effected)
 {set:cellbgcolor:lightblue}
 |*magnitude*: `Real`
 {set:cellbgcolor!}
 |Effective magnitude represented by ratio.
 
-|(effected)
+|*Invariant*
 {set:cellbgcolor:lightblue}
-|*operator=* (source: `DV_PROPORTION`): `DV_PROPORTION`
+2+|*_Type_validity_*: valid_proportion_kind (type)
 {set:cellbgcolor!}
-|Assignment operator
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Precision_validity_*: precision = 0 implies is_integral
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Is_integral_validity_*: is_integral implies (numerator.floor = numerator and denominator.floor = denominator)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Fraction_validity_*: (type = pk_fraction or type = pk_integer_fraction) implies is_integral
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Unitary_validity_*: type = pk_unitary implies denominator = 1
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Percent_validity_*: type = pk_percent implies denominator = 100
+{set:cellbgcolor!}
 |===

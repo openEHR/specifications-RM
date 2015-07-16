@@ -21,11 +21,12 @@
 ^|*Signature*
 ^|*Meaning*
 
-|*0..1*
+|*0..1 +
+(redefined)*
 {set:cellbgcolor:lightblue}
 |*accuracy*: `DV_AMOUNT`
 {set:cellbgcolor!}
-|Accuracy of measurement, expressed as a half-range value of the diff type for this quantity (i.e. an accuracy of x means + or  x).
+|
 |*Functions*
 {set:cellbgcolor:lightblue}
 ^|*Signature*
@@ -35,17 +36,26 @@
 {set:cellbgcolor:lightblue}
 |*diff* (other: `DV_ABSOLUTE_QUANTITY`): `DV_AMOUNT`
 {set:cellbgcolor!}
-|Difference of two quantities.
+|Difference of two quantities. +
+The value of accuracy in the result is either: +
+* the sum of the accuracies of the operands, if both present, or; +
+* unknown, if either or both operand accuracies are unknown.
 
 |
 {set:cellbgcolor:lightblue}
 |*add* (a_diff: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
 {set:cellbgcolor!}
-|Addition of a differential amount to this quantity. 
+|Addition of a differential amount to this quantity.  +
+The value of accuracy in the result is either: +
+* the sum of the accuracies of the operands, if both present, or; +
+* unknown, if either or both operand accuracies are unknown.
 
 |
 {set:cellbgcolor:lightblue}
 |*subtract* (a_diif: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
 {set:cellbgcolor!}
-|Result of subtracting a differential amount from this quantity.
+|Result of subtracting a differential amount from this quantity. +
+The value of accuracy in the result is either: +
+* the sum of the accuracies of the operands, if both present, or; +
+* unknown, if either or both operand accuracies are unknown.
 |===

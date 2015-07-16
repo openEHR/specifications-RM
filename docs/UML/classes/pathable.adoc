@@ -25,7 +25,7 @@
 |
 {set:cellbgcolor:lightblue}
 |*item_at_path* (a_path: `String`): `Any` +
-*_pre_condition_*: path_unique (a_path)
+*_Pre_*: path_unique (a_path)
 {set:cellbgcolor!}
 |The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. 
 
@@ -37,14 +37,15 @@
 
 |
 {set:cellbgcolor:lightblue}
-|*path_exists* (a_path: `String`): `Boolean`
+|*path_exists* (a_path: `String`): `Boolean` +
+*_Pre_*: not a_path.is_empty
 {set:cellbgcolor!}
 |True if the path exists in the data with respect to the current item. 
 
 |
 {set:cellbgcolor:lightblue}
 |*path_unique* (a_path: `String`): `Boolean` +
-*_pre_condition_*: path_exists (a_path)
+*_Pre_*: path_exists (a_path)
 {set:cellbgcolor!}
 |True if the path corresponds to a single item in the data. 
 

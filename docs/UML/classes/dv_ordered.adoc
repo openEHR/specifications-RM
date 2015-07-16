@@ -52,19 +52,42 @@ Data value types which are to be used as limits in the DV_INTERVAL<T> class must
 
 |
 {set:cellbgcolor:lightblue}
-|*operator<* (other_quantity: `DV_ORDERED`): `Boolean`
-{set:cellbgcolor!}
-|Tests if this item is less than other, which must be of the same concrete type. 
-
-|
-{set:cellbgcolor:lightblue}
 |*is_simple*: `Boolean`
 {set:cellbgcolor!}
 |True if this quantity has no reference ranges.
 
 |
 {set:cellbgcolor:lightblue}
-|*is_normal*: `Boolean`
+|*is_normal*: `Boolean` +
+*_Pre_*: normal_range /= Void or normal_status /= Void +
+*_Post_range_*: normal_range /= Void implies Result = normal_range.has (self) +
+*_Post_status_*: normal_status /= Void implies normal_status.code_string.is_equal (“N”)
 {set:cellbgcolor!}
 |Value is in the normal range, determined by comparison of the value to the normal_range if present, or by the normal_status marker if present. 
+
+|
+{set:cellbgcolor:lightblue}
+|*infix <* (other: `Ordered`): `Boolean`
+{set:cellbgcolor!}
+|
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Other_reference_ranges_validity_*: other_reference_ranges /= Void implies not other_reference_ranges.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Is_simple_validity_*: (normal_range = Void and other_reference_ranges = Void) implies is_simple
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Normal_status_validity_*: normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Normal_range_and_status_consistency_*: (normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))
+{set:cellbgcolor!}
 |===

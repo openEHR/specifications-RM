@@ -26,13 +26,19 @@
 |*magnitude_status*: `String`
 {set:cellbgcolor!}
 |Optional status of magnitude with values:  +
-     =  :   magnitude is a point value  +
-     <  :   value is < magnitude  +
-     >  :   value is > magnitude  +
-     <=  : value is <= magnitude  +
-     >=  : value is >= magnitude  +
-     ~  :   value is approximately magnitude  +
+* =   :   magnitude is a point value  +
+* <   :   value is < magnitude  +
+* >   :   value is > magnitude  +
+* \<= : value is <= magnitude  +
+* >= : value is >= magnitude  +
+* ~   :   value is approximately magnitude  +
 If not present, meaning is  = . 
+
+|*0..1*
+{set:cellbgcolor:lightblue}
+|*accuracy*: `Any`
+{set:cellbgcolor!}
+|
 |*Functions*
 {set:cellbgcolor:lightblue}
 ^|*Signature*
@@ -40,7 +46,8 @@ If not present, meaning is  = .
 
 |
 {set:cellbgcolor:lightblue}
-|*valid_magnitude_status*: `Boolean`
+|*valid_magnitude_status*: `Boolean` +
+*_Post_*: Result = s.is_equal (“=”) or s.is_equal (“<”) or s.is_equal (“>”) or s.is_equal (“<=”) or s.is_equal (“>=”) or s.is_equal (“~”)
 {set:cellbgcolor!}
 |Test whether a string value is one of the valid values for the magnitude_status attribute. 
 
@@ -49,4 +56,15 @@ If not present, meaning is  = .
 |*magnitude*: `Ordered_Numeric`
 {set:cellbgcolor!}
 |
+
+|
+{set:cellbgcolor:lightblue}
+|*accuracy_unknown*: `Boolean`
+{set:cellbgcolor!}
+|True if accuracy is not known, e.g. due to not being recorded or discernable.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Magnitude_status_valid_*: magnitude_status /= Void implies valid_magnitude_status (magnitude_status)
+{set:cellbgcolor!}
 |===

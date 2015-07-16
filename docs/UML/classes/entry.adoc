@@ -87,4 +87,19 @@ Generally only used when the recorder needs to make it explicit. Otherwise, Comp
 {set:cellbgcolor:lightblue}
 2+|*_Encoding_valid_*: code_set (Code_set_id_character_sets).has_code (encoding)
 {set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Subject_validity_*: subject_is_self implies subject.generating_type = “PARTY_SELF”
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Other_participations_valid_*: other_participations /= Void implies not other_participations.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Is_archetype_root_*: is_archetype_root
+{set:cellbgcolor!}
 |===

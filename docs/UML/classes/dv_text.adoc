@@ -9,7 +9,8 @@
 |*Description*
 {set:cellbgcolor:lightblue}
 2+|A text item, which may contain any amount of legal characters arranged as e.g. words, sentences etc (i.e. one DV_TEXT may be more than one word). Visual formatting and hyperlinks may be included.  +
-A DV_TEXT can be  coded  by adding mappings to it. 
+A DV_TEXT can be  coded  by adding mappings to it.  +
+Fragments of text, whether coded or not are used on their own as values, or to make up larger tracts of text which may be marked up in some way, eventually going to make up paragraphs.
 {set:cellbgcolor!}
 
 |*Inherit*
@@ -58,4 +59,29 @@ Values taken from W3C CSS2 properties lists  back-ground  and  font .
 |*encoding*: `CODE_PHRASE`
 {set:cellbgcolor!}
 |Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions. 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Valid_value_*: not value.is_empty and then not (value.has(CR) or value.has(LF))
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Language_valid_*: language /= Void implies code_set (Code_set_id_languages).has_code (language)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Encoding_valid_*: encoding /= Void implies code_set (Code_set_id_character_sets).has_code (encoding)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Mappings_valid_*: mappings /= void implies not mappings.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Formatting_valid_*: formatting /= void implies not formatting.is_empty
+{set:cellbgcolor!}
 |===
