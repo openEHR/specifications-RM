@@ -47,17 +47,17 @@ This class is used for recording any clinical datum which is customarily recorde
 |Limits of the ordinal enumeration, to allow comparison of an ordinal  +
 value to its limits. 
 
-|(effected)
+|
 {set:cellbgcolor:lightblue}
-|*is_strictly_comparable_to* (other: `DV_ORDERED`): `Boolean` +
-*_Post_*: symbol.is_comparable (other.symbol) implies Result
+|*<* (other: `Ordered`): `Boolean` +
+*_Post_*: Result = value < other.value
 {set:cellbgcolor!}
 |
 
 |(effected)
 {set:cellbgcolor:lightblue}
-|*<* (other: `Ordered`): `Boolean` +
-*_Post_*: Result = value < other.value
+|*is_strictly_comparable_to* (other: `DV_ORDERED`): `Boolean` +
+*_Post_*: symbol.is_comparable (other.symbol) implies Result
 {set:cellbgcolor!}
 |
 
