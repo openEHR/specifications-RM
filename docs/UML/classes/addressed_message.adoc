@@ -8,7 +8,7 @@
 
 |*Description*
 {set:cellbgcolor:lightblue}
-2+|
+2+|The concept of a message addressed to nominated recipients.
 {set:cellbgcolor!}
 
 |*Attributes*
@@ -20,29 +20,32 @@
 {set:cellbgcolor:lightblue}
 |*sender*: `String`
 {set:cellbgcolor!}
-|
+|Party sending the message.
 
 |*1..1*
 {set:cellbgcolor:lightblue}
 |*sender_reference*: `String`
 {set:cellbgcolor!}
-|
+|Identification of message used by sender. This will be the same no matter how many times this message is sent to these recipients.
 
 |*1..1*
 {set:cellbgcolor:lightblue}
 |*addressees*: `List<String>`
 {set:cellbgcolor!}
-|
+|Intended recipients, in the form of internet addresses.
 
 |*0..1*
 {set:cellbgcolor:lightblue}
 |*urgency*: `Integer`
 {set:cellbgcolor!}
-|
+|Urgency with which destination should deal with message: +
+* -1 - low +
+* 0 - normal +
+* 1 - high
 
 |*1..1*
 {set:cellbgcolor:lightblue}
 |*message*: `MESSAGE`
 {set:cellbgcolor!}
-|
+|The content of the message.
 |===

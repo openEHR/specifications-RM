@@ -23,16 +23,16 @@
 
 |*0..1*
 {set:cellbgcolor:lightblue}
-|*path*: 
+|*path*: `String`
 {set:cellbgcolor!}
-|The path to an instance in question, as an absolute path with respect to  the object found at VERSION.data. An empty path means that  the object referred to by id being specified. 
+|The path to an instance in question, as an absolute path with respect to the object found at VERSION.data. An empty path means that the object referred to by id being specified. 
 
 |*1..1 +
 (redefined)*
 {set:cellbgcolor:lightblue}
 |*id*: `UID_BASED_ID`
 {set:cellbgcolor!}
-|Globally unique id of an object, regardless of where it is stored.
+|The identifier of the Version. 
 |*Functions*
 {set:cellbgcolor:lightblue}
 ^|*Signature*
@@ -40,13 +40,7 @@
 
 |
 {set:cellbgcolor:lightblue}
-|*as_uri*: 
+|*as_uri*: `String`
 {set:cellbgcolor!}
-|A URI form of the reference, created by concatenating the following:  +
- ehr://  + id.value +  /  + path 
-
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Path_valid_*: path /= Void implies not path.is_empty
-{set:cellbgcolor!}
+|A URI form of the reference, created by concatenating the following: ehr://  + id.value +  /  + path
 |===

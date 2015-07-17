@@ -42,4 +42,19 @@ The update mode may be event-driven and periodic update or a mixture of both. Th
 |*update_method*: `CODE_PHRASE`
 {set:cellbgcolor!}
 |Indicate mode of update. Can be: send only items that are changed (including logical deletions) or new since last send. For persist_in_server Requests only.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Overall_validity_*: repeat_period /= Void or trigger_events /= Void
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Trigger_events_validity_*: trigger_events /= Void implies not trigger_events.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Send_changes_only_validity_*: send_changes_only implies persist_in_server
+{set:cellbgcolor!}
 |===
