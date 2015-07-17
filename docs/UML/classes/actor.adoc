@@ -21,13 +21,13 @@
 ^|*Signature*
 ^|*Meaning*
 
-|*0..1*
+|*1..1*
 {set:cellbgcolor:lightblue}
 |*languages*: `List<DV_TEXT>`
 {set:cellbgcolor!}
 |Languages which can be used to communicate with this actor, in preferred order of use (if known, else order irrelevant).
 
-|*0..1*
+|*1..1*
 {set:cellbgcolor:lightblue}
 |*roles*: `List<PARTY_REF>`
 {set:cellbgcolor!}
@@ -42,4 +42,9 @@
 |*has_legal_identity*: `Boolean`
 {set:cellbgcolor!}
 |True if one there is an identity with purpose  legal identity.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Legal_identity_exists_*: has_legal_identity
+{set:cellbgcolor!}
 |===

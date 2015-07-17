@@ -23,7 +23,7 @@
 
 |*0..1*
 {set:cellbgcolor:lightblue}
-|*time_validity*: 
+|*time_validity*: `DV_INTERVAL<DV_DATE>`
 {set:cellbgcolor!}
 |Valid time interval for this role.
 
@@ -37,5 +37,10 @@
 {set:cellbgcolor:lightblue}
 |*capabilities*: `List<CAPABILITY>`
 {set:cellbgcolor!}
-|
+|The capabilities of this role.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Capabilities_valid_*: capabilities /= Void implies not capabilities.empty
+{set:cellbgcolor!}
 |===

@@ -29,7 +29,7 @@
 
 |*0..1*
 {set:cellbgcolor:lightblue}
-|*time_validity*: 
+|*time_validity*: `DV_INTERVAL<DV_DATE>`
 {set:cellbgcolor!}
 |Valid time interval for this relationship.
 
@@ -54,4 +54,19 @@
 |*type*: `DV_TEXT`
 {set:cellbgcolor!}
 |Type of relationship, such as  employment,  authority,  health provision 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Source_valid_*: source /= Void and then source.relationships.has (self)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Target_valid_*: target /= Void and then not target.reverse_relationships.has (self)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Type_validity_*: type = name
+{set:cellbgcolor!}
 |===

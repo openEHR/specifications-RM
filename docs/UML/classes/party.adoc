@@ -67,4 +67,29 @@
 |*type*: `ITEM_STRUCTURE`
 {set:cellbgcolor!}
 |Type of party, such as  PERSON ,  ORGANISATION , etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited name attribute.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Type_valid_*: type = name
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Contacts_valid_*: contacts /= Void implies not contacts.is_empty
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Relationships_validity_*: relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r | r.source = self)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Reverse_relationships_validity_*: reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item | repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Is_archetype_root_*: is_archetype_root
+{set:cellbgcolor!}
 |===

@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.2">
+<meta name="description" content="openEHR Demographic Information Model specification">
+<meta name="keywords" content="EHR, demographics, openehr">
+<title>Demographic Information Model</title>
+<link rel="stylesheet" href="../../resources/css/openehr.css">
+<link rel="stylesheet" href="../../resources/css/pygments-default.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_demographic_information_model">Demographic Information Model</a>
+<ul class="sectlevel1">
+<li><a href="#_amendment_record">Amendment Record</a></li>
+<li><a href="#_acknowledgements">Acknowledgements</a></li>
+<li><a href="#_introduction">1. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_purpose">1.1. Purpose</a></li>
+<li><a href="#_related_documents">1.2. Related Documents</a></li>
+<li><a href="#_status">1.3. Status</a></li>
+<li><a href="#_conformance">1.4. Conformance</a></li>
+</ul>
+</li>
+<li><a href="#_demographic_package">2. Demographic package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview">2.1. Overview</a>
+<ul class="sectlevel3">
+<li><a href="#_archetyping">2.1.1. Archetyping</a></li>
+<li><a href="#_names_and_addresses">2.1.2. Names and Addresses</a></li>
+<li><a href="#_party_identification">2.1.3. Party Identification</a></li>
+<li><a href="#_party_relationships">2.1.4. Party Relationships</a></li>
+<li><a href="#_versioning_semantics">2.1.5. Versioning Semantics</a></li>
+</ul>
+</li>
+<li><a href="#_class_definitions">2.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_party_class">2.2.1. PARTY Class</a></li>
+<li><a href="#_role_class">2.2.2. ROLE Class</a></li>
+<li><a href="#_party_relationship_class">2.2.3. PARTY_RELATIONSHIP Class</a></li>
+<li><a href="#_party_identity_class">2.2.4. PARTY_IDENTITY Class</a></li>
+<li><a href="#_contact_class">2.2.5. CONTACT Class</a></li>
+<li><a href="#_address_class">2.2.6. ADDRESS Class</a></li>
+<li><a href="#_capability_class">2.2.7. CAPABILITY Class</a></li>
+<li><a href="#_actor_class">2.2.8. ACTOR Class</a></li>
+<li><a href="#_person_class">2.2.9. PERSON Class</a></li>
+<li><a href="#_organisation_class">2.2.10. ORGANISATION Class</a></li>
+<li><a href="#_group_class">2.2.11. GROUP Class</a></li>
+<li><a href="#_agent_class">2.2.12. AGENT Class</a></li>
+</ul>
+</li>
+<li><a href="#_instance_examples">2.3. Instance Examples</a>
+<ul class="sectlevel3">
+<li><a href="#_parties">2.3.1. Parties</a>
+<ul class="sectlevel4">
+<li><a href="#_person">Person</a></li>
+<li><a href="#_clinician">Clinician</a></li>
+<li><a href="#_credentials">Credentials</a></li>
+<li><a href="#_health_care_facility">Health Care Facility</a></li>
+<li><a href="#_group">Group</a></li>
+</ul>
+</li>
+<li><a href="#_relationships">2.3.2. Relationships</a>
+<ul class="sectlevel4">
+<li><a href="#_familial_relationship">Familial Relationship</a></li>
+<li><a href="#_employment_relationship">Employment Relationship</a></li>
+<li><a href="#_patient">Patient</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_references">References</a>
+<ul class="sectlevel2">
+<li><a href="#_publications">Publications</a></li>
+<li><a href="#_resources">Resources</a></li>
+<li><a href="#_openehr_resources">openEHR Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../../resources/images/openehr_logo_large.png" alt="openEHR logo">
+</div>
+</div>
+</div>
+</div>
+<h1 id="_demographic_information_model" class="sect0">Demographic Information Model</h1>
+<div class="openblock partintro">
+<div class="content">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="3"><strong>Issuer</strong>: <a href="http://www.openehr.org/programs/specification/">openEHR Specification Program</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Revision</strong>: <a href="#latest_issue">[latest_issue]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong>: <a href="#latest_issue_date">[latest_issue_date]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock"><strong>Keywords</strong>: EHR, demographics, openehr</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="diagrams/openehr_block_diagram.png" alt="openEHR components" width="60%">
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> </pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2015 The openEHR Foundation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="http://www.openehr.org/">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://openehr.atlassian.net/browse/SPECPR/" class="bare">https://openehr.atlassian.net/browse/SPECPR/</a><br>
+ Web: <a href="http://www.openehr.org/" class="bare">http://www.openehr.org/</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amendment_record">Amendment Record</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9%;">
+<col style="width: 54%;">
+<col style="width: 18%;">
+<col style="width: 18%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Issue</th>
+<th class="tableblock halign-left valign-top">Details</th>
+<th class="tableblock halign-left valign-top">Raiser</th>
+<th class="tableblock halign-left valign-top">Completed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="4" style="background-color: aqua;"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.2</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.0.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SPEC-257</strong>: Correct minor typos and clarify text. Make <code>PARTY_IDENTITY</code>.<code><em>details</em></code> and <code>ADDRESS</code>.<code><em>details</em></code> mandatory in class definitions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Cook<br>
+ C Ma,<br>
+ R Chen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>02 Aug 2008</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="4" style="background-color: aqua;"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.1</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-0002004</strong>: Correct Release 1.0 typographical errors.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D Lloyd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23 Feb 2006</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="4" style="background-color: aqua;"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000189</strong>. Add <code>LOCATABLE</code>.<code><em>parent</em></code>. New invariant in <code>PARTY</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25 Jan 2006</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000190</strong>. Rename <code>VERSION_REPOSITORY</code> to <code>VERSIONED_OBJECT</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000194</strong>. Correct anomalies with <code>LOCATABLE</code>.<code><em>uid</em></code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000161</strong>. Support distributed versioning.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale<br>
+ H Frankel</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="4" style="background-color: aqua;"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;0.96</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="4" style="background-color: aqua;"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;0.95</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000133</strong>. Remove <code>details /= Void</code> invariant from <code>PARTY</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R Chen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12 Mar 2005</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000048</strong>. Pre-release review of documents. Corrected <code>STRUCTURE</code> to be <code>ITEM_STRUCTURE</code>. Make <code>ACTOR</code>.<code><em>languages</em></code> a <code>List</code> not a <code>Set</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D Lloyd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 Feb 2005</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000024</strong>. Revert meaning to <code>STRING</code> and rename as <code><em>archetype_node_id</em></code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Heard,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Jan 2005</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000118</strong>. Make package names lower case.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="4" style="background-color: aqua;"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;0.9</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000041</strong>. Visually differentiate primitive types in openEHR documents.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">D Lloyd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">04 Oct 2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000013</strong>. Rename key classes, according to CEN ENV 13606.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Heard,<br>
+ D Kalra,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Sep 2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000035</strong>. Clarify circular relationships between <code>PARTY</code> and <code>PARTY_REL</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z Tun</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14 Aug 2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000003</strong>. Removed <code>ARCHETYPED</code> and <code>VERSIONABLE</code> classes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
+ Z Tun</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 Mar 2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Formally validated using ISE Eiffel 5.2. Minor corrections to invariants.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25 Feb 2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Review by H Frankel, MCA. Corrections to diagrams and class texts. Improved <code>PARTY_RELATIONSHIP</code> semantics. Added Patient instance example. Made <code><em>time_validity</em></code> attributes optional.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 Feb 2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Corrections to diagrams and class texts. Inheritance changed to <code>ARCHETYPED</code> for most key classes. Some instance examples added.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z Tun,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">08 Jan 2003</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">General modifications, addition of <code>CAPABILITY</code> class.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
+ D Lloyd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 Oct 2002</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Renamed <code>CONTACT_DESCRIPTOR</code> to <code>CONTACT</code>. Removed <code>CONTACT</code>.<code><em>role</em></code>. Renamed <code>PARTY_ROLE</code> to <code>ROLE</code>. Changed <code>CONTACT</code>.<code><em>address</em></code> to <code><em>addresses</em></code>. Renamed <code>SPATIAL</code> to <code>STRUCTURE</code>. Introduced <code>PARTY</code> and <code>ACTOR</code> classes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18 Sep 2002</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created from EHR RM.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 Aug 2002</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_acknowledgements">Acknowledgements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The work reported in this paper has been funded by a number of organisations, including The University
+College, London; The Cooperative Research Centres Program through the Department of the
+Prime Minister and Cabinet of the Commonwealth Government of Australia; Ocean Informatics,
+Australia.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction">1. Introduction</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_purpose">1.1. Purpose</h3>
+<div class="paragraph">
+<p>This document describes the architecture of the openEHR Demographic Information Model. The
+semantics are drawn from previous work in GEHR, existing models in CEN 13606 and the HL7v3
+RIM, and other work done in Australia.</p>
+</div>
+<div class="paragraph">
+<p>The intended audience includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standards bodies producing health informatics standards;</p>
+</li>
+<li>
+<p>Academic groups using openEHR;</p>
+</li>
+<li>
+<p>The open source healthcare community;</p>
+</li>
+<li>
+<p>Solution vendors;</p>
+</li>
+<li>
+<p>Medical informaticians and clinicians interested in health information.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_related_documents">1.2. Related Documents</h3>
+<div class="paragraph">
+<p>Prerequisite documents for reading this document include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The openEHR Architecture Overview (<a href="#openehr_overview">[openehr_overview]</a>);</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other documents describing related models, include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The openEHR Support Information Model (<a href="#openehr_rm_support">[openehr_rm_support]</a>).</p>
+</li>
+<li>
+<p>The openEHR Data Types Information Model (<a href="#openehr_rm_data_types">[openehr_rm_data_types]</a>).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_status">1.3. Status</h3>
+<div class="paragraph">
+<p>This specification is in the Stable state. The development version of this document can be found at <a href="http://www.openehr.org/releases/trunk/architecture/rm/demographic_im.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/rm/demographic_im.pdf</a>.</p>
+</div>
+<div class="paragraph">
+<p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
+</div>
+<div class="paragraph tbd">
+<p><strong>TBD</strong>: (example To Be Determined paragraph)</p>
+</div>
+<div class="paragraph">
+<p>Users are encouraged to comment on and/or advise on these paragraphs as well as the main content.  Feedback should be provided either on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org">technical mailing list</a>, or on the <a href="https://openehr.atlassian.net/browse/SPECPR/?selectedTab=com.atlassian.jira.jira-projects-plugin:issues-panel">specifications issue tracker</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conformance">1.4. Conformance</h3>
+<div class="paragraph">
+<p>Conformance of a data or software artifact to an openEHR Reference Model specification is determined by a formal test of that artifact against the relevant openEHR Implementation Technology Specification(s) (ITSs), such as an IDL interface or an XML-schema. Since ITSs are formal, automated derivations from the Reference Model, ITS conformance indicates RM conformance.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_demographic_package">2. Demographic package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview">2.1. Overview</h3>
+<div class="paragraph">
+<p>The demographic model illustrated in the UML diagram below is a generalised model of the facts one might expect
+to see in a demographic server. The purpose of the model is as a specification of a demographic service,
+either standalone, or a "wrapper" service for an existing system such as a patient master index
+(PMI). In the latter situation, it is used to add the required openEHR semantics, particularly versioning,
+to an existing service.</p>
+</div>
+<div id="rm_demographic" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/RM-demographic.svg" alt="RM demographic">
+</div>
+<div class="title">Figure 1. rm.demographic package</div>
+</div>
+<div class="paragraph">
+<p>The general design is based on the scheme of party and accountability described by Fowler <a href="#Fowler_1997">[Fowler_1997]</a>, and
+is influenced by clinical adaptations including work done in Australia and the HL7v3 RIM <a href="#HL7v3_ballot2">[HL7v3_ballot2]</a>
+(itself influenced by the Fowler models).</p>
+</div>
+<div class="paragraph">
+<p>One of the main design criteria of the model is that it expresses attributes and relationships of demographic
+entities which exist regardless of particular clinical involvements or participations in particular
+events. Participations are meaningful only within the context of the health record or other relevant
+model where they record context-specific relationships between demographic entities and events in
+the real world.</p>
+</div>
+<div class="paragraph">
+<p>Another criterion is that instances of the classes in the model must be serialisable into an EHR Extract
+in an unambgiuous way. This requires that each PARTY be a self-contained hierarchy of data, in the
+same way as distinct <code>COMPOSITIONs</code> in the EHR model are distinct hierarchies in an Extract. In
+order to ensure this condition, <code>PARTY_RELATIONSHIPs</code> must be implemented correctly, so as to prevent
+endless traversal of all <code>PARTY</code> objects through their relationships, when serialising. See Party
+Relationships below for details.</p>
+</div>
+<div class="sect3">
+<h4 id="_archetyping">2.1.1. Archetyping</h4>
+<div class="paragraph">
+<p>The model is designed to be used with archetypes, hence the generic nature of all entities. Every class
+containing an attribute of the form <code><em>details</em></code>:`STRUCTURE` is a completely archetypable structure. As a
+result, archetypes can be defined for concepts such as particular kinds of <code>PERSON</code>, <code>ORGANISATION</code>;
+for actual <code>ROLEs</code> such as "health care practitioner", and for party identities and addresses.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_names_and_addresses">2.1.2. Names and Addresses</h4>
+<div class="paragraph">
+<p>Classes have been included for <code>PARTY_IDENTITY</code> and <code>ADDRESS</code>, even though they contain only a
+link to details, in the form of the generic <code>STRUCTURE</code> class. This is not strictly necessary - it could
+have been done simply using appropriately named attributes in the classes <code>PARTY</code> and <code>CONTACT</code> - but
+is done to provide a place to add specific semantics in future releases of the model. It is also expected
+to make software development easier, since it provides explicit classes to which behaviour and other
+implementation attributes can be added. Lastly, it allows the notions of <code>PARTY_IDENTITY</code> and
+<code>ADDRESS</code> to be explicitly used in archetype-authoring tools.</p>
+</div>
+<div class="paragraph">
+<p>Instances of <code>PARTY_IDENTITY</code>, linked to <code>PARTY</code> by the attribute <code><em>identities</em></code> are intended to express the
+names of people, organisations, and other actors - that is names which are "owned" by the party, e.g.
+self-declared (in the case of institutions and companies) or by virtue of social relations (names given
+by parents, tribes etc). Identifiers of Parties given by other organisations, or the state are not represented
+in this way, and should be recorded in the <code>PARTY</code>.<code><em>details</em></code> structure instead (see below).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_party_identification">2.1.3. Party Identification</h4>
+<div class="paragraph">
+<p>Identifiers of Parties given by organisations or the state are treated as any other attribute of a Party,
+i.e. recorded as part of the data in the <code>PARTY</code>.<code><em>details</em></code> structure. Identifiers of Party instances in the system
+are provided in the same way as identifiers of Compositions in the EHR: via the <code><em>uid</em></code> attribute
+(type <code>OBJECT_VERSION_ID</code>) of the containing <code>VERSION</code>. These identifiers are used in all cross-references
+between Parties, and between Parties and Party_relationships.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_party_relationships">2.1.4. Party Relationships</h4>
+<div class="paragraph">
+<p>Relationships between parties in the real world may be expressed using <code>PARTY_RELATIONSHIP</code>
+objects, as illustrated below.</p>
+</div>
+<div id="general_model" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/general_model.png" alt="general model" width="50%">
+</div>
+<div class="title">Figure 2. General Relationship Model</div>
+</div>
+<div class="paragraph">
+<p>Relationships are considered directional, hence the use of the attribute names source and target, however,
+these names are otherwise neutral, and give no indication as to the meaning of the relationships,
+such as which party is responsible and which accountable (for comparison, see the demographic models
+of Fowler <a href="#Fowler_1997">[Fowler_1997]</a>). Accordingly, each Party involved in a relationship includes it in its relationships
+list, if it is at the source end, or in the <code><em>reverse_relationships</em></code> list, if at the target end.</p>
+</div>
+<div class="paragraph">
+<p>The usual way to determine the directionality of a relationship between two Parties is usually by
+which Party’s actions caused the relationship to come into being. For example, a relationship representing
+the concept "patient", between a health consumer and a health care organisation would have
+the consumer as source and the organisation as target.</p>
+</div>
+<div class="paragraph">
+<p><code>PARTY_RELATIONSHIPs</code> are stored as part of the data of the <code>PARTY</code> designated as the source. This
+means that the relationships attribute is by value, while reverse_relationships is by references, as are
+<code>PARTY_RELATIONSHIP</code>.<code><em>source</em></code> and target. The actual kind of reference is via the use of
+<code>OBJECT_REFs</code> containing <code>HIER_OBJECT_IDs</code> to denote the Version container of a Party, rather than
+<code>OBJECT_VERSION_IDs</code>, which would denote particular versions. Logically this implements the
+semantic that such relationships in the real world are between <em>continuants</em>, i.e. the real Parties, not
+just one of their version instances in a demographic system.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_versioning_semantics">2.1.5. Versioning Semantics</h4>
+<div class="paragraph">
+<p>The class <code>PARTY</code> and its descendants <code>ACTOR</code> and <code>ROLE</code> are all potentially versioned in a demographic
+system. A Version of a <code>PARTY</code> includes all the compositional parts, such as identities, contacts, Party
+relatoinships of which it is the source. Every Party is stored in its own Version container.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions">2.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_party_class">2.2.1. PARTY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong><em>PARTY (abstract)</em></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ancestor of all party types, including real world entities and their roles. A party is any entity which can participate in an activity. The name attribute inherited from LOCATABLE is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the identities attribute, not the name attribute).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identities</strong>: <code>List&lt;PARTY_IDENTITY&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identities used by the party to identify itself, such as legal name, stage names, aliases, nicknames and so on.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contacts</strong>: <code>List&lt;CONTACT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contacts for this party.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">All other details for this party.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>reverse_relationships</strong>: <code>List&lt;LOCATABLE_REF&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relationships in which this role takes part as target.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relationships</strong>: <code>List&lt;PARTY_RELATIONSHIP&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relationships in which this role takes part as source.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>HIER_OBJECT_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier of this Party.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Functions</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of party, such as  PERSON ,  ORGANISATION , etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited name attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Type_valid</em></strong>: type = name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Contacts_valid</em></strong>: contacts /= Void implies not contacts.is_empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong><em>Relationships_validity</em></strong>: relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_role_class">2.2.2. ROLE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>ROLE</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Generic description of a role performed by an actor. The role corresponds to a competency of the party. Roles are used to define the responsibilities undertaken by a party for a purpose. Roles should have credentials qualifying the performer to perform the role.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PARTY</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_validity</strong>: <code>DV_INTERVAL&lt;DV_DATE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valid time interval for this role.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>performer</strong>: <code>PARTY_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to Version container of Actor playing the role.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>capabilities</strong>: <code>List&lt;CAPABILITY&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The capabilities of this role.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Capabilities_valid</em></strong>: capabilities /= Void implies not capabilities.empty</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_party_relationship_class">2.2.3. PARTY_RELATIONSHIP Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>PARTY_RELATIONSHIP</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Generic description of a relationship between parties.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The detailed description of the relationship.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_validity</strong>: <code>DV_INTERVAL&lt;DV_DATE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valid time interval for this relationship.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source</strong>: <code>PARTY_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source of relationship.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>PARTY_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Target of relationship.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Functions</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of relationship, such as  employment,  authority,  health provision</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Source_valid</em></strong>: source /= Void and then source.relationships.has (self)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Target_valid</em></strong>: target /= Void and then not target.reverse_relationships.has (self)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Type_validity</em></strong>: type = name</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_party_identity_class">2.2.4. PARTY_IDENTITY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>PARTY_IDENTITY</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">An identity  owned  by a PARTY, such as a person name or company name, and which is used by the party to identify itself. Actual structure is archetyped.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The value of the indentity. This will often taken the form of a parsable string or a small structure of strings.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Functions</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Purpose of identity, e.g.  legal ,  stagename ,  nickname ,  tribal name ,  trading name . Taken from value of inherited name attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identity in the form of a single string.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Purpose_valid</em></strong>: purpose = name</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_contact_class">2.2.5. CONTACT Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>CONTACT</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Description of a means of contact of a party. Actual structure is archetyped.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>addresses</strong>: <code>List&lt;ADDRESS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A set of address alternatives for this purpose and time validity.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_validity</strong>: <code>DV_INTERVAL&lt;DV_DATE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valid time interval for this contact descriptor.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Functions</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Purpose for which this contact is used, e.g.  mail ,  daytime phone , etc. Taken from value of inherited name attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Purpose_valid</em></strong>: purpose = name</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_address_class">2.2.6. ADDRESS Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>ADDRESS</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Address of contact, which may be electronic or geographic.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Functions</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of address, e.g.  electronic ,  locality . Taken from value of inherited name attribute.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Address in the form of a single string.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Type_valid</em></strong>: type = name</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_capability_class">2.2.7. CAPABILITY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>CAPABILITY</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Capability of a role, such as  ehr modifier ,  health care provider . Capability should be backed up by credentials.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>credentials</strong>: <code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The qualifications of the performer of the role for this capability. This might include professional qualifications and official identifications such as provider numbers etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_validity</strong>: <code>DV_INTERVAL&lt;DV_DATE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valid time interval for the credentials of this capability.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_actor_class">2.2.8. ACTOR Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong><em>ACTOR (abstract)</em></strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ancestor of all real-world types, including people and organisations. An actor is any real-world entity capable of taking on a role.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PARTY</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages</strong>: <code>List&lt;DV_TEXT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Languages which can be used to communicate with this actor, in preferred order of use (if known, else order irrelevant).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>roles</strong>: <code>List&lt;PARTY_REF&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifiers of the Version container for each Role played by this party.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Functions</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Signature</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Meaning</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_legal_identity</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if one there is an identity with purpose  legal identity.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Legal_identity_exists</em></strong>: has_legal_identity</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_person_class">2.2.9. PERSON Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>PERSON</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Generic description of persons. Provides a dedicated type to which Person archetypes can be targeted.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ACTOR</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_organisation_class">2.2.10. ORGANISATION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>ORGANISATION</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Generic description of organisations. An organisation is a legally constituted body whose existence (in general) outlives the existence of parties considered to be part of it.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ACTOR</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_group_class">2.2.11. GROUP Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>GROUP</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">A group is a real world group of parties which is created by another party, usually an organisation, for some specific purpose. A typical clinical example is that of the specialist care team, e.g.  cardiology team . The members of the group usually work together.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ACTOR</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_agent_class">2.2.12. AGENT Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Class</strong></p></td>
+<td class="tableblock halign-center valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong>AGENT</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Generic concept of any kind of agent, including devices, software systems, but not humans or organisations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ACTOR</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instance_examples">2.3. Instance Examples</h3>
+<div class="paragraph">
+<p>In the following instance examples, the values of the attributes uid, source, target, and
+reverse_relationships are not meant to be taken as literally valid <code>OBJECT_IDs</code> - for the purposes of
+clarity, simple integers have been used.</p>
+</div>
+<div class="sect3">
+<h4 id="_parties">2.3.1. Parties</h4>
+<div class="sect4">
+<h5 id="_person">Person</h5>
+<div class="paragraph">
+<p>The diagram below illustrates a possible set of instances for a <code>PERSON</code>, with home and work contact information.
+There are separate archetypes for the <code>PERSON</code>, each <code>ADDRESS</code>, and each <code>PARTY_IDENTITY</code>. In
+the following figure, "meaning" is the meaning from the value of the archetype_node_id attribute,
+functionally derived from the archetype local ontology.</p>
+</div>
+<div id="person_demographics" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/person_demographics.png" alt="person demographics" width="80%">
+</div>
+<div class="title">Figure 3. Person Demographic Information</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_clinician">Clinician</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_credentials">Credentials</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_health_care_facility">Health Care Facility</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_group">Group</h5>
+<div class="paragraph">
+<p>The figure below illustrates the demographic information for a cadiac surgery team in a hospital. The group
+includes a head surgeon, anaesthetist, assistant surgeon, and presumably others (not shown). Each of
+these members of the team have an employment relationship with the hospital (shown only for one
+surgeon, in the interests of clarity).</p>
+</div>
+<div id="group_demographics" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/group_demographics.png" alt="group demographics" width="80%">
+</div>
+<div class="title">Figure 4. Group Demographics</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_relationships">2.3.2. Relationships</h4>
+<div class="sect4">
+<h5 id="_familial_relationship">Familial Relationship</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_employment_relationship">Employment Relationship</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_patient">Patient</h5>
+<div class="paragraph">
+<p>The figure below shows a simple way of representing the patient relationship between a person and a health
+care organisation.</p>
+</div>
+<div id="simple_patient_relationship" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/simple_patient_relationship.png" alt="simple patient relationship" width="80%">
+</div>
+<div class="title">Figure 5. Simple Patient Relationship</div>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the same logical relationship, but with both Parties acting through Roles, representing
+their status as healthcare consumer and healthcare provider respectively. Each of these Roles has
+associated credentials which document its official nature within the healthcare system.</p>
+</div>
+<div id="roles_and_credentials" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/roles_and_credentials.png" alt="roles and credentials" width="80%">
+</div>
+<div class="title">Figure 6. Patient Relationship with Roles and Credentials</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_publications">Publications</h3>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Anderson_1996"></a>[Anderson_1996] Ross Anderson. <strong>Security in Clinical Information Systems</strong>. Available at <a href="http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html" class="bare">http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html</a>.</p>
+</li>
+<li>
+<p><a id="Baretto_2005"></a>[Baretto_2005] Barretto S A. <strong>Designing Guideline-based Workflow-Integrated Electronic Health Records.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf" class="bare">http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Beale_2000"></a>[Beale_2000] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> 2000.  Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Beale_Heard_2007"></a>[Beale_Heard_2007] Beale T, Heard S. <strong>An Ontology-based Model of Clinical Information.</strong> 2007. pp760-764 Proceedings MedInfo 2007, K. Kuhn et al. (Eds), IOS Publishing 2007. See <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Booch_1994"></a>[Booch_1994] Booch G. <strong>Object-Oriented Analysis and Design with applications. 2nd ed.</strong> Benjamin/Cummings 1994.</p>
+</li>
+<li>
+<p><a id="Browne_2005"></a>[Browne_2005] Browne E D. <strong>Workflow Modelling of Coordinated Inter-Health-Provider Care Plans.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm</a>.</p>
+</li>
+<li>
+<p><a id="Cimino_1997"></a>[Cimino_1997] Cimino J J. <strong>Desiderata for Controlled Medical vocabularies in the Twenty-First Century.</strong> IMIA WG6 Conference, Jacksonville, Florida, Jan 19-22, 1997.</p>
+</li>
+<li>
+<p><a id="Elstein_1987"></a>[Elstein_1987] Elstein AS, Shulman LS, Sprafka SA. <strong>Medical problem solving: an analysis of clinical reasoning.</strong> Cambridge, MA: Harvard University Press 1987.</p>
+</li>
+<li>
+<p><a id="Elstein_Schwarz_2002"></a>[Elstein_Schwarz_2002] Elstein AS, Schwarz A. <strong>Evidence base of clinical diagnosis: Clinical problem solving and diagnostic decision making: selective review of the cognitive literature.</strong> BMJ 2002;324;729-732.</p>
+</li>
+<li>
+<p><a id="Fowler_1997"></a>[Fowler_1997] Fowler M. <strong>Analysis Patterns: Reusable Object Models.</strong> Addison Wesley 1997</p>
+</li>
+<li>
+<p><a id="Fowler_Scott_2000"></a>[Fowler_Scott_2000] Fowler M, Scott K. <strong>UML Distilled (2nd Ed.).</strong> Addison Wesley Longman 2000.</p>
+</li>
+<li>
+<p><a id="Gray_reuter_1993"></a>[Gray_reuter_1993] Gray J, Reuter A. <strong>Transaction Processing Concepts and Techniques.</strong> Morgan Kaufmann 1993.</p>
+</li>
+<li>
+<p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
+</li>
+<li>
+<p><a id="Ingram_1995"></a>[Ingram_1995] Ingram D. <strong>The Good European Health Record Project.</strong> Laires, Laderia Christensen, Eds. Health in the New Communications Age. Amsterdam: IOS Press; 1995; pp. 66-74.</p>
+</li>
+<li>
+<p><a id="Kifer_Lausen_Wu_1995"></a>[Kifer_Lausen_Wu_1995] Kifer M, Lausen G, Wu J. <strong>Logical Foundations of Object-Oriented and FrameBased Languages.</strong> JACM May 1995. See See <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf" class="bare">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Kilov_1994"></a>[Kilov_1994] Kilov H. <strong>Information Modelling - an object-oriented approach.</strong> Prentice Hall 1994.</p>
+</li>
+<li>
+<p><a id="Maier_2000"></a>[Maier_2000] Maier M. <strong>Architecting Principles for Systems-of-Systems.</strong> Technical Report, University of Alabama in Huntsville. 2000. Available at <a href="http://www.infoed.com/Open/PAPERS/systems.htm" class="bare">http://www.infoed.com/Open/PAPERS/systems.htm</a></p>
+</li>
+<li>
+<p><a id="Meyer_OOSC2"></a>[Meyer_OOSC2] Meyer B. <strong>Object-oriented Software Construction, 2nd Ed.</strong> Prentice Hall 1997</p>
+</li>
+<li>
+<p><a id="Müller_2003"></a>[Müller_2003] Müller R. <strong>Event-oriented Dnamic Adaptation of Workflows: Model, Architecture, and Implementation.</strong> 2003. PhD dissertation, University of Leipzig. Available at <a href="http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm</a>.</p>
+</li>
+<li>
+<p><a id="Rector_1994"></a>[Rector_1994] Rector A L, Nowlan W A, Kay S. <strong>Foundations for an Electronic Medical Record.</strong> The IMIA Yearbook of Medical Informatics 1992 (Eds. van Bemmel J, McRay A). Stuttgart Schattauer 1994.</p>
+</li>
+<li>
+<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
+</li>
+<li>
+<p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
+</li>
+<li>
+<p><a id="Sottile_1999"></a>[Sottile_1999] Sottile P.A., Ferrara F.M., Grimson W., Kalra D., and Scherrer J.R. <strong>The holistic healthcare information system. Toward an Electronic Health Record Europe.</strong> 1999. Nov 1999; 259-266.</p>
+</li>
+<li>
+<p><a id="Van_de_Velde_Degoulet_2003"></a>[Van_de_Velde_Degoulet_2003] Van de Velde R, Degoulet P. <strong>Clinical Information Systems: A Component-Based Approach.</strong> 2003. Springer-Verlag New York.</p>
+</li>
+<li>
+<p><a id="Weed_1969"></a>[Weed_1969] Weed LL. <strong>Medical records, medical education and patient care. 6 ed.</strong> Chicago: Year Book Medical Publishers Inc. 1969.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resources">Resources</h3>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="ENV_13606-1"></a>[ENV_13606-1] <strong>ENV 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN/ TC 251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ENV_13606-2"></a>[ENV_13606-2] <strong>ENV 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN/TC 251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ENV_13606-3"></a>[ENV_13606-3] <strong>ENV 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN/TC 251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ENV_13606-4"></a>[ENV_13606-4] <strong>ENV 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN/ TC 251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="Corbamed_PIDS"></a>[Corbamed_PIDS] Object Management Group. <strong>Person Identification Service.</strong> March 1999.</p>
+</li>
+<li>
+<p><a id="Corbamed_LQS"></a>[Corbamed_LQS] Object Management Group. <strong>Lexicon Query Service.</strong> March 1999.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_14"></a>[EHCR_supA_14] Dixon R, Grubb P A, Lloyd D, and Kalra D. <strong>Consolidated List of Requirements. EHCR Support Action Deliverable 1.4.</strong> European Commission DGXIII, Brussels; May 2001 59pp Available from <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_35"></a>[EHCR_supA_35] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 3.5: "Final Recommendations to CEN for future work".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_24"></a>[EHCR_supA_24] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 2.4 "Guidelines on Interpretation and implementation of CEN EHCRA".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p>[<a id="EHCR_supA_31_32"></a> Lloyd D, et al. <strong>EHCR Support Action Deliverable 3.1&amp;3.2 “Interim Report to CEN”.</strong> July 1998. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="GEHR_del_4"></a>[GEHR_del_4] <strong>Deliverable 4: GEHR Requirements for Clinical Comprehensiveness.</strong> GEHR Project 1992</p>
+</li>
+<li>
+<p><a id="GEHR_del_7"></a>[GEHR_del_7] <strong>Deliverable 7: Clinical Functional Specifications.</strong> GEHR Project 1993</p>
+</li>
+<li>
+<p><a id="GEHR_del_8"></a>[GEHR_del_8] <strong>Deliverable 8: Ethical and legal Requirements of GEHR Architecture and Systems.</strong> GEHR Project 1994</p>
+</li>
+<li>
+<p><a id="GEHR_del_19_20_24"></a>[GEHR_del_19_20_24] <strong>Deliverable 19,20,24: GEHR Architecture.</strong> GEHR Project 30/6/1995</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_gpcg"></a>[GeHR_Aus_gpcg] Heard S. <strong>GEHR Project Australia, GPCG Trial.</strong> Available at <a href="http://www.gehr.org/gpcg/ehra.htm" class="bare">http://www.gehr.org/gpcg/ehra.htm</a>.</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_req"></a>[GeHR_Aus_req] Beale T, Heard S. <strong>GEHR Technical Requirements.</strong> See <a href="http://www.gehr.org/technical/requirements/gehr_requirements.html" class="bare">http://www.gehr.org/technical/requirements/gehr_requirements.html</a>.</p>
+</li>
+<li>
+<p><a id="HL7v3_data_types"></a>[HL7v3_data_types] Schadow G, Biron P. <strong>HL7 version 3 deliverable: Version 3 Data Types.</strong> (2nd ballot 2002 version).</p>
+</li>
+<li>
+<p><a id="IANA"></a>[IANA] IANA. <a href="http://www.iana.org/" class="bare">http://www.iana.org/</a>.</p>
+</li>
+<li>
+<p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
+</li>
+<li>
+<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See e.g. <a href="http://www.mcs.vuw.ac.nz/technical/software/SGML/doc/iso8601/ISO8601.html" class="bare">http://www.mcs.vuw.ac.nz/technical/software/SGML/doc/iso8601/ISO8601.html</a> and <a href="http://www.cl.cam.ac.uk/~mgk25/iso-time.html" class="bare">http://www.cl.cam.ac.uk/~mgk25/iso-time.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+</li>
+<li>
+<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
+</li>
+<li>
+<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
+</li>
+<li>
+<p><a id="SNOMED_CT"></a>[SNOMED_CT] IHTSDO. Sytematised Nomenclature for Medicine. See <a href="http://www.ohtsdo.org" class="bare">http://www.ohtsdo.org</a>.</p>
+</li>
+<li>
+<p><a id="Synapses_req_A"></a>[Synapses_req_A] Kalra D. (Editor). <strong>The Synapses User Requirements and Functional Specification (Part A).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1a. 6 chapters, 176 pages.</p>
+</li>
+<li>
+<p><a id="Synapses_req_B"></a>[Synapses_req_B] Grimson W. and Groth T. (Editors). <strong>The Synapses User Requirements and Functional Specification (Part B).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1b.</p>
+</li>
+<li>
+<p><a id="Synapses_odp"></a>[Synapses_odp] Kalra D. (Editor). <strong>Synapses ODP Information Viewpoint.</strong> EU Telematics Application Programme, Brussels; 1998; The Synapses Project: Final Deliverable. 10 chapters, 64 pages.</p>
+</li>
+<li>
+<p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
+</li>
+<li>
+<p><a id="rfc_2440"></a>[rfc_2440] <strong>openPGP</strong>. See <a href="http://www.ietf.org/rfc/rfc2440.txt" class="bare">http://www.ietf.org/rfc/rfc2440.txt</a> and <a href="http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt" class="bare">http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt</a></p>
+</li>
+<li>
+<p><a id="rfc_4122"></a>[rfc_4122] <strong>UUIDs</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
+</li>
+<li>
+<p><a id="UCUM"></a>[UCUM] Schadow G, McDonald C J. <strong>The Unified Code for Units of Measure, Version 1.4</strong> 2000. Regenstrief Institute for Health Care, Indianapolis. See <a href="http://aurora.rg.iupui.edu/UCUM" class="bare">http://aurora.rg.iupui.edu/UCUM</a></p>
+</li>
+<li>
+<p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_openehr_resources">openEHR Resources</h3>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="openehr_18308"></a>[openehr_18308] The openEHR Foundation. *Conformance of openEHR architecture to ISO TS 18308, "Requirements for EHR Architectures". See <a href="http://www.openehr.org/releases/trunk/architecture/iso18308_conformance.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/iso18308_conformance.pdf</a> .</p>
+</li>
+<li>
+<p><a id="openEHR_ADL_workbench"></a>[openEHR_ADL_workbench] <strong>The openEHR ADL Workbench</strong>. <a href="http://www.openehr.org/downloads/ADLworkbench/home" class="bare">http://www.openehr.org/downloads/ADLworkbench/home</a> .</p>
+</li>
+<li>
+<p><a id="openehr_CKM"></a>[openehr_CKM] <strong>The openEHR Clinical Knowledge Manager (CKM)</strong>. See <a href="http://www.openEHR.org/ckm" class="bare">http://www.openEHR.org/ckm</a></p>
+</li>
+<li>
+<p><a id="openehr_overview"></a>[openehr_overview] The openEHR Foundation. <strong>The openEHR Architecture Overview.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/overview.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/overview.pdf</a> .</p>
+</li>
+<li>
+<p><a id="openehr_am_overview"></a>[openehr_am_overview] The openEHR Foundation. <strong>The openEHR Archetypes Technical Overview.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/am/archetype_technical_overview.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/am/archetype_technical_overview.pdf</a>.</p>
+</li>
+<li>
+<p><a id="openehr_am_principles"></a>[openehr_am_principles] The openEHR Foundation. <strong>Archetype Definitions and Principles.</strong> See <a href="http://www.openehr.org/repositories/spec-dev/latest/publishing/architecture/archetypes/principles/REV_HIST.html" class="bare">http://www.openehr.org/repositories/spec-dev/latest/publishing/architecture/archetypes/principles/REV_HIST.html</a>.</p>
+</li>
+<li>
+<p><a id="openehr_am_adl"></a>[openehr_am_adl] The openEHR Foundation. <strong>Archetype Definition Language (ADL2).</strong> Available at <a href="http://www.openehr.org/releases/trunk/architecture/am/adl2.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/am/adl2.pdf</a> .</p>
+</li>
+<li>
+<p><a id="openehr_am_aom"></a>[openehr_am_aom] The openEHR Foundation. <strong>Archetype Object Model (AOM2).</strong> Available at <a href="http://www.openehr.org/releases/trunk/architecture/am/aom2.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/am/aom2.pdf</a> .</p>
+</li>
+<li>
+<p><a id="openehr_am_system"></a>[openehr_am_system] The openEHR Archetype System. See <a href="http://www.openehr.org/repositories/spec-dev/latest/publishing/architecture/archetypes/system/REV_HIST.html" class="bare">http://www.openehr.org/repositories/spec-dev/latest/publishing/architecture/archetypes/system/REV_HIST.html</a> .</p>
+</li>
+<li>
+<p><a id="openehr_am_templates"></a>[openehr_am_templates] The openEHR Foundation. <strong>Template Guide</strong> Available at <a href="http://www.openehr.org/releases/trunk/architecture/am/template_guide.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/am/template_guide.pdf</a> .</p>
+</li>
+<li>
+<p><a id="openehr_am_identification"></a>[openehr_am_identification] The openEHR Foundation. <strong>Archetype Identification specification.</strong> Available at <a href="http://www.openehr.org/releases/trunk/architecture/am/knowledge_id_system.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/am/knowledge_id_system.pdf</a> .</p>
+</li>
+<li>
+<p><a id="openehr_query_aql"></a>[openehr_query_aql] The openEHR Foundation. <strong>The openEHR Archetype Query language (AQL)</strong>. See <a href="https://openehr.atlassian.net/wiki/display/spec/Archetype+Query+Language+Description" class="bare">https://openehr.atlassian.net/wiki/display/spec/Archetype+Query+Language+Description</a> .</p>
+</li>
+<li>
+<p><a id="openehr_rm_data_types"></a>[openehr_rm_data_types] openEHR. <strong>Data Types Information Model.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/rm/data_types_im.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/rm/data_types_im.pdf</a>.</p>
+</li>
+<li>
+<p><a id="openehr_rm_data_structures"></a>[openehr_rm_data_structures] openEHR. <strong>Data Structures Information Model.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/rm/data_structures_im.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/rm/data_structures_im.pdf</a>.</p>
+</li>
+<li>
+<p><a id="openehr_rm_common"></a>[openehr_rm_common] openEHR. <strong>Common Information Model.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/rm/common_im.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/rm/common_im.pdf</a>.</p>
+</li>
+<li>
+<p><a id="openehr_rm_ehr"></a>[openehr_rm_ehr] The openEHR Foundation. <strong>The EHR Information Model</strong>. <a href="http://www.openehr.org/releases/trunk/architecture/rm/ehr_im.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/rm/ehr_im.pdf</a> .</p>
+</li>
+<li>
+<p><a id="openehr_rm_support"></a>[openehr_rm_support] openEHR. <strong>Support Information Model.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/rm/support_im.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/rm/support_im.pdf</a>.</p>
+</li>
+<li>
+<p><a id="openehr_terminology"></a>[openehr_terminology] The openEHR Foundation. <strong>The openEHR Terminology</strong> <a href="http://www.openehr.org/releases/trunk/architecture/terminology.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/terminology.pdf</a></p>
+</li>
+<li>
+<p><a id="openehr_terminology_resources"></a>[openehr_terminology_resources] The openEHR Foundation. <strong>The openEHR Terminology project (GitHub)</strong> <a href="https://github.com/openEHR/terminology" class="bare">https://github.com/openEHR/terminology</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-07-17 09:23:22 BST
+</div>
+</div>
+</body>
+</html>

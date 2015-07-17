@@ -29,7 +29,7 @@
 
 |*0..1*
 {set:cellbgcolor:lightblue}
-|*time_validity*: 
+|*time_validity*: `DV_INTERVAL<DV_DATE>`
 {set:cellbgcolor!}
 |Valid time interval for this contact descriptor.
 |*Functions*
@@ -42,4 +42,9 @@
 |*purpose*: `DV_TEXT`
 {set:cellbgcolor!}
 |Purpose for which this contact is used, e.g.  mail ,  daytime phone , etc. Taken from value of inherited name attribute.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Purpose_valid_*: purpose = name
+{set:cellbgcolor!}
 |===
