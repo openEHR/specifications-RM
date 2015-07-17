@@ -1664,36 +1664,26 @@ Use: Used in a request to specify an Extract, as well as to describe what is con
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_type</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Coded term indicating the type of content required, e.g.<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Coded term indicating the type of content required, e.g.<br>
+  |openehr-ehr|<br>
+  |openehr-demographic|<br>
+  |generic-emr|<br>
+  |other|</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">openehr-ehr</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">openehr-demographic</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">+</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">generic-emr</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">other</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>include_multimedia</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_multimedia</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether inline instances of DV_MULTIMEDIA in the source data are included or not.</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>priority</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>priority</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Requested priority of this request to be handled by server. Priority schemes are likely to be local, and use values agreed by both ends.<br>
 TBD: alternative is standard coded terms</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>link_depth</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>link_depth</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Degree of links to follow emanating from content items specified for inclusion. The kind of links to follow is dependent on the type of Extract.<br>
 All items at the target end of followed links at the given depth are also included in the extract; EXTRACT_CONTENT_ITEM.is_primary is used to differentiate.<br>
 - 0 = don&#8217;t follow;<br>
@@ -1701,12 +1691,16 @@ All items at the target end of followed links at the given depth are also includ
 - 2 = follow 2nd degree links;<br>
 - &#8230;&#8203;.<br>
 - n = follow nth degree links</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>criteria</strong>: <code>List&lt;DV_PARSABLE&gt;</code></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>criteria</strong>: <code>List&lt;DV_PARSABLE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Queries specifying the contents of this Extract.</p></td>
-<td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other specification items. Archetypable.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1877,17 +1871,10 @@ The update mode may be event-driven and periodic update or a mixture of both. Th
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trigger_events</strong>: <code>List&lt;DV_CODED_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set of Event names that will cause sending of update Extracts. Event types include:</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">any_change</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">- any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.<br></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">correction</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">- match error corrections only, including deletions.<br></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">update</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">- match updates (i.e. new versions) of included content items.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set of Event names that will cause sending of update Extracts. Event types include:
+  |any_change| - any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.<br>
+  |correction| - match error corrections only, including deletions.<br>
+  |update| - match updates (i.e. new versions) of included content items.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
@@ -2637,7 +2624,7 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Type of request designed for synchronisation of Contributions between openEHR servers.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
@@ -2651,7 +2638,7 @@ on their own - i..e find out what the other system has got.</p>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specification</strong>: <code>SYNC_EXTRACT_SPEC</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Details of specification of synchronisation request.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2685,12 +2672,12 @@ on their own - i..e find out what the other system has got.</p>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specification</strong>: <code>SYNC_EXTRACT_SPEC</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Details of specification of this Extract.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;X_CONTRIBUTION&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content, in the form of a serialised Contributions.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2710,7 +2697,7 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Details of specification of Extract, used in a request to specify an Extract, or in a response, to describe what is actually in the Extract.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
@@ -2720,22 +2707,22 @@ on their own - i..e find out what the other system has got.</p>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes_versions</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if the Versions from the Contribution are included; False if just the Contribution and its Audit are included.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contribution_list</strong>: <code>List&lt;HIER_OBJECT_ID&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of Contributions to include / that are included in the Extract.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contributions_since</strong>: <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specify Contributions included in Extract by threshold date.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_contributions</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if all Contributions in the record are included.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2755,7 +2742,7 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Serialised form of Contribution for an Extract.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
@@ -2765,17 +2752,17 @@ on their own - i..e find out what the other system has got.</p>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>HIER_OBJECT_ID</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uid of Contribution in source system.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audit</strong>: <code>AUDIT_DETAILS</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Audit of Contribution in source system.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>versions</strong>: <code>List&lt;VERSION&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Serialised Versions from Contribution in source system.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2847,7 +2834,7 @@ environments, such as a private hospital or community health network.</p>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">The concept of a message addressed to nominated recipients.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
@@ -2857,27 +2844,30 @@ environments, such as a private hospital or community health network.</p>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sender</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Party sending the message.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sender_reference</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identification of message used by sender. This will be the same no matter how many times this message is sent to these recipients.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>addressees</strong>: <code>List&lt;String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Intended recipients, in the form of internet addresses.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>urgency</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Urgency with which destination should deal with message:<br>
+* -1 - low<br>
+* 0 - normal<br>
+* 1 - high</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>message</strong>: <code>MESSAGE</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The content of the message.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2897,7 +2887,7 @@ environments, such as a private hospital or community health network.</p>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">A “message” is an authored, possibly signed, piece of content intended for one or more recipients. Since the recipient may or may not be known directly, recipients are specified in the ADDRESSED_MESSAGE class.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
@@ -2907,22 +2897,22 @@ environments, such as a private hospital or community health network.</p>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audit</strong>: <code>AUDIT_DETAILS</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Details of who actually created the message and when. This is the person who entered the data or otherwise caused the message to be created, or might be a piece of software.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>author</strong>: <code>PARTY_PROXY</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Party responsible for the message content, who may or may not be technically responsible for its creation (e.g. by data entry etc).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>content</strong>: <code>MESSAGE_CONTENT</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Content of the message.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>signature</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Optional signature by the author of message content in openPGP format. The signature is created as a Hash and optional signing of the serialisation of this message object with this signature field Void.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2952,7 +2942,7 @@ even the simplest systems.</p>
 </div>
 <div id="composition_versioning" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/composition_versioning.png" alt="composition versioning">
+<img src="diagrams/composition_versioning.png" alt="composition versioning" width="65%">
 </div>
 <div class="title">Figure 15. Successive Composition versions in a logical Transaction</div>
 </div>
@@ -2981,28 +2971,25 @@ Extract, conforming to the ISO standard. The approach was not chosen for a numbe
 <div class="ulist">
 <ul>
 <li>
-<p>it implies that senders can generate 'diff' information structures and that receivers can process
-them, i.e. it makes more assumptions than necessary about the sophistication of systems;</p>
+<p>it implies that senders can generate 'diff' information structures and that receivers can process them, i.e. it makes more assumptions than necessary about the sophistication of systems;</p>
 </li>
 <li>
-<p>the ISO specification appears to be in error with respect to deletions - the sending of logical
-deletions does not appear to be handled properly;</p>
+<p>the ISO specification appears to be in error with respect to deletions - the sending of logical deletions does not appear to be handled properly;</p>
 </li>
 <li>
-<p>the sending of deletions is not normally desired, and may be illegal (e.g. in Europe there are
-EC directives preventing the sending of statements corrected by clinicians or patients).</p>
+<p>the sending of deletions is not normally desired, and may be illegal (e.g. in Europe there are EC directives preventing the sending of statements corrected by clinicians or patients).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>It is worth contemplating just how complex cumulative difference information would be. The following figure
 illustrates the structure generated by the accumulation of only three changes shown in the successive
-versions in FIGURE 15. The large numbers of changes likely in persistent Compositions will generate
+versions in the figure below. The large numbers of changes likely in persistent Compositions will generate
 far more complex structures.</p>
 </div>
 <div id="cumulative_diff" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/cumulative_diff.png" alt="cumulative diff">
+<img src="diagrams/cumulative_diff.png" alt="cumulative diff" width="55%">
 </div>
 <div class="title">Figure 16. Generation of Cumulative Difference Form</div>
 </div>
@@ -3028,13 +3015,10 @@ input to the algorithm is:</p>
 <p>optionally a folder structure in which the Compositions are to be structured in the extract;</p>
 </li>
 <li>
-<p>the include_multimedia flag indicating whether DV_MULTIMEDIA content is to be included
-inline or not;</p>
+<p>the <code><em>include_multimedia</em></code> flag indicating whether <code>DV_MULTIMEDIA</code> content is to be included inline or not;</p>
 </li>
 <li>
-<p>the follow_links attribute indicating to what depth DV_LINK references emanating from
-Compositions should be followed and the Compositions containing the link targets also
-included in the extract.</p>
+<p>the follow_links attribute indicating to what depth <code>DV_LINK</code> references emanating from Compositions should be followed and the Compositions containing the link targets also included in the extract.</p>
 </li>
 </ul>
 </div>
@@ -3044,51 +3028,45 @@ included in the extract.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Create a new EHR_EXTRACT including the folder structure;</p>
+<p>Create a new <code>EHR_EXTRACT</code> including the folder structure;</p>
 </li>
 <li>
-<p>Create a demographics EXTRACT_CHAPTER and write the PARTYs in;</p>
+<p>Create a demographics <code>EXTRACT_CHAPTER</code> and write the <code>PARTYs</code> in;</p>
 </li>
 <li>
 <p>For each Composition in the original set, do:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>create an X_VERSIONED_COMPOSITION, and set is_primary;</p>
+<p>create an <code>X_VERSIONED_COMPOSITION</code>, and set <code><em>is_primary</em></code>;</p>
 </li>
 <li>
-<p>for each instance of OBJECT_REF encountered (e.g. PARTY_REF), obtain the target of
-the reference from the relevant service, and copy it to the appropriate chapter, e.g.
-demographics, access_groups tables with the key = the OBJECT_REF.id;</p>
+<p>for each instance of <code>OBJECT_REF</code> encountered (e.g. <code>PARTY_REF</code>), obtain the target of the reference from the relevant service, and copy it to the appropriate chapter, e.g. demographics, access_groups tables with the key = the <code>OBJECT_REF</code>.<code><em>id</em></code>;</p>
 </li>
 <li>
-<p>copy/serialise the Composition into the appropriate place in the folder structure
-rewriting its OBJECT_REFs so that namespace = "local"</p>
+<p>copy/serialise the Composition into the appropriate place in the folder structure rewriting its <code>OBJECT_REFs</code> so that <code><em>namespace</em></code> = "local"</p>
 </li>
 <li>
-<p>for each instance of DV_MULTIMEDIA encountered, include or exclude the content
-referred to by the uri or data attributes, according to the include_multimedia flag;</p>
+<p>for each instance of <code>DV_MULTIMEDIA</code> encountered, include or exclude the content
+referred to by the uri or data attributes, according to the <code><em>include_multimedia</em></code> flag;</p>
 </li>
 <li>
-<p>according to the value of follow_links, for each instance of DV_LINK encountered (only
-from/to Archetyped entities):</p>
+<p>according to the value of <code><em>follow_links</em></code>, for each instance of <code>DV_LINK</code> encountered (only from/to Archetyped entities):</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>follow the links recursively. For each link: create an X_VERSIONED_COMPOSITION;
-set is_primary = False, write the path and write the target Compositions in the
-extract if not already there;</p>
+<p>follow the links recursively. For each link: create an <code>X_VERSIONED_COMPOSITION</code>;
+set <code><em>is_primary</em></code> = False, write the path and write the target Compositions in the extract if not already there;</p>
 </li>
 <li>
-<p>create the DV_LINK objects so that their paths refer correctly to the Compositions in
-the Extract;</p>
+<p>create the <code>DV_LINK</code> objects so that their paths refer correctly to the Compositions in the Extract;</p>
 </li>
 </ul>
 </div>
 <div class="paragraph tbd">
-<p>TBD: do something about Access_control objects;</p>
+<p>TBD: do something about <code>Access_control</code> objects;</p>
 </div>
 </div>
 </div>
