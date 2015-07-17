@@ -8,7 +8,8 @@
 
 |*Description*
 {set:cellbgcolor:lightblue}
-2+|Logical list data structure, where each item has a value and can be referred to by a name and a positional index in the list. The list may be empty. Use Used to represent any data which is logically a list of values, such as blood pressure, most protocols, many blood tests etc. Not to be used for time-based lists, which should be represented with the proper temporal class, i.e. HISTORY.
+2+|Logical list data structure, where each item has a value and can be referred to by a name and a positional index in the list. The list may be empty. Use Used to represent any data which is logically a list of values, such as blood pressure, most protocols, many blood tests etc.  +
+Misuse: Not to be used for time-based lists, which should be represented with the proper temporal class, i.e. HISTORY.
 {set:cellbgcolor!}
 
 |*Inherit*
@@ -60,4 +61,9 @@
 |*as_hierarchy*: `CLUSTER`
 {set:cellbgcolor!}
 |Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Valid_structure_*:  items.forall (i:ITEM | i.type = "ELEMENT")
+{set:cellbgcolor!}
 |===

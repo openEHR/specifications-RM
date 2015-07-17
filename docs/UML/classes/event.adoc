@@ -49,4 +49,9 @@
 *_Post_condition_*: Result = time.diff(parent.origin)
 {set:cellbgcolor!}
 |Offset of this event from origin, computed as time.diff(parent.origin).
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Offset_validity1_*: offset /= Void and then offset = time.diff (parent.origin)
+{set:cellbgcolor!}
 |===

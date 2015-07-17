@@ -11,7 +11,7 @@
 2+|Logical relational database style table data structure, in which columns are named and ordered with respect to each other. Implemented using Cluster-per-row encoding. Each row Cluster must have an identical number of Elements, each of which in turn must have identical names and value types in the corresponding positions in each row.  +
 Some columns may be designated  key' columns, containing key data for each row, in the manner of relational tables. This allows row-naming, where each row represents a body site, a blood antigen etc. All values in a column have the same data type.  +
 Used for representing any data which is logically a table of values, such as blood pressure, most protocols, many blood tests etc.  +
-Not to be used for time-based data, which should be represented with the temporal class HISTORY.. The table may be empty. 
+Misuse: Not to be used for time-based data, which should be represented with the temporal class HISTORY. The table may be empty. 
 {set:cellbgcolor!}
 
 |*Inherit*
@@ -34,9 +34,80 @@ Not to be used for time-based data, which should be represented with the tempora
 ^|*Signature*
 ^|*Meaning*
 
+|
+{set:cellbgcolor:lightblue}
+|*row_count*: `Integer`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*column_count*: `Integer`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*row_names*: `List<DV_TEXT>`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*column_names*: `List<DV_TEXT>`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*ith_row* (i: `Integer`): `CLUSTER`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*has_row_with_name* (a_key: `String`): `Boolean`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*has_column_with_name* (a_key: `String`): `Boolean`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*named_row* (a_key: `String`): `CLUSTER`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*has_row_with_key* (keys: `List<String>`): `Boolean`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*row_with_key* (keys: `List<String>`): `CLUSTER`
+{set:cellbgcolor!}
+|
+
+|
+{set:cellbgcolor:lightblue}
+|*element_at_cell_ij* (i, j: `Integer`): `ELEMENT`
+{set:cellbgcolor!}
+|
+
 |(effected)
 {set:cellbgcolor:lightblue}
 |*as_hierarchy*: `CLUSTER`
 {set:cellbgcolor!}
 |Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table. 
+
+|*Invariant*
+{set:cellbgcolor:lightblue}
+2+|*_Valid_structure_*: rows.for_all (items.for_all (instance_of ("ELEMENT")))
+{set:cellbgcolor!}
 |===
