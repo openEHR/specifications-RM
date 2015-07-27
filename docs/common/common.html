@@ -950,10 +950,10 @@
 <div class="sect3">
 <h4 id="_the_locatable_class">3.1.2. The LOCATABLE Class</h4>
 <div class="paragraph">
-<p>Most classes in the openEHR reference model inherit from the <code>LOCATABLE</code> class, which defines the idea of ‘locatability in an archetyped structure’. <code>LOCATABLE</code> defines a runtime name and an <code><em>archetype_node_id</em></code>. The <code><em>archetype_node_id</em></code> is the standardised semantic code for a node and comes from the corresponding node in the archetype used to create the data. The only exception is at archetype root points in data, where <code><em>archetype_node_id</em></code> carries the archetype identifier in string form rather than an interior node id from an archetype. <code>LOCATABLE</code> also provides the attribute archetype_details, which is non-Void for archetype root points in data, and carries meta-data relevant to root points. The name attribute carries a name created at runtime. The ‘meaning’ of any node is derived formally from the archetype by obtaining the “text” value for the archetype_node_id code from the archetype ontology, in the language required.</p>
+<p>Most classes in the openEHR reference model inherit from the <code>LOCATABLE</code> class, which defines the idea of ‘locatability in an archetyped structure’. <code>LOCATABLE</code> defines a runtime name and an <code><em>archetype_node_id</em></code>. The <code><em>archetype_node_id</em></code> is the standardised semantic code for a node and comes from the corresponding node in the archetype used to create the data. The only exception is at archetype root points in data, where <code><em>archetype_node_id</em></code> carries the archetype identifier in string form rather than an interior node id from an archetype. <code>LOCATABLE</code> also provides the attribute archetype_details, which is non-Void for archetype root points in data, and carries meta-data relevant to root points. The name attribute carries a name created at runtime. The ‘meaning’ of any node is derived formally from the archetype by obtaining the "text" value for the archetype_node_id code from the archetype ontology, in the language required.</p>
 </div>
 <div class="paragraph">
-<p>The name and <code><em>archetype_node_id</em></code> valuesin a <code>LOCATABLE</code> instance are often the same semantically, but may differ. For example, in “problem/SOAP” Sections (i.e. headings), the name of a section at the problem level might be “diabetes”, but its meaning might be “problem”. The default value for name should be assumed to be the text value in the local language for the <code><em>archetype_node_id</em></code> code on the node in question, unless explicitly set otherwise.</p>
+<p>The name and <code><em>archetype_node_id</em></code> valuesin a <code>LOCATABLE</code> instance are often the same semantically, but may differ. For example, in "problem/SOAP" Sections (i.e. headings), the name of a section at the problem level might be "diabetes", but its meaning might be "problem". The default value for name should be assumed to be the text value in the local language for the <code><em>archetype_node_id</em></code> code on the node in question, unless explicitly set otherwise.</p>
 </div>
 <div class="sect4">
 <h5 id="_unique_node_identification">Unique Node Identification</h5>
@@ -1035,7 +1035,7 @@ some classes in the openEHR architecture that do not inherit from LOCATABLE but 
 </ul>
 </div>
 <div class="paragraph">
-<p>FIGURE <a href="#feeder_chain">ABstract Model of Feeder Chain</a> illustrates these elements, shown as a “feeder chain”, along with typical meta-data available in messages from each system. In general, not much can be assumed about systems in the feeder chain. The originating system may or may not correspond to the place of the clinical activity - it is not uncommon for a pathology company to have a centralised report issuing location while having numerous physical laboratories. There is often limited consistency in the way identifiers are assigned, timestamps are created, and information is structured and coded. In general, information from a feeder system is in response to a request, often a pathology order, although the request/response pattern probably cannot be assumed in all cases.</p>
+<p>FIGURE <a href="#feeder_chain">ABstract Model of Feeder Chain</a> illustrates these elements, shown as a "feeder chain", along with typical meta-data available in messages from each system. In general, not much can be assumed about systems in the feeder chain. The originating system may or may not correspond to the place of the clinical activity - it is not uncommon for a pathology company to have a centralised report issuing location while having numerous physical laboratories. There is often limited consistency in the way identifiers are assigned, timestamps are created, and information is structured and coded. In general, information from a feeder system is in response to a request, often a pathology order, although the request/response pattern probably cannot be assumed in all cases.</p>
 </div>
 <div id="feeder_chain" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -1098,13 +1098,13 @@ some classes in the openEHR architecture that do not inherit from LOCATABLE but 
 <p>identifier of the feeder system (which may be one of many at the feeder system location);</p>
 </li>
 <li>
-<p>identifer the feeder system uses for the item in question (often known as an “accession id”);</p>
+<p>identifer the feeder system uses for the item in question (often known as an "accession id");</p>
 </li>
 <li>
-<p>identifier of request or order to which the information is a response (sometimes known as a “placer’s request id”);</p>
+<p>identifier of request or order to which the information is a response (sometimes known as a "placer’s request id");</p>
 </li>
 <li>
-<p>identifier of the information item used by the originating system (sometimes known as a “filler’s request id”);</p>
+<p>identifier of the information item used by the originating system (sometimes known as a "filler’s request id");</p>
 </li>
 <li>
 <p>timestamp(s) assigned by feeder system to the item.</p>
@@ -1124,7 +1124,7 @@ some classes in the openEHR architecture that do not inherit from LOCATABLE but 
 <div class="sect4">
 <h5 id="_version_detection">Version Detection</h5>
 <div class="paragraph">
-<p>The second is to detect new versions of an item (e.g. interim and final versions of a microbiology test result). This can usually be achieved by using various identifiers as well as the originating system version id and/or content status (interim, final etc). A new openEHR Composition version should always be created for each received version, even where the content does not change at all (e.g. a microbiology test where the result is “no growth” in both interim and final results).</p>
+<p>The second is to detect new versions of an item (e.g. interim and final versions of a microbiology test result). This can usually be achieved by using various identifiers as well as the originating system version id and/or content status (interim, final etc). A new openEHR Composition version should always be created for each received version, even where the content does not change at all (e.g. a microbiology test where the result is "no growth" in both interim and final results).</p>
 </div>
 </div>
 <div class="sect4">
@@ -1143,7 +1143,7 @@ some classes in the openEHR architecture that do not inherit from LOCATABLE but 
 <div class="sect4">
 <h5 id="_differentially_coded_data">Differentially Coded Data</h5>
 <div class="paragraph">
-<p>A further problem is that the originating system may send new versions of an item which are not complete in and of themselves, i.e. which only include new or changed elements with respect to a previous send of the same item. An example is a system which sends a correction to an HL7v2 blood test message, where the correction includes just the “serum sodium” data item. In this case, special processing will be required in the openEHR converter component, in order to regenerate a full data item from difference data when it is received. Such processing may also have to take account of deleted items.</p>
+<p>A further problem is that the originating system may send new versions of an item which are not complete in and of themselves, i.e. which only include new or changed elements with respect to a previous send of the same item. An example is a system which sends a correction to an HL7v2 blood test message, where the correction includes just the "serum sodium" data item. In this case, special processing will be required in the openEHR converter component, in order to regenerate a full data item from difference data when it is received. Such processing may also have to take account of deleted items.</p>
 </div>
 <div class="paragraph">
 <p>In summary, the Feeder audit class design tries to accommodate the recording of as much of the above meta-data as is relevant in any particular case. It is up to the design of openEHR conversion front-end components as well as proper analysis of the situation to determine which identifiers are germane to the needs of traceability. In general, any meta-data of medico-legal significance should be captured where it is available.</p>
@@ -1161,7 +1161,7 @@ some classes in the openEHR architecture that do not inherit from LOCATABLE but 
 <p>There is no guarantee that the granularity of information recorded in the feeder system obeys the rules of Entries, Compositions, etc. As a consquence, feeder information might correspond to any level of information defined in the openEHR models. In order to be able to record feeder audit information correctly, the model has to be able to associate an audit trail with any granularity of object. For this reason, feeder audit information is attached to the <code>LOCATABLE</code> class via the feeder_audit attribute, even though it is preferable by design to have it attached to the equivalent of Compositions or at least the equivalent of archetype entities (i.e. Compositions, Section trees and Entries). Its usual usage is to attach it to the outermost object to which it applies. In other words, in most cases, during a legacy data conversion process, the entirety of a Composition needs only one <code>FEEDER_AUDIT</code> to document its origins. In exceptional cases, where feeder data comes in in near real time, e.g. from an ICU database, separate <code>FEEDER_AUDIT</code> objects may need to be generated for parts of a Composition; each commit in this situation will create a stack of versions of one Composition, with a growing number of <code>FEEDER_AUDIT</code> objects attached to internal data nodes, each documenting the last import of data.</p>
 </div>
 <div class="paragraph">
-<p>The Feeder audit information is included as part of the data of the Composition, rather than part of the audit trail of version committal, because it remains relevant throughout the versioning of a logical Composition, i.e. when a new version is created, the feeder information is retained as part of the current version to be seen and possibly modified, just as for the rest of its content. If the main part of the content is modified so drastically as to make the feeder audit irrelevant, it too can be removed. A second consequence of feeder and legacy systems is that structural data items may need to be synthesised in order to create valid structures, even though the source system does not have them. For example, a system may have the equivalent data of Clusters and Elements (see openEHR Data Structure IM or CEN EN13606), but no Entries, Sections or other higher-level data items; these have to be synthesised during conversion. To indicate synthesis of a data node, a <code>FEEDER_AUDIT</code> instance is attached to the <code>LOCATABLE</code> in question, and its <code><em>change_type</em></code> set to “synthesised”.</p>
+<p>The Feeder audit information is included as part of the data of the Composition, rather than part of the audit trail of version committal, because it remains relevant throughout the versioning of a logical Composition, i.e. when a new version is created, the feeder information is retained as part of the current version to be seen and possibly modified, just as for the rest of its content. If the main part of the content is modified so drastically as to make the feeder audit irrelevant, it too can be removed. A second consequence of feeder and legacy systems is that structural data items may need to be synthesised in order to create valid structures, even though the source system does not have them. For example, a system may have the equivalent data of Clusters and Elements (see openEHR Data Structure IM or CEN EN13606), but no Entries, Sections or other higher-level data items; these have to be synthesised during conversion. To indicate synthesis of a data node, a <code>FEEDER_AUDIT</code> instance is attached to the <code>LOCATABLE</code> in question, and its <code><em>change_type</em></code> set to "synthesised".</p>
 </div>
 </div>
 <div class="sect4">
@@ -1543,7 +1543,7 @@ Links should be between archetyped structures only, i.e. between objects represe
 <div class="ulist">
 <ul>
 <li>
-<p>there is at least one human readable name or official identifier of the party, such as “Julius Marlowe, MD”, “NHS provider number 1039385”, or a system user id such as “Rahil.Azam”;</p>
+<p>there is at least one human readable name or official identifier of the party, such as "Julius Marlowe, MD", "NHS provider number 1039385", or a system user id such as "Rahil.Azam";</p>
 </li>
 <li>
 <p>there might be data in a service external to the EHR for the party in question, such as a demographic, identity management or patient index service; if there is, it should be referenceable;</p>
@@ -1588,7 +1588,7 @@ Links should be between archetyped structures only, i.e. between objects represe
 <div class="sect3">
 <h4 id="_participation">4.2.2. Participation</h4>
 <div class="paragraph">
-<p>The Participation abstraction models the interaction of some Party in an activity. In the openEHR reference models, participations are actually modelled in two ways. In situations where the kinds of participation are known and constant, they are modelled as a named attribute in the relevant reference model. For example, the <code><em>committer</em></code>: <code>PARTY_PROXY</code> attribute in <code>AUDIT_DETAILS</code> models a participation in which the function is “committal”. Where the kind of participation is not known at design time, a descendant of the generic <code>PARTICIPATION</code> class is used.</p>
+<p>The Participation abstraction models the interaction of some Party in an activity. In the openEHR reference models, participations are actually modelled in two ways. In situations where the kinds of participation are known and constant, they are modelled as a named attribute in the relevant reference model. For example, the <code><em>committer</em></code>: <code>PARTY_PROXY</code> attribute in <code>AUDIT_DETAILS</code> models a participation in which the function is "committal". Where the kind of participation is not known at design time, a descendant of the generic <code>PARTICIPATION</code> class is used.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1671,7 +1671,7 @@ Links should be between archetyped structures only, i.e. between objects represe
 <p>Normally the list of items being attested should be a single Entry or Composition, but there is nothing stopping it including fine-grained items, even though separate attestation of such items does not appear to be commensurate with good clinical information design or process.</p>
 </div>
 <div class="paragraph">
-<p>The <code><em>reason</em></code> attribute is used to indicate why the attestation occurred, and is coded using the openEHR Terminology group “attestation reason”, which includes values such as “authorisation” and “witnessed”. The <code><em>is_pending</em></code> attribute marks the attestation as either having been done or awaiting completion depending on its value. This facilitates querying the record to find items needing to be signed or witnessed. When an attestation is required, the most common scenario will be that a Composition Version will be committed with a <code><em>commit_audit</em></code> of type <code>ATTESTATION</code>, rather than just <code>AUDIT_DETAILS</code>; the <code><em>is_pending</em></code> flag will be set to True to indicate that the committed information needs to be signed by another person. When signing occurs, it will cause a new <code>ATTESTATION</code> object to be added to the <code>VERSION</code>.<code><em>attestations</em></code> list, this time with <code><em>is_pending</em></code> set to False, and the appropriate proof supplied. Thus, the common situation in which content is committed to the record and needs later review and signing by a senior person will cause the creation of two <code>ATTESTATION</code> objects.</p>
+<p>The <code><em>reason</em></code> attribute is used to indicate why the attestation occurred, and is coded using the openEHR Terminology group "attestation reason", which includes values such as "authorisation" and "witnessed". The <code><em>is_pending</em></code> attribute marks the attestation as either having been done or awaiting completion depending on its value. This facilitates querying the record to find items needing to be signed or witnessed. When an attestation is required, the most common scenario will be that a Composition Version will be committed with a <code><em>commit_audit</em></code> of type <code>ATTESTATION</code>, rather than just <code>AUDIT_DETAILS</code>; the <code><em>is_pending</em></code> flag will be set to True to indicate that the committed information needs to be signed by another person. When signing occurs, it will cause a new <code>ATTESTATION</code> object to be added to the <code>VERSION</code>.<code><em>attestations</em></code> list, this time with <code><em>is_pending</em></code> set to False, and the appropriate proof supplied. Thus, the common situation in which content is committed to the record and needs later review and signing by a senior person will cause the creation of two <code>ATTESTATION</code> objects.</p>
 </div>
 </div>
 </div>
