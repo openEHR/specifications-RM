@@ -375,7 +375,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000203</strong>: Release 1.0 explanatory text improvements. Minor changes to Entry section. Improved section on “time in the EHR”.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000203</strong>: Release 1.0 explanatory text improvements. Minor changes to Entry section. Improved section on "time in the EHR".</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1319,7 +1319,7 @@
 </dd>
 <dt class="hdlist1">composition</dt>
 <dd>
-<p>The Composition is the EHR’s top level “data container”, and is described by the <code>COMPOSITION</code> class.</p>
+<p>The Composition is the EHR’s top level "data container", and is described by the <code>COMPOSITION</code> class.</p>
 </dd>
 <dt class="hdlist1">content</dt>
 <dd>
@@ -1328,7 +1328,7 @@
 <dl>
 <dt class="hdlist1">navigation</dt>
 <dd>
-<p>The <code>SECTION</code> class provides a navigational structure to the record, similar to “headings” in the paper record. ENTRYs and other SECTIONs can appear under <code>SECTIONs</code>.</p>
+<p>The <code>SECTION</code> class provides a navigational structure to the record, similar to "headings" in the paper record. ENTRYs and other SECTIONs can appear under <code>SECTIONs</code>.</p>
 </dd>
 <dt class="hdlist1">entry</dt>
 <dd>
@@ -1460,7 +1460,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>The Transaction concept was later been renamed to “Composition”, which is the name of the equivalent concept in the current CEN EN13606, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.</p>
+<p>The Transaction concept was later been renamed to "Composition", which is the name of the equivalent concept in the current CEN EN13606, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.</p>
 </div>
 <div class="sect4">
 <h5 id="_event_compositions">Event Compositions</h5>
@@ -1514,7 +1514,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. For example, the meaning of the “medication list” Composition is always: this is the list of medications currently being taken by patient X. Similarly for the other persistent Composition types given above. In scientific philosophy, the kind of information recorded in a persistent Composition is known as a <em>continuant</em> (see e.g. the KR ontology in <a href="#Sowa_2000">[Sowa_2000]</a>). This is in contrast with event Compositions, which do not generally record continuants, but instead record <em>occurrents</em>, i.e. things that were true or did happen but have no longevity.</p>
+<p>Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. For example, the meaning of the "medication list" Composition is always: this is the list of medications currently being taken by patient X. Similarly for the other persistent Composition types given above. In scientific philosophy, the kind of information recorded in a persistent Composition is known as a <em>continuant</em> (see e.g. the KR ontology in <a href="#Sowa_2000">[Sowa_2000]</a>). This is in contrast with event Compositions, which do not generally record continuants, but instead record <em>occurrents</em>, i.e. things that were true or did happen but have no longevity.</p>
 </div>
 <div class="paragraph">
 <p>Over time, the number of event Compositions is likely to far outstrip the number of persistent Compositions. The figure below illustrates an EHR containing persistent information as well as event information.</p>
@@ -1568,7 +1568,7 @@
 <p>A justification for these particular categories is based on patterns of access. The persistent category consists of a dozen or so compositions described above, and which are continually required by querying (particularly lifestyle, current problems and medications). The event category consists of clinical data whose relevancy fades fairly quickly, including most measurements made on the patients or in pathology. Compositions in this category are thus potentially very numerous over the patient’s lifetime, but of decreasing relevance to the clinical care of the patient in time; it therefore makes sense to separate them from the persistent compositions.</p>
 </div>
 <div class="paragraph">
-<p>Regardless of the folder structure used, the folder concept in itself poses no restrictions, nor does it add any clinical meaning to the record - it simply provides a logical navigational structure to the “lumps” of information committed to the record (remembering that inside compositions, there are other means of providing fine-grained structure in entries).</p>
+<p>Regardless of the folder structure used, the folder concept in itself poses no restrictions, nor does it add any clinical meaning to the record - it simply provides a logical navigational structure to the "lumps" of information committed to the record (remembering that inside compositions, there are other means of providing fine-grained structure in entries).</p>
 </div>
 <div class="paragraph">
 <p>Note that neither the Folder names nor the Composition names described and illustrated above are part of the openEHR EHR reference model: all such details are provided by archetypes; hence, EHR structures based on completely different conceptions of division of information, or even different types of medicine are equally possible.</p>
@@ -1636,7 +1636,7 @@
 <p>Versioning of Compositions is achieved with the <code>VERSIONED_OBJECT&lt;T&gt;</code> type from the change_control package (Common IM), which in the composition package is explicitly bound to the <code>COMPOSITION</code> class, via the class <code>VERSIONED_COMPOSITION</code> which inherits from the type <code>VERSIONED&lt;COMPOSITION&gt;</code>.</p>
 </div>
 <div class="paragraph">
-<p>The effect of version control on Compositions is visualised in the figure below. The versions (each “version” being a <code>COMPOSITION</code>) shown here in a <code>VERSIONED_COMPOSITION</code> are the same versions shown along each vertical line in FIGURE 8, this time shown with their associated audit items. The set of versions should be understood as a set of successive modifications of the same data in time.</p>
+<p>The effect of version control on Compositions is visualised in the figure below. The versions (each "version" being a <code>COMPOSITION</code>) shown here in a <code>VERSIONED_COMPOSITION</code> are the same versions shown along each vertical line in FIGURE 8, this time shown with their associated audit items. The set of versions should be understood as a set of successive modifications of the same data in time.</p>
 </div>
 <div id="versioned_compositions" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -1661,7 +1661,7 @@
 </dd>
 <dt class="hdlist1">Case 1</dt>
 <dd>
-<p>information is modified locally, such as for the correction of a wrongly entered datum in a composition. This causes the creation of a new <code>VERSION&lt;COMPOSITION&gt;</code> in an existing <code>VERSIONED_COMPOSITION</code>, in which the <code>AUDIT_DETAILS</code>.<code><em>change_type</em></code> is set to “correction”.</p>
+<p>information is modified locally, such as for the correction of a wrongly entered datum in a composition. This causes the creation of a new <code>VERSION&lt;COMPOSITION&gt;</code> in an existing <code>VERSIONED_COMPOSITION</code>, in which the <code>AUDIT_DETAILS</code>.<code><em>change_type</em></code> is set to "correction".</p>
 </dd>
 <dt class="hdlist1">Case 2</dt>
 <dd>
@@ -2141,7 +2141,7 @@
 <div class="sect4">
 <h5 id="_participations">Participations</h5>
 <div class="paragraph">
-<p>Is part of the Event context, the participations attribute can be used to describe who participated, and how. Each participation object describes the “mode” of participation as well, such as direct presence, video-conference and so on. In many cases such information is of no interest, since the subject of any Entry is known (<code>ENTRY</code>.<code><em>subject</em></code>) and the clinician will be known (<code>COMPOSITION</code>.<code><em>composer</em></code>), and the mode of communication is assumed to be a personal encounter. The participations attribute is therefore used when it is desired to record further details of how the patient and or physician interacted (e.g. over the internet), and/or other participants, such as family, nurses, specialists etc.</p>
+<p>Is part of the Event context, the participations attribute can be used to describe who participated, and how. Each participation object describes the "mode" of participation as well, such as direct presence, video-conference and so on. In many cases such information is of no interest, since the subject of any Entry is known (<code>ENTRY</code>.<code><em>subject</em></code>) and the clinician will be known (<code>COMPOSITION</code>.<code><em>composer</em></code>), and the mode of communication is assumed to be a personal encounter. The participations attribute is therefore used when it is desired to record further details of how the patient and or physician interacted (e.g. over the internet), and/or other participants, such as family, nurses, specialists etc.</p>
 </div>
 <div class="paragraph">
 <p>There are no general rules about who is included as a participant. For example, while there will be a patient participation during a GP visit, there will be no such participation recorded when the clinical event is a tissue test in a laboratory. Conversely, a patient might record some observations and drug self-administration in the record, in which case the composer will be the patient, and there will be no clinician participation. Consequently, the use of participations will mostly be archetype-driven.</p>
@@ -2153,10 +2153,10 @@
 <p>The <code><em>health_care_facility</em></code> (HCF) attribute is used to record the health care facility in whose care the event took place. This is the most specific identifiable (i.e. having a provider id within the health system) workgroup or care delivery unit within a care delivery enterprise which was involved in the care event. The identification of the HCF can be used to ensure medico-legal accountability. Often, the HCF is also where the encounter physically took place, but not in the case of patient home visits, internet contacts or emergency care; the HCF should not be thought of as a physical place, but as a care delivery management unit. The physical place of care can be separately recorded in <code>EVENT_CONTEXT</code>.<code><em>location</em></code>. The health_care_facility attribute is optional to allow for cases where the clinical event did not involve any care delivery enterprise, e.g. self-care at home by the patient, emergency revival by a non-professional (e.g. CPR by lifeguard on a beach), care by a professional acting in an unofficial capacity (doctor on a plane asked to aid a passenger in difficulty). In all other cases, it is mandatory. Archetypes are used to control this.</p>
 </div>
 <div class="paragraph">
-<p>Two other context attributes complete the predefined notion of event context in the model: <code><em>location</em></code> and <code><em>setting</em></code>. The location attribute records: the physical location where the care delivery took place, and should document a reasonably specific identifiable location. Examples include “bed 5, ward E”, “home”. This attribute is optional, since the location is not always known, particularly in legacy data.</p>
+<p>Two other context attributes complete the predefined notion of event context in the model: <code><em>location</em></code> and <code><em>setting</em></code>. The location attribute records: the physical location where the care delivery took place, and should document a reasonably specific identifiable location. Examples include "bed 5, ward E", "home". This attribute is optional, since the location is not always known, particularly in legacy data.</p>
 </div>
 <div class="paragraph">
-<p>The setting attribute is used to document the “setting” of the care event. In clinical record keeping, this has been found to be a useful coarse-grained classifier of information. The openEHR Terminology “setting” group is used to code this attribute. It is mandatory, on the basis that making it optional will reduce its utility for querying and classification.</p>
+<p>The setting attribute is used to document the "setting" of the care event. In clinical record keeping, this has been found to be a useful coarse-grained classifier of information. The openEHR Terminology "setting" group is used to code this attribute. It is mandatory, on the basis that making it optional will reduce its utility for querying and classification.</p>
 </div>
 </div>
 </div>
@@ -2417,7 +2417,7 @@
 <div class="sect2">
 <h3 id="_overview_7">7.1. Overview</h3>
 <div class="paragraph">
-<p>The <code>navigation</code> Package defines a hierachical heading structure, in which all individual headings are considered to belong to a “tree of headings”. Each heading is an instance of the class <code>SECTION</code>, visible in the lower left side of the figure <a href="#rm_composition">rm.composition package</a>.</p>
+<p>The <code>navigation</code> Package defines a hierachical heading structure, in which all individual headings are considered to belong to a "tree of headings". Each heading is an instance of the class <code>SECTION</code>, visible in the lower left side of the figure <a href="#rm_composition">rm.composition package</a>.</p>
 </div>
 <div class="paragraph">
 <p>Sections provide both a logical structure for the author to arrange Entries, and a navigational structure for readers of the record, whether they be human or machine. Sections are archetyped in trees with each tree containing a root Section, one or more sub-sections, and any number of Entries at each node. Section trees that are separately archetyped, such as the SOAP headings, or the heading structure for a physical examination, can be combined at runtime by type to form one large heading structure, as shown in the figure below.</p>
@@ -2429,7 +2429,7 @@
 <div class="title">Figure 14. Section View of a General Practice Contact Composition</div>
 </div>
 <div class="paragraph">
-<p>In terms of understanding of clinical data, Section structures are not essential in a Composition - they can always be removed or ignored (typically in machine processing such as querying) without losing the meaning of the Entries in the Composition. While Sections are often used to group Entries according to status, e.g. “family history”, “problems”, “observations”, it is the Entries themselves that indicate the definitive category of information contained therein. This principle is explained in more detail in the section <a href="#_entry_and_its_subtypes">Entry and its Subtypes</a>.</p>
+<p>In terms of understanding of clinical data, Section structures are not essential in a Composition - they can always be removed or ignored (typically in machine processing such as querying) without losing the meaning of the Entries in the Composition. While Sections are often used to group Entries according to status, e.g. "family history", "problems", "observations", it is the Entries themselves that indicate the definitive category of information contained therein. This principle is explained in more detail in the section <a href="#_entry_and_its_subtypes">Entry and its Subtypes</a>.</p>
 </div>
 <div class="paragraph">
 <p>Despite the above, Section structures do not have to be regarded as ad hoc or unreliable structures. On the contrary, as they are archetyped, their structures can be relied upon in the same way as any other structure in the record can be relied on to conform to its archetype. Accordingly, solid assumptions can be made about Sections, based on their archetypes, for the purposes of querying. In fact, the main benefit of Sections is that they may provide significant performance benefits to querying, whether by interactive application or by automated systems.</p>
@@ -2492,7 +2492,7 @@
 <div class="content">
 <img src="diagrams/SOAP_section_structure.png" alt="SOAP section structure" width="80%">
 </div>
-<div class="title">Figure 15. “problem/SOAP” Section Structure</div>
+<div class="title">Figure 15. "problem/SOAP" Section Structure</div>
 </div>
 </div>
 </div>
@@ -3966,7 +3966,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Issue</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A problem as identified by the patient, e.g. “inability to do exercise due to breathing difficulty”; may be the object of wider health care, e.g. social workers, physiotherapists etc.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A problem as identified by the patient, e.g. "inability to do exercise due to breathing difficulty"; may be the object of wider health care, e.g. social workers, physiotherapists etc.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Problem</p></td>
@@ -4171,7 +4171,13 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p><a id="hl7_v3_rim"></a>[hl7_v3_rim] HL7. <strong>HL7 v3 RIM</strong>. See <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a> .</p>
 </li>
 <li>
-<p><a id="IHTSDO"></a>[IHTSDO] International Health Terminology Standards Development Organisation, <a href="http://www.ihtsdo.org" class="bare">http://www.ihtsdo.org</a>.</p>
+<p><a id="ICD10AM"></a>[ICD10AM]. WHO / ACCD. International Classification of Diseases, 10th Revision, Australian Modifications. See <a href="https://www.accd.net.au/Icd10.aspx" class="bare">https://www.accd.net.au/Icd10.aspx</a></p>
+</li>
+<li>
+<p><a id="IHTSDO"></a>[IHTSDO] International Health Terminology Standards Development Organisation (IHTSDO). <a href="http://www.ihtsdo.org" class="bare">http://www.ihtsdo.org</a>.</p>
+</li>
+<li>
+<p><a id="IHTSDO_URIs"></a>[IHTSDO_URIs] IHTSDO. SNOMED CT URI Standard. <a href="http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok" class="bare">http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok</a>.</p>
 </li>
 <li>
 <p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
@@ -4313,16 +4319,10 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="olist bibliography">
 <ol class="bibliography">
 <li>
-<p><a id="openehr_18308"></a>[openehr_18308] The openEHR Foundation. *Conformance of openEHR architecture to ISO TS 18308, "Requirements for EHR Architectures". See <a href="http://www.openehr.org/releases/trunk/architecture/iso18308_conformance.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/iso18308_conformance.pdf</a>.</p>
+<p><a id="openehr_18308"></a>[openehr_18308] The openEHR Foundation. <strong>Conformance of openEHR architecture to ISO TS 18308, "Requirements for EHR Architectures"</strong>. See <a href="http://www.openehr.org/releases/trunk/architecture/iso18308_conformance.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/iso18308_conformance.pdf</a>.</p>
 </li>
 <li>
-<p><a id="openEHR_ADL_workbench"></a>[openEHR_ADL_workbench] <strong>The openEHR ADL Workbench</strong>. <a href="http://www.openehr.org/downloads/ADLworkbench/home" class="bare">http://www.openehr.org/downloads/ADLworkbench/home</a> .</p>
-</li>
-<li>
-<p><a id="openehr_CKM"></a>[openehr_CKM] <strong>The openEHR Clinical Knowledge Manager (CKM)</strong>. See <a href="http://www.openEHR.org/ckm" class="bare">http://www.openEHR.org/ckm</a></p>
-</li>
-<li>
-<p><a id="openehr_overview"></a>[openehr_overview] The openEHR Foundation. <strong>The openEHR Architecture Overview.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/overview.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/overview.pdf</a> .</p>
+<p><a id="openEHR_ADL_workbench"></a>[openEHR_ADL_workbench] The openEHR Foundation. <strong>The openEHR ADL Workbench</strong>. <a href="http://www.openehr.org/downloads/ADLworkbench/home" class="bare">http://www.openehr.org/downloads/ADLworkbench/home</a> .</p>
 </li>
 <li>
 <p><a id="openehr_am_overview"></a>[openehr_am_overview] The openEHR Foundation. <strong>The openEHR Archetypes Technical Overview.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/am/archetype_technical_overview.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/am/archetype_technical_overview.pdf</a>.</p>
@@ -4338,6 +4338,12 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </li>
 <li>
 <p><a id="openehr_am_identification"></a>[openehr_am_identification] The openEHR Foundation. <strong>Archetype Identification specification.</strong> Available at <a href="http://www.openehr.org/releases/trunk/architecture/am/knowledge_id_system.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/am/knowledge_id_system.pdf</a> .</p>
+</li>
+<li>
+<p><a id="openehr_CKM"></a>[openehr_CKM] <strong>The openEHR Clinical Knowledge Manager (CKM)</strong>. See <a href="http://www.openEHR.org/ckm" class="bare">http://www.openEHR.org/ckm</a></p>
+</li>
+<li>
+<p><a id="openehr_overview"></a>[openehr_overview] The openEHR Foundation. <strong>The openEHR Architecture Overview.</strong> See <a href="http://www.openehr.org/releases/trunk/architecture/overview.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/overview.pdf</a> .</p>
 </li>
 <li>
 <p><a id="openehr_query_aql"></a>[openehr_query_aql] The openEHR Foundation. <strong>The openEHR Archetype Query language (AQL)</strong>. See <a href="https://openehr.atlassian.net/wiki/display/spec/Archetype+Query+Language+Description" class="bare">https://openehr.atlassian.net/wiki/display/spec/Archetype+Query+Language+Description</a> .</p>
