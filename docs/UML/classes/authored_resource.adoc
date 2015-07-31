@@ -18,7 +18,7 @@
 
 |*1..1*
 {set:cellbgcolor:lightblue}
-|*original_language*: `TERMINOLOGY_CODE`
+|*original_language*: `CODE_PHRASE`
 {set:cellbgcolor!}
 |Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections. 
 
@@ -42,15 +42,9 @@
 
 |*0..1*
 {set:cellbgcolor:lightblue}
-|*uid*: `UID`
+|*revision_history*: `REVISION_HISTORY`
 {set:cellbgcolor!}
-|Unique identifier of the family of archetypes having the same interface identifier (same major version).
-
-|*0..1*
-{set:cellbgcolor:lightblue}
-|*annotations*: `RESOURCE_ANNOTATIONS`
-{set:cellbgcolor!}
-|Annotations on individual items within the resource, keyed by path. The inner table takes the form of a Hash table of String values keyed by String tags.
+|The revision history of the resource. Only required if is_controlled = True (avoids large revision histories for informal or private editing situations). 
 |*Functions*
 {set:cellbgcolor:lightblue}
 ^|*Signature*
@@ -58,7 +52,8 @@
 
 |
 {set:cellbgcolor:lightblue}
-|*current_revision*: `String`
+|*current_revision*: `String` +
+*_Post_*: Result = revision_history.most_recent_version
 {set:cellbgcolor!}
 |Most recent revision in revision_history if is_controlled else  (uncontrolled) . 
 
@@ -70,6 +65,32 @@
 
 |*Invariant*
 {set:cellbgcolor:lightblue}
-2+|*_Invariant_original_language_valid_*: code_set (Code_set_id_languages).has_code (original_language)
+2+|*_Original_language_valid_*: code_set (Code_set_id_languages).has_code (original_language.as_string)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Languages_available_valid_*: languages_available.has (original_language)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Revision_history_valid_*: is_controlled xor revision_history = Void
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Current_revision_valid_*: (current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Translations_valid_*: translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))
+{set:cellbgcolor!}
+
+|
+{set:cellbgcolor:lightblue}
+2+|*_Description_valid_*: translations /= Void implies (description.details.for_all (d |
+translations.has_key (d.language.code_string)))
 {set:cellbgcolor!}
 |===

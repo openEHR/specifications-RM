@@ -8,8 +8,8 @@
 <meta name="description" content="openEHR EHR Extract Information Model specification">
 <meta name="keywords" content="EHR, Extract, openehr">
 <title>EHR Extract Information Model</title>
-<link rel="stylesheet" href="../../resources/css/openehr.css">
-<link rel="stylesheet" href="../../resources/css/pygments-default.css">
+<link rel="stylesheet" href="../../../spec-publish-asciidoc/resources/css/openehr.css">
+<link rel="stylesheet" href="../../../spec-publish-asciidoc/resources/css/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -228,7 +228,7 @@
 <div class="sectionbody">
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../../resources/images/openehr_logo_large.png" alt="openEHR logo">
+<img src="../../../spec-publish-asciidoc/resources/images/openehr_logo_large.png" alt="openEHR logo">
 </div>
 </div>
 </div>
@@ -279,7 +279,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../../spec-publish-asciidoc/resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
@@ -1677,26 +1677,36 @@ Use: Used in a request to specify an Extract, as well as to describe what is con
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_type</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Coded term indicating the type of content required, e.g.<br>
-  |openehr-ehr|<br>
-  |openehr-demographic|<br>
-  |generic-emr|<br>
-  |other|</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Coded term indicating the type of content required, e.g.<br></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_multimedia</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">openehr-ehr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">openehr-demographic</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">+</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">generic-emr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">+</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">other</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>include_multimedia</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Indicates whether inline instances of DV_MULTIMEDIA in the source data are included or not.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>priority</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>priority</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Requested priority of this request to be handled by server. Priority schemes are likely to be local, and use values agreed by both ends.<br>
 TBD: alternative is standard coded terms</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>link_depth</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>link_depth</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Degree of links to follow emanating from content items specified for inclusion. The kind of links to follow is dependent on the type of Extract.<br>
 All items at the target end of followed links at the given depth are also included in the extract; EXTRACT_CONTENT_ITEM.is_primary is used to differentiate.<br>
 - 0 = don&#8217;t follow;<br>
@@ -1704,16 +1714,12 @@ All items at the target end of followed links at the given depth are also includ
 - 2 = follow 2nd degree links;<br>
 - &#8230;&#8203;.<br>
 - n = follow nth degree links</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>criteria</strong>: <code>List&lt;DV_PARSABLE&gt;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>criteria</strong>: <code>List&lt;DV_PARSABLE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Queries specifying the contents of this Extract.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>ITEM_STRUCTURE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Other specification items. Archetypable.</p></td>
+<td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -1884,10 +1890,17 @@ The update mode may be event-driven and periodic update or a mixture of both. Th
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trigger_events</strong>: <code>List&lt;DV_CODED_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set of Event names that will cause sending of update Extracts. Event types include:
-  |any_change| - any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.<br>
-  |correction| - match error corrections only, including deletions.<br>
-  |update| - match updates (i.e. new versions) of included content items.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set of Event names that will cause sending of update Extracts. Event types include:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">any_change</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">correction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">- match error corrections only, including deletions.<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- match updates (i.e. new versions) of included content items.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
@@ -3459,7 +3472,7 @@ set <code><em>is_primary</em></code> = False, write the path and write the targe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-23 12:30:33 BST
+Last updated 2015-07-30 09:31:02 CEST
 </div>
 </div>
 </body>

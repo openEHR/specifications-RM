@@ -8,8 +8,8 @@
 <meta name="description" content="openEHR Common Information Model specification">
 <meta name="keywords" content="common, EHR, reference model, openehr">
 <title>Common Information Model</title>
-<link rel="stylesheet" href="../../resources/css/openehr.css">
-<link rel="stylesheet" href="../../resources/css/pygments-murphy.css">
+<link rel="stylesheet" href="../../../spec-publish-asciidoc/resources/css/openehr.css">
+<link rel="stylesheet" href="../../../spec-publish-asciidoc/resources/css/pygments-murphy.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -216,7 +216,7 @@
 <div class="sectionbody">
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="../../resources/images/openehr_logo_large.png" alt="openEHR logo">
+<img src="../../../spec-publish-asciidoc/resources/images/openehr_logo_large.png" alt="openEHR logo">
 </div>
 </div>
 </div>
@@ -267,7 +267,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../../spec-publish-asciidoc/resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
@@ -297,6 +297,15 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="4" style="background-color: skyblue;"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SPECRM-21</strong>. Make PARTICIPATION.mode optional. Sections 4.3.5.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>31 July 2015</p></td>
+</tr>
 <tr>
 <td class="tableblock halign-center valign-top" colspan="4" style="background-color: skyblue;"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.2</strong></p></td>
 </tr>
@@ -1850,7 +1859,7 @@ Should not be used to include patient identifying information.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The function of the Party in this participation (note that a given party might participate in more than one way in a particular activity). This attribute should be coded, but cannot be limited to the HL7v3:ParticipationFunction vocabulary, since it is too limited and hospital-oriented.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mode</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The mode of the performer / activity interaction, e.g. present, by telephone, by email etc.</p></td>
 </tr>
@@ -3203,7 +3212,7 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code>TERMINOLOGY_CODE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.</p></td>
 </tr>
 <tr>
@@ -3223,13 +3232,8 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>UID</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unique identifier of the family of archetypes having the same interface identifier (same major version).</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>annotations</strong>: <code>RESOURCE_ANNOTATIONS</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Annotations on individual items within the resource, keyed by path. The inner table takes the form of a Hash table of String values keyed by String tags.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code>REVISION_HISTORY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The revision history of the resource. Only required if is_controlled = True (avoids large revision histories for informal or private editing situations).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Functions</strong></p></td>
@@ -3238,7 +3242,8 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong>: <code>String</code><br>
+<strong><em>Post</em></strong>: Result = revision_history.most_recent_version</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Most recent revision in revision_history if is_controlled else  (uncontrolled) .</p></td>
 </tr>
 <tr>
@@ -3248,7 +3253,27 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Invariant_original_language_valid</em></strong>: code_set (Code_set_id_languages).has_code (original_language)</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Original_language_valid</em></strong>: code_set (Code_set_id_languages).has_code (original_language.as_string)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Languages_available_valid</em></strong>: languages_available.has (original_language)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Revision_history_valid</em></strong>: is_controlled xor revision_history = Void</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Current_revision_valid</em></strong>: (current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Translations_valid</em></strong>: translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong><em>Description_valid</em></strong>: translations /= Void implies (description.details.for_all (d</p></td>
 </tr>
 </tbody>
 </table>
@@ -3331,67 +3356,13 @@ signature.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_namespace</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace of original author&#8217;s organisation, in reverse internet form, if applicable.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_publisher</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Plain text name of organisation that originally published this artefact, if any.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_contributors</strong>: <code>List&lt;String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Other contributors to the resource, each listed in "name &lt;email&gt;"  form.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other contributors to the resource, probably listed in  name &lt;email&gt;  form.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>TERMINOLOGY_CODE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Lifecycle state of the resource, typically including states such as: initial, in_development, in_review, published, superseded, obsolete.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code>AUTHORED_RESOURCE&#160;=&#160;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to owning resource.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>List&lt;RESOURCE_DESCRIPTION_ITEM&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Details of all parts of resource description that are natural language-dependent, keyed by language code.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>custodian_namespace</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace in reverse internet id form, of current custodian organisation.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>custodian_organisation</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Plain text name of current custodian organisation.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>copyright</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Optional copyright statement for the resource as a knowledge resource.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>licence</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Licence of current artefact, in format "short licence name &lt;URL of licence&gt;", e.g. "Apache 2.0 License &lt;<a href="http://www.apache.org/licenses/LICENSE-2.0.html&gt;"" class="bare">http://www.apache.org/licenses/LICENSE-2.0.html&gt;"</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ip_acknowledgements</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of acknowledgements of other IP directly referenced in this archetype, typically terminology codes, ontology ids etc. Recommended keys are the widely known name or namespace for the IP source, as shown in the following example:<br>
-ip_acknowledgements = &lt;<br>
-    ["loinc"] = &lt;"This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at <a href="http://loinc.org/terms-of-use"&gt" class="bare">http://loinc.org/terms-of-use"&gt</a>;<br>
-    ["snomedct"] = &lt;"Content from SNOMED CT® is copyright © 2007 IHTSDO &lt;ihtsdo.org&gt;"&gt;<br>
-&gt;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>references</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of references of material on which this artefact is based, as a keyed list of strings. The keys should be in a standard citation format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lifecycle state of the resource, typically including states such as: initial, submitted, experimental, awaiting_approval, approved, superseded, obsolete.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
@@ -3400,18 +3371,34 @@ ip_acknowledgements = &lt;<br>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conversion_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Details related to conversion process that generated this model from an original, if relevant, as a list of name/value pairs. Typical example with recommended tags:<br>
-        conversion_details = &lt;<br>
-                ["source_model"] = &lt;"CEM model xyz <a href="http://location.in.clinicalelementmodels.com&gt;"" class="bare">http://location.in.clinicalelementmodels.com&gt;"</a><br>
-                ["tool"] = &lt;"cem2adl v6.3.0"&gt;<br>
-                ["time"] = &lt;"2014-11-03T09:05:00"&gt;<br>
-        &gt;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Additional non language-senstive resource meta-data, as a list of name/value pairs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code>AUTHORED_RESOURCE&#160;=&#160;0..1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to owning resource.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>List&lt;RESOURCE_DESCRIPTION_ITEM&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Details of all parts of resource description that are natural language-dependent, keyed by language code.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Original_author_valid</em></strong>: not original_author.is_empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Lifecycle_state_valid</em></strong>: not lifecycle_state.is_empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Details_valid</em></strong>: not details.is_empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2" style="background-color: lightblue;"><p class="tableblock"><strong><em>Language_valid</em></strong>: parent_resource /= Void implies details.for_all (d</p></td>
 </tr>
 </tbody>
 </table>
@@ -3854,7 +3841,7 @@ ip_acknowledgements = &lt;<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-23 12:29:25 BST
+Last updated 2015-07-30 09:31:01 CEST
 </div>
 </div>
 </body>
