@@ -2945,7 +2945,10 @@ object (e.g. "GP") or any proper ancestor (e.g. <code>PARTY</code>).</p>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Abstract parent of classes representing unique identifiers which identify information entities in a durable way. UIDs only ever identify one IE in time or space and are never re-used.</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Abstract parent of classes representing unique identifiers which identify information entities in a durable way. UIDs only ever identify one IE in time or space and are never re-used.<br>
+Abstract parent of classes representing unique identifiers which identify informa- <br>
+tion entities in a durable way. UIDs only ever identify one IE in time or space and <br>
+are never re-used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
@@ -2954,8 +2957,13 @@ object (e.g. "GP") or any proper ancestor (e.g. <code>PARTY</code>).</p>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The value of the id.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The value of the id.<br>
+The value of the id.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Value_valid</em></strong>: not value.empty</p></td>
 </tr>
 </tbody>
 </table>
@@ -3048,7 +3056,7 @@ object (e.g. "GP") or any proper ancestor (e.g. <code>PARTY</code>).</p>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ancestor class of identifiers of informational objects. Ids may be completely meaningless, in which case their only job is to refer to something, or may carry some information to do with the identified object. <br>
-Object ids are used inside an object to identify that object. To identify another object in another service, use an OBJECT_REF, or else use a UID for local objects identified by UID. If none of the subtypes is suitable, direct instances of this class may be used.</p></td>
+Object ids are used inside an object to identify that object. To identify another object in another service, use an OBJECT_REF, or else use a UID for local objects identified by UID. If none of the subtypes is suitable, direct instances of this class  may be used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
@@ -3057,7 +3065,7 @@ Object ids are used inside an object to identify that object. To identify anothe
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The value of the id in the form defined below.</p></td>
 </tr>
 </tbody>
@@ -3201,7 +3209,8 @@ Returns the part to the left of the first  '::' separator, if any, or else the w
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Version tree identifier for one version. Lexical form: trunk_version [  .' branch_number  .' branch_version ].</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Version tree identifier for one version. Lexical form: <br>
+trunk_version [  '.' branch_number  '.' branch_version ]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
@@ -3210,7 +3219,7 @@ Returns the part to the left of the first  '::' separator, if any, or else the w
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String form of this identifier.</p></td>
 </tr>
 <tr>
@@ -3220,23 +3229,51 @@ Returns the part to the left of the first  '::' separator, if any, or else the w
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_version</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_version</strong>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Trunk version number; numbering starts at 1.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong>: <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">True if this version identifier represents a branch, i.e. has branch_number and branch_version parts.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_number</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_number</strong>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Number of branch from the trunk point; numbering starts at 1.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_version</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>branch_version</strong>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Version of the branch; numbering starts at 1.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Value_valid</em></strong>: not value.is_empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Trunk_version_valid</em></strong>: trunk_version /= Void and then trunk_version.is_integer and then trunk_version.as_integer &gt;= 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Branch_number_valid</em></strong>: branch_number /= Void implies branch_number.is_integer and then branch_number.as_integer &gt;= 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Branch_version_valid</em></strong>: branch_version /= Void implies branch_version.is_integer and then branch_version.as_integer &gt;= 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Branch_validity</em></strong>: (branch_number = Void and branch_version = Void ) xor (branch_number /= Void and branch_version /= Void )</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Is_branch_validity</em></strong>: is_branch xor branch_number = Void</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Is_first_validity</em></strong>: not is_first xor trunk_version.is_equal(“1”)</p></td>
 </tr>
 </tbody>
 </table>
@@ -3434,9 +3471,12 @@ hoc scheme whose name is not controlled or standardised in any way.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id_namespace</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for the namespace are:<br>
-    local</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id_namespace</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace to which this identifier belongs in the local system context <br>
+(and possibly in any other openEHR compliant environment) e.g. <br>
+ terminology ,  demographic . These names are not yet standardised. Legal <br>
+values for the namespace are:<br>
+local</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">unknown</p></td>
@@ -3444,8 +3484,8 @@ hoc scheme whose name is not controlled or standardised in any way.</p></td>
 <td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>type</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the  class (concrete or abstract) of object to which this identifier type refers, e.g.  PARTY ,  PERSON ,  GUIDELINE  etc. These class names are from the relevant reference model. The type name  ANY  can be used to indicate that any type is accepted (e.g. if the type is unknown).</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>type</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the  class (concrete or abstract) of object to which this identifier type refers, e.g.  PARTY ,  PERSON ,  GUIDELINE  etc. These class names are from the relevant reference model. The type name   ANY  can be used to indicate that any type is accepted (e.g. if the type is unknown).</p></td>
 <td class="tableblock halign-left valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 </tr>
 </tbody>
@@ -3471,10 +3511,6 @@ hoc scheme whose name is not controlled or standardised in any way.</p></td>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">OBJECT_REF</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Type_validity</em></strong>: type.is_equal (“ACCESS_GROUP”)</p></td>
 </tr>
 </tbody>
 </table>
@@ -3535,14 +3571,14 @@ hoc scheme whose name is not controlled or standardised in any way.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>0..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The path to an instance in question, as an absolute path with respect to the object found at VERSION.data. An empty path means that the object referred to by id being specified.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The path to an instance in question, as an absolute path with respect to  the object found at VERSION.data. An empty path means that  the object referred to by id being specified.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code>UID_BASED_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the Version.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Globally unique id of an object, regardless of where it is stored.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Functions</strong></p></td>
@@ -3551,8 +3587,13 @@ hoc scheme whose name is not controlled or standardised in any way.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_uri</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A URI form of the reference, created by concatenating the following: ehr://  + id.value +  /  + path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_uri</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A URI form of the reference, created by concatenating the following: <br>
+ ehr://  + id.value +  /  + path</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Path_valid</em></strong>: path /= Void implies not path.is_empty</p></td>
 </tr>
 </tbody>
 </table>
@@ -4389,40 +4430,44 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (name: <code>String</code>): <code>TERMINOLOGY_ACCESS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (name): <code>TERMINOLOGY_ACCESS</code><br>
+<strong><em>Pre</em></strong>: has_terminology (name)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return an interface to the terminology named name. Allowable names include:-<br>
-- openehr, <br>
-- centc251,<br>
-- any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
+* openehr  <br>
+* centc251  <br>
+* any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (name: <code>String</code>): <code>CODE_SET_ACCESS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (name): <code>CODE_SET_ACCESS</code><br>
+<strong><em>Pre</em></strong>: has_code_set (name)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return an interface to the code_set identified by the external identifier name (e.g.  ISO_639-1 ).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (id: <code>String</code>): <code>CODE_SET_ACCESS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (id): <code>CODE_SET_ACCESS</code><br>
+<strong><em>Pre</em></strong>: valid_code_set_id (id)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return an interface to the code_set identified internally in openEHR by id.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (name: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (name): <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">True if terminology named name known by this service. Allowable names include:-<br>
-   *  openehr  <br>
-   * centc251  <br>
-   * any name from are taken from the US NLM UMLS meta-data list at <br>
-      <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
+* openehr  <br>
+* centc251  <br>
+* any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (name: <code>String</code>): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">True if code_set linked to internal name (e.g. languages ) is available.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (name): <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if code_set linked to internal name (e.g.  languages ) is available.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set of all terminology identifiers known in the terminology service. Values from the US NLM UMLS meta-data list at:- <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set of all terminology identifiers known in the terminology service. Values from <br>
+the US NLM UMLS meta-data list at:-<br>
+<a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
@@ -4431,7 +4476,7 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set of all code sets identifiers for which there is an internal openEHR name; returned as a Map of ids keyed by internal name.</p></td>
 </tr>
 </tbody>
@@ -4577,37 +4622,37 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_character_sets</strong>: <code>&#160;=&#160;"character sets"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_character_sets</strong>: <code>String&#160;=&#160;"character sets"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_compression_algorithms</strong>: <code>&#160;=&#160;"compression algorithms"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_compression_algorithms</strong>: <code>String&#160;=&#160;"compression algorithms"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_countries</strong>: <code>&#160;=&#160;"countries"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_countries</strong>: <code>String&#160;=&#160;"countries"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_integrity_check_algorithms</strong>: <code>&#160;=&#160;"integrity check algorithms"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_integrity_check_algorithms</strong>: <code>String&#160;=&#160;"integrity check algorithms"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_languages</strong>: <code>&#160;=&#160;"languages"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_languages</strong>: <code>String&#160;=&#160;"languages"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_media_types</strong>: <code>&#160;=&#160;"media types"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_media_types</strong>: <code>String&#160;=&#160;"media types"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_normal_statuses</strong>: <code>&#160;=&#160;"normal statuses"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_normal_statuses</strong>: <code>String&#160;=&#160;"normal statuses"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -4701,40 +4746,44 @@ only the minimum functions required by the openEHR Reference Model.</p>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (name: <code>String</code>): <code>TERMINOLOGY_ACCESS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (name): <code>TERMINOLOGY_ACCESS</code><br>
+<strong><em>Pre</em></strong>: has_terminology (name)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return an interface to the terminology named name. Allowable names include:-<br>
-- openehr, <br>
-- centc251,<br>
-- any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
+* openehr  <br>
+* centc251  <br>
+* any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (name: <code>String</code>): <code>CODE_SET_ACCESS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (name): <code>CODE_SET_ACCESS</code><br>
+<strong><em>Pre</em></strong>: has_code_set (name)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return an interface to the code_set identified by the external identifier name (e.g.  ISO_639-1 ).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (id: <code>String</code>): <code>CODE_SET_ACCESS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (id): <code>CODE_SET_ACCESS</code><br>
+<strong><em>Pre</em></strong>: valid_code_set_id (id)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return an interface to the code_set identified internally in openEHR by id.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (name: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (name): <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">True if terminology named name known by this service. Allowable names include:-<br>
-   *  openehr  <br>
-   * centc251  <br>
-   * any name from are taken from the US NLM UMLS meta-data list at <br>
-      <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
+* openehr  <br>
+* centc251  <br>
+* any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (name: <code>String</code>): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">True if code_set linked to internal name (e.g. languages ) is available.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (name): <code>boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">True if code_set linked to internal name (e.g.  languages ) is available.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set of all terminology identifiers known in the terminology service. Values from the US NLM UMLS meta-data list at:- <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set of all terminology identifiers known in the terminology service. Values from <br>
+the US NLM UMLS meta-data list at:-<br>
+<a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
@@ -4743,7 +4792,7 @@ only the minimum functions required by the openEHR Reference Model.</p>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set of all code sets identifiers for which there is an internal openEHR name; returned as a Map of ids keyed by internal name.</p></td>
 </tr>
 </tbody>
@@ -4813,12 +4862,12 @@ number are currently defined.</p>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR</strong>: <code>char&#160;=&#160;'\015'</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Carriage return character.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">carriage return character</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LF</strong>: <code>char&#160;=&#160;'\012'</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Line feed character.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">line feed character</p></td>
 </tr>
 </tbody>
 </table>
