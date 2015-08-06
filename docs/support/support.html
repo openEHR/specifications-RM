@@ -3056,7 +3056,7 @@ The value of the id.</p></td>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ancestor class of identifiers of informational objects. Ids may be completely meaningless, in which case their only job is to refer to something, or may carry some information to do with the identified object. <br>
-Object ids are used inside an object to identify that object. To identify another object in another service, use an OBJECT_REF, or else use a UID for local objects identified by UID. If none of the subtypes is suitable, direct instances of this class  may be used.</p></td>
+Object ids are used inside an object to identify that object. To identify another object in another service, use an OBJECT_REF, or else use a UID for local objects identified by UID. If none of the subtypes is suitable, direct instances of this class may be used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Attributes</strong></p></td>
@@ -3065,7 +3065,7 @@ Object ids are used inside an object to identify that object. To identify anothe
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The value of the id in the form defined below.</p></td>
 </tr>
 </tbody>
@@ -3160,7 +3160,8 @@ Returns the part to the left of the first  '::' separator, if any, or else the w
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Globally unique identifier for one version of a versioned object; lexical form: object_id  ::' creating_system_id  ::' version_tree_id</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Globally unique identifier for one version of a versioned object; lexical form: <br>
+object_id  '::' creating_system_id  '::' version_tree_id</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
@@ -3188,7 +3189,7 @@ Returns the part to the left of the first  '::' separator, if any, or else the w
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong>: <code>boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">True if this version identifier represents a branch.</p></td>
 </tr>
 </tbody>
@@ -3385,8 +3386,8 @@ Lexical form: <br>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Identifier for terminologies such as accessed via a terminology query service. In this class, the value attribute identifies the Terminology in the terminology service, e.g.  SNOMED-CT . A terminology is assumed to be in a particular language, which must be explicitly specified.<br>
-The value if the id attribute is the precise terminology id identifier, including actual release (i.e. actual  version), local modifications etc; e.g. ICPC2.<br>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Identifier for terminologies such as accessed via a terminology query service. In this class, the value attribute identifies the Terminology in the terminology service,  e.g.  SNOMED-CT . A terminology is assumed to be in a particular language,  which must be explicitly specified. <br>
+The value if the id attribute is the precise terminology id identifier, including actual release (i.e. actual  version ), local modifications etc; e.g.  ICPC2 . <br>
 Lexical form:    name [  (' version  )' ]</p></td>
 </tr>
 <tr>
@@ -3400,12 +3401,14 @@ Lexical form:    name [  (' version  )' ]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Return the terminology id (which includes the  version  in some cases). Distinct names correspond to distinct (i.e. non-compatible) terminologies. Thus the names  ICD10AM  and  ICD10  refer to distinct terminologies.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Return the terminology id (which includes the  version  in some cases). <br>
+Distinct names correspond to distinct (i.e. non-compatible) terminologies. <br>
+Thus the names  ICD10AM  and  ICD10  refer to distinct terminologies.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Version of this terminology, if versioning supported, else the empty string.</p></td>
 </tr>
 </tbody>
@@ -3426,7 +3429,7 @@ Lexical form:    name [  (' version  )' ]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Description</strong></p></td>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Generic identifier type for identifiers whose format is othterwise unknown to  openEHR. Includes an attribute for naming the identification scheme (which may  well be local).</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Generic identifier type for identifiers whose format is otherwise unknown to openEHR. Includes an attribute for naming the identification scheme (which may well be local).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
@@ -3439,10 +3442,8 @@ Lexical form:    name [  (' version  )' ]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong>:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the scheme to which this identifier conforms. Ideally this <br>
-name will be recognisable globally but realistically it may be a local ad <br>
-hoc scheme whose name is not controlled or standardised in any way.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the scheme to which this identifier conforms. Ideally this name will be recognisable globally but realistically it may be a local ad hoc scheme whose name is not controlled or standardised in any way.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3511,6 +3512,10 @@ local</p></td>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Inherit</strong></p></td>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">OBJECT_REF</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>Invariant</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong><em>Type_validity</em></strong>: type.is_equal (“ACCESS_GROUP”)</p></td>
 </tr>
 </tbody>
 </table>
@@ -4512,77 +4517,77 @@ the US NLM UMLS meta-data list at:-<br>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Terminology_id_openehr</strong>: <code>String&#160;=&#160;"openehr"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Terminology_id_openehr</strong>: <code>&#160;=&#160;"openehr"</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of openEHR&#8217;s own terminology.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_audit_change_type</strong>: <code>String&#160;=&#160;"audit change type"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_audit_change_type</strong>: <code>&#160;=&#160;"audit change type"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_attestation_reason</strong>: <code>String&#160;=&#160;"attestation reason"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_attestation_reason</strong>: <code>&#160;=&#160;"attestation reason"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_composition_category</strong>: <code>String&#160;=&#160;"composition category"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_composition_category</strong>: <code>&#160;=&#160;"composition category"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_event_math_function</strong>: <code>String&#160;=&#160;"event math function"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_event_math_function</strong>: <code>&#160;=&#160;"event math function"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_instruction_states</strong>: <code>String&#160;=&#160;"instruction states"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_instruction_states</strong>: <code>&#160;=&#160;"instruction states"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_instruction_transitions</strong>: <code>String&#160;=&#160;"instruction transitions"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_instruction_transitions</strong>: <code>&#160;=&#160;"instruction transitions"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_null_flavours</strong>: <code>String&#160;=&#160;"null flavours"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_null_flavours</strong>: <code>&#160;=&#160;"null flavours"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_property</strong>: <code>String&#160;=&#160;"property"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_property</strong>: <code>&#160;=&#160;"property"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_participation_function</strong>: <code>String&#160;=&#160;"participation function"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_participation_function</strong>: <code>&#160;=&#160;"participation function"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_participation_mode</strong>: <code>String&#160;=&#160;"participation mode"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_participation_mode</strong>: <code>&#160;=&#160;"participation mode"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_setting</strong>: <code>String&#160;=&#160;"setting"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_setting</strong>: <code>&#160;=&#160;"setting"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_term_mapping_purpose</strong>: <code>String&#160;=&#160;"term mapping purpose"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_term_mapping_purpose</strong>: <code>&#160;=&#160;"term mapping purpose"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_subject_relationship</strong>: <code>String&#160;=&#160;"subject relationship"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_subject_relationship</strong>: <code>&#160;=&#160;"subject relationship"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"><p class="tableblock"><strong>1..1</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_version_life_cycle_state</strong>: <code>String&#160;=&#160;"version lifecycle state"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_version_life_cycle_state</strong>: <code>&#160;=&#160;"version lifecycle state"</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -4592,8 +4597,9 @@ the US NLM UMLS meta-data list at:-<br>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top" style="background-color: lightblue;"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_terminology_group_id</strong> (an_id: <code>Boolean</code>): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Validity function to test if an identifier is in the set defined by this class.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_terminology_group_id</strong> (an_id: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validity function to test if an identifier is in the set defined by <br>
+this class.</p></td>
 </tr>
 </tbody>
 </table>
