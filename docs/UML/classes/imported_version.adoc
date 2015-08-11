@@ -2,58 +2,41 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*IMPORTED_VERSION*
+h|*Class*
+2+^h|*IMPORTED_VERSION*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Versions whose content is an ORIGINAL_VERSION copied from another location; this class inherits commit_audit and contribution from VERSION<T>, providing imported versions with their own audit trail and Contribution, distinct from those of the imported ORIGINAL_VERSION. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|Versions whose content is an ORIGINAL_VERSION copied from another location; this class inherits commit_audit and contribution from VERSION<T>, providing imported versions with their own audit trail and Contribution, distinct from those of the imported ORIGINAL_VERSION. 
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|VERSION
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*item*: `ORIGINAL_VERSION`
-{set:cellbgcolor!}
-|The ORIGINAL_VERSION object that was imported. 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|The ORIGINAL_VERSION object that was imported. 
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*uid*: `OBJECT_VERSION_ID` +
 *_Post_*: Result = item.uid
-{set:cellbgcolor!}
-|Computed version of inheritance precursor, derived as item.uid. 
+a|Computed version of inheritance precursor, derived as item.uid. 
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*preceding_version_uid*: `OBJECT_VERSION_ID` +
 *_Post_*: Result = item.preceding_version_uid
-{set:cellbgcolor!}
-|Computed version of inheritance precursor, derived as item.preceding_version_uid. 
+a|Computed version of inheritance precursor, derived as item.preceding_version_uid. 
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*lifecycle_state*: `DV_CODED_TEXT`
-{set:cellbgcolor!}
-|Lifecycle state of the content item in wrapped ORIGINAL_VERSION, derived as item.lifecycle_state. 
+a|Lifecycle state of the content item in wrapped ORIGINAL_VERSION, derived as item.lifecycle_state. 
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*data*: `T`
-{set:cellbgcolor!}
-|Original content of this Version. 
+a|Original content of this Version. 
 |===

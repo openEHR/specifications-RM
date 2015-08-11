@@ -2,51 +2,37 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*PARTY_IDENTIFIED*
+h|*Class*
+2+^h|*PARTY_IDENTIFIED*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Proxy data for an identified party other than the subject of the record, minimally consisting of human-readable identifier(s), such as name, formal (and possibly computable) identifiers such as NHS number, and an optional link to external data. There must be at least one of name, identifier or external_ref present. +
-Used to describe parties where only identifiers may be known, and there is no entry at all in the demographic system (or even no demographic system). Typically for health care providers, e.g. name and provider number of an institution.  +
+h|*Description*
+2+a|Proxy data for an identified party other than the subject of the record, minimally consisting of human-readable identifier(s), such as name, formal (and possibly computable) identifiers such as NHS number, and an optional link to external data. There must be at least one of name, identifier or external_ref present.
+
+Used to describe parties where only identifiers may be known, and there is no entry at all in the demographic system (or even no demographic system). Typically for health care providers, e.g. name and provider number of an institution. 
+
 Should not be used to include patient identifying information. 
-{set:cellbgcolor!}
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|PARTY_PROXY
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*name*: `String`
-{set:cellbgcolor!}
-|Optional human-readable name (in String form).
+a|Optional human-readable name (in String form).
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*identifiers*: `List<DV_IDENTIFIER>`
-{set:cellbgcolor!}
-|One or more formal identifiers (possibly computable). 
+a|One or more formal identifiers (possibly computable). 
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Basic_validity_*: name /= Void or identifiers /= Void or external_ref /= Void
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Basic_validity_*: name /= Void or identifiers /= Void or external_ref /= Void
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Name_valid_*: name /= Void implies not name.is_empty
-{set:cellbgcolor!}
+h|
+2+a|*_Name_valid_*: name /= Void implies not name.is_empty
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Identifiers_valid_*: identifiers /= Void implies not identifiers.is_empty
-{set:cellbgcolor!}
+h|
+2+a|*_Identifiers_valid_*: identifiers /= Void implies not identifiers.is_empty
 |===

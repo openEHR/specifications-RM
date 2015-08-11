@@ -2,90 +2,60 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*EHR*
+h|*Class*
+2+^h|*EHR*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|The EHR object is the root object and access point of an EHR for a subject of care. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|The EHR object is the root object and access point of an EHR for a subject of care. 
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*system_id*: `HIER_OBJECT_ID`
-{set:cellbgcolor!}
-|The id of the EHR system on which this EHR was created. 
+a|The id of the EHR system on which this EHR was created. 
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*ehr_id*: `HIER_OBJECT_ID`
-{set:cellbgcolor!}
-|The id of this EHR. 
+a|The id of this EHR. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*contributions*: `List<OBJECT_REF>`
-{set:cellbgcolor!}
-|List of contributions causing changes to this EHR. Each contribution contains a list of versions, which may include references to any number of VERSION instances, i.e. items of type VERSIONED_COMPOSITION and VERSIONED_FOLDER. 
+a|List of contributions causing changes to this EHR. Each contribution contains a list of versions, which may include references to any number of VERSION instances, i.e. items of type VERSIONED_COMPOSITION and VERSIONED_FOLDER. 
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*ehr_status*: `OBJECT_REF`
-{set:cellbgcolor!}
-|Reference to EHR_STATUS object for this EHR.
+a|Reference to EHR_STATUS object for this EHR.
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*ehr_access*: `OBJECT_REF`
-{set:cellbgcolor!}
-|Reference to EHR_ACCESS object for this EHR.
+a|Reference to EHR_ACCESS object for this EHR.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*compositions*: `List<OBJECT_REF>`
-{set:cellbgcolor!}
-|Master list of all Versioned Composition references in this EHR.
+a|Master list of all Versioned Composition references in this EHR.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*directory*: `OBJECT_REF`
-{set:cellbgcolor!}
-|Optional directory structure for this EHR. 
+a|Optional directory structure for this EHR. 
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*time_created*: `DV_DATE_TIME`
-{set:cellbgcolor!}
-|Time of creation of the EHR.
+a|Time of creation of the EHR.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Contributions_valid_*: contributions.for_all (c | c.type.is_equal(“CONTRIBUTION”))
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Contributions_valid_*: contributions.for_all (c &#124; c.type.is_equal(“CONTRIBUTION”))
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Ehr_access_valid_*: ehr_access.type.is_equal (“VERSIONED_EHR_ACCESS”)
-{set:cellbgcolor!}
+h|
+2+a|*_Ehr_access_valid_*: ehr_access.type.is_equal (“VERSIONED_EHR_ACCESS”)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Ehr_status_valid_*: ehr_status.type.is_equal(“VERSIONED_EHR_STATUS”)
-{set:cellbgcolor!}
+h|
+2+a|*_Ehr_status_valid_*: ehr_status.type.is_equal(“VERSIONED_EHR_STATUS”)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Compositions_valid_*: compositions.for_all (c | c.type.is_equal (“VERSIONED_COMPOSITION”))
-{set:cellbgcolor!}
+h|
+2+a|*_Compositions_valid_*: compositions.for_all (c &#124; c.type.is_equal (“VERSIONED_COMPOSITION”))
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Directory_valid_*: directory /= Void implies directory.type.is_equal (“VERSIONED_FOLDER”)
-{set:cellbgcolor!}
+h|
+2+a|*_Directory_valid_*: directory /= Void implies directory.type.is_equal (“VERSIONED_FOLDER”)
 |===

@@ -2,87 +2,68 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*_DV_AMOUNT (abstract)_*
+h|*Class*
+2+^h|*_DV_AMOUNT (abstract)_*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Abstract class defining the concept of relative quantified  amounts'. For relative quantities, the  +' and  -' operators are defined (unlike descendants of DV_ABSOLUTE_QUANTITY, such as the date/time types). 
-{set:cellbgcolor!}
+h|*Description*
+2+a|Abstract class defining the concept of relative quantified  amounts'. For relative quantities, the  +' and  -' operators are defined (unlike descendants of DV_ABSOLUTE_QUANTITY, such as the date/time types). 
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|DV_QUANTIFIED
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*accuracy_is_percent*: `Boolean`
-{set:cellbgcolor!}
-|If True, indicates that when this object was created, accuracy was recorded as a percent value; if False, as an absolute quantity value.
+a|If True, indicates that when this object was created, accuracy was recorded as a percent value; if False, as an absolute quantity value.
 
-|*0..1 +
+h|*0..1 +
 (redefined)*
-{set:cellbgcolor:lightblue}
 |*accuracy*: `Real`
-{set:cellbgcolor!}
-|Accuracy of measurement, expressed either as a half-range percent value (accuracy_is_percent = True) or a half-range quantity. A value of 0 means that accuracy is 100%, i.e. no error. +
+a|Accuracy of measurement, expressed either as a half-range percent value (accuracy_is_percent = True) or a half-range quantity. A value of 0 means that accuracy is 100%, i.e. no error.
+
 A value of unknown_accuracy_value means that accuracy was not recorded.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*valid_percentage* (number: `Ordered_Numeric`): `Boolean`
-{set:cellbgcolor!}
-|Test whether a number is a valid percentage, i.e. between 0 and 100. 
+a|Test whether a number is a valid percentage, i.e. between 0 and 100. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*infix +* (other: `DV_AMOUNT`): `DV_AMOUNT`
-{set:cellbgcolor!}
-|Sum of this quantity and another whose formal type must be the difference type of this quantity. The value of accuracy in the result is either: +
-* the sum of the accuracies of the operands, if both present, or; +
-*both operand accuracies are unknown_accuracy_value. +
+a|Sum of this quantity and another whose formal type must be the difference type of this quantity. The value of accuracy in the result is either:
+
+* the sum of the accuracies of the operands, if both present, or;
+*both operand accuracies are unknown_accuracy_value.
+
 If the accuracy value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*infix -* (other: `DV_AMOUNT`): `DV_AMOUNT`
-{set:cellbgcolor!}
-|Negated version of current object, such as used for representing a difference, e.g. a weight loss. +
-The value of accuracy in the result is either: +
-* the sum of the accuracies of the operands, if both present, or; +
-* unknown, if either or both operand accuracies are unknown. +
+a|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
+
+The value of accuracy in the result is either:
+
+* the sum of the accuracies of the operands, if both present, or;
+* unknown, if either or both operand accuracies are unknown.
+
 If the accuracy value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*prefix -*: `DV_AMOUNT`
-{set:cellbgcolor!}
-|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
+a|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*infix =* (source: `DV_AMOUNT`): `DV_AMOUNT`
-{set:cellbgcolor!}
-|
+a|
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Accuracy_is_percent_validity_*: accuracy = 0 implies not accuracy_is_percent
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Accuracy_is_percent_validity_*: accuracy = 0 implies not accuracy_is_percent
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Accuracy_validity_*: accuracy_is_percent implies valid_percentage (accuracy)
-{set:cellbgcolor!}
+h|
+2+a|*_Accuracy_validity_*: accuracy_is_percent implies valid_percentage (accuracy)
 |===

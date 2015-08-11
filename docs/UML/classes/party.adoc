@@ -2,94 +2,63 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*_PARTY (abstract)_*
+h|*Class*
+2+^h|*_PARTY (abstract)_*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Ancestor of all party types, including real world entities and their roles. A party is any entity which can participate in an activity. The name attribute inherited from LOCATABLE is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the identities attribute, not the name attribute).
-{set:cellbgcolor!}
+h|*Description*
+2+a|Ancestor of all party types, including real world entities and their roles. A party is any entity which can participate in an activity. The name attribute inherited from LOCATABLE is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the identities attribute, not the name attribute).
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|LOCATABLE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*identities*: `List<PARTY_IDENTITY>`
-{set:cellbgcolor!}
-|Identities used by the party to identify itself, such as legal name, stage names, aliases, nicknames and so on.
+a|Identities used by the party to identify itself, such as legal name, stage names, aliases, nicknames and so on.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*contacts*: `List<CONTACT>`
-{set:cellbgcolor!}
-|Contacts for this party.
+a|Contacts for this party.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*details*: `ITEM_STRUCTURE`
-{set:cellbgcolor!}
-|All other details for this party.
+a|All other details for this party.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*reverse_relationships*: `List<LOCATABLE_REF>`
-{set:cellbgcolor!}
-|Relationships in which this role takes part as target.
+a|Relationships in which this role takes part as target.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*relationships*: `List<PARTY_RELATIONSHIP>`
-{set:cellbgcolor!}
-|Relationships in which this role takes part as source.
+a|Relationships in which this role takes part as source.
 
-|*1..1 +
+h|*1..1 +
 (redefined)*
-{set:cellbgcolor:lightblue}
 |*uid*: `HIER_OBJECT_ID`
-{set:cellbgcolor!}
-|Identifier of this Party.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|Identifier of this Party.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*type*: `ITEM_STRUCTURE`
-{set:cellbgcolor!}
-|Type of party, such as  PERSON ,  ORGANISATION , etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited name attribute.
+a|Type of party, such as  PERSON ,  ORGANISATION , etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited name attribute.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Type_valid_*: type = name
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Type_valid_*: type = name
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Contacts_valid_*: contacts /= Void implies not contacts.is_empty
-{set:cellbgcolor!}
+h|
+2+a|*_Contacts_valid_*: contacts /= Void implies not contacts.is_empty
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Relationships_validity_*: relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r | r.source = self)
-{set:cellbgcolor!}
+h|
+2+a|*_Relationships_validity_*: relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r &#124; r.source = self)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Reverse_relationships_validity_*: reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item | repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))
-{set:cellbgcolor!}
+h|
+2+a|*_Reverse_relationships_validity_*: reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Is_archetype_root_*: is_archetype_root
-{set:cellbgcolor!}
+h|
+2+a|*_Is_archetype_root_*: is_archetype_root
 |===

@@ -2,49 +2,34 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*CONTACT*
+h|*Class*
+2+^h|*CONTACT*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Description of a means of contact of a party. Actual structure is archetyped.
-{set:cellbgcolor!}
+h|*Description*
+2+a|Description of a means of contact of a party. Actual structure is archetyped.
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|LOCATABLE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*addresses*: `List<ADDRESS>`
-{set:cellbgcolor!}
-|A set of address alternatives for this purpose and time validity.
+a|A set of address alternatives for this purpose and time validity.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*time_validity*: `DV_INTERVAL<DV_DATE>`
-{set:cellbgcolor!}
-|Valid time interval for this contact descriptor.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|Valid time interval for this contact descriptor.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*purpose*: `DV_TEXT`
-{set:cellbgcolor!}
-|Purpose for which this contact is used, e.g.  mail ,  daytime phone , etc. Taken from value of inherited name attribute.
+a|Purpose for which this contact is used, e.g.  mail ,  daytime phone , etc. Taken from value of inherited name attribute.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Purpose_valid_*: purpose = name
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Purpose_valid_*: purpose = name
 |===

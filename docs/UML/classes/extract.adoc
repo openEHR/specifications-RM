@@ -2,69 +2,47 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*EXTRACT*
+h|*Class*
+2+^h|*EXTRACT*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Generic model of an Extract of some information from a repository.
-{set:cellbgcolor!}
+h|*Description*
+2+a|Generic model of an Extract of some information from a repository.
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|LOCATABLE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*chapters*: `List<EXTRACT_CHAPTER>`
-{set:cellbgcolor!}
-|The content extracted and serialised from the source repository for this Extract.
+a|The content extracted and serialised from the source repository for this Extract.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*specification*: `EXTRACT_SPEC`
-{set:cellbgcolor!}
-|The specification that this Extract actually conforms to; might not be identical with the specification of the corresponding request.
+a|The specification that this Extract actually conforms to; might not be identical with the specification of the corresponding request.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*request_id*: `HIER_OBJECT_ID`
-{set:cellbgcolor!}
-|Reference to causing Request, if any.
+a|Reference to causing Request, if any.
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*time_created*: `DV_DATE_TIME`
-{set:cellbgcolor!}
-|Creation time of this Extract
+a|Creation time of this Extract
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*system_id*: `HIER_OBJECT_ID`
-{set:cellbgcolor!}
-|Identifier of creating system.
+a|Identifier of creating system.
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*sequence_nr*: `Integer`
-{set:cellbgcolor!}
-|Number of this Extract response in sequence of responses to Extract request identified by request_id. If this is the sole response, or there was no request, value is 1.
+a|Number of this Extract response in sequence of responses to Extract request identified by request_id. If this is the sole response, or there was no request, value is 1.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*participations*: `List<EXTRACT_PARTICIPATION>`
-{set:cellbgcolor!}
-|Participations relevant to the creation of this Extract.
+a|Participations relevant to the creation of this Extract.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Sequence_nr_valid_*: sequence_nr >= 1
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Sequence_nr_valid_*: sequence_nr >= 1
 |===

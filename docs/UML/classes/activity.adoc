@@ -2,46 +2,33 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*ACTIVITY*
+h|*Class*
+2+^h|*ACTIVITY*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Defines a single activity within an Instruction, such as a medication administration. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|Defines a single activity within an Instruction, such as a medication administration. 
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|LOCATABLE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*timing*: `DV_PARSABLE`
-{set:cellbgcolor!}
-|Timing of the activity, in the form of a parsable string, such as an HL7 GTS or ISO8601 string.
+a|Timing of the activity, in the form of a parsable string, such as an HL7 GTS or ISO8601 string.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*action_archetype_id*: `String`
-{set:cellbgcolor!}
-|Perl-compliant regular expression pattern, enclosed in  //' delimiters, indicating the valid archetype identifiers of archetypes for Actions corresponding to this Activity specification.  +
+a|Perl-compliant regular expression pattern, enclosed in  //' delimiters, indicating the valid archetype identifiers of archetypes for Actions corresponding to this Activity specification. 
+
 Defaults to  /.*/ , meaning any archetype.
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*description*: `ITEM_STRUCTURE`
-{set:cellbgcolor!}
-|Description of the activity, in the form of an archetyped structure.
+a|Description of the activity, in the form of an archetyped structure.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Action_archteype_id_valid_*: not action_archetype_ids.is_empty
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Action_archteype_id_valid_*: not action_archetype_ids.is_empty
 |===

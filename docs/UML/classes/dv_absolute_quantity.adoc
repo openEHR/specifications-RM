@@ -2,60 +2,51 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*_DV_ABSOLUTE_QUANTITY (abstract)_*
+h|*Class*
+2+^h|*_DV_ABSOLUTE_QUANTITY (abstract)_*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Abstract class defining the concept of quantified entities whose values are absolute with respect to an origin. Dates and Times are the main example.
-{set:cellbgcolor!}
+h|*Description*
+2+a|Abstract class defining the concept of quantified entities whose values are absolute with respect to an origin. Dates and Times are the main example.
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|DV_QUANTIFIED
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1 +
+h|*0..1 +
 (redefined)*
-{set:cellbgcolor:lightblue}
 |*accuracy*: `DV_AMOUNT`
-{set:cellbgcolor!}
-|
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*diff* (other: `DV_ABSOLUTE_QUANTITY`): `DV_AMOUNT`
-{set:cellbgcolor!}
-|Difference of two quantities. +
-The value of accuracy in the result is either: +
-* the sum of the accuracies of the operands, if both present, or; +
+a|Difference of two quantities.
+
+The value of accuracy in the result is either:
+
+* the sum of the accuracies of the operands, if both present, or;
 * unknown, if either or both operand accuracies are unknown.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*add* (a_diff: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
-{set:cellbgcolor!}
-|Addition of a differential amount to this quantity.  +
-The value of accuracy in the result is either: +
-* the sum of the accuracies of the operands, if both present, or; +
+a|Addition of a differential amount to this quantity. 
+
+The value of accuracy in the result is either:
+
+* the sum of the accuracies of the operands, if both present, or;
 * unknown, if either or both operand accuracies are unknown.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*subtract* (a_diif: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
-{set:cellbgcolor!}
-|Result of subtracting a differential amount from this quantity. +
-The value of accuracy in the result is either: +
-* the sum of the accuracies of the operands, if both present, or; +
+a|Result of subtracting a differential amount from this quantity.
+
+The value of accuracy in the result is either:
+
+* the sum of the accuracies of the operands, if both present, or;
 * unknown, if either or both operand accuracies are unknown.
 |===

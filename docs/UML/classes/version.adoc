@@ -2,97 +2,66 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*_VERSION (abstract)_*
+h|*Class*
+2+^h|*_VERSION (abstract)_*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Abstract model of one Version within a Version container, containing data, commit audit trail, and the identifier of its Contribution.
-{set:cellbgcolor!}
+h|*Description*
+2+a|Abstract model of one Version within a Version container, containing data, commit audit trail, and the identifier of its Contribution.
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*contribution*: `OBJECT_REF`
-{set:cellbgcolor!}
-|Contribution in which this version was added. 
+a|Contribution in which this version was added. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*signature*: `String`
-{set:cellbgcolor!}
-|OpenPGP digital signature or digest of content committed in this Version. 
+a|OpenPGP digital signature or digest of content committed in this Version. 
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*commit_audit*: `AUDIT_DETAILS`
-{set:cellbgcolor!}
-|Audit trail corresponding to the committal of this version to the VERSIONED_OBJECT.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|Audit trail corresponding to the committal of this version to the VERSIONED_OBJECT.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*uid*: `OBJECT_VERSION_ID`
-{set:cellbgcolor!}
-|Unique identifier of this version, containing owner_id, version_tree_id and creating_system_id.
+a|Unique identifier of this version, containing owner_id, version_tree_id and creating_system_id.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*preceding_version_uid*: `OBJECT_VERSION_ID`
-{set:cellbgcolor!}
-|Unique identifier of the version of which this version is a modification; Void if this is the first version.
+a|Unique identifier of the version of which this version is a modification; Void if this is the first version.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*data*: `T`
-{set:cellbgcolor!}
-|Original content of this Version. 
+a|Original content of this Version. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*lifecycle_state*: `DV_CODED_TEXT`
-{set:cellbgcolor!}
-|Lifecycle state of this version; coded by openEHR vocabulary version lifecycle state . 
+a|Lifecycle state of this version; coded by openEHR vocabulary version lifecycle state . 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*canonical_form*: `String`
-{set:cellbgcolor!}
-|Canonical form of Version object, created by serialising all attributes except  +
+a|Canonical form of Version object, created by serialising all attributes except 
 signature.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*owner_id*: `HIER_OBJECT_ID`
-{set:cellbgcolor!}
-|Unique identifier of the owning VERSIONED_OBJECT. 
+a|Unique identifier of the owning VERSIONED_OBJECT. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*is_branch*: `Boolean`
-{set:cellbgcolor!}
-|True if this Version represents a branch. Derived from uid attribute. 
+a|True if this Version represents a branch. Derived from uid attribute. 
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Owner_id_valid_*: owner_id.value.is_equal (uid.object_id.value)
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Owner_id_valid_*: owner_id.value.is_equal (uid.object_id.value)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Preceding_version_uid_validity_*: uid.version_tree_id.is_first xor preceding_version_uid /= Void
-{set:cellbgcolor!}
+h|
+2+a|*_Preceding_version_uid_validity_*: uid.version_tree_id.is_first xor preceding_version_uid /= Void
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Lifecycle_state_ valid_*: lifecycle_state /= Void and then terminology (Term_id_openehr).has_code_for_group_id (Group_id_version_lifecycle_state, lifecycle_state.defining_code)
-{set:cellbgcolor!}
+h|
+2+a|*_Lifecycle_state_ valid_*: lifecycle_state /= Void and then terminology (Term_id_openehr).has_code_for_group_id (Group_id_version_lifecycle_state, lifecycle_state.defining_code)
 |===

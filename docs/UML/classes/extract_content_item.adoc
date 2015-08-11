@@ -2,58 +2,40 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*_EXTRACT_CONTENT_ITEM (abstract)_*
+h|*Class*
+2+^h|*_EXTRACT_CONTENT_ITEM (abstract)_*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Abstract model of a wrapper for one content item in an Extract, containing various meta-data. Indicates whether it was part of the primary set and what its original path was. Intended to be subtyped for wrappers of specific types of content.
-{set:cellbgcolor!}
+h|*Description*
+2+a|Abstract model of a wrapper for one content item in an Extract, containing various meta-data. Indicates whether it was part of the primary set and what its original path was. Intended to be subtyped for wrappers of specific types of content.
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|EXTRACT_ITEM
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*is_primary*: `Boolean`
-{set:cellbgcolor!}
-|True if the content item carried in this container was part of the primary set for the Extract, i.e. not added due to link-following.
+a|True if the content item carried in this container was part of the primary set for the Extract, i.e. not added due to link-following.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*is_changed*: `Boolean`
-{set:cellbgcolor!}
-|True if the content item carried in this container is any kind of change since last send, in repeat sending situations.
+a|True if the content item carried in this container is any kind of change since last send, in repeat sending situations.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*is_masked*: `Boolean`
-{set:cellbgcolor!}
-|True if the content of this item has not been included due to insufficient access rights of requestor.
+a|True if the content of this item has not been included due to insufficient access rights of requestor.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*item*: `Any`
-{set:cellbgcolor!}
-|Content object.
+a|Content object.
 
-|*1..1 +
+h|*1..1 +
 (redefined)*
-{set:cellbgcolor:lightblue}
 |*uid*: `HIER_OBJECT_ID`
-{set:cellbgcolor!}
-|Unique id of this Extract item; used for all referencing from elsewhere in Extract, including from Extract Folders.
+a|Unique id of this Extract item; used for all referencing from elsewhere in Extract, including from Extract Folders.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Item_validity_*: is_masked xor item /= Void
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Item_validity_*: is_masked xor item /= Void
 |===

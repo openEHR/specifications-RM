@@ -2,129 +2,86 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*DV_MULTIMEDIA*
+h|*Class*
+2+^h|*DV_MULTIMEDIA*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|A specialisation of DV_ENCAPSULATED for audiovisual and biosignal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of DV_ENCAPSULATED.
-{set:cellbgcolor!}
+h|*Description*
+2+a|A specialisation of DV_ENCAPSULATED for audiovisual and biosignal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of DV_ENCAPSULATED.
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|DV_ENCAPSULATED
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*alternate_text*: `String`
-{set:cellbgcolor!}
-|Text to display in lieu of multimedia display/replay.
+a|Text to display in lieu of multimedia display/replay.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*uri*: `DV_URI`
-{set:cellbgcolor!}
-|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference. 
+a|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*data*: `Byte`
-{set:cellbgcolor!}
-|The actual data found at uri, if supplied inline.
+a|The actual data found at uri, if supplied inline.
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*media_type*: `CODE_PHRASE`
-{set:cellbgcolor!}
-|Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set). 
+a|Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set). 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*compression_algorithm*: `CODE_PHRASE`
-{set:cellbgcolor!}
-|Compression type, a coded value from the openEHR  Integrity check  code set. Void means no compression. 
+a|Compression type, a coded value from the openEHR  Integrity check  code set. Void means no compression. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*integrity_check*: `Byte`
-{set:cellbgcolor!}
-|Binary cryptographic integrity checksum.
+a|Binary cryptographic integrity checksum.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*integrity_check_algorithm*: `List<CODE_PHRASE>`
-{set:cellbgcolor!}
-|Type of integrity check, a coded value from the openEHR  Integrity check  code set. 
+a|Type of integrity check, a coded value from the openEHR  Integrity check  code set. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*thumbnail*: `DV_MULTIMEDIA`
-{set:cellbgcolor!}
-|The thumbnail for this item, if one exists; mainly for graphics formats.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|The thumbnail for this item, if one exists; mainly for graphics formats.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*is_external*: `Boolean`
-{set:cellbgcolor!}
-|Computed from the value of the uri attribute: True if  the data is stored externally to the record, as indicated by `uri'. A copy may also be stored internally, in which case `is_expanded' is also true.
+a|Computed from the value of the uri attribute: True if  the data is stored externally to the record, as indicated by `uri'. A copy may also be stored internally, in which case `is_expanded' is also true.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*is_inline*: `Boolean`
-{set:cellbgcolor!}
-|Computed from the value of the data attribute. True if  the  data is stored  in  expanded  form, ie within the EHR itself. 
+a|Computed from the value of the data attribute. True if  the  data is stored  in  expanded  form, ie within the EHR itself. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*is_compressed*: `Boolean`
-{set:cellbgcolor!}
-|Computed from the value of the compression_algorithm attribute: True if  the  data is stored  in  compressed form. 
+a|Computed from the value of the compression_algorithm attribute: True if  the  data is stored  in  compressed form. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*has_integrity_check*: `Boolean`
-{set:cellbgcolor!}
-|Computed from the value of the integrity_check_algorithm attribute: True if an integrity check has been computed. 
+a|Computed from the value of the integrity_check_algorithm attribute: True if an integrity check has been computed. 
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*size*: `Integer`
-{set:cellbgcolor!}
-|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc do not change the value of this attribute.
+a|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc do not change the value of this attribute.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Not_empty_*: is_inline or is_external
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Not_empty_*: is_inline or is_external
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Media_type_valid_*: media_type /= Void and then code_set (Code_set_id_media_types).has_code (media_type)
-{set:cellbgcolor!}
+h|
+2+a|*_Media_type_valid_*: media_type /= Void and then code_set (Code_set_id_media_types).has_code (media_type)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Compression_algorithm_validity_*: compression_algorithm /= Void implies code_set (Code_set_id_compression_algorithms).has_code (compression_algorithm)
-{set:cellbgcolor!}
+h|
+2+a|*_Compression_algorithm_validity_*: compression_algorithm /= Void implies code_set (Code_set_id_compression_algorithms).has_code (compression_algorithm)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Integrity_check_validity_*: integrity_check /= Void implies integrity_check_algorithm /= Void
-{set:cellbgcolor!}
+h|
+2+a|*_Integrity_check_validity_*: integrity_check /= Void implies integrity_check_algorithm /= Void
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Integrity_check_algorithm_validity_*: integrity_check_algorithm /= Void implies code_set (Code_set_id_integrity_check_algorithms).has_code (integrity_check_algorithm)
-{set:cellbgcolor!}
+h|
+2+a|*_Integrity_check_algorithm_validity_*: integrity_check_algorithm /= Void implies code_set (Code_set_id_integrity_check_algorithms).has_code (integrity_check_algorithm)
 |===

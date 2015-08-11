@@ -2,48 +2,33 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*EHR_ACCESS*
+h|*Class*
+2+^h|*EHR_ACCESS*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|EHR-wide access contol object. All access decisions to data in the EHR must be made in accordance with the policies and rules in this object. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|EHR-wide access contol object. All access decisions to data in the EHR must be made in accordance with the policies and rules in this object. 
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|LOCATABLE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*settings*: `ACCESS_CONTROL_SETTINGS`
-{set:cellbgcolor!}
-|Access control settings for the EHR. Instance is a subtype of the type ACCESS_CONTROL_SETTINGS, allowing for the use of different access control schemes. 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|Access control settings for the EHR. Instance is a subtype of the type ACCESS_CONTROL_SETTINGS, allowing for the use of different access control schemes. 
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*scheme*: `String`
-{set:cellbgcolor!}
-|The name of the access control scheme in use; corresponds to the concrete instance of the settings attribute. 
+a|The name of the access control scheme in use; corresponds to the concrete instance of the settings attribute. 
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Scheme_valid_*: not scheme.is_empty
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Scheme_valid_*: not scheme.is_empty
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Is_archetype_root_*: is_archetype_root
-{set:cellbgcolor!}
+h|
+2+a|*_Is_archetype_root_*: is_archetype_root
 |===

@@ -2,45 +2,31 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*ROLE*
+h|*Class*
+2+^h|*ROLE*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Generic description of a role performed by an actor. The role corresponds to a competency of the party. Roles are used to define the responsibilities undertaken by a party for a purpose. Roles should have credentials qualifying the performer to perform the role.
-{set:cellbgcolor!}
+h|*Description*
+2+a|Generic description of a role performed by an actor. The role corresponds to a competency of the party. Roles are used to define the responsibilities undertaken by a party for a purpose. Roles should have credentials qualifying the performer to perform the role.
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|PARTY
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*time_validity*: `DV_INTERVAL<DV_DATE>`
-{set:cellbgcolor!}
-|Valid time interval for this role.
+a|Valid time interval for this role.
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*performer*: `PARTY_REF`
-{set:cellbgcolor!}
-|Reference to Version container of Actor playing the role.
+a|Reference to Version container of Actor playing the role.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*capabilities*: `List<CAPABILITY>`
-{set:cellbgcolor!}
-|The capabilities of this role.
+a|The capabilities of this role.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Capabilities_valid_*: capabilities /= Void implies not capabilities.empty
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Capabilities_valid_*: capabilities /= Void implies not capabilities.empty
 |===

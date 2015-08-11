@@ -2,98 +2,65 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*COMPOSITION*
+h|*Class*
+2+^h|*COMPOSITION*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|One version in a VERSIONED_COMPOSITION. A composition is considered the unit of modification of the record, the unit of transmission in record extracts, and the unit of attestation by authorising clinicians. In this latter sense, it may be considered equivalent to a signed document. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|One version in a VERSIONED_COMPOSITION. A composition is considered the unit of modification of the record, the unit of transmission in record extracts, and the unit of attestation by authorising clinicians. In this latter sense, it may be considered equivalent to a signed document. 
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|LOCATABLE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*language*: `CODE_PHRASE`
-{set:cellbgcolor!}
-|Mandatory indicator of the localised language in which this Composition is written. Coded from openEHR Code Set  languages . The language of an Entry if different from the Composition is indicated in ENTRY.language. 
+a|Mandatory indicator of the localised language in which this Composition is written. Coded from openEHR Code Set  languages . The language of an Entry if different from the Composition is indicated in ENTRY.language. 
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*territory*: `CODE_PHRASE`
-{set:cellbgcolor!}
-|Name of territory in which this Composition was written. Coded from openEHR  countries  code set, which is an expression of the ISO 3166 standard.
+a|Name of territory in which this Composition was written. Coded from openEHR  countries  code set, which is an expression of the ISO 3166 standard.
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*category*: `DV_CODED_TEXT`
-{set:cellbgcolor!}
-|Indicates what broad category this Composition is belogs to, e.g. persistent  - of longitudinal validity,  event ,  process  etc. 
+a|Indicates what broad category this Composition is belogs to, e.g. persistent  - of longitudinal validity,  event ,  process  etc. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*context*: `EVENT_CONTEXT`
-{set:cellbgcolor!}
-|The clinical session context of this Composition, i.e. the contextual attributes of the clinical session. 
+a|The clinical session context of this Composition, i.e. the contextual attributes of the clinical session. 
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*composer*: `PARTY_PROXY`
-{set:cellbgcolor!}
-|The person primarily responsible for the content of the Composition (but not necessarily its committal into the EHR system). This is the identifier which should appear on the screen. It may or may not be the person who entered the data. When it is the patient, the special self  instance of PARTY_PROXY will be used.
+a|The person primarily responsible for the content of the Composition (but not necessarily its committal into the EHR system). This is the identifier which should appear on the screen. It may or may not be the person who entered the data. When it is the patient, the special self  instance of PARTY_PROXY will be used.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*content*: `List<CONTENT_ITEM>`
-{set:cellbgcolor!}
-|The content of this Composition. 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|The content of this Composition. 
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*is_persistent*: `Boolean`
-{set:cellbgcolor!}
-|True if category is a  persistent  type, False otherwise. Useful for finding Compositions in an EHR which are guaranteed to be of interest to most users. 
+a|True if category is a  persistent  type, False otherwise. Useful for finding Compositions in an EHR which are guaranteed to be of interest to most users. 
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Category_validity_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_composition_category, category.defining_code)
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Category_validity_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_composition_category, category.defining_code)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Is_persistent_validity_*: is_persistent implies context = Void
-{set:cellbgcolor!}
+h|
+2+a|*_Is_persistent_validity_*: is_persistent implies context = Void
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Territory_valid_*: code_set(Code_set_id_countries).has_code(territory)
-{set:cellbgcolor!}
+h|
+2+a|*_Territory_valid_*: code_set(Code_set_id_countries).has_code(territory)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Language_valid_*: code_set(Code_set_id_languages).has_code(language)
-{set:cellbgcolor!}
+h|
+2+a|*_Language_valid_*: code_set(Code_set_id_languages).has_code(language)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Content_valid_*: content /= Void implies not content.is_empty
-{set:cellbgcolor!}
+h|
+2+a|*_Content_valid_*: content /= Void implies not content.is_empty
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Is_archetype_root_*: is_archetype_root
-{set:cellbgcolor!}
+h|
+2+a|*_Is_archetype_root_*: is_archetype_root
 |===

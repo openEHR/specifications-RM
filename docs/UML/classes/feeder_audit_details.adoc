@@ -2,58 +2,40 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*FEEDER_AUDIT_DETAILS*
+h|*Class*
+2+^h|*FEEDER_AUDIT_DETAILS*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Audit details for any system in a feeder system chain. Audit details here means the general notion of who/where/when the information item to which the audit is attached was created. None of the attributes is defined as mandatory, however, in different scenarios, various combinations of attributes will usually be mandatory. This can be controlled by specifying feeder audit details in legacy archetypes. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|Audit details for any system in a feeder system chain. Audit details here means the general notion of who/where/when the information item to which the audit is attached was created. None of the attributes is defined as mandatory, however, in different scenarios, various combinations of attributes will usually be mandatory. This can be controlled by specifying feeder audit details in legacy archetypes. 
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*system_id*: `String`
-{set:cellbgcolor!}
-|Identifier of the system which handled the information item. 
+a|Identifier of the system which handled the information item. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*location*: `PARTY_IDENTIFIED`
-{set:cellbgcolor!}
-|Identifier of the particular site/facility within an organisation which handled the item. For computability, this identifier needs to be e.g. a PKI identifier which can be included in the identifier list of the PARTY_IDENTIFIED object. 
+a|Identifier of the particular site/facility within an organisation which handled the item. For computability, this identifier needs to be e.g. a PKI identifier which can be included in the identifier list of the PARTY_IDENTIFIED object. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*subject*: `PARTY_PROXY`
-{set:cellbgcolor!}
-|Identifiers for subject of the received information item. 
+a|Identifiers for subject of the received information item. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*provider*: `PARTY_IDENTIFIED`
-{set:cellbgcolor!}
-|Optional provider(s) who created, committed, forwarded or otherwise handled the item. 
+a|Optional provider(s) who created, committed, forwarded or otherwise handled the item. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*time*: `DV_DATE_TIME`
-{set:cellbgcolor!}
-|Time of handling the item. For an originating system, this will be time of creation, for an intermediate feeder system, this will be a time of accession or other time of handling, where available.
+a|Time of handling the item. For an originating system, this will be time of creation, for an intermediate feeder system, this will be a time of accession or other time of handling, where available.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*version_id*: `String`
-{set:cellbgcolor!}
-|Any identifier used in the system such as  "interim" ,  "final" , or numeric versions if available. 
+a|Any identifier used in the system such as  "interim" ,  "final" , or numeric versions if available. 
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_System_id_valid_*: not system_id.is_empty
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_System_id_valid_*: not system_id.is_empty
 |===

@@ -2,50 +2,35 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*ITEM_TREE*
+h|*Class*
+2+^h|*ITEM_TREE*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Logical tree data structure. The tree may be empty. Used for representing data which are logically a tree such as audiology results, microbiology results, biochemistry results.
-{set:cellbgcolor!}
+h|*Description*
+2+a|Logical tree data structure. The tree may be empty. Used for representing data which are logically a tree such as audiology results, microbiology results, biochemistry results.
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|ITEM_STRUCTURE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*items*: `List<ITEM>`
-{set:cellbgcolor!}
-|The items comprising the ITEM_TREE. Can include 0 or more CLUSTERs and/or 0 or more individual ELEMENTs.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|The items comprising the ITEM_TREE. Can include 0 or more CLUSTERs and/or 0 or more individual ELEMENTs.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*has_element_path* (a_path: `String`): `Boolean`
-{set:cellbgcolor!}
-|True if path  a_path' is a valid leaf path.
+a|True if path  a_path' is a valid leaf path.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*element_at_path* (a_path: `String`): `ELEMENT`
-{set:cellbgcolor!}
-|Return the leaf element at the path  a_path'.
+a|Return the leaf element at the path  a_path'.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*as_hierarchy*: `CLUSTER`
-{set:cellbgcolor!}
-|Generate a CEN EN13606-compatible hierarchy, which is the same as the tree's physical representation.
+a|Generate a CEN EN13606-compatible hierarchy, which is the same as the tree's physical representation.
 |===

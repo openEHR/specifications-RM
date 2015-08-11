@@ -2,73 +2,50 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*DV_DATE*
+h|*Class*
+2+^h|*DV_DATE*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Represents an absolute point in time, as measured on the Gregorian calendar, and specified only to the day. Semantics defined by ISO 8601. Used for recording dates in real world time. The partial form is used for approximate birth dates, dates of death, etc.
-{set:cellbgcolor!}
+h|*Description*
+2+a|Represents an absolute point in time, as measured on the Gregorian calendar, and specified only to the day. Semantics defined by ISO 8601. Used for recording dates in real world time. The partial form is used for approximate birth dates, dates of death, etc.
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|DV_TEMPORAL
-{set:cellbgcolor!}
+h|*Inherit*
+2+|DV_TEMPORAL, ISO8601_DATE
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*value*: `String`
-{set:cellbgcolor!}
-|ISO8601 date string.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|ISO8601 date string.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*magnitude*: `Integer`
-{set:cellbgcolor!}
-|Numeric value of the date as days since the calendar origin point 1/1/0000.
+a|Numeric value of the date as days since the calendar origin point 1/1/0000.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*is_strictly_comparable_to* (other: `DV_ORDERED`): `Boolean`
-{set:cellbgcolor!}
-|Test if two instances are strictly comparable.
+a|Test if two instances are strictly comparable.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*infix <* (other_quantity: `DV_ORDERED`): `Boolean`
-{set:cellbgcolor!}
-|Tests if this date is earlier than the cited date.
+a|Tests if this date is earlier than the cited date.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*add* (a_diff: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
-{set:cellbgcolor!}
-|Add a time period to this date.
+a|Add a time period to this date.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*subtract* (a_diif: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
-{set:cellbgcolor!}
-|Subtract a time period from this date.
+a|Subtract a time period from this date.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*diff* (other: `DV_DATE`): `DV_DURATION`
-{set:cellbgcolor!}
-|Difference of two quantities.
+a|Difference of two quantities.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Value_valid_*: valid_iso8601_date(value)
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Value_valid_*: valid_iso8601_date(value)
 |===

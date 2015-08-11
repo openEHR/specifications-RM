@@ -2,33 +2,23 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*VERSIONED_COMPOSITION*
+h|*Class*
+2+^h|*VERSIONED_COMPOSITION*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Version-controlled composition abstraction, defined by inheriting VERSIONED_OBJECT<COMPOSITION>. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|Version-controlled composition abstraction, defined by inheriting VERSIONED_OBJECT<COMPOSITION>. 
 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*is_persistent*: `Boolean`
-{set:cellbgcolor!}
-|Indicates whether this composition set is persistent; derived from first version.
+a|Indicates whether this composition set is persistent; derived from first version.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Archetype_node_id_valid_*: all_versions.for_all (v | v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Archetype_node_id_valid_*: all_versions.for_all (v &#124; v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Persistent_validity_*: all_versions.for_all (v | v.is_persistent = all_versions.first.data.is_persistent)
-{set:cellbgcolor!}
+h|
+2+a|*_Persistent_validity_*: all_versions.for_all (v &#124; v.is_persistent = all_versions.first.data.is_persistent)
 |===

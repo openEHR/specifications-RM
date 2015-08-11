@@ -2,83 +2,56 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*ORIGINAL_VERSION*
+h|*Class*
+2+^h|*ORIGINAL_VERSION*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|A Version containing locally created content and optional attestations. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|A Version containing locally created content and optional attestations. 
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|VERSION
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*uid*: `OBJECT_VERSION_ID`
-{set:cellbgcolor!}
-|Stored version of inheritance precursor. 
+a|Stored version of inheritance precursor. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*preceding_version_uid*: `OBJECT_VERSION_ID`
-{set:cellbgcolor!}
-|Stored version of inheritance precursor. 
+a|Stored version of inheritance precursor. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*other_input_version_uids*: `List<OBJECT_VERSION_ID>`
-{set:cellbgcolor!}
-|Identifiers of other versions whose content was merged into this version, if any. 
+a|Identifiers of other versions whose content was merged into this version, if any. 
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*lifecycle_state*: `DV_CODED_TEXT`
-{set:cellbgcolor!}
-|Lifecycle state of the content item in this version.
+a|Lifecycle state of the content item in this version.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*attestations*: `List<ATTESTATION>`
-{set:cellbgcolor!}
-|Set of attestations relating to this version. 
+a|Set of attestations relating to this version. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*data*: `T`
-{set:cellbgcolor!}
-|
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*is_merged*: `Boolean`
-{set:cellbgcolor!}
-|True if this Version was created from more than just the preceding (checked out) version.
+a|True if this Version was created from more than just the preceding (checked out) version.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Attestations_valid_*: attestations /= Void implies not attestations.is_empty
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Attestations_valid_*: attestations /= Void implies not attestations.is_empty
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Is_merged_validity_*: other_input_version_ids = Void xor is_merged
-{set:cellbgcolor!}
+h|
+2+a|*_Is_merged_validity_*: other_input_version_ids = Void xor is_merged
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Other_input_version_uids_valid_*: other_input_version_uids /= Void implies not other_input_version_uids.is_empty
-{set:cellbgcolor!}
+h|
+2+a|*_Other_input_version_uids_valid_*: other_input_version_uids /= Void implies not other_input_version_uids.is_empty
 |===

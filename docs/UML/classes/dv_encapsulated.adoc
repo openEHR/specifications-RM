@@ -2,59 +2,40 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*_DV_ENCAPSULATED (abstract)_*
+h|*Class*
+2+^h|*_DV_ENCAPSULATED (abstract)_*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Abstract class defining the common meta-data of all types of encapsulated data.
-{set:cellbgcolor!}
+h|*Description*
+2+a|Abstract class defining the common meta-data of all types of encapsulated data.
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|DATA_VALUE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*charset*: `CODE_PHRASE`
-{set:cellbgcolor!}
-|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions. 
+a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions. 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*language*: `CODE_PHRASE`
-{set:cellbgcolor!}
-|Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set  languages.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set  languages.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*size*: `Integer`
-{set:cellbgcolor!}
-|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc. do not change the value of this attribute. 
+a|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc. do not change the value of this attribute. 
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Size_valid_*: size >= 0
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Size_valid_*: size >= 0
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Language_valid_*: language /= Void implies code_set (Code_set_id_languages).has_code (language)
-{set:cellbgcolor!}
+h|
+2+a|*_Language_valid_*: language /= Void implies code_set (Code_set_id_languages).has_code (language)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Charset_valid_*: charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)
-{set:cellbgcolor!}
+h|
+2+a|*_Charset_valid_*: charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)
 |===

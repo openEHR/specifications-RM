@@ -2,57 +2,39 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*AUDIT_DETAILS*
+h|*Class*
+2+^h|*AUDIT_DETAILS*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|The set of attributes required to document the committal of an information item to a repository. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|The set of attributes required to document the committal of an information item to a repository. 
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*system_id*: `String`
-{set:cellbgcolor!}
-|Identity of the system where the change was committed. Ideally this is a machine- and human-processable identifier, but it may not be. 
+a|Identity of the system where the change was committed. Ideally this is a machine- and human-processable identifier, but it may not be. 
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*time_committed*: `DV_DATE_TIME`
-{set:cellbgcolor!}
-|Time of committal of the item. 
+a|Time of committal of the item. 
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*change_type*: `DV_CODED_TEXT`
-{set:cellbgcolor!}
-|Type of change. Coded using the openEHR Terminology  audit change type  group.
+a|Type of change. Coded using the openEHR Terminology  audit change type  group.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*description*: `DV_TEXT`
-{set:cellbgcolor!}
-|Reason for committal.
+a|Reason for committal.
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*committer*: `PARTY_PROXY`
-{set:cellbgcolor!}
-|Identity and optional reference into identity management service, of user who committed the item. 
+a|Identity and optional reference into identity management service, of user who committed the item. 
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_System_id_valid_*: not system_id.is_empty
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_System_id_valid_*: not system_id.is_empty
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Change_type_valid_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)
-{set:cellbgcolor!}
+h|
+2+a|*_Change_type_valid_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)
 |===

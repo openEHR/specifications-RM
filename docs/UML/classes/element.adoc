@@ -2,59 +2,40 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*ELEMENT*
+h|*Class*
+2+^h|*ELEMENT*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|The leaf variant of ITEM, to which a DATA_VALUE instance is attached. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|The leaf variant of ITEM, to which a DATA_VALUE instance is attached. 
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|ITEM
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*null_flavor*: `DV_CODED_TEXT`
-{set:cellbgcolor!}
-|Flavour of null value, e.g. indeterminate, not asked etc.
+a|Flavour of null value, e.g. indeterminate, not asked etc.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*value*: `DATA_VALUE`
-{set:cellbgcolor!}
-|Data value of this leaf.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|Data value of this leaf.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*is_null*: `Boolean`
-{set:cellbgcolor!}
-|True if value logically not known, e.g. if indeterminate, not asked etc. 
+a|True if value logically not known, e.g. if indeterminate, not asked etc. 
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Is_null_valid_*: is_null = (value = Void)
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Is_null_valid_*: is_null = (value = Void)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Null_flavour_indicated_*: is_null xor null_flavour = Void
-{set:cellbgcolor!}
+h|
+2+a|*_Null_flavour_indicated_*: is_null xor null_flavour = Void
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Null_flavour_valid_*: is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)
-{set:cellbgcolor!}
+h|
+2+a|*_Null_flavour_valid_*: is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)
 |===

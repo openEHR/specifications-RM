@@ -2,34 +2,24 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*CODE_PHRASE*
+h|*Class*
+2+^h|*CODE_PHRASE*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|A fully coordinated (i.e. all  coordination  has been performed) term from a terminology service (as distinct from a particular terminology). 
-{set:cellbgcolor!}
+h|*Description*
+2+a|A fully coordinated (i.e. all  coordination  has been performed) term from a terminology service (as distinct from a particular terminology). 
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*terminology_id*: `TERMINOLOGY_ID`
-{set:cellbgcolor!}
-|Identifier of the distinct terminology from which the code_string (or its elements) was extracted.
+a|Identifier of the distinct terminology from which the code_string (or its elements) was extracted.
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*code_string*: `String`
-{set:cellbgcolor!}
-|The key used by the terminology service to identify a concept or coordination of concepts.  This string is most likely parsable inside the terminology service, but nothing can be assumed about its syntax outside that context. 
+a|The key used by the terminology service to identify a concept or coordination of concepts.  This string is most likely parsable inside the terminology service, but nothing can be assumed about its syntax outside that context. 
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Code_string_valid_*: not code_string.is_empty
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Code_string_valid_*: not code_string.is_empty
 |===

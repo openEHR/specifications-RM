@@ -2,41 +2,30 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*REVISION_HISTORY*
+h|*Class*
+2+^h|*REVISION_HISTORY*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Purpose Defines the notion of a revision history of audit items, each associated with the version for which that audit was committed. The list is in most-recent-first order. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|Purpose Defines the notion of a revision history of audit items, each associated with the version for which that audit was committed. The list is in most-recent-first order. 
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*items*: `List<REVISION_HISTORY_ITEM>`
-{set:cellbgcolor!}
-|The items in this history in most-recent-last order. 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|The items in this history in most-recent-last order. 
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*most_recent_version*: `String` +
 *_Post_*: Result.is_equal (items.last.version_id.value)
-{set:cellbgcolor!}
-|The version id of the most recent item, as a String.
+a|The version id of the most recent item, as a String.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*most_recent_version_time_committed*: `String` +
 *_Post_*: Result.is_equal (items.last.audits.first. time_committed.value)
-{set:cellbgcolor!}
-|The commit date/time of the most recent item, as a String. 
+a|The commit date/time of the most recent item, as a String. 
 |===

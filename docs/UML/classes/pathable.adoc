@@ -2,56 +2,40 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*_PATHABLE (abstract)_*
+h|*Class*
+2+^h|*_PATHABLE (abstract)_*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|The PATHABLE class defines the pathing capabilities used by nearly all classes in the openEHR reference model, mostly via inheritance of LOCATABLE. The defining characteristics of PATHABLE objects are that they can locate child objects using paths, and they know their parent object in a compositional hierarchy. The parent feature is defined as abstract in the model, and may be implemented in any way convenient.
-{set:cellbgcolor!}
+h|*Description*
+2+a|The PATHABLE class defines the pathing capabilities used by nearly all classes in the openEHR reference model, mostly via inheritance of LOCATABLE. The defining characteristics of PATHABLE objects are that they can locate child objects using paths, and they know their parent object in a compositional hierarchy. The parent feature is defined as abstract in the model, and may be implemented in any way convenient.
 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*parent*: `PATHABLE`
-{set:cellbgcolor!}
-|Parent of this node in a compositional hierarchy. 
+a|Parent of this node in a compositional hierarchy. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*item_at_path* (a_path: `String`): `Any` +
 *_Pre_*: path_unique (a_path)
-{set:cellbgcolor!}
-|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. 
+a|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*items_at_path* (a_path: `String`): `List<Any>`
-{set:cellbgcolor!}
-|List of items corresponding to a non-unique path.
+a|List of items corresponding to a non-unique path.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*path_exists* (a_path: `String`): `Boolean` +
 *_Pre_*: not a_path.is_empty
-{set:cellbgcolor!}
-|True if the path exists in the data with respect to the current item. 
+a|True if the path exists in the data with respect to the current item. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*path_unique* (a_path: `String`): `Boolean` +
 *_Pre_*: path_exists (a_path)
-{set:cellbgcolor!}
-|True if the path corresponds to a single item in the data. 
+a|True if the path corresponds to a single item in the data. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*path_of_item* (a_loc: `PATHABLE`): `String`
-{set:cellbgcolor!}
-|The path to an item relative to the root of this archetyped structure.
+a|The path to an item relative to the root of this archetyped structure.
 |===

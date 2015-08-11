@@ -2,101 +2,70 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*DV_PROPORTION*
+h|*Class*
+2+^h|*DV_PROPORTION*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Models a ratio of values, i.e. where the numerator and denominator are both pure numbers. The valid_proportion_kind property of the PROPORTION_KIND class is +
-used to control the type attribute to be one of a defined set. +
-Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary denominator), albumin:creatinine ratio, and percentages, e.g. red cell distirbution width (RDW).  +
+h|*Description*
+2+a|Models a ratio of values, i.e. where the numerator and denominator are both pure numbers. The valid_proportion_kind property of the PROPORTION_KIND class is
+used to control the type attribute to be one of a defined set.
+
+Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary denominator), albumin:creatinine ratio, and percentages, e.g. red cell distirbution width (RDW). 
+ 
 Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) “6/24” in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations. 
-{set:cellbgcolor!}
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|PROPORTION_KIND
-{set:cellbgcolor!}
+h|*Inherit*
+2+|PROPORTION_KIND, DV_AMOUNT
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*numerator*: `Real`
-{set:cellbgcolor!}
-|Numerator of ratio
+a|Numerator of ratio
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*denominator*: `Real`
-{set:cellbgcolor!}
-|Denominator of ratio.
+a|Denominator of ratio.
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*type*: `Integer`
-{set:cellbgcolor!}
-|Indicates semantic type of proportion, including percent, unitary etc.
+a|Indicates semantic type of proportion, including percent, unitary etc.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*precision*: `Integer`
-{set:cellbgcolor!}
-|Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places. 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places. 
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*is_integral*: `Boolean`
-{set:cellbgcolor!}
-|True if the numerator and denominator values are integers, i.e. if the precision is 0.
+a|True if the numerator and denominator values are integers, i.e. if the precision is 0.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*operator=* (source: `DV_PROPORTION`): `DV_PROPORTION`
-{set:cellbgcolor!}
-|Assignment operator
+a|Assignment operator
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*magnitude*: `Real`
-{set:cellbgcolor!}
-|Effective magnitude represented by ratio.
+a|Effective magnitude represented by ratio.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Type_validity_*: valid_proportion_kind (type)
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Type_validity_*: valid_proportion_kind (type)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Precision_validity_*: precision = 0 implies is_integral
-{set:cellbgcolor!}
+h|
+2+a|*_Precision_validity_*: precision = 0 implies is_integral
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Is_integral_validity_*: is_integral implies (numerator.floor = numerator and denominator.floor = denominator)
-{set:cellbgcolor!}
+h|
+2+a|*_Is_integral_validity_*: is_integral implies (numerator.floor = numerator and denominator.floor = denominator)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Fraction_validity_*: (type = pk_fraction or type = pk_integer_fraction) implies is_integral
-{set:cellbgcolor!}
+h|
+2+a|*_Fraction_validity_*: (type = pk_fraction or type = pk_integer_fraction) implies is_integral
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Unitary_validity_*: type = pk_unitary implies denominator = 1
-{set:cellbgcolor!}
+h|
+2+a|*_Unitary_validity_*: type = pk_unitary implies denominator = 1
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Percent_validity_*: type = pk_percent implies denominator = 100
-{set:cellbgcolor!}
+h|
+2+a|*_Percent_validity_*: type = pk_percent implies denominator = 100
 |===

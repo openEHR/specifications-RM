@@ -2,51 +2,35 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*ISM_TRANSITION*
+h|*Class*
+2+^h|*ISM_TRANSITION*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Model of a transition in the Instruction State Machine, caused by a careflow step. The attributes document the careflow step as well as the ISM transition. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|Model of a transition in the Instruction State Machine, caused by a careflow step. The attributes document the careflow step as well as the ISM transition. 
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|PATHABLE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*current_state*: `DV_CODED_TEXT`
-{set:cellbgcolor!}
-|The ISM current state. Coded by openEHR terminology group Instruction states.
+a|The ISM current state. Coded by openEHR terminology group Instruction states.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*transition*: `DV_CODED_TEXT`
-{set:cellbgcolor!}
-|The ISM transition which occurred to arrive in the current_state. Coded by openEHR terminology group  Instruction transitions.
+a|The ISM transition which occurred to arrive in the current_state. Coded by openEHR terminology group  Instruction transitions.
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*careflow_step*: `DV_CODED_TEXT`
-{set:cellbgcolor!}
-|The step in the careflow process which occurred as part of generating this action, e.g.  dispense ,  start_administration . This attribute represents the clinical  label for the activity, as  opposed to current_state which represents  the state machine (ISM)  computable form. Defined in archetype.
+a|The step in the careflow process which occurred as part of generating this action, e.g.  dispense ,  start_administration . This attribute represents the clinical  label for the activity, as  opposed to current_state which represents  the state machine (ISM)  computable form. Defined in archetype.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Current_state_valid_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_instruction_states, current_state.defining_code)
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Current_state_valid_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_instruction_states, current_state.defining_code)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Transition_valid_*: transition /= Void implies terminology (Terminology_id_openehr).
+h|
+2+a|*_Transition_valid_*: transition /= Void implies terminology (Terminology_id_openehr).
 has_code_for_group_id (Group_id_instruction_transitions, transition.defining_code)
-{set:cellbgcolor!}
 |===

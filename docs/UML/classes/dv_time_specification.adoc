@@ -2,50 +2,35 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*_DV_TIME_SPECIFICATION (abstract)_*
+h|*Class*
+2+^h|*_DV_TIME_SPECIFICATION (abstract)_*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|This is an abstract class of which all timing specifications are specialisations. Specifies points in time, possibly linked to the calendar, or a real world repeating event, such as  breakfast. 
-{set:cellbgcolor!}
+h|*Description*
+2+a|This is an abstract class of which all timing specifications are specialisations. Specifies points in time, possibly linked to the calendar, or a real world repeating event, such as  breakfast. 
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|DATA_VALUE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*value*: `DV_PARSABLE`
-{set:cellbgcolor!}
-|The specification, in the HL7v3 syntax for PIVL or EIVL types.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|The specification, in the HL7v3 syntax for PIVL or EIVL types.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*calendar_alignment*: `String`
-{set:cellbgcolor!}
-|Indicates what prototypical point in the calendar the specification is aligned to, e.g.  5th of the month . Empty if not aligned. Extracted from the  value' attribute.
+a|Indicates what prototypical point in the calendar the specification is aligned to, e.g.  5th of the month . Empty if not aligned. Extracted from the  value' attribute.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*event_alignment*: `String`
-{set:cellbgcolor!}
-|Indicates what real-world event the specification is aligned to if any. Extracted from the  value' attribute. 
+a|Indicates what real-world event the specification is aligned to if any. Extracted from the  value' attribute. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*institution_specified*: `Boolean`
-{set:cellbgcolor!}
-|Indicates if the specification is aligned with institution schedules, e.g. a hospital nursing changeover or meal serving times. Extracted from the  value' attribute.
+a|Indicates if the specification is aligned with institution schedules, e.g. a hospital nursing changeover or meal serving times. Extracted from the  value' attribute.
 |===

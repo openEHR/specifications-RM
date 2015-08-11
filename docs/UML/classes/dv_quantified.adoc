@@ -2,69 +2,52 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*_DV_QUANTIFIED (abstract)_*
+h|*Class*
+2+^h|*_DV_QUANTIFIED (abstract)_*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Abstract class defining the concept of true quantified values, i.e. values which are not only ordered, but which have a precise magnitude.
-{set:cellbgcolor!}
+h|*Description*
+2+a|Abstract class defining the concept of true quantified values, i.e. values which are not only ordered, but which have a precise magnitude.
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|DV_ORDERED
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*magnitude_status*: `String`
-{set:cellbgcolor!}
-|Optional status of magnitude with values:  +
-* =   :   magnitude is a point value  +
-* <   :   value is < magnitude  +
-* >   :   value is > magnitude  +
-* \<= : value is <= magnitude  +
-* >= : value is >= magnitude  +
-* ~   :   value is approximately magnitude  +
+a|Optional status of magnitude with values: 
+
+* =   :   magnitude is a point value 
+* <   :   value is < magnitude 
+* >   :   value is > magnitude 
+* \<= : value is <= magnitude 
+* >= : value is >= magnitude 
+* ~   :   value is approximately magnitude 
+
 If not present, meaning is  = . 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*accuracy*: `Any`
-{set:cellbgcolor!}
-|
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*valid_magnitude_status*: `Boolean` +
 *_Post_*: Result = s.is_equal (“=”) or s.is_equal (“<”) or s.is_equal (“>”) or s.is_equal (“<=”) or s.is_equal (“>=”) or s.is_equal (“~”)
-{set:cellbgcolor!}
-|Test whether a string value is one of the valid values for the magnitude_status attribute. 
+a|Test whether a string value is one of the valid values for the magnitude_status attribute. 
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*magnitude*: `Ordered_Numeric`
-{set:cellbgcolor!}
-|
+a|
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*accuracy_unknown*: `Boolean`
-{set:cellbgcolor!}
-|True if accuracy is not known, e.g. due to not being recorded or discernable.
+a|True if accuracy is not known, e.g. due to not being recorded or discernable.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Magnitude_status_valid_*: magnitude_status /= Void implies valid_magnitude_status (magnitude_status)
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Magnitude_status_valid_*: magnitude_status /= Void implies valid_magnitude_status (magnitude_status)
 |===

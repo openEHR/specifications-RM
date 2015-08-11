@@ -2,89 +2,66 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*TERM_MAPPING*
+h|*Class*
+2+^h|*TERM_MAPPING*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Represents a coded term mapped to a DV_TEXT, and the relative match of the target term with respect to the mapped item. Plain or coded text items may appear in the EHR for which one or mappings in alternative terminologies are required. Mappings are only used to enable computer processing, so they can only be instances of DV_CODED_TEXT.  +
+h|*Description*
+2+a|Represents a coded term mapped to a DV_TEXT, and the relative match of the target term with respect to the mapped item. Plain or coded text items may appear in the EHR for which one or mappings in alternative terminologies are required. Mappings are only used to enable computer processing, so they can only be instances of DV_CODED_TEXT. 
 Used for adding classification terms (e.g. adding ICD classifiers to SNOMED descriptive terms), or mapping into equivalents in other terminologies (e.g. across nursing vocabularies). 
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*match*: `char`
-{set:cellbgcolor!}
-|The relative match of the target term with respect to the mapped text item. Result meanings:  +
-* '>': the mapping is to a broader term e.g. orginal text =  arbovirus infection , target =  viral infection   +
-* '=': the mapping is to a (supposedly) equivalent to the original item  +
-* '<': the mapping is to a narrower term. e.g. original text =  diabetes , mapping =  diabetes mellitus .  +
-* '?': the kind of mapping is unknown.  +
+a|The relative match of the target term with respect to the mapped text item. Result meanings: 
+
+* '>': the mapping is to a broader term e.g. orginal text =  arbovirus infection , target =  viral infection  
+* '=': the mapping is to a (supposedly) equivalent to the original item 
+* '<': the mapping is to a narrower term. e.g. original text =  diabetes , mapping =  diabetes mellitus . 
+* '?': the kind of mapping is unknown. 
+
 The first three values are taken from the ISO standards 2788 ( Guide to Establishment and development of monolingual thesauri ) and 5964 ( Guide to Establishment and development of multilingual thesauri ). 
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*purpose*: `DV_CODED_TEXT`
-{set:cellbgcolor!}
-|Purpose of the mapping e.g.  automated data mining ,  billing ,  interoperability  
+a|Purpose of the mapping e.g.  automated data mining ,  billing ,  interoperability  
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*target*: `CODE_PHRASE`
-{set:cellbgcolor!}
-|The target term of the mapping. 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|The target term of the mapping. 
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*narrower*: `Boolean` +
 *_Post_*: match = ‘<’ implies Result
-{set:cellbgcolor!}
-|The mapping is to a narrower term.
+a|The mapping is to a narrower term.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*broader*: `Boolean` +
 *_Post_*: match = ‘>’ implies Result
-{set:cellbgcolor!}
-|The mapping is to a broader term.
+a|The mapping is to a broader term.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*equivalent*: `Boolean`
-{set:cellbgcolor!}
-|The mapping is to an equivalent term.
+a|The mapping is to an equivalent term.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*unknown*: `Boolean` +
 *_Post_*: match = ‘?’ implies Result
-{set:cellbgcolor!}
-|The kind of mapping is unknown.
+a|The kind of mapping is unknown.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*is_valid_match_code* (c: `char`): `Boolean` +
 *_Post_*: Result := c = ‘>’ or c = ‘=’ or c = ‘<’ or c = ‘?’
-{set:cellbgcolor!}
-|True if match valid.
+a|True if match valid.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Purpose_valid_*: purpose /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Purpose_valid_*: purpose /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)
 
-|
-{set:cellbgcolor:lightblue}
-2+|*_Match_valid_*: is_valid_match_code (match)
-{set:cellbgcolor!}
+h|
+2+a|*_Match_valid_*: is_valid_match_code (match)
 |===

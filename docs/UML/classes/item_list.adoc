@@ -2,68 +2,48 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*ITEM_LIST*
+h|*Class*
+2+^h|*ITEM_LIST*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Logical list data structure, where each item has a value and can be referred to by a name and a positional index in the list. The list may be empty. Use Used to represent any data which is logically a list of values, such as blood pressure, most protocols, many blood tests etc.  +
+h|*Description*
+2+a|Logical list data structure, where each item has a value and can be referred to by a name and a positional index in the list. The list may be empty. Use Used to represent any data which is logically a list of values, such as blood pressure, most protocols, many blood tests etc. 
+
 Misuse: Not to be used for time-based lists, which should be represented with the proper temporal class, i.e. HISTORY.
-{set:cellbgcolor!}
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|ITEM_STRUCTURE
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*items*: `List<ELEMENT>`
-{set:cellbgcolor!}
-|Physical representation of the list. 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|Physical representation of the list. 
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*item_count*: `Integer`
-{set:cellbgcolor!}
-|Count of all items.
+a|Count of all items.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*names*: `List<DV_TEXT>`
-{set:cellbgcolor!}
-|Retrieve the names of all items.
+a|Retrieve the names of all items.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*named_item* (a_name: `String`): `ELEMENT`
-{set:cellbgcolor!}
-|Retrieve the item with name ‘a_name’.
+a|Retrieve the item with name ‘a_name’.
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*ith_item* (i: `Integer`): `ELEMENT`
-{set:cellbgcolor!}
-|Retrieve the i-th item with name.
+a|Retrieve the i-th item with name.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*as_hierarchy*: `CLUSTER`
-{set:cellbgcolor!}
-|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.
+a|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Valid_structure_*:  items.forall (i:ITEM | i.type = "ELEMENT")
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Valid_structure_*:  items.forall (i:ITEM &#124; i.type = "ELEMENT")
 |===

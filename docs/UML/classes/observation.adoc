@@ -2,35 +2,26 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*OBSERVATION*
+h|*Class*
+2+^h|*OBSERVATION*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Entry subtype for all clinical data in the past or present, i.e. which (by the time it is recorded) has already occurred. OBSERVATION data is expressed using the class HISTORY<T>, which guarantees that it is situated in time. OBSERVATION is used for all notionally objective (i.e. measured in some way) observations of phenomena, and patient-reported phenomena, e.g. pain.  +
+h|*Description*
+2+a|Entry subtype for all clinical data in the past or present, i.e. which (by the time it is recorded) has already occurred. OBSERVATION data is expressed using the class HISTORY<T>, which guarantees that it is situated in time. OBSERVATION is used for all notionally objective (i.e. measured in some way) observations of phenomena, and patient-reported phenomena, e.g. pain. 
+
 Not to be used for recording opinion or future statements of any kind, including instructions, intentions, plans etc.
-{set:cellbgcolor!}
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|CARE_ENTRY
-{set:cellbgcolor!}
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*0..1*
-{set:cellbgcolor:lightblue}
+h|*0..1*
 |*state*: `HISTORY<ITEM_STRUCTURE>`
-{set:cellbgcolor!}
-|Optional recording of the state of subject of this observation during the observation process, in the form of a separate history of values which may be of any complexity. State may also be recorded within the History of the data attribute. 
+a|Optional recording of the state of subject of this observation during the observation process, in the form of a separate history of values which may be of any complexity. State may also be recorded within the History of the data attribute. 
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*data*: `HISTORY<ITEM_STRUCTURE>`
-{set:cellbgcolor!}
-|The data of this observation, in the form of a history of values which may be of any complexity.
+a|The data of this observation, in the form of a history of values which may be of any complexity.
 |===

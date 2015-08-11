@@ -2,52 +2,37 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*DV_PERIODIC_TIME_SPECIFICATION*
+h|*Class*
+2+^h|*DV_PERIODIC_TIME_SPECIFICATION*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Specifies periodic points in time, linked to the calendar (phase-linked), or a real world repeating event, such as  breakfast  (event-linked). Based on the HL7v3 data types PIVL<T> and EIVL<T>.  +
+h|*Description*
+2+a|Specifies periodic points in time, linked to the calendar (phase-linked), or a real world repeating event, such as  breakfast  (event-linked). Based on the HL7v3 data types PIVL<T> and EIVL<T>. 
+
 Used in therapeutic prescriptions, expressed as INSTRUCTIONs in the openEHR model. 
-{set:cellbgcolor!}
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
+h|*Inherit*
 2+|DV_TIME_SPECIFICATION
-{set:cellbgcolor!}
 
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*period*: `DV_DURATION`
-{set:cellbgcolor!}
-|The period of the repetition, computationally derived from the syntax representation. Extracted from the  value' attribute.
+a|The period of the repetition, computationally derived from the syntax representation. Extracted from the  value' attribute.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*calendar_alignment*: `String`
-{set:cellbgcolor!}
-|Calendar alignment extracted from value. 
+a|Calendar alignment extracted from value. 
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*event_alignment*: `String`
-{set:cellbgcolor!}
-|Event alignment extracted from value. 
+a|Event alignment extracted from value. 
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*institution_specified*: `Boolean`
-{set:cellbgcolor!}
-|Extracted from value.
+a|Extracted from value.
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Value_valid_*: value.formalism.is_equal (“HL7:PIVL”) or value.formalism. is_equal (“HL7:EIVL”)
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Value_valid_*: value.formalism.is_equal (“HL7:PIVL”) or value.formalism. is_equal (“HL7:EIVL”)
 |===

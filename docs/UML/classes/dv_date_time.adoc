@@ -2,80 +2,56 @@
 
 [cols="^1,2,3"]
 |===
-|*Class*
-{set:cellbgcolor:lightblue}
-2+^|*DV_DATE_TIME*
+h|*Class*
+2+^h|*DV_DATE_TIME*
 
-|*Description*
-{set:cellbgcolor:lightblue}
-2+|Represents an absolute point in time, specified to the second. Semantics defined by ISO 8601.  +
+h|*Description*
+2+a|Represents an absolute point in time, specified to the second. Semantics defined by ISO 8601. 
+
 Used for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a HISTORY in an OBSERVATION which is only partially known. 
-{set:cellbgcolor!}
 
-|*Inherit*
-{set:cellbgcolor:lightblue}
-2+|DV_TEMPORAL
-{set:cellbgcolor!}
+h|*Inherit*
+2+|DV_TEMPORAL, ISO8601_DATE_TIME
 
-|*Attributes*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
 
-|*1..1*
-{set:cellbgcolor:lightblue}
+h|*1..1*
 |*value*: `String`
-{set:cellbgcolor!}
-|ISO8601 date/time string.
-|*Functions*
-{set:cellbgcolor:lightblue}
-^|*Signature*
-^|*Meaning*
+a|ISO8601 date/time string.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
 
-|
-{set:cellbgcolor:lightblue}
+h|
 |*operator=* (source: `DV_DATE_TIME`): `DV_DATE_TIME`
-{set:cellbgcolor!}
-|
+a|
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*magnitude*: `Real`
-{set:cellbgcolor!}
-|Numeric value of the date/time as seconds since the calendar origin point. 
+a|Numeric value of the date/time as seconds since the calendar origin point. 
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*is_strictly_comparable_to* (other: `DV_ORDERED`): `Boolean`
-{set:cellbgcolor!}
-|Test if two instances are strictly comparable.
+a|Test if two instances are strictly comparable.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*add* (a_diff: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
-{set:cellbgcolor!}
-|Add a time period to this date_time.
+a|Add a time period to this date_time.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*subtract* (a_diif: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
-{set:cellbgcolor!}
-|Subtract a time period from this date_time.
+a|Subtract a time period from this date_time.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*diff* (other: `DV_ABSOLUTE_QUANTITY`): `DV_AMOUNT`
-{set:cellbgcolor!}
-|Difference of two quantities.
+a|Difference of two quantities.
 
-|(effected)
-{set:cellbgcolor:lightblue}
+h|(effected)
 |*as_string*: `String`
-{set:cellbgcolor!}
-|
+a|
 
-|*Invariant*
-{set:cellbgcolor:lightblue}
-2+|*_Value_valid_*: valid_iso8601_date_time (value)
-{set:cellbgcolor!}
+h|*Invariant*
+2+a|*_Value_valid_*: valid_iso8601_date_time (value)
 |===
