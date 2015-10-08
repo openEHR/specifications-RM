@@ -16,9 +16,9 @@ h|*1..1*
 |*function*: `DV_TEXT`
 a|The function of the Party in this participation (note that a given party might participate in more than one way in a particular activity). This attribute should be coded, but cannot be limited to the HL7v3:ParticipationFunction vocabulary, since it is too limited and hospital-oriented. 
 
-h|*1..1*
+h|*0..1*
 |*mode*: `DV_CODED_TEXT`
-a|The mode of the performer / activity interaction, e.g. present, by telephone, by email etc. 
+a|Optional field for recording the 'mode' of the performer / activity interaction, e.g. present, by telephone, by email etc. 
 
 h|*0..1*
 |*time*: `DV_INTERVAL<DV_DATE_TIME>`
@@ -29,9 +29,9 @@ h|*1..1*
 a|The id and possibly demographic system link of the party participating in the activity. 
 
 h|*Invariant*
-2+a|*_Function_valid_*: function.generating_type.is_equal (“DV_CODED_TEXT”) implies
+2+a|*_Function_valid_*: function.generating_type.is_equal ("DV_CODED_TEXT") implies
 terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)
 
 h|
-2+a|*_Mode_valid_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)
+2+a|*_Mode_valid_*: mode /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)
 |===
