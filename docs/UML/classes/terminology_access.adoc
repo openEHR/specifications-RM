@@ -17,22 +17,22 @@ h|
 a|Identification of this Terminology.
 
 h|
-|*all_codes*: `Set <String>`
+|*all_codes*: `CODE_PHRASE`
 a|Return all codes known in this terminology.
 
 h|
-|*codes_for_group_id*: `Set <String>`
-a|Return all codes under grouper  group_id' from this terminology.
+|*codes_for_group_id* (a_group_id: `String`): `List<CODE_PHRASE>`
+a|Return all codes under grouper 'a_group_id' from this terminology.
 
 h|
-|*codes_for_group_name*: `Set <String>`
-a|Return all codes under grouper whose name in  lang' is  name' from this terminology.
+|*codes_for_group_name* (a_lang: `String`, a_name: `String`): `List<CODE_PHRASE>`
+a|Return all codes under grouper whose name in 'a_lang' is 'a_name' from this terminology.
 
 h|
-|*has_code_for_group_id*: `boolean`
-a|True if  'a_code' is known in group  group_id' in the openEHR terminology.
+|*has_code_for_group_id*: `Boolean`
+a|True if  a_code' is known in group  group_id' in the openEHR terminology.
 
 h|
-|*rubric_for_code*: `String`
+|*rubric_for_code* (a_code: `String`): `String`
 a|Return all rubric of code  code' in language  lang'.
 |===

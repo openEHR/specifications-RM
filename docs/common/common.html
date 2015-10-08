@@ -950,15 +950,15 @@
 <div class="sect3">
 <h4 id="_the_locatable_class"><a class="anchor" href="#_the_locatable_class"></a>3.1.2. The LOCATABLE Class</h4>
 <div class="paragraph">
-<p>Most classes in the openEHR reference model inherit from the <code>LOCATABLE</code> class, which defines the idea of ‘locatability in an archetyped structure’. <code>LOCATABLE</code> defines a runtime name and an <code><em>archetype_node_id</em></code>. The <code><em>archetype_node_id</em></code> is the standardised semantic code for a node and comes from the corresponding node in the archetype used to create the data. The only exception is at archetype root points in data, where <code><em>archetype_node_id</em></code> carries the archetype identifier in string form rather than an interior node id from an archetype. <code>LOCATABLE</code> also provides the attribute archetype_details, which is non-Void for archetype root points in data, and carries meta-data relevant to root points. The name attribute carries a name created at runtime. The ‘meaning’ of any node is derived formally from the archetype by obtaining the "text" value for the archetype_node_id code from the archetype ontology, in the language required.</p>
+<p>Most classes in the openEHR reference model inherit from the <code>LOCATABLE</code> class, which defines the idea of ‘locatability in an archetyped structure’. <code>LOCATABLE</code> defines a runtime name and an <code><em>archetype_node_id</em></code>. The <code><em>archetype_node_id</em></code> is the standardised semantic code for a node and comes from the corresponding node in the archetype used to create the data. The only exception is at archetype root points in data, where <code><em>archetype_node_id</em></code> carries the archetype identifier in string form rather than an interior node id from an archetype. <code>LOCATABLE</code> also provides the attribute <code><em>archetype_details</em></code>, which is non-Void for archetype root points in data, and carries meta-data relevant to root points. The <code><em>name</em></code> attribute carries a name created at runtime. The ‘meaning’ of any node is derived formally from the archetype by obtaining the text value for the <code><em>archetype_node_id</em></code> code from the archetype <code>ontology</code> section, in the language required.</p>
 </div>
 <div class="paragraph">
-<p>The name and <code><em>archetype_node_id</em></code> valuesin a <code>LOCATABLE</code> instance are often the same semantically, but may differ. For example, in "problem/SOAP" Sections (i.e. headings), the name of a section at the problem level might be "diabetes", but its meaning might be "problem". The default value for name should be assumed to be the text value in the local language for the <code><em>archetype_node_id</em></code> code on the node in question, unless explicitly set otherwise.</p>
+<p>The <code><em>name</em></code> and <code><em>archetype_node_id</em></code> valuesin a <code>LOCATABLE</code> instance are often the same semantically, but may differ. For example, in "problem/SOAP" Sections (i.e. headings), the name of a section at the problem level might be "diabetes", but its meaning might be "problem". The default value for <code><em>name</em></code> should be assumed to be the text value in the local language for the <code><em>archetype_node_id</em></code> code on the node in question, unless explicitly set otherwise.</p>
 </div>
 <div class="sect4">
 <h5 id="_unique_node_identification"><a class="anchor" href="#_unique_node_identification"></a>Unique Node Identification</h5>
 <div class="paragraph">
-<p><code>LOCATABLE</code> descendants may have a <code><em>uid</em></code>, containing a GUID. In the current openEHR architecture, GUIDs are not needed to identify data nodes, since paths are used to reference all nodes inside top-level structures (i.e. <code>COMPOSITIONs</code> etc). Accordingly all references between parts of an EHR are represented in terms of <code>LOCATABLE_REFs</code> or <code>DV_EHR_URIs</code> (the former is a reference to an <code>OBJECT_VERSION_ID</code> with a path appended; the latter is the stringified URI form). This would allow for example, one Entry to reference the serum sodium value in another Entry in version 2 of a Versioned Composition for a laboratory test on 12/Apr/2004. The uid attribute will usually be empty in most EHR data in most openEHR EHR systems.</p>
+<p><code>LOCATABLE</code> descendants may have a <code><em>uid</em></code>, containing a GUID. In the current openEHR architecture, GUIDs are not needed to identify data nodes, since paths are used to reference all nodes inside top-level structures (i.e. <code>COMPOSITIONs</code> etc). Accordingly all references between parts of an EHR are represented in terms of <code>LOCATABLE_REFs</code> or <code>DV_EHR_URIs</code> (the former is a reference to an <code>OBJECT_VERSION_ID</code> with a path appended; the latter is the stringified URI form). This would allow for example, one Entry to reference the serum sodium value in another Entry in version 2 of a Versioned Composition for a laboratory test on 12/Apr/2004. The <code><em>uid</em></code> attribute will usually be empty in most EHR data in most openEHR EHR systems.</p>
 </div>
 <div class="paragraph">
 <p>The exception is the top-level types such as <code>COMPOSITION</code>, <code>EHR_STATUS</code>, <code>PARTY</code> etc for which it is recommended to set the <code><em>uid</em></code> value to a copy of the <code><em>uid</em></code> attribute of the owning <code>VERSION</code> object. This enables easy identification of standalone top-level objects in a serialised form.</p>
@@ -973,7 +973,7 @@
 <div class="title">Note</div>
 </td>
 <td class="content">
-some classes in the openEHR architecture that do not inherit from LOCATABLE but require a uid, such as <code>VERSIONED_OBJECT</code>, <code>VERSION</code> etc, explicitly define their own uid attribute.
+some classes in the openEHR architecture that do not inherit from <code>LOCATABLE</code> but require a uid, such as <code>VERSIONED_OBJECT</code>, <code>VERSION</code> etc, explicitly define their own <code><em>uid</em></code> attribute.
 </td>
 </tr>
 </table>
@@ -1035,13 +1035,13 @@ some classes in the openEHR architecture that do not inherit from LOCATABLE but 
 </ul>
 </div>
 <div class="paragraph">
-<p>FIGURE <a href="#feeder_chain">ABstract Model of Feeder Chain</a> illustrates these elements, shown as a "feeder chain", along with typical meta-data available in messages from each system. In general, not much can be assumed about systems in the feeder chain. The originating system may or may not correspond to the place of the clinical activity - it is not uncommon for a pathology company to have a centralised report issuing location while having numerous physical laboratories. There is often limited consistency in the way identifiers are assigned, timestamps are created, and information is structured and coded. In general, information from a feeder system is in response to a request, often a pathology order, although the request/response pattern probably cannot be assumed in all cases.</p>
+<p>FIGURE <a href="#feeder_chain">Abstract Model of Feeder Chain</a> illustrates these elements, shown as a "feeder chain", along with typical meta-data available in messages from each system. In general, not much can be assumed about systems in the feeder chain. The originating system may or may not correspond to the place of the clinical activity - it is not uncommon for a pathology company to have a centralised report issuing location while having numerous physical laboratories. There is often limited consistency in the way identifiers are assigned, timestamps are created, and information is structured and coded. In general, information from a feeder system is in response to a request, often a pathology order, although the request/response pattern probably cannot be assumed in all cases.</p>
 </div>
 <div id="feeder_chain" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/feeder_chain.png" alt="feeder chain" width="80%">
 </div>
-<div class="title">Figure 2. ABstract Model of Feeder Chain</div>
+<div class="title">Figure 2. Abstract Model of Feeder Chain</div>
 </div>
 <div class="paragraph">
 <p>The idea underlying the openEHR Feeder audit model is that there are two groups of meta-data which should be recorded about an imported information item. The first is medico-legal meta-data about its creation: the system of origin, who created it and when it was created. The second is identifying meta-data for the item from the originating and feeder system, and potentially other intermediate systems in the feeder chain, where necessary to support duplicate detection, version detection and so on.</p>
@@ -2420,10 +2420,10 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="sect3">
 <h4 id="_versioned_objects"><a class="anchor" href="#_versioned_objects"></a>6.2.2. Versioned Objects</h4>
 <div class="paragraph">
-<p>Each <code>VERSIONED_OBJECT</code> has a unique identifier recorded in the uid attribute (a <code>HIER_OBJECT_ID</code> typically containing a GUID), and a reference to the owning object (e.g. the owning EHR) in the <code><em>owner_id</em></code> attribute (this is typically also a GUID). The latter helps ensure that in storage systems, Versioned objects are always correctly allocated to their enclosing repository, such as an EHR.</p>
+<p>Each <code>VERSIONED_OBJECT</code> has a unique identifier recorded in the <code><em>uid</em></code> attribute (a <code>HIER_OBJECT_ID</code> typically containing a GUID), and a reference to the owning object (e.g. the owning EHR) in the <code><em>owner_id</em></code> attribute (this is typically also a GUID). The latter helps ensure that in storage systems, Versioned objects are always correctly allocated to their enclosing repository, such as an EHR.</p>
 </div>
 <div class="paragraph">
-<p>The data in a <code>VERSIONED_OBJECT</code> are in the form of a collection of instances of the two <code>VERSION&lt;T&gt;</code> subtypes, and are available only via the functional interface of <code>VERSIONED_OBJECT</code>. How the representation of this collection is implemented inside the <code>VERSIONED_OBJECT</code> is not defined by this specification, only the form of any given Version is. Implementations of <code>VERSIONED_OBJECT</code> might range from the simple (all versions stored as full copies in a list) to a sophisticated compressed versioning approach as used in software file version control and some object databases. (The persistent data format of implementations of <code>VERSIONED_OBJECT</code> developed by different organisations will in general be incompatible. For purposes of sharing, an interoperable expression of <code>VERSIONED_OBJECT</code> is defined by the <code>X_VERSIONED_OBJECT</code> class in the EHR Extract IM.)</p>
+<p>The data in a <code>VERSIONED_OBJECT</code> are in the form of a collection of instances of the two <code>VERSION&lt;T&gt;</code> subtypes, and are available only via the functional interface of <code>VERSIONED_OBJECT</code>. How the representation of this collection is implemented inside the <code>VERSIONED_OBJECT</code> is not defined by this specification, only the form of any given version is. Implementations of <code>VERSIONED_OBJECT</code> might range from the simple (all versions stored as full copies in a list) to a sophisticated compressed versioning approach as used in software file version control and some object databases. (The persistent data format of implementations of <code>VERSIONED_OBJECT</code> developed by different organisations will in general be incompatible. For purposes of sharing, an interoperable expression of <code>VERSIONED_OBJECT</code> is defined by the <code>X_VERSIONED_OBJECT</code> class in the EHR Extract IM.)</p>
 </div>
 </div>
 <div class="sect3">
@@ -3630,7 +3630,7 @@ translations.has_key (d.language.code_string)))</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>TERMINOLOGY_CODE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Language of the translation.</p>
 </div></div></td>
@@ -3657,10 +3657,9 @@ translations.has_key (d.language.code_string)))</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_last_translated</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Version of this resource last time it was translated into the language represented by this TRANSLATION_DETAILS object.</p>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Language_valid</em></strong>: code_set (Code_set_id_languages).has_code (language)</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4138,6 +4137,9 @@ translations.has_key (d.language.code_string)))</p>
 <div class="olist bibliography">
 <ol class="bibliography">
 <li>
+<p><a id="CIMI"></a>[CIMI] Clinical Information Modelling Initiative (CIMI) Project. See <a href="http://opencimi.org" class="bare">http://opencimi.org</a>.</p>
+</li>
+<li>
 <p><a id="EHCR_supA_14"></a>[EHCR_supA_14] Dixon R, Grubb P A, Lloyd D, and Kalra D. <strong>Consolidated List of Requirements. EHCR Support Action Deliverable 1.4.</strong> European Commission DGXIII, Brussels; May 2001 59pp Available from <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF</a>.</p>
 </li>
 <li>
@@ -4274,6 +4276,9 @@ translations.has_key (d.language.code_string)))</p>
 </li>
 <li>
 <p><a id="openehr_CKM"></a>[openehr_CKM] <strong>The openEHR Clinical Knowledge Manager (CKM)</strong>. See <a href="http://www.openEHR.org/ckm" class="bare">http://www.openEHR.org/ckm</a></p>
+</li>
+<li>
+<p><a id="openehr_odin"></a>[openehr_odin] The openEHR Foundation. <strong>Object Data Instance Notation (ODIN).</strong> Available at <a href="http://www.openehr.org/releases/BASE/latest/odin.html" class="bare">http://www.openehr.org/releases/BASE/latest/odin.html</a>.</p>
 </li>
 <li>
 <p><a id="openehr_overview"></a>[openehr_overview] The openEHR Foundation. <strong>The openEHR Architecture Overview.</strong> See <a href="http://www.openehr.org/releases/BASE/dev/architecture_overview.html" class="bare">http://www.openehr.org/releases/BASE/dev/architecture_overview.html</a>.</p>

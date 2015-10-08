@@ -16,48 +16,43 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*terminology* (name): `TERMINOLOGY_ACCESS` +
-*_Pre_*: has_terminology (name)
+|*terminology* (name: `String`): `TERMINOLOGY_ACCESS`
 a|Return an interface to the terminology named name. Allowable names include:-
-
-* openehr  
-* centc251  
+* openehr, 
+* centc251,
 * any name from are taken from the US NLM UMLS meta-data list at http://www.nlm.nih.gov/research/umls/metaa1.html 
 
 h|
-|*code_set* (name): `CODE_SET_ACCESS` +
+|*code_set* (name: `String`): `CODE_SET_ACCESS` +
 *_Pre_*: has_code_set (name)
-a|Return an interface to the code_set identified by the external identifier name (e.g.  ISO_639-1 ). 
+a|Return an interface to the code_set identified by the external identifier name (e.g.  ISO_639-1). 
 
 h|
-|*code_set_for_id* (id): `CODE_SET_ACCESS` +
+|*code_set_for_id* (id: `String`): `CODE_SET_ACCESS` +
 *_Pre_*: valid_code_set_id (id)
 a|Return an interface to the code_set identified internally in openEHR by id. 
 
 h|
-|*has_terminology* (name): `boolean`
+|*has_terminology* (name: `String`): `Boolean`
 a|True if terminology named name known by this service. Allowable names include:-
-
-* openehr  
-* centc251  
-* any name from are taken from the US NLM UMLS meta-data list at http://www.nlm.nih.gov/research/umls/metaa1.html
-
-h|
-|*has_code_set* (name): `boolean`
-a|True if code_set linked to internal name (e.g.  languages ) is available. 
+   *  openehr  
+   * centc251  
+   * any name from are taken from the US NLM UMLS meta-data list at 
+      http://www.nlm.nih.gov/research/umls/metaa1.html
 
 h|
-|*terminology_identifiers*: 
-a|Set of all terminology identifiers known in the terminology service. Values from 
-the US NLM UMLS meta-data list at:-
+|*has_code_set* (name: `String`): `Boolean`
+a|True if code_set linked to internal name (e.g. languages ) is available. 
 
-http://www.nlm.nih.gov/research/umls/metaa1.html 
+h|
+|*terminology_identifiers*: `List<String>`
+a|Set of all terminology identifiers known in the terminology service. Values from the US NLM UMLS meta-data list at:- http://www.nlm.nih.gov/research/umls/metaa1.html 
 
 h|
 |*openehr_code_sets*: `Hash<String, String>`
 a|Set of all code set identifiers known in the terminology service. 
 
 h|
-|*code_set_identifiers*: 
+|*code_set_identifiers*: `List<String>`
 a|Set of all code sets identifiers for which there is an internal openEHR name; returned as a Map of ids keyed by internal name. 
 |===
