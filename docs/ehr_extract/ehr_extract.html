@@ -315,11 +315,41 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SPEC-313</strong>. Resolve various open modelling questions in existing Extract spec.<br>
- SPEC-314. Correct modelling inconsistency of every EXTRACT_CHAPTER being related to a single Entity</p></td>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-30">SPECRM-30</a>. Correct documentation errors in <code>EHR_EXTRACT</code> class (remove text about generic parameters).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>29 Jun 2011</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>10 Oct 2015</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-24">SPECRM-24</a>. Correct EHR Extract IM typographical errors.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-13">SPECRM-13</a>. Convert various fields to coded in EHR Extract.<br>
+ <code>EXTRACT_SPEC</code>.<code><em>type</em></code>, <code>EXTRACT_ACTION_REQUEST</code>.<code><em>action</em></code> and <code>EXTRACT_UPDATE_SPEC</code>.<code><em>trigger_events</em></code> are converted to coded types.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-14">SPECRM-14</a>: Various EHR Extract model improvements.<br>
+ Remove <code>EXTRACT_SPEC</code>.<code><em>includes_directory</em></code> and <code><em>directory_archetype</em></code>; remove <code>EXTRACT_ENTITY_CONTENT</code> class;<br>
+ make <code>EXTRACT_FOLDER</code> classes the main containment structure; move <code>X_VERSIONED_OBJECT</code> to <code>openEHR_extract</code> package<br>
+ change <code>EXTRACT</code>.<code><em>request_id</em></code> to a <code>HIER_OBJECT_ID</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 Jun 2011</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-6">SPECRM-6</a>. Correct modelling inconsistency of every <code>EXTRACT_CHAPTER</code> being related to a single Entity.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.2</strong></p></th>
@@ -329,10 +359,16 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000189</strong>. Add LOCATABLE.parent. New invariant in EHR_EXTRACT.<br>
- CR-000186: Upgrade EHR_EXTRACT to Release-1.0. Major redevelopment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000189</strong>. Add <code>LOCATABLE</code>.<code><em>parent</em></code>. New invariant in <code>EHR_EXTRACT</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">20 Feb 2007</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-10">SPECRM-10</a>: Upgrade <code>EHR_EXTRACT</code> to Release-1.0. Major redevelopment.<br>
+ Added <code>X_VERSIONED_OBJECT</code>, <code>X_VERSIONED_FOLDER</code>, <code>X_VERSIONED_COMPOSITION</code>, <code>X_VERSIONED_EHR_ACCESS</code>, <code>X_VERSIONED_EHR_STATUS</code>, <code>X_VERSIONED_PARTY</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -375,20 +411,20 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.3.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000003</strong>, CR-000004 (changes to versioning and LOCATABLE).  MESSAGE_CONTENT now inherits from LOCATABLE.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>CR-000003</strong>, CR-000004 (changes to versioning and LOCATABLE).  <code>MESSAGE_CONTENT</code> now inherits from <code>LOCATABLE</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,
  Z Tun</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">18 Mar 2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.3.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Formally validated using ISE Eiffel 5.2. Revised structure of MESSAGE class to align better with CEN 13606-4. Renamed EHR_EXTRACT.hca_authorising to originator, similar to 13606.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Formally validated using ISE Eiffel 5.2. Revised structure of <code>MESSAGE</code> class to align better with CEN 13606-4. Renamed <code>EHR_EXTRACT</code>.<code><em>hca_authorising</em></code> to <code><em>originator</em></code>, similar to 13606.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">26 Feb 2003</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Changes post CEN WG meeting Rome Feb 2003. Added attestations to X_TRANSACTION class. Significantly improved documentation of requirements, comparison to CEN 13606-4.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changes post CEN WG meeting Rome Feb 2003. Added attestations to <code>X_TRANSACTION</code> class. Significantly improved documentation of requirements, comparison to CEN 13606-4.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  S Heard,<br>
  D Kalra,<br>
@@ -415,7 +451,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Moved part of EHR_EXTRACT into MESSAGE. Allow for multilevel archetypable Folder structures.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Moved part of <code>EHR_EXTRACT</code> into <code>MESSAGE</code>. Allow for multilevel archetypable Folder structures.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  D Kalra,<br>
  D Lloyd</p></td>
@@ -582,7 +618,7 @@ persistent Compositions (e.g. "medications list", "problem list") and event Comp
 </li>
 <li>
 <p>Each Version within a Version container corresponds to one version of the content managed
-by that container, in other words the state of a particlar content item at some point in time
+by that container, in other words the state of a particular content item at some point in time
 when it was committed by a user.</p>
 </li>
 <li>
@@ -926,7 +962,7 @@ record in a system, it can also be used as the unit of update to the same record
 <div class="paragraph">
 <p>If changes are allowed to multiple systems that also systematically synchronise, a "virtual EHR"
 exists. This term indicates that the totality of changes taken together form a complete EHR, even if
-any any particular instant in any given system, not all such changes are visible. The virtual EHR is the
+any particular instant in any given system, not all such changes are visible. The virtual EHR is the
 usual situation in any large-scale distributed e-health environment. Synchronisation might be on an
 ad hoc or systematic basis, and may or may not be bidirectional. The difference between a synchronisation
 request and any other kind of request is that the request is specified not in terms of a user query
@@ -1120,7 +1156,7 @@ access to the complete terminology will be obtained.</p>
 </div>
 <div class="paragraph">
 <p>The same assumption is made with respect to archetypes whose identifiers are mentioned in the EHR
-data or meta-data: archetype are not themselves included in Extracts, and have to be resolved separately.</p>
+data or meta-data: archetypes are not themselves included in Extracts, and have to be resolved separately.</p>
 </div>
 </div>
 </div>
@@ -1195,7 +1231,7 @@ along with the various concrete Extract types defined by the model.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>Generic Extract</em>: an Extract type designed for use with non-openEHR systems communicating to openEHR systems, and users of the ISO 13606 Extract specification. The Generic Extract assumes the absolute minimum about what is in a system, while remaining withing the openEHR type system;</p>
+<p><em>Generic Extract</em>: an Extract type designed for use with non-openEHR systems communicating to openEHR systems, and users of the ISO 13606 Extract specification. The Generic Extract assumes the absolute minimum about what is in a system, while remaining within the openEHR type system;</p>
 </li>
 <li>
 <p><em>Synchronisation Extract</em>: an Extract used for updating mirrored EHRs across systems; uses Contributions as the grouping concept.</p>
@@ -1421,7 +1457,7 @@ default situation, requiring no update_spec at all, is a one-off request. Other 
 <div class="ulist">
 <ul>
 <li>
-<p>repeat Reqest with a defined period and/or trigger events;</p>
+<p>repeat Request with a defined period and/or trigger events;</p>
 </li>
 <li>
 <p>persisting the Request in the server so that the requestor can make later repeat requests by referring to a previously stored request by its identifier.</p>
@@ -1937,7 +1973,7 @@ the EHR and generic Extract sections below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Specification of the how the request should be processed by server. The request can be persisted in the server, meaning that a) it can be re-activated by the requesting system simply by indicating Request id, and b) that a changes-only pattern of Extract updates can be set up. To achieve this, the server has to remember what was send in the previous reponse.</p>
+<p>Specification of the how the request should be processed by server. The request can be persisted in the server, meaning that a) it can be re-activated by the requesting system simply by indicating Request id, and b) that a changes-only pattern of Extract updates can be set up. To achieve this, the server has to remember what was sent in the previous response.</p>
 </div>
 <div class="paragraph">
 <p>The update mode may be event-driven and periodic update or a mixture of both. The candidate items to be sent each time are the result of re-evaluating the content and versioning parts of the specification; what is actually sent is determined by the send_changes_only flag.</p>

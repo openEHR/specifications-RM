@@ -385,16 +385,26 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-23">SPECRM-23</a> Make some DV_IDENTIFIER features optional.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>06 Aug 2015</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.2</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SPEC-257</strong>: Correct minor typos and clarify text. Replace <code>DV_EHR_URI</code> with <code>DV_URI</code> in inheritance of class definition of <code>DV_EHR_URI</code>.<br>
  Clarify the description of the type attribute in <code>DV_PROPORTION</code> to indicate how it is controlled by <code>PROPORTION_KIND</code>.  Add <code><em>as_string()</em></code> function to <code>DV_ENCAPSULATED</code> class in UML diagram of encapsulated package.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Cook<br>
  C Ma,<br>
  R Chen</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>20 Nov 2008</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 Nov 2008</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1206,19 +1216,18 @@ such as names or addresses.</p>
 <div class="sect3">
 <h4 id="_design"><a class="anchor" href="#_design"></a>4.1.2. Design</h4>
 <div class="paragraph">
-<p>The model defined here in the <code>DV_IDENTIFIER</code> class allows the recording of three things as part of
-identifying an item of interest:</p>
+<p>The model defined here in the <code>DV_IDENTIFIER</code> class allows the recording of three things as part of identifying an item of interest:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>the issuing authority of the kind of id used (e.g. it might be the federal department of health);</p>
+<p>the identifier given to the item of interest (mandatory).</p>
 </li>
 <li>
-<p>the assigner of the id to the item being identified. This is usually the organisation which created the item being identified;</p>
+<p>the issuing authority of the kind of id used (e.g. it might be the federal department of health) (optional);</p>
 </li>
 <li>
-<p>the identifier given to the item of interest.</p>
+<p>the assigner of the id to the item being identified. This is usually the organisation which created the item being identified (optional);</p>
 </li>
 </ul>
 </div>
@@ -1226,8 +1235,7 @@ identifying an item of interest:</p>
 <p>In addition, the type of item being identified can also be recorded.</p>
 </div>
 <div class="paragraph">
-<p>See the Support IM specification for a further discussion of RWEs and IEs, and the definition of IEs
-in openEHR.</p>
+<p>See the Support IM <a href="#openehr_rm_support">[openehr_rm_support]</a> specification for a further discussion of RWEs and IEs, and the definition of IEs in openEHR.</p>
 </div>
 </div>
 </div>
@@ -1383,17 +1391,17 @@ in openEHR.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>issuer</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Authority which issues the kind of id used in the id field of this object.</p>
+<p>Optional authority which issues the kind of id used in the id field of this object.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>assigner</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Organisation that assigned the id to the item being identified.</p>
+<p>Optional organisation that assigned the id to the item being identified.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1404,10 +1412,10 @@ in openEHR.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The identifier type, such as  prescription , or  Social Security Number . One day a controlled vocabulary might be possible for this.</p>
+<p>Optional identifier type, such as  prescription , or  Social Security Number . One day a controlled vocabulary might be possible for this.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3422,7 +3430,7 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong>: <code>Integer64</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>

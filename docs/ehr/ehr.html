@@ -336,13 +336,33 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-28">SPECRM-28</a>. Corrections to EHR and Common IM documentation.<br>
+ Improve explanation in section 4.4.2 (EHR Creation) of <code>EHR_STATUS</code>.<code><em>is_modifiable</em></code> (<a href="https://openehr.atlassian.net/browse/SPECPR-28">SPECPR-28</a>).
+ Fix description of <code>CARE_ENTRY</code>.<code><em>guideline_id</em></code> (<a href="https://openehr.atlassian.net/browse/SPECPR-75">SPECPR-75</a>).
+ Fix typo in EHR IM in section 'Standard Clinical Types of Data' (<a href="https://openehr.atlassian.net/browse/SPECPR-87">SPECPR-87</a>).
+ EHR IM missing example in section 'Care_entry and Admin_entry'. (<a href="https://openehr.atlassian.net/browse/SPECPR-89">SPECPR-89</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C Ma,<br>
+ P Pazos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>10 Oct 2015</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-37">SPECRM-37</a>: Add optional <code><em>reason</em></code> attribute to <code>ISM_TRANSITION</code> class (<a href="https://openehr.atlassian.net/browse/SPECPR-58">SPECPR-58</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.2</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SPEC-274</strong>. Observation should be Evaluation in problem/SOAP structure figure.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R Chen</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>16 Aug 2008</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16 Aug 2008</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1695,24 +1715,24 @@
 <div class="sect3">
 <h4 id="_creation"><a class="anchor" href="#_creation"></a>4.4.2. Creation</h4>
 <div class="paragraph">
-<p>When an EHR is created, the result should be a root EHR object, an EHR Status object, and an EHR Access object, plus any other house-keeping information the versioning implementation requires. In a normal implementation, the EHR Status and EHR Access objects would normally be created and committed in a Contribution, just as any Composition would be. The EHR Status object has a special status in the EHR, indicating whether the EHR should be included in querying, whether it is modifiable, and by implication, whether it is active. Flags might be set to indicate that it is test record, or for educational or training purposes. The initial creation operation has to supply sufficient parameters for creation of these two objects, including:</p>
+<p>When an EHR is created, the result should be a root EHR object, an EHR Status object, and an EHR Access object, plus any other house-keeping information the versioning implementation requires. In a normal implementation, the EHR Status and EHR Access objects would be created and committed in a Contribution, just as any Composition would be. The EHR Status object has a special status in the EHR, indicating whether the EHR should be included in querying, whether it is modifiable, and by implication, whether it is active. Flags might be set to indicate that it is test record, or for educational or training purposes. The initial creation operation has to supply sufficient parameters for creation of these two objects, including:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>system id</p>
+<p><code><em>system_id</em></code></p>
 </li>
 <li>
-<p>EHR id</p>
+<p><code><em>ehr_id</em></code></p>
 </li>
 <li>
-<p>Subject id (optional; the use of <code>PARTY_SELF</code> allows completely anonymous EHRs)</p>
+<p><code><em>subject_id</em></code> (optional; the use of <code>PARTY_SELF</code> allows completely anonymous EHRs)</p>
 </li>
 <li>
-<p>queryable flag</p>
+<p><code><em>is_queryable</em></code> flag</p>
 </li>
 <li>
-<p>modifiable flag</p>
+<p><code><em>is_modifiable</em></code> flag - indicates whether the EHR is allowed to be modified (excepting the <code>EHR_STATUS</code> object which is always modifiable)</p>
 </li>
 <li>
 <p>any other flags required by the EHR Status object in the local implementation.</p>
@@ -2004,7 +2024,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Single object per EHR giving various EHR-wide information.</p>
+<p>Single object per EHR containing various EHR-wide status flags and settings, including whether this EHR can be queried, modified etc. This object is always modifiable, in order to change the status of the EHR as a whole.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2034,7 +2054,7 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_modifiable</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this EHR is allowed to be written to.</p>
+<p>True if this EHR is allowed to be written to. Note that the EHR_STATUS object is special and can always be written to.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2749,7 +2769,7 @@
 <p><em>Basic information</em> (dob, sex, height, weight, pregnant etc): recorded as Observations and/or Admin_entries;</p>
 </li>
 <li>
-<p><em>Problem list</em>: maintained as one or more Evaluations which themselves are generated by clinicians as a rsult of observations made elsewhere in the record;</p>
+<p><em>Problem list</em>: maintained as one or more Evaluations which themselves are generated by clinicians as a result of observations made elsewhere in the record;</p>
 </li>
 <li>
 <p><em>Medications list</em>: derived from Instructions and Actions in the record. The status of Actions allows medications to be displayed as past, current, suspended etc.</p>
@@ -2911,7 +2931,7 @@ and includes the following:</p>
 <p>Conversely, every instance of a <code>CARE_ENTRY</code> subtype is clinically significant, even if it also carries information which might be of interest to other health management functions billing (e.g. ICD10 coded diagnoses), practice management (e.g. date, time and place in an order for day surgery). The <code>CARE_ENTRY</code> type includes two attributes particular to all clinical entries, namely protocol and guideline_id.</p>
 </div>
 <div class="paragraph">
-<p>These attributes allow the "how" and "why" aspects of any clinical recording to be expressed. Protocol is often recorded for Observations (e.g. staining method in microscopy) and Instructions.</p>
+<p>These attributes allow the 'how' and 'why' aspects of any clinical recording to be expressed. Protocol is often recorded for Observations, e.g. staining method in microscopy, and Instructions, e.g. Bruce protocol for ECG test.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3158,6 +3178,9 @@ and includes the following:</p>
 <div class="ulist">
 <ul>
 <li>
+<p>what is the current status of an Instruction for the patient?</p>
+</li>
+<li>
 <p>what is the current step in the Activity for the patient?</p>
 </li>
 <li>
@@ -3169,7 +3192,7 @@ and includes the following:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The approach chosen here to support such functionality is to define a standard instruction state machine whose state transitions can be mapped to the steps of a specific care pathway, enabling it to be used as a descriptive device for indicating the state of any Activity. The state machine is illustrated below.</p>
+<p>The approach chosen here to support such functionality is to define a standard instruction state machine whose state transitions can be mapped to the steps of a specific care pathway, enabling it to be used as a descriptive device for indicating the state of any Activity. The status of an Instruction is determined algorithmically from the states of the constituent Activities, as described below. The state machine is illustrated below.</p>
 </div>
 <div id="instruction_state_machine" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -3268,7 +3291,7 @@ EXPIRED
 <p>States <code>CANCELLED</code>, <code>ABORTED</code> and <code>COMPLETED</code> are all terminal states. The <code>EXPIRED</code> state is a pseudo-terminal state, from which transitions are allowed to proceed to any of the true terminal states, due to information being received after the fact (such as a patient reporting that they did indeed finish a course of antibiotics). However it is likely in the EHR that Instructions for many simple medications will finish in the <code>EXPIRED</code> state and remain there.</p>
 </div>
 <div class="paragraph">
-<p>The transitions are self-explanatory for the most part, however a few deserve comment. The start and finish events correspond to situations when the administration is not instantaneous, as is the situation with most medications. The do event is equivalent to the finish event occurring immediately after the start event, corresponding to an instantaneous administration, completion of which puts the Activity in the completed state. A single shot vaccination or patient taking a single tablet are typical examples. The states <code>PLANNED</code>, <code>POSTPONED</code>, <code>ACTIVE</code>, <code>SUSPENDED</code>, each have a <code>xxx_step</code> transition which return the state machine to the same state. Workflow steps that cause no transition are mapped to these events and thus leave the Instruction in the same state. An example is a medication review, which will leave the medication in the <code>ACTIVE</code> state, if the physician chooses to continue.</p>
+<p>The transitions are self-explanatory for the most part, however a few deserve comment. The <code>start</code> and <code>finish</code> events correspond to situations when the administration is not instantaneous, as is the situation with most medications. The <code>do</code> event is equivalent to the <code>finish</code> event occurring immediately after the <code>start</code> event, corresponding to an instantaneous administration, completion of which puts the Activity in the completed state. A single shot vaccination or patient taking a single tablet are typical examples. The states <code>PLANNED</code>, <code>POSTPONED</code>, <code>ACTIVE</code>, <code>SUSPENDED</code>, each have a <code>xxx_step</code> transition which return the state machine to the same state. Workflow steps that cause no transition are mapped to these events and thus leave the Instruction in the same state. An example is a medication review, which will leave the medication in the <code>ACTIVE</code> state, if the physician chooses to continue.</p>
 </div>
 <div class="paragraph">
 <p>In the future, if delegation of an Instruction to another Instruction is required, nesting of a new Instruction state machine within the Active state of a previous one might need to be supported.</p>
@@ -3349,7 +3372,13 @@ EXPIRED
 </tbody>
 </table>
 <div class="paragraph">
-<p>Mappings like this are specified in the archetypes for the Instruction. When an <code>ACTION</code> instance is committed to the EHR, the <code>ISM_TRANSITION</code> object records the step performed and the ISM state and transition. The careflow step must be one of the steps from the corresponding Instruction. The following section provides details of how archetypes are used to represent such mappings.</p>
+<p>Mappings like this are specified in the <code>ACTION</code> archetypes for the Instruction. When an <code>ACTION</code> instance is committed to the EHR, the <code>ISM_TRANSITION</code> object records the step performed and the ISM state and transition. The careflow step must be one of the steps from the corresponding Instruction.</p>
+</div>
+<div class="paragraph">
+<p>An optional <code><em>reason</em></code> property is provided in the <code>ISM_TRANSITION</code> class in order to enable a specific reason for the step having occurred to be recorded.</p>
+</div>
+<div class="paragraph">
+<p>The following section provides details of how archetypes are used to represent such mappings.</p>
 </div>
 </div>
 <div class="sect4">
@@ -3358,7 +3387,7 @@ EXPIRED
 <p>Much of the semantics of particular Instructions and Actions derive from archetypes. Currently, archetypes are used to define two groups of Instruction semantics. The first is the descriptions of activities that are defined in Instructions (<code>ACTIVITY</code>.<code><em>description</em></code>) and executed in Actions (<code>ACTION</code>.<code><em>description</em></code>). These descriptions are always of the same form for any given Instruction, and it is highly desirable to have the same archetype component for both. An example is where the description is of a medication, commonly consisting of a tree or list of ten or more elements describing the drug, its name, form, dose, route and so on. The same information structure is needed in the Instruction, where it defines what is to be administered, and in the Action, where it describes what has been administered. In any particular instance, there may be small differences in what was administered (e.g. dose or route are modified) even though the archetype model will be the same for both.</p>
 </div>
 <div class="paragraph">
-<p>In terms of archetypes therefore, definition of say two <code>ACTIVITIEs</code> in an <code>INSTRUCTION</code> (see example illustrated below) will actually create separate archetypes of the Activity structures, each of which will be one of the subtypes of <code>ITEM_STRUCTURE</code> (since this is the type of <code>ACTIVITY</code>.<code><em>description</em></code> and <code>ACTION</code>.<code><em>description</em></code>). The archetypes will then be used by both the <code>INSTRUCTION</code> archetype and the <code>ACTION</code> archetype, via the archetype slot mechanism (i.e. the standard way of composing archetypes from other archetypes; see <code>use_archetype</code> statements in the figure below).</p>
+<p>In terms of archetypes therefore, definition of say two <code>ACTIVITYs</code> in an <code>INSTRUCTION</code> (see example illustrated below) will actually create separate archetypes of the Activity structures, each of which will be one of the subtypes of <code>ITEM_STRUCTURE</code> (since this is the type of <code>ACTIVITY</code>.<code><em>description</em></code> and <code>ACTION</code>.<code><em>description</em></code>). The archetypes will then be used by both the <code>INSTRUCTION</code> archetype and the <code>ACTION</code> archetype, via the archetype slot mechanism (i.e. the standard way of composing archetypes from other archetypes; see <code>use_archetype</code> statements in the figure below).</p>
 </div>
 <div id="instruction_and_action_archetypes" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -3367,7 +3396,10 @@ EXPIRED
 <div class="title">Figure 24. Instruction and Action Archetypes</div>
 </div>
 <div class="paragraph">
-<p>The second category of archetypable semantics is the correspondence between steps in a healthcare business process and the standard instruction state machine, as described above. This mapping is an archetype of the ism_transition attribute of an <code>ACTION</code> attribute, and therefore defines part of the <code>ACTION</code> archetype. The figure <a href="#instruction_and_action_archetypes">Instruction and Action Archetypes</a> shows how logical archetype elements in the archetyped editor environment corresponds to the resulting archetypes.</p>
+<p>The second category of archetypable semantics is the correspondence between steps in a healthcare business process and the standard instruction state machine, as described above. This mapping is an archetype of the <code><em>ism_transition</em></code> attribute of an <code>ACTION</code> attribute, and therefore defines part of the <code>ACTION</code> archetype. The figure <a href="#instruction_and_action_archetypes">Instruction and Action Archetypes</a> shows how logical archetype elements in the archetyped editor environment corresponds to the resulting archetypes.</p>
+</div>
+<div class="paragraph">
+<p>Consequently, the set of archetypes defining the clinical semantics of a specific kind of intervention will normally consists of archetypes of <code>INSTRUCTION</code>, <code>ACTION</code> and potentially component archetypes of the <code>ITEM_STRUCTURE</code> classes.</p>
 </div>
 </div>
 </div>
@@ -3633,7 +3665,7 @@ Not to be used for any clinically significant information.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>guideline_id</strong>: <code>OBJECT_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional external identifier of guideline creating this action if relevant.</p>
+<p>Optional external identifier of guideline creating this Entry if relevant.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4025,6 +4057,13 @@ This specification does not currently define the actual structure or semantics o
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>careflow_step</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The step in the careflow process which occurred as part of generating this action, e.g.  dispense ,  start_administration . This attribute represents the clinical  label for the activity, as  opposed to current_state which represents  the state machine (ISM)  computable form. Defined in archetype.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>reason</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional reason for this careflow step having been taken.</p>
 </div></div></td>
 </tr>
 <tr>

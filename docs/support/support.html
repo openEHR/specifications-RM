@@ -49,7 +49,8 @@
 <li><a href="#_ordered_numeric_class">3.2.4. Ordered_Numeric Class</a></li>
 <li><a href="#_boolean_class">3.2.5. Boolean Class</a></li>
 <li><a href="#_integer_class">3.2.6. Integer Class</a></li>
-<li><a href="#_real_class">3.2.7. Real Class</a></li>
+<li><a href="#_integer64_class">3.2.7. Integer64 Class</a></li>
+<li><a href="#_real_class">3.2.8. Real Class</a></li>
 </ul>
 </li>
 <li><a href="#_assumed_library_types">3.3. Assumed Library Types</a>
@@ -302,13 +303,22 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-29">SPECRM-29</a>: Change DV_COUNT.magnitude to integer64  type.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R Chen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Aug 2015</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.2</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.6.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SPEC-256</strong>: Correct extension_validity in <code>UID_BASED_ID</code> class.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R Chen</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>20 Oct 2008</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20 Oct 2008</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -875,6 +885,11 @@ implementation formalism.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer</code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer64</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">represents 64-bit integers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer64</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">represents 32-bit real numbers in any interoperable representation, including single-width IEEE floating point</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Real</code></p></td>
@@ -1195,7 +1210,31 @@ XML-schema do not have such operations.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_real_class"><a class="anchor" href="#_real_class"></a>3.2.7. Real Class</h4>
+<h4 id="_integer64_class"><a class="anchor" href="#_integer64_class"></a>3.2.7. Integer64 Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Integer64</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered_Numeric</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_real_class"><a class="anchor" href="#_real_class"></a>3.2.8. Real Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16%;">
@@ -3509,8 +3548,7 @@ object (e.g. "GP") or any proper ancestor (e.g. <code>PARTY</code>).</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The value of the id.
-The value of the id.</p>
+<p>The value of the id.</p>
 </div></div></td>
 </tr>
 <tr>
