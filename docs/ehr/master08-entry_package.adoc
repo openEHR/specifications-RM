@@ -323,19 +323,25 @@ From a health professional's point of view, a healthcare workflow, or 'careflow'
 
 |===
 
-Mappings like this are specified in the archetypes for the Instruction. When an `ACTION` instance is committed to the EHR, the `ISM_TRANSITION` object records the step performed and the ISM state and transition. The careflow step must be one of the steps from the corresponding Instruction. The following section provides details of how archetypes are used to represent such mappings.
+Mappings like this are specified in the `ACTION` archetypes for the Instruction. When an `ACTION` instance is committed to the EHR, the `ISM_TRANSITION` object records the step performed and the ISM state and transition. The careflow step must be one of the steps from the corresponding Instruction. 
+
+An optional `_reason_` property is provided in the `ISM_TRANSITION` class in order to enable a specific reason for the step having occurred to be recorded.
+
+The following section provides details of how archetypes are used to represent such mappings.
 
 ==== Relationship to Archetypes
 
 Much of the semantics of particular Instructions and Actions derive from archetypes. Currently, archetypes are used to define two groups of Instruction semantics. The first is the descriptions of activities that are defined in Instructions (`ACTIVITY`.`_description_`) and executed in Actions (`ACTION`.`_description_`). These descriptions are always of the same form for any given Instruction, and it is highly desirable to have the same archetype component for both. An example is where the description is of a medication, commonly consisting of a tree or list of ten or more elements describing the drug, its name, form, dose, route and so on. The same information structure is needed in the Instruction, where it defines what is to be administered, and in the Action, where it describes what has been administered. In any particular instance, there may be small differences in what was administered (e.g. dose or route are modified) even though the archetype model will be the same for both.
 
-In terms of archetypes therefore, definition of say two `ACTIVITIEs` in an `INSTRUCTION` (see example illustrated below) will actually create separate archetypes of the Activity structures, each of which will be one of the subtypes of `ITEM_STRUCTURE` (since this is the type of `ACTIVITY`.`_description_` and `ACTION`.`_description_`). The archetypes will then be used by both the `INSTRUCTION` archetype and the `ACTION` archetype, via the archetype slot mechanism (i.e. the standard way of composing archetypes from other archetypes; see `use_archetype` statements in the figure below).
+In terms of archetypes therefore, definition of say two `ACTIVITYs` in an `INSTRUCTION` (see example illustrated below) will actually create separate archetypes of the Activity structures, each of which will be one of the subtypes of `ITEM_STRUCTURE` (since this is the type of `ACTIVITY`.`_description_` and `ACTION`.`_description_`). The archetypes will then be used by both the `INSTRUCTION` archetype and the `ACTION` archetype, via the archetype slot mechanism (i.e. the standard way of composing archetypes from other archetypes; see `use_archetype` statements in the figure below).
 
 [.text-center]
 .Instruction and Action Archetypes
 image::diagrams/instruction_and_action_archetypes.png[id=instruction_and_action_archetypes, align="center", width=70%]
 
-The second category of archetypable semantics is the correspondence between steps in a healthcare business process and the standard instruction state machine, as described above. This mapping is an archetype of the ism_transition attribute of an `ACTION` attribute, and therefore defines part of the `ACTION` archetype. The figure <<instruction_and_action_archetypes>> shows how logical archetype elements in the archetyped editor environment corresponds to the resulting archetypes.
+The second category of archetypable semantics is the correspondence between steps in a healthcare business process and the standard instruction state machine, as described above. This mapping is an archetype of the `_ism_transition_` attribute of an `ACTION` attribute, and therefore defines part of the `ACTION` archetype. The figure <<instruction_and_action_archetypes>> shows how logical archetype elements in the archetyped editor environment corresponds to the resulting archetypes.
+
+Consequently, the set of archetypes defining the clinical semantics of a specific kind of intervention will normally consists of archetypes of `INSTRUCTION`, `ACTION` and potentially component archetypes of the `ITEM_STRUCTURE` classes.
 
 === Clinical Workflow Definition
 

@@ -27,6 +27,10 @@ h|*0..1*
 |*careflow_step*: `DV_CODED_TEXT`
 a|The step in the careflow process which occurred as part of generating this action, e.g.  dispense ,  start_administration . This attribute represents the clinical  label for the activity, as  opposed to current_state which represents  the state machine (ISM)  computable form. Defined in archetype.
 
+h|*0..1*
+|*reason*: `DV_TEXT`
+a|Optional reason for this careflow step having been taken.
+
 h|*Invariant*
 2+a|*_Current_state_valid_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_instruction_states, current_state.defining_code)
 
