@@ -19,21 +19,21 @@ h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|*1..1*
+h|*0..1*
 |*issuer*: `String`
-a|Authority which issues the kind of id used in the id field of this object. 
+a|Optional authority which issues the kind of id used in the id field of this object. 
 
-h|*1..1*
+h|*0..1*
 |*assigner*: `String`
-a|Organisation that assigned the id to the item being identified.
+a|Optional organisation that assigned the id to the item being identified.
 
 h|*1..1*
 |*id*: `String`
 a|The identifier value. Often structured, according to the definition of the issuing authority's rules. 
 
-h|*1..1*
+h|*0..1*
 |*type*: `String`
-a|The identifier type, such as  prescription , or  Social Security Number . One day a controlled vocabulary might be possible for this.
+a|Optional identifier type, such as  prescription , or  Social Security Number . One day a controlled vocabulary might be possible for this.
 
 h|*Invariant*
 2+a|*_Issuer_valid_*: not issuer.is_empty
