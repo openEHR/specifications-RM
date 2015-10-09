@@ -170,13 +170,13 @@ In theory such a scheme could guarantee one EHR id per patient, but of course in
 
 === Creation
 
-When an EHR is created, the result should be a root EHR object, an EHR Status object, and an EHR Access object, plus any other house-keeping information the versioning implementation requires. In a normal implementation, the EHR Status and EHR Access objects would normally be created and committed in a Contribution, just as any Composition would be. The EHR Status object has a special status in the EHR, indicating whether the EHR should be included in querying, whether it is modifiable, and by implication, whether it is active. Flags might be set to indicate that it is test record, or for educational or training purposes. The initial creation operation has to supply sufficient parameters for creation of these two objects, including:
+When an EHR is created, the result should be a root EHR object, an EHR Status object, and an EHR Access object, plus any other house-keeping information the versioning implementation requires. In a normal implementation, the EHR Status and EHR Access objects would be created and committed in a Contribution, just as any Composition would be. The EHR Status object has a special status in the EHR, indicating whether the EHR should be included in querying, whether it is modifiable, and by implication, whether it is active. Flags might be set to indicate that it is test record, or for educational or training purposes. The initial creation operation has to supply sufficient parameters for creation of these two objects, including:
 
-* system id
-* EHR id
-* Subject id (optional; the use of `PARTY_SELF` allows completely anonymous EHRs)
-* queryable flag
-* modifiable flag
+* `_system_id_`
+* `_ehr_id_`
+* `_subject_id_` (optional; the use of `PARTY_SELF` allows completely anonymous EHRs)
+* `_is_queryable_` flag
+* `_is_modifiable_` flag - indicates whether the EHR is allowed to be modified (excepting the `EHR_STATUS` object which is always modifiable)
 * any other flags required by the EHR Status object in the local implementation.
 
 The EHR id will either be a new globally unique identifier, in the case of first time EHR creation for this patient in the health system, or else the same identifier as an existing EHR for the same subject in another system, in the case of an EHR move or copy. The effect of EHR copying / synchronising between systems is that EHRs with the same identifier can be found within multiple systems. However if the same patient presented at multiple provider locations with no EHR sharing capability, a new EHR with a unique identifier will be created at each place. If a later request for copying occurs (e.g. due to a request for an EHR Extract) between two providers, the requesting institution will perform the merge of the received copy into the existing EHR for the same patient.

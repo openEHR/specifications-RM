@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*EHR_STATUS*
 
 h|*Description*
-2+a|Single object per EHR giving various EHR-wide information. 
+2+a|Single object per EHR containing various EHR-wide status flags and settings, including whether this EHR can be queried, modified etc. This object is always modifiable, in order to change the status of the EHR as a whole.
 
 h|*Inherit*
 2+|LOCATABLE
@@ -25,7 +25,7 @@ a|True if this EHR should be included in population queries, i.e. if this EHR is
 
 h|*1..1*
 |*is_modifiable*: `Boolean`
-a|True if this EHR is allowed to be written to. 
+a|True if this EHR is allowed to be written to. Note that the EHR_STATUS object is special and can always be written to.
 
 h|*0..1*
 |*other_details*: `ITEM_STRUCTURE`

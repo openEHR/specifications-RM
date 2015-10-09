@@ -29,7 +29,7 @@ h|*Functions*
 
 h|
 |*uid*: `OBJECT_VERSION_ID`
-a|Unique identifier of this version, containing owner_id, version_tree_id and creating_system_id.
+a|Unique identifier of this VERSION, containing a copy of owner_id, a version_tree_id and creating_system_id. The owner_id is itself a copy of the owning VERSIONED_OBJECT.uid.
 
 h|
 |*preceding_version_uid*: `OBJECT_VERSION_ID`
@@ -49,17 +49,15 @@ a|Canonical form of Version object, created by serialising all attributes except
 signature.
 
 h|
-|*owner_id*: `HIER_OBJECT_ID`
-a|Unique identifier of the owning VERSIONED_OBJECT. 
+|*owner_id*: `HIER_OBJECT_ID` +
+*_Post_*: Result.value.is_equal (uid.object_id.value)
+a|Copy of the owning VERSIONED_OBJECT.uid property value; extracted from the local uid property, which consists of a triple of {owning VERSIONED_OBJECT.uid, version_tree_id, creating_system_id}.
 
 h|
 |*is_branch*: `Boolean`
 a|True if this Version represents a branch. Derived from uid attribute. 
 
 h|*Invariant*
-2+a|*_Owner_id_valid_*: owner_id.value.is_equal (uid.object_id.value)
-
-h|
 2+a|*_Preceding_version_uid_validity_*: uid.version_tree_id.is_first xor preceding_version_uid /= Void
 
 h|
