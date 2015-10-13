@@ -136,15 +136,7 @@
 <li><a href="#_locatable_ref_class">4.3.17. LOCATABLE_REF Class</a></li>
 </ul>
 </li>
-<li><a href="#_syntaxes">4.4. Syntaxes</a>
-<ul class="sectlevel3">
-<li><a href="#_identifier_syntax">4.4.1. Identifier Syntax</a></li>
-<li><a href="#_identifier_syntax_2">4.4.2. Identifier Syntax</a></li>
-<li><a href="#_version_tree_id_syntax">4.4.3. VERSION_TREE_ID Syntax</a></li>
-<li><a href="#_archetype_id_syntax">4.4.4. Archetype ID Syntax</a></li>
-<li><a href="#_terminology_identifier_syntax">4.4.5. Terminology Identifier Syntax</a></li>
-</ul>
-</li>
+<li><a href="#_syntaxes">4.4. Syntaxes</a></li>
 </ul>
 </li>
 <li><a href="#_terminology_package">5. Terminology Package</a>
@@ -310,6 +302,12 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-29">SPECRM-29</a>: Change DV_COUNT.magnitude to integer64  type.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">R Chen</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Aug 2015</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-31">SPECRM-31</a>: Upgrade <code>INTERNET_ID</code> grammar to allow underscrores; clean up EBNF.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2015</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.2</strong></p></th>
@@ -4307,155 +4305,68 @@ Lexical form:
 <div class="sect2">
 <h3 id="_syntaxes"><a class="anchor" href="#_syntaxes"></a>4.4. Syntaxes</h3>
 <div class="paragraph">
-<p>According to IETF RFC1034, the syntax of a domain name follows the EBNF grammar:</p>
+<p>The identifiers defined above are defined in their string form by the following EBNF grammar rules.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="ebnf"><span class="tok-k">domain </span><span class="tok-o">=</span> <span class="tok-k">subdomain </span><span class="tok-p">|</span> <span class="tok-s1">&#39; &#39;</span> <span class="tok-p">;</span>
-<span class="tok-k">subdomain </span><span class="tok-o">=</span> <span class="tok-k">label </span><span class="tok-p">|</span> <span class="tok-k">subdomain </span><span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">label </span><span class="tok-p">;</span>
-<span class="tok-k">label </span><span class="tok-o">=</span> <span class="tok-k">letter </span><span class="tok-p">[</span> <span class="tok-p">[</span> <span class="tok-k">ldh-str </span><span class="tok-p">]</span> <span class="tok-k">let-dig </span><span class="tok-p">]</span> <span class="tok-p">;</span>
-<span class="tok-k">ldh-str </span><span class="tok-o">=</span> <span class="tok-k">let-dig-hyp </span><span class="tok-p">|</span> <span class="tok-k">let-dig-hyp ldh-str </span><span class="tok-p">;</span>
+<pre class="pygments highlight"><code data-lang="ebnf"><span class="tok-cm">(* --------------------------- INTERNET_ID --------------------------- *)</span>
+<span class="tok-cm">(* According to IETF http://tools.ietf.org/html/rfc1034[RFC 1034] and  *)</span>
+<span class="tok-cm">(* http://tools.ietf.org/html/rfc1035[RFC 1035], as clarified by       *)</span>
+<span class="tok-cm">(* http://tools.ietf.org/html/rfc2181[RFC 2181] (section 11),          *)</span>
+<span class="tok-cm">(* the syntax of a domain name follows the grammar:                    *)</span>
+
+<span class="tok-k">domain      </span><span class="tok-o">=</span> <span class="tok-k">subdomain </span><span class="tok-p">|</span> <span class="tok-s1">&#39; &#39;</span> <span class="tok-p">;</span>
+<span class="tok-k">subdomain   </span><span class="tok-o">=</span> <span class="tok-k">label </span><span class="tok-p">|</span> <span class="tok-k">subdomain</span><span class="tok-p">,</span> <span class="tok-s1">&#39;.&#39;</span><span class="tok-p">,</span> <span class="tok-k">label </span><span class="tok-p">;</span>
+<span class="tok-k">label       </span><span class="tok-o">=</span> <span class="tok-k">letter </span><span class="tok-p">[</span> <span class="tok-p">[</span> <span class="tok-k">ldh-str </span><span class="tok-p">]</span> <span class="tok-k">let-dig </span><span class="tok-p">]</span> <span class="tok-p">;</span>
+<span class="tok-k">ldh-str     </span><span class="tok-o">=</span> <span class="tok-k">let-dig-hyp </span><span class="tok-p">|</span> <span class="tok-k">let-dig-hyp</span><span class="tok-p">,</span> <span class="tok-k">ldh-str </span><span class="tok-p">;</span>
 <span class="tok-k">let-dig-hyp </span><span class="tok-o">=</span> <span class="tok-k">let-dig </span><span class="tok-p">|</span> <span class="tok-s1">&#39;-&#39;</span> <span class="tok-p">;</span>
-<span class="tok-k">let-dig </span><span class="tok-o">=</span> <span class="tok-k">letter </span><span class="tok-p">|</span> <span class="tok-k">digit </span><span class="tok-p">;</span>
-<span class="tok-k">letter </span><span class="tok-o">=</span> <span class="tok-p">;</span> <span class="tok-cm">(* any one of the 52 alphabetic characters A through Z in upper case and a through z in lower case *)</span>
-<span class="tok-k">digit </span><span class="tok-o">=</span> <span class="tok-p">;</span> <span class="tok-cm">(* any one of the ten digits 0 through 9 *)</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>It can also be expressed using the regular expression:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>[a-zA-Z]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\.[a-zA-Z]([a-zA-Z0-9-]*[a-zA-Z0-9]))*</pre>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_identifier_syntax"><a class="anchor" href="#_identifier_syntax"></a>4.4.1. Identifier Syntax</h4>
-<div class="paragraph">
-<p>The syntax of the value attribute by default follows the following production rules (EBNF):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="ebnf"><span class="tok-k">value </span><span class="tok-o">=</span> <span class="tok-k">root </span><span class="tok-p">[</span> <span class="tok-s1">&#39;::&#39;</span> <span class="tok-k">extension </span><span class="tok-p">]</span> <span class="tok-p">;</span>
-<span class="tok-k">root </span><span class="tok-o">=</span> <span class="tok-k">uid </span><span class="tok-p">;</span> <span class="tok-cm">(* -- see UID above *)</span>
-<span class="tok-k">extension </span><span class="tok-o">=</span> <span class="tok-p">;</span> <span class="tok-cm">(* any string *)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_identifier_syntax_2"><a class="anchor" href="#_identifier_syntax_2"></a>4.4.2. Identifier Syntax</h4>
-<div class="paragraph">
-<p>The string form of an <code>OBJECT_VERSION_ID</code> stored in its value attribute consists of three segments
-separated by double colons ("::"), i.e. (EBNF):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="ebnf"><span class="tok-k">value </span><span class="tok-o">=</span> <span class="tok-k">object_id </span><span class="tok-s1">&#39;::&#39;</span> <span class="tok-k">creating_system_id </span><span class="tok-s1">&#39;::&#39;</span> <span class="tok-k">version_tree_id </span><span class="tok-p">;</span>
-<span class="tok-k">object_id </span><span class="tok-o">=</span> <span class="tok-k">uid </span><span class="tok-p">;</span> <span class="tok-err">--</span> <span class="tok-k">see UID below</span>
-<span class="tok-k">creating_system_id </span><span class="tok-o">=</span> <span class="tok-k">uid </span><span class="tok-p">;</span> <span class="tok-err">--</span> <span class="tok-k">see UID below</span>
-<span class="tok-k">version_tree_id </span><span class="tok-o">=</span> <span class="tok-o">--</span> <span class="tok-k">see </span><span class="tok-err">`</span><span class="tok-k">VERSION_TREE_ID</span><span class="tok-err">`</span> <span class="tok-k">below</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>An example is as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>F7C5C7B7-75DB-4b39-9A1E-C0BA9BFDBDEC::87284370-2D4B-4e3d-A3F3-F303D2F4F34B::2</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_version_tree_id_syntax"><a class="anchor" href="#_version_tree_id_syntax"></a>4.4.3. VERSION_TREE_ID Syntax</h4>
-<div class="paragraph">
-<p>The format of the value attribute is (EBNF):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="ebnf"><span class="tok-k">value </span><span class="tok-o">=</span> <span class="tok-k">trunk_version </span><span class="tok-p">[</span> <span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">branch_number </span><span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">branch_version </span><span class="tok-p">]</span> <span class="tok-p">;</span>
-<span class="tok-k">trunk_version </span><span class="tok-o">=</span> <span class="tok-p">{</span> <span class="tok-k">digit </span><span class="tok-p">}</span><span class="tok-err">+</span> <span class="tok-p">;</span>
-<span class="tok-k">branch_number </span><span class="tok-o">=</span> <span class="tok-p">{</span> <span class="tok-k">digit </span><span class="tok-p">}</span><span class="tok-err">+</span> <span class="tok-p">;</span>
-<span class="tok-k">branch_version </span><span class="tok-o">=</span> <span class="tok-p">{</span> <span class="tok-k">digit </span><span class="tok-p">}</span><span class="tok-err">+</span> <span class="tok-p">;</span>
-<span class="tok-k">digit </span><span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-err">0</span><span class="tok-o">-</span><span class="tok-err">9</span><span class="tok-p">]</span> <span class="tok-p">;</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_archetype_id_syntax"><a class="anchor" href="#_archetype_id_syntax"></a>4.4.4. Archetype ID Syntax</h4>
-<div class="paragraph">
-<p>The syntax of an <code>ARCHETYPE_ID</code> is formally defined as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="ebnf"><span class="tok-k">archetype_id </span><span class="tok-o">=</span> <span class="tok-k">qualified_rm_entity </span><span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">domain_concept </span><span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">version_id </span><span class="tok-p">;</span>
-<span class="tok-k">qualified_rm_entity </span><span class="tok-o">=</span> <span class="tok-k">rm_originator </span><span class="tok-s1">&#39;-&#39;</span> <span class="tok-k">rm_name </span><span class="tok-s1">&#39;-&#39;</span> <span class="tok-k">rm_entity </span><span class="tok-p">;</span>
-<span class="tok-k">rm_originator </span><span class="tok-o">=</span> <span class="tok-k">V_ALPHANUMERIC_NAME </span><span class="tok-p">;</span>
-<span class="tok-k">rm_name </span><span class="tok-o">=</span> <span class="tok-k">V_ALPHANUMERIC_NAME </span><span class="tok-p">;</span>
-<span class="tok-k">rm_entity </span><span class="tok-o">=</span> <span class="tok-k">V_ALPHANUMERIC_NAME </span><span class="tok-p">;</span>
-<span class="tok-k">domain_concept </span><span class="tok-o">=</span> <span class="tok-k">concept_name </span><span class="tok-p">{</span> <span class="tok-s1">&#39;-&#39;</span> <span class="tok-k">specialisation </span><span class="tok-p">}</span><span class="tok-err">*</span> <span class="tok-p">;</span>
-<span class="tok-k">concept_name </span><span class="tok-o">=</span> <span class="tok-k">V_ALPHANUMERIC_NAME </span><span class="tok-p">;</span>
-<span class="tok-k">specialisation </span><span class="tok-o">=</span> <span class="tok-k">V_ALPHANUMERIC_NAME </span><span class="tok-p">;</span>
-<span class="tok-k">version_id </span><span class="tok-o">=</span> <span class="tok-s1">&#39;v&#39;</span> <span class="tok-k">V_NONZERO_DIGIT </span><span class="tok-p">[</span> <span class="tok-k">V_NUMBER </span><span class="tok-p">]</span> <span class="tok-p">;</span>
+<span class="tok-k">let-dig     </span><span class="tok-o">=</span> <span class="tok-k">letter </span><span class="tok-p">|</span> <span class="tok-k">digit </span><span class="tok-p">;</span>
 
-<span class="tok-k">V_ALPHANUMERIC_NAME </span><span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-k">a-zA-Z</span><span class="tok-p">][</span><span class="tok-k">a-zA-Z0-9_</span><span class="tok-p">]</span><span class="tok-err">+</span> <span class="tok-p">;</span>
-<span class="tok-k">V_NONZERO_DIGIT </span><span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-err">1</span><span class="tok-o">-</span><span class="tok-err">9</span><span class="tok-p">]</span> <span class="tok-p">;</span>
-<span class="tok-k">V_NUMBER </span><span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-err">0</span><span class="tok-o">-</span><span class="tok-err">9</span><span class="tok-p">]</span><span class="tok-err">+</span> <span class="tok-p">;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The field meanings are as follows:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code><em>rm_originator</em></code> = id of organisation originating the reference model on which this archetype is based;</p>
-</li>
-<li>
-<p><code><em>rm_name</em></code> = id of the reference model on which the archetype is based;</p>
-</li>
-<li>
-<p><code><em>rm_entity</em></code> = ontological level in the reference model;</p>
-</li>
-<li>
-<p><code><em>domain_concept</em></code> = the domain concept name, including any specialisations;</p>
-</li>
-<li>
-<p><code><em>version_id</em></code> = numeric version identifier.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The PERL regular expression equivalent of the above is as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>[a-zA-Z]\w+(-[a-zA-Z]\w+){2}\.[a-zA-Z]\w+(-[a-zA-Z]\w+)*\.v[1-9]\d*</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The classic regular expression equivalent of this is generated from the above with the following substitutions:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>\w -&gt; [a-zA-Z0-9_]
-\d -&gt; [0-9]</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_terminology_identifier_syntax"><a class="anchor" href="#_terminology_identifier_syntax"></a>4.4.5. Terminology Identifier Syntax</h4>
-<div class="paragraph">
-<p>The syntax of the value attribute is as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="ebnf"><span class="tok-k">terminology_id </span><span class="tok-o">=</span> <span class="tok-k">name </span><span class="tok-p">[</span> <span class="tok-s1">&#39;(&#39;</span> <span class="tok-k">version </span><span class="tok-s1">&#39;)&#39;</span> <span class="tok-p">]</span> <span class="tok-p">;</span>
-<span class="tok-k">name </span><span class="tok-o">=</span> <span class="tok-k">V_NAME </span><span class="tok-p">;</span>
-<span class="tok-k">version </span><span class="tok-o">=</span> <span class="tok-k">V_VERSION </span><span class="tok-p">;</span>
+<span class="tok-cm">(* --------------------------- INTERNET_ID --------------------------- *)</span>
+<span class="tok-k">internet_id </span><span class="tok-o">=</span> <span class="tok-k">root </span><span class="tok-p">[</span> <span class="tok-s1">&#39;::&#39;</span> <span class="tok-k">extension </span><span class="tok-p">]</span> <span class="tok-p">;</span>
+<span class="tok-k">root        </span><span class="tok-o">=</span> <span class="tok-k">uid </span><span class="tok-p">;</span>
+<span class="tok-k">extension   </span><span class="tok-o">=</span> <span class="tok-ni">? any string ?</span> <span class="tok-p">;</span> <span class="tok-cm">(* any string *)</span>
 
-<span class="tok-k">V_NAME </span><span class="tok-o">=</span> <span class="tok-ni">? [a-zA-Z][a-zA-Z0-9_-/+]+ ; (* regex equivalent *)</span>
-<span class="tok-ni">V_VERSION = ?</span> <span class="tok-p">[</span><span class="tok-k">a-zA-Z0-9</span><span class="tok-p">][</span><span class="tok-k">a-zA-Z0-9_-</span><span class="tok-err">/</span><span class="tok-p">.</span><span class="tok-err">]+</span> <span class="tok-err">?</span> <span class="tok-err">;</span> <span class="tok-cm">(* regex equivalent *)</span></code></pre>
-</div>
+<span class="tok-cm">(* ------------------------- OBJECT_VERSION_ID ----------------------- *)</span>
+<span class="tok-k">object_version_id  </span><span class="tok-o">=</span> <span class="tok-k">object_id </span><span class="tok-s1">&#39;::&#39;</span> <span class="tok-k">creating_system_id </span><span class="tok-s1">&#39;::&#39;</span> <span class="tok-k">version_tree_id </span><span class="tok-p">;</span>
+<span class="tok-k">object_id          </span><span class="tok-o">=</span> <span class="tok-k">uid </span><span class="tok-p">;</span>
+<span class="tok-k">creating_system_id </span><span class="tok-o">=</span> <span class="tok-k">uid </span><span class="tok-p">;</span>
+
+<span class="tok-cm">(* ------------------------- VERSION_TREE_ID ------------------------- *)</span>
+<span class="tok-k">version_tree_id </span><span class="tok-o">=</span> <span class="tok-k">trunk_version </span><span class="tok-p">[</span> <span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">branch_number </span><span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">branch_version </span><span class="tok-p">]</span> <span class="tok-p">;</span>
+<span class="tok-k">trunk_version   </span><span class="tok-o">=</span> <span class="tok-k">number </span><span class="tok-p">;</span>
+<span class="tok-k">branch_number   </span><span class="tok-o">=</span> <span class="tok-k">number </span><span class="tok-p">;</span>
+<span class="tok-k">branch_version  </span><span class="tok-o">=</span> <span class="tok-k">number </span><span class="tok-p">;</span>
+
+<span class="tok-cm">(* ------------------------- UID, OID, GUID -------------------------- *)</span>
+<span class="tok-k">uid     </span><span class="tok-o">=</span> <span class="tok-k">iso_oid </span><span class="tok-p">|</span> <span class="tok-k">guid </span><span class="tok-p">;</span>
+<span class="tok-k">iso_oid </span><span class="tok-o">=</span> <span class="tok-k">number</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-s1">&#39;.&#39;</span><span class="tok-p">,</span> <span class="tok-k">number </span><span class="tok-p">}</span> <span class="tok-p">;</span>
+<span class="tok-k">guid    </span><span class="tok-o">=</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number</span><span class="tok-p">,</span> <span class="tok-s1">&#39;-&#39;</span><span class="tok-p">,</span> <span class="tok-k">hex-number </span><span class="tok-p">;</span>
+
+<span class="tok-cm">(* -------------------------- ARCHETYPE_ID --------------------------- *)</span>
+<span class="tok-k">archetype_id        </span><span class="tok-o">=</span> <span class="tok-k">qualified_rm_entity </span><span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">domain_concept </span><span class="tok-s1">&#39;.&#39;</span> <span class="tok-k">version_id </span><span class="tok-p">;</span>
+<span class="tok-k">qualified-rm-entity </span><span class="tok-o">=</span> <span class="tok-k">rm_originator </span><span class="tok-s1">&#39;-&#39;</span> <span class="tok-k">rm_name </span><span class="tok-s1">&#39;-&#39;</span> <span class="tok-k">rm_entity </span><span class="tok-p">;</span>
+<span class="tok-k">rm-originator       </span><span class="tok-o">=</span> <span class="tok-k">alphanum-str </span><span class="tok-p">;</span>     <span class="tok-cm">(* id of org originating the RM on which this archetype is based *)</span>
+<span class="tok-k">rm-name             </span><span class="tok-o">=</span> <span class="tok-k">alphanum-str </span><span class="tok-p">;</span>                      <span class="tok-cm">(* id of the RM on which the archetype is based *)</span>
+<span class="tok-k">rm-entity           </span><span class="tok-o">=</span> <span class="tok-k">alphanum-str </span><span class="tok-p">;</span>                                       <span class="tok-cm">(* ontological level in the RM *)</span>
+<span class="tok-k">domain-concept      </span><span class="tok-o">=</span> <span class="tok-k">concept-name </span><span class="tok-p">{</span> <span class="tok-s1">&#39;-&#39;</span> <span class="tok-k">specialisation </span><span class="tok-p">}</span> <span class="tok-p">;</span>
+<span class="tok-k">concept-name        </span><span class="tok-o">=</span> <span class="tok-k">alphanum-str </span><span class="tok-p">;</span>
+<span class="tok-k">specialisation      </span><span class="tok-o">=</span> <span class="tok-k">alphanum-str </span><span class="tok-p">;</span>
+<span class="tok-k">version-id          </span><span class="tok-o">=</span> <span class="tok-s1">&#39;v&#39;</span><span class="tok-p">,</span> <span class="tok-k">non-zero-digit</span><span class="tok-p">,</span> <span class="tok-p">[</span> <span class="tok-k">number </span><span class="tok-p">]</span> <span class="tok-p">;</span>                     <span class="tok-cm">(* numeric version identifier *)</span>
+
+<span class="tok-cm">(* ------------------------- TERMINOLOGY_ID -------------------------- *)</span>
+<span class="tok-k">terminology_id </span><span class="tok-o">=</span> <span class="tok-k">name-str</span><span class="tok-p">,</span> <span class="tok-p">[</span> <span class="tok-s1">&#39;(&#39;</span><span class="tok-p">,</span> <span class="tok-k">name-str</span><span class="tok-p">,</span> <span class="tok-s1">&#39;)&#39;</span> <span class="tok-p">]</span> <span class="tok-p">;</span>
+
+<span class="tok-cm">(* -------------------------- generic rules -------------------------- *)</span>
+<span class="tok-k">name-str     </span><span class="tok-o">=</span> <span class="tok-k">letter</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-k">letter </span><span class="tok-p">|</span> <span class="tok-k">digit </span><span class="tok-p">|</span> <span class="tok-s1">&#39;_&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;-&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;/&#39;</span> <span class="tok-p">|</span> <span class="tok-s1">&#39;+&#39;</span> <span class="tok-p">}</span> <span class="tok-p">;</span>
+<span class="tok-k">alphanum-str </span><span class="tok-o">=</span> <span class="tok-k">letter</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-k">letter </span><span class="tok-p">|</span> <span class="tok-k">digit </span><span class="tok-p">|</span> <span class="tok-s1">&#39;_&#39;</span> <span class="tok-p">}</span> <span class="tok-p">;</span>
+<span class="tok-k">letter       </span><span class="tok-o">=</span> <span class="tok-s1">&#39;a&#39;</span> <span class="tok-p">|</span> <span class="tok-p">.</span><span class="tok-err">.</span> <span class="tok-err">|</span> <span class="tok-err">&#39;</span><span class="tok-k">z</span><span class="tok-err">&#39;</span> <span class="tok-err">|</span> <span class="tok-err">&#39;</span><span class="tok-k">A</span><span class="tok-err">&#39;</span> <span class="tok-err">|</span> <span class="tok-err">..</span> <span class="tok-err">|</span> <span class="tok-err">&#39;</span><span class="tok-k">Z</span><span class="tok-err">&#39;</span> <span class="tok-err">;</span>
+
+<span class="tok-k">number         </span><span class="tok-o">=</span> <span class="tok-k">digit</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-k">digit </span><span class="tok-p">}</span> <span class="tok-p">;</span>
+<span class="tok-k">hex-number     </span><span class="tok-o">=</span> <span class="tok-k">hex-digit</span><span class="tok-p">,</span> <span class="tok-p">{</span> <span class="tok-k">hex-digit </span><span class="tok-p">}</span> <span class="tok-p">;</span>
+<span class="tok-k">digit          </span><span class="tok-o">=</span> <span class="tok-s1">&#39;0&#39;</span> <span class="tok-p">|</span> <span class="tok-k">nz_digit </span><span class="tok-p">;</span>
+<span class="tok-k">non-zero-digit </span><span class="tok-o">=</span> <span class="tok-s1">&#39;1&#39;</span> <span class="tok-p">|</span> <span class="tok-p">.</span><span class="tok-err">.</span> <span class="tok-err">|</span> <span class="tok-err">&#39;9&#39;</span> <span class="tok-err">;</span>
+<span class="tok-k">hex-digit      </span><span class="tok-o">=</span> <span class="tok-s1">&#39;0&#39;</span> <span class="tok-p">|</span> <span class="tok-p">.</span><span class="tok-err">.</span> <span class="tok-err">|</span> <span class="tok-err">&#39;</span><span class="tok-k">A</span><span class="tok-err">&#39;</span> <span class="tok-err">|</span> <span class="tok-err">..</span> <span class="tok-err">|</span> <span class="tok-err">&#39;</span><span class="tok-k">F</span><span class="tok-err">&#39;</span> <span class="tok-err">..</span> <span class="tok-err">|</span> <span class="tok-err">&#39;</span><span class="tok-k">a</span><span class="tok-err">&#39;</span> <span class="tok-err">|</span> <span class="tok-err">..</span> <span class="tok-err">|</span> <span class="tok-err">&#39;</span><span class="tok-k">f</span><span class="tok-err">&#39;</span> <span class="tok-err">;</span></code></pre>
 </div>
 </div>
 </div>
