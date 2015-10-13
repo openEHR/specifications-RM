@@ -304,12 +304,19 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-21">SPECRM-21</a>. Make <code>PARTICIPATION</code>.<code><em>mode</em></code> optional. Section 4.3.5 updated.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>31 July 2015</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>12 Oct 2015</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-28">SPECRM-28</a>: Improve documentation of <code>VERSION</code>.<code><em>uid</em></code> to make clear that the first part of the id is the owning <code>VERSIONED_OBJECT</code>.<code><em>uid</em></code> (<a href="https://openehr.atlassian.net/browse/SPECPR-90">SPECPR-90</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-34">SPECRM-34</a>: Add constraint to <code>VERSIONED_OBJECT.<em>uid</em></code> to prevent extension. (<a href="https://openehr.atlassian.net/browse/SPECPR-1">SPECPR-1</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Patterson,
+ H Frankel</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -2928,7 +2935,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>HIER_OBJECT_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Unique identifier of this version container. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the  virtual version tree .</p>
+<p>Unique identifier of this version container in the form of a UID with no extension. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the  virtual version tree.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3092,6 +3099,12 @@ and is_original_version(a_ver_id)</p></td>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Latest_version_valid</em></strong>: version_count &gt; 0 implies latest_version /= Void</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Uid_validity</em></strong>: extension.is_empty</p>
 </div></div></td>
 </tr>
 </tbody>

@@ -14,7 +14,7 @@ h|*Attributes*
 
 h|*1..1*
 |*uid*: `HIER_OBJECT_ID`
-a|Unique identifier of this version container. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the  virtual version tree . 
+a|Unique identifier of this version container in the form of a UID with no extension. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the  virtual version tree. 
 
 h|*1..1*
 |*owner_id*: `OBJECT_REF`
@@ -110,4 +110,7 @@ h|
 
 h|
 2+a|*_Latest_version_valid_*: version_count > 0 implies latest_version /= Void
+
+h|
+2+a|*_Uid_validity_*: extension.is_empty
 |===
