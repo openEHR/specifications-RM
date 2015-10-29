@@ -389,10 +389,15 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-23">SPECRM-23</a> Make some <code>DV_IDENTIFIER</code> features optional.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
- T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>10 Oct 2015</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-23">SPECRM-23</a> Add invariant to DV_PROPORTION preventing 0 denominator. (<a href="https://openehr.atlassian.net/browse/SPECPR-112">SPECPR-112</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>28 Oct 2015</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-32">SPECRM-32</a>: Correct wrong <code>DV_DATE.<em>magnitude</em></code> origin to '0001-01-01' (<a href="https://openehr.atlassian.net/browse/SPECPR-64">SPECPR-64</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Gummer</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -2773,7 +2778,7 @@ proportion. Supported types include:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Lastly, the is_integral function indicates that the numerator and denominator are both integer values;
+<p>Lastly, the <code><em>is_integral</em></code> function indicates that the numerator and denominator are both integer values;
 this is used for fractions (the fraction and integer_fraction types above) and other commonly occurring
 ratios where both parts are always integer values.</p>
 </div>
@@ -3565,6 +3570,12 @@ used to control the type attribute to be one of a defined set.</p>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Percent_validity</em></strong>: type = pk_percent implies denominator = 100</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Valid_denominator</em></strong>: denominator /= 0.0</p>
 </div></div></td>
 </tr>
 </tbody>

@@ -9,9 +9,9 @@ h|*Description*
 2+a|Models a ratio of values, i.e. where the numerator and denominator are both pure numbers. The valid_proportion_kind property of the PROPORTION_KIND class is
 used to control the type attribute to be one of a defined set.
 
-Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary denominator), albumin:creatinine ratio, and percentages, e.g. red cell distirbution width (RDW). 
- 
-Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) “6/24” in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations. 
+Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary denominator), albumin:creatinine ratio, and percentages, e.g. red cell distirbution width (RDW).
+
+Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) “6/24” in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations.
 
 h|*Inherit*
 2+|PROPORTION_KIND, DV_AMOUNT
@@ -34,7 +34,7 @@ a|Indicates semantic type of proportion, including percent, unitary etc.
 
 h|*0..1*
 |*precision*: `Integer`
-a|Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places. 
+a|Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -68,4 +68,7 @@ h|
 
 h|
 2+a|*_Percent_validity_*: type = pk_percent implies denominator = 100
+
+h|
+2+a|*_Valid_denominator_*: denominator /= 0.0
 |===
