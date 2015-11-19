@@ -302,7 +302,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-21">SPECRM-21</a>. Make <code>PARTICIPATION</code>.<code><em>mode</em></code> optional. Section 4.3.5 updated.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-21">SPECRM-21</a>: Make <code>PARTICIPATION</code>.<code><em>mode</em></code> optional. Section 4.3.5 updated.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>12 Oct 2015</p></td>
 </tr>
@@ -324,7 +324,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.1.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SPEC-249</strong>. Paths and locators minor errors in Architecture Overview and Common IM. Correct ordering of elements in identifier tuple. Sections 6.3.3, 6.4.1, and 6.4.2.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-249">SPECRM-249</a>: Paths and locators minor errors in Architecture Overview and Common IM. Correct ordering of elements in identifier tuple. Sections 6.3.3, 6.4.1, and 6.4.2.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C Ma,<br>
  T Beale,<br>
  R Chen</p></td>
@@ -332,7 +332,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SPEC-257</strong>: Correct minor typos and clarify text. Complete <code>ATTESTATION</code> class purpose.  Correct UML of resource_description package - make <code>RESOURCE_DESCRIPTION</code> 1.*, <code>AUTHORED_RESOURCE</code> abstract.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-257">SPECRM-257</a>: Correct minor typos and clarify text. Complete <code>ATTESTATION</code> class purpose.  Correct UML of resource_description package - make <code>RESOURCE_DESCRIPTION</code> 1.*, <code>AUTHORED_RESOURCE</code> abstract.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C Ma,<br>
  R Chen,<br>
  T Cook</p></td>
@@ -2123,9 +2123,9 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p>Record an attestation of a party (the committer) to item(s) of record content. An attestation is an explicit signing by one healthcare agent of particular content for various particular purposes, including:
-    for authorisation of a controlled substance or procedure (e.g. sectioning of patient under mental health act);
-    witnessing of content by senior clinical professional;
-    indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result.</p>
+for authorisation of a controlled substance or procedure (e.g. sectioning of patient under mental health act);
+witnessing of content by senior clinical professional;
+indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3653,7 +3653,7 @@ translations.has_key (d.language.code_string)))</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>CODE_PHRASE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>TERMINOLOGY_CODE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Language of the translation.</p>
 </div></div></td>
@@ -3680,9 +3680,10 @@ translations.has_key (d.language.code_string)))</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: code_set (Code_set_id_languages).has_code (language)</p>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_last_translated</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Version of this resource last time it was translated into the language represented by this TRANSLATION_DETAILS object.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3797,8 +3798,8 @@ translations.has_key (d.language.code_string)))</p>
 </div>
 <div class="paragraph">
 <p>ip_acknowledgements = &lt;
-    ["loinc"] = &lt;"This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at <a href="http://loinc.org/terms-of-use"&gt" class="bare">http://loinc.org/terms-of-use"&gt</a>;
-    ["snomedct"] = &lt;"Content from SNOMED CT® is copyright © 2007 IHTSDO &lt;ihtsdo.org&gt;"&gt;
+["loinc"] = &lt;"This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at <a href="http://loinc.org/terms-of-use"&gt" class="bare">http://loinc.org/terms-of-use"&gt</a>;
+["snomedct"] = &lt;"Content from SNOMED CT® is copyright © 2007 IHTSDO &lt;ihtsdo.org&gt;"&gt;
 &gt;</p>
 </div></div></td>
 </tr>
@@ -3821,11 +3822,11 @@ translations.has_key (d.language.code_string)))</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conversion_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Details related to conversion process that generated this model from an original, if relevant, as a list of name/value pairs. Typical example with recommended tags:
-        conversion_details = &lt;
-                ["source_model"] = &lt;"CEM model xyz <a href="http://location.in.clinicalelementmodels.com&gt;"" class="bare">http://location.in.clinicalelementmodels.com&gt;"</a>
-                ["tool"] = &lt;"cem2adl v6.3.0"&gt;
-                ["time"] = &lt;"2014-11-03T09:05:00"&gt;
-        &gt;</p>
+conversion_details = &lt;
+["source_model"] = &lt;"CEM model xyz <a href="http://location.in.clinicalelementmodels.com&gt;"" class="bare">http://location.in.clinicalelementmodels.com&gt;"</a>
+["tool"] = &lt;"cem2adl v6.3.0"&gt;
+["time"] = &lt;"2014-11-03T09:05:00"&gt;
+&gt;</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4286,16 +4287,25 @@ translations.has_key (d.language.code_string)))</p>
 <p><a id="openEHR_ADL_workbench"></a>[openEHR_ADL_workbench] The openEHR Foundation. <strong>The openEHR ADL Workbench</strong>. <a href="http://www.openehr.org/downloads/ADLworkbench/home" class="bare">http://www.openehr.org/downloads/ADLworkbench/home</a> .</p>
 </li>
 <li>
-<p><a id="openehr_am_overview"></a>[openehr_am_overview] The openEHR Foundation. <strong>The openEHR Archetypes Technical Overview.</strong> See <a href="http://www.openehr.org/releases/AM/dev/Overview.html" class="bare">http://www.openehr.org/releases/AM/dev/Overview.html</a>.</p>
+<p><a id="openehr_am_overview"></a>[openehr_am_overview] The openEHR Foundation. <strong>The openEHR Archetypes Technical Overview.</strong> See <a href="http://www.openehr.org/releases/AM/latest/Overview.html" class="bare">http://www.openehr.org/releases/AM/latest/Overview.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_am_adl"></a>[openehr_am_adl] The openEHR Foundation. <strong>Archetype Definition Language (ADL2).</strong> Available at <a href="http://www.openehr.org/releases/AM/dev/ADL2.html" class="bare">http://www.openehr.org/releases/AM/dev/ADL2.html</a>.</p>
+<p><a id="openehr_am_adl14"></a>[openehr_am_adl14] The openEHR Foundation. <strong>Archetype Definition Language 1.4 (ADL1.4).</strong> Available at <a href="http://www.openehr.org/releases/AM/latest/ADL1.4.html" class="bare">http://www.openehr.org/releases/AM/latest/ADL1.4.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_am_aom"></a>[openehr_am_aom] The openEHR Foundation. <strong>Archetype Object Model (AOM2).</strong> Available at <a href="http://www.openehr.org/releases/AM/dev/AOM2.html" class="bare">http://www.openehr.org/releases/AM/dev/AOM2.html</a>.</p>
+<p><a id="openehr_am_aom14"></a>[openehr_am_aom14] The openEHR Foundation. <strong>Archetype Object Model 1.4 (AOM1.4).</strong> Available at <a href="http://www.openehr.org/releases/AM/latest/AOM1.4.html" class="bare">http://www.openehr.org/releases/AM/latest/AOM1.4.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_am_identification"></a>[openehr_am_identification] The openEHR Foundation. <strong>Archetype Identification specification.</strong> Available at <a href="http://www.openehr.org/releases/AM/dev/Identification.html" class="bare">http://www.openehr.org/releases/AM/dev/Identification.html</a>.</p>
+<p><a id="openehr_am_adl2"></a>[openehr_am_adl2] The openEHR Foundation. <strong>Archetype Definition Language 2 (ADL2).</strong> Available at <a href="http://www.openehr.org/releases/AM/latest/ADL2.html" class="bare">http://www.openehr.org/releases/AM/latest/ADL2.html</a>.</p>
+</li>
+<li>
+<p><a id="openehr_am_aom2"></a>[openehr_am_aom2] The openEHR Foundation. <strong>Archetype Object Model 2 (AOM2).</strong> Available at <a href="http://www.openehr.org/releases/AM/latest/AOM2.html" class="bare">http://www.openehr.org/releases/AM/latest/AOM2.html</a>.</p>
+</li>
+<li>
+<p><a id="openehr_am_identification"></a>[openehr_am_identification] The openEHR Foundation. <strong>Archetype Identification specification.</strong> Available at <a href="http://www.openehr.org/releases/AM/latest/Identification.html" class="bare">http://www.openehr.org/releases/AM/latest/Identification.html</a>.</p>
+</li>
+<li>
+<p><a id="openehr_am_def_pri"></a>[openehr_am_def_pri] The openEHR Foundation. <strong>Archetype Definitions and Principles.</strong>(deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf</a>.</p>
 </li>
 <li>
 <p><a id="openehr_CKM"></a>[openehr_CKM] <strong>The openEHR Clinical Knowledge Manager (CKM)</strong>. See <a href="http://www.openEHR.org/ckm" class="bare">http://www.openEHR.org/ckm</a></p>
@@ -4304,25 +4314,25 @@ translations.has_key (d.language.code_string)))</p>
 <p><a id="openehr_odin"></a>[openehr_odin] The openEHR Foundation. <strong>Object Data Instance Notation (ODIN).</strong> Available at <a href="http://www.openehr.org/releases/BASE/latest/odin.html" class="bare">http://www.openehr.org/releases/BASE/latest/odin.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_overview"></a>[openehr_overview] The openEHR Foundation. <strong>The openEHR Architecture Overview.</strong> See <a href="http://www.openehr.org/releases/BASE/dev/architecture_overview.html" class="bare">http://www.openehr.org/releases/BASE/dev/architecture_overview.html</a>.</p>
+<p><a id="openehr_overview"></a>[openehr_overview] The openEHR Foundation. <strong>The openEHR Architecture Overview.</strong> See <a href="http://www.openehr.org/releases/BASE/latest/architecture_overview.html" class="bare">http://www.openehr.org/releases/BASE/latest/architecture_overview.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_query_aql"></a>[openehr_query_aql] The openEHR Foundation. <strong>The openEHR Archetype Query language (AQL)</strong>. See <a href="http://www.openehr.org/releases/QUERY/dev/AQL.html" class="bare">http://www.openehr.org/releases/QUERY/dev/AQL.html</a>.</p>
+<p><a id="openehr_query_aql"></a>[openehr_query_aql] The openEHR Foundation. <strong>The openEHR Archetype Query language (AQL)</strong>. See <a href="http://www.openehr.org/releases/QUERY/latest/AQL.html" class="bare">http://www.openehr.org/releases/QUERY/latest/AQL.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_rm_data_types"></a>[openehr_rm_data_types] openEHR. <strong>Data Types Information Model.</strong> See <a href="http://www.openehr.org/releases/RM/dev/data_types.html" class="bare">http://www.openehr.org/releases/RM/dev/data_types.html</a>.</p>
+<p><a id="openehr_rm_data_types"></a>[openehr_rm_data_types] openEHR. <strong>Data Types Information Model.</strong> See <a href="http://www.openehr.org/releases/RM/latest/data_types.html" class="bare">http://www.openehr.org/releases/RM/latest/data_types.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_rm_data_structures"></a>[openehr_rm_data_structures] openEHR. <strong>Data Structures Information Model.</strong> See <a href="http://www.openehr.org/releases/RM/dev/data_structures.html" class="bare">http://www.openehr.org/releases/RM/dev/data_structures.html</a>.</p>
+<p><a id="openehr_rm_data_structures"></a>[openehr_rm_data_structures] openEHR. <strong>Data Structures Information Model.</strong> See <a href="http://www.openehr.org/releases/RM/latest/data_structures.html" class="bare">http://www.openehr.org/releases/RM/latest/data_structures.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_rm_common"></a>[openehr_rm_common] openEHR. <strong>Common Information Model.</strong> See <a href="http://www.openehr.org/releases/RM/dev/common.html" class="bare">http://www.openehr.org/releases/RM/dev/common.html</a>.</p>
+<p><a id="openehr_rm_common"></a>[openehr_rm_common] openEHR. <strong>Common Information Model.</strong> See <a href="http://www.openehr.org/releases/RM/latest/common.html" class="bare">http://www.openehr.org/releases/RM/latest/common.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_rm_ehr"></a>[openehr_rm_ehr] The openEHR Foundation. <strong>The EHR Information Model</strong>. <a href="http://www.openehr.org/releases/RM/dev/ehr.html" class="bare">http://www.openehr.org/releases/RM/dev/ehr.html</a>.</p>
+<p><a id="openehr_rm_ehr"></a>[openehr_rm_ehr] The openEHR Foundation. <strong>The EHR Information Model</strong>. <a href="http://www.openehr.org/releases/RM/latest/ehr.html" class="bare">http://www.openehr.org/releases/RM/latest/ehr.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_rm_support"></a>[openehr_rm_support] openEHR. <strong>Support Information Model.</strong> See <a href="http://www.openehr.org/releases/RM/dev/support.html" class="bare">http://www.openehr.org/releases/RM/dev/support.html</a>.</p>
+<p><a id="openehr_rm_support"></a>[openehr_rm_support] openEHR. <strong>Support Information Model.</strong> See <a href="http://www.openehr.org/releases/RM/latest/support.html" class="bare">http://www.openehr.org/releases/RM/latest/support.html</a>.</p>
 </li>
 <li>
 <p><a id="openehr_terminology"></a>[openehr_terminology] The openEHR Foundation. <strong>The openEHR Terminology</strong> <a href="http://www.openehr.org/releases/trunk/architecture/terminology.pdf" class="bare">http://www.openehr.org/releases/trunk/architecture/terminology.pdf</a></p>
