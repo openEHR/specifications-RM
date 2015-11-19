@@ -14,15 +14,15 @@ h|*Attributes*
 
 h|*1..1*
 |*uid*: `HIER_OBJECT_ID`
-a|Unique identifier of this version container in the form of a UID with no extension. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the  virtual version tree. 
+a|Unique identifier of this version container in the form of a UID with no extension. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the  virtual version tree.
 
 h|*1..1*
 |*owner_id*: `OBJECT_REF`
-a|Reference to object to which this version container belongs, e.g. the id of the containing EHR or other relevant owning entity. 
+a|Reference to object to which this version container belongs, e.g. the id of the containing EHR or other relevant owning entity.
 
 h|*1..1*
 |*time_created*: `DV_DATE_TIME`
-a|Time of initial creation of this versioned object. 
+a|Time of initial creation of this versioned object.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -33,34 +33,34 @@ a|Return the total number of versions in this object.
 
 h|
 |*all_version_ids*: `List<OBJECT_VERSION_ID>`
-a|Return a list of ids of all versions in this object. 
+a|Return a list of ids of all versions in this object.
 
 h|
 |*all_versions*: `List<VERSION>`
-a|Return a list of all versions in this object. 
+a|Return a list of all versions in this object.
 
 h|
 |*has_version_at_time* (a_ver_id: `OBJECT_VERSION_ID`): `Boolean`
-a|True if a version for time  'a_time' exists. 
+a|True if a version for time  'a_time' exists.
 
 h|
 |*has_version_id* (a_ver_id: `OBJECT_VERSION_ID`): `Boolean`
-a|True if a version with an_id exists. 
+a|True if a version with an_id exists.
 
 h|
 |*version_with_id* (a_ver_id: `OBJECT_VERSION_ID`): `VERSION` +
 *_Pre_*: has_version_id (a_ver_id)
-a|Return the version with id =  'a_ver_id'. 
+a|Return the version with id =  'a_ver_id'.
 
 h|
 |*is_original_version* (a_ver_id: `OBJECT_VERSION_ID`): `Boolean` +
 *_Pre_*: has_version_id(a_ver_id)
-a|True if version with an_id is an ORIGINAL_VERSION. 
+a|True if version with an_id is an ORIGINAL_VERSION.
 
 h|
 |*version_at_time* (a_time: `DV_DATE_TIME`): `VERSION` +
 *_Pre_*: has_version_at_time (a_time)
-a|Return the version for time  'a_time'. 
+a|Return the version for time  'a_time'.
 
 h|
 |*revision_history*: `REVISION_HISTORY`
@@ -68,36 +68,36 @@ a|History of all audits and attestations in this versioned repository.
 
 h|
 |*latest_version*: `VERSION`
-a|Return the most recently added version (i.e. on trunk or any branch). 
+a|Return the most recently added version (i.e. on trunk or any branch).
 
 h|
 |*latest_trunk_version*: `VERSION`
-a|Return the most recently added trunk version. 
+a|Return the most recently added trunk version.
 
 h|
 |*trunk_lifecycle_state*: `DV_CODED_TEXT` +
 *_Post_*: Result = latest_trunk_version.lifecycle_state
-a|Return the lifecycle state from the latest trunk version. Useful for determining if the version container is logically deleted. 
+a|Return the lifecycle state from the latest trunk version. Useful for determining if the version container is logically deleted.
 
 h|
 |*commit_original_version* (a_contribution: `OBJECT_REF`, a_new_version_uid: `OBJECT_VERSION_ID`, a_preceding_version_id: `OBJECT_VERSION_ID`, an_audit: `AUDIT_DETAILS`, a_lifecycle_state: `DV_CODED_TEXT`, a_data: `T`, signing_key: `String`): `void` +
 *_Pre_*: all_version_ids.has (a_preceding_version_uid) or else version_count = 0
-a|Add a new original version. 
+a|Add a new original version.
 
 h|
 |*commit_original_merged_version* (a_contribution: `OBJECT_REF`, a_new_version_uid: `OBJECT_VERSION_ID`, a_preceding_version_id: `OBJECT_VERSION_ID`, an_audit: `AUDIT_DETAILS`, a_lifecycle_state: `DV_CODED_TEXT`, a_data: `T`, an_other_input_uids: `List<OBJECT_VERSION_ID>`, signing_key: `String`): `void` +
 *_Pre_*: all_version_ids.has (a_preceding_version_uid) or else version_count = 0
-a|Add a new original merged version. This commit function adds a parameter containing the ids of other versions merged into the current one. 
+a|Add a new original merged version. This commit function adds a parameter containing the ids of other versions merged into the current one.
 
 h|
 |*commit_imported_version* (a_contribution: `OBJECT_REF`, an_audit: `AUDIT_DETAILS`, a_version: `ORIGINAL_VERSION`): `void`
-a|Add a new imported version. Details of version id etc come from the ORIGINAL_VERSION being committed. 
+a|Add a new imported version. Details of version id etc come from the ORIGINAL_VERSION being committed.
 
 h|
 |*commit_attestation* (an_attestation: `ATTESTATION`, a_ver_id: `OBJECT_VERSION_ID`, signing_key: `String`): `void` +
 *_Pre_*: has_version_id(a_ver_id)
 and is_original_version(a_ver_id)
-a|Add a new attestation to a specified original version. Attestations can only be added to Original versions. 
+a|Add a new attestation to a specified original version. Attestations can only be added to Original versions.
 
 h|*Invariant*
 2+a|*_Version_count_valid_*: version_count >= 0

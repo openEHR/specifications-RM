@@ -14,11 +14,11 @@ h|*Attributes*
 
 h|*1..1*
 |*contribution*: `OBJECT_REF`
-a|Contribution in which this version was added. 
+a|Contribution in which this version was added.
 
 h|*0..1*
 |*signature*: `String`
-a|OpenPGP digital signature or digest of content committed in this Version. 
+a|OpenPGP digital signature or digest of content committed in this Version.
 
 h|*1..1*
 |*commit_audit*: `AUDIT_DETAILS`
@@ -37,15 +37,15 @@ a|Unique identifier of the version of which this version is a modification; Void
 
 h|
 |*data*: `T`
-a|Original content of this Version. 
+a|Original content of this Version.
 
 h|
 |*lifecycle_state*: `DV_CODED_TEXT`
-a|Lifecycle state of this version; coded by openEHR vocabulary version lifecycle state . 
+a|Lifecycle state of this version; coded by openEHR vocabulary version lifecycle state .
 
 h|
 |*canonical_form*: `String`
-a|Canonical form of Version object, created by serialising all attributes except 
+a|Canonical form of Version object, created by serialising all attributes except
 signature.
 
 h|
@@ -55,7 +55,7 @@ a|Copy of the owning VERSIONED_OBJECT.uid property value; extracted from the loc
 
 h|
 |*is_branch*: `Boolean`
-a|True if this Version represents a branch. Derived from uid attribute. 
+a|True if this Version represents a branch. Derived from uid attribute.
 
 h|*Invariant*
 2+a|*_Preceding_version_uid_validity_*: uid.version_tree_id.is_first xor preceding_version_uid /= Void

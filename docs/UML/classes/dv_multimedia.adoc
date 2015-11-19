@@ -21,7 +21,7 @@ a|Text to display in lieu of multimedia display/replay.
 
 h|*0..1*
 |*uri*: `DV_URI`
-a|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference. 
+a|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference.
 
 h|*0..1*
 |*data*: `Byte`
@@ -29,11 +29,11 @@ a|The actual data found at uri, if supplied inline.
 
 h|*1..1*
 |*media_type*: `CODE_PHRASE`
-a|Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set). 
+a|Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set).
 
 h|*0..1*
 |*compression_algorithm*: `CODE_PHRASE`
-a|Compression type, a coded value from the openEHR  Integrity check  code set. Void means no compression. 
+a|Compression type, a coded value from the openEHR  Integrity check  code set. Void means no compression.
 
 h|*0..1*
 |*integrity_check*: `Byte`
@@ -41,7 +41,7 @@ a|Binary cryptographic integrity checksum.
 
 h|*0..1*
 |*integrity_check_algorithm*: `List<CODE_PHRASE>`
-a|Type of integrity check, a coded value from the openEHR  Integrity check  code set. 
+a|Type of integrity check, a coded value from the openEHR  Integrity check  code set.
 
 h|*0..1*
 |*thumbnail*: `DV_MULTIMEDIA`
@@ -56,15 +56,15 @@ a|Computed from the value of the uri attribute: True if  the data is stored exte
 
 h|
 |*is_inline*: `Boolean`
-a|Computed from the value of the data attribute. True if  the  data is stored  in  expanded  form, ie within the EHR itself. 
+a|Computed from the value of the data attribute. True if  the  data is stored  in  expanded  form, ie within the EHR itself.
 
 h|
 |*is_compressed*: `Boolean`
-a|Computed from the value of the compression_algorithm attribute: True if  the  data is stored  in  compressed form. 
+a|Computed from the value of the compression_algorithm attribute: True if  the  data is stored  in  compressed form.
 
 h|
 |*has_integrity_check*: `Boolean`
-a|Computed from the value of the integrity_check_algorithm attribute: True if an integrity check has been computed. 
+a|Computed from the value of the integrity_check_algorithm attribute: True if an integrity check has been computed.
 
 h|(effected)
 |*size*: `Integer`

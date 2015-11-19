@@ -6,9 +6,9 @@ h|*Class*
 2+^h|*_DV_ORDERED (abstract)_*
 
 h|*Description*
-2+a|Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  <' and is_strictly_comparable_to, the latter of which must evaluate to True for instances being compared with the  <' function, or used as limits in the DV_INTERVAL<T> class. 
+2+a|Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  <' and is_strictly_comparable_to, the latter of which must evaluate to True for instances being compared with the  <' function, or used as limits in the DV_INTERVAL<T> class.
 
-Data value types which are to be used as limits in the DV_INTERVAL<T> class must inherit from this class, and implement the function is_strictly_comparable_to to ensure that instances compare meaningfully. For example, instances of DV_QUANTITY can only be compared if they measure the same kind of physical quantity. 
+Data value types which are to be used as limits in the DV_INTERVAL<T> class must inherit from this class, and implement the function is_strictly_comparable_to to ensure that instances compare meaningfully. For example, instances of DV_QUANTITY can only be compared if they measure the same kind of physical quantity.
 
 h|*Inherit*
 2+|DATA_VALUE, Ordered
@@ -19,11 +19,11 @@ h|*Attributes*
 
 h|*0..1*
 |*normal_status*: `CODE_PHRASE`
-a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  normal status . 
+a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  normal status .
 
 h|*0..1*
 |*normal_range*: `DV_INTERVAL`
-a|Optional normal range. 
+a|Optional normal range.
 
 h|*0..1*
 |*other_reference_ranges*: `List<REFERENCE_RANGE>`
@@ -45,7 +45,7 @@ h|
 *_Pre_*: normal_range /= Void or normal_status /= Void +
 *_Post_range_*: normal_range /= Void implies Result = normal_range.has (self) +
 *_Post_status_*: normal_status /= Void implies normal_status.code_string.is_equal (“N”)
-a|Value is in the normal range, determined by comparison of the value to the normal_range if present, or by the normal_status marker if present. 
+a|Value is in the normal range, determined by comparison of the value to the normal_range if present, or by the normal_status marker if present.
 
 h|(effected)
 |*infix <* (other: `Ordered`): `Boolean`

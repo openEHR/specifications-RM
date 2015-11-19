@@ -6,10 +6,10 @@ h|*Class*
 2+^h|*ATTESTATION*
 
 h|*Description*
-2+a|Record an attestation of a party (the committer) to item(s) of record content. An attestation is an explicit signing by one healthcare agent of particular content for various particular purposes, including: 
-    for authorisation of a controlled substance or procedure (e.g. sectioning of patient under mental health act); 
-    witnessing of content by senior clinical professional; 
-    indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result. 
+2+a|Record an attestation of a party (the committer) to item(s) of record content. An attestation is an explicit signing by one healthcare agent of particular content for various particular purposes, including:
+for authorisation of a controlled substance or procedure (e.g. sectioning of patient under mental health act);
+witnessing of content by senior clinical professional;
+indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result.
 
 h|*Inherit*
 2+|AUDIT_DETAILS
@@ -20,19 +20,19 @@ h|*Attributes*
 
 h|*0..1*
 |*attested_view*: `DV_MULTIMEDIA`
-a|Optional visual representation of content attested e.g. screen image. 
+a|Optional visual representation of content attested e.g. screen image.
 
 h|*0..1*
 |*proof*: `String`
-a|Proof of attestation. 
+a|Proof of attestation.
 
 h|*0..1*
 |*items*: `List<DV_EHR_URI>`
-a|Items attested, expressed as fully qualified runtime paths to the items in question. Although not recommended, these may include fine-grained items which have been attested in some other system. Otherwise it is assumed to be for the entire VERSION with which it is associated. 
+a|Items attested, expressed as fully qualified runtime paths to the items in question. Although not recommended, these may include fine-grained items which have been attested in some other system. Otherwise it is assumed to be for the entire VERSION with which it is associated.
 
 h|*1..1*
 |*reason*: `DV_TEXT`
-a|Reason of this attestation. Optionally coded by the openEHR Terminology group  attestation reason ; includes values like  authorisation ,  witness  etc. 
+a|Reason of this attestation. Optionally coded by the openEHR Terminology group  attestation reason ; includes values like  authorisation ,  witness  etc.
 
 h|*1..1*
 |*is_pending*: `Boolean`
