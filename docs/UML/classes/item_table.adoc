@@ -6,13 +6,13 @@ h|*Class*
 2+^h|*ITEM_TABLE*
 
 h|*Description*
-2+a|Logical relational database style table data structure, in which columns are named and ordered with respect to each other. Implemented using Cluster-per-row encoding. Each row Cluster must have an identical number of Elements, each of which in turn must have identical names and value types in the corresponding positions in each row. 
+2+a|Logical relational database style table data structure, in which columns are named and ordered with respect to each other. Implemented using Cluster-per-row encoding. Each row Cluster must have an identical number of Elements, each of which in turn must have identical names and value types in the corresponding positions in each row.
 
-Some columns may be designated  key' columns, containing key data for each row, in the manner of relational tables. This allows row-naming, where each row represents a body site, a blood antigen etc. All values in a column have the same data type. 
+Some columns may be designated  key' columns, containing key data for each row, in the manner of relational tables. This allows row-naming, where each row represents a body site, a blood antigen etc. All values in a column have the same data type.
 
-Used for representing any data which is logically a table of values, such as blood pressure, most protocols, many blood tests etc. 
+Used for representing any data which is logically a table of values, such as blood pressure, most protocols, many blood tests etc.
 
-Misuse: Not to be used for time-based data, which should be represented with the temporal class HISTORY. The table may be empty. 
+Misuse: Not to be used for time-based data, which should be represented with the temporal class HISTORY. The table may be empty.
 
 h|*Inherit*
 2+|ITEM_STRUCTURE
@@ -22,8 +22,8 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*rows*: `CLUSTER`
-a|Physical representation of the table as a list of CLUSTERs, each containing the data of one row of the table. 
+|*rows*: `List<CLUSTER>`
+a|Physical representation of the table as a list of CLUSTERs, each containing the data of one row of the table.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -74,7 +74,7 @@ a|
 
 h|(effected)
 |*as_hierarchy*: `CLUSTER`
-a|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table. 
+a|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table.
 
 h|*Invariant*
 2+a|*_Valid_structure_*: rows.for_all (items.for_all (instance_of ("ELEMENT")))
