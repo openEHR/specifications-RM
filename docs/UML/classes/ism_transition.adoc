@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*ISM_TRANSITION*
 
 h|*Description*
-2+a|Model of a transition in the Instruction State Machine, caused by a careflow step. The attributes document the careflow step as well as the ISM transition. 
+2+a|Model of a transition in the Instruction State Machine, caused by a careflow step. The attributes document the careflow step as well as the ISM transition.
 
 h|*Inherit*
 2+|PATHABLE
@@ -28,8 +28,8 @@ h|*0..1*
 a|The step in the careflow process which occurred as part of generating this action, e.g.  dispense ,  start_administration . This attribute represents the clinical  label for the activity, as  opposed to current_state which represents  the state machine (ISM)  computable form. Defined in archetype.
 
 h|*0..1*
-|*reason*: `DV_TEXT`
-a|Optional reason for this careflow step having been taken.
+|*reason*: `List<DV_TEXT>`
+a|Optional possibility of adding one or more reasons for this careflow step having been taken. Multiple reasons may occur in medication management for example.
 
 h|*Invariant*
 2+a|*_Current_state_valid_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_instruction_states, current_state.defining_code)

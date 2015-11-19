@@ -325,7 +325,7 @@ From a health professional's point of view, a healthcare workflow, or 'careflow'
 
 Mappings like this are specified in the `ACTION` archetypes for the Instruction. When an `ACTION` instance is committed to the EHR, the `ISM_TRANSITION` object records the step performed and the ISM state and transition. The careflow step must be one of the steps from the corresponding Instruction. 
 
-An optional `_reason_` property is provided in the `ISM_TRANSITION` class in order to enable a specific reason for the step having occurred to be recorded.
+An optional `_reason_` property (of type `List<DV_TEXT>`) is provided in the `ISM_TRANSITION` class in order to enable one or more specific reasons for the step having occurred to be recorded.
 
 The following section provides details of how archetypes are used to represent such mappings.
 
