@@ -46,6 +46,10 @@ a|Type of integrity check, a coded value from the openEHR  Integrity check  code
 h|*0..1*
 |*thumbnail*: `DV_MULTIMEDIA`
 a|The thumbnail for this item, if one exists; mainly for graphics formats.
+
+h|*1..1*
+|*size*: `Integer`
+a|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc do not change the value of this attribute.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -65,10 +69,6 @@ a|Computed from the value of the compression_algorithm attribute: True if  the  
 h|
 |*has_integrity_check*: `Boolean`
 a|Computed from the value of the integrity_check_algorithm attribute: True if an integrity check has been computed.
-
-h|(effected)
-|*size*: `Integer`
-a|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc do not change the value of this attribute.
 
 h|*Invariant*
 2+a|*_Not_empty_*: is_inline or is_external
