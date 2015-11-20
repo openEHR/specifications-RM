@@ -49,7 +49,7 @@ record the narrative form of the datum provided by the patient as well as the fo
 
 ==== General Approach
 Date/time values are somewhat special in the realm of data types in that they are expressed in their
-"customary" form, in which the standard structure of {value, unit} and metric relationships between
+"customary" form, in which the standard structure of `{value, unit}` and metric relationships between
 orders of magnitude do not hold. The customary form is what we are used to using in the social time
 domain, such as births, deaths, ages, and times and durations of events which we remember. In all
 these cases it is expressed using the familiar year/month/date/hour/minute/second system, in which
@@ -58,9 +58,9 @@ to a magnitude since an origin point, and many date/time libraries do this in or
 various operations, particularly comparison.
 
 The date/time types fall into two categories: _absolute_ and _relative_. The absolute category comprises
-the Date, Date_time and Time concepts, each of which measure time from a known origin. Date and
-Date_time measure calendrical time from the date 0001-01-01, while Time measures clock time from
-midnight. Both Date_time and Time can include timezone information, ensuring that their instances
+the Date, Date/time and Time concepts, each of which measure time from a known origin. Date and
+Date/time measure calendrical time from the date `0001-01-01`, while Time measures clock time from
+midnight. Both Date/time and Time can include timezone information, ensuring that their instances
 are correctly situated on the same timeline. All absolute time types inherit from the `DV_TEMPORAL`
 type, which provides the appropriate signature for the `_diff()_` function.
 
