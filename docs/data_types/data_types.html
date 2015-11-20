@@ -379,7 +379,7 @@
 <tr>
 <th class="tableblock halign-left valign-top">Issue</th>
 <th class="tableblock halign-left valign-top">Details</th>
-<th class="tableblock halign-left valign-top">Raiser</th>
+<th class="tableblock halign-left valign-top">Raiser, Implementer</th>
 <th class="tableblock halign-left valign-top">Completed</th>
 </tr>
 </thead>
@@ -389,14 +389,14 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-23">SPECRM-23</a> Add invariant to DV_PROPORTION preventing 0 denominator. (<a href="https://openehr.atlassian.net/browse/SPECPR-112">SPECPR-112</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-32">SPECRM-32</a> Add invariant to <code>DV_PROPORTION</code> preventing 0 denominator. (<a href="https://openehr.atlassian.net/browse/SPECPR-112">SPECPR-112</a>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>28 Oct 2015</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Nov 2015</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-32">SPECRM-32</a>: Correct wrong <code>DV_DATE.<em>magnitude</em></code> origin to '0001-01-01' (<a href="https://openehr.atlassian.net/browse/SPECPR-64">SPECPR-64</a>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">P Gummer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-23">SPECRM-23</a>: Make some <code>DV_IDENTIFIER</code> features optional. (<a href="https://openehr.atlassian.net/browse/SPECPR-64">SPECPR-33</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -1185,7 +1185,7 @@ assigned identifiers. Although many of these are designed to be unique within a 
 space, they are often not, due to data entry errors, bad design (ids which are too small or incorporate
 some non-unique characteristic of the identified entities), bad process (e.g. non-synchronised id issuing
 points); identity theft (e.g. via theft of documents of proof or hacking). In general, while some real
-world identifiers (RWIs) are "nearly unique", none can be guaranteed so. Therefore, from a strict
+world identifiers (RWIs) are 'nearly unique', none can be guaranteed so. Therefore, from a strict
 computatoinal point of view, RWIs are not treated as reliable identifiers, but as attributes of their
 owning objects, in the same ways as names and addresses for example.</p>
 </div>
@@ -1243,7 +1243,10 @@ such as names or addresses.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In addition, the type of item being identified can also be recorded.</p>
+<p>In addition, a type of item being identified can also be recorded, such as "driver&#8217;s licence" or "Medicare card". All fields are text fields, rather than coded, as no definitive vocabularies are available. However, some useful sources of terms exists, such as <a href="https://www.hl7.org/fhir/v2/0203/index.html">HL7v2 Table 203</a> for the <code>type</code> field. If using the latter, it is recommended to use the 'description' not the code.</p>
+</div>
+<div class="paragraph">
+<p>Only the <code>identifier</code> field is mandatory to allow for use cases in which the other fields cannot be populated. However it is strongly recommended to populate the <code>type</code> and <code>issuer</code> fields where possible. In many cases the <code>issuer</code> and <code>assigner</code> have the same value, however two fields allow for the situation in which a central issuer provides blocks of identifiers (typically on some kind of form or other paperwork) to other organisations who then assign them to individuals, as is often done with prescription identifiers.</p>
 </div>
 <div class="paragraph">
 <p>See the Support IM <a href="#openehr_rm_support">[openehr_rm_support]</a> specification for a further discussion of RWEs and IEs, and the definition of IEs in openEHR.</p>
@@ -3907,7 +3910,7 @@ record the narrative form of the datum provided by the patient as well as the fo
 <h5 id="_general_approach"><a class="anchor" href="#_general_approach"></a>General Approach</h5>
 <div class="paragraph">
 <p>Date/time values are somewhat special in the realm of data types in that they are expressed in their
-"customary" form, in which the standard structure of {value, unit} and metric relationships between
+"customary" form, in which the standard structure of <code>{value, unit}</code> and metric relationships between
 orders of magnitude do not hold. The customary form is what we are used to using in the social time
 domain, such as births, deaths, ages, and times and durations of events which we remember. In all
 these cases it is expressed using the familiar year/month/date/hour/minute/second system, in which
@@ -3917,9 +3920,9 @@ various operations, particularly comparison.</p>
 </div>
 <div class="paragraph">
 <p>The date/time types fall into two categories: <em>absolute</em> and <em>relative</em>. The absolute category comprises
-the Date, Date_time and Time concepts, each of which measure time from a known origin. Date and
-Date_time measure calendrical time from the date 0001-01-01, while Time measures clock time from
-midnight. Both Date_time and Time can include timezone information, ensuring that their instances
+the Date, Date/time and Time concepts, each of which measure time from a known origin. Date and
+Date/time measure calendrical time from the date <code>0001-01-01</code>, while Time measures clock time from
+midnight. Both Date/time and Time can include timezone information, ensuring that their instances
 are correctly situated on the same timeline. All absolute time types inherit from the <code>DV_TEMPORAL</code>
 type, which provides the appropriate signature for the <code><em>diff()</em></code> function.</p>
 </div>
@@ -6305,6 +6308,9 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </li>
 <li>
 <p><a id="openehr_am_def_pri"></a>[openehr_am_def_pri] The openEHR Foundation. <strong>Archetype Definitions and Principles.</strong>(deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf</a>.</p>
+</li>
+<li>
+<p><a id="openehr_am_sys"></a>[openehr_am_sys] The openEHR Foundation. <strong>The Archetype System.</strong>(deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf</a>.</p>
 </li>
 <li>
 <p><a id="openehr_CKM"></a>[openehr_CKM] <strong>The openEHR Clinical Knowledge Manager (CKM)</strong>. See <a href="http://www.openEHR.org/ckm" class="bare">http://www.openEHR.org/ckm</a></p>
