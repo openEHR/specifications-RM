@@ -3399,6 +3399,22 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>normal_range</strong>: <code>DV_INTERVAL&lt;DV_QUANTITY&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional normal range.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_reference_ranges</strong>: <code>List&lt;REFERENCE_RANGE&lt;DV_QUANTITY&gt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional tagged other reference ranges for this value in its particular measurement context.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
@@ -3446,6 +3462,22 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong>: <code>Integer64</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>normal_range</strong>: <code>DV_INTERVAL&lt;DV_COUNT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional normal range.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_reference_ranges</strong>: <code>List&lt;REFERENCE_RANGE&lt;DV_COUNT&gt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional tagged other reference ranges for this value in its particular measurement context.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -3514,6 +3546,22 @@ used to control the type attribute to be one of a defined set.</p>
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>normal_range</strong>: <code>DV_INTERVAL&lt;DV_PROPORTION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional normal range.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_reference_ranges</strong>: <code>List&lt;REFERENCE_RANGE&lt;DV_PROPORTION&gt;&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional tagged other reference ranges for this value in its particular measurement context.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
@@ -3526,17 +3574,17 @@ used to control the type attribute to be one of a defined set.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator=</strong> (source: <code>DV_PROPORTION</code>): <code>DV_PROPORTION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Assignment operator</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong>: <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Effective magnitude represented by ratio.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (source: <code>DV_PROPORTION</code>): <code>DV_PROPORTION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Assignment operator</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4056,6 +4104,17 @@ defined below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">DV_ABSOLUTE_QUANTITY</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accuracy</strong>: <code>DV_DURATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>

@@ -29,6 +29,16 @@ The value -1 implies no limit, i.e. any number of decimal places.
 h|*1..1*
 |*units*: `String`
 a|Stringified units, expressed in UCUM unit syntax, e.g. "kg/m2", “mm[Hg]", "ms-1", "km/h". Implemented accordingly in subtypes.
+
+h|*0..1 +
+(redefined)*
+|*normal_range*: `DV_INTERVAL<DV_QUANTITY>`
+a|Optional normal range.
+
+h|*0..1 +
+(redefined)*
+|*other_reference_ranges*: `List<REFERENCE_RANGE<DV_QUANTITY>>`
+a|Optional tagged other reference ranges for this value in its particular measurement context.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*

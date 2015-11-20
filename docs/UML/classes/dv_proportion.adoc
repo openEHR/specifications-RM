@@ -35,6 +35,16 @@ a|Indicates semantic type of proportion, including percent, unitary etc.
 h|*0..1*
 |*precision*: `Integer`
 a|Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places.
+
+h|*0..1 +
+(redefined)*
+|*normal_range*: `DV_INTERVAL<DV_PROPORTION>`
+a|Optional normal range.
+
+h|*0..1 +
+(redefined)*
+|*other_reference_ranges*: `List<REFERENCE_RANGE<DV_PROPORTION>>`
+a|Optional tagged other reference ranges for this value in its particular measurement context.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -43,13 +53,13 @@ h|
 |*is_integral*: `Boolean`
 a|True if the numerator and denominator values are integers, i.e. if the precision is 0.
 
-h|
-|*operator=* (source: `DV_PROPORTION`): `DV_PROPORTION`
-a|Assignment operator
-
 h|(effected)
 |*magnitude*: `Real`
 a|Effective magnitude represented by ratio.
+
+h|(effected)
+|*infix =* (source: `DV_PROPORTION`): `DV_PROPORTION`
+a|Assignment operator
 
 h|*Invariant*
 2+a|*_Type_validity_*: valid_proportion_kind (type)
