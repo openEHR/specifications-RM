@@ -2664,13 +2664,25 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="sect3">
 <h4 id="_version_identification"><a class="anchor" href="#_version_identification"></a>6.3.3. Version Identification</h4>
 <div class="paragraph">
-<p>The version identification scheme described here is adapted from the work of Hnìtynka and Plášil <a href="#Hnìtynka_2004">[Hnìtynka_2004]</a>. <code>VERSION</code> objects are identified by a <code><em>uid</em></code> attribute, which is a three-part identifier consisting of the attributes <code><em>object_id</em></code>, <code><em>version_tree_id</em></code> and <code><em>creating_system_id</em></code> (see <code>support.identification</code> package in the Support IM <a href="#openehr_rm_support">[openehr_rm_support]</a>). The first part of the <code>VERSION</code> identifier - the <code><em>object_id</em></code> attribute - is a copy of the <code><em>uid</em></code> of the <code>VERSIONED_OBJECT</code> container in which the <code>VERSION</code> was originally created. The second and third parts of the identifier are explained below. The figure below illustrates the scheme graphically.</p>
+<p>The version identification scheme described here is adapted from the work of Hnìtynka and Plášil <a href="#Hnìtynka_2004">[Hnìtynka_2004]</a>. <code>VERSION</code> objects are identified by a <code><em>uid</em></code> attribute, which is a three-part identifier consisting of the attributes <code><em>object_id</em></code>, <code><em>creating_system_id</em></code> and <code><em>version_tree_id</em></code> (see <code>support.identification</code> package in the Support IM <a href="#openehr_rm_support">[openehr_rm_support]</a>), in which the <code><em>object_id</em></code> part is a copy of the <code><em>uid</em></code> of the owning <code>VERSIONED_OBJECT</code> version container.</p>
+</div>
+<div class="paragraph">
+<p>The following figure illustrates the scheme. The <code>VERSIONED_OBJECT</code> <code><em>uid</em></code> value - here, "1234" - is used as the <code><em>object_id()</em></code> part of the <code><em>uid</em></code> of every contained <code>VERSION</code> (note that an <code>OBJECT_VERSION_ID&#8217;s `<em>value</em></code> is a <code>String</code>, with various accessor functions like <code><em>object_id()</em></code> used to extract the logical pieces). Accordingly, each of those versions will have a <code><em>uid</em></code> following the pattern "1234:system_id:version_tree_id". The use of the <code><em>version_tree_id</em></code> and <code><em>system_id</em></code> parts of the identifier are explained in the sections below.</p>
 </div>
 <div id="version_identification_system" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/version_identification_system.png" alt="version identification system" width="80%">
+<img src="diagrams/version_identification_system.svg" alt="version identification system" width="80%">
 </div>
 <div class="title">Figure 10. Version identification system</div>
+</div>
+<div class="paragraph">
+<p>The following figure provides an example of multiple <code>VERSIONs</code> within a <code>VERSIONED_OBJECT</code>, where one of the versions has been merged from another system. This highlights the identifiers; details of original and merged versions are described below.</p>
+</div>
+<div id="version_identification_example" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/version_identification_example.svg" alt="version identification example" width="80%">
+</div>
+<div class="title">Figure 11. Version identification Example</div>
 </div>
 <div class="sect4">
 <h5 id="_local_versioning"><a class="anchor" href="#_local_versioning"></a>Local Versioning</h5>
@@ -2680,7 +2692,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="ulist">
 <ul>
 <li>
-<p>to encode the relationship between versions in the version id, that is to say, version ids are constructed such that given a series of ids, the relative positions in the tree can be determined;</p>
+<p>to encode the relationship between versions in the version id, that is to say, version identifiers are constructed such that given a series of identifiers, the relative positions in the tree can be determined;</p>
 </li>
 <li>
 <p>to allow for branches, so that variants of a particular node can be created; e.g. due to translation, or for training purposes.</p>
@@ -2691,7 +2703,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <p>A suitable scheme satisfying the above requirements for health information is the simplest possible, i.e. a single number representing the version. Version identifiers thus start at 1 and continue by single increments. The succession of version identifiers formed by changes over time is known as the "trunk" of the version tree.</p>
 </div>
 <div class="paragraph">
-<p>To support branching, a further pair of numbers is added. The first number identifies the branch (e.g. the 1st branch, 2nd branch etc from that trunk node), while the second identifies the version. Both of these numbers also start at 1. The result of this is that version numbers like 1.1.1 (first version of first branch from trunk node 1), 2.3.3 (3rd version of 3rd branch from trunk node 2) are possible. Inside openEHR systems where sharing with other systems does not occur, it is expected that branched versioning will be used rarely; translation is likely to be the only reason (for example if a Portuguese translation of an English language version of a Composition is made).</p>
+<p>To support branching, a further pair of numbers is added. The first number identifies the branch (e.g. the 1st branch, 2nd branch etc from that trunk node), while the second identifies the version. Both of these numbers also start at '1'. The result of this is that version numbers like '1.1.1' (first version of first branch from trunk node 1), '2.3.3' (3rd version of 3rd branch from trunk node 2) are possible. Inside openEHR systems where sharing with other systems does not occur, it is expected that branched versioning will be used rarely; translation is likely to be the only reason (for example if a Portuguese translation of an English language version of a Composition is made).</p>
 </div>
 </div>
 <div class="sect4">
@@ -2719,7 +2731,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <p>Whenever a new <code>ORIGINAL_VERSION</code> in a particular <code>VERSIONED_OBJECT</code> (with a particular uid) is created locally, the <code>VERSION</code>.<code><em>uid</em></code>.<code><em>creating_system_id</em></code> is set to the identifier of the local system; if the version was imported, <code><em>creating_system_id</em></code> will already have been set to the identifier of the system of original creation.</p>
 </div>
 <div class="paragraph">
-<p>The second modification is to require branching version identifiers to be used when local modifications are made to versions copied from elsewhere; this ensures that the modifications now being made in the target system are considered in a global sense as logical branches or variants rather than trunk versions which are made in the originating system. It also allows later trunk versions from the originating system to be copied at some future time to the target system without version identifier clashes. In summary, this scheme uses the tuple {<code><em>owner_id</em></code>, <code><em>version_tree_id</em></code>, <code><em>creating_system_id</em></code>} to globally uniquely identify any openEHR <code>VERSION</code> object.</p>
+<p>The second modification is to require branching version identifiers to be used when local modifications are made to versions copied from elsewhere; this ensures that the modifications now being made in the target system are considered in a global sense as logical branches or variants rather than trunk versions which are made in the originating system. It also allows later trunk versions from the originating system to be copied at some future time to the target system without version identifier clashes. In summary, this scheme uses the tuple {<code><em>object_id</em></code>, <code><em>version_tree_id</em></code>, <code><em>creating_system_id</em></code>} to globally uniquely identify any openEHR <code>VERSION</code> object.</p>
 </div>
 </div>
 </div>
@@ -2771,7 +2783,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="content">
 <img src="diagrams/distributed_versioning.png" alt="distributed versioning" width="70%">
 </div>
-<div class="title">Figure 11. Distributed versioning</div>
+<div class="title">Figure 12. Distributed versioning</div>
 </div>
 <div class="paragraph">
 <p>When the first <code>ORIGINAL_VERSION</code> is copied (copy #1) to system B, it is committed as an <code>IMPORTED_VERSION</code> to a <code>VERSIONED_OBJECT</code> which is a clone of the original. Subsequent copies (copy #2 and copy #3) can be made of later versions from system A to system B, with the effect that the version tree can be recreated inside system B (if required; there is of course no obligation to do anything with the received information). Users in system B an also make modifications to the received Version copies; these modifications are shown in grey, as branched versions with <code><em>uid</em></code>.<code><em>creating_system_id</em></code> = "sysB". Independently, users in system B will of course be creating other content locally, e.g. as shown on the right-hand side, where a Versioned object with <code><em>uid</em></code>= "2" has been created. Two places are indicated on the diagram where identification clashes could have occurred, but are prevented due to the use of the 3-part unique Version identifier scheme.</p>
@@ -2806,7 +2818,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="content">
 <img src="diagrams/version_merging.png" alt="version merging" width="60%">
 </div>
-<div class="title">Figure 12. Version merging</div>
+<div class="title">Figure 13. Version merging</div>
 </div>
 <div class="paragraph">
 <p>In this figure, versions 1 and 2 of the content (e.g. a medication list) from Versioned object with <code><em>uid</em></code>=1 are copied from system A (e.g. a GP) to system B (e.g. a hospital). In system B, changes are made to version 2, creating a branch (as an instance of <code>IMPORTED_VERSION&lt;T&gt;</code>) as required by the rules described above. These changes (modified medication list) are then imported back into system A. The system A user performs a merge operation to create a new trunk version 3, using the sysB::2.1.2 and sysA::2 content; most likely, he simply reviews the two input versions and uses the sysB::2.1.2 content unchanged (the result is that system A now has an up-to-date medication list for the patient, including medications orginally recorded at system A, as well as additions recorded at system B). The new Version is an instance of <code>ORIGINAL_VERSION&lt;T&gt;</code>, with its other_input_version_ids attribute set to include the <code>OBJECT_VERSION_ID</code> representing sysB::2.1.2 (it does not need to include sysA::2, since this is already known in the <code><em>preceding_version_uid</em></code>).</p>
@@ -2824,7 +2836,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="content">
 <img src="diagrams/disjoint_merging.png" alt="disjoint merging" width="80%">
 </div>
-<div class="title">Figure 13. Disjoint merging</div>
+<div class="title">Figure 14. Disjoint merging</div>
 </div>
 <div class="paragraph">
 <p>The merge procedure is as follows:</p>
@@ -2901,7 +2913,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="content">
 <img src="diagrams/moving_version_container.png" alt="moving version container" width="50%">
 </div>
-<div class="title">Figure 14. Moving a version container</div>
+<div class="title">Figure 15. Moving a version container</div>
 </div>
 </div>
 </div>
@@ -3164,7 +3176,7 @@ and is_original_version(a_ver_id)</p></td>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>OBJECT_VERSION_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Unique identifier of this VERSION, containing a copy of owner_id, a version_tree_id and creating_system_id. The owner_id is itself a copy of the owning VERSIONED_OBJECT.uid.</p>
+<p>Unique identifier of this VERSION, in the form of an {object_id, a version_tree_id, creating_system_id} triple, where the object_id has the same value as the containing VERSIONED_OBJECT&#8217;s uid.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3201,7 +3213,7 @@ signature.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner_id</strong>: <code>HIER_OBJECT_ID</code><br>
 <strong><em>Post</em></strong>: Result.value.is_equal (uid.object_id.value)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Copy of the owning VERSIONED_OBJECT.uid property value; extracted from the local uid property, which consists of a triple of {owning VERSIONED_OBJECT.uid, version_tree_id, creating_system_id}.</p>
+<p>Copy of the owning VERSIONED_OBJECT.uid value; extracted from the local uid property&#8217;s object_id.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3463,7 +3475,7 @@ signature.</p>
 <div class="content">
 <img src="../UML/diagrams/RM-common.resource.svg" alt="RM common.resource">
 </div>
-<div class="title">Figure 15. common.resource Package</div>
+<div class="title">Figure 16. common.resource Package</div>
 </div>
 <div class="sect3">
 <h4 id="_natural_languages_and_translation"><a class="anchor" href="#_natural_languages_and_translation"></a>7.1.1. Natural Languages and Translation</h4>
@@ -3534,7 +3546,7 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code>CODE_PHRASE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code>TERMINOLOGY_CODE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.</p>
 </div></div></td>
@@ -3562,10 +3574,22 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code>REVISION_HISTORY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>UUID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The revision history of the resource. Only required if is_controlled = True (avoids large revision histories for informal or private editing situations).</p>
+<p>Unique identifier of the family of archetypes having the same interface identifier (same major version).</p>
 </div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>annotations</strong>: <code>RESOURCE_ANNOTATIONS</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Annotations on individual items within the resource, keyed by path. The inner table takes the form of a Hash table of String values keyed by String tags.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>:</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -3596,18 +3620,6 @@ signature.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Languages_available_valid</em></strong>: languages_available.has (original_language)</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Revision_history_valid</em></strong>: is_controlled xor revision_history = Void</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Current_revision_valid</em></strong>: (current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)</p>
 </div></div></td>
 </tr>
@@ -3622,6 +3634,18 @@ signature.</p>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Description_valid</em></strong>: translations /= Void implies (description.details.for_all (d &#124;
 translations.has_key (d.language.code_string)))</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Languages_available_valid</em></strong>: languages_available.has (original_language)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Revision_history_valid</em></strong>: is_controlled xor revision_history = Void</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3653,7 +3677,7 @@ translations.has_key (d.language.code_string)))</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>TERMINOLOGY_CODE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Language of the translation.</p>
 </div></div></td>
@@ -3680,10 +3704,9 @@ translations.has_key (d.language.code_string)))</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_last_translated</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Version of this resource last time it was translated into the language represented by this TRANSLATION_DETAILS object.</p>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Language_valid</em></strong>: code_set (Code_set_id_languages).has_code (language)</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3865,9 +3888,9 @@ conversion_details = &lt;
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>CODE_PHRASE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>TERMINOLOGY_CODE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The localised language in which the items in this description item are written. Coded from openEHR Code Set  languages .</p>
+<p>The localised language in which the items in this description item are written. Coded from openEHR Code Set  languages.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3900,13 +3923,6 @@ conversion_details = &lt;
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>copyright</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional copyright statement for the resource as a knowledge resource.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_resource_uri</strong>: <code>List&lt;Hash&lt;String, String&gt;&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>URIs of original clinical document(s) or description of which resource is a formalisation, in the language of this description item; keyed by meaning.</p>
@@ -3917,36 +3933,6 @@ conversion_details = &lt;
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Additional language-senstive resource metadata, as a list of name/value pairs.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: code_set (Code_set_id_languages).has_code (language)</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Purpose_valid</em></strong>: not purpose.is_empty</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Use_valid</em></strong>: use /= Void implies not use.is_empty</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>misuse_valid</em></strong>: misuse /= Void implies not misuse.is_empty</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>copyright_valid</em></strong>: copyright /= Void implies not copyright.is_empty</p>
 </div></div></td>
 </tr>
 </tbody>

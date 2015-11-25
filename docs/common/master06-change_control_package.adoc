@@ -143,21 +143,29 @@ Logical deletion can be used for various reasons, including patient direction to
 
 === Version Identification
 
-The version identification scheme described here is adapted from the work of Hnìtynka and Plášil <<Hnìtynka_2004>>. `VERSION` objects are identified by a `_uid_` attribute, which is a three-part identifier consisting of the attributes `_object_id_`, `_version_tree_id_` and `_creating_system_id_` (see `support.identification` package in the Support IM <<openehr_rm_support>>). The first part of the `VERSION` identifier - the `_object_id_` attribute - is a copy of the `_uid_` of the `VERSIONED_OBJECT` container in which the `VERSION` was originally created. The second and third parts of the identifier are explained below. The figure below illustrates the scheme graphically.
+The version identification scheme described here is adapted from the work of Hnìtynka and Plášil <<Hnìtynka_2004>>. `VERSION` objects are identified by a `_uid_` attribute, which is a three-part identifier consisting of the attributes `_object_id_`, `_creating_system_id_` and `_version_tree_id_` (see `support.identification` package in the Support IM <<openehr_rm_support>>), in which the `_object_id_` part is a copy of the `_uid_` of the owning `VERSIONED_OBJECT` version container.
+
+The following figure illustrates the scheme. The `VERSIONED_OBJECT` `_uid_` value - here, "1234" - is used as the `_object_id()_` part of the `_uid_` of every contained `VERSION` (note that an `OBJECT_VERSION_ID`'s `_value_` is a `String`, with various accessor functions like `_object_id()_` used to extract the logical pieces). Accordingly, each of those versions will have a `_uid_` following the pattern "1234:system_id:version_tree_id". The use of the `_version_tree_id_` and `_system_id_` parts of the identifier are explained in the sections below.
 
 [.text-center]
 .Version identification system
-image::diagrams/version_identification_system.png[id=version_identification_system, align="center", width=80%]
+image::diagrams/version_identification_system.svg[id=version_identification_system, align="center", width=80%]
+
+The following figure provides an example of multiple `VERSIONs` within a `VERSIONED_OBJECT`, where one of the versions has been merged from another system. This highlights the identifiers; details of original and merged versions are described below.
+
+[.text-center]
+.Version identification Example
+image::diagrams/version_identification_example.svg[id=version_identification_example, align="center", width=80%]
 
 ==== Local Versioning
 The `_version_tree_id_` attribute of `VERSION`.`_uid_` identifies a version of an item with respect to other versions in the same tree. The requirements of the identifier are the same as for typical versioning systems in use in software configuration management, and are as follows:
 
-* to encode the relationship between versions in the version id, that is to say, version ids are constructed such that given a series of ids, the relative positions in the tree can be determined;
+* to encode the relationship between versions in the version id, that is to say, version identifiers are constructed such that given a series of identifiers, the relative positions in the tree can be determined;
 * to allow for branches, so that variants of a particular node can be created; e.g. due to translation, or for training purposes.
 
 A suitable scheme satisfying the above requirements for health information is the simplest possible, i.e. a single number representing the version. Version identifiers thus start at 1 and continue by single increments. The succession of version identifiers formed by changes over time is known as the "trunk" of the version tree.
 
-To support branching, a further pair of numbers is added. The first number identifies the branch (e.g. the 1st branch, 2nd branch etc from that trunk node), while the second identifies the version. Both of these numbers also start at 1. The result of this is that version numbers like 1.1.1 (first version of first branch from trunk node 1), 2.3.3 (3rd version of 3rd branch from trunk node 2) are possible. Inside openEHR systems where sharing with other systems does not occur, it is expected that branched versioning will be used rarely; translation is likely to be the only reason (for example if a Portuguese translation of an English language version of a Composition is made).
+To support branching, a further pair of numbers is added. The first number identifies the branch (e.g. the 1st branch, 2nd branch etc from that trunk node), while the second identifies the version. Both of these numbers also start at '1'. The result of this is that version numbers like '1.1.1' (first version of first branch from trunk node 1), '2.3.3' (3rd version of 3rd branch from trunk node 2) are possible. Inside openEHR systems where sharing with other systems does not occur, it is expected that branched versioning will be used rarely; translation is likely to be the only reason (for example if a Portuguese translation of an English language version of a Composition is made).
 
 ==== Distributed Versioning
 
@@ -171,7 +179,7 @@ To satisfy these needs, two modifications are made to the identification scheme.
 
 Whenever a new `ORIGINAL_VERSION` in a particular `VERSIONED_OBJECT` (with a particular uid) is created locally, the `VERSION`.`_uid_`.`_creating_system_id_` is set to the identifier of the local system; if the version was imported, `_creating_system_id_` will already have been set to the identifier of the system of original creation.
 
-The second modification is to require branching version identifiers to be used when local modifications are made to versions copied from elsewhere; this ensures that the modifications now being made in the target system are considered in a global sense as logical branches or variants rather than trunk versions which are made in the originating system. It also allows later trunk versions from the originating system to be copied at some future time to the target system without version identifier clashes. In summary, this scheme uses the tuple {`_owner_id_`, `_version_tree_id_`, `_creating_system_id_`} to globally uniquely identify any openEHR `VERSION` object.
+The second modification is to require branching version identifiers to be used when local modifications are made to versions copied from elsewhere; this ensures that the modifications now being made in the target system are considered in a global sense as logical branches or variants rather than trunk versions which are made in the originating system. It also allows later trunk versions from the originating system to be copied at some future time to the target system without version identifier clashes. In summary, this scheme uses the tuple {`_object_id_`, `_version_tree_id_`, `_creating_system_id_`} to globally uniquely identify any openEHR `VERSION` object.
 
 == Semantics in Distributed Systems
 
