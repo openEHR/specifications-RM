@@ -356,6 +356,12 @@
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-43">SPECRM-43</a>: Improve documentation of <code>EHR.<em>system_id</em></code> in clone/copy scenario (<a href="https://openehr.atlassian.net/browse/SPECPR-5128">SPECPR-128</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.2</strong></p></th>
 </tr>
 <tr>
@@ -1706,7 +1712,7 @@
 <p>openEHR EHRs are created due to two types of events. The first is a new patient presenting at the provider institution. An EHR may be created due to this event, without reference to any other openEHR EHRs that may exist in the broader community or jurisdiction. In this case, the EHR will be allocated a new, globally unique EHR id. This establishes the new EHR as an intentional clone of the source EHR (or more correctly, part of the family of EHRs making up the virtual EHR for that patient).</p>
 </div>
 <div class="paragraph">
-<p>On the other hand, an openEHR EHR may be created in an organisation as a logical clone (probably partial) of an EHR for the patient in some other system. This might happen as a normal part of the front-desk registration / admission process, i.e. the local EHR system is able to interrogate an EHR location service and discover if any other EHR exists for this patient, or it may occur due to purely electronic communications between two providers, i.e. the EHR is created because an Extract of an EHR hs been sent from elsewhere as part of a referral or similar communication. In this second case, the EHR id should be a copy of the EHR id from the other institution.</p>
+<p>On the other hand, an openEHR EHR may be created in an organisation as a logical clone (probably partial) of an EHR for the patient that exists in some other system. This might happen as a normal part of the front-desk registration / admission process, i.e. the local EHR system is able to interrogate an EHR location service and discover if any other EHR exists for this patient, or it may occur due to purely electronic communications between two providers, i.e. the EHR is created because an Extract of an EHR hs been sent from elsewhere as part of a referral or similar communication. In this second case, the EHR id should be a copy of the EHR id from the other institution. In all cases, the <code>EHR.<em>system_id</em></code> value should be set to the value that would normally be used for locally created EHRs. In the case of creating a cloned EHR, the <code><em>system_id</em></code> is from the receiving (cloning) system.</p>
 </div>
 <div class="paragraph">
 <p>In theory such a scheme could guarantee one EHR id per patient, but of course in reality, various factors conspire against this, and it can only approximate it. For one thing, it is known that providers routinely create new EHRs for a patient regardless of how many other EHRs already exist for that patient, simply because they have no easy way to find out about those EHRs. Ideally, this situation would be improved in the openEHR world, but due to reliance on such things as distributed services and reliable person identification, there are no guarantees. The best that can be said is that the EHR id allocation scheme can help support an ideal EHR id-per-patient situation if and when it becomes possible.</p>
@@ -1720,13 +1726,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p><code><em>system_id</em></code></p>
+<p><code><em>system_id</em></code> - identifier of EHR repository of the system.</p>
 </li>
 <li>
 <p><code><em>ehr_id</em></code></p>
 </li>
 <li>
-<p><code><em>subject_id</em></code> (optional; the use of <code>PARTY_SELF</code> allows completely anonymous EHRs)</p>
+<p><code><em>subject_id</em></code> - optional; the use of <code>PARTY_SELF</code> allows completely anonymous EHRs</p>
 </li>
 <li>
 <p><code><em>is_queryable</em></code> flag</p>
@@ -1817,7 +1823,7 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>system_id</strong>: <code>HIER_OBJECT_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The id of the EHR system on which this EHR was created.</p>
+<p>The id of the EHR repository on which this EHR was created.</p>
 </div></div></td>
 </tr>
 <tr>
