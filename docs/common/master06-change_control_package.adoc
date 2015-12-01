@@ -54,6 +54,7 @@ The uid attribute of the class `VERSIONED_OBJECT<T>` is in fact the uid of the v
 The versioning scheme used in openEHR guarantees that no matter where data are created or copied, there are no inconsistencies due to sharing, and that logical copies are explicitly represented. This is achieved by the design of Version identifiers.
 
 === Contributions
+
 Since a versioned repository (i.e. a collection of `VERSIONED_OBJECTs`) is by definition indelible, all logical changes including deletions, additions, modifications (including error corrections and content changes), importing and attestations of existing items, are achieved by physically committing new Versions, or for attestations, new Attestation objects to existing Versions. Each logical type of change is achieved as follows:
 
 * _addition of new item_: a new `VERSIONED_OBJECT` is created with a first `ORIGINAL_VERSION` whose data is the new item; the `ORIGINAL_VERSION`.`_commit_audit_`.`_change_type_` is set to the code for ‘creation’
@@ -145,7 +146,7 @@ Logical deletion can be used for various reasons, including patient direction to
 
 The version identification scheme described here is adapted from the work of Hnìtynka and Plášil <<Hnìtynka_2004>>. `VERSION` objects are identified by a `_uid_` attribute, which is a three-part identifier consisting of the attributes `_object_id_`, `_creating_system_id_` and `_version_tree_id_` (see `support.identification` package in the Support IM <<openehr_rm_support>>), in which the `_object_id_` part is a copy of the `_uid_` of the owning `VERSIONED_OBJECT` version container.
 
-The following figure illustrates the scheme. The `VERSIONED_OBJECT` `_uid_` value - here, "1234" - is used as the `_object_id()_` part of the `_uid_` of every contained `VERSION` (note that an `OBJECT_VERSION_ID`'s `_value_` is a `String`, with various accessor functions like `_object_id()_` used to extract the logical pieces). Accordingly, each of those versions will have a `_uid_` following the pattern "1234:system_id:version_tree_id". The use of the `_version_tree_id_` and `_system_id_` parts of the identifier are explained in the sections below.
+The following figure illustrates the scheme. The `VERSIONED_OBJECT` `_uid_` value - here, "1234" - is used as the `_object_id()_` part of the `_uid_` of every contained `VERSION` (note that an `OBJECT_VERSION_ID's` `_value_` is a `String`, with various accessor functions like `_object_id()_` used to extract the logical pieces). Accordingly, each of those versions will have a `_uid_` following the pattern "1234:system_id:version_tree_id". The use of the `_version_tree_id_` and `_system_id_` parts of the identifier are explained in the sections below. The function `VERSION._owner_id()_` is provided to enable a caller to easily obtain the 'owning version container' identifier.
 
 [.text-center]
 .Version identification system
