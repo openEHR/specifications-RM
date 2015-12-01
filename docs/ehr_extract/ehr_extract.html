@@ -1684,7 +1684,7 @@ the EHR and generic Extract sections below.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>action</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Requested action: cancel, resend, send new.</p>
+<p>Requested action: cancel &#124; resend &#124; send new. Coded by openEHR Terminology group "extract action type".</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1741,11 +1741,26 @@ the EHR and generic Extract sections below.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_type</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Coded term indicating the type of content required, e.g.
-&#124;openehr-ehr&#124;
-&#124;openehr-demographic&#124;
-&#124;generic-emr&#124;
-&#124;other&#124;</p>
+<p>Coded term indicating the type of content required, e.g.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>openehr-ehr</p>
+</li>
+<li>
+<p>openehr-demographic</p>
+</li>
+<li>
+<p>generic-emr</p>
+</li>
+<li>
+<p>other</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Coded by openEHR Terminology group "extract content type".</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2002,11 +2017,23 @@ the EHR and generic Extract sections below.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trigger_events</strong>: <code>List&lt;DV_CODED_TEXT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Set of Event names that will cause sending of update Extracts. Event types include:   &#124;any_change&#124; - any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.</p>
+<p>Set of Event names that will cause sending of update Extracts. Event types include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>any_change - any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.</p>
+</li>
+<li>
+<p>correction - match error corrections only, including deletions.</p>
+</li>
+<li>
+<p>update - match updates (i.e. new versions) of included content items.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>&#124;correction&#124; - match error corrections only, including deletions.
-&#124;update&#124; - match updates (i.e. new versions) of included content items.</p>
+<p>Coded by openEHR Terminology group "extract update trigger event type".</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3538,7 +3565,7 @@ set <code><em>is_primary</em></code> = False, write the path and write the targe
 <p><a id="Gray_reuter_1993"></a>[Gray_reuter_1993] Gray J, Reuter A. <strong>Transaction Processing Concepts and Techniques.</strong> Morgan Kaufmann 1993.</p>
 </li>
 <li>
-<p><a id="Hein"></a>[Hein] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
+<p><a id="Hein_2002"></a>[Hein_2002] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
 </li>
 <li>
 <p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
@@ -3838,10 +3865,13 @@ set <code><em>is_primary</em></code> = False, write the path and write the targe
 <p><a id="openehr_am_identification"></a>[openehr_am_identification] The openEHR Foundation. <strong>Archetype Identification specification.</strong> Available at <a href="http://www.openehr.org/releases/AM/latest/Identification.html" class="bare">http://www.openehr.org/releases/AM/latest/Identification.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_am_def_pri"></a>[openehr_am_def_pri] The openEHR Foundation. <strong>Archetype Definitions and Principles.</strong>(deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf</a>.</p>
+<p><a id="openehr_am_def_pri"></a>[openehr_am_def_pri] The openEHR Foundation. <strong>Archetype Definitions and Principles.</strong> (deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf</a>.</p>
 </li>
 <li>
-<p><a id="openehr_am_sys"></a>[openehr_am_sys] The openEHR Foundation. <strong>The Archetype System.</strong>(deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf</a>.</p>
+<p><a id="openehr_am_sys"></a>[openehr_am_sys] The openEHR Foundation. <strong>The Archetype System.</strong> (deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf</a>.</p>
+</li>
+<li>
+<p><a id="openehr_am_oap"></a>[openehr_am_oap] The openEHR Foundation. <strong>The openEHR Archetype Profile.</strong> <a href="http://www.openehr.org/releases/1.0.2/architecture/am/openehr_archetype_profile.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/openehr_archetype_profile.pdf</a> .</p>
 </li>
 <li>
 <p><a id="openehr_CKM"></a>[openehr_CKM] <strong>The openEHR Clinical Knowledge Manager (CKM)</strong>. See <a href="http://www.openEHR.org/ckm" class="bare">http://www.openEHR.org/ckm</a></p>
