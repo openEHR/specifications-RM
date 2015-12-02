@@ -201,6 +201,7 @@
 <li><a href="#_e_health_standards">e-Health Standards</a></li>
 <li><a href="#_e_health_projects">e-Health Projects</a></li>
 <li><a href="#_general_standards">General Standards</a></li>
+<li><a href="#_tools">Tools</a></li>
 </ul>
 </li>
 <li><a href="#_openehr_resources">openEHR Resources</a></li>
@@ -302,13 +303,13 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-21">SPECRM-21</a>: Make <code>PARTICIPATION</code>.<code><em>mode</em></code> optional. Section 4.3.5 updated.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-21">SPECRM-21</a>: Make <code>PARTICIPATION.<em>mode</em></code> optional. Section 4.3.5 updated.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>12 Oct 2015</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-28">SPECRM-28</a>: Improve documentation of <code>VERSION</code>.<code><em>uid</em></code> to make clear that the first part of the id is the owning <code>VERSIONED_OBJECT</code>.<code><em>uid</em></code> (<a href="https://openehr.atlassian.net/browse/SPECPR-90">SPECPR-90</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-28">SPECRM-28</a>: Improve documentation of <code>VERSION.<em>uid</em></code> to make clear that the first part of the id is the owning <code>VERSIONED_OBJECT.<em>uid</em></code> (<a href="https://openehr.atlassian.net/browse/SPECPR-90">SPECPR-90</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -892,7 +893,7 @@
 <div class="sect2">
 <h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
 <div class="paragraph">
-<p>This specification is in the Stable state. The development version of this document can be found at <a href="http://www.openehr.org/releases/RM/latest/common.html" class="bare">http://www.openehr.org/releases/RM/latest/common.html</a>.</p>
+<p>This specification is in the STABLE state. The development version of this document can be found at <a href="http://www.openehr.org/releases/RM/latest/common.html" class="bare">http://www.openehr.org/releases/RM/latest/common.html</a>.</p>
 </div>
 <div class="paragraph">
 <p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
@@ -919,7 +920,7 @@
 <p>The openEHR Common Information Model defines various abstract concepts and design patterns used in higher level openEHR models.</p>
 </div>
 <div class="paragraph">
-<p>The <code>archetyped</code> package is informed by a number of design principles, centred on the concept of ‘two-level’ modelling. These principles are described in detail in <a href="#Beale_2000">[Beale_2000]</a>. The <code>generic</code> package contains classes forming ‘analysis patterns’ which are generic across the domain, mostly to do with referencing demographic entities from within other data including <code>PARTICIPATION</code>, <code>PARTY_PROXY</code>, <code>ATTESTATION</code> and so on.</p>
+<p>The <code>archetyped</code> package is informed by a number of design principles, centred on the concept of 'two-level' modelling. These principles are described in detail in <a href="#Beale_2000">[Beale_2000]</a>. The <code>generic</code> package contains classes forming 'analysis patterns' which are generic across the domain, mostly to do with referencing demographic entities from within other data including <code>PARTICIPATION</code>, <code>PARTY_PROXY</code>, <code>ATTESTATION</code> and so on.</p>
 </div>
 <div class="paragraph">
 <p>The <code>directory</code> package provides a simple reusable abstraction of a versioned folder structure.</p>
@@ -972,7 +973,7 @@
 <div class="sect3">
 <h4 id="_the_locatable_class"><a class="anchor" href="#_the_locatable_class"></a>3.1.2. The LOCATABLE Class</h4>
 <div class="paragraph">
-<p>Most classes in the openEHR reference model inherit from the <code>LOCATABLE</code> class, which defines the idea of ‘locatability in an archetyped structure’. <code>LOCATABLE</code> defines a runtime name and an <code><em>archetype_node_id</em></code>. The <code><em>archetype_node_id</em></code> is the standardised semantic code for a node and comes from the corresponding node in the archetype used to create the data. The only exception is at archetype root points in data, where <code><em>archetype_node_id</em></code> carries the archetype identifier in string form rather than an interior node id from an archetype. <code>LOCATABLE</code> also provides the attribute <code><em>archetype_details</em></code>, which is non-Void for archetype root points in data, and carries meta-data relevant to root points. The <code><em>name</em></code> attribute carries a name created at runtime. The ‘meaning’ of any node is derived formally from the archetype by obtaining the text value for the <code><em>archetype_node_id</em></code> code from the archetype <code>ontology</code> section, in the language required.</p>
+<p>Most classes in the openEHR reference model inherit from the <code>LOCATABLE</code> class, which defines the idea of 'locatability in an archetyped structure'. <code>LOCATABLE</code> defines a runtime name and an <code><em>archetype_node_id</em></code>. The <code><em>archetype_node_id</em></code> is the standardised semantic code for a node and comes from the corresponding node in the archetype used to create the data. The only exception is at archetype root points in data, where <code><em>archetype_node_id</em></code> carries the archetype identifier in string form rather than an interior node id from an archetype. <code>LOCATABLE</code> also provides the attribute <code><em>archetype_details</em></code>, which is non-Void for archetype root points in data, and carries meta-data relevant to root points. The <code><em>name</em></code> attribute carries a name created at runtime. The 'meaning' of any node is derived formally from the archetype by obtaining the text value for the <code><em>archetype_node_id</em></code> code from the archetype <code>ontology</code> section, in the language required.</p>
 </div>
 <div class="paragraph">
 <p>The <code><em>name</em></code> and <code><em>archetype_node_id</em></code> valuesin a <code>LOCATABLE</code> instance are often the same semantically, but may differ. For example, in "problem/SOAP" Sections (i.e. headings), the name of a section at the problem level might be "diabetes", but its meaning might be "problem". The default value for <code><em>name</em></code> should be assumed to be the text value in the local language for the <code><em>archetype_node_id</em></code> code on the node in question, unless explicitly set otherwise.</p>
@@ -1108,7 +1109,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <div class="ulist">
 <ul>
 <li>
-<p>subject identifier (often more than one, e.g. national patient id, GP’s local patient id, lab’s local patient id) are usually recorded and may be required for traceability purposes;</p>
+<p>subject identifier (often more than one, e.g. national patient id, GP&#8217;s local patient id, lab&#8217;s local patient id) are usually recorded and may be required for traceability purposes;</p>
 </li>
 <li>
 <p>subject identifier(s) may identify someone other than the subject of the record as being the subject of the incoming item;</p>
@@ -1123,10 +1124,10 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <p>identifer the feeder system uses for the item in question (often known as an "accession id");</p>
 </li>
 <li>
-<p>identifier of request or order to which the information is a response (sometimes known as a "placer’s request id");</p>
+<p>identifier of request or order to which the information is a response (sometimes known as a "placer&#8217;s request id");</p>
 </li>
 <li>
-<p>identifier of the information item used by the originating system (sometimes known as a "filler’s request id");</p>
+<p>identifier of the information item used by the originating system (sometimes known as a "filler&#8217;s request id");</p>
 </li>
 <li>
 <p>timestamp(s) assigned by feeder system to the item.</p>
@@ -1140,7 +1141,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <div class="sect4">
 <h5 id="_traceability"><a class="anchor" href="#_traceability"></a>Traceability</h5>
 <div class="paragraph">
-<p>The first task is to support medico-legal investigation into the path of the information item through the health computing infrastructure. This requires the availability of sufficient identifier information that the origin of the information item can be traced. Subject identifiers where available should be used to ensure that the received data go into the correct EHR, by ensuring that the relevant lookups in client directories or other lookup mechanisms can be effected. Again, in rare cases, the subject of the incoming data item may not necessarily be the subject of the EHR - a test result may be made from a relative or other associate which will be stored in the patient’s EHR.</p>
+<p>The first task is to support medico-legal investigation into the path of the information item through the health computing infrastructure. This requires the availability of sufficient identifier information that the origin of the information item can be traced. Subject identifiers where available should be used to ensure that the received data go into the correct EHR, by ensuring that the relevant lookups in client directories or other lookup mechanisms can be effected. Again, in rare cases, the subject of the incoming data item may not necessarily be the subject of the EHR - a test result may be made from a relative or other associate which will be stored in the patient&#8217;s EHR.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1174,7 +1175,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <div class="sect4">
 <h5 id="_using_feeder_audit_in_converted_data"><a class="anchor" href="#_using_feeder_audit_in_converted_data"></a>Using Feeder Audit in Converted Data</h5>
 <div class="paragraph">
-<p>Although the design of the openEHR converter is outside the scope of the current document, it is worth considering a common design approach, and where the <code>FEEDER_AUDIT</code> class fits in. An effective way of converting non-openEHR data such as HL7v2 messages, relational data etc, is in two steps. The first is to perform a ‘syntactic’ conversion to Compositions containing instances of the <code>GENERIC_ENTRY</code> class (described in the Integration IM), using ‘legacy archetypes’. The resulting database will contain versioned Compositions containing <code>GENERIC_ENTRY</code> instances; logically this database does not contain EHRs but simply external data converted to openEHR computational form. The relevant <code>FEEDER_AUDIT</code> instances should be attached to the Compositions containing the corresponding <code>GENERIC_ENTRY</code> instances. The second step is to perform a ‘semantic’ conversion to subtypes of ENTRY, i.e. <code>OBSERVATION</code>, <code>EVALUATION</code>, <code>INSTRUCTION</code> and <code>ACTION</code>, according to standardised clinical archetypes. There are various possibilities for what to do with the Feeder audit. The minimum Feeder audit required on the final instance contains the originating system audit information, but none of the information to do with feeder or intermediate systems. This will satisfy medico-legal needs. Alternatively, a complete copy could be made, even though the feeder-related meta-data is probably only of use in the conversion environment. What the Feeder audit looks like in the EHR proper may depend on local legislation, norms or other factors. Alternative conversion approaches are also possible, in which no intermediate form of data exists.</p>
+<p>Although the design of the openEHR converter is outside the scope of the current document, it is worth considering a common design approach, and where the <code>FEEDER_AUDIT</code> class fits in. An effective way of converting non-openEHR data such as HL7v2 messages, relational data etc, is in two steps. The first is to perform a 'syntactic' conversion to Compositions containing instances of the <code>GENERIC_ENTRY</code> class (described in the Integration IM), using 'legacy archetypes'. The resulting database will contain versioned Compositions containing <code>GENERIC_ENTRY</code> instances; logically this database does not contain EHRs but simply external data converted to openEHR computational form. The relevant <code>FEEDER_AUDIT</code> instances should be attached to the Compositions containing the corresponding <code>GENERIC_ENTRY</code> instances. The second step is to perform a 'semantic' conversion to subtypes of ENTRY, i.e. <code>OBSERVATION</code>, <code>EVALUATION</code>, <code>INSTRUCTION</code> and <code>ACTION</code>, according to standardised clinical archetypes. There are various possibilities for what to do with the Feeder audit. The minimum Feeder audit required on the final instance contains the originating system audit information, but none of the information to do with feeder or intermediate systems. This will satisfy medico-legal needs. Alternatively, a complete copy could be made, even though the feeder-related meta-data is probably only of use in the conversion environment. What the Feeder audit looks like in the EHR proper may depend on local legislation, norms or other factors. Alternative conversion approaches are also possible, in which no intermediate form of data exists.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1638,7 +1639,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <div class="sect2">
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
 <div class="paragraph">
-<p>The classes presented in this section are abstractions of concepts which are generic patterns in the domain of health (and most likely other domains), such as ‘participation’ and ‘attestation’. The generic cluster is shown below.</p>
+<p>The classes presented in this section are abstractions of concepts which are generic patterns in the domain of health (and most likely other domains), such as 'participation' and 'attestation'. The generic cluster is shown below.</p>
 </div>
 <div id="generic_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -1671,10 +1672,10 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <p>The <code>PARTY_PROXY</code> class and subtypes model references to parties based on these assumptions. The semantics of PARTY_PROXY enable a flexible approach: in stricter environments that have identity management and demographic services, and where there is an entry in such a service for the party in question, <code>PARTY_PROXY</code>.<code><em>external_ref</em></code> will be non-Void, while in other environments, it will be empty.</p>
 </div>
 <div class="paragraph">
-<p>The two subtypes correspond to the mutually distinct categories of the ‘subject of the record’, known as the ‘self’ party in openEHR, and any other party. Whenever the record subject has to be referred to in the record, an instance of <code>PARTY_SELF</code> is used, while <code>PARTY_IDENTIFIED</code> is used for all other situations. The latter class provides for optional human-readable names and formal identifiers, each keyed by purpose or meaning.</p>
+<p>The two subtypes correspond to the mutually distinct categories of the 'subject of the record', known as the 'self' party in openEHR, and any other party. Whenever the record subject has to be referred to in the record, an instance of <code>PARTY_SELF</code> is used, while <code>PARTY_IDENTIFIED</code> is used for all other situations. The latter class provides for optional human-readable names and formal identifiers, each keyed by purpose or meaning.</p>
 </div>
 <div class="paragraph">
-<p>The <code>RELATED_PARTY</code> type is used whenever the relationship of the party to the record subject is required. Relationships are coded and include familial ones (‘mother’, ‘uncle’, etc) as well as relationships like ‘donor’, ‘travelling companion’ and so on.</p>
+<p>The <code>RELATED_PARTY</code> type is used whenever the relationship of the party to the record subject is required. Relationships are coded and include familial ones ('mother', 'uncle', etc) as well as relationships like 'donor', 'travelling companion' and so on.</p>
 </div>
 <div class="sect4">
 <h5 id="_party_self_and_referring_to_the_patient_from_the_ehr"><a class="anchor" href="#_party_self_and_referring_to_the_patient_from_the_ehr"></a>PARTY_SELF and Referring to the Patient from the EHR</h5>
@@ -1773,7 +1774,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <div class="title">Figure 4. Attestation signature generation (using openPGP)</div>
 </div>
 <div class="paragraph">
-<p>In this process, the attestation object is serialised into a canonical text form, and then hashed to create a digest. A digital signature is created from the hash, using the user’s private key. The result is then radix-64 encoded to create an ASCII string so as to remove or reduce potential problems with subsequent communication. The openPGP standard ensures that the transformations and algorithms used to create the signature are indicated within it (i.e. the signature is self-describing).</p>
+<p>In this process, the attestation object is serialised into a canonical text form, and then hashed to create a digest. A digital signature is created from the hash, using the user&#8217;s private key. The result is then radix-64 encoded to create an ASCII string so as to remove or reduce potential problems with subsequent communication. The openPGP standard ensures that the transformations and algorithms used to create the signature are indicated within it (i.e. the signature is self-describing).</p>
 </div>
 <div class="paragraph">
 <p>The serialisation process works by the simple rule of serialising the entire Attestation object (note that the proof attribute will be Void at this point) into an agreed XML, dADL or other text format, then applying the subsequent transformations to the serialised data, then writing the digest result back into the proof attribute.</p>
@@ -2413,7 +2414,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <p>As described in the Architecture Overview document, formal version control and change management are used in openEHR to support the construction of EHR and other repositories requiring the properties of consistency, indelibility, traceability and distributed sharing. The <code>change_control</code> package supplies the formal specification of these features in openEHR.</p>
 </div>
 <div class="paragraph">
-<p>The figure <a href="#change_control_package">common.change_control Package</a> illustrates the openEHR model of a Versioned object, and its constituent Versions. In this model, an instance of the class <code>VERSIONED_OBJECT&lt;T&gt;</code> provides the versioning facilities for one versioned item and is often referred to as a ‘version container’. Although any kind of data can be versioned according to the model presented here, the use of versioning in openEHR is limited to ‘toplevel structures’, such as EHR Compositions and Party objects in a demographic system.</p>
+<p>The figure <a href="#change_control_package">common.change_control Package</a> illustrates the openEHR model of a Versioned object, and its constituent Versions. In this model, an instance of the class <code>VERSIONED_OBJECT&lt;T&gt;</code> provides the versioning facilities for one versioned item and is often referred to as a 'version container'. Although any kind of data can be versioned according to the model presented here, the use of versioning in openEHR is limited to 'toplevel structures', such as EHR Compositions and Party objects in a demographic system.</p>
 </div>
 <div id="change_control_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2454,7 +2455,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <p>Within a Versioned object, each version is an instance of a subtype of the class <code>VERSION&lt;T&gt;</code>. The abstract <code>VERSION</code> class defines the generic notion of a version containing some data, that has been committed to the repository as a member of a Contribution. Accordingly, it records the Contribution in the <code><em>contribution</em></code> attribute and the audit in <code><em>commit_audit</em></code>. A Version also knows its position in the version tree within the container. It has a version identifier, <code><em>uid</em></code>, and knows on which version in the tree it was based (i.e. what version was checked out to create the current version), <code><em>preceding_version_id</em></code> (Void if it is the first version). Both of these identifiers are globally unique (see <code>support.identification</code> package). These properties are abstract in the <code>VERSION</code> class, since they are defined as being stored or computed respectively in its subtypes.</p>
 </div>
 <div class="paragraph">
-<p>All Versions in a given version container have a <code><em>uid</em></code> that includes the <code><em>uid</em></code> of the container; in other words, the <code><em>uid</em></code> of a Version is its container’s <code><em>uid</em></code> plus further version identification for that particular version with respect to others in the same container. The <code>VERSION</code>.<code><em>owner_id</em></code> function extracts the <code><em>uid</em></code> field of the owning <code>VERSIONED_OBJECT</code> from the <code><em>uid</em></code> of the <code>VERSION</code>.</p>
+<p>All Versions in a given version container have a <code><em>uid</em></code> that includes the <code><em>uid</em></code> of the container; in other words, the <code><em>uid</em></code> of a Version is its container&#8217;s <code><em>uid</em></code> plus further version identification for that particular version with respect to others in the same container. The <code>VERSION</code>.<code><em>owner_id</em></code> function extracts the <code><em>uid</em></code> field of the owning <code>VERSIONED_OBJECT</code> from the <code><em>uid</em></code> of the <code>VERSION</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>VERSION</code> class has two subtypes. The first, <code>ORIGINAL_VERSION&lt;T&gt;</code>, represents a Version created with original content (stored form of data property) at the time of creation (including from nonopenEHR local feeder systems), and potentially attested (signed). It includes as attributes the current version (<code><em>uid</em></code>) and the preceding version (<code><em>preceding_version_uid</em></code>). It also knows the lifecycle state of its content. If it was the result of a merge (see <a href="#_version_merging">Version Merging</a>) of versions other than the preceding version, the identifiers of these versions will be recorded in the attribute <code><em>other_input_version_uids</em></code>. All instances of <code>VERSION&lt;T&gt;</code> in non-distributed openEHR systems will be instances of <code>ORIGINAL_VERSION&lt;T&gt;</code>. The <code>ORIGINAL_VERSION</code> is also the unit of copying in a distributed environment.</p>
@@ -2472,7 +2473,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="sect3">
 <h4 id="_the_virtual_version_tree"><a class="anchor" href="#_the_virtual_version_tree"></a>6.2.4. The "Virtual Version Tree"</h4>
 <div class="paragraph">
-<p>An underlying design concept of the versioning model defined here is known as the ‘virtual version tree’. The idea is simple in the abstract. Information is committed to a repository (such as an EHR) in lumps, each lump being the ‘data’ of one Version. Each Version has its place within a version tree, which in turn is maintained inside a Versioned object. The virtual version tree concept means that any given Versioned object may have numerous copies in various systems, and that the creation of versions in each is done in such a way that all versions so created are in fact compatible with the ‘virtual’ version tree resulting from the superimposition of the version trees of all copies. This is achieved using simple rules for version identification, described below, and is done to facilitate data sharing. Two very common scenarios are served by the virtual version tree concept:</p>
+<p>An underlying design concept of the versioning model defined here is known as the 'virtual version tree'. The idea is simple in the abstract. Information is committed to a repository (such as an EHR) in lumps, each lump being the 'data' of one Version. Each Version has its place within a version tree, which in turn is maintained inside a Versioned object. The virtual version tree concept means that any given Versioned object may have numerous copies in various systems, and that the creation of versions in each is done in such a way that all versions so created are in fact compatible with the 'virtual' version tree resulting from the superimposition of the version trees of all copies. This is achieved using simple rules for version identification, described below, and is done to facilitate data sharing. Two very common scenarios are served by the virtual version tree concept:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2499,29 +2500,29 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="ulist">
 <ul>
 <li>
-<p><em>addition of new item</em>: a new <code>VERSIONED_OBJECT</code> is created with a first <code>ORIGINAL_VERSION</code> whose data is the new item; the <code>ORIGINAL_VERSION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for ‘creation’</p>
+<p><em>addition of new item</em>: a new <code>VERSIONED_OBJECT</code> is created with a first <code>ORIGINAL_VERSION</code> whose data is the new item; the <code>ORIGINAL_VERSION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for 'creation'</p>
 </li>
 <li>
-<p><em>deletion of existing item</em>: a new <code>ORIGINAL_VERSION</code> whose data attribute is set to Void is added to an existing <code>VERSIONED_OBJECT</code>; the <code>ORIGINAL_VERSION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for ‘deleted’;</p>
+<p><em>deletion of existing item</em>: a new <code>ORIGINAL_VERSION</code> whose data attribute is set to Void is added to an existing <code>VERSIONED_OBJECT</code>; the <code>ORIGINAL_VERSION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for 'deleted';</p>
 </li>
 <li>
 <p><em>modification of existing item</em>: a new <code>ORIGINAL_VERSION</code> whose data contains the updated form of the item content is added to an existing <code>VERSIONED_OBJECT</code>;</p>
 <div class="ulist">
 <ul>
 <li>
-<p>if the change is logically a correction (e.g. of wrongly entered data), the <code>ORIGINAL_VERSION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for ‘amendment’;</p>
+<p>if the change is logically a correction (e.g. of wrongly entered data), the <code>ORIGINAL_VERSION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for 'amendment';</p>
 </li>
 <li>
-<p>if the change is logically a change, addition etc to the content, the <code>ORIGINAL_VERSION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for ‘modification’;</p>
+<p>if the change is logically a change, addition etc to the content, the <code>ORIGINAL_VERSION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for 'modification';</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><em>import of item</em>: a new <code>IMPORTED_VERSION</code> is created, incorporating the received <code>ORIGINAL_VERSION</code>; the <code>IMPORTED_VERSION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for ‘creation’.</p>
+<p><em>import of item</em>: a new <code>IMPORTED_VERSION</code> is created, incorporating the received <code>ORIGINAL_VERSION</code>; the <code>IMPORTED_VERSION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for 'creation'.</p>
 </li>
 <li>
-<p><em>attestation of item</em>: a new <code>ATTESTATION</code> is added to the attestations list of an existing <code>ORIGINAL_VERSION</code>; the <code>ATTESTATION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for ‘attestation’.</p>
+<p><em>attestation of item</em>: a new <code>ATTESTATION</code> is added to the attestations list of an existing <code>ORIGINAL_VERSION</code>; the <code>ATTESTATION</code>.<code><em>commit_audit</em></code>.<code><em>change_type</em></code> is set to the code for 'attestation'.</p>
 </li>
 </ul>
 </div>
@@ -2539,10 +2540,10 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 </ul>
 </div>
 <div class="paragraph">
-<p>These two changes together constitute a logical ‘change-set’, and would typically be included in the one Contribution. In general, there might be any combination of the logical change types in a single commit by an application, corresponding to a single real-world business event, such as a GP Encounter, although attestations, deletions and corrections will usually be the only change within a Contribution. In every case, regardless of the combination, a <code>CONTRIBUTION</code> object will be created, listing the affected <code>VERSION</code> objects, and including its own audit object.</p>
+<p>These two changes together constitute a logical 'change-set', and would typically be included in the one Contribution. In general, there might be any combination of the logical change types in a single commit by an application, corresponding to a single real-world business event, such as a GP Encounter, although attestations, deletions and corrections will usually be the only change within a Contribution. In every case, regardless of the combination, a <code>CONTRIBUTION</code> object will be created, listing the affected <code>VERSION</code> objects, and including its own audit object.</p>
 </div>
 <div class="paragraph">
-<p>The list of all Contribution objects for a version repository (such as an EHR) provides a complete history of the change-sets made to the repository and is the basis for performing ‘rollback’ to access previous informational states of the EHR. Conversely, each Version object contains a reference to the Contribution that caused it to be created.</p>
+<p>The list of all Contribution objects for a version repository (such as an EHR) provides a complete history of the change-sets made to the repository and is the basis for performing 'rollback' to access previous informational states of the EHR. Conversely, each Version object contains a reference to the Contribution that caused it to be created.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2566,7 +2567,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="sect3">
 <h4 id="_digital_signature"><a class="anchor" href="#_digital_signature"></a>6.2.7. Digital Signature</h4>
 <div class="paragraph">
-<p>At the time of committal of a Version, a digital signature of the object can be made. In this process, a Version object (an <code>ORIGINAL_VERSION</code> or <code>IMPORTED_VERSION</code>) is serialised into canonical form which is then hashed to produce a digest. If public key or equivalent infrastructure is in place so that users are able to sign content, a digital signature can be created from the hash, using the user’s private key. Either way, the result is then radix-64 encoded to create an ASCII string so as to remove or reduce potential problems with subsequent communication. The openPGP standard ensures that the trasformations and algorithms used to create the signature are indicated within it.</p>
+<p>At the time of committal of a Version, a digital signature of the object can be made. In this process, a Version object (an <code>ORIGINAL_VERSION</code> or <code>IMPORTED_VERSION</code>) is serialised into canonical form which is then hashed to produce a digest. If public key or equivalent infrastructure is in place so that users are able to sign content, a digital signature can be created from the hash, using the user&#8217;s private key. Either way, the result is then radix-64 encoded to create an ASCII string so as to remove or reduce potential problems with subsequent communication. The openPGP standard ensures that the trasformations and algorithms used to create the signature are indicated within it.</p>
 </div>
 <div class="paragraph">
 <p>The signature can serve two purposes. If only the hashing step is done, the digest acts as a data integrity check, indicating if the data have been tampered with after creation. If the signing step is carried out, it authenticates the user as the author of the content to readers of the content. In a versioned EHR system, it also acts as a non-repudiation measure, since the signature is stored permanently with the data. To circumvent hacking of the data, public notarisation of the signature can be used. The signature, if present, is generated according to the IETF RFC 2440 (openPGP <a href="#rfc_2440">[rfc_2440]</a>) standard, following the process shown below.</p>
@@ -2633,7 +2634,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <p>Going from "incomplete" to "complete" almost always corresponds to a change in content, and corresponds to a new <code>VERSION</code> regardless. This modelling approach allows such content to exist on the EHR system, but to be flagged as incomplete when viewed by a user.</p>
 </div>
 <div class="paragraph">
-<p>Systems are responsible for implementing checks to find ‘old’ Versions in "incomplete" state, and bring them to the relevant user’s notice, or automatically deleting them or progressing them to "complete" as appropriate.</p>
+<p>Systems are responsible for implementing checks to find 'old' Versions in "incomplete" state, and bring them to the relevant user&#8217;s notice, or automatically deleting them or progressing them to "complete" as appropriate.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2667,7 +2668,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <p>The version identification scheme described here is adapted from the work of Hnìtynka and Plášil <a href="#Hnìtynka_2004">[Hnìtynka_2004]</a>. <code>VERSION</code> objects are identified by a <code><em>uid</em></code> attribute, which is a three-part identifier consisting of the attributes <code><em>object_id</em></code>, <code><em>creating_system_id</em></code> and <code><em>version_tree_id</em></code> (see <code>support.identification</code> package in the Support IM <a href="#openehr_rm_support">[openehr_rm_support]</a>), in which the <code><em>object_id</em></code> part is a copy of the <code><em>uid</em></code> of the owning <code>VERSIONED_OBJECT</code> version container.</p>
 </div>
 <div class="paragraph">
-<p>The following figure illustrates the scheme. The <code>VERSIONED_OBJECT</code> <code><em>uid</em></code> value - here, "1234" - is used as the <code><em>object_id()</em></code> part of the <code><em>uid</em></code> of every contained <code>VERSION</code> (note that an <code>OBJECT_VERSION_ID&#8217;s `<em>value</em></code> is a <code>String</code>, with various accessor functions like <code><em>object_id()</em></code> used to extract the logical pieces). Accordingly, each of those versions will have a <code><em>uid</em></code> following the pattern "1234:system_id:version_tree_id". The use of the <code><em>version_tree_id</em></code> and <code><em>system_id</em></code> parts of the identifier are explained in the sections below.</p>
+<p>The following figure illustrates the scheme. The <code>VERSIONED_OBJECT</code> <code><em>uid</em></code> value - here, "1234" - is used as the <code><em>object_id()</em></code> part of the <code><em>uid</em></code> of every contained <code>VERSION</code> (note that an <code>OBJECT_VERSION_ID&#8217;s</code> <code><em>value</em></code> is a <code>String</code>, with various accessor functions like <code><em>object_id()</em></code> used to extract the logical pieces). Accordingly, each of those versions will have a <code><em>uid</em></code> following the pattern "1234:system_id:version_tree_id". The use of the <code><em>version_tree_id</em></code> and <code><em>system_id</em></code> parts of the identifier are explained in the sections below. The function <code>VERSION.<em>owner_id()</em></code> is provided to enable a caller to easily obtain the 'owning version container' identifier.</p>
 </div>
 <div id="version_identification_system" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2812,7 +2813,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <p>One of the most common operations in distributed versioned environments, particularly in healthcare, is that content created in one system is imported into another system, modifications are created locally there which are then sent back the first system. This information pathway corresponds to scenarios such as the patient being referred from primary care into a hospital, and later being discharged into primary (or other care).</p>
 </div>
 <div class="paragraph">
-<p>The usual need when the first system receives changes made to the data by the second system is to merge them back into the trunk of the version tree. Logically a ‘merge’ is the operation of using two versions of the same content to create a third version. How the source versions are used will vary based on the semantics of the information; it could be that the either is simply taken in its totality and the other discarded, or some mixture might be created of the two in a process of editing by the user. In many cases in health, such as where the content is a medication or problem list, the user in the original system will review the received content and create a new trunk version locally using that content, since it will be deemed to be the most accurate available in the clinical computing environment. This scenario is illustrated below.</p>
+<p>The usual need when the first system receives changes made to the data by the second system is to merge them back into the trunk of the version tree. Logically a 'merge' is the operation of using two versions of the same content to create a third version. How the source versions are used will vary based on the semantics of the information; it could be that the either is simply taken in its totality and the other discarded, or some mixture might be created of the two in a process of editing by the user. In many cases in health, such as where the content is a medication or problem list, the user in the original system will review the received content and create a new trunk version locally using that content, since it will be deemed to be the most accurate available in the clinical computing environment. This scenario is illustrated below.</p>
 </div>
 <div id="version_merging" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2830,7 +2831,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="sect3">
 <h4 id="_disjoint_merging"><a class="anchor" href="#_disjoint_merging"></a>6.4.3. Disjoint Merging</h4>
 <div class="paragraph">
-<p>An unintended but not uncommon situation is when distinct Version containers are created for the same real-world entity. For example, separate EHRs can be created for the one patient, due to patient identification errors or other procedural or administrative problems. Each record is likely to contain some logically duplicated basic information, as well as information unique to that record, e.g. contributed by different hospital departments. Within the one EHR, unintentionally distinct Version containers might be created for the same logical item, such as the patient’s problem list. These erroneous situations are eventually detected, and need to be rectified. Logically what is required is to merge the two records (each potentially consisting of numerous Version containers) into one, as shown below.</p>
+<p>An unintended but not uncommon situation is when distinct Version containers are created for the same real-world entity. For example, separate EHRs can be created for the one patient, due to patient identification errors or other procedural or administrative problems. Each record is likely to contain some logically duplicated basic information, as well as information unique to that record, e.g. contributed by different hospital departments. Within the one EHR, unintentionally distinct Version containers might be created for the same logical item, such as the patient&#8217;s problem list. These erroneous situations are eventually detected, and need to be rectified. Logically what is required is to merge the two records (each potentially consisting of numerous Version containers) into one, as shown below.</p>
 </div>
 <div id="disjoint_merging" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -3502,7 +3503,7 @@ signature.</p>
 <div class="sect3">
 <h4 id="_meta_data_2"><a class="anchor" href="#_meta_data_2"></a>7.1.2. Meta-data</h4>
 <div class="paragraph">
-<p>What is normally considered the ‘meta-data’ of a resource, i.e. its author, date of creation, purpose, and other descriptive items, is described by the <code>RESOURCE_DESCRIPTION</code> and <code>RESOURCE_DESCRIPTION_ITEM</code> classes. The parts of this that are in natural language, and therefore may require translated versions, are represented in instances of the <code>RESOURCE_DESCRIPTION_ITEM</code> class. Thus, if a <code>RESOURCE_DESCRIPTION</code> has more than one <code>RESOURCE_DESCRIPTION_ITEM</code>, each of these should carry exactly the same information in a different natural language.</p>
+<p>What is normally considered the 'meta-data' of a resource, i.e. its author, date of creation, purpose, and other descriptive items, is described by the <code>RESOURCE_DESCRIPTION</code> and <code>RESOURCE_DESCRIPTION_ITEM</code> classes. The parts of this that are in natural language, and therefore may require translated versions, are represented in instances of the <code>RESOURCE_DESCRIPTION_ITEM</code> class. Thus, if a <code>RESOURCE_DESCRIPTION</code> has more than one <code>RESOURCE_DESCRIPTION_ITEM</code>, each of these should carry exactly the same information in a different natural language.</p>
 </div>
 <div class="paragraph">
 <p>The <code>AUTHORED_RESOURCE</code>.<code><em>description</em></code> attribute is optional, allowing for resources with no meta-data at all, e.g. resources in a partial state of construction. The translations attribute may still be required, since there may be other parts of the resource object (specified by a class into which <code>AUTHORED_RESOURCE</code> is inherited) that are language-dependent.</p>
@@ -3546,7 +3547,7 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code>TERMINOLOGY_CODE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.</p>
 </div></div></td>
@@ -3574,22 +3575,10 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>UUID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code>REVISION_HISTORY</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Unique identifier of the family of archetypes having the same interface identifier (same major version).</p>
+<p>The revision history of the resource. Only required if is_controlled = True (avoids large revision histories for informal or private editing situations).</p>
 </div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>annotations</strong>: <code>RESOURCE_ANNOTATIONS</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Annotations on individual items within the resource, keyed by path. The inner table takes the form of a Hash table of String values keyed by String tags.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>:</p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -3620,6 +3609,18 @@ signature.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Languages_available_valid</em></strong>: languages_available.has (original_language)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Revision_history_valid</em></strong>: is_controlled xor revision_history = Void</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Current_revision_valid</em></strong>: (current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)</p>
 </div></div></td>
 </tr>
@@ -3634,18 +3635,6 @@ signature.</p>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Description_valid</em></strong>: translations /= Void implies (description.details.for_all (d &#124;
 translations.has_key (d.language.code_string)))</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Languages_available_valid</em></strong>: languages_available.has (original_language)</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Revision_history_valid</em></strong>: is_controlled xor revision_history = Void</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3745,92 +3734,16 @@ translations.has_key (d.language.code_string)))</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_namespace</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Namespace of original author&#8217;s organisation, in reverse internet form, if applicable.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_publisher</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Plain text name of organisation that originally published this artefact, if any.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_contributors</strong>: <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Other contributors to the resource, each listed in "name &lt;email&gt;"  form.</p>
+<p>Other contributors to the resource, probably listed in  name &lt;email&gt;  form.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>TERMINOLOGY_CODE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Lifecycle state of the resource, typically including states such as: initial, in_development, in_review, published, superseded, obsolete.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code>AUTHORED_RESOURCE&#160;=&#160;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Reference to owning resource.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>List&lt;RESOURCE_DESCRIPTION_ITEM&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Details of all parts of resource description that are natural language-dependent, keyed by language code.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>custodian_namespace</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Namespace in reverse internet id form, of current custodian organisation.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>custodian_organisation</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Plain text name of current custodian organisation.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>copyright</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional copyright statement for the resource as a knowledge resource.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>licence</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Licence of current artefact, in format "short licence name &lt;URL of licence&gt;", e.g. "Apache 2.0 License &lt;<a href="http://www.apache.org/licenses/LICENSE-2.0.html&gt;"" class="bare">http://www.apache.org/licenses/LICENSE-2.0.html&gt;"</a></p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ip_acknowledgements</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>List of acknowledgements of other IP directly referenced in this archetype, typically terminology codes, ontology ids etc. Recommended keys are the widely known name or namespace for the IP source, as shown in the following example:</p>
-</div>
-<div class="paragraph">
-<p>ip_acknowledgements = &lt;
-["loinc"] = &lt;"This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at <a href="http://loinc.org/terms-of-use"&gt" class="bare">http://loinc.org/terms-of-use"&gt</a>;
-["snomedct"] = &lt;"Content from SNOMED CT® is copyright © 2007 IHTSDO &lt;ihtsdo.org&gt;"&gt;
-&gt;</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>references</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>List of references of material on which this artefact is based, as a keyed list of strings. The keys should be in a standard citation format.</p>
+<p>Lifecycle state of the resource, typically including states such as: initial, submitted, experimental, awaiting_approval, approved, superseded, obsolete.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3842,21 +3755,53 @@ translations.has_key (d.language.code_string)))</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>conversion_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Details related to conversion process that generated this model from an original, if relevant, as a list of name/value pairs. Typical example with recommended tags:
-conversion_details = &lt;
-["source_model"] = &lt;"CEM model xyz <a href="http://location.in.clinicalelementmodels.com&gt;"" class="bare">http://location.in.clinicalelementmodels.com&gt;"</a>
-["tool"] = &lt;"cem2adl v6.3.0"&gt;
-["time"] = &lt;"2014-11-03T09:05:00"&gt;
-&gt;</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Additional non language-senstive resource meta-data, as a list of name/value pairs.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code>AUTHORED_RESOURCE&#160;=&#160;0..1</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to owning resource.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>List&lt;RESOURCE_DESCRIPTION_ITEM&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Details of all parts of resource description that are natural language-dependent, keyed by language code.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Original_author_valid</em></strong>: not original_author.is_empty</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Lifecycle_state_valid</em></strong>: not lifecycle_state.is_empty</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Details_valid</em></strong>: not details.is_empty</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Language_valid</em></strong>: parent_resource /= Void implies details.for_all (d &#124; parent_resource.languages_available.has (d.language.code_string))</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Parent_resource_valid</em></strong>: parent_resource /= Void implies parent_resource.description = self</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3888,9 +3833,9 @@ conversion_details = &lt;
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>TERMINOLOGY_CODE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The localised language in which the items in this description item are written. Coded from openEHR Code Set  languages.</p>
+<p>The localised language in which the items in this description item are written. Coded from openEHR Code Set  languages .</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3923,6 +3868,13 @@ conversion_details = &lt;
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>copyright</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional copyright statement for the resource as a knowledge resource.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_resource_uri</strong>: <code>List&lt;Hash&lt;String, String&gt;&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>URIs of original clinical document(s) or description of which resource is a formalisation, in the language of this description item; keyed by meaning.</p>
@@ -3933,6 +3885,36 @@ conversion_details = &lt;
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Additional language-senstive resource metadata, as a list of name/value pairs.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Language_valid</em></strong>: code_set (Code_set_id_languages).has_code (language)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Purpose_valid</em></strong>: not purpose.is_empty</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>Use_valid</em></strong>: use /= Void implies not use.is_empty</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>misuse_valid</em></strong>: misuse /= Void implies not misuse.is_empty</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p><strong><em>copyright_valid</em></strong>: copyright /= Void implies not copyright.is_empty</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3991,7 +3973,7 @@ conversion_details = &lt;
 <p><a id="Gray_reuter_1993"></a>[Gray_reuter_1993] Gray J, Reuter A. <strong>Transaction Processing Concepts and Techniques.</strong> Morgan Kaufmann 1993.</p>
 </li>
 <li>
-<p><a id="Hein"></a>[Hein] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
+<p><a id="Hein_2002"></a>[Hein_2002] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
 </li>
 <li>
 <p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
@@ -4261,6 +4243,16 @@ conversion_details = &lt;
 </ol>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_tools"><a class="anchor" href="#_tools"></a>Tools</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="Template_Designer"></a>[Template_Designer] <strong>Template Designer</strong>. Ocean Informatics. <a href="http://www.openehr.org/downloads/modellingtools" class="bare">http://www.openehr.org/downloads/modellingtools</a>.</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_openehr_resources"><a class="anchor" href="#_openehr_resources"></a>openEHR Resources</h3>
@@ -4291,10 +4283,13 @@ conversion_details = &lt;
 <p><a id="openehr_am_identification"></a>[openehr_am_identification] The openEHR Foundation. <strong>Archetype Identification specification.</strong> Available at <a href="http://www.openehr.org/releases/AM/latest/Identification.html" class="bare">http://www.openehr.org/releases/AM/latest/Identification.html</a>.</p>
 </li>
 <li>
-<p><a id="openehr_am_def_pri"></a>[openehr_am_def_pri] The openEHR Foundation. <strong>Archetype Definitions and Principles.</strong>(deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf</a>.</p>
+<p><a id="openehr_am_def_pri"></a>[openehr_am_def_pri] The openEHR Foundation. <strong>Archetype Definitions and Principles.</strong> (deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_principles.pdf</a>.</p>
 </li>
 <li>
-<p><a id="openehr_am_sys"></a>[openehr_am_sys] The openEHR Foundation. <strong>The Archetype System.</strong>(deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf</a>.</p>
+<p><a id="openehr_am_sys"></a>[openehr_am_sys] The openEHR Foundation. <strong>The Archetype System.</strong> (deprecated) Available at <a href="http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/archetype_system.pdf</a>.</p>
+</li>
+<li>
+<p><a id="openehr_am_oap"></a>[openehr_am_oap] The openEHR Foundation. <strong>The openEHR Archetype Profile.</strong> <a href="http://www.openehr.org/releases/1.0.2/architecture/am/openehr_archetype_profile.pdf" class="bare">http://www.openehr.org/releases/1.0.2/architecture/am/openehr_archetype_profile.pdf</a> .</p>
 </li>
 <li>
 <p><a id="openehr_CKM"></a>[openehr_CKM] <strong>The openEHR Clinical Knowledge Manager (CKM)</strong>. See <a href="http://www.openEHR.org/ckm" class="bare">http://www.openEHR.org/ckm</a></p>
