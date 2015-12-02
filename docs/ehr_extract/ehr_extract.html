@@ -218,6 +218,7 @@
 <li><a href="#_e_health_standards">e-Health Standards</a></li>
 <li><a href="#_e_health_projects">e-Health Projects</a></li>
 <li><a href="#_general_standards">General Standards</a></li>
+<li><a href="#_tools">Tools</a></li>
 </ul>
 </li>
 <li><a href="#_openehr_resources">openEHR Resources</a></li>
@@ -338,10 +339,11 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-14">SPECRM-14</a>: Various EHR Extract model improvements.<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-14">SPECRM-14</a>: Various EHR Extract model improvements:<br>
  Remove <code>EXTRACT_SPEC</code>.<code><em>includes_directory</em></code> and <code><em>directory_archetype</em></code>; remove <code>EXTRACT_ENTITY_CONTENT</code> class;<br>
- make <code>EXTRACT_FOLDER</code> classes the main containment structure; move <code>X_VERSIONED_OBJECT</code> to <code>openEHR_extract</code> package<br>
- change <code>EXTRACT</code>.<code><em>request_id</em></code> to a <code>HIER_OBJECT_ID</code>.</p></td>
+ make <code>EXTRACT_FOLDER</code> classes the main containment structure; move <code>X_VERSIONED_OBJECT</code> to <code>openEHR_extract</code> package;<br>
+ change <code>EXTRACT</code>.<code><em>request_id</em></code> to a <code>HIER_OBJECT_ID</code>;<br>
+ change <code>GENERIC_EXTRACT_ITEM.<em>other_details</em></code> to <code>Hash&lt;String, String&gt;</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">29 Jun 2011</p></td>
 </tr>
@@ -545,7 +547,7 @@ an equivalent of the ISO 13606 EHR Extract. Model, used throughout the openEHR R
 <div class="sect2">
 <h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
 <div class="paragraph">
-<p>This specification is in the Stable state. The development version of this document can be found at <a href="http://www.openehr.org/releases/RM/latest/ehr_extract.html" class="bare">http://www.openehr.org/releases/RM/latest/ehr_extract.html</a>.</p>
+<p>This specification is in the TRIAL state. The development version of this document can be found at <a href="http://www.openehr.org/releases/RM/latest/ehr_extract.html" class="bare">http://www.openehr.org/releases/RM/latest/ehr_extract.html</a>.</p>
 </div>
 <div class="paragraph">
 <p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
@@ -607,25 +609,16 @@ protocols such as SMTP (email) transport.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Each such system contains one or more Subject records (e.g. EHRs); there may be records
-for the same Subject in more than one system.</p>
+<p>Each such system contains one or more Subject records (e.g. EHRs); there may be records for the same Subject in more than one system.</p>
 </li>
 <li>
-<p>Each Subject record consists of one or more Version containers, each of which contains the
-version history of a particular piece of content. For an EHR, distinct containers are used for
-persistent Compositions (e.g. "medications list", "problem list") and event Compositions
-(Compositions created due to patient encounters and other events in the clinical care process).</p>
+<p>Each Subject record consists of one or more Version containers, each of which contains the version history of a particular piece of content. For an EHR, distinct containers are used for persistent Compositions (e.g. "medications list", "problem list") and event Compositions (Compositions created due to patient encounters and other events in the clinical care process).</p>
 </li>
 <li>
-<p>Each Version within a Version container corresponds to one version of the content managed
-by that container, in other words the state of a particular content item at some point in time
-when it was committed by a user.</p>
+<p>Each Version within a Version container corresponds to one version of the content managed by that container, in other words the state of a particular content item at some point in time when it was committed by a user.</p>
 </li>
 <li>
-<p>Groups of Versions, each one from a different Version container within a Responding system
-correspond to Contributions, i.e. the openEHR notion of a "change-set". Any particular
-Contribution corresponds to the set of Versions committed at one time, by a particular user
-to a particular system.</p>
+<p>Groups of Versions, each one from a different Version container within a Responding system correspond to Contributions, i.e. the openEHR notion of a "change-set". Any particular Contribution corresponds to the set of Versions committed at one time, by a particular user to a particular system.</p>
 </li>
 </ul>
 </div>
@@ -648,12 +641,10 @@ specification, the existence of two levels of information is assumed:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>'record' or equivalently 'patient' - i.e. a division of information on the basis of subject of
-care;</p>
+<p>'record' or equivalently 'patient' - i.e. a division of information on the basis of subject of care;</p>
 </li>
 <li>
-<p>'document' (Composition in openEHR), which is the coarsest grain item making up a
-record.</p>
+<p>'document' (Composition in openEHR), which is the coarsest grain item making up a record.</p>
 </li>
 </ul>
 </div>
@@ -1474,8 +1465,8 @@ identification.</p>
 <div class="sect4">
 <h5 id="_the_manifest"><a class="anchor" href="#_the_manifest"></a>The Manifest</h5>
 <div class="paragraph">
-<p>The <code><em>manifest</em></code> that decides the scope of records to be retrieved. In the simplest case, only a single
-entity and no specific items will be identified (the content will be determined by the criteria in the
+<p>The <code><em>manifest</em></code> specifies the scope of records to be retrieved in an Extract. In the simplest case, only a single
+entity (e.g. patient) and no specific items will be identified (the content will be determined by the criteria in the
 <code>EXTRACT_SPEC</code> object); this will be used in the vast majority of single-patient request scenarios.
 However, some scenarios will be of a batch update nature, including pathology lab result update and
 situations where patient records are requested corresponding to a list of referrals received by a hospital
@@ -1828,7 +1819,7 @@ the EHR and generic Extract sections below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Specification of the candidate entities and optionally top-level items to be included in the Extract.</p>
+<p>Specification of the candidate entities and optionally top-level items (e.g. Compositions) to be included in the Extract.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1862,7 +1853,7 @@ the EHR and generic Extract sections below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>The manifest for one entity, identifying the entity and optionally specifying toplevel items to be included in the Extract. The list actually included may be modified by the version_spec part of the specification, and also by the link_depth attribute. In repeat (standing order) requests, the final inclusion may be modified by the send_changes_only flag of the update_spec.</p>
+<p>The manifest for one entity (e.g. EHR subject), identifying the entity and optionally specifying top-level items to be included in the Extract. The list actually included may be modified by the version_spec part of the specification, and also by the link_depth attribute. In repeat (standing order) requests, the final inclusion may be modified by the send_changes_only value for EXTRACT_UPDATE_SPEC.update_method.</p>
 </div>
 <div class="paragraph">
 <p>Various identifiers may be provided for the entity; these are to be used by the receiver system to locate the entity. The extract_id_key attribute is used to record the identifier that will be used throughout the Extract for this entity, including in instances of EXTRACT_ENTITY_IDENTIFIER.</p>
@@ -1905,7 +1896,7 @@ the EHR and generic Extract sections below.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_list</strong>: <code>List&lt;OBJECT_REF&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>List of uids of items included in the Extract; for openEHR data, these are uids identifying the version containers.</p>
+<p>List of uids of items to be included in the Extract, in cases where individual items are being requested by id. More typically, this attribute is not used, and the EXTRACT_SPEC.criteria query defines the Extract contents. If set, for openEHR data, these are uids identifying the version containers.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2956,7 +2947,7 @@ variant may be required for the future.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Other details about the content item.</p>
 </div></div></td>
@@ -3831,6 +3822,16 @@ set <code><em>is_primary</em></code> = False, write the path and write the targe
 </li>
 <li>
 <p><a id="w3c_xpath"></a>[w3c_xpath] W3C. <strong>XML Path Language</strong>. See <a href="http://w3c.org/TR/xpath" class="bare">http://w3c.org/TR/xpath</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tools"><a class="anchor" href="#_tools"></a>Tools</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="Template_Designer"></a>[Template_Designer] <strong>Template Designer</strong>. Ocean Informatics. <a href="http://www.openehr.org/downloads/modellingtools" class="bare">http://www.openehr.org/downloads/modellingtools</a>.</p>
 </li>
 </ol>
 </div>

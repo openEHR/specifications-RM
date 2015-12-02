@@ -30,19 +30,10 @@ image::diagrams/operational_environment.png[id=operational_environment, align="c
 
 Information in Responding systems is assumed to be in the following form.
 
-* Each such system contains one or more Subject records (e.g. EHRs); there may be records
-for the same Subject in more than one system.
-* Each Subject record consists of one or more Version containers, each of which contains the
-version history of a particular piece of content. For an EHR, distinct containers are used for
-persistent Compositions (e.g. "medications list", "problem list") and event Compositions
-(Compositions created due to patient encounters and other events in the clinical care process).
-* Each Version within a Version container corresponds to one version of the content managed
-by that container, in other words the state of a particular content item at some point in time
-when it was committed by a user.
-* Groups of Versions, each one from a different Version container within a Responding system
-correspond to Contributions, i.e. the openEHR notion of a "change-set". Any particular
-Contribution corresponds to the set of Versions committed at one time, by a particular user
-to a particular system.
+* Each such system contains one or more Subject records (e.g. EHRs); there may be records for the same Subject in more than one system.
+* Each Subject record consists of one or more Version containers, each of which contains the version history of a particular piece of content. For an EHR, distinct containers are used for persistent Compositions (e.g. "medications list", "problem list") and event Compositions (Compositions created due to patient encounters and other events in the clinical care process).
+* Each Version within a Version container corresponds to one version of the content managed by that container, in other words the state of a particular content item at some point in time when it was committed by a user.
+* Groups of Versions, each one from a different Version container within a Responding system correspond to Contributions, i.e. the openEHR notion of a "change-set". Any particular Contribution corresponds to the set of Versions committed at one time, by a particular user to a particular system.
 
 The above relationships reveal a hierarchy of potential 1:N relationships in the information accessible
 to the requesting system, with Contributions forming an alternative view of the content. At each level
@@ -57,10 +48,8 @@ the aim is to define messages whose content is expressed as templated archetypes
 much can be assumed about the internal data architecture of such systems. For the purposes of this
 specification, the existence of two levels of information is assumed:
 
-* 'record' or equivalently 'patient' - i.e. a division of information on the basis of subject of
-care;
-* 'document' (Composition in openEHR), which is the coarsest grain item making up a
-record.
+* 'record' or equivalently 'patient' - i.e. a division of information on the basis of subject of care;
+* 'document' (Composition in openEHR), which is the coarsest grain item making up a record.
 
 Regarding versioning in non-openEHR systems, it is assumed that some systems may support basic
 concepts including:
