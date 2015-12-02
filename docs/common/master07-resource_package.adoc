@@ -20,7 +20,7 @@ The languages_available function provides a complete list of languages in the re
 
 === Meta-data
 
-What is normally considered the ‘meta-data’ of a resource, i.e. its author, date of creation, purpose, and other descriptive items, is described by the `RESOURCE_DESCRIPTION` and `RESOURCE_DESCRIPTION_ITEM` classes. The parts of this that are in natural language, and therefore may require translated versions, are represented in instances of the `RESOURCE_DESCRIPTION_ITEM` class. Thus, if a `RESOURCE_DESCRIPTION` has more than one `RESOURCE_DESCRIPTION_ITEM`, each of these should carry exactly the same information in a different natural language.
+What is normally considered the 'meta-data' of a resource, i.e. its author, date of creation, purpose, and other descriptive items, is described by the `RESOURCE_DESCRIPTION` and `RESOURCE_DESCRIPTION_ITEM` classes. The parts of this that are in natural language, and therefore may require translated versions, are represented in instances of the `RESOURCE_DESCRIPTION_ITEM` class. Thus, if a `RESOURCE_DESCRIPTION` has more than one `RESOURCE_DESCRIPTION_ITEM`, each of these should carry exactly the same information in a different natural language.
 
 The `AUTHORED_RESOURCE`.`_description_` attribute is optional, allowing for resources with no meta-data at all, e.g. resources in a partial state of construction. The translations attribute may still be required, since there may be other parts of the resource object (specified by a class into which `AUTHORED_RESOURCE` is inherited) that are language-dependent.
 

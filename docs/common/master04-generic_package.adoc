@@ -2,7 +2,7 @@
 
 == Overview
 
-The classes presented in this section are abstractions of concepts which are generic patterns in the domain of health (and most likely other domains), such as ‘participation’ and ‘attestation’. The generic cluster is shown below.
+The classes presented in this section are abstractions of concepts which are generic patterns in the domain of health (and most likely other domains), such as 'participation' and 'attestation'. The generic cluster is shown below.
 
 [.text-center]
 .common.generic Package
@@ -19,9 +19,9 @@ There are two ways to refer to a demographic identity in the openEHR EHR: using 
 
 The `PARTY_PROXY` class and subtypes model references to parties based on these assumptions. The semantics of PARTY_PROXY enable a flexible approach: in stricter environments that have identity management and demographic services, and where there is an entry in such a service for the party in question, `PARTY_PROXY`.`_external_ref_` will be non-Void, while in other environments, it will be empty.
 
-The two subtypes correspond to the mutually distinct categories of the ‘subject of the record’, known as the ‘self’ party in openEHR, and any other party. Whenever the record subject has to be referred to in the record, an instance of `PARTY_SELF` is used, while `PARTY_IDENTIFIED` is used for all other situations. The latter class provides for optional human-readable names and formal identifiers, each keyed by purpose or meaning.
+The two subtypes correspond to the mutually distinct categories of the 'subject of the record', known as the 'self' party in openEHR, and any other party. Whenever the record subject has to be referred to in the record, an instance of `PARTY_SELF` is used, while `PARTY_IDENTIFIED` is used for all other situations. The latter class provides for optional human-readable names and formal identifiers, each keyed by purpose or meaning.
 
-The `RELATED_PARTY` type is used whenever the relationship of the party to the record subject is required. Relationships are coded and include familial ones (‘mother’, ‘uncle’, etc) as well as relationships like ‘donor’, ‘travelling companion’ and so on.
+The `RELATED_PARTY` type is used whenever the relationship of the party to the record subject is required. Relationships are coded and include familial ones ('mother', 'uncle', etc) as well as relationships like 'donor', 'travelling companion' and so on.
 
 ==== PARTY_SELF and Referring to the Patient from the EHR
 There are three schemes which are likely to be used for referring to patient (i.e. the record subject) demographic or patient master index (PMI) data from within the EHR, each likely to be valid in different circumstances. Each uses a `PARTY_SELF` object but with varying usage of the external_ref attribute, and are as follows.
@@ -65,7 +65,7 @@ The digital signature, if present, is generated using the IETF RFC 2440 (openPGP
 .Attestation signature generation (using openPGP)
 image::diagrams/attestation_signature_generation.png[id=attestation_signature_generation, align="center", width=80%]
 
-In this process, the attestation object is serialised into a canonical text form, and then hashed to create a digest. A digital signature is created from the hash, using the user’s private key. The result is then radix-64 encoded to create an ASCII string so as to remove or reduce potential problems with subsequent communication. The openPGP standard ensures that the transformations and algorithms used to create the signature are indicated within it (i.e. the signature is self-describing).
+In this process, the attestation object is serialised into a canonical text form, and then hashed to create a digest. A digital signature is created from the hash, using the user's private key. The result is then radix-64 encoded to create an ASCII string so as to remove or reduce potential problems with subsequent communication. The openPGP standard ensures that the transformations and algorithms used to create the signature are indicated within it (i.e. the signature is self-describing).
 
 The serialisation process works by the simple rule of serialising the entire Attestation object (note that the proof attribute will be Void at this point) into an agreed XML, dADL or other text format, then applying the subsequent transformations to the serialised data, then writing the digest result back into the proof attribute.
 
