@@ -8,6 +8,13 @@ h|*Class*
 h|*Description*
 2+a|A “message” is an authored, possibly signed, piece of content intended for one or more recipients. Since the recipient may or may not be known directly, recipients are specified in the ADDRESSED_MESSAGE class.
 
+h|*Constants*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*author*: `PARTY_PROXY`
+a|Party responsible for the message content, who may or may not be technically responsible for its creation (e.g. by data entry etc).
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
@@ -15,10 +22,6 @@ h|*Attributes*
 h|*1..1*
 |*audit*: `AUDIT_DETAILS`
 a|Details of who actually created the message and when. This is the person who entered the data or otherwise caused the message to be created, or might be a piece of software.
-
-h|*1..1*
-|*author*: `PARTY_PROXY`
-a|Party responsible for the message content, who may or may not be technically responsible for its creation (e.g. by data entry etc).
 
 h|*1..1*
 |*content*: `MESSAGE_CONTENT`
