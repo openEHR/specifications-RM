@@ -396,6 +396,15 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-33">SPECRM-33</a>. Clarify specification of EHR URI scheme. Slight adjustments to <code>DV_EHR_URI</code> text.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
+ E Sundvall,<br>
+ B Lah,<br>
+ S Iancu</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-23">SPECRM-23</a>: Make some <code>DV_IDENTIFIER</code> features optional. (<a href="https://openehr.atlassian.net/browse/SPECPR-64">SPECPR-33</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -5279,8 +5288,8 @@ ED type from the HL7v3 data types specification.</p>
 Its specialisation, <code>DV_EHR_URI</code>, enables any element in an openEHR record to be identified in the
 same way as other objects on the web. The <code>DV_EHR_URI</code> type is convenient, because it is a string,
 like any other URI, and is therefore easily transportable and processable. Because it has its own
-scheme space, "ehr", instances can be globally unique, as long as EHR identification is globally
-unique. <code>DV_EHR_URIs</code> are used to express all runtime paths in the EHR. The uri Package is illustrated
+scheme space, 'ehr', instances can be globally unique, as long as EHR identification is globally
+unique. <code>DV_EHR_URIs</code> are used to express all runtime paths in the EHR. The <code>uri</code> Package is illustrated
 below.</p>
 </div>
 <div id="rm_data_types_uri" class="imageblock text-center" style="text-align: center">
@@ -5313,8 +5322,8 @@ type.</p>
 <div class="paragraph">
 <p>A simple design approach is used whereby a URI is represented as a String, and appropriate functions
 are defined to extract the various parts according to the syntax of URIs defined by Tim Berners-Lee
-<a href="#rfc_2396">[rfc_2396]</a>. An EHR specific subtype is defined, whose scheme is
-"ehr", and which contains further attributes enabling the instances of the type to record what kind of
+<a href="#rfc_3986">[rfc_3986]</a>. An EHR specific subtype is defined, whose scheme is
+'ehr', and which contains further attributes enabling the instances of the type to record what kind of
 object they are referring to.</p>
 </div>
 </div>
@@ -5327,7 +5336,7 @@ object they are referring to.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><em>Ehr_scheme</em>: String is "ehr"</p>
+<p><code><em>Ehr_scheme</em></code>: <code>String</code> = "ehr"</p>
 </li>
 </ul>
 </div>
@@ -5429,10 +5438,10 @@ See <a href="http://www.ietf.org/rfc/rfc2806.txt" class="bare">http://www.ietf.o
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A DV_EHR_URI is a DV_URI which has the scheme name  ehr , and which can only reference elements in EHRs.</p>
+<p>A DV_EHR_URI is a DV_URI which has the scheme name  'ehr', and which can only reference items in EHRs.</p>
 </div>
 <div class="paragraph">
-<p>Used to reference elements in an EHR, which may be the current one, or another.</p>
+<p>Used to reference items in an EHR, which may be the same as the current EHR (containing this link), or another.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5454,17 +5463,17 @@ See <a href="http://www.ietf.org/rfc/rfc2806.txt" class="bare">http://www.ietf.o
 <div class="sect3">
 <h4 id="_dv_ehr_uri_syntax"><a class="anchor" href="#_dv_ehr_uri_syntax"></a>10.4.1. DV_EHR_URI Syntax</h4>
 <div class="paragraph">
-<p>The syntax of a <code>DV_EHR_URI</code> is an openEHR path, inside the "ehr" URI scheme-space, and is of the
-form:</p>
+<p>The syntax of a <code>DV_EHR_URI</code> is an openEHR path, inside the 'ehr' URI scheme-space, and is of the
+form (Antlr parser rule):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>"ehr://" ehr_path</pre>
+<pre>'ehr:' ( '//' system_id )? ( '/' ehr_id )? top_level_structure_locator path_inside_top_level_structure? ;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The syntax of ehr_path is described in the section on Paths in The openEHR Architecture Overview
-document. `DV_EHR_URI`s are used as a mechanism for referencing in the EHR, ensuring readability
+<p>The syntax is described in more detail in the section on Paths in The openEHR Architecture Overview
+document <a href="openehr_overview.html#_ehr_uris">[openehr_overview#_ehr_uris]</a>. <code>DV_EHR_URIs</code> are used as a mechanism for referencing in the EHR, ensuring readability
 by humans, as well as validity when extracts are transmitted elsewhere: even if the target of a path is
 not present, the path can be used to locate the missing item on demand.</p>
 </div>
@@ -6310,7 +6319,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 <p><a id="rfc_2440"></a>[rfc_2440] <strong>RFC 2440: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc2440.txt" class="bare">http://www.ietf.org/rfc/rfc2440.txt</a> and <a href="http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt" class="bare">http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt</a></p>
 </li>
 <li>
-<p><a id="rfc_3896"></a>[rfc_3896] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+<p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
 </li>
 <li>
 <p><a id="rfc_4122"></a>[rfc_4122] <strong>RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
