@@ -55,14 +55,12 @@ include::{uml_export_dir}/classes/dv_ehr_uri.adoc[]
 
 === DV_EHR_URI Syntax
 
-The syntax of a `DV_EHR_URI` is an openEHR path, inside the 'ehr' URI scheme-space, and is of the
-form (Antlr parser rule):
+The syntax of a `DV_EHR_URI` is an openEHR path, inside the 'ehr' URI scheme-space, and is of the form:
 
 ----
 ehr://system_id/ehr_id/top_level_structure_locator/path_inside_top_level_structure
 ----
-:overview_ref: http://www.openehr.org/releases/BASE/{release}/architecture_overview.html#_ehr_uris
 
-The syntax is described in more detail in the {overview_ref}[openEHR Architecture Overview]. `DV_EHR_URIs` are used as a mechanism for referencing in the EHR, ensuring readability
-by humans, as well as validity when extracts are transmitted elsewhere: even if the target of a path is
-not present, the path can be used to locate the missing item on demand.
+:overview_ref: http://www.openehr.org/releases/BASE/{base_release}/architecture_overview.html#_ehr_uris
+
+The syntax is described in more detail in the {overview_ref}[openEHR Architecture Overview]. `DV_EHR_URIs` are used as a mechanism for referencing in the EHR, ensuring readability by humans, as well as validity when extracts are transmitted elsewhere: even if the target of a path is not present, the path can be used to locate the missing item on demand.
