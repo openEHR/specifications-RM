@@ -1,0 +1,64 @@
+//
+// ============================================ Asciidoc HEADER =============================================
+//
+:doctype: book
+:pagenums:
+:numbered!:
+// git rid of PDF 'Chapter' labs on level 1 headings
+:chapter-label:
+//
+// HTML-only attributes
+//
+:linkcss:
+:keywords: reference model, openehr
+:description: openEHR Reference Model
+:sectanchors:
+:rm_release: latest
+:jira-pr-release: https://openehr.atlassian.net/projects/SPECPR/versions/10060
+:jira-cr-release: https://openehr.atlassian.net/projects/SPECRM/versions/10860
+:jira-roadmap: https://openehr.atlassian.net/projects/SPECRM?selectedItem=com.atlassian.jira.jira-projects-plugin%3Arelease-page&status=unreleased
+:jira-issues: https://openehr.atlassian.net/issues/?jql=project%20%3D%20SPECRM%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20created%20DESC%2C%20priority%20DESC%2C%20updated%20DESC 
+:jira-hist-issues: https://openehr.atlassian.net/projects/SPEC?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page&status=all
+
+image::http://www.openehr.org/releases/BASE/latest/resources/images/openehr_logo_large.png["openEHR logo",align="center"]
+
+= Reference Model (RM) - {rm_release}
+
+[.title-para]
+{jira-pr-release}[Problems Fixed] | {jira-cr-release}[Changes Implemented] | {jira-roadmap}[Roadmap] | {jira-issues}[Current Issues] | {jira-hist-issues}[Change History]
+
+== Specifications
+
+[cols="1,5", options="header"]
+|===
+|Specification|Description
+
+|http://www.openehr.org/releases/RM/{release}/ehr.html[The EHR Information Model]
+|The information model of the openEHR EHR.
+
+|http://www.openehr.org/releases/RM/{release}/demographic.html[The Demographic Information Model]
+|The openEHR demographic model.
+
+|http://www.openehr.org/releases/RM/{release}/common.html[Common Information Model]
+|Information model containing common concepts, including the archetype-enabling LOCATABLE class, party references, audits and attestations, change control, and authored resources.
+
+|http://www.openehr.org/releases/RM/{release}/data_structures.html[Data Structures Information Model]
+|Information model of data structures, incuding a powerful model of HISTORY and EVENT.
+
+|http://www.openehr.org/releases/RM/{release}/data_types.html[Data Types Information Model]
+|Information model of data types, including quantities, date/times, plain and coded text, time specification, multimedia and URIs.
+
+|http://www.openehr.org/releases/RM/{release}/support.html[Support Information Model]
+|Support model defining identifiers, assumed types, and terminology interface specification used in the rest of the specifications.
+
+|http://www.openehr.org/releases/RM/{release}/integration.html[The Integration Information Model]
+|Model supporting expression of legacy data in a free form for further processing into and out of openEHR information structures.
+
+|http://www.openehr.org/releases/RM/{release}/ehr_extract.html[The EHR Extract Information Model]
+|The information model of the EHR Extract, which is a serilialisation of content from an EHR.
+
+|===
+
+
+== Class Index
+include::UML/class_index.adoc[leveloffset=+1]
