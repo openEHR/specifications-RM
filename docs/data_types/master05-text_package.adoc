@@ -41,7 +41,7 @@ coded items.
 Textual entities available in a terminology service are used in the health record to enable processing,
 from simple queries to decision support. Reasons for using terminology include the following.
 
-* To guarantee interoperability of meaning. For instance, if the term "cold" is recorded in plain text, it could be interpreted as "feeling cold", "C.O.L.D" (chronic obstructive lung disease), "rhinorrhoea", "coryza" or "U.R.T.I. (upper respiriatory tract infection), among others. If, however, it is coded from a terminology such as ICD10 or SNOMED-CT, any party reading the data (including software) knows the intention, since the meaning of the code in the terminology is unambiguous.
+* To guarantee interoperability of meaning. For instance, if the term "cold" is recorded in plain text, it could be interpreted as "feeling cold", "C.O.L.D" (chronic obstructive lung disease), "rhinorrhoea", "coryza" or "U.R.T.I. (upper respiriatory tract infection), among others. If, however, it is coded from a terminology such as {who_icd}[ICD10] or {snomed_ct}[SNOMED CT], any party reading the data (including software) knows the intention, since the meaning of the code in the terminology is unambiguous.
 * To standardise textual renderings of terms and avoid informal shorthand. For example, practitioners wanting to write "systolic blood pressure" write things like "systolic BP", "systolic bp", "sys. BP." and so on; use of coded terms ensures that such abbreviations are either avoided, or associated with an unambiguous meaning.
 * For unambiguous naming of problems, medications or diagnoses for support of knowledgebased tools such as prescribing packages and other decision support applications.
 * For standardised names of things in the record e.g. a heading of "Physical examination" or an entry such as "Differential diagnosis".
@@ -72,7 +72,7 @@ made available by the service is already 'coordinated'. The difference between '
 or expression that is interpretable by the terminology. For example, the coordination "foot, left" (a
 shorthand way of writing the relationship "foot has-laterality left") could be created by the terminology
 service from the source terms "foot", "left" and "has-laterality" from a terminology such as
-SNOMED. Any such coordination must be valid within the source terminology, i.e. correspond to
+SNOMED CT. Any such coordination must be valid within the source terminology, i.e. correspond to
 valid relationships defined therein.
 
 The class `DV_CODED_TEXT` described here captures the association of two things:
@@ -246,7 +246,7 @@ and '=' (equivalent); they are taken from the ISO standards <<ISO_2788>>) and <<
 Data from pathology laboratories has often been coded using a terminology local to the laboratory,
 due to lack of or economic unfeasibility of using existing widespread terminologies for the job. However,
 some laboratories also supply a nearest equivalent code from a well-known terminology such as
-LOINC, to enable the receiver of the data to process it in a more standard fashion. Here, "equivalence"
+{loinc}[LOINC], to enable the receiver of the data to process it in a more standard fashion. Here, "equivalence"
 is taken to mean a term of the same meaning but from a different vocabulary.
 
 Another instance where equivalent terms might be supplied is to effect the translation of terms across
@@ -283,7 +283,7 @@ match attribute is '<'.
 It has been argued in GEHR <<GeHR_Aus_req>> that UMLS reference terms should also be supplied with occurrences
 of coded terms, in the form of the UMLS concept unique identifier, or "CUI". UMLS is a way
 of encoding terms developed at the National Library of Medicine in the United States, and consists of
-a meta-thesaurus, in which terms from any extant term set (such as ICD, SNOMED, READ) can be
+a meta-thesaurus, in which terms from any extant term set (such as {who_icd}[ICDx], {snomed_ct}[SNOMED CT], READ) can be
 cross-referenced. UMLS CUIs could turn out to be extremely useful for decision support and reporting.
 
 The proper use of UMLS is that terms from particular terminologies are passed to a UMLS interface
