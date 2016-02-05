@@ -40,21 +40,21 @@
 <li><a href="#_the_pathable_class">3.1.1. The PATHABLE Class</a></li>
 <li><a href="#_the_locatable_class">3.1.2. The LOCATABLE Class</a>
 <ul class="sectlevel4">
-<li><a href="#_unique_node_identification">Unique Node Identification</a></li>
+<li><a href="#_unique_node_identification">3.1.2.1. Unique Node Identification</a></li>
 </ul>
 </li>
 <li><a href="#_feeder_system_audit">3.1.3. Feeder System Audit</a>
 <ul class="sectlevel4">
-<li><a href="#_requirements">Requirements</a></li>
-<li><a href="#_design_principles">Design Principles</a></li>
-<li><a href="#_meta_data">Meta-data</a></li>
-<li><a href="#_traceability">Traceability</a></li>
-<li><a href="#_version_detection">Version Detection</a></li>
-<li><a href="#_duplicate_detection">Duplicate Detection</a></li>
-<li><a href="#_differentially_coded_data">Differentially Coded Data</a></li>
-<li><a href="#_using_feeder_audit_in_converted_data">Using Feeder Audit in Converted Data</a></li>
-<li><a href="#_structural_correspondence">Structural Correspondence</a></li>
-<li><a href="#_original_content">Original Content</a></li>
+<li><a href="#_requirements">3.1.3.1. Requirements</a></li>
+<li><a href="#_design_principles">3.1.3.2. Design Principles</a></li>
+<li><a href="#_meta_data">3.1.3.3. Meta-data</a></li>
+<li><a href="#_traceability">3.1.3.4. Traceability</a></li>
+<li><a href="#_version_detection">3.1.3.5. Version Detection</a></li>
+<li><a href="#_duplicate_detection">3.1.3.6. Duplicate Detection</a></li>
+<li><a href="#_differentially_coded_data">3.1.3.7. Differentially Coded Data</a></li>
+<li><a href="#_using_feeder_audit_in_converted_data">3.1.3.8. Using Feeder Audit in Converted Data</a></li>
+<li><a href="#_structural_correspondence">3.1.3.9. Structural Correspondence</a></li>
+<li><a href="#_original_content">3.1.3.10. Original Content</a></li>
 </ul>
 </li>
 </ul>
@@ -78,14 +78,14 @@
 <ul class="sectlevel3">
 <li><a href="#_referring_to_demographic_entities">4.2.1. Referring to Demographic Entities</a>
 <ul class="sectlevel4">
-<li><a href="#_party_self_and_referring_to_the_patient_from_the_ehr">PARTY_SELF and Referring to the Patient from the EHR</a></li>
+<li><a href="#_party_self_and_referring_to_the_patient_from_the_ehr">4.2.1.1. PARTY_SELF and Referring to the Patient from the EHR</a></li>
 </ul>
 </li>
 <li><a href="#_participation">4.2.2. Participation</a></li>
 <li><a href="#_audit_information">4.2.3. Audit Information</a>
 <ul class="sectlevel4">
-<li><a href="#_audit_details">Audit Details</a></li>
-<li><a href="#_revision_history">Revision History</a></li>
+<li><a href="#_audit_details">4.2.3.1. Audit Details</a></li>
+<li><a href="#_revision_history">4.2.3.2. Revision History</a></li>
 </ul>
 </li>
 <li><a href="#_attestation">4.2.4. Attestation</a></li>
@@ -142,8 +142,8 @@
 <li><a href="#_logical_deletion">6.3.2. Logical Deletion</a></li>
 <li><a href="#_version_identification">6.3.3. Version Identification</a>
 <ul class="sectlevel4">
-<li><a href="#_local_versioning">Local Versioning</a></li>
-<li><a href="#_distributed_versioning">Distributed Versioning</a></li>
+<li><a href="#_local_versioning">6.3.3.1. Local Versioning</a></li>
+<li><a href="#_distributed_versioning">6.3.3.2. Distributed Versioning</a></li>
 </ul>
 </li>
 </ul>
@@ -152,8 +152,8 @@
 <ul class="sectlevel3">
 <li><a href="#_copying">6.4.1. Copying</a>
 <ul class="sectlevel4">
-<li><a href="#_the_copy_operation">The Copy Operation</a></li>
-<li><a href="#_subsequent_local_modifications">Subsequent Local Modifications</a></li>
+<li><a href="#_the_copy_operation">6.4.1.1. The Copy Operation</a></li>
+<li><a href="#_subsequent_local_modifications">6.4.1.2. Subsequent Local Modifications</a></li>
 </ul>
 </li>
 <li><a href="#_version_merging">6.4.2. Version Merging</a></li>
@@ -200,7 +200,6 @@
 <li><a href="#_e_health_standards">e-Health Standards</a></li>
 <li><a href="#_e_health_projects">e-Health Projects</a></li>
 <li><a href="#_general_standards">General Standards</a></li>
-<li><a href="#_tools">Tools</a></li>
 </ul>
 </li>
 </ul>
@@ -979,7 +978,7 @@
 <p>The <code><em>name</em></code> and <code><em>archetype_node_id</em></code> valuesin a <code>LOCATABLE</code> instance are often the same semantically, but may differ. For example, in "problem/SOAP" Sections (i.e. headings), the name of a section at the problem level might be "diabetes", but its meaning might be "problem". The default value for <code><em>name</em></code> should be assumed to be the text value in the local language for the <code><em>archetype_node_id</em></code> code on the node in question, unless explicitly set otherwise.</p>
 </div>
 <div class="sect4">
-<h5 id="_unique_node_identification"><a class="anchor" href="#_unique_node_identification"></a>Unique Node Identification</h5>
+<h5 id="_unique_node_identification"><a class="anchor" href="#_unique_node_identification"></a>3.1.2.1. Unique Node Identification</h5>
 <div class="paragraph">
 <p><code>LOCATABLE</code> descendants may have a <code><em>uid</em></code>, containing a GUID. In the current openEHR architecture, GUIDs are not needed to identify data nodes, since paths are used to reference all nodes inside top-level structures (i.e. <code>COMPOSITIONs</code> etc). Accordingly all references between parts of an EHR are represented in terms of <code>LOCATABLE_REFs</code> or <code>DV_EHR_URIs</code> (the former is a reference to an <code>OBJECT_VERSION_ID</code> with a path appended; the latter is the stringified URI form). This would allow for example, one Entry to reference the serum sodium value in another Entry in version 2 of a Versioned Composition for a laboratory test on 12/Apr/2004. The <code><em>uid</em></code> attribute will usually be empty in most EHR data in most openEHR EHR systems.</p>
 </div>
@@ -1009,7 +1008,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <p>The data in any part of the EHR may be obtained from a feeder system, i.e. a source system which does not obey the versioning, auditing and content semantics of openEHR (data in the EHR which have been sourced from another openEHR system are dealt with in the Common IM, Change control section). The <code>FEEDER_AUDIT</code> class defines the semantics of an audit trail which is constructed to describe the origin of data that have been transformed into openEHR form and committed to the system. There are a number of aspects to the problem of transforming data for committal into an openEHR system, dealt with in the following subsections.</p>
 </div>
 <div class="sect4">
-<h5 id="_requirements"><a class="anchor" href="#_requirements"></a>Requirements</h5>
+<h5 id="_requirements"><a class="anchor" href="#_requirements"></a>3.1.3.1. Requirements</h5>
 <div class="paragraph">
 <p>The model of Feeder audit is designed to satisfy the following requirements with respect to EHR content sourced from non-openEHR systems:</p>
 </div>
@@ -1031,7 +1030,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div>
 </div>
 <div class="sect4">
-<h5 id="_design_principles"><a class="anchor" href="#_design_principles"></a>Design Principles</h5>
+<h5 id="_design_principles"><a class="anchor" href="#_design_principles"></a>3.1.3.2. Design Principles</h5>
 <div class="paragraph">
 <p>The design of the Feeder audit part of the reference model is based on a generalised model of data communication in which various elements are identified, as follows:</p>
 </div>
@@ -1071,7 +1070,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div>
 </div>
 <div class="sect4">
-<h5 id="_meta_data"><a class="anchor" href="#_meta_data"></a>Meta-data</h5>
+<h5 id="_meta_data"><a class="anchor" href="#_meta_data"></a>3.1.3.3. Meta-data</h5>
 <div class="paragraph">
 <p>The potentially available medico-legal meta-data about the received item is as follows:</p>
 </div>
@@ -1139,19 +1138,19 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div>
 </div>
 <div class="sect4">
-<h5 id="_traceability"><a class="anchor" href="#_traceability"></a>Traceability</h5>
+<h5 id="_traceability"><a class="anchor" href="#_traceability"></a>3.1.3.4. Traceability</h5>
 <div class="paragraph">
 <p>The first task is to support medico-legal investigation into the path of the information item through the health computing infrastructure. This requires the availability of sufficient identifier information that the origin of the information item can be traced. Subject identifiers where available should be used to ensure that the received data go into the correct EHR, by ensuring that the relevant lookups in client directories or other lookup mechanisms can be effected. Again, in rare cases, the subject of the incoming data item may not necessarily be the subject of the EHR - a test result may be made from a relative or other associate which will be stored in the patient&#8217;s EHR.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_version_detection"><a class="anchor" href="#_version_detection"></a>Version Detection</h5>
+<h5 id="_version_detection"><a class="anchor" href="#_version_detection"></a>3.1.3.5. Version Detection</h5>
 <div class="paragraph">
 <p>The second is to detect new versions of an item (e.g. interim and final versions of a microbiology test result). This can usually be achieved by using various identifiers as well as the originating system version id and/or content status (interim, final etc). A new openEHR Composition version should always be created for each received version, even where the content does not change at all (e.g. a microbiology test where the result is "no growth" in both interim and final results).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_duplicate_detection"><a class="anchor" href="#_duplicate_detection"></a>Duplicate Detection</h5>
+<h5 id="_duplicate_detection"><a class="anchor" href="#_duplicate_detection"></a>3.1.3.6. Duplicate Detection</h5>
 <div class="paragraph">
 <p>Another task is to disambiguate duplicates (often caused by failure of a network connection during sending) coming from the feeder system. In some cases however duplicates are erroneously given new ids by the feeder system, giving the receiver the impression of a new information. In such cases, a further item of meta-data may be required:</p>
 </div>
@@ -1164,7 +1163,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div>
 </div>
 <div class="sect4">
-<h5 id="_differentially_coded_data"><a class="anchor" href="#_differentially_coded_data"></a>Differentially Coded Data</h5>
+<h5 id="_differentially_coded_data"><a class="anchor" href="#_differentially_coded_data"></a>3.1.3.7. Differentially Coded Data</h5>
 <div class="paragraph">
 <p>A further problem is that the originating system may send new versions of an item which are not complete in and of themselves, i.e. which only include new or changed elements with respect to a previous send of the same item. An example is a system which sends a correction to an HL7v2 blood test message, where the correction includes just the "serum sodium" data item. In this case, special processing will be required in the openEHR converter component, in order to regenerate a full data item from difference data when it is received. Such processing may also have to take account of deleted items.</p>
 </div>
@@ -1173,13 +1172,13 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div>
 </div>
 <div class="sect4">
-<h5 id="_using_feeder_audit_in_converted_data"><a class="anchor" href="#_using_feeder_audit_in_converted_data"></a>Using Feeder Audit in Converted Data</h5>
+<h5 id="_using_feeder_audit_in_converted_data"><a class="anchor" href="#_using_feeder_audit_in_converted_data"></a>3.1.3.8. Using Feeder Audit in Converted Data</h5>
 <div class="paragraph">
 <p>Although the design of the openEHR converter is outside the scope of the current document, it is worth considering a common design approach, and where the <code>FEEDER_AUDIT</code> class fits in. An effective way of converting non-openEHR data such as HL7v2 messages, relational data etc, is in two steps. The first is to perform a 'syntactic' conversion to Compositions containing instances of the <code>GENERIC_ENTRY</code> class (described in the Integration IM), using 'legacy archetypes'. The resulting database will contain versioned Compositions containing <code>GENERIC_ENTRY</code> instances; logically this database does not contain EHRs but simply external data converted to openEHR computational form. The relevant <code>FEEDER_AUDIT</code> instances should be attached to the Compositions containing the corresponding <code>GENERIC_ENTRY</code> instances. The second step is to perform a 'semantic' conversion to subtypes of ENTRY, i.e. <code>OBSERVATION</code>, <code>EVALUATION</code>, <code>INSTRUCTION</code> and <code>ACTION</code>, according to standardised clinical archetypes. There are various possibilities for what to do with the Feeder audit. The minimum Feeder audit required on the final instance contains the originating system audit information, but none of the information to do with feeder or intermediate systems. This will satisfy medico-legal needs. Alternatively, a complete copy could be made, even though the feeder-related meta-data is probably only of use in the conversion environment. What the Feeder audit looks like in the EHR proper may depend on local legislation, norms or other factors. Alternative conversion approaches are also possible, in which no intermediate form of data exists.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_structural_correspondence"><a class="anchor" href="#_structural_correspondence"></a>Structural Correspondence</h5>
+<h5 id="_structural_correspondence"><a class="anchor" href="#_structural_correspondence"></a>3.1.3.9. Structural Correspondence</h5>
 <div class="paragraph">
 <p>There is no guarantee that the granularity of information recorded in the feeder system obeys the rules of Entries, Compositions, etc. As a consquence, feeder information might correspond to any level of information defined in the openEHR models. In order to be able to record feeder audit information correctly, the model has to be able to associate an audit trail with any granularity of object. For this reason, feeder audit information is attached to the <code>LOCATABLE</code> class via the feeder_audit attribute, even though it is preferable by design to have it attached to the equivalent of Compositions or at least the equivalent of archetype entities (i.e. Compositions, Section trees and Entries). Its usual usage is to attach it to the outermost object to which it applies. In other words, in most cases, during a legacy data conversion process, the entirety of a Composition needs only one <code>FEEDER_AUDIT</code> to document its origins. In exceptional cases, where feeder data comes in in near real time, e.g. from an ICU database, separate <code>FEEDER_AUDIT</code> objects may need to be generated for parts of a Composition; each commit in this situation will create a stack of versions of one Composition, with a growing number of <code>FEEDER_AUDIT</code> objects attached to internal data nodes, each documenting the last import of data.</p>
 </div>
@@ -1188,7 +1187,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div>
 </div>
 <div class="sect4">
-<h5 id="_original_content"><a class="anchor" href="#_original_content"></a>Original Content</h5>
+<h5 id="_original_content"><a class="anchor" href="#_original_content"></a>3.1.3.10. Original Content</h5>
 <div class="paragraph">
 <p>The features of the model described so far allow accurate referencing of content as it is known in source systems and intermediate feeder systems. A further feature of the <code>FEEDER_AUDIT</code> class, the original_content attribute allows the original content item itself to be either included inline or pointed to. If a link is used, the usual situation is that the content is in a store associated with the receiving system, such as a message or document database. The content could also be included inline. Since the original_content link is on a <code>FEEDER_AUDIT</code> object, more than one can be used within the same generated Composition if required. It may be deemed preferable to attach only a single link at the top node, i.e. the Composition node, since this establishes basic equivalent between the whole Composition and the whole document or message.</p>
 </div>
@@ -1678,7 +1677,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <p>The <code>RELATED_PARTY</code> type is used whenever the relationship of the party to the record subject is required. Relationships are coded and include familial ones ('mother', 'uncle', etc) as well as relationships like 'donor', 'travelling companion' and so on.</p>
 </div>
 <div class="sect4">
-<h5 id="_party_self_and_referring_to_the_patient_from_the_ehr"><a class="anchor" href="#_party_self_and_referring_to_the_patient_from_the_ehr"></a>PARTY_SELF and Referring to the Patient from the EHR</h5>
+<h5 id="_party_self_and_referring_to_the_patient_from_the_ehr"><a class="anchor" href="#_party_self_and_referring_to_the_patient_from_the_ehr"></a>4.2.1.1. PARTY_SELF and Referring to the Patient from the EHR</h5>
 <div class="paragraph">
 <p>There are three schemes which are likely to be used for referring to patient (i.e. the record subject) demographic or patient master index (PMI) data from within the EHR, each likely to be valid in different circumstances. Each uses a <code>PARTY_SELF</code> object but with varying usage of the external_ref attribute, and are as follows.</p>
 </div>
@@ -1709,13 +1708,13 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <div class="sect3">
 <h4 id="_audit_information"><a class="anchor" href="#_audit_information"></a>4.2.3. Audit Information</h4>
 <div class="sect4">
-<h5 id="_audit_details"><a class="anchor" href="#_audit_details"></a>Audit Details</h5>
+<h5 id="_audit_details"><a class="anchor" href="#_audit_details"></a>4.2.3.1. Audit Details</h5>
 <div class="paragraph">
 <p>Three classes are provided to represent audit information. The first, <code>AUDIT_DETAILS</code> expresses the details that would be captured about a user when committing some information to a repository of some kind, which may be version controlled. It records committer, time, change type and description. Committer is recorded using a <code>PARTY_PROXY</code>, allowing for <code>PARTY_SELF</code> to be used when the committer is the record subject, and for other identifying information to be included for other users, expressed using <code>PARTY_IDENTIFIED</code>. The kind of identifying information used in <code>PARTY_PROXY</code> instances in <code>AUDIT_DETAILS</code> may be different from that used in <code>COMPOSITION</code>.<code><em>composer</em></code> or elsewhere, i.e. in the form of a system login identifier, e.g. "<a href="mailto:maxime.lavache@stpatricks.health.ie">maxime.lavache@stpatricks.health.ie</a>".</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_revision_history"><a class="anchor" href="#_revision_history"></a>Revision History</h5>
+<h5 id="_revision_history"><a class="anchor" href="#_revision_history"></a>4.2.3.2. Revision History</h5>
 <div class="paragraph">
 <p>The classes <code>REVISION_HISTORY</code> and <code>REVISION_HISTORY_ITEM</code> express the notion of a revision history, which consists of audit items, each associated with a revision number. An instance of the <code>REVISION_HISTORY_ITEM</code> class is designed to express the information that corresponds to an item in a revision history, i.e. a list of all audits relating to some information item. The version_id is included to indicate which revision each audit corresponds to. These classes provide an interoperable definition of revision history for the <code>VERSIONED_OBJECT</code> and <code>AUTHORED_RESOURCE</code> classes.</p>
 </div>
@@ -2686,7 +2685,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="title">Figure 11. Version identification Example</div>
 </div>
 <div class="sect4">
-<h5 id="_local_versioning"><a class="anchor" href="#_local_versioning"></a>Local Versioning</h5>
+<h5 id="_local_versioning"><a class="anchor" href="#_local_versioning"></a>6.3.3.1. Local Versioning</h5>
 <div class="paragraph">
 <p>The <code><em>version_tree_id</em></code> attribute of <code>VERSION</code>.<code><em>uid</em></code> identifies a version of an item with respect to other versions in the same tree. The requirements of the identifier are the same as for typical versioning systems in use in software configuration management, and are as follows:</p>
 </div>
@@ -2708,7 +2707,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 </div>
 </div>
 <div class="sect4">
-<h5 id="_distributed_versioning"><a class="anchor" href="#_distributed_versioning"></a>Distributed Versioning</h5>
+<h5 id="_distributed_versioning"><a class="anchor" href="#_distributed_versioning"></a>6.3.3.2. Distributed Versioning</h5>
 <div class="paragraph">
 <p>However, in a distributed environment where copying and subsequent modification can occur, there are more requirements of the version identification scheme, as follows:</p>
 </div>
@@ -2742,7 +2741,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="sect3">
 <h4 id="_copying"><a class="anchor" href="#_copying"></a>6.4.1. Copying</h4>
 <div class="sect4">
-<h5 id="_the_copy_operation"><a class="anchor" href="#_the_copy_operation"></a>The Copy Operation</h5>
+<h5 id="_the_copy_operation"><a class="anchor" href="#_the_copy_operation"></a>6.4.1.1. The Copy Operation</h5>
 <div class="paragraph">
 <p>In openEHR, the smallest unit of copying of content between systems that satisfies traceability requirements is the <code>ORIGINAL_VERSION</code>. In order to copy a <code>OBSERVATION</code> or even an <code>COMPOSITION</code> somewhere else and retain versioning capability, its enclosing <code>ORIGINAL_VERSION</code> object must be sent. When the type of content is a <code>COMPOSITION</code> for example, an <code>ORIGINAL_VERSION&lt;COMPOSITION&gt;</code> object is sent. At the receiving system various steps will occur depending on whether:</p>
 </div>
@@ -2773,7 +2772,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 </div>
 </div>
 <div class="sect4">
-<h5 id="_subsequent_local_modifications"><a class="anchor" href="#_subsequent_local_modifications"></a>Subsequent Local Modifications</h5>
+<h5 id="_subsequent_local_modifications"><a class="anchor" href="#_subsequent_local_modifications"></a>6.4.1.2. Subsequent Local Modifications</h5>
 <div class="paragraph">
 <p>In most cases, the received information will remain as is for the duration. However, in some cases, users at the receiver system might want to make modifications as well. This is likely to happen in the case of information items representing things like medication lists and allergies. When new versions are added locally to a copied object, the local system id is recorded in the <code><em>uid</em></code>.<code><em>creating_system_id</em></code> attribute, while branching numbering is used in the <code><em>uid</em></code>.<code><em>version_tree_id</em></code>.</p>
 </div>
@@ -4194,17 +4193,13 @@ translations.has_key (d.language.code_string)))</p>
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_tools"><a class="anchor" href="#_tools"></a>Tools</h4>
-
-</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-01-16 19:43:11 CET
+Last updated 2016-02-05 12:00:08 GMT
 </div>
 </div>
 </body>
