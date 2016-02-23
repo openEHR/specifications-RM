@@ -105,8 +105,6 @@ It should be noted that the signing process here creates a signature of a logica
 
 One of the most important uses of signatures in openEHR data is likely to be within EHR Extracts, since they can provide an assurance authenticity and integrity of the data to a receiver who has no knowledge of the quality of the processes used in the originating system.
 
-The signing computation has to be performed on the server side of a system, just prior to committal, since one of the data elements included in the signed content is the committal timestamp.
-
 === Attestation
 
 The `ORIGINAL_VERSION`.`_attestations_` attribute allows attestations to be associated with the data in an original version. Attestations are treated in openEHR as a kind of audit with additional attributes, and are described in detail in the `common.generic` package section of this specification. Any number of attestations to be associated with each Version in a Versioned object. Attestations can be added at any time after committal of the content being attested. They can be used as required by enter prise processes or legislation, and indicate by whom and when the item in question was attested. A digital "proof" is also required, although no assumption is made about the form of such proof.
