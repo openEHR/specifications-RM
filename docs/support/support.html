@@ -304,6 +304,12 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>02 Mar 2016</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-49">SPECRM-49</a>: Improve ISO8601 date/time class string format templates (reported in <a href="https://openehr.atlassian.net/browse/SPECPR-157">SPECPR-157</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">K Atalag</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
 </tr>
 <tr>
@@ -2284,7 +2290,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.</p>
+<p>ISO8601 string for time, i.e. in form: hhmmss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2296,7 +2302,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <div class="ulist">
 <ul>
 <li>
-<p>hhmmss[,sss][Z&#124;±hh[mm]]</p>
+<p>hhmmss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]]</p>
 </li>
 </ul>
 </div>
@@ -2306,7 +2312,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <div class="ulist">
 <ul>
 <li>
-<p>hh:mm:ss[,sss][Z&#124;±hh[mm]]</p>
+<p>hh:mm:ss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]]</p>
 </li>
 </ul>
 </div>
@@ -2355,7 +2361,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <p>ss is “00” - “60” (0-filled to two digits)</p>
 </li>
 <li>
-<p>sss is any numeric string, representing an optional fractional second</p>
+<p>[(,&#124;.)s[s[s[s[s[s]]]]]] is an optional string consisting of a comma or decimal point followed by numeric string of 1-6 digits, representing a fractional second</p>
 </li>
 <li>
 <p>Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000</p>
@@ -2561,7 +2567,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for date/time, in format YYYYMMDDThhmmss[,sss][Z&#124;±hh[mm]] or in extended format YYYY-MM-DDThh:mm:ss[,sss][Z&#124;±hh[mm]] or a partial variant; see valid_iso8601_date_time() below.</p>
+<p>ISO8601 string for date/time, in format YYYYMMDDThhmmss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]] or in extended format YYYY-MM-DDThh:mm:ss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]] or a partial variant; see valid_iso8601_date_time() below.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2573,7 +2579,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <div class="ulist">
 <ul>
 <li>
-<p>YYYYMMDDThhmmss[,sss][Z&#124;±hh[mm]]</p>
+<p>YYYYMMDDThhmmss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]]</p>
 </li>
 </ul>
 </div>
@@ -2583,7 +2589,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <div class="ulist">
 <ul>
 <li>
-<p>YYYY-MM-DDThh:mm:ss[,sss][Z&#124;±hh[mm]]</p>
+<p>YYYY-MM-DDThh:mm:ss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]]</p>
 </li>
 </ul>
 </div>
@@ -2812,7 +2818,22 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_iso8601_duration</strong> (s: <code>String</code>): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>String is a valid ISO 8601 duration, i.e. takes the form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Where each nn represents a number of years, months, etc. nnW represents a number of 7-day weeks.</p>
+</div>
+<div class="paragraph">
+<p>Note: allowing the W designator in the same expression as other designators is an exception to the published standard, but necessary in clinical information (typically for representing pregnancy duration).</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
