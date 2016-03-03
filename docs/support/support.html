@@ -1068,7 +1068,7 @@ XML-schema do not have such operations.</p>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (other: <code>Ordered</code>): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Arithmetic comparison. In conjunction with ‘=’, enables the definition of the operators ‘&gt;’, ‘&gt;=’, ‘&#8656;’, ‘&lt;&gt;’. In real type systems, this operator might be defined on another class for comparability.</p>
+<p>Arithmetic comparison. In conjunction with ‘=’, enables the definition of the operators ‘&gt;’, ‘&gt;=’, ‘&lt;=’, ‘&lt;&gt;’. In real type systems, this operator might be defined on another class for comparability.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1711,7 +1711,7 @@ Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is
 <p>True if (lower_unbounded or
 lower_included and v &gt;= lower) or v &gt; lower and
 (upper_unbounded or
-upper_included and v &#8656; upper or v &lt; upper)</p>
+upper_included and v &lt;= upper or v &lt; upper)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1729,7 +1729,7 @@ upper_included and v &#8656; upper or v &lt; upper)</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Limits_consistent</em></strong>: (not upper_unbounded and not lower_unbounded) implies lower &#8656; upper</p>
+<p><strong><em>Limits_consistent</em></strong>: (not upper_unbounded and not lower_unbounded) implies lower &lt;= upper</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1935,15 +1935,15 @@ of ISO 8601:2004 used by openEHR.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_month</strong> (m: <code>Integer</code>): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result = m &gt;= 1 and m &#8656; Months_in_year</p></td>
+<strong><em>Post</em></strong>: Result = m &gt;= 1 and m &lt;= Months_in_year</p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_day</strong> (y: <code>Integer</code>, m: <code>Integer</code>, d: <code>Integer</code>): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result = d &gt;= 1 and d &#8656; days_in_month (m, y)</p></td>
+<strong><em>Post</em></strong>: Result = d &gt;= 1 and d &lt;= days_in_month (m, y)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if d &gt;= 1 and d &#8656; days_in_month (m, y)</p>
+<p>True if d &gt;= 1 and d &lt;= days_in_month (m, y)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2989,13 +2989,13 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Min_hour_valid</em></strong>: sign = -1 implies hour &gt; 0 and hour &#8656; Min_timezone_hour</p>
+<p><strong><em>Min_hour_valid</em></strong>: sign = -1 implies hour &gt; 0 and hour &lt;= Min_timezone_hour</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Max_hour_valid</em></strong>: sign = 1 implies hour &gt; 0 and hour &#8656; Max_timezone_hour</p>
+<p><strong><em>Max_hour_valid</em></strong>: sign = 1 implies hour &gt; 0 and hour &lt;= Max_timezone_hour</p>
 </div></div></td>
 </tr>
 <tr>

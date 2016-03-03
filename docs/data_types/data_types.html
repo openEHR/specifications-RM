@@ -2969,7 +2969,7 @@ rather than a time, is recorded using a <code>DV_QUANTITY</code> with units = 's
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Limits_consistent</em></strong>: (not upper_unbounded and not lower_unbounded) implies (lower.is_strictly_comparable_to(upper) and lower &#8656; upper)</p>
+<p><strong><em>Limits_consistent</em></strong>: (not upper_unbounded and not lower_unbounded) implies (lower.is_strictly_comparable_to(upper) and lower &lt;= upper)</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3175,7 +3175,7 @@ value to its limits.</p>
 <p>&gt;   :   value is &gt; magnitude</p>
 </li>
 <li>
-<p>&lt;= : value is &#8656; magnitude</p>
+<p>\&lt;= : value is &lt;= magnitude</p>
 </li>
 <li>
 <p>&gt;= : value is &gt;= magnitude</p>
@@ -3202,7 +3202,7 @@ value to its limits.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_magnitude_status</strong>: <code>Boolean</code><br>
-<strong><em>Post</em></strong>: Result = s.is_equal (“=”) or s.is_equal (“&lt;”) or s.is_equal (“&gt;”) or s.is_equal (“&#8656;”) or s.is_equal (“&gt;=”) or s.is_equal (“~”)</p></td>
+<strong><em>Post</em></strong>: Result = s.is_equal (“=”) or s.is_equal (“&lt;”) or s.is_equal (“&gt;”) or s.is_equal (“&lt;=”) or s.is_equal (“&gt;=”) or s.is_equal (“~”)</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Test whether a string value is one of the valid values for the magnitude_status attribute.</p>
 </div></div></td>
