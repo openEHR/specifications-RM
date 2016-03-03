@@ -1824,7 +1824,20 @@ part is then incorrect.</p>
 of ISO 8601:2004 used by openEHR.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="#ISO_8601">[ISO_8601]</a> and the official ISO standard for ISO 8601 details. Note that in the date, time and date_time formats shown below, 'Z' and 'T' are literals.  In the duration class shown below, 'P', 'Y', 'M', 'W', 'D', 'H', 'S' and 'T' are literals.</p>
+<p>See <a href="#ISO_8601">[ISO_8601]</a> and the official ISO standard for ISO 8601 details. Note that in the date, time and date/time format strings shown below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>'Z' and 'T' are literals;</p>
+</li>
+<li>
+<p>In the duration class, 'P', 'Y', 'M', 'W', 'D', 'H', 'S' and 'T' are literals;</p>
+</li>
+<li>
+<p>A variable length numeric (the case of fractional seconds) is shown with the regular expression quantifiers <code>*</code> (0 or more times) or <code>+</code> (1 or more times).</p>
+</li>
+</ul>
 </div>
 <div class="sect3">
 <h4 id="_time_definitions_class"><a class="anchor" href="#_time_definitions_class"></a>3.4.1. TIME_DEFINITIONS Class</h4>
@@ -2290,7 +2303,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for time, i.e. in form: hhmmss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.</p>
+<p>ISO8601 string for time, i.e. in form: hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2302,7 +2315,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <div class="ulist">
 <ul>
 <li>
-<p>hhmmss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]]</p>
+<p>hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]</p>
 </li>
 </ul>
 </div>
@@ -2312,7 +2325,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <div class="ulist">
 <ul>
 <li>
-<p>hh:mm:ss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]]</p>
+<p>hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[mm]]</p>
 </li>
 </ul>
 </div>
@@ -2361,7 +2374,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <p>ss is “00” - “60” (0-filled to two digits)</p>
 </li>
 <li>
-<p>[(,&#124;.)s[s[s[s[s[s]]]]]] is an optional string consisting of a comma or decimal point followed by numeric string of 1-6 digits, representing a fractional second</p>
+<p>[(,&#124;.)s+] is an optional string consisting of a comma or decimal point followed by numeric string of 1 or more digits, representing a fractional second</p>
 </li>
 <li>
 <p>Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000</p>
@@ -2567,7 +2580,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for date/time, in format YYYYMMDDThhmmss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]] or in extended format YYYY-MM-DDThh:mm:ss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]] or a partial variant; see valid_iso8601_date_time() below.</p>
+<p>ISO8601 string for date/time, in format YYYYMMDDThhmmss[(,&#124;.)s+][Z&#124;±hh[mm]] or in extended format YYYY-MM-DDThh:mm:ss[(,&#124;.)s+][Z&#124;±hh[mm]] or a partial variant; see valid_iso8601_date_time() below.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2579,7 +2592,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <div class="ulist">
 <ul>
 <li>
-<p>YYYYMMDDThhmmss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]]</p>
+<p>YYYYMMDDThhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]</p>
 </li>
 </ul>
 </div>
@@ -2589,7 +2602,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <div class="ulist">
 <ul>
 <li>
-<p>YYYY-MM-DDThh:mm:ss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]]</p>
+<p>YYYY-MM-DDThh:mm:ss[(,&#124;.)s+][Z&#124;±hh[mm]]</p>
 </li>
 </ul>
 </div>
@@ -5687,7 +5700,7 @@ number are currently defined.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>

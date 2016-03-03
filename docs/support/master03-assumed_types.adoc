@@ -199,7 +199,11 @@ part is then incorrect.
 The following class definitions provide an object-oriented expression of the semantics of the subset
 of ISO 8601:2004 used by openEHR.
 
-See <<ISO_8601>> and the official ISO standard for ISO 8601 details. Note that in the date, time and date_time formats shown below, 'Z' and 'T' are literals.  In the duration class shown below, 'P', 'Y', 'M', 'W', 'D', 'H', 'S' and 'T' are literals.
+See <<ISO_8601>> and the official ISO standard for ISO 8601 details. Note that in the date, time and date/time format strings shown below:
+
+* 'Z' and 'T' are literals;
+* In the duration class, 'P', 'Y', 'M', 'W', 'D', 'H', 'S' and 'T' are literals;
+* A variable length numeric (the case of fractional seconds) is shown with the regular expression quantifiers `*` (0 or more times) or `+` (1 or more times).
 
 include::{uml_export_dir}/classes/time_definitions.adoc[]
 

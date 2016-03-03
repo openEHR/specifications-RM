@@ -56,17 +56,17 @@ a|
 
 h|
 |*as_string*: `String`
-a|ISO8601 string for time, i.e. in form: hhmmss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.
+a|ISO8601 string for time, i.e. in form: hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.
 
 h|
 |*valid_iso8601_time*: `Boolean`
 a|String is a valid ISO 8601 date, i.e. takes the form:
 
-* hhmmss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]]
+* hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]
 
 or the extended form:
 
-* hh:mm:ss[(,&#124;.)s[s[s[s[s[s]]]]]][Z&#124;±hh[mm]]
+* hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[mm]]
 
 or one of the partial forms:
 
@@ -85,7 +85,7 @@ Where:
 * hh is “00” - “23” (0-filled to two digits)
 * mm is “00” - “59” (0-filled to two digits)
 * ss is “00” - “60” (0-filled to two digits)
-* [(,&#124;.)s[s[s[s[s[s]]]]]] is an optional string consisting of a comma or decimal point followed by numeric string of 1-6 digits, representing a fractional second
+* [(,&#124;.)s+] is an optional string consisting of a comma or decimal point followed by numeric string of 1 or more digits, representing a fractional second
 * Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000
 * ±hh[mm], i.e. +hhmm, +hh, -hhmm, -hh indicating the timezone
 
