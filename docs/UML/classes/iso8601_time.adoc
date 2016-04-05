@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*ISO8601_TIME*
 
 h|*Description*
-2+a|Represents an absolute point in time from an origin usually interpreted as meaning the start of the current day, specified to the second.
+2+a|Represents an absolute point in time from an origin usually interpreted as meaning the start of the current day, specified to a fraction of a second.
 
 NOTE: A small deviation to the ISO 8601:2004 standard in this class is that the time 24:00:00 is not allowed, for consistency with ISO8601_DATE_TIME.
 
@@ -56,7 +56,7 @@ a|
 
 h|
 |*as_string*: `String`
-a|ISO8601 string for time, i.e. in form: hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.
+a|ISO8601 string for time, i.e. in form: hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]], or a partial invariant. See valid_iso8601_time for validity.
 
 h|
 |*valid_iso8601_time*: `Boolean`
@@ -66,7 +66,7 @@ a|String is a valid ISO 8601 date, i.e. takes the form:
 
 or the extended form:
 
-* hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[mm]]
+* hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]]
 
 or one of the partial forms:
 
@@ -78,7 +78,7 @@ or the extended form:
 
 with an additional optional timezone indicator of:
 
-* Z or ±hh[mm]
+* Z or ±hh[mm] or ±hh[:mm] (extended form)
 
 Where:
 
