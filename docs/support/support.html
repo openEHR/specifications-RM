@@ -299,16 +299,17 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.7.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-46">SPECRM-46</a>: Correct <code>OBJECT_REF.<em>id_namespace</em></code> to <code><em>namespace</em></code> (typo reported in <a href="https://openehr.atlassian.net/browse/SPECPR-159">SPECPR-159</a>).<br>
- Correct '±' characters in Date/time types section (reported in <a href="https://openehr.atlassian.net/browse/SPECPR-156">SPECPR-156</a>).<br>
- Fix typo in <code>ISO8601_DURATION.<em>is_decimal_sign_comma</em></code> (reported in <a href="https://openehr.atlassian.net/browse/SPECPR-155">SPECPR-155</a>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
- K Atalag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-46">SPECRM-46</a>: Correct <code>OBJECT_REF.<em>id_namespace</em></code> to <code><em>namespace</em></code> (typo reported in <a href="https://openehr.atlassian.net/browse/SPECPR-159">SPECPR-159</a>).+
+ Change <code>Hash&lt;T,U&gt;</code> to <code>Hash&lt;V,K&gt;</code> to match class documentation and more modern naming of type parameters.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,
+ T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>02 Mar 2016</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-49">SPECRM-49</a>: Improve ISO8601 date/time class string format templates (reported in <a href="https://openehr.atlassian.net/browse/SPECPR-157">SPECPR-157</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-49">SPECRM-49</a>: Improve ISO8601 date/time class string format templates (reported in <a href="https://openehr.atlassian.net/browse/SPECPR-157">SPECPR-157</a>).+
+ Correct '±' characters in Date/time types section (reported in <a href="https://openehr.atlassian.net/browse/SPECPR-156">SPECPR-156</a>).<br>
+ Fix typo in <code>ISO8601_DURATION.<em>is_decimal_sign_comma</em></code> (reported in <a href="https://openehr.atlassian.net/browse/SPECPR-155">SPECPR-155</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">K Atalag</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1338,12 +1339,12 @@ implementation formalisms.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Hash&lt;T,U:Comparable&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">a table of values of any type T, keyed by values of any basic comparable type U, typically String or Integer, but may be more complex types, e.g. a coded term type.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Hash&lt;V,K: Comparable&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a table of values of any type V, keyed by instances of any basic comparable type K, typically String or Integer, but may be more complex types, e.g. a coded term type.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Table</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Interval&lt;T&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Interval&lt;T: Ordered&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Intervals with open or closed upper and lower bounds.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>

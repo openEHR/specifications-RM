@@ -119,8 +119,8 @@ implementation formalisms.
 |`Array<T>`             |physical container of items indexed by number              |Array
 |`List<T>`              |container of items, implied order, non-unique membership   |Sequence
 |`Set<T>`               |container of items, no order, unique membership            |Set
-|`Hash<T,U:Comparable>` |a table of values of any type T, keyed by values of any basic comparable type U, typically String or Integer, but may be more complex types, e.g. a coded term type. | Table
-|`Interval<T>`          |Intervals with open or closed upper and lower bounds.      |-
+|`Hash<V,K: Comparable>` |a table of values of any type V, keyed by instances of any basic comparable type K, typically String or Integer, but may be more complex types, e.g. a coded term type. | Table
+|`Interval<T: Ordered>`          |Intervals with open or closed upper and lower bounds.      |-
 |===
 
 The following UML diagram illustrates the assumed library types. As with the assumed primitive types, inheritance and
