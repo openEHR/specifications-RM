@@ -1,0 +1,123 @@
+= Task Planning
+
+The Entry model described in the previous section defines a way to record clinical statements representing real observations, decisions, orders and actions that have occurred, into the EHR. In this scheme, Actions and Observations represent events that have occurred in the real world - a real drug administration or an actual blood sugar measurement. Instructions represent orders for certain kinds of Actions to be performed. There is however a common additional need to concretely plan Actions and sometimes Observations out in time, as a set of tasks. The general concept is usually known as a _task list_, and is used to concretely specify actions to be performed by actors (usually human, but potentially machine as well) providing care.
+
+To meet this need, a further kind of content can be recorded in the EHR, representing planned tasks.
+
+The overall design concept described here considers Task Lists as the lower part of an overall architecture that includes entities at multiple levels, i.e.:
+
+* Care Pathway - a model of a guideline for care of a condition / ideal patient;
+* Care Plan - a plan for concrete care of an actual patient, taking into account zero or more Care Pathways and individual specificities;
+* Task List - an instance level concept that defines a list of Tasks to perform over time.
+
+The design described here does not address the representation of the Care Pathway or Care Plan levels, only the Task List level. It is assumes that a Task List is normally created due to a Care Plan of some kind, and that the Care Plan may in turn have been derived from one or more Care Pathways. 
+
+== Requirements
+
+=== Full Plan
+
+The simplest need is to be able to post a full plan of all Actions to be performed for an order, in advance of the order commencing. One difficulty with posting a full plan is that in some cases, the order is considered open-ended, i.e. it has no intended completion. This might be because the patient condition being treated is chronic, e.g. an insulin or Salbutamol (Ventolin) order; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma victim.
+
+=== Lookahead Plan
+
+A more flexible version of micro-planning an ongoing order is 'lookahead' planning, i.e. posting a plan of Actions for a moving window in time, e.g. one day, a few days, a few nursing rotations etc. The idea here is not to try to plan out the entire order execution, since it can easily change or be stopped, e.g. due to change in patient or other unexpected events. In a lookahead approach, posted Actions are executed, and more planned Actions are posted. The planned timing of each set of Actions may change due to the current situation, with the effect that the overall set of Actions that unfolds in time may well be different from an attempt to post all Actions as per the 'full plan' idea.
+
+For the open-ended cases mentioned above, the only option is a lookahead plan that extends as far ahead in time as the treating physicians are prepared to go.
+
+=== Checklist & Sign-off
+
+If planned Actions are posted in advance, they can be viewed by workers as a checklist, and signed off as having been performed over time. The use of this is that the correspondence between Actions actualy perfrmed and those planned is established. If an Action A1 is posted for time T, it might actually be done at time T', but we still want to know that it was Action A1 that was intentionally performed, and not some other Action. Over the course of the order execution, a pciture will emerge of planned Actions being performed and signed off, possibly with some being missed as not needed, or not done for some other reason. Additional Actions not originally posted in the plan might also be done if they are allowed by the general specification of the relevant archetype.
+
+=== Major Changes and Abandonment
+
+Inevitably, some planned sets of Actions will have to be changed or abandoned partway through due to unexpected changes in the patient situation. The question here is: what should be done with the remaining posted Actions that will not be performed? Should they be marked as 'won't do' (with some reason) and committed to the EHR, or should they be deleted and never show up in the EHR?
+
+It seems reasonable to suppose that the answer will differ according to circumstance and local preference, in which case we need to support something like the following:
+
+* planned Actions that are 'posted' are not necessarily written into the EHR, but may exist in a logical buffer first, and are only committed when a) performed or b) explicitly marked as not done or c) included in a set of not-done Actions to be committed to the EHR at a point of plan abandonment.
+
+=== Generate Analytics Data
+
+As Actions are performed and signed off on the list of posted planned Actions, there will generally be differences between Actions actually performed and those on the planned list. Differences could include:
+
+* time of execution - this will almost always be different, even if only by minutes
+* performer - an Action intended to be performed by a specific type of actor (say a nurse) might be performed by another (say the consultant)
+* any other modifiable detail of the order, typically medication dose in bedside care situations.
+
+These differences are recorded in the EHR since both planned and performed Actions will appear, providing a data resource for analysing business process, order compliance, reasons for deviation and so on.
+
+=== Plans for Order Sets
+
+A plan for execution of an order might need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, Vincristine is typically used in chemotherapy with other drugs according to protocols like CHOP (non-Hodgkin's lymphoma), COPP or Stanford V (Hodgkin's lymphoma) etc. A plan for using Vincristine in the CHOP protocol for example would need to be a plan for structured doses of (C)yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin (= Vincristine), and (P)rednisolone.
+
+== Planned Task Model
+
+The following figure shows the `rm.composition.planning` package, including its relationships to existing classes.
+
+[.text-center]
+.rm.composition.planning package
+image::{uml_export_dir}/diagrams/RM-composition.planning.svg[id=rm_composition_planning, align="center"]
+
+=== Execution-time Data Architecture
+
+In this design a `TASK_LIST` and its constituent `PLANNED_TASKs` are assumed to be created within a single dedicated `COMPOSITION` which is re-versioned as changes are made to its contents. New versions will occur for the following kinds of events:
+
+* update / add to `TASK_LIST`, mainly due to lookahead planning window;
+* cancellation of tasks;
+* addition of forward references to tasks that have been performed and recorded (i.e. `ACTIONs`, `OBSERVATIONs`, ?`EVALUATIONs` e.g. review); = task item signoff.
+
+As the `TASK_LIST` gets progressively built and performed over time, the task list `COMPOSITION` will potentially undergo numerous versions, corresponding to the actions performed to fulfill it. These will come to an end when the `TASK_LIST` is deemed 'complete', 
+
+=== Logical Links and Referencing
+
+[.tbd]
+TBD: Describe link structures of PLAN elements with `ENTRYs`, `COMPOSITIONs` etc.
+
+== Scenarios
+
+=== Typical Plan
+
+[.tbd]
+TBD
+
+=== Check-list and Sign-off
+
+[.tbd]
+TBD
+
+=== Changes during Execution
+
+[.tbd]
+TBD
+
+=== Abandonment
+
+[.tbd]
+TBD
+
+=== Order Set
+
+[.tbd]
+TBD
+
+== Class Descriptions
+
+include::{uml_export_dir}/classes/plan_item.adoc[]
+
+include::{uml_export_dir}/classes/planned_participation.adoc[]
+
+include::{uml_export_dir}/classes/task_list.adoc[]
+
+include::{uml_export_dir}/classes/task_list_state.adoc[]
+
+include::{uml_export_dir}/classes/planned_task.adoc[]
+
+include::{uml_export_dir}/classes/task_execution_condition.adoc[]
+
+include::{uml_export_dir}/classes/required_status.adoc[]
+
+include::{uml_export_dir}/classes/planned_time.adoc[]
+
+include::{uml_export_dir}/classes/planned_action.adoc[]
+
+include::{uml_export_dir}/classes/planned_observation.adoc[]

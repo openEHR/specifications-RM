@@ -1,0 +1,48 @@
+=== PLANNED_TASK Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*PLANNED_TASK*
+
+h|*Description*
+2+a|General definition of a planned Task, which may be any kind of actionable ENTRY in the openEHR ENTRY model. Subtyped for specific ENTRY types where extra features are needed.
+
+h|*Inherit*
+2+|PLAN_ITEM
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*entry_archetype_ref*: `String`
+a|Logical type of ENTRY representing a Task to be performed according to this planned Task.
+
+h|*0..1*
+|*entry_archetype_concept*: `String`
+a|A copy of the relevant Action or other archetype root node concept term. This indicates what the action is to be performed.
+
+h|*0..1*
+|*execution_condition*: `TASK_EXECUTION_CONDITION`
+a|Condition for execution of the Task.
+
+h|*1..1*
+|*time_spec*: `PLANNED_TIME`
+a|Specifier of time at which the Task should be performed.
+
+h|*0..1*
+|*entry_instance_ref*: `OBJECT_REF`
+a|Forward reference to Entry (e.g. OBSERVATION etc) that was recorded as a result of this Task being performed.
+
+h|*0..1*
+|*cancelled_time*: `DV_DATE_TIME`
+a|Time at which Task was cancelled, in the case of a Task that won't be performed.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*entry_archetype_id*: `ARCHETYPE_HRID`
+a|Structural form of entry_archetype_ref produced by parsing.
+|===

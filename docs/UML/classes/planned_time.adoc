@@ -1,0 +1,36 @@
+=== PLANNED_TIME Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*PLANNED_TIME*
+
+h|*Description*
+2+a|Represents time at which a future event or action should take place.
+
+TODO: probably need an option for coded times like 'afternoon', 'midday' etc.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*execution_window*: `DV_INTERVAL<DV_DATE_TIME>`
+a|Time window during which the action should start. May be a point time or an interval. If set, relative_offset and relative_time_qualifier are not set.
+
+h|*0..1*
+|*relative_offset*: `DV_DURATION`
+a|Relative time offset with respect to origin nominated in relative_time_qualifier.
+
+h|*0..1*
+|*relative_time_qualifier*: `CODE_PHRASE`
+a|Indicates what time origin to use for this action in terms of other actions. May take values such as:
+
+* with_previous: at the same time as the previous action in a list; order is assumed not to matter;
+* after_previous: after the previous action in a list, by the offset duration if any;
+* after_start: after the start of the list, by the offset duration if any.
+
+h|*0..1*
+|*event_alignment*: `CODE_PHRASE`
+a|A qualifier that indicates that the action should be aligned with a real world event. Typical values: before_meal, with_meal, after_meal, before_sleeping, etc.
+|===

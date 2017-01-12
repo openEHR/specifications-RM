@@ -463,3 +463,12 @@ The Instruction for this therapy is illustrated below.
 [.text-center]
 .Multi-drug therapy Instruction
 image::diagrams/multi_drug_therapy_instruction.png[id=multi_drug_therapy_instruction, align="center", width=80%]
+
+== Task Planning
+
+The Entry model described above provides a way to record clinical statements representing real observations, decisions, orders and actions that have occurred, into the EHR. In this scheme, Actions and Observations represent events that have occurred in the real world - a real drug administration or an actual blood sugar measurement. Instructions represent orders for certain kinds of Actions to be performed. There is however a common additional need to concretely plan Actions and sometimes Observations out in time, as a set of tasks. The general concept is usually known as a _task list_, and is used to 
+
+[.text-center]
+.rm.composition.planning package
+image::{uml_export_dir}/diagrams/RM-composition.planning.svg[id=rm_composition_planning, align="center"]
+

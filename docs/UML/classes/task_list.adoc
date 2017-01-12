@@ -1,0 +1,41 @@
+=== TASK_LIST Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*TASK_LIST*
+
+h|*Description*
+2+a|Linear list of Tasks in intended order of execution. Each Task has an execution_condition that indicates if the Task must be executed, as well as a time specifier for when it should be executed. Taken together, these enable a measure of flexibility in Task execution, including approximate times, and parallel execution.
+
+h|*Inherit*
+2+|PLAN_ITEM
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*description*: `DV_TEXT`
+a|Human-understandable description of the Task list.
+
+h|*0..1*
+|*start_time*: `DV_DATE_TIME`
+a|Nominal start time for the Task list as a whole. The timings of individual Tasks may be specified as offsets from this time, via PLANNED_TIME.relative_offset.
+
+h|*0..1*
+|*completion_timeout*: `DV_DATE_TIME`
+a|Maximal completion date/time by which this Task list should be considered obsolete. If not set, the Task list would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the time_spec attribute of PLANNED_TASKs in the list.
+
+h|*0..1*
+|*task_sequence*: `List<PLANNED_TASK>`
+a|Set of Tasks to perform.
+
+h|*1..1*
+|*lifecycle_state*: `TASK_LIST_STATE`
+a|Lifecycle state of this Task list. A Task list is marked 'active' to indicate it should be performed. A list marked 'proposed' is not to be performed.
+
+h|*0..1*
+|*care_plan*: `LOCATABLE_REF`
+a|Care plan object from which this Task list is derived.
+|===
