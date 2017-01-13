@@ -48,7 +48,7 @@ These differences are recorded in the EHR since both planned and performed Actio
 
 === Plans for Order Sets
 
-A plan for execution of an order might need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, Vincristine is typically used in chemotherapy with other drugs according to protocols like CHOP (non-Hodgkin's lymphoma), COPP or Stanford V (Hodgkin's lymphoma) etc. A plan for using Vincristine in the CHOP protocol for example would need to be a plan for structured doses of (C)yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin (= Vincristine), and (P)rednisolone.
+A plan for execution of an order might need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, Vincristine is typically used in chemotherapy with other drugs according to protocols like CHOP (non-Hodgkin's lymphoma), COPP or Stanford V (Hodgkin's lymphoma) etc. A plan for using Vincristine in the CHOP protocol for example would need to be a plan for structured doses of \(C\)yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin (= Vincristine), and (P)rednisolone.
 
 == Planned Task Model
 
@@ -58,15 +58,18 @@ The following figure shows the `rm.composition.planning` package, including its 
 .rm.composition.planning package
 image::{uml_export_dir}/diagrams/RM-composition.planning.svg[id=rm_composition_planning, align="center"]
 
-=== Execution-time Data Architecture
+The central classes in this model are `TASK_LIST` and `PLANNED_TASK`, which define a list of Tasks and a single Task respectively. The abstract parent class `PLAN_ITEM` is used to provide these two classes with various attibutes that may apply both to a list of Tasks and single Task. As stated earlier, the notion of Task in this model is at the bottom of three conceptual levels. Accordingly, it does not attempt to define semantics of Care Plans or Care Pathways, but it does provide attributes to record a guideline and care plan identifier(s) (`PLAN_ITEM._guideline_id_` and `TASK_LIST._care_plan_` respectively). 
 
-In this design a `TASK_LIST` and its constituent `PLANNED_TASKs` are assumed to be created within a single dedicated `COMPOSITION` which is re-versioned as changes are made to its contents. New versions will occur for the following kinds of events:
+=== Execution-time Data Structures
 
-* update / add to `TASK_LIST`, mainly due to lookahead planning window;
+In this model a `TASK_LIST` is required in order to define any `PLANNED_TASKs`. Accordingly, `TASK_LIST` inherits from `CONTENT_ITEM`, the abstract type of the `_content_` attribute of a `COMPOSITION`. A `TASK_LIST` and its constituent `PLANNED_TASKs` are assumed to be created within a single dedicated `COMPOSITION` which is re-versioned as changes are made to its contents. New versions will occur for the following reasons:
+
+* update / add to `TASK_LIST`, mainly due to extension of the lookahead planning window;
 * cancellation of tasks;
-* addition of forward references to tasks that have been performed and recorded (i.e. `ACTIONs`, `OBSERVATIONs`, ?`EVALUATIONs` e.g. review); = task item signoff.
+* addition of forward references to tasks that have been performed and recorded (i.e. `ACTIONs`, `OBSERVATIONs`, ?`EVALUATIONs` e.g. review); = task item signoff;
+* completion or abandonment of the Task list.
 
-As the `TASK_LIST` gets progressively built and performed over time, the task list `COMPOSITION` will potentially undergo numerous versions, corresponding to the actions performed to fulfill it. These will come to an end when the `TASK_LIST` is deemed 'complete', 
+As the `TASK_LIST` gets progressively built and performed over time, its owning `COMPOSITION` will potentially undergo numerous versions, corresponding both to changes to the plan, and also execution of the actions performed to fulfill it. When these come to an end, the `TASK_LIST` is deemed 'complete'.
 
 === Logical Links and Referencing
 

@@ -226,10 +226,9 @@
 </li>
 </ul>
 </li>
-<li><a href="#_task_planning">8.5. Task Planning</a></li>
 </ul>
 </li>
-<li><a href="#_task_planning_2">9. Task Planning</a>
+<li><a href="#_task_planning">9. Task Planning</a>
 <ul class="sectlevel2">
 <li><a href="#_requirements_3">9.1. Requirements</a>
 <ul class="sectlevel3">
@@ -243,7 +242,7 @@
 </li>
 <li><a href="#_planned_task_model">9.2. Planned Task Model</a>
 <ul class="sectlevel3">
-<li><a href="#_execution_time_data_architecture">9.2.1. Execution-time Data Architecture</a></li>
+<li><a href="#_execution_time_data_structures">9.2.1. Execution-time Data Structures</a></li>
 <li><a href="#_logical_links_and_referencing">9.2.2. Logical Links and Referencing</a></li>
 </ul>
 </li>
@@ -4296,22 +4295,10 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_task_planning"><a class="anchor" href="#_task_planning"></a>8.5. Task Planning</h3>
-<div class="paragraph">
-<p>The Entry model described above provides a way to record clinical statements representing real observations, decisions, orders and actions that have occurred, into the EHR. In this scheme, Actions and Observations represent events that have occurred in the real world - a real drug administration or an actual blood sugar measurement. Instructions represent orders for certain kinds of Actions to be performed. There is however a common additional need to concretely plan Actions and sometimes Observations out in time, as a set of tasks. The general concept is usually known as a <em>task list</em>, and is used to</p>
-</div>
-<div id="rm_composition_planning" class="imageblock text-center" style="text-align: center">
-<div class="content">
-<img src="../UML/diagrams/RM-composition.planning.svg" alt="RM composition.planning">
-</div>
-<div class="title">Figure 31. rm.composition.planning package</div>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_task_planning_2"><a class="anchor" href="#_task_planning_2"></a>9. Task Planning</h2>
+<h2 id="_task_planning"><a class="anchor" href="#_task_planning"></a>9. Task Planning</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Entry model described in the previous section defines a way to record clinical statements representing real observations, decisions, orders and actions that have occurred, into the EHR. In this scheme, Actions and Observations represent events that have occurred in the real world - a real drug administration or an actual blood sugar measurement. Instructions represent orders for certain kinds of Actions to be performed. There is however a common additional need to concretely plan Actions and sometimes Observations out in time, as a set of tasks. The general concept is usually known as a <em>task list</em>, and is used to concretely specify actions to be performed by actors (usually human, but potentially machine as well) providing care.</p>
@@ -4402,7 +4389,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="sect3">
 <h4 id="_plans_for_order_sets"><a class="anchor" href="#_plans_for_order_sets"></a>9.1.6. Plans for Order Sets</h4>
 <div class="paragraph">
-<p>A plan for execution of an order might need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, Vincristine is typically used in chemotherapy with other drugs according to protocols like CHOP (non-Hodgkin&#8217;s lymphoma), COPP or Stanford V (Hodgkin&#8217;s lymphoma) etc. A plan for using Vincristine in the CHOP protocol for example would need to be a plan for structured doses of &#169;yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin (= Vincristine), and (P)rednisolone.</p>
+<p>A plan for execution of an order might need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, Vincristine is typically used in chemotherapy with other drugs according to protocols like CHOP (non-Hodgkin&#8217;s lymphoma), COPP or Stanford V (Hodgkin&#8217;s lymphoma) etc. A plan for using Vincristine in the CHOP protocol for example would need to be a plan for structured doses of \(C\)yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin (= Vincristine), and (P)rednisolone.</p>
 </div>
 </div>
 </div>
@@ -4415,28 +4402,34 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="content">
 <img src="../UML/diagrams/RM-composition.planning.svg" alt="RM composition.planning">
 </div>
-<div class="title">Figure 32. rm.composition.planning package</div>
+<div class="title">Figure 31. rm.composition.planning package</div>
+</div>
+<div class="paragraph">
+<p>The central classes in this model are <code>TASK_LIST</code> and <code>PLANNED_TASK</code>, which define a list of Tasks and a single Task respectively. The abstract parent class <code>PLAN_ITEM</code> is used to provide these two classes with various attibutes that may apply both to a list of Tasks and single Task. As stated earlier, the notion of Task in this model is at the bottom of three conceptual levels. Accordingly, it does not attempt to define semantics of Care Plans or Care Pathways, but it does provide attributes to record a guideline and care plan identifier(s) (<code>PLAN_ITEM.<em>guideline_id</em></code> and <code>TASK_LIST.<em>care_plan</em></code> respectively).</p>
 </div>
 <div class="sect3">
-<h4 id="_execution_time_data_architecture"><a class="anchor" href="#_execution_time_data_architecture"></a>9.2.1. Execution-time Data Architecture</h4>
+<h4 id="_execution_time_data_structures"><a class="anchor" href="#_execution_time_data_structures"></a>9.2.1. Execution-time Data Structures</h4>
 <div class="paragraph">
-<p>In this design a <code>TASK_LIST</code> and its constituent <code>PLANNED_TASKs</code> are assumed to be created within a single dedicated <code>COMPOSITION</code> which is re-versioned as changes are made to its contents. New versions will occur for the following kinds of events:</p>
+<p>In this model a <code>TASK_LIST</code> is required in order to define any <code>PLANNED_TASKs</code>. Accordingly, <code>TASK_LIST</code> inherits from <code>CONTENT_ITEM</code>, the abstract type of the <code><em>content</em></code> attribute of a <code>COMPOSITION</code>. A <code>TASK_LIST</code> and its constituent <code>PLANNED_TASKs</code> are assumed to be created within a single dedicated <code>COMPOSITION</code> which is re-versioned as changes are made to its contents. New versions will occur for the following reasons:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>update / add to <code>TASK_LIST</code>, mainly due to lookahead planning window;</p>
+<p>update / add to <code>TASK_LIST</code>, mainly due to extension of the lookahead planning window;</p>
 </li>
 <li>
 <p>cancellation of tasks;</p>
 </li>
 <li>
-<p>addition of forward references to tasks that have been performed and recorded (i.e. <code>ACTIONs</code>, <code>OBSERVATIONs</code>, ?<code>EVALUATIONs</code> e.g. review); = task item signoff.</p>
+<p>addition of forward references to tasks that have been performed and recorded (i.e. <code>ACTIONs</code>, <code>OBSERVATIONs</code>, ?<code>EVALUATIONs</code> e.g. review); = task item signoff;</p>
+</li>
+<li>
+<p>completion or abandonment of the Task list.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>As the <code>TASK_LIST</code> gets progressively built and performed over time, the task list <code>COMPOSITION</code> will potentially undergo numerous versions, corresponding to the actions performed to fulfill it. These will come to an end when the <code>TASK_LIST</code> is deemed 'complete',</p>
+<p>As the <code>TASK_LIST</code> gets progressively built and performed over time, its owning <code>COMPOSITION</code> will potentially undergo numerous versions, corresponding both to changes to the plan, and also execution of the actions performed to fulfill it. When these come to an end, the <code>TASK_LIST</code> is deemed 'complete'.</p>
 </div>
 </div>
 <div class="sect3">
@@ -4499,10 +4492,6 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p>Abstract parent of any type of Planned item. Records optional guideline_id, which can be for a relevant Care Pathway or other guideline from which the Plan item is derived, and planned participations.</p>
 </div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">CONTENT_ITEM</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -4634,7 +4623,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLAN_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLAN_ITEM, CONTENT_ITEM</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -4724,6 +4713,16 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p>Definition element is active.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">completed</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">abandoned</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -4748,7 +4747,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLAN_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLAN_ITEM, LOCATABLE</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
