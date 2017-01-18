@@ -240,33 +240,34 @@
 <li><a href="#_plans_for_order_sets">9.1.6. Plans for Order Sets</a></li>
 </ul>
 </li>
-<li><a href="#_planned_task_model">9.2. Planned Task Model</a>
+<li><a href="#_design_paradigm">9.2. Design Paradigm</a></li>
+<li><a href="#_planned_task_model">9.3. Planned Task Model</a>
 <ul class="sectlevel3">
-<li><a href="#_execution_time_data_structures">9.2.1. Execution-time Data Structures</a></li>
-<li><a href="#_logical_links_and_referencing">9.2.2. Logical Links and Referencing</a></li>
+<li><a href="#_execution_time_data_structures">9.3.1. Execution-time Data Structures</a></li>
+<li><a href="#_logical_links_and_referencing">9.3.2. Logical Links and Referencing</a></li>
 </ul>
 </li>
-<li><a href="#_scenarios">9.3. Scenarios</a>
+<li><a href="#_scenarios">9.4. Scenarios</a>
 <ul class="sectlevel3">
-<li><a href="#_typical_plan">9.3.1. Typical Plan</a></li>
-<li><a href="#_check_list_and_sign_off">9.3.2. Check-list and Sign-off</a></li>
-<li><a href="#_changes_during_execution">9.3.3. Changes during Execution</a></li>
-<li><a href="#_abandonment">9.3.4. Abandonment</a></li>
-<li><a href="#_order_set">9.3.5. Order Set</a></li>
+<li><a href="#_typical_plan">9.4.1. Typical Plan</a></li>
+<li><a href="#_check_list_and_sign_off">9.4.2. Check-list and Sign-off</a></li>
+<li><a href="#_changes_during_execution">9.4.3. Changes during Execution</a></li>
+<li><a href="#_abandonment">9.4.4. Abandonment</a></li>
+<li><a href="#_order_set">9.4.5. Order Set</a></li>
 </ul>
 </li>
-<li><a href="#_class_descriptions_6">9.4. Class Descriptions</a>
+<li><a href="#_class_descriptions_6">9.5. Class Descriptions</a>
 <ul class="sectlevel3">
-<li><a href="#_plan_item_class">9.4.1. PLAN_ITEM Class</a></li>
-<li><a href="#_planned_participation_class">9.4.2. PLANNED_PARTICIPATION Class</a></li>
-<li><a href="#_task_list_class">9.4.3. TASK_LIST Class</a></li>
-<li><a href="#_task_list_state_enumeration">9.4.4. TASK_LIST_STATE Enumeration</a></li>
-<li><a href="#_planned_task_class">9.4.5. PLANNED_TASK Class</a></li>
-<li><a href="#_task_execution_condition_class">9.4.6. TASK_EXECUTION_CONDITION Class</a></li>
-<li><a href="#_required_status_enumeration">9.4.7. REQUIRED_STATUS Enumeration</a></li>
-<li><a href="#_planned_time_class">9.4.8. PLANNED_TIME Class</a></li>
-<li><a href="#_planned_action_class">9.4.9. PLANNED_ACTION Class</a></li>
-<li><a href="#_planned_observation_class">9.4.10. PLANNED_OBSERVATION Class</a></li>
+<li><a href="#_plan_item_class">9.5.1. PLAN_ITEM Class</a></li>
+<li><a href="#_planned_participation_class">9.5.2. PLANNED_PARTICIPATION Class</a></li>
+<li><a href="#_task_list_class">9.5.3. TASK_LIST Class</a></li>
+<li><a href="#_task_list_state_enumeration">9.5.4. TASK_LIST_STATE Enumeration</a></li>
+<li><a href="#_planned_task_class">9.5.5. PLANNED_TASK Class</a></li>
+<li><a href="#_task_execution_condition_class">9.5.6. TASK_EXECUTION_CONDITION Class</a></li>
+<li><a href="#_required_status_enumeration">9.5.7. REQUIRED_STATUS Enumeration</a></li>
+<li><a href="#_planned_time_class">9.5.8. PLANNED_TIME Class</a></li>
+<li><a href="#_planned_action_class">9.5.9. PLANNED_ACTION Class</a></li>
+<li><a href="#_planned_observation_class">9.5.10. PLANNED_OBSERVATION Class</a></li>
 </ul>
 </li>
 </ul>
@@ -2750,7 +2751,7 @@
 </div>
 <div id="clinical_investigator_process" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/clinical_investigator_process.png" alt="clinical investigator process" width="80%">
+<img src="diagrams/clinical_investigator_recording_process.png" alt="clinical investigator recording process" width="80%">
 </div>
 <div class="title">Figure 16. Clinical Investigator Recording Process</div>
 </div>
@@ -4323,6 +4324,15 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </ul>
 </div>
 <div class="paragraph">
+<p>We can visualise this conceptually with a modified version of the Clinical Investigator process diagram as follows:</p>
+</div>
+<div id="clinical_process_planning" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/clinical_process_planning.png" alt="clinical process planning" width="80%">
+</div>
+<div class="title">Figure 31. Clinical Investigator Process with Planning</div>
+</div>
+<div class="paragraph">
 <p>The design described here does not address the representation of the Care Pathway or Care Plan levels, only the Task List level. It is assumes that a Task List is normally created due to a Care Plan of some kind, and that the Care Plan may in turn have been derived from one or more Care Pathways.</p>
 </div>
 <div class="sect2">
@@ -4330,13 +4340,13 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="sect3">
 <h4 id="_full_plan"><a class="anchor" href="#_full_plan"></a>9.1.1. Full Plan</h4>
 <div class="paragraph">
-<p>The simplest need is to be able to post a full plan of all Actions to be performed for an order, in advance of the order commencing. One difficulty with posting a full plan is that in some cases, the order is considered open-ended, i.e. it has no intended completion. This might be because the patient condition being treated is chronic, e.g. an insulin or Salbutamol (Ventolin) order; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma victim.</p>
+<p>The simplest need is to be able to post a full plan of all Actions to be performed for an order (represented by an <code>INSTRUCTION</code>), in advance of the order commencing. One difficulty with posting a full plan is that in some cases, the order is considered open-ended, i.e. it has no intended completion. This might be because the patient condition being treated is chronic, e.g. an insulin or Salbutamol (Ventolin) order; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma victim.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_lookahead_plan"><a class="anchor" href="#_lookahead_plan"></a>9.1.2. Lookahead Plan</h4>
 <div class="paragraph">
-<p>A more flexible version of micro-planning an ongoing order is 'lookahead' planning, i.e. posting a plan of Actions for a moving window in time, e.g. one day, a few days, a few nursing rotations etc. The idea here is not to try to plan out the entire order execution, since it can easily change or be stopped, e.g. due to change in patient or other unexpected events. In a lookahead approach, posted Actions are executed, and more planned Actions are posted. The planned timing of each set of Actions may change due to the current situation, with the effect that the overall set of Actions that unfolds in time may well be different from an attempt to post all Actions as per the 'full plan' idea.</p>
+<p>A more flexible version of planning an ongoing order is 'lookahead' planning, i.e. posting a plan of Actions for a moving window in time, e.g. one day, a few days, a few nursing rotations etc. The idea here is not to try to plan out the entire order execution, since it can easily change or be stopped, e.g. due to change in patient or other unexpected events. In a lookahead approach, posted Actions are executed, and more planned Actions are posted. The planned timing of each set of Actions may change due to the current situation, with the effect that the overall set of Actions that unfolds in time may well be different from an attempt to post all Actions as per the 'full plan' idea.</p>
 </div>
 <div class="paragraph">
 <p>For the open-ended cases mentioned above, the only option is a lookahead plan that extends as far ahead in time as the treating physicians are prepared to go.</p>
@@ -4345,23 +4355,16 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="sect3">
 <h4 id="_checklist_sign_off"><a class="anchor" href="#_checklist_sign_off"></a>9.1.3. Checklist &amp; Sign-off</h4>
 <div class="paragraph">
-<p>If planned Actions are posted in advance, they can be viewed by workers as a checklist, and signed off as having been performed over time. The use of this is that the correspondence between Actions actualy perfrmed and those planned is established. If an Action A1 is posted for time T, it might actually be done at time T', but we still want to know that it was Action A1 that was intentionally performed, and not some other Action. Over the course of the order execution, a pciture will emerge of planned Actions being performed and signed off, possibly with some being missed as not needed, or not done for some other reason. Additional Actions not originally posted in the plan might also be done if they are allowed by the general specification of the relevant archetype.</p>
+<p>If a Task list is created, the constituent Tasks (typically Actions) can be viewed by workers as a checklist, and subsequently signed off as having been performed over time. The utility of this is that the correspondence between Actions (Observations etc) actually performed and those planned is established. If a planned Action A1 is posted with execution time T, it might actually be performed at time T', but we still want to know that it was planned Action A1 that was intentionally performed, and not some other Action in the Task list. Over the course of the order execution, a picture will emerge of planned Actions being performed and signed off, possibly with some being missed as not needed, or not done for some other reason. Additional Actions not originally posted in the plan might also be done if they are allowed by the general specification of the relevant archetype.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_major_changes_and_abandonment"><a class="anchor" href="#_major_changes_and_abandonment"></a>9.1.4. Major Changes and Abandonment</h4>
 <div class="paragraph">
-<p>Inevitably, some planned sets of Actions will have to be changed or abandoned partway through due to unexpected changes in the patient situation. The question here is: what should be done with the remaining posted Actions that will not be performed? Should they be marked as 'won&#8217;t do' (with some reason) and committed to the EHR, or should they be deleted and never show up in the EHR?</p>
+<p>Inevitably, some Task lists will have to be changed or abandoned partway through due to unexpected changes in the patient situation. The question here is: what should be done with the remaining posted Actions that will not be performed? Should they be marked as 'won&#8217;t do' (with some reason) and committed to the EHR, or should they be deleted prior to being committed to the EHR?</p>
 </div>
 <div class="paragraph">
-<p>It seems reasonable to suppose that the answer will differ according to circumstance and local preference, in which case we need to support something like the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>planned Actions that are 'posted' are not necessarily written into the EHR, but may exist in a logical buffer first, and are only committed when a) performed or b) explicitly marked as not done or c) included in a set of not-done Actions to be committed to the EHR at a point of plan abandonment.</p>
-</li>
-</ul>
+<p>It is assumed that the answer will differ according to circumstance and local preference, in other words, that planned Tasks that are created are not necessarily written into the EHR, but may initially exist in a separate 'planned tasks' buffer, and are only committed when a) the Task is performed or b) explicitly marked as not done or c) included in a list of not-done Actions to be committed to the EHR at a point of plan abandonment.</p>
 </div>
 </div>
 <div class="sect3">
@@ -4394,7 +4397,29 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 </div>
 <div class="sect2">
-<h3 id="_planned_task_model"><a class="anchor" href="#_planned_task_model"></a>9.2. Planned Task Model</h3>
+<h3 id="_design_paradigm"><a class="anchor" href="#_design_paradigm"></a>9.2. Design Paradigm</h3>
+<div class="paragraph">
+<p>The design approach adopted here is based on the idea of three phases of an intervention, namely Order, Planned action, Action (here we assume that 'action' may be an openEHR <code>ACTION</code>, <code>OBSERVATION</code>, or possibly some other kind of clinical information type). There are correspondingly three levels of representation, two of which already exist, as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INSTRUCTION</code>: statement of an order in a formulaic way, e.g. corresponding to "Amoxycillin 3 td po x 7d" (3 times a day, orally, for 7 days);</p>
+</li>
+<li>
+<p><code>PLANNED_ACTION</code>: representation of a single executable step in the order, e.g. a single dose administration of a drug;</p>
+</li>
+<li>
+<p><code>ACTION</code>: statement of the step that was actually executed by the performer.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The model described here adds the second level of representation, which enables fine-grained lists of executable tasks to be explicitly stated and therefore stored in the EHR, displayed, and signed off.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_planned_task_model"><a class="anchor" href="#_planned_task_model"></a>9.3. Planned Task Model</h3>
 <div class="paragraph">
 <p>The following figure shows the <code>rm.composition.planning</code> package, including its relationships to existing classes.</p>
 </div>
@@ -4402,13 +4427,13 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="content">
 <img src="../UML/diagrams/RM-composition.planning.svg" alt="RM composition.planning">
 </div>
-<div class="title">Figure 31. rm.composition.planning package</div>
+<div class="title">Figure 32. rm.composition.planning package</div>
 </div>
 <div class="paragraph">
 <p>The central classes in this model are <code>TASK_LIST</code> and <code>PLANNED_TASK</code>, which define a list of Tasks and a single Task respectively. The abstract parent class <code>PLAN_ITEM</code> is used to provide these two classes with various attibutes that may apply both to a list of Tasks and single Task. As stated earlier, the notion of Task in this model is at the bottom of three conceptual levels. Accordingly, it does not attempt to define semantics of Care Plans or Care Pathways, but it does provide attributes to record a guideline and care plan identifier(s) (<code>PLAN_ITEM.<em>guideline_id</em></code> and <code>TASK_LIST.<em>care_plan</em></code> respectively).</p>
 </div>
 <div class="sect3">
-<h4 id="_execution_time_data_structures"><a class="anchor" href="#_execution_time_data_structures"></a>9.2.1. Execution-time Data Structures</h4>
+<h4 id="_execution_time_data_structures"><a class="anchor" href="#_execution_time_data_structures"></a>9.3.1. Execution-time Data Structures</h4>
 <div class="paragraph">
 <p>In this model a <code>TASK_LIST</code> is required in order to define any <code>PLANNED_TASKs</code>. Accordingly, <code>TASK_LIST</code> inherits from <code>CONTENT_ITEM</code>, the abstract type of the <code><em>content</em></code> attribute of a <code>COMPOSITION</code>. A <code>TASK_LIST</code> and its constituent <code>PLANNED_TASKs</code> are assumed to be created within a single dedicated <code>COMPOSITION</code> which is re-versioned as changes are made to its contents. New versions will occur for the following reasons:</p>
 </div>
@@ -4433,49 +4458,83 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="_logical_links_and_referencing"><a class="anchor" href="#_logical_links_and_referencing"></a>9.2.2. Logical Links and Referencing</h4>
+<h4 id="_logical_links_and_referencing"><a class="anchor" href="#_logical_links_and_referencing"></a>9.3.2. Logical Links and Referencing</h4>
 <div class="paragraph tbd">
 <p>TBD: Describe link structures of PLAN elements with <code>ENTRYs</code>, <code>COMPOSITIONs</code> etc.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_scenarios"><a class="anchor" href="#_scenarios"></a>9.3. Scenarios</h3>
+<h3 id="_scenarios"><a class="anchor" href="#_scenarios"></a>9.4. Scenarios</h3>
 <div class="sect3">
-<h4 id="_typical_plan"><a class="anchor" href="#_typical_plan"></a>9.3.1. Typical Plan</h4>
+<h4 id="_typical_plan"><a class="anchor" href="#_typical_plan"></a>9.4.1. Typical Plan</h4>
+<div class="paragraph">
+<p>The following UML instance diagram shows a partial state of an EHR containing orders and a related Task List. The upper part shows a <code>COMPOSITION</code> containing a number of <code>INSTRUCTIONs</code> that express the orders for Cyclophosphamide, Hydroxydaunorubicin (Doxorubicin), etc, that make up the order set for a CHOP chemotherapy protocol (to be more complete, Rituximab would also be included). It is assumed that the orders contain the correct dosages for the patient, i.e. that they have been calculated in advance for the patient&#8217;s body weight, surface area and other specifics. A few elements of an <code>ACTIVITY</code> for the Cyclophosphamide drug are shown here.</p>
+</div>
+<div class="paragraph">
+<p>In the lower part of the part of the diagram is a <code>COMPOSITION</code> containing a <code>TASK_LIST</code> structure representing the list of work items to perform in order to administer the chemotherapy to the patient. It is assumed that a specialised chemotherapy application has been used to created this structure. The first <code>PLANNED_ACTION</code> is shown in some detail, and includes a reference back to the related Instruction Activity, enabling an application to retrieve and display the details of the order. As a precaution, it also has the <code><em>narrative</em></code> attribute set to the value <code>"Cyclophosphamide 1400 mg IV"</code>, copied (or generated) from the <code>INSTRUCTION</code> when the <code>TASK_LIST</code> was created. The other attributes of the <code>PLANNED_ACTION</code> object indicate when to execute the Task, what professional role should do it (<code><em>participations</em></code>), the Careflow step ('administer') and the target state machine state (<code>active</code>).</p>
+</div>
+<div class="paragraph">
+<p>Each of the <code>PLANNED_TASK</code> instances in the <code>TASK_LIST</code> should logically speaking be almost a copy of the <code>ACTION</code> that would result from executing the Task. This is not literally true, since there are fields representing various kinds of links, identifiers and other protocol and care plan information, but for the core information of what to do, and when to do it the instance data for a Planned action should be a tight constraint version of the intended Action to result.</p>
+</div>
+<div id="planning_typical_instance" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/Planning-typical-instance.svg" alt="Planning typical instance">
+</div>
+<div class="title">Figure 33. Typical Task List - CHOP Chemotherapy</div>
+</div>
+<div class="paragraph">
+<p>It is worth considering some of the differences between how an order represents the Task and how it may be represented in a <code>PLANNED_ACTION</code> and an eventual <code>ACTION</code>. Consider the fourth drug in the CHOP regimen, a choice of Prednisone or Prednisolone. In the form expressed in the order, i.e. the <code>INSTRUCTION</code>, it may be expressed in the following form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>administer 80mg orally every day for 5 days</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This could be expressed as a single <code>ACTIVITY</code> with the <code>INSTRUCTION.<em>tming</em></code> attribute set to represent 'once a day for 5 days'.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>TASK_LIST</code> however, it will be expressed as 5 separate <code>PLANNED_ACTIONs</code>, each indicating a single dose for one day. This corresponds to how the drug is actually administered and enables the system (and openEHR data) to represent each action individually, as well as deviations such as not performing one or more of the administrations. The information displayed representing each Task to the human agent will therefore be somewhat different to the form in which it is expressed in the generating order.</p>
+</div>
+<div class="paragraph">
+<p>However, the order <code>INSTRUCTION</code> could have been created using a series of 5 <code>ACTIVITY</code> objects each representing a single day&#8217;s administration. In this case, the form defined in each <code>ACTIVITY</code> is very close to the form required to represent each Task in the Task list.</p>
+</div>
+<div class="paragraph">
+<p>It is assumed that determining how to populate the details of the <code>PLANNED_ACTIONs</code> is up to an intelligent application that knows the relationship between the relevant orders or order sets, and the exact form of Task lists to implement them.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_check_list_and_sign_off"><a class="anchor" href="#_check_list_and_sign_off"></a>9.4.2. Check-list and Sign-off</h4>
 <div class="paragraph tbd">
 <p>TBD</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_check_list_and_sign_off"><a class="anchor" href="#_check_list_and_sign_off"></a>9.3.2. Check-list and Sign-off</h4>
+<h4 id="_changes_during_execution"><a class="anchor" href="#_changes_during_execution"></a>9.4.3. Changes during Execution</h4>
 <div class="paragraph tbd">
 <p>TBD</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_changes_during_execution"><a class="anchor" href="#_changes_during_execution"></a>9.3.3. Changes during Execution</h4>
+<h4 id="_abandonment"><a class="anchor" href="#_abandonment"></a>9.4.4. Abandonment</h4>
 <div class="paragraph tbd">
 <p>TBD</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_abandonment"><a class="anchor" href="#_abandonment"></a>9.3.4. Abandonment</h4>
-<div class="paragraph tbd">
-<p>TBD</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_order_set"><a class="anchor" href="#_order_set"></a>9.3.5. Order Set</h4>
+<h4 id="_order_set"><a class="anchor" href="#_order_set"></a>9.4.5. Order Set</h4>
 <div class="paragraph tbd">
 <p>TBD</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_descriptions_6"><a class="anchor" href="#_class_descriptions_6"></a>9.4. Class Descriptions</h3>
+<h3 id="_class_descriptions_6"><a class="anchor" href="#_class_descriptions_6"></a>9.5. Class Descriptions</h3>
 <div class="sect3">
-<h4 id="_plan_item_class"><a class="anchor" href="#_plan_item_class"></a>9.4.1. PLAN_ITEM Class</h4>
+<h4 id="_plan_item_class"><a class="anchor" href="#_plan_item_class"></a>9.5.1. PLAN_ITEM Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -4507,9 +4566,16 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subject</strong>: <code>PARTY_PROXY</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional indicator of subject of Task, which is normally the subject of the EHR. If this is not the case, this attribute states who the Task is to be performed on.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>guideline_id</strong>: <code>OBJECT_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>identifier of guideline, care pathway etc, from which this Plan item is derived.</p>
+<p>Identifier of guideline, care pathway etc, from which this Plan item is derived.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4526,18 +4592,11 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p>Causal drivers or applicability of this Task item to subject of work, according to governing guideline, if any. May be displayed as a safety precaution to human performer.</p>
 </div></div></td>
 </tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subject</strong>: <code>PARTY_PROXY</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional indicator of subject of Task, which is normally the subject of the EHR. If this is not the case, this attribute states who the Task is to be performed on.</p>
-</div></div></td>
-</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_planned_participation_class"><a class="anchor" href="#_planned_participation_class"></a>9.4.2. PLANNED_PARTICIPATION Class</h4>
+<h4 id="_planned_participation_class"><a class="anchor" href="#_planned_participation_class"></a>9.5.2. PLANNED_PARTICIPATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -4603,7 +4662,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </table>
 </div>
 <div class="sect3">
-<h4 id="_task_list_class"><a class="anchor" href="#_task_list_class"></a>9.4.3. TASK_LIST Class</h4>
+<h4 id="_task_list_class"><a class="anchor" href="#_task_list_class"></a>9.5.3. TASK_LIST Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -4639,21 +4698,21 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>start_time</strong>: <code>DV_DATE_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>start_time</strong>: <code>Date_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Nominal start time for the Task list as a whole. The timings of individual Tasks may be specified as offsets from this time, via PLANNED_TIME.relative_offset.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>completion_timeout</strong>: <code>DV_DATE_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>completion_timeout</strong>: <code>Date_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Maximal completion date/time by which this Task list should be considered obsolete. If not set, the Task list would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the time_spec attribute of PLANNED_TASKs in the list.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>task_sequence</strong>: <code>List&lt;PLANNED_TASK&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tasks</strong>: <code>List&lt;PLANNED_TASK&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Set of Tasks to perform.</p>
 </div></div></td>
@@ -4676,7 +4735,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </table>
 </div>
 <div class="sect3">
-<h4 id="_task_list_state_enumeration"><a class="anchor" href="#_task_list_state_enumeration"></a>9.4.4. TASK_LIST_STATE Enumeration</h4>
+<h4 id="_task_list_state_enumeration"><a class="anchor" href="#_task_list_state_enumeration"></a>9.5.4. TASK_LIST_STATE Enumeration</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -4727,7 +4786,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </table>
 </div>
 <div class="sect3">
-<h4 id="_planned_task_class"><a class="anchor" href="#_planned_task_class"></a>9.4.5. PLANNED_TASK Class</h4>
+<h4 id="_planned_task_class"><a class="anchor" href="#_planned_task_class"></a>9.5.5. PLANNED_TASK Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -4786,12 +4845,12 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entry_instance_ref</strong>: <code>OBJECT_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Forward reference to Entry (e.g. OBSERVATION etc) that was recorded as a result of this Task being performed.</p>
+<p>Forward reference to Entry (e.g. OBSERVATION etc) that was recorded as a result of this Task being performed. If this is set, it indicates that the planned Task is 'done' i.e. checked off the list.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cancelled_time</strong>: <code>DV_DATE_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cancelled_time</strong>: <code>Date_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Time at which Task was cancelled, in the case of a Task that won&#8217;t be performed.</p>
 </div></div></td>
@@ -4812,7 +4871,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </table>
 </div>
 <div class="sect3">
-<h4 id="_task_execution_condition_class"><a class="anchor" href="#_task_execution_condition_class"></a>9.4.6. TASK_EXECUTION_CONDITION Class</h4>
+<h4 id="_task_execution_condition_class"><a class="anchor" href="#_task_execution_condition_class"></a>9.5.6. TASK_EXECUTION_CONDITION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -4860,7 +4919,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </table>
 </div>
 <div class="sect3">
-<h4 id="_required_status_enumeration"><a class="anchor" href="#_required_status_enumeration"></a>9.4.7. REQUIRED_STATUS Enumeration</h4>
+<h4 id="_required_status_enumeration"><a class="anchor" href="#_required_status_enumeration"></a>9.5.7. REQUIRED_STATUS Enumeration</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -4905,7 +4964,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </table>
 </div>
 <div class="sect3">
-<h4 id="_planned_time_class"><a class="anchor" href="#_planned_time_class"></a>9.4.8. PLANNED_TIME Class</h4>
+<h4 id="_planned_time_class"><a class="anchor" href="#_planned_time_class"></a>9.5.8. PLANNED_TIME Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -4933,14 +4992,14 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>execution_window</strong>: <code>DV_INTERVAL&lt;DV_DATE_TIME&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>execution_window</strong>: <code>Interval&lt;Date_time&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Time window during which the action should start. May be a point time or an interval. If set, relative_offset and relative_time_qualifier are not set.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relative_offset</strong>: <code>DV_DURATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relative_offset</strong>: <code>Duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Relative time offset with respect to origin nominated in relative_time_qualifier.</p>
 </div></div></td>
@@ -4976,7 +5035,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </table>
 </div>
 <div class="sect3">
-<h4 id="_planned_action_class"><a class="anchor" href="#_planned_action_class"></a>9.4.9. PLANNED_ACTION Class</h4>
+<h4 id="_planned_action_class"><a class="anchor" href="#_planned_action_class"></a>9.5.9. PLANNED_ACTION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -5002,6 +5061,11 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>narrative</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
@@ -5047,7 +5111,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </table>
 </div>
 <div class="sect3">
-<h4 id="_planned_observation_class"><a class="anchor" href="#_planned_observation_class"></a>9.4.10. PLANNED_OBSERVATION Class</h4>
+<h4 id="_planned_observation_class"><a class="anchor" href="#_planned_observation_class"></a>9.5.10. PLANNED_OBSERVATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
