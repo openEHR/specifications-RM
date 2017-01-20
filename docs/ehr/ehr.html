@@ -246,6 +246,7 @@
 <li><a href="#_phases_of_work">9.3.1. Phases of Work</a></li>
 <li><a href="#_artefact_types_task_list_and_planned_task">9.3.2. Artefact types: Task List and Planned Task</a></li>
 <li><a href="#_relationships_between_artefact_types">9.3.3. Relationships between Artefact Types</a></li>
+<li><a href="#_task_planning_micro_service">9.3.4. Task Planning Micro-service</a></li>
 </ul>
 </li>
 <li><a href="#_task_planning_model">9.4. Task Planning Model</a>
@@ -256,6 +257,7 @@
 <li><a href="#_logical_links_and_referencing">9.4.1.2. Logical Links and Referencing</a></li>
 </ul>
 </li>
+<li><a href="#_transactional_micro_service">9.4.2. Transactional Micro-service</a></li>
 </ul>
 </li>
 <li><a href="#_scenarios">9.5. Scenarios</a>
@@ -277,6 +279,7 @@
 <li><a href="#_planned_time_class">9.6.7. PLANNED_TIME Class</a></li>
 <li><a href="#_planned_action_class">9.6.8. PLANNED_ACTION Class</a></li>
 <li><a href="#_planned_observation_class">9.6.9. PLANNED_OBSERVATION Class</a></li>
+<li><a href="#_task_planning_ms_interface">9.6.10. TASK_PLANNING_MS Interface</a></li>
 </ul>
 </li>
 </ul>
@@ -4382,7 +4385,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p>It is assumed that the answer will differ according to circumstance and local preference, in other words, that planned Tasks that are created are not necessarily written into the EHR, but may initially exist in a separate 'planned tasks' buffer, and are only committed when a) the Task is performed or b) explicitly marked as not done or c) included in a list of not-done Actions to be committed to the EHR at a point of plan abandonment.</p>
 </div>
 <div class="paragraph tbd">
-<p>TBD: is a better assumption that whatever planned Tasks have been defined in a Task List represent a clinical intention by the responsible clinicians, and should therefore always go in the EHR? Technically this would be simpler&#8230;&#8203;</p>
+<p>ISSUE-task-buffer: is a better assumption that whatever planned Tasks have been defined in a Task List represent a clinical intention by the responsible clinicians, and should therefore always go in the EHR? Technically this would be simpler&#8230;&#8203;</p>
 </div>
 </div>
 <div class="sect3">
@@ -4530,6 +4533,15 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div class="title">Figure 32. openEHR Planning Artefact Relationships</div>
 </div>
+<div class="paragraph tbd">
+<p>ISSUE-actions-mand-or-opt: the alternative view of this is that a Planned Task always results in an <code>ACTION</code>, but possibly another kind of Entry as well. For example a planned Task that logically describes an Observation to be performed could result in a linked <code>ACTION/OBSERVATION</code> pair. This creates a bit more data in the EHR, but arguably is more consistent, since there will always be an <code>ACTION</code> documenting any performed Task.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_task_planning_micro_service"><a class="anchor" href="#_task_planning_micro_service"></a>9.3.4. Task Planning Micro-service</h4>
+<div class="paragraph">
+<p>The information structures required to represent planned Tasks and references at runtime are likely to be non-trivial. For this reason, a Micro-service is defined, with a transactional interface that converts transactional calls to correct underlying information structures.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -4566,7 +4578,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </ul>
 </div>
 <div class="paragraph tbd">
-<p>TBD: is <code><em>indications</em></code> useful?</p>
+<p>ISSUE-indications: is <code><em>indications</em></code> useful?</p>
 </div>
 <div class="paragraph">
 <p>The <code>TASK_LIST</code> class contains its constituent Tasks via the <code><em>tasks</em></code> attribute, and includes other attributes describing the Task List:</p>
@@ -4591,7 +4603,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </ul>
 </div>
 <div class="paragraph tbd">
-<p>TBD: how should we best represent <code><em>guideline_id</em></code>? <code>OBJECT_REF</code> is the type used in <code>CARE_ENTRY.<em>guideline_id</em></code>, in the current spec. This was intended to enable the use of a <code>HIER_OBJECT_ID</code> or <code>GENERIC_ID</code>. However, there is probably no reliable machine identifier system for guidelines or Care Pathways. Perhaps a <code>DV_IDENTIFIER</code> would be better - this would allow things like &lt;`<em>issuer</em>` = "NICE"; <code><em>id</em></code> = "Sepsis pathway"; <code><em>type</em></code> = "care pathway"&gt;.</p>
+<p>ISSUE-guideline_id-rep: how should we best represent <code><em>guideline_id</em></code>? <code>OBJECT_REF</code> is the type used in <code>CARE_ENTRY.<em>guideline_id</em></code>, in the current spec. This was intended to enable the use of a <code>HIER_OBJECT_ID</code> or <code>GENERIC_ID</code>. However, there is probably no reliable machine identifier system for guidelines or Care Pathways. Perhaps a <code>DV_IDENTIFIER</code> would be better - this would allow things like &lt;`<em>issuer</em>` = "NICE"; <code><em>id</em></code> = "Sepsis pathway"; <code><em>type</em></code> = "care pathway"&gt;.</p>
 </div>
 <div class="paragraph">
 <p>The <code>PLANNED_TASK</code> class includes features common to any kind of Task, including the following:</p>
@@ -4616,7 +4628,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </ul>
 </div>
 <div class="paragraph tbd">
-<p>TBD: is there a better way to specify <code><em>entry_template_refs/ids</em></code>?</p>
+<p>ISSUE-template-refs: is there a better way to specify <code><em>entry_template_refs/ids</em></code>?</p>
 </div>
 <div class="paragraph">
 <p>The class <code>PLANNED_TASK</code> will in general be specialised in order to add attributes required by the planned form of specific Entry subtypes, hence, <code>PLANNED_ACTION</code>, <code>PLANNED_OBSERVATION</code> etc. The <code>PLANNED_ACION</code> class contains a number of attributes derived from the <code>INSTRUCTION</code> class and its constituent parts, including:</p>
@@ -4638,10 +4650,10 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </ul>
 </div>
 <div class="paragraph tbd">
-<p>TBD: <code><em>instruction_archetype_ref/instruction_archetype_id()</em></code> may be redundant; the planning application that creates these structures will know the relevant archetype ids; is there any value in recording them in the <code>PLANNED_ACTION</code> instances, especially since they can be determined by following the <code><em>instruction_activity_instance_ref</em></code> reverse runtime ref and looking at the <code>INSTRUCTION</code>.</p>
+<p>ISSUE-instr-arch_id-needed: <code><em>instruction_archetype_ref/instruction_archetype_id()</em></code> may be redundant; the planning application that creates these structures will know the relevant archetype ids; is there any value in recording them in the <code>PLANNED_ACTION</code> instances, especially since they can be determined by following the <code><em>instruction_activity_instance_ref</em></code> reverse runtime ref and looking at the <code>INSTRUCTION</code>.</p>
 </div>
 <div class="paragraph tbd">
-<p>TBD: The class <code>PLANNED_TIME</code> should probably be made generic and added to the BASE component. Needs to take into account some of the other models of time specification.</p>
+<p>ISSUE-generic-planned_time: The class <code>PLANNED_TIME</code> should probably be made generic and added to the BASE component. Needs to take into account some of the other models of time specification.</p>
 </div>
 <div class="sect3">
 <h4 id="_execution_time_data_structures"><a class="anchor" href="#_execution_time_data_structures"></a>9.4.1. Execution-time Data Structures</h4>
@@ -4698,8 +4710,14 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </ul>
 </div>
 <div class="paragraph tbd">
-<p>TBD: <code><em>entry_instance_ref</em></code> is a forward reference - which requires updating the Task List after the Tasks have beed performed and relevant Entries committed. Is this complication worth the benefit obtained, i.e. directly followable links rather than querying, to find Entries from the Task List items? Is being able to determine the resulting Entries starting from the Task List even useful?</p>
+<p>ISSUE-fwd-refs: <code><em>entry_instance_ref</em></code> is a forward reference - which requires updating the Task List after the Tasks have beed performed and relevant Entries committed. Is this complication worth the benefit obtained, i.e. directly followable links rather than querying, to find Entries from the Task List items? Is being able to determine the resulting Entries starting from the Task List even useful?</p>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_transactional_micro_service"><a class="anchor" href="#_transactional_micro_service"></a>9.4.2. Transactional Micro-service</h4>
+<div class="paragraph tbd">
+<p>TBD: describe micro-service.</p>
 </div>
 </div>
 </div>
@@ -5338,6 +5356,63 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLANNED_TASK</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_task_planning_ms_interface"><a class="anchor" href="#_task_planning_ms_interface"></a>9.6.10. TASK_PLANNING_MS Interface</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Interface</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_PLANNING_MS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Task planning micro-service: a service that knows how to create and maintain correct Task Planning information structures.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_task_list</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add_task</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>remove_task</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cancel_task</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>link_perfomed_action</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>etc</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>

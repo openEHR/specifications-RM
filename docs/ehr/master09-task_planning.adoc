@@ -45,7 +45,7 @@ Inevitably, some Task lists will have to be changed or abandoned partway through
 It is assumed that the answer will differ according to circumstance and local preference, in other words, that planned Tasks that are created are not necessarily written into the EHR, but may initially exist in a separate 'planned tasks' buffer, and are only committed when a) the Task is performed or b) explicitly marked as not done or c) included in a list of not-done Actions to be committed to the EHR at a point of plan abandonment.
 
 [.tbd]
-TBD: is a better assumption that whatever planned Tasks have been defined in a Task List represent a clinical intention by the responsible clinicians, and should therefore always go in the EHR? Technically this would be simpler...
+ISSUE-task-buffer: is a better assumption that whatever planned Tasks have been defined in a Task List represent a clinical intention by the responsible clinicians, and should therefore always go in the EHR? Technically this would be simpler...
 
 === Support Process Analytics
 
@@ -109,6 +109,13 @@ The following figure shows the correspondences between the various type of openE
 .openEHR Planning Artefact Relationships
 image::diagrams/planning_artefacts.svg[id=planning_artefact_relationships, align="center", width=50%]
 
+[.tbd]
+ISSUE-actions-mand-or-opt: the alternative view of this is that a Planned Task always results in an `ACTION`, but possibly another kind of Entry as well. For example a planned Task that logically describes an Observation to be performed could result in a linked `ACTION/OBSERVATION` pair. This creates a bit more data in the EHR, but arguably is more consistent, since there will always be an `ACTION` documenting any performed Task.
+
+=== Task Planning Micro-service
+
+The information structures required to represent planned Tasks and references at runtime are likely to be non-trivial. For this reason, a Micro-service is defined, with a transactional interface that converts transactional calls to correct underlying information structures.
+
 == Task Planning Model
 
 The following figure shows the `rm.composition.planning` package, including its relationships to existing classes.
@@ -128,7 +135,7 @@ The abstract parent class `PLAN_ITEM` is used to provide these two classes with 
 * `_indications_`: type of patient condition(s) to which this Task applies, e.g. 'pregnancy', 'lymphoma' etc; provided as a patient safety measure e.g. to be displayed in Task list application.
 
 [.tbd]
-TBD: is `_indications_` useful?
+ISSUE-indications: is `_indications_` useful?
 
 The `TASK_LIST` class contains its constituent Tasks via the `_tasks_` attribute, and includes other attributes describing the Task List:
 
@@ -139,7 +146,7 @@ The `TASK_LIST` class contains its constituent Tasks via the `_tasks_` attribute
 * `_sm_lifecycle_state()_`: the state machine lifecycle state of the Task List as a whole, computed from the `_sm_target_state_` values of member `PLANNED_TASKs`. The states come from the Instruction State Machine described earlier.
 
 [.tbd]
-TBD: how should we best represent `_guideline_id_`? `OBJECT_REF` is the type used in `CARE_ENTRY._guideline_id_`, in the current spec. This was intended to enable the use of a `HIER_OBJECT_ID` or `GENERIC_ID`. However, there is probably no reliable machine identifier system for guidelines or Care Pathways. Perhaps a `DV_IDENTIFIER` would be better - this would allow things like <`_issuer_` = "NICE"; `_id_` = "Sepsis pathway"; `_type_` = "care pathway">.
+ISSUE-guideline_id-rep: how should we best represent `_guideline_id_`? `OBJECT_REF` is the type used in `CARE_ENTRY._guideline_id_`, in the current spec. This was intended to enable the use of a `HIER_OBJECT_ID` or `GENERIC_ID`. However, there is probably no reliable machine identifier system for guidelines or Care Pathways. Perhaps a `DV_IDENTIFIER` would be better - this would allow things like <`_issuer_` = "NICE"; `_id_` = "Sepsis pathway"; `_type_` = "care pathway">.
 
 The `PLANNED_TASK` class includes features common to any kind of Task, including the following:
 
@@ -150,7 +157,7 @@ The `PLANNED_TASK` class includes features common to any kind of Task, including
 * `_sm_target_state_`: the state machine target state that will be reached if this Task is performed. The states come from the Instruction State Machine described earlier.
 
 [.tbd]
-TBD: is there a better way to specify `_entry_template_refs/ids_`?
+ISSUE-template-refs: is there a better way to specify `_entry_template_refs/ids_`?
 
 The class `PLANNED_TASK` will in general be specialised in order to add attributes required by the planned form of specific Entry subtypes, hence, `PLANNED_ACTION`, `PLANNED_OBSERVATION` etc. The `PLANNED_ACION` class contains a number of attributes derived from the `INSTRUCTION` class and its constituent parts, including:
 
@@ -160,10 +167,10 @@ The class `PLANNED_TASK` will in general be specialised in order to add attribut
 * `_instruction_activity_instance_ref_`, described below.
 
 [.tbd]
-TBD: `_instruction_archetype_ref/instruction_archetype_id()_` may be redundant; the planning application that creates these structures will know the relevant archetype ids; is there any value in recording them in the `PLANNED_ACTION` instances, especially since they can be determined by following the `_instruction_activity_instance_ref_` reverse runtime ref and looking at the `INSTRUCTION`.
+ISSUE-instr-arch_id-needed: `_instruction_archetype_ref/instruction_archetype_id()_` may be redundant; the planning application that creates these structures will know the relevant archetype ids; is there any value in recording them in the `PLANNED_ACTION` instances, especially since they can be determined by following the `_instruction_activity_instance_ref_` reverse runtime ref and looking at the `INSTRUCTION`.
 
 [.tbd]
-TBD: The class `PLANNED_TIME` should probably be made generic and added to the BASE component. Needs to take into account some of the other models of time specification.
+ISSUE-generic-planned_time: The class `PLANNED_TIME` should probably be made generic and added to the BASE component. Needs to take into account some of the other models of time specification.
 
 === Execution-time Data Structures
 
@@ -193,7 +200,12 @@ As described above, there are three possible levels of expression of work items:
 * *performed Task to Planned Task reverse ref*: the `ENTRY._workflow_id_` attribute may be used to record a reverse reference from an `ACTION`, `OBSERVATION` etc to a causing `PLANNED_TASK` instance.
 
 [.tbd]
-TBD: `_entry_instance_ref_` is a forward reference - which requires updating the Task List after the Tasks have beed performed and relevant Entries committed. Is this complication worth the benefit obtained, i.e. directly followable links rather than querying, to find Entries from the Task List items? Is being able to determine the resulting Entries starting from the Task List even useful?
+ISSUE-fwd-refs: `_entry_instance_ref_` is a forward reference - which requires updating the Task List after the Tasks have beed performed and relevant Entries committed. Is this complication worth the benefit obtained, i.e. directly followable links rather than querying, to find Entries from the Task List items? Is being able to determine the resulting Entries starting from the Task List even useful?
+
+=== Transactional Micro-service
+
+[.tbd]
+TBD: describe micro-service.
 
 == Scenarios
 
@@ -255,3 +267,5 @@ include::{uml_export_dir}/classes/planned_time.adoc[]
 include::{uml_export_dir}/classes/planned_action.adoc[]
 
 include::{uml_export_dir}/classes/planned_observation.adoc[]
+
+include::{uml_export_dir}/classes/task_planning_ms.adoc[]
