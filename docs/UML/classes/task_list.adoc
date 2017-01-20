@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*0..1*
 |*description*: `DV_TEXT`
-a|Human-understandable description of the Task list.
+a|Human-understandable description of the Task list, which may be specific to the work items and patient.
 
 h|*0..1*
 |*start_time*: `Date_time`
@@ -31,11 +31,18 @@ h|*0..1*
 |*tasks*: `List<PLANNED_TASK>`
 a|Set of Tasks to perform.
 
-h|*1..1*
-|*lifecycle_state*: `TASK_LIST_STATE`
-a|Lifecycle state of this Task list. A Task list is marked 'active' to indicate it should be performed. A list marked 'proposed' is not to be performed.
-
 h|*0..1*
 |*care_plan*: `LOCATABLE_REF`
 a|Care plan object from which this Task list is derived.
+
+h|*0..1*
+|*guideline_id*: `OBJECT_REF`
+a|Identifier of guideline, care pathway etc, from which this Plan item is derived.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*sm_lifecycle_state*: `CODE_PHRASE`
+a|Lifecycle state of Task List, as a state from the openEHR Instruction State Machine, derived by inspecting the states of the PLANNED_TASKs. Coded by the corresponding openEHR term list.
 |===

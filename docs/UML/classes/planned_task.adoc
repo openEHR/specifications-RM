@@ -15,13 +15,13 @@ h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|*1..1*
-|*entry_archetype_ref*: `String`
-a|Logical type of ENTRY representing a Task to be performed according to this planned Task.
-
 h|*0..1*
 |*entry_archetype_concept*: `String`
-a|A copy of the relevant Action or other archetype root node concept term. This indicates what the action is to be performed.
+a|A copy of the relevant Action or other archetype root node concept term. This indicates the action to be performed.
+
+h|*1..1*
+|*entry_archetype_ref*: `String`
+a|Logical type of ENTRY representing a Task to be performed according to this planned Task. This attribute is the String form of entry_archetype_id function.
 
 h|*0..1*
 |*execution_condition*: `TASK_EXECUTION_CONDITION`
@@ -32,12 +32,24 @@ h|*1..1*
 a|Specifier of time at which the Task should be performed.
 
 h|*0..1*
+|*entry_template_refs*: `List<String>`
+a|Specific templates based on the Entry archetype referred to by entry_archetype_ref that this PLANNED_TASK can be used with. If any are specified, these templates define specific data sets that are subsets of the Entry archetype that can be used to document the execution of this PLANNED_TASK. If this field is empty, any template based on the Entry archetype can be used.
+
+h|*0..1*
 |*entry_instance_ref*: `OBJECT_REF`
 a|Forward reference to Entry (e.g. OBSERVATION etc) that was recorded as a result of this Task being performed. If this is set, it indicates that the planned Task is 'done' i.e. checked off the list.
 
 h|*0..1*
 |*cancelled_time*: `Date_time`
 a|Time at which Task was cancelled, in the case of a Task that won't be performed.
+
+h|*0..1*
+|*cancelled_reason*: `DV_TEXT`
+a|Optional reason for cancellation of this Task.
+
+h|*1..1*
+|*sm_target_state*: `DV_CODED_TEXT`
+a|The Instruction State Machine state that the planned ACTION would reach when performed.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -45,4 +57,8 @@ h|*Functions*
 h|
 |*entry_archetype_id*: `ARCHETYPE_HRID`
 a|Structural form of entry_archetype_ref produced by parsing.
+
+h|
+|*entry_template_ids*: `List<ARCHETYPE_HRID>`
+a|
 |===

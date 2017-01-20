@@ -21,14 +21,10 @@ h|*0..1*
 a|Optional indicator of subject of Task, which is normally the subject of the EHR. If this is not the case, this attribute states who the Task is to be performed on.
 
 h|*0..1*
-|*guideline_id*: `OBJECT_REF`
-a|Identifier of guideline, care pathway etc, from which this Plan item is derived.
+|*indications*: `List<DV_TEXT>`
+a|Causal drivers or applicability of this Task item to subject of work, according to governing guideline, if any. May be displayed as a safety precaution to human performer.
 
 h|*0..1*
 |*other_details*: `ITEM_STRUCTURE`
 a|Archetypable structure for recording non hard-modelled information.
-
-h|*0..1*
-|*indications*: `List<DV_TEXT>`
-a|Causal drivers or applicability of this Task item to subject of work, according to governing guideline, if any. May be displayed as a safety precaution to human performer.
 |===

@@ -19,21 +19,17 @@ h|*1..1*
 |*narrative*: `String`
 a|
 
-h|*1..1*
-|*target_state*: `DV_CODED_TEXT`
-a|The Instruction State Machine state that the planned ACTION would reach when performed.
-
-h|*1..1*
+h|*0..1*
 |*careflow_step*: `DV_CODED_TEXT`
 a|The specific careflow step represented by the ACTION to be performed.
 
 h|*0..1*
 |*instruction_archetype_ref*: `String`
-a|The INSTRUCTION archetype to which the planned ACTION corresponds.
+a|The INSTRUCTION archetype to which the PLANNED_ACTION corresponds. This attribute is the String form of instruction_archetype_id() function.
 
 h|*0..1*
-|*instruction_activity*: `LOCATABLE_REF`
-a|Reference to ACTIVITY object within an INSTRUCTION to which this PLANNED_ACTION corresponds.
+|*instruction_activity_instance_ref*: `LOCATABLE_REF`
+a|Reference to ACTIVITY object within an INSTRUCTION (which must exist within a previously committed COMPOSITION) to which this PLANNED_ACTION corresponds.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
