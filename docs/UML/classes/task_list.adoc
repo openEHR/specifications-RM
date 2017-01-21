@@ -20,11 +20,11 @@ h|*0..1*
 a|Human-understandable description of the Task list, which may be specific to the work items and patient.
 
 h|*0..1*
-|*start_time*: `Date_time`
+|*start_time*: `PLANNED_TIME`
 a|Nominal start time for the Task list as a whole. The timings of individual Tasks may be specified as offsets from this time, via PLANNED_TIME.relative_offset.
 
 h|*0..1*
-|*completion_timeout*: `Date_time`
+|*completion_time*: `PLANNED_TIME`
 a|Maximal completion date/time by which this Task list should be considered obsolete. If not set, the Task list would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the time_spec attribute of PLANNED_TASKs in the list.
 
 h|*0..1*

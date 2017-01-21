@@ -246,7 +246,8 @@
 <li><a href="#_phases_of_work">9.3.1. Phases of Work</a></li>
 <li><a href="#_artefact_types_task_list_and_planned_task">9.3.2. Artefact types: Task List and Planned Task</a></li>
 <li><a href="#_relationships_between_artefact_types">9.3.3. Relationships between Artefact Types</a></li>
-<li><a href="#_task_planning_micro_service">9.3.4. Task Planning Micro-service</a></li>
+<li><a href="#_state_machine_model">9.3.4. State Machine Model</a></li>
+<li><a href="#_task_planning_micro_service">9.3.5. Task Planning Micro-service</a></li>
 </ul>
 </li>
 <li><a href="#_task_planning_model">9.4. Task Planning Model</a>
@@ -4420,12 +4421,12 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="sect2">
 <h3 id="_design_basis"><a class="anchor" href="#_design_basis"></a>9.3. Design Basis</h3>
 <div class="paragraph">
-<p>The design approach adopted here is based on a number of ideas. Firstly, it addresses only the 'Task list' level of the three conceptual levels mentioned earlier, leaving Care Plan and Care Pathway (guideline) to be addressed elsewhere.</p>
+<p>The design approach adopted here is based on a number of ideas. Firstly, it addresses only the 'Task list' level of the three conceptual levels mentioned earlier, leaving Care Plan and Care Pathway (guideline) to be addressed elsewhere. The other dsign elements are described below.</p>
 </div>
 <div class="sect3">
 <h4 id="_phases_of_work"><a class="anchor" href="#_phases_of_work"></a>9.3.1. Phases of Work</h4>
 <div class="paragraph">
-<p>The second idea is the notion of three phases of clinical work, namely Order, Planned Task, and (performed) Task. There are correspondingly three levels of representation (two of which already exist in the basic openEHR <code>ENTRY</code> model) as follows:</p>
+<p>The design uses the notion of three phases of clinical work, namely Order, Planned Task, and (performed) Task. There are correspondingly three levels of representation (two of which already exist in the basic openEHR <code>ENTRY</code> model) as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4477,7 +4478,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="sect3">
 <h4 id="_artefact_types_task_list_and_planned_task"><a class="anchor" href="#_artefact_types_task_list_and_planned_task"></a>9.3.2. Artefact types: Task List and Planned Task</h4>
 <div class="paragraph">
-<p>The third element of the design is to define two central artefact types, namely Task List and Planned Task. These follow naturally from the requirements described above, but we need to articulate the semantics of these two concepts, as follows:</p>
+<p>A further element of the design is to define two central artefact types, namely Task List and Planned Task. These follow naturally from the requirements described above, but we need to articulate the semantics of these two concepts, as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4512,6 +4513,12 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="paragraph">
 <p>There are a few nuances to consider here. Firstly, the granularity of a Planned Task can be variable, and will tend to follow clinical and health management culture as much as any theoretical precept. For example, healthcare organisation A may regard 'cannula insertion' as a single Task, similar to giving the patient a pill: the nurse just uses his training to perform the job without needing to be reminded of the individual steps. However healthcare organisation B may treat cannulation in a checklist- or guideline-driven way (e.g. using a guideline such as <a href="http://emedicine.medscape.com/article/1998177-overview">this one</a> from Medscape.com), in which case, a dozen or more Tasks could be defined within a Task List to represent the work. The model described here thus makes no built-in assumptions about granularity of a Task.</p>
 </div>
+<div class="paragraph">
+<p>A related question has to do with the granularity of Planned Tasks with respect to the granularity of resulting <code>ACTION</code>, <code>OBSERVATION</code> etc Entries. The model below makes the assumption that one Planned Task corresponds to one <code>ACTION</code> or other archetyped <code>ENTRY</code>.</p>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-task-entry-corr: the alternative seems to be to allow a Planned Task to correspond to e.g. a whole Compositoin template, where the <code>COMPOSITION</code> contains a number of e.g. <code>ACTIONs</code> or <code>OBSERVATIONs</code>. Problems I see with this: a) who knows what is in the Composition template? It may change over time; b) what if only some of the items in the Composition template can be done? Is the Task half complete? Or should the performer not do any of it?</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_relationships_between_artefact_types"><a class="anchor" href="#_relationships_between_artefact_types"></a>9.3.3. Relationships between Artefact Types</h4>
@@ -4538,7 +4545,32 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="_task_planning_micro_service"><a class="anchor" href="#_task_planning_micro_service"></a>9.3.4. Task Planning Micro-service</h4>
+<h4 id="_state_machine_model"><a class="anchor" href="#_state_machine_model"></a>9.3.4. State Machine Model</h4>
+<div class="paragraph">
+<p>Related to the correspondences between the phases of work above is the question of lifecycle. This design assumes that <em>a Task List has its own lifecycle</em> whose states come from the openEHR Instruction State Machine <a href="#instruction_state_machine">described above</a>. This means that openEHR <code>INSTRUCTIONs</code> that define orders whose individual <code>ACTIONs</code> appear in a Task List have distinct lifecycle state machines. This may be understood as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the lifecycle state machine of an <code>INSTRUCTION</code> represents the state of just one order or request, e.g. the progress of administering a single drug;</p>
+</li>
+<li>
+<p>the lifecycle state machine of a Task List represents the state of the Task group, typically a therapy or other coarse-grained piece of clinical work.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Consider a multi-drug therapy: one of the drugs may be administered once, at the beginning, in which case the relevant <code>ACTIONs</code> would indicate completion of the <code>INSTRUCTION</code> lifecycle, even though the therapy as a whole is not complete. Completion (abandonment, etc) of the Task list as a whole is therefore defined as completion or otherwise of all of its Tasks.</p>
+</div>
+<div class="paragraph">
+<p>One of the side-effects of distinct state machines for <code>INSTRUCTIONs</code> and Task Lists is that not all careflow steps and states in the former need to be represented as Tasks in a Task List. For example, a significant number of careflow steps defined in <code>ACTION</code> archetypes are for non-Active states, i.e. Planning, Postponement, Suspension etc. These steps do not need to have Planned Tasks defined for them, since by definition they are nearly all unplanned.</p>
+</div>
+<div class="paragraph">
+<p>As a consequence, most of not all Planned Tasks in a Task List correspond only to Active-state careflow steps of constituent order <code>INSTRUCTIONs</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_task_planning_micro_service"><a class="anchor" href="#_task_planning_micro_service"></a>9.3.5. Task Planning Micro-service</h4>
 <div class="paragraph">
 <p>The information structures required to represent planned Tasks and references at runtime are likely to be non-trivial. For this reason, a Micro-service is defined, with a transactional interface that converts transactional calls to correct underlying information structures.</p>
 </div>
@@ -4598,7 +4630,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p><code><em>guideline_id</em></code>: optional identifier of a driving Care Pathway or other kind of guideline, which may also be recorded in <code>ENTRY</code> instances documenting Actions, Observations etc driven by the same guideline;</p>
 </li>
 <li>
-<p><code><em>sm_lifecycle_state()</em></code>: the state machine lifecycle state of the Task List as a whole, computed from the <code><em>sm_target_state</em></code> values of member <code>PLANNED_TASKs</code>. The states come from the Instruction State Machine described earlier.</p>
+<p><code><em>sm_lifecycle_state()</em></code>: the state machine lifecycle state of the Task List as a whole, computed from the <code><em>sm_target_state</em></code> values of member <code>PLANNED_TASKs</code>. The states come from the  <a href="#instruction_state_machine">Instruction State Machine</a>.</p>
 </li>
 </ul>
 </div>
@@ -4623,7 +4655,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p><code><em>cancelled_time</em>/<em>cancelled_reason</em></code>: the time and reason the <code>PLANNED_TASK</code> was cancelled, if applicable. If a single <code>PLANNED_TASK</code> is cancelled, this doesn&#8217;t necessarily imply anything about the completion of the owning Task list, since a planned Task may have been optional, or otherwise already achieved;</p>
 </li>
 <li>
-<p><code><em>sm_target_state</em></code>: the state machine target state that will be reached if this Task is performed. The states come from the Instruction State Machine described earlier.</p>
+<p><code><em>sm_target_state</em></code>: the Task List lifecycle state that will be reached if this Task is performed. The states come from the <a href="#instruction_state_machine">openEHR Instruction State Machine</a>, i.e. <code>Initial</code>, <code>Planned</code>, <code>Active</code>, <code>Complete</code> etc. If this <code>PLANNED_TASK</code> is related to an <code>ACTION</code> archetype, the state will come from one of its transitions.</p>
 </li>
 </ul>
 </div>
@@ -4942,14 +4974,14 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>start_time</strong>: <code>Date_time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>start_time</strong>: <code>PLANNED_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Nominal start time for the Task list as a whole. The timings of individual Tasks may be specified as offsets from this time, via PLANNED_TIME.relative_offset.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>completion_timeout</strong>: <code>Date_time</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>completion_time</strong>: <code>PLANNED_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Maximal completion date/time by which this Task list should be considered obsolete. If not set, the Task list would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the time_spec attribute of PLANNED_TASKs in the list.</p>
 </div></div></td>
@@ -5078,7 +5110,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sm_target_state</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The Instruction State Machine state that the planned ACTION would reach when performed.</p>
+<p>The Task List lifecycle state that will be reached if this Task is performed. The states come from the standard Instruction State Machine. If this Task is related to an ACTION archetype, the state will come from one of its transitions. Coded by the corresponding openEHR term list.</p>
 </div></div></td>
 </tr>
 <tr>

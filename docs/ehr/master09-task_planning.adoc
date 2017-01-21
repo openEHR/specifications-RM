@@ -63,11 +63,11 @@ A plan for a clinical intervention might need to encompass more than one order, 
 
 == Design Basis
 
-The design approach adopted here is based on a number of ideas. Firstly, it addresses only the 'Task list' level of the three conceptual levels mentioned earlier, leaving Care Plan and Care Pathway (guideline) to be addressed elsewhere.
+The design approach adopted here is based on a number of ideas. Firstly, it addresses only the 'Task list' level of the three conceptual levels mentioned earlier, leaving Care Plan and Care Pathway (guideline) to be addressed elsewhere. The other dsign elements are described below.
 
 === Phases of Work
 
-The second idea is the notion of three phases of clinical work, namely Order, Planned Task, and (performed) Task. There are correspondingly three levels of representation (two of which already exist in the basic openEHR `ENTRY` model) as follows:
+The design uses the notion of three phases of clinical work, namely Order, Planned Task, and (performed) Task. There are correspondingly three levels of representation (two of which already exist in the basic openEHR `ENTRY` model) as follows:
 
 * *Order*: statement of an order, expressed in a formulaic way, e.g. corresponding to "Amoxycillin 3 td po x 7d" (3 times a day, orally, for 7 days)
 ** represented in openEHR with the `INSTRUCTION` type;
@@ -84,7 +84,7 @@ The model described here adds the second level of representation, which enables 
 
 === Artefact types: Task List and Planned Task
 
-The third element of the design is to define two central artefact types, namely Task List and Planned Task. These follow naturally from the requirements described above, but we need to articulate the semantics of these two concepts, as follows:
+A further element of the design is to define two central artefact types, namely Task List and Planned Task. These follow naturally from the requirements described above, but we need to articulate the semantics of these two concepts, as follows:
 
 * *Planned Task*: a small, separately performable unit of planned work that typically corresponds to:
 ** the finest level of clinical responsibility, e.g. nurse administration of a drug, single observation of patient vital sign etc;
@@ -94,6 +94,11 @@ The third element of the design is to define two central artefact types, namely 
 ** a Task List is assumed to have a lifecycle that follows the openEHR Instruction State Machine (<<instruction_state_machine,described above>>), and therefore at any time, its state can be computed from the target state and execution status of its constitutent Tasks.
 
 There are a few nuances to consider here. Firstly, the granularity of a Planned Task can be variable, and will tend to follow clinical and health management culture as much as any theoretical precept. For example, healthcare organisation A may regard 'cannula insertion' as a single Task, similar to giving the patient a pill: the nurse just uses his training to perform the job without needing to be reminded of the individual steps. However healthcare organisation B may treat cannulation in a checklist- or guideline-driven way (e.g. using a guideline such as {medscape_cannulation}[this one] from Medscape.com), in which case, a dozen or more Tasks could be defined within a Task List to represent the work. The model described here thus makes no built-in assumptions about granularity of a Task.
+
+A related question has to do with the granularity of Planned Tasks with respect to the granularity of resulting `ACTION`, `OBSERVATION` etc Entries. The model below makes the assumption that one Planned Task corresponds to one `ACTION` or other archetyped `ENTRY`.
+
+[.tbd]
+ISSUE-task-entry-corr: the alternative seems to be to allow a Planned Task to correspond to e.g. a whole Compositoin template, where the `COMPOSITION` contains a number of e.g. `ACTIONs` or `OBSERVATIONs`. Problems I see with this: a) who knows what is in the Composition template? It may change over time; b) what if only some of the items in the Composition template can be done? Is the Task half complete? Or should the performer not do any of it?
 
 === Relationships between Artefact Types
 
@@ -111,6 +116,19 @@ image::diagrams/planning_artefacts.svg[id=planning_artefact_relationships, align
 
 [.tbd]
 ISSUE-actions-mand-or-opt: the alternative view of this is that a Planned Task always results in an `ACTION`, but possibly another kind of Entry as well. For example a planned Task that logically describes an Observation to be performed could result in a linked `ACTION/OBSERVATION` pair. This creates a bit more data in the EHR, but arguably is more consistent, since there will always be an `ACTION` documenting any performed Task.
+
+=== State Machine Model
+
+Related to the correspondences between the phases of work above is the question of lifecycle. This design assumes that _a Task List has its own lifecycle_ whose states come from the openEHR Instruction State Machine <<instruction_state_machine,described above>>. This means that openEHR `INSTRUCTIONs` that define orders whose individual `ACTIONs` appear in a Task List have distinct lifecycle state machines. This may be understood as follows:
+
+* the lifecycle state machine of an `INSTRUCTION` represents the state of just one order or request, e.g. the progress of administering a single drug;
+* the lifecycle state machine of a Task List represents the state of the Task group, typically a therapy or other coarse-grained piece of clinical work.
+
+Consider a multi-drug therapy: one of the drugs may be administered once, at the beginning, in which case the relevant `ACTIONs` would indicate completion of the `INSTRUCTION` lifecycle, even though the therapy as a whole is not complete. Completion (abandonment, etc) of the Task list as a whole is therefore defined as completion or otherwise of all of its Tasks.
+
+One of the side-effects of distinct state machines for `INSTRUCTIONs` and Task Lists is that not all careflow steps and states in the former need to be represented as Tasks in a Task List. For example, a significant number of careflow steps defined in `ACTION` archetypes are for non-Active states, i.e. Planning, Postponement, Suspension etc. These steps do not need to have Planned Tasks defined for them, since by definition they are nearly all unplanned. 
+
+As a consequence, most of not all Planned Tasks in a Task List correspond only to Active-state careflow steps of constituent order `INSTRUCTIONs`.
 
 === Task Planning Micro-service
 
@@ -143,7 +161,7 @@ The `TASK_LIST` class contains its constituent Tasks via the `_tasks_` attribute
 * `_start_time_`, `_completion_timeout_`: respectively start time and maximum time at which the Task List remains valid, i.e. after this time, it is considered 'dead' (this is analagous to the timeout events in the Instruction State Machine);
 * `_care_plan_`: a reference to a driving Care Plan within the EHR, if one exists;
 * `_guideline_id_`: optional identifier of a driving Care Pathway or other kind of guideline, which may also be recorded in `ENTRY` instances documenting Actions, Observations etc driven by the same guideline;
-* `_sm_lifecycle_state()_`: the state machine lifecycle state of the Task List as a whole, computed from the `_sm_target_state_` values of member `PLANNED_TASKs`. The states come from the Instruction State Machine described earlier.
+* `_sm_lifecycle_state()_`: the state machine lifecycle state of the Task List as a whole, computed from the `_sm_target_state_` values of member `PLANNED_TASKs`. The states come from the  <<instruction_state_machine,Instruction State Machine>>.
 
 [.tbd]
 ISSUE-guideline_id-rep: how should we best represent `_guideline_id_`? `OBJECT_REF` is the type used in `CARE_ENTRY._guideline_id_`, in the current spec. This was intended to enable the use of a `HIER_OBJECT_ID` or `GENERIC_ID`. However, there is probably no reliable machine identifier system for guidelines or Care Pathways. Perhaps a `DV_IDENTIFIER` would be better - this would allow things like <`_issuer_` = "NICE"; `_id_` = "Sepsis pathway"; `_type_` = "care pathway">.
@@ -154,7 +172,7 @@ The `PLANNED_TASK` class includes features common to any kind of Task, including
 * `_entry_template_refs/entry_template_ids_`: an optional attribute whose value if set further constrains which templates of the Entry archetype can be used to record the `ACTION` or other Entry;
 * `_entry_archetype_concept_`: the rubric of the root code in the Entry archetype; this provides a human-readable name / semantic type for the `PLANNED_TASK`, for example "medication administration";
 * `_cancelled_time_/_cancelled_reason_`: the time and reason the `PLANNED_TASK` was cancelled, if applicable. If a single `PLANNED_TASK` is cancelled, this doesn't necessarily imply anything about the completion of the owning Task list, since a planned Task may have been optional, or otherwise already achieved;
-* `_sm_target_state_`: the state machine target state that will be reached if this Task is performed. The states come from the Instruction State Machine described earlier.
+* `_sm_target_state_`: the Task List lifecycle state that will be reached if this Task is performed. The states come from the <<instruction_state_machine,openEHR Instruction State Machine>>, i.e. `Initial`, `Planned`, `Active`, `Complete` etc. If this `PLANNED_TASK` is related to an `ACTION` archetype, the state will come from one of its transitions.
 
 [.tbd]
 ISSUE-template-refs: is there a better way to specify `_entry_template_refs/ids_`?
