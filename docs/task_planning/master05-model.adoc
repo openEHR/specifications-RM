@@ -1,0 +1,124 @@
+= Task Planning Model
+
+== Overview
+
+The following figure shows the `rm.composition.task_planning` package, including its relationships to existing classes.
+
+[.text-center]
+.rm.composition.task_planning package
+image::{uml_export_dir}/diagrams/RM-composition.task_planning.svg[id=rm_composition_task_planning, align="center"]
+
+The central classes in this model are `TASK_LIST` and `PLANNED_TASK`, which define a list of Tasks and a single Task respectively. 
+
+As stated earlier, the notion of Task in this model is at the bottom of three conceptual levels. Accordingly, it does not attempt to define semantics of Care Plans or Care Pathways, but it does provide attributes to record a guideline and care plan identifier(s) (`PLAN_ITEM._guideline_id_` and `TASK_LIST._care_plan_` respectively).
+
+The abstract parent class `PLAN_ITEM` is used to provide these two classes with various attibutes that may apply both to a list of Tasks and single Task, including:
+
+* `_participations_`: descriptions of participating personnel or devices; since this is included in `PLAN_ITEM` it can be instantiated for the `TASK_LIST` as a whole and/or for individual `PLANNED_TASKs`;
+* `_subject_`: indicator of subject of the ask, in the same sense as it is recorded in `ENTRY._subject_`; Void implies subject of the health record;
+* `_indications_`: type of patient condition(s) to which this Task applies, e.g. 'pregnancy', 'lymphoma' etc; provided as a patient safety measure e.g. to be displayed in Task list application.
+
+[.tbd]
+ISSUE-indications: is `_indications_` useful?
+
+The `TASK_LIST` class contains its constituent Tasks via the `_tasks_` attribute, and includes other attributes describing the Task List:
+
+* `_description_`: a human-readable description of the Task List, e.g. "R-CHOP chemo administration for patient 384440";
+* `_start_time_`, `_completion_timeout_`: respectively start time and maximum time at which the Task List remains valid, i.e. after this time, it is considered 'dead' (this is analagous to the timeout events in the Instruction State Machine);
+* `_care_plan_`: a reference to a driving Care Plan within the EHR, if one exists;
+* `_guideline_id_`: optional identifier of a driving Care Pathway or other kind of guideline, which may also be recorded in `ENTRY` instances documenting Actions, Observations etc driven by the same guideline;
+* `_sm_lifecycle_state()_`: the state machine lifecycle state of the Task List as a whole, computed from the `_sm_target_state_` values of member `PLANNED_TASKs`. The states come from the  {openehr_rm_ehr}#instruction_state_machine[openEHR Instruction State Machine].
+
+[.tbd]
+ISSUE-guideline_id-rep: how should we best represent `_guideline_id_`? `OBJECT_REF` is the type used in `CARE_ENTRY._guideline_id_`, in the current spec. This was intended to enable the use of a `HIER_OBJECT_ID` or `GENERIC_ID`. However, there is probably no reliable machine identifier system for guidelines or Care Pathways. Perhaps a `DV_IDENTIFIER` would be better - this would allow things like <`_issuer_` = "NICE"; `_id_` = "Sepsis pathway"; `_type_` = "care pathway">.
+
+The `PLANNED_TASK` class includes features common to any kind of Task, including the following:
+
+* `_entry_archetype_ref/entry_archetype_id_`: identifier of archetype for the `ACTION`, `OBSERVATION` or other Entry type that will be created due to this `PLANNED_TASK` being performed; the data of the referenced archetype will normally correspond closely to the data of the `PLANNED_TASK` i.e. due to its own archetype;
+* `_entry_template_refs/entry_template_ids_`: an optional attribute whose value if set further constrains which templates of the Entry archetype can be used to record the `ACTION` or other Entry;
+* `_entry_archetype_concept_`: the rubric of the root code in the Entry archetype; this provides a human-readable name / semantic type for the `PLANNED_TASK`, for example "medication administration";
+* `_cancelled_time_/_cancelled_reason_`: the time and reason the `PLANNED_TASK` was cancelled, if applicable. If a single `PLANNED_TASK` is cancelled, this doesn't necessarily imply anything about the completion of the owning Task list, since a planned Task may have been optional, or otherwise already achieved;
+* `_sm_target_state_`: the Task List lifecycle state that will be reached if this Task is performed. The states come from the {openehr_rm_ehr}#instruction_state_machine[openEHR Instruction State Machine], i.e. `Initial`, `Planned`, `Active`, `Complete` etc. If this `PLANNED_TASK` is related to an `ACTION` archetype, the state will come from one of its transitions.
+
+[.tbd]
+ISSUE-template-refs: is there a better way to specify `_entry_template_refs/ids_`?
+
+The class `PLANNED_TASK` will in general be specialised in order to add attributes required by the planned form of specific Entry subtypes, hence, `PLANNED_ACTION`, `PLANNED_OBSERVATION` etc. The `PLANNED_ACION` class contains a number of attributes derived from the `INSTRUCTION` class and its constituent parts, including:
+
+* the `_narrative_` attribute, which is a human-readable copy of the same field from a previously committed `INSTRUCTION` (or potentially derived by computation from items within the relevant `ACTIVITY`);
+* the `careflow_step_` attribute, which indicates the step in an archetyped `ACTION` careflow this `PLANNED_ACTION` describes;
+* `_instruction_archetype_ref/instruction_archetype_id()_`, identifying the relevant `INSTRUCTION` archetype if any;
+* `_instruction_activity_instance_ref_`, described below.
+
+[.tbd]
+ISSUE-instr-arch_id-needed: `_instruction_archetype_ref/instruction_archetype_id()_` may be redundant; the planning application that creates these structures will know the relevant archetype ids; is there any value in recording them in the `PLANNED_ACTION` instances, especially since they can be determined by following the `_instruction_activity_instance_ref_` reverse runtime ref and looking at the `INSTRUCTION`.
+
+[.tbd]
+ISSUE-generic-planned_time: The class `PLANNED_TIME` should probably be made generic and added to the BASE component. Needs to take into account some of the other models of time specification.
+
+== Execution-time Data Structures
+
+Several aspects of how the model above is used at runtime require clarification: the relationship of information objects (`INSTRUCTION`, `TASK_LIST`, `PLANNED_ACTION`, `ACTION` etc) to `COMPOSITIONs` in which they are committed to the EHR, and hence versioning; and logical linking between these items to support workflow traceability. The following figure illustrates both aspects, which are further described below.
+
+[.text-center]
+.Runtime planning structures
+image::diagrams/planning_runtime_structures.svg[id=runtime_planning_structures, align="center", width=80%]
+
+=== Compositions and Versioning
+
+In this model a `TASK_LIST` is required in order to define any `PLANNED_TASKs`. Accordingly, `TASK_LIST` inherits from `CONTENT_ITEM`, the abstract type of the `_content_` attribute of a `COMPOSITION`. A `TASK_LIST` and its constituent `PLANNED_TASKs` are assumed to be created within a single dedicated `COMPOSITION` which is re-versioned as changes are made to its contents. New versions will occur for the following reasons:
+
+* update / add to `TASK_LIST`, mainly due to extension of the lookahead planning window;
+* cancellation of tasks;
+* addition of forward references to tasks that have been performed and recorded (i.e. `ACTIONs`, `OBSERVATIONs`, ?`EVALUATIONs` e.g. review); = task item signoff;
+* completion or abandonment of the Task list.
+
+As the `TASK_LIST` gets progressively built and performed over time, its owning `COMPOSITION` will potentially undergo numerous versions, corresponding both to changes to the plan, and also execution of the actions performed to fulfill it. When these come to an end, the `TASK_LIST` is deemed 'complete'.
+
+=== Logical Links and Referencing
+
+As described above, there are three possible levels of expression of work items: orders (`INSTRUCTIONs`), Planned Tasks (`TASK_LIST`, `PLANNED_TASK` etc) and performed Tasks (`ACTION`, `OBSERVATION` etc), with the caveat that not every Planned Task or performed Task has an order. To enable workflow traceability, various links can be recorded at runtime, as follows:
+
+* *Planned Task to Order reverse ref*: the `PLANNED_ACTION.instruction_activity_instance_ref` attribute is used to record a reverse reference from a `PLANNED_ACTION` to an `ACTIVITY` within an `INSTRUCTION` that records a corresponding order, if one exists;
+* *Planned Task to performed Task forward ref*: the `PLANNED_TASK._entry_instance_ref_` attribute is used to record a forward reference to the Entry instance that was created when this Task was performed, i.e. some `ACTION`, `OBSERVATION` etc;
+* *performed Task to Planned Task reverse ref*: the `ENTRY._workflow_id_` attribute may be used to record a reverse reference from an `ACTION`, `OBSERVATION` etc to a causing `PLANNED_TASK` instance.
+
+[.tbd]
+ISSUE-fwd-refs: `_entry_instance_ref_` is a forward reference - which requires updating the Task List after the Tasks have beed performed and relevant Entries committed. Is this complication worth the benefit obtained, i.e. directly followable links rather than querying, to find Entries from the Task List items? Is being able to determine the resulting Entries starting from the Task List even useful?
+
+[.tbd]
+ISSUE-separate-task-ref: a more flexible way of forward referencing may be to have a separate class e.g. `EXECUTED_TASK` that can contain any forward ref, plus other meta-data such as time completed, whether completed and an `_other_details_` attribute that can be archetyped for more information. 
+
+== Cost Tracking
+
+[.tbd]
+TBD: describe cost tracking.
+
+== Transactional Micro-service
+
+[.tbd]
+TBD: describe micro-service.
+
+== Class Descriptions
+
+include::{uml_export_dir}/classes/plan_item.adoc[]
+
+include::{uml_export_dir}/classes/planned_participation.adoc[]
+
+include::{uml_export_dir}/classes/task_list.adoc[]
+
+include::{uml_export_dir}/classes/planned_task.adoc[]
+
+include::{uml_export_dir}/classes/task_execution_condition.adoc[]
+
+include::{uml_export_dir}/classes/task_costing.adoc[]
+
+include::{uml_export_dir}/classes/required_status.adoc[]
+
+include::{uml_export_dir}/classes/planned_time.adoc[]
+
+include::{uml_export_dir}/classes/planned_action.adoc[]
+
+include::{uml_export_dir}/classes/planned_observation.adoc[]
+
+include::{uml_export_dir}/classes/task_planning_ms.adoc[]

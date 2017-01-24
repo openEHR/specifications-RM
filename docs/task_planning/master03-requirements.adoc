@@ -1,0 +1,45 @@
+= Requirements
+
+== Full Plan
+
+The simplest need is to be able to post a full plan of all Tasks to be performed for an order (represented by an openEHR `INSTRUCTION`), in advance of the order commencing. One difficulty with posting a full plan is that in some cases, the order is effectively open-ended, i.e. it has no intended completion. This might be because the patient condition being treated is chronic, e.g. an insulin or Salbutamol (Ventolin) order; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma victim.
+
+== Lookahead Plan
+
+A more flexible version of planning an ongoing order is 'lookahead' planning, i.e. posting a plan of Tasks for a moving window in time, e.g. one day, a few days, a few nursing rotations etc. The idea is not to try to plan out the entire order execution, since it can easily change or be stopped, e.g. due to change in patient or other unexpected events. In a lookahead approach, some planned Tasks are executed, and more planned Tasks are added. The planned timing of each set of Tasks may change due to the current situation, with the effect that the overall set of Tasks that unfolds in time may well be different from an attempt to post all Tasks as per the 'full plan' idea.
+
+For the open-ended cases mentioned above, the only option is a lookahead plan that extends as far ahead in time as the treating physicians are prepared to go.
+
+== Checklist & Sign-off
+
+If a Task list is created, the constituent Tasks can be viewed by workers as a checklist, and subsequently signed off as having been performed over time. The utility of this is that the correspondence between Actions (Observations etc) actually performed and the planned Tasks is established. If a planned Action A1 is posted with execution time T, it might actually be performed at time T', but we still want to know that it was planned Action A1 that was intentionally performed, and not some other Action in the Task list. Over the course of the order execution, a picture will emerge of planned Actions being performed and signed off, possibly with some being missed as not needed, or not done for some other reason. Additional Actions not originally posted in the plan might also be done if they are allowed by the general specification of the relevant archetype.
+
+== Major Changes and Abandonment
+
+Inevitably, some Task lists will have to be changed or abandoned partway through due to unexpected changes in the patient situation. The question here is: what should be done with the remaining planned Tasks that will not be performed? Should they be marked as 'won't do' (with some reason) and committed to the EHR, or should they be deleted prior to being committed to the EHR?
+
+It is assumed that the answer will differ according to circumstance and local preference, in other words, that planned Tasks that are created are not necessarily written into the EHR, but may initially exist in a separate 'planned tasks' buffer, and are only committed when a) the Task is performed or b) explicitly marked as not done or c) included in a list of not-done Actions to be committed to the EHR at a point of plan abandonment.
+
+[.tbd]
+ISSUE-task-buffer: is a better assumption that whatever planned Tasks have been defined in a Task List represent a clinical intention by the responsible clinicians, and should therefore always go in the EHR? Technically this would be simpler...
+
+== Support Process Analytics
+
+As Tasks are performed and signed off on the list of posted planned Tasks, there will generally be differences between Actions actually performed and the Tasks on the list. Differences could include:
+
+* time of execution - this will almost always be different, even if only by seconds;
+* performer - a Task intended to be performed by a specific type of actor (say a nurse) might be performed by another (say the consultant);
+* any other modifiable detail of the order, typically medication dose in bedside care situations.
+
+These differences are recorded in the EHR since both planned Tasks and performed Actions will appear, providing a data resource for analysing business process, order compliance, reasons for deviation and so on.
+
+== Plans for Order Sets
+
+A plan for a clinical intervention might need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, in multi-drug chemotherapy based on protocols like CHOP (non-Hodgkin's lymphoma), COPP or Stanford V (Hodgkin's lymphoma) etc, a single drug such as Cyclophosphamide is just a component. A Task list for administering chemotherapy according to a R-CHOP protocol would implicate orders for the drugs  \(R)ituximab, \(C)yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin, and (P)rednisolone or Prednisone, and would accordingly include planned Tasks for each of these drugs as they are administered according to the protocol.
+
+== Support Costing Information
+
+It should be possible to record costing data against Task Lists as a whole, and also individual Ttasks.
+
+[.tbd]
+ISSUE-costing: details requirements?

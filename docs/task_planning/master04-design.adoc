@@ -1,0 +1,72 @@
+= Design Basis
+
+The design approach adopted here is based on a number of ideas. Firstly, it addresses only the 'Task list' level of the three conceptual levels mentioned earlier, leaving Care Plan and Care Pathway (guideline) to be addressed elsewhere. The other dsign elements are described below.
+
+== Phases of Work
+
+The design uses the notion of three phases of clinical work, namely Order, Planned Task, and (performed) Task. There are correspondingly three levels of representation (two of which already exist in the basic openEHR `ENTRY` model) as follows:
+
+* *Order*: statement of an order, expressed in a formulaic way, e.g. corresponding to "Amoxycillin 3 td po x 7d" (3 times a day, orally, for 7 days)
+** represented in openEHR with the `INSTRUCTION` type;
+** statement of actions to be performed in the future, usually expressed in a compressed algorithmic way;
+* *Planned Task*: representation of a single executable task in the order, to be performed in the future e.g. give Amoxycillin 1 oral tab at lunch;
+** statement of each action to be performed in the future, expressed in a direct way as to a performing agent such as the patient or a nurse;
+* *Performed Task*: statement of the step that was actually executed by the performer, in the past, e.g. gave Amoxycillin 1 tab at 13:37
+** represented in openEHR using the types `ACTION`, `OBSERVATION` etc.
+** statement of actions, observations etc that were carried out in the past; may include different details from the Planned Task.
+
+There may be a non-trivial relationship between each form of expression, as suits its different purpose: expressing an order; directing personnel to perform tasks; documenting what was done after the fact.
+
+The model described here adds the second level of representation, which enables fine-grained lists of executable tasks to be explicitly stated and therefore stored in the EHR, displayed, and signed off.
+
+== Artefact types: Task List and Planned Task
+
+A further element of the design is to define two central artefact types, namely Task List and Planned Task. These follow naturally from the requirements described above, but we need to articulate the semantics of these two concepts, as follows:
+
+* *Planned Task*: a small, separately performable unit of planned work that typically corresponds to:
+** the finest level of clinical responsibility, e.g. nurse administration of a drug, single observation of patient vital sign etc;
+** the finest level of re-imbursement / billing;
+** granularity of check-list and protocol single items, designed to be signed off as performed;
+* *Task List*: a logical list of Planned Tasks whose execution is intended to achieve completion of a coarse-grained task or goal, typically an intervention such as a course of medication or other therapy. For example, the Actions to be performed to deliver a course of CHOP / R-CHOP or similar multi-drug chemotherapy that runs over 5 days could be represented as Tasks in a single Task List.
+** a Task List is assumed to have a lifecycle that follows the {openehr_rm_ehr}#instruction_state_machine[openEHR Instruction State Machine], and therefore at any time, its state can be computed from the target state and execution status of its constitutent Tasks.
+
+There are a few nuances to consider here. Firstly, the granularity of a Planned Task can be variable, and will tend to follow clinical and health management culture as much as any theoretical precept. For example, healthcare organisation A may regard 'cannula insertion' as a single Task, similar to giving the patient a pill: the nurse just uses his training to perform the job without needing to be reminded of the individual steps. However healthcare organisation B may treat cannulation in a checklist- or guideline-driven way (e.g. using a guideline such as {medscape_cannulation}[this one] from Medscape.com), in which case, a dozen or more Tasks could be defined within a Task List to represent the work. The model described here thus makes no built-in assumptions about granularity of a Task.
+
+A related question has to do with the granularity of Planned Tasks with respect to the granularity of resulting `ACTION`, `OBSERVATION` etc Entries. The model below makes the assumption that one Planned Task corresponds to one `ACTION` or other archetyped `ENTRY`.
+
+[.tbd]
+ISSUE-task-entry-corr: the alternative seems to be to allow a Planned Task to correspond to e.g. a whole Compositoin template, where the `COMPOSITION` contains a number of e.g. `ACTIONs` or `OBSERVATIONs`. Problems I see with this: a) who knows what is in the Composition template? It may change over time; b) what if only some of the items in the Composition template can be done? Is the Task half complete? Or should the performer not do any of it?
+
+== Relationships between Artefact Types
+
+A final design idea is the flexible relation between a Task List and orders, i.e. `INSTRUCTIONs` in openEHR parlance. In simple cases, a Task List will just be the list of Tasks to fulfill one order, i.e. a single `INSTRUCTION`, such as a prescription for a course of antibiotics. The general case however is that the Task List corresponds to a clinical goal which implicates multiple orders, for example the CHOP chemotherapy mentioned above. 
+
+It may also be the case that _not every Planned Task is associated with an order_. While the typical case is that a Task corresppnds to an openEHR `ACTION` that has not yet been recorded (and which normally has a driving `INSTRUCTION`), it may also correspond to an `ACTION` that has no `INSTRUCTION` or indeed an `OBSERVATION` or possibly an `EVALUATION` (perhaps some kind of check during a procedure). There is also no reason why a Task List cannot consist of Tasks that define administrative work and would be documented with openEHR `ADMIN_ENTRYs`.
+
+We can infer from the above that the main driver of a Task List isn't in general an order, but a guideline or protocol. In simple cases, no formal protocol is used, and the orders (i.e. `INSTRUCTIONs`) may be _de facto_ drivers. At the other extreme, a Task List may be created with no corresponding orders (and therefore `INSTRUCTIONs`) at all.
+
+The following figure shows the correspondences between the various type of openEHR artefact for the general case of Task Lists. The arrows indicate causal relationships.
+
+[.text-center]
+.openEHR Planning Artefact Relationships
+image::diagrams/planning_artefacts.svg[id=planning_artefact_relationships, align="center", width=50%]
+
+[.tbd]
+ISSUE-actions-mand-or-opt: the alternative view of this is that a Planned Task always results in an `ACTION`, but possibly another kind of Entry as well. For example a planned Task that logically describes an Observation to be performed could result in a linked `ACTION/OBSERVATION` pair. This creates a bit more data in the EHR, but arguably is more consistent, since there will always be an `ACTION` documenting any performed Task.
+
+=== State Machine Model
+
+Related to the correspondences between the phases of work above is the question of lifecycle. This design assumes that _a Task List has its own lifecycle_ whose states come from the {openehr_rm_ehr}#instruction_state_machine[openEHR Instruction State Machine]. This means that openEHR `INSTRUCTIONs` that define orders whose individual `ACTIONs` appear in a Task List have distinct lifecycle state machines. This may be understood as follows:
+
+* the lifecycle state machine of an `INSTRUCTION` represents the state of just one order or request, e.g. the progress of administering a single drug;
+* the lifecycle state machine of a Task List represents the state of the Task group, typically a therapy or other coarse-grained piece of clinical work.
+
+Consider a multi-drug therapy: one of the drugs may be administered once, at the beginning, in which case the relevant `ACTIONs` would indicate completion of the `INSTRUCTION` lifecycle, even though the therapy as a whole is not complete. Completion (abandonment, etc) of the Task list as a whole is therefore defined as completion or otherwise of all of its Tasks.
+
+One of the side-effects of distinct state machines for `INSTRUCTIONs` and Task Lists is that not all careflow steps and states in the former need to be represented as Tasks in a Task List. For example, a significant number of careflow steps defined in `ACTION` archetypes are for non-Active states, i.e. Planning, Postponement, Suspension etc. These steps do not need to have Planned Tasks defined for them, since by definition they are nearly all unplanned. 
+
+As a consequence, most of not all Planned Tasks in a Task List correspond only to Active-state careflow steps of constituent order `INSTRUCTIONs`.
+
+== Task Planning Micro-service
+
+The information structures required to represent planned Tasks and references at runtime are likely to be non-trivial. For this reason, a Micro-service is defined, with a transactional interface that converts transactional calls to correct underlying information structures.
