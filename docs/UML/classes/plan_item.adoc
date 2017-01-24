@@ -1,0 +1,34 @@
+=== PLAN_ITEM Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*_PLAN_ITEM (abstract)_*
+
+h|*Description*
+2+a|Abstract parent of any type of Planned item. Records optional guideline_id, which can be for a relevant Care Pathway or other guideline from which the Plan item is derived, and planned participations.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*participations*: `List<PLANNED_PARTICIPATION>`
+a|List of participations for task item.
+
+h|*0..1*
+|*subject*: `PARTY_PROXY`
+a|Optional indicator of subject of Task, which is normally the subject of the EHR. If this is not the case, this attribute states who the Task is to be performed on.
+
+h|*0..1*
+|*indications*: `List<DV_TEXT>`
+a|Causal drivers or applicability of this Task item to subject of work, according to governing guideline, if any. May be displayed as a safety precaution to human performer.
+
+h|*0..1*
+|*other_details*: `ITEM_STRUCTURE`
+a|Archetypable structure for recording non hard-modelled information.
+
+h|*0..1*
+|*costing_data*: `TASK_COSTING`
+a|
+|===

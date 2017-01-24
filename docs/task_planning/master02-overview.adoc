@@ -1,0 +1,21 @@
+= Overview
+
+The Entry model described in the {openehr_rm_ehr}[openEHR EHR IM] defines a way to record clinical statements representing real observations, decisions, orders and actions that have occurred, into the EHR. In this scheme, Actions and Observations represent events that have occurred in the real world - a real drug administration or an actual blood sugar measurement. Instructions represent orders for certain kinds of Actions to be performed. There is however a common additional need to concretely plan Actions and sometimes Observations out in time, as a set of tasks. The general concept is usually known as a _task list_, and is used to concretely specify actions to be performed by actors (usually human, but potentially machine as well) providing care.
+
+To meet this need, a further kind of content can be recorded in the EHR, representing task lists and planned tasks. The design described here considers Task Lists as the lower part of an overall architecture that includes entities at multiple levels, i.e.:
+
+* Care Pathway - a model of a guideline for care of a condition / ideal patient;
+* Care Plan - a plan for concrete care of an actual patient, taking into account zero or more Care Pathways and individual specificities;
+* Task List - an instance level concept that defines a list of Planned Tasks to perform over time.
+
+We can visualise this conceptually with a modified version of the {openehr_rm_ehr}#clinical_investigator_process[Clinical Investigator process diagram] as follows:
+
+[.text-center]
+.Clinical Investigator Process with Planning
+image::diagrams/clinical_process_planning.svg[id=clinical_process_planning, align="center", width=80%]
+
+The model described here does not address the representation of the Care Pathway or Care Plan levels, only the Task List level. It does however assume that a Task List may be created due to a Care Plan of some kind, and that the Care Plan may in turn have been derived from one or more Care Pathways or guidelines; accordingly, the means to identify the Plan and Pathway / guideline are provided.
+
+In the following, the term 'Task' or 'Planned Task' denotes the definition of an action to be performed, and is normally documented in openEHR by the `ACTION` Entry subtype. However, 'Task' is understood somewhat more generally, so that it may also when performed, result in an openEHR `OBSERVATION` or other Entry subtype where appropriate. In the great majority of cases therefore, the term 'Task' as it appears here equates to openEHR Actions and Observations.
+
+For the sake of simplicity, 'Action' below is intended to imply an openEHR `ACTION`, `OBSRVATION` or potentially other Entry sub-type, unless otherwise stated.

@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="description" content="openEHR Task Planning specification">
+<meta name="keywords" content="task, planning, EHR, EMR, reference model, openehr">
+<title>Task Planning Specification</title>
+<link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="http://www.openehr.org/releases/BASE/latest/resources/css/pygments-murphy.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_task_planning_specification">Task Planning Specification</a>
+<ul class="sectlevel1">
+<li><a href="#_amendment_record">Amendment Record</a></li>
+<li><a href="#_acknowledgements">Acknowledgements</a>
+<ul class="sectlevel2">
+<li><a href="#_trademarks">Trademarks</a></li>
+</ul>
+</li>
+<li><a href="#_preface">1. Preface</a>
+<ul class="sectlevel2">
+<li><a href="#_purpose">1.1. Purpose</a></li>
+<li><a href="#_related_documents">1.2. Related Documents</a></li>
+<li><a href="#_status">1.3. Status</a></li>
+<li><a href="#_conformance">1.4. Conformance</a></li>
+</ul>
+</li>
+<li><a href="#_overview">2. Overview</a></li>
+<li><a href="#_requirements">3. Requirements</a>
+<ul class="sectlevel2">
+<li><a href="#_full_plan">3.1. Full Plan</a></li>
+<li><a href="#_lookahead_plan">3.2. Lookahead Plan</a></li>
+<li><a href="#_checklist_sign_off">3.3. Checklist &amp; Sign-off</a></li>
+<li><a href="#_major_changes_and_abandonment">3.4. Major Changes and Abandonment</a></li>
+<li><a href="#_support_process_analytics">3.5. Support Process Analytics</a></li>
+<li><a href="#_plans_for_order_sets">3.6. Plans for Order Sets</a></li>
+<li><a href="#_support_costing_information">3.7. Support Costing Information</a></li>
+</ul>
+</li>
+<li><a href="#_design_basis">4. Design Basis</a>
+<ul class="sectlevel2">
+<li><a href="#_phases_of_work">4.1. Phases of Work</a></li>
+<li><a href="#_artefact_types_task_list_and_planned_task">4.2. Artefact types: Task List and Planned Task</a></li>
+<li><a href="#_relationships_between_artefact_types">4.3. Relationships between Artefact Types</a>
+<ul class="sectlevel3">
+<li><a href="#_state_machine_model">4.3.1. State Machine Model</a></li>
+</ul>
+</li>
+<li><a href="#_task_planning_micro_service">4.4. Task Planning Micro-service</a></li>
+</ul>
+</li>
+<li><a href="#_task_planning_model">5. Task Planning Model</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_2">5.1. Overview</a></li>
+<li><a href="#_execution_time_data_structures">5.2. Execution-time Data Structures</a>
+<ul class="sectlevel3">
+<li><a href="#_compositions_and_versioning">5.2.1. Compositions and Versioning</a></li>
+<li><a href="#_logical_links_and_referencing">5.2.2. Logical Links and Referencing</a></li>
+</ul>
+</li>
+<li><a href="#_cost_tracking">5.3. Cost Tracking</a></li>
+<li><a href="#_transactional_micro_service">5.4. Transactional Micro-service</a></li>
+<li><a href="#_class_descriptions">5.5. Class Descriptions</a>
+<ul class="sectlevel3">
+<li><a href="#_plan_item_class">5.5.1. PLAN_ITEM Class</a></li>
+<li><a href="#_planned_participation_class">5.5.2. PLANNED_PARTICIPATION Class</a></li>
+<li><a href="#_task_list_class">5.5.3. TASK_LIST Class</a></li>
+<li><a href="#_planned_task_class">5.5.4. PLANNED_TASK Class</a></li>
+<li><a href="#_task_execution_condition_class">5.5.5. TASK_EXECUTION_CONDITION Class</a></li>
+<li><a href="#_task_costing_class">5.5.6. TASK_COSTING Class</a></li>
+<li><a href="#_required_status_enumeration">5.5.7. REQUIRED_STATUS Enumeration</a></li>
+<li><a href="#_planned_time_class">5.5.8. PLANNED_TIME Class</a></li>
+<li><a href="#_planned_action_class">5.5.9. PLANNED_ACTION Class</a></li>
+<li><a href="#_planned_observation_class">5.5.10. PLANNED_OBSERVATION Class</a></li>
+<li><a href="#_task_planning_ms_interface">5.5.11. TASK_PLANNING_MS Interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_scenarios">6. Scenarios</a>
+<ul class="sectlevel2">
+<li><a href="#_protocol_driven_plan">6.1. Protocol-driven Plan</a></li>
+<li><a href="#_check_list_and_sign_off">6.2. Check-list and Sign-off</a></li>
+<li><a href="#_changes_during_execution">6.3. Changes during Execution</a></li>
+<li><a href="#_abandonment">6.4. Abandonment</a></li>
+</ul>
+</li>
+<li><a href="#_references">References</a>
+<ul class="sectlevel2">
+<li><a href="#_publications">Publications</a></li>
+<li><a href="#_resources">Resources</a>
+<ul class="sectlevel3">
+<li><a href="#_general">General</a></li>
+<li><a href="#_e_health_standards">e-Health Standards</a></li>
+<li><a href="#_e_health_projects">e-Health Projects</a></li>
+<li><a href="#_general_standards">General Standards</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="http://www.openehr.org/releases/BASE/latest/resources/images/openehr_logo_large.png" alt="openEHR logo">
+</div>
+</div>
+</div>
+</div>
+<h1 id="_task_planning_specification" class="sect0">Task Planning Specification</h1>
+<div class="openblock partintro">
+<div class="content">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="http://www.openehr.org/programs/specification/">openEHR Specification Program</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: latest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: DEVELOPMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Revision</strong>: <a href="#latest_issue">[latest_issue]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong>: <a href="#latest_issue_date">[latest_issue_date]</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: task, planning, EHR, EMR, reference model, openehr</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="diagrams/openehr_block_diagram.png" alt="openEHR components" width="60%">
+</div>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2017 - 2017 The openEHR Foundation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="http://www.openehr.org/">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="http://www.openehr.org/releases/BASE/latest/resources/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://openehr.atlassian.net/browse/SPECPR/" class="bare">https://openehr.atlassian.net/browse/SPECPR/</a><br>
+ Web: <a href="http://www.openehr.org/" class="bare">http://www.openehr.org/</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amendment_record">Amendment Record</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 54.5454%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1819%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Issue</th>
+<th class="tableblock halign-left valign-top">Details</th>
+<th class="tableblock halign-left valign-top">Raiser</th>
+<th class="tableblock halign-left valign-top">Completed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.1.0</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>0.6.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-999">SPECRM-999</a>. Initial writing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,
+ B Naess</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>20 Jan 2017</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_acknowledgements">Acknowledgements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The work reported in this paper has been funded in by the following organisations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DIPS, Norway</p>
+</li>
+<li>
+<p>Marand d.o.o., Slovenia</p>
+</li>
+<li>
+<p>Ars Semantica, UK</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_trademarks">Trademarks</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>'openEHR' is a trademark of the openEHR Foundation</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preface"><a class="anchor" href="#_preface"></a>1. Preface</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_purpose"><a class="anchor" href="#_purpose"></a>1.1. Purpose</h3>
+<div class="paragraph">
+<p>This document describes the openEHR Task Planning Model, which is a formal specification of information representing Planned Tasks. It is designed as a formal extension to the openEHR EHR Information Model, and assumes the types described in that specification.</p>
+</div>
+<div class="paragraph">
+<p>The intended audience includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standards bodies producing health informatics standards;</p>
+</li>
+<li>
+<p>Academic groups using openEHR;</p>
+</li>
+<li>
+<p>The open source healthcare community;</p>
+</li>
+<li>
+<p>Solution vendors;</p>
+</li>
+<li>
+<p>Medical informaticians and clinicians interested in health information.</p>
+</li>
+<li>
+<p>Health data managers.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_related_documents"><a class="anchor" href="#_related_documents"></a>1.2. Related Documents</h3>
+<div class="paragraph">
+<p>Prerequisite documents for reading this document include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="http://www.openehr.org/releases/BASE/latest/architecture_overview.html">openEHR Architecture Overview</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Related documents include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="http://www.openehr.org/releases/RM/latest/ehr.html">openEHR EHR Information Model</a>;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
+<div class="paragraph">
+<p>This specification is in the DEVELOPMENT state. The development version of this document can be found at <a href="http://www.openehr.org/releases/RM/latest/task_planning.html" class="bare">http://www.openehr.org/releases/RM/latest/task_planning.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
+</div>
+<div class="paragraph tbd">
+<p><strong>TBD</strong>: (example To Be Determined paragraph)</p>
+</div>
+<div class="paragraph">
+<p>Users are encouraged to comment on and/or advise on these paragraphs as well as the main content.  Feedback should be provided either on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org">technical mailing list</a>, or on the <a href="https://openehr.atlassian.net/browse/SPECPR/?selectedTab=com.atlassian.jira.jira-projects-plugin:issues-panel">specifications issue tracker</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conformance"><a class="anchor" href="#_conformance"></a>1.4. Conformance</h3>
+<div class="paragraph">
+<p>Conformance of a data or software artifact to an openEHR Reference Model specification is determined by a formal test of that artifact against the relevant openEHR Implementation Technology Specification(s) (ITSs), such as an IDL interface or an XML-schema. Since ITSs are formal, automated derivations from the Reference Model, ITS conformance indicates RM conformance.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>2. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Entry model described in the <a href="http://www.openehr.org/releases/RM/latest/ehr.html">openEHR EHR IM</a> defines a way to record clinical statements representing real observations, decisions, orders and actions that have occurred, into the EHR. In this scheme, Actions and Observations represent events that have occurred in the real world - a real drug administration or an actual blood sugar measurement. Instructions represent orders for certain kinds of Actions to be performed. There is however a common additional need to concretely plan Actions and sometimes Observations out in time, as a set of tasks. The general concept is usually known as a <em>task list</em>, and is used to concretely specify actions to be performed by actors (usually human, but potentially machine as well) providing care.</p>
+</div>
+<div class="paragraph">
+<p>To meet this need, a further kind of content can be recorded in the EHR, representing task lists and planned tasks. The design described here considers Task Lists as the lower part of an overall architecture that includes entities at multiple levels, i.e.:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Care Pathway - a model of a guideline for care of a condition / ideal patient;</p>
+</li>
+<li>
+<p>Care Plan - a plan for concrete care of an actual patient, taking into account zero or more Care Pathways and individual specificities;</p>
+</li>
+<li>
+<p>Task List - an instance level concept that defines a list of Planned Tasks to perform over time.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We can visualise this conceptually with a modified version of the <a href="http://www.openehr.org/releases/RM/latest/ehr.html#clinical_investigator_process">Clinical Investigator process diagram</a> as follows:</p>
+</div>
+<div id="clinical_process_planning" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/clinical_process_planning.svg" alt="clinical process planning" width="80%">
+</div>
+<div class="title">Figure 1. Clinical Investigator Process with Planning</div>
+</div>
+<div class="paragraph">
+<p>The model described here does not address the representation of the Care Pathway or Care Plan levels, only the Task List level. It does however assume that a Task List may be created due to a Care Plan of some kind, and that the Care Plan may in turn have been derived from one or more Care Pathways or guidelines; accordingly, the means to identify the Plan and Pathway / guideline are provided.</p>
+</div>
+<div class="paragraph">
+<p>In the following, the term 'Task' or 'Planned Task' denotes the definition of an action to be performed, and is normally documented in openEHR by the <code>ACTION</code> Entry subtype. However, 'Task' is understood somewhat more generally, so that it may also when performed, result in an openEHR <code>OBSERVATION</code> or other Entry subtype where appropriate. In the great majority of cases therefore, the term 'Task' as it appears here equates to openEHR Actions and Observations.</p>
+</div>
+<div class="paragraph">
+<p>For the sake of simplicity, 'Action' below is intended to imply an openEHR <code>ACTION</code>, <code>OBSRVATION</code> or potentially other Entry sub-type, unless otherwise stated.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_requirements"><a class="anchor" href="#_requirements"></a>3. Requirements</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_full_plan"><a class="anchor" href="#_full_plan"></a>3.1. Full Plan</h3>
+<div class="paragraph">
+<p>The simplest need is to be able to post a full plan of all Tasks to be performed for an order (represented by an openEHR <code>INSTRUCTION</code>), in advance of the order commencing. One difficulty with posting a full plan is that in some cases, the order is effectively open-ended, i.e. it has no intended completion. This might be because the patient condition being treated is chronic, e.g. an insulin or Salbutamol (Ventolin) order; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma victim.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_lookahead_plan"><a class="anchor" href="#_lookahead_plan"></a>3.2. Lookahead Plan</h3>
+<div class="paragraph">
+<p>A more flexible version of planning an ongoing order is 'lookahead' planning, i.e. posting a plan of Tasks for a moving window in time, e.g. one day, a few days, a few nursing rotations etc. The idea is not to try to plan out the entire order execution, since it can easily change or be stopped, e.g. due to change in patient or other unexpected events. In a lookahead approach, some planned Tasks are executed, and more planned Tasks are added. The planned timing of each set of Tasks may change due to the current situation, with the effect that the overall set of Tasks that unfolds in time may well be different from an attempt to post all Tasks as per the 'full plan' idea.</p>
+</div>
+<div class="paragraph">
+<p>For the open-ended cases mentioned above, the only option is a lookahead plan that extends as far ahead in time as the treating physicians are prepared to go.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_checklist_sign_off"><a class="anchor" href="#_checklist_sign_off"></a>3.3. Checklist &amp; Sign-off</h3>
+<div class="paragraph">
+<p>If a Task list is created, the constituent Tasks can be viewed by workers as a checklist, and subsequently signed off as having been performed over time. The utility of this is that the correspondence between Actions (Observations etc) actually performed and the planned Tasks is established. If a planned Action A1 is posted with execution time T, it might actually be performed at time T', but we still want to know that it was planned Action A1 that was intentionally performed, and not some other Action in the Task list. Over the course of the order execution, a picture will emerge of planned Actions being performed and signed off, possibly with some being missed as not needed, or not done for some other reason. Additional Actions not originally posted in the plan might also be done if they are allowed by the general specification of the relevant archetype.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_major_changes_and_abandonment"><a class="anchor" href="#_major_changes_and_abandonment"></a>3.4. Major Changes and Abandonment</h3>
+<div class="paragraph">
+<p>Inevitably, some Task lists will have to be changed or abandoned partway through due to unexpected changes in the patient situation. The question here is: what should be done with the remaining planned Tasks that will not be performed? Should they be marked as 'won&#8217;t do' (with some reason) and committed to the EHR, or should they be deleted prior to being committed to the EHR?</p>
+</div>
+<div class="paragraph">
+<p>It is assumed that the answer will differ according to circumstance and local preference, in other words, that planned Tasks that are created are not necessarily written into the EHR, but may initially exist in a separate 'planned tasks' buffer, and are only committed when a) the Task is performed or b) explicitly marked as not done or c) included in a list of not-done Actions to be committed to the EHR at a point of plan abandonment.</p>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-task-buffer: is a better assumption that whatever planned Tasks have been defined in a Task List represent a clinical intention by the responsible clinicians, and should therefore always go in the EHR? Technically this would be simpler&#8230;&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_support_process_analytics"><a class="anchor" href="#_support_process_analytics"></a>3.5. Support Process Analytics</h3>
+<div class="paragraph">
+<p>As Tasks are performed and signed off on the list of posted planned Tasks, there will generally be differences between Actions actually performed and the Tasks on the list. Differences could include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>time of execution - this will almost always be different, even if only by seconds;</p>
+</li>
+<li>
+<p>performer - a Task intended to be performed by a specific type of actor (say a nurse) might be performed by another (say the consultant);</p>
+</li>
+<li>
+<p>any other modifiable detail of the order, typically medication dose in bedside care situations.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These differences are recorded in the EHR since both planned Tasks and performed Actions will appear, providing a data resource for analysing business process, order compliance, reasons for deviation and so on.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_plans_for_order_sets"><a class="anchor" href="#_plans_for_order_sets"></a>3.6. Plans for Order Sets</h3>
+<div class="paragraph">
+<p>A plan for a clinical intervention might need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, in multi-drug chemotherapy based on protocols like CHOP (non-Hodgkin&#8217;s lymphoma), COPP or Stanford V (Hodgkin&#8217;s lymphoma) etc, a single drug such as Cyclophosphamide is just a component. A Task list for administering chemotherapy according to a R-CHOP protocol would implicate orders for the drugs  (R)ituximab, (C)yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin, and (P)rednisolone or Prednisone, and would accordingly include planned Tasks for each of these drugs as they are administered according to the protocol.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_support_costing_information"><a class="anchor" href="#_support_costing_information"></a>3.7. Support Costing Information</h3>
+<div class="paragraph">
+<p>It should be possible to record costing data against Task Lists as a whole, and also individual Ttasks.</p>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-costing: details requirements?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_design_basis"><a class="anchor" href="#_design_basis"></a>4. Design Basis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The design approach adopted here is based on a number of ideas. Firstly, it addresses only the 'Task list' level of the three conceptual levels mentioned earlier, leaving Care Plan and Care Pathway (guideline) to be addressed elsewhere. The other dsign elements are described below.</p>
+</div>
+<div class="sect2">
+<h3 id="_phases_of_work"><a class="anchor" href="#_phases_of_work"></a>4.1. Phases of Work</h3>
+<div class="paragraph">
+<p>The design uses the notion of three phases of clinical work, namely Order, Planned Task, and (performed) Task. There are correspondingly three levels of representation (two of which already exist in the basic openEHR <code>ENTRY</code> model) as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Order</strong>: statement of an order, expressed in a formulaic way, e.g. corresponding to "Amoxycillin 3 td po x 7d" (3 times a day, orally, for 7 days)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>represented in openEHR with the <code>INSTRUCTION</code> type;</p>
+</li>
+<li>
+<p>statement of actions to be performed in the future, usually expressed in a compressed algorithmic way;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Planned Task</strong>: representation of a single executable task in the order, to be performed in the future e.g. give Amoxycillin 1 oral tab at lunch;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>statement of each action to be performed in the future, expressed in a direct way as to a performing agent such as the patient or a nurse;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Performed Task</strong>: statement of the step that was actually executed by the performer, in the past, e.g. gave Amoxycillin 1 tab at 13:37</p>
+<div class="ulist">
+<ul>
+<li>
+<p>represented in openEHR using the types <code>ACTION</code>, <code>OBSERVATION</code> etc.</p>
+</li>
+<li>
+<p>statement of actions, observations etc that were carried out in the past; may include different details from the Planned Task.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There may be a non-trivial relationship between each form of expression, as suits its different purpose: expressing an order; directing personnel to perform tasks; documenting what was done after the fact.</p>
+</div>
+<div class="paragraph">
+<p>The model described here adds the second level of representation, which enables fine-grained lists of executable tasks to be explicitly stated and therefore stored in the EHR, displayed, and signed off.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_artefact_types_task_list_and_planned_task"><a class="anchor" href="#_artefact_types_task_list_and_planned_task"></a>4.2. Artefact types: Task List and Planned Task</h3>
+<div class="paragraph">
+<p>A further element of the design is to define two central artefact types, namely Task List and Planned Task. These follow naturally from the requirements described above, but we need to articulate the semantics of these two concepts, as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Planned Task</strong>: a small, separately performable unit of planned work that typically corresponds to:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the finest level of clinical responsibility, e.g. nurse administration of a drug, single observation of patient vital sign etc;</p>
+</li>
+<li>
+<p>the finest level of re-imbursement / billing;</p>
+</li>
+<li>
+<p>granularity of check-list and protocol single items, designed to be signed off as performed;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Task List</strong>: a logical list of Planned Tasks whose execution is intended to achieve completion of a coarse-grained task or goal, typically an intervention such as a course of medication or other therapy. For example, the Actions to be performed to deliver a course of CHOP / R-CHOP or similar multi-drug chemotherapy that runs over 5 days could be represented as Tasks in a single Task List.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>a Task List is assumed to have a lifecycle that follows the <a href="http://www.openehr.org/releases/RM/latest/ehr.html#instruction_state_machine">openEHR Instruction State Machine</a>, and therefore at any time, its state can be computed from the target state and execution status of its constitutent Tasks.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are a few nuances to consider here. Firstly, the granularity of a Planned Task can be variable, and will tend to follow clinical and health management culture as much as any theoretical precept. For example, healthcare organisation A may regard 'cannula insertion' as a single Task, similar to giving the patient a pill: the nurse just uses his training to perform the job without needing to be reminded of the individual steps. However healthcare organisation B may treat cannulation in a checklist- or guideline-driven way (e.g. using a guideline such as <a href="http://emedicine.medscape.com/article/1998177-overview">this one</a> from Medscape.com), in which case, a dozen or more Tasks could be defined within a Task List to represent the work. The model described here thus makes no built-in assumptions about granularity of a Task.</p>
+</div>
+<div class="paragraph">
+<p>A related question has to do with the granularity of Planned Tasks with respect to the granularity of resulting <code>ACTION</code>, <code>OBSERVATION</code> etc Entries. The model below makes the assumption that one Planned Task corresponds to one <code>ACTION</code> or other archetyped <code>ENTRY</code>.</p>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-task-entry-corr: the alternative seems to be to allow a Planned Task to correspond to e.g. a whole Compositoin template, where the <code>COMPOSITION</code> contains a number of e.g. <code>ACTIONs</code> or <code>OBSERVATIONs</code>. Problems I see with this: a) who knows what is in the Composition template? It may change over time; b) what if only some of the items in the Composition template can be done? Is the Task half complete? Or should the performer not do any of it?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_relationships_between_artefact_types"><a class="anchor" href="#_relationships_between_artefact_types"></a>4.3. Relationships between Artefact Types</h3>
+<div class="paragraph">
+<p>A final design idea is the flexible relation between a Task List and orders, i.e. <code>INSTRUCTIONs</code> in openEHR parlance. In simple cases, a Task List will just be the list of Tasks to fulfill one order, i.e. a single <code>INSTRUCTION</code>, such as a prescription for a course of antibiotics. The general case however is that the Task List corresponds to a clinical goal which implicates multiple orders, for example the CHOP chemotherapy mentioned above.</p>
+</div>
+<div class="paragraph">
+<p>It may also be the case that <em>not every Planned Task is associated with an order</em>. While the typical case is that a Task corresppnds to an openEHR <code>ACTION</code> that has not yet been recorded (and which normally has a driving <code>INSTRUCTION</code>), it may also correspond to an <code>ACTION</code> that has no <code>INSTRUCTION</code> or indeed an <code>OBSERVATION</code> or possibly an <code>EVALUATION</code> (perhaps some kind of check during a procedure). There is also no reason why a Task List cannot consist of Tasks that define administrative work and would be documented with openEHR <code>ADMIN_ENTRYs</code>.</p>
+</div>
+<div class="paragraph">
+<p>We can infer from the above that the main driver of a Task List isn&#8217;t in general an order, but a guideline or protocol. In simple cases, no formal protocol is used, and the orders (i.e. <code>INSTRUCTIONs</code>) may be <em>de facto</em> drivers. At the other extreme, a Task List may be created with no corresponding orders (and therefore <code>INSTRUCTIONs</code>) at all.</p>
+</div>
+<div class="paragraph">
+<p>The following figure shows the correspondences between the various type of openEHR artefact for the general case of Task Lists. The arrows indicate causal relationships.</p>
+</div>
+<div id="planning_artefact_relationships" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/planning_artefacts.svg" alt="planning artefacts" width="50%">
+</div>
+<div class="title">Figure 2. openEHR Planning Artefact Relationships</div>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-actions-mand-or-opt: the alternative view of this is that a Planned Task always results in an <code>ACTION</code>, but possibly another kind of Entry as well. For example a planned Task that logically describes an Observation to be performed could result in a linked <code>ACTION/OBSERVATION</code> pair. This creates a bit more data in the EHR, but arguably is more consistent, since there will always be an <code>ACTION</code> documenting any performed Task.</p>
+</div>
+<div class="sect3">
+<h4 id="_state_machine_model"><a class="anchor" href="#_state_machine_model"></a>4.3.1. State Machine Model</h4>
+<div class="paragraph">
+<p>Related to the correspondences between the phases of work above is the question of lifecycle. This design assumes that <em>a Task List has its own lifecycle</em> whose states come from the <a href="http://www.openehr.org/releases/RM/latest/ehr.html#instruction_state_machine">openEHR Instruction State Machine</a>. This means that openEHR <code>INSTRUCTIONs</code> that define orders whose individual <code>ACTIONs</code> appear in a Task List have distinct lifecycle state machines. This may be understood as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the lifecycle state machine of an <code>INSTRUCTION</code> represents the state of just one order or request, e.g. the progress of administering a single drug;</p>
+</li>
+<li>
+<p>the lifecycle state machine of a Task List represents the state of the Task group, typically a therapy or other coarse-grained piece of clinical work.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Consider a multi-drug therapy: one of the drugs may be administered once, at the beginning, in which case the relevant <code>ACTIONs</code> would indicate completion of the <code>INSTRUCTION</code> lifecycle, even though the therapy as a whole is not complete. Completion (abandonment, etc) of the Task list as a whole is therefore defined as completion or otherwise of all of its Tasks.</p>
+</div>
+<div class="paragraph">
+<p>One of the side-effects of distinct state machines for <code>INSTRUCTIONs</code> and Task Lists is that not all careflow steps and states in the former need to be represented as Tasks in a Task List. For example, a significant number of careflow steps defined in <code>ACTION</code> archetypes are for non-Active states, i.e. Planning, Postponement, Suspension etc. These steps do not need to have Planned Tasks defined for them, since by definition they are nearly all unplanned.</p>
+</div>
+<div class="paragraph">
+<p>As a consequence, most of not all Planned Tasks in a Task List correspond only to Active-state careflow steps of constituent order <code>INSTRUCTIONs</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_task_planning_micro_service"><a class="anchor" href="#_task_planning_micro_service"></a>4.4. Task Planning Micro-service</h3>
+<div class="paragraph">
+<p>The information structures required to represent planned Tasks and references at runtime are likely to be non-trivial. For this reason, a Micro-service is defined, with a transactional interface that converts transactional calls to correct underlying information structures.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_task_planning_model"><a class="anchor" href="#_task_planning_model"></a>5. Task Planning Model</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>5.1. Overview</h3>
+<div class="paragraph">
+<p>The following figure shows the <code>rm.composition.task_planning</code> package, including its relationships to existing classes.</p>
+</div>
+<div id="rm_composition_task_planning" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/RM-composition.task_planning.svg" alt="RM composition.task planning">
+</div>
+<div class="title">Figure 3. rm.composition.task_planning package</div>
+</div>
+<div class="paragraph">
+<p>The central classes in this model are <code>TASK_LIST</code> and <code>PLANNED_TASK</code>, which define a list of Tasks and a single Task respectively.</p>
+</div>
+<div class="paragraph">
+<p>As stated earlier, the notion of Task in this model is at the bottom of three conceptual levels. Accordingly, it does not attempt to define semantics of Care Plans or Care Pathways, but it does provide attributes to record a guideline and care plan identifier(s) (<code>PLAN_ITEM.<em>guideline_id</em></code> and <code>TASK_LIST.<em>care_plan</em></code> respectively).</p>
+</div>
+<div class="paragraph">
+<p>The abstract parent class <code>PLAN_ITEM</code> is used to provide these two classes with various attibutes that may apply both to a list of Tasks and single Task, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><em>participations</em></code>: descriptions of participating personnel or devices; since this is included in <code>PLAN_ITEM</code> it can be instantiated for the <code>TASK_LIST</code> as a whole and/or for individual <code>PLANNED_TASKs</code>;</p>
+</li>
+<li>
+<p><code><em>subject</em></code>: indicator of subject of the ask, in the same sense as it is recorded in <code>ENTRY.<em>subject</em></code>; Void implies subject of the health record;</p>
+</li>
+<li>
+<p><code><em>indications</em></code>: type of patient condition(s) to which this Task applies, e.g. 'pregnancy', 'lymphoma' etc; provided as a patient safety measure e.g. to be displayed in Task list application.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-indications: is <code><em>indications</em></code> useful?</p>
+</div>
+<div class="paragraph">
+<p>The <code>TASK_LIST</code> class contains its constituent Tasks via the <code><em>tasks</em></code> attribute, and includes other attributes describing the Task List:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><em>description</em></code>: a human-readable description of the Task List, e.g. "R-CHOP chemo administration for patient 384440";</p>
+</li>
+<li>
+<p><code><em>start_time</em></code>, <code><em>completion_timeout</em></code>: respectively start time and maximum time at which the Task List remains valid, i.e. after this time, it is considered 'dead' (this is analagous to the timeout events in the Instruction State Machine);</p>
+</li>
+<li>
+<p><code><em>care_plan</em></code>: a reference to a driving Care Plan within the EHR, if one exists;</p>
+</li>
+<li>
+<p><code><em>guideline_id</em></code>: optional identifier of a driving Care Pathway or other kind of guideline, which may also be recorded in <code>ENTRY</code> instances documenting Actions, Observations etc driven by the same guideline;</p>
+</li>
+<li>
+<p><code><em>sm_lifecycle_state()</em></code>: the state machine lifecycle state of the Task List as a whole, computed from the <code><em>sm_target_state</em></code> values of member <code>PLANNED_TASKs</code>. The states come from the  <a href="http://www.openehr.org/releases/RM/latest/ehr.html#instruction_state_machine">openEHR Instruction State Machine</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-guideline_id-rep: how should we best represent <code><em>guideline_id</em></code>? <code>OBJECT_REF</code> is the type used in <code>CARE_ENTRY.<em>guideline_id</em></code>, in the current spec. This was intended to enable the use of a <code>HIER_OBJECT_ID</code> or <code>GENERIC_ID</code>. However, there is probably no reliable machine identifier system for guidelines or Care Pathways. Perhaps a <code>DV_IDENTIFIER</code> would be better - this would allow things like &lt;`<em>issuer</em>` = "NICE"; <code><em>id</em></code> = "Sepsis pathway"; <code><em>type</em></code> = "care pathway"&gt;.</p>
+</div>
+<div class="paragraph">
+<p>The <code>PLANNED_TASK</code> class includes features common to any kind of Task, including the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><em>entry_archetype_ref/entry_archetype_id</em></code>: identifier of archetype for the <code>ACTION</code>, <code>OBSERVATION</code> or other Entry type that will be created due to this <code>PLANNED_TASK</code> being performed; the data of the referenced archetype will normally correspond closely to the data of the <code>PLANNED_TASK</code> i.e. due to its own archetype;</p>
+</li>
+<li>
+<p><code><em>entry_template_refs/entry_template_ids</em></code>: an optional attribute whose value if set further constrains which templates of the Entry archetype can be used to record the <code>ACTION</code> or other Entry;</p>
+</li>
+<li>
+<p><code><em>entry_archetype_concept</em></code>: the rubric of the root code in the Entry archetype; this provides a human-readable name / semantic type for the <code>PLANNED_TASK</code>, for example "medication administration";</p>
+</li>
+<li>
+<p><code><em>cancelled_time</em>/<em>cancelled_reason</em></code>: the time and reason the <code>PLANNED_TASK</code> was cancelled, if applicable. If a single <code>PLANNED_TASK</code> is cancelled, this doesn&#8217;t necessarily imply anything about the completion of the owning Task list, since a planned Task may have been optional, or otherwise already achieved;</p>
+</li>
+<li>
+<p><code><em>sm_target_state</em></code>: the Task List lifecycle state that will be reached if this Task is performed. The states come from the <a href="http://www.openehr.org/releases/RM/latest/ehr.html#instruction_state_machine">openEHR Instruction State Machine</a>, i.e. <code>Initial</code>, <code>Planned</code>, <code>Active</code>, <code>Complete</code> etc. If this <code>PLANNED_TASK</code> is related to an <code>ACTION</code> archetype, the state will come from one of its transitions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-template-refs: is there a better way to specify <code><em>entry_template_refs/ids</em></code>?</p>
+</div>
+<div class="paragraph">
+<p>The class <code>PLANNED_TASK</code> will in general be specialised in order to add attributes required by the planned form of specific Entry subtypes, hence, <code>PLANNED_ACTION</code>, <code>PLANNED_OBSERVATION</code> etc. The <code>PLANNED_ACION</code> class contains a number of attributes derived from the <code>INSTRUCTION</code> class and its constituent parts, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the <code><em>narrative</em></code> attribute, which is a human-readable copy of the same field from a previously committed <code>INSTRUCTION</code> (or potentially derived by computation from items within the relevant <code>ACTIVITY</code>);</p>
+</li>
+<li>
+<p>the <code>careflow_step_</code> attribute, which indicates the step in an archetyped <code>ACTION</code> careflow this <code>PLANNED_ACTION</code> describes;</p>
+</li>
+<li>
+<p><code><em>instruction_archetype_ref/instruction_archetype_id()</em></code>, identifying the relevant <code>INSTRUCTION</code> archetype if any;</p>
+</li>
+<li>
+<p><code><em>instruction_activity_instance_ref</em></code>, described below.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-instr-arch_id-needed: <code><em>instruction_archetype_ref/instruction_archetype_id()</em></code> may be redundant; the planning application that creates these structures will know the relevant archetype ids; is there any value in recording them in the <code>PLANNED_ACTION</code> instances, especially since they can be determined by following the <code><em>instruction_activity_instance_ref</em></code> reverse runtime ref and looking at the <code>INSTRUCTION</code>.</p>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-generic-planned_time: The class <code>PLANNED_TIME</code> should probably be made generic and added to the BASE component. Needs to take into account some of the other models of time specification.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_execution_time_data_structures"><a class="anchor" href="#_execution_time_data_structures"></a>5.2. Execution-time Data Structures</h3>
+<div class="paragraph">
+<p>Several aspects of how the model above is used at runtime require clarification: the relationship of information objects (<code>INSTRUCTION</code>, <code>TASK_LIST</code>, <code>PLANNED_ACTION</code>, <code>ACTION</code> etc) to <code>COMPOSITIONs</code> in which they are committed to the EHR, and hence versioning; and logical linking between these items to support workflow traceability. The following figure illustrates both aspects, which are further described below.</p>
+</div>
+<div id="runtime_planning_structures" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/planning_runtime_structures.svg" alt="planning runtime structures" width="80%">
+</div>
+<div class="title">Figure 4. Runtime planning structures</div>
+</div>
+<div class="sect3">
+<h4 id="_compositions_and_versioning"><a class="anchor" href="#_compositions_and_versioning"></a>5.2.1. Compositions and Versioning</h4>
+<div class="paragraph">
+<p>In this model a <code>TASK_LIST</code> is required in order to define any <code>PLANNED_TASKs</code>. Accordingly, <code>TASK_LIST</code> inherits from <code>CONTENT_ITEM</code>, the abstract type of the <code><em>content</em></code> attribute of a <code>COMPOSITION</code>. A <code>TASK_LIST</code> and its constituent <code>PLANNED_TASKs</code> are assumed to be created within a single dedicated <code>COMPOSITION</code> which is re-versioned as changes are made to its contents. New versions will occur for the following reasons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>update / add to <code>TASK_LIST</code>, mainly due to extension of the lookahead planning window;</p>
+</li>
+<li>
+<p>cancellation of tasks;</p>
+</li>
+<li>
+<p>addition of forward references to tasks that have been performed and recorded (i.e. <code>ACTIONs</code>, <code>OBSERVATIONs</code>, ?<code>EVALUATIONs</code> e.g. review); = task item signoff;</p>
+</li>
+<li>
+<p>completion or abandonment of the Task list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As the <code>TASK_LIST</code> gets progressively built and performed over time, its owning <code>COMPOSITION</code> will potentially undergo numerous versions, corresponding both to changes to the plan, and also execution of the actions performed to fulfill it. When these come to an end, the <code>TASK_LIST</code> is deemed 'complete'.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_logical_links_and_referencing"><a class="anchor" href="#_logical_links_and_referencing"></a>5.2.2. Logical Links and Referencing</h4>
+<div class="paragraph">
+<p>As described above, there are three possible levels of expression of work items: orders (<code>INSTRUCTIONs</code>), Planned Tasks (<code>TASK_LIST</code>, <code>PLANNED_TASK</code> etc) and performed Tasks (<code>ACTION</code>, <code>OBSERVATION</code> etc), with the caveat that not every Planned Task or performed Task has an order. To enable workflow traceability, various links can be recorded at runtime, as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Planned Task to Order reverse ref</strong>: the <code>PLANNED_ACTION.instruction_activity_instance_ref</code> attribute is used to record a reverse reference from a <code>PLANNED_ACTION</code> to an <code>ACTIVITY</code> within an <code>INSTRUCTION</code> that records a corresponding order, if one exists;</p>
+</li>
+<li>
+<p><strong>Planned Task to performed Task forward ref</strong>: the <code>PLANNED_TASK.<em>entry_instance_ref</em></code> attribute is used to record a forward reference to the Entry instance that was created when this Task was performed, i.e. some <code>ACTION</code>, <code>OBSERVATION</code> etc;</p>
+</li>
+<li>
+<p><strong>performed Task to Planned Task reverse ref</strong>: the <code>ENTRY.<em>workflow_id</em></code> attribute may be used to record a reverse reference from an <code>ACTION</code>, <code>OBSERVATION</code> etc to a causing <code>PLANNED_TASK</code> instance.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-fwd-refs: <code><em>entry_instance_ref</em></code> is a forward reference - which requires updating the Task List after the Tasks have beed performed and relevant Entries committed. Is this complication worth the benefit obtained, i.e. directly followable links rather than querying, to find Entries from the Task List items? Is being able to determine the resulting Entries starting from the Task List even useful?</p>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE-separate-task-ref: a more flexible way of forward referencing may be to have a separate class e.g. <code>EXECUTED_TASK</code> that can contain any forward ref, plus other meta-data such as time completed, whether completed and an <code><em>other_details</em></code> attribute that can be archetyped for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cost_tracking"><a class="anchor" href="#_cost_tracking"></a>5.3. Cost Tracking</h3>
+<div class="paragraph tbd">
+<p>TBD: describe cost tracking.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transactional_micro_service"><a class="anchor" href="#_transactional_micro_service"></a>5.4. Transactional Micro-service</h3>
+<div class="paragraph tbd">
+<p>TBD: describe micro-service.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>5.5. Class Descriptions</h3>
+<div class="sect3">
+<h4 id="_plan_item_class"><a class="anchor" href="#_plan_item_class"></a>5.5.1. PLAN_ITEM Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>PLAN_ITEM (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent of any type of Planned item. Records optional guideline_id, which can be for a relevant Care Pathway or other guideline from which the Plan item is derived, and planned participations.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>participations</strong>: <code>List&lt;PLANNED_PARTICIPATION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of participations for task item.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subject</strong>: <code>PARTY_PROXY</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional indicator of subject of Task, which is normally the subject of the EHR. If this is not the case, this attribute states who the Task is to be performed on.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>indications</strong>: <code>List&lt;DV_TEXT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Causal drivers or applicability of this Task item to subject of work, according to governing guideline, if any. May be displayed as a safety precaution to human performer.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Archetypable structure for recording non hard-modelled information.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>costing_data</strong>: <code>TASK_COSTING</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_planned_participation_class"><a class="anchor" href="#_planned_participation_class"></a>5.5.2. PLANNED_PARTICIPATION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PLANNED_PARTICIPATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Class defining a participation in a planned Task(s), minimally in terms of function. Optionally, the role and mode may also be specified. The performer attribute enables a specific actor to be specified.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>role</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Organisational role, i.e. the professional type of participant in the activity. Preferably coded.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mode</strong>: <code>DV_CODED_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional field for recording the 'mode' of the performer / activity interaction, e.g. present, by telephone, by email etc.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>performer</strong>: <code>PARTY_PROXY</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The id and possibly demographic system link of the party participating in the activity.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>function</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The function of the Party in this participation (note that a given party might participate in more than one way in a particular activity). This attribute should be coded, but cannot be limited to the HL7v3:ParticipationFunction vocabulary, since it is too limited and hospital-oriented.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>required_status</strong>: <code>REQUIRED_STATUS</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Condition for participation in the Plan item.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_task_list_class"><a class="anchor" href="#_task_list_class"></a>5.5.3. TASK_LIST Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_LIST</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Linear list of Tasks in intended order of execution. Each Task has an execution_condition that indicates if the Task must be executed, as well as a time specifier for when it should be executed. Taken together, these enable a measure of flexibility in Task execution, including approximate times, and parallel execution.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLAN_ITEM, CONTENT_ITEM</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Human-understandable description of the Task list, which may be specific to the work items and patient.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>start_time</strong>: <code>PLANNED_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Nominal start time for the Task list as a whole. The timings of individual Tasks may be specified as offsets from this time, via PLANNED_TIME.relative_offset.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>completion_time</strong>: <code>PLANNED_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Maximal completion date/time by which this Task list should be considered obsolete. If not set, the Task list would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the time_spec attribute of PLANNED_TASKs in the list.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tasks</strong>: <code>List&lt;PLANNED_TASK&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Set of Tasks to perform.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>care_plan</strong>: <code>LOCATABLE_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Care plan object from which this Task list is derived.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>guideline_id</strong>: <code>OBJECT_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Identifier of guideline, care pathway etc, from which this Plan item is derived.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sm_lifecycle_state</strong>: <code>CODE_PHRASE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Lifecycle state of Task List, as a state from the openEHR Instruction State Machine, derived by inspecting the states of the PLANNED_TASKs. Coded by the corresponding openEHR term list.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_planned_task_class"><a class="anchor" href="#_planned_task_class"></a>5.5.4. PLANNED_TASK Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PLANNED_TASK</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>General definition of a planned Task, which may be any kind of actionable ENTRY in the openEHR ENTRY model. Subtyped for specific ENTRY types where extra features are needed.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLAN_ITEM, LOCATABLE</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entry_archetype_concept</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A copy of the relevant Action or other archetype root node concept term. This indicates the action to be performed.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entry_archetype_ref</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Logical type of ENTRY representing a Task to be performed according to this planned Task. This attribute is the String form of entry_archetype_id function.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>execution_condition</strong>: <code>TASK_EXECUTION_CONDITION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Condition for execution of the Task.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_spec</strong>: <code>PLANNED_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Specifier of time at which the Task should be performed.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entry_template_refs</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Specific templates based on the Entry archetype referred to by entry_archetype_ref that this PLANNED_TASK can be used with. If any are specified, these templates define specific data sets that are subsets of the Entry archetype that can be used to document the execution of this PLANNED_TASK. If this field is empty, any template based on the Entry archetype can be used.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entry_instance_ref</strong>: <code>OBJECT_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Forward reference to Entry (e.g. OBSERVATION etc) that was recorded as a result of this Task being performed. If this is set, it indicates that the planned Task is 'done' i.e. checked off the list.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cancelled_time</strong>: <code>Date_time</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Time at which Task was cancelled, in the case of a Task that won&#8217;t be performed.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cancelled_reason</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional reason for cancellation of this Task.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sm_target_state</strong>: <code>DV_CODED_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The Task List lifecycle state that will be reached if this Task is performed. The states come from the standard Instruction State Machine. If this Task is related to an ACTION archetype, the state will come from one of its transitions. Coded by the corresponding openEHR term list.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entry_archetype_id</strong>: <code>ARCHETYPE_HRID</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Structural form of entry_archetype_ref produced by parsing.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entry_template_ids</strong>: <code>List&lt;ARCHETYPE_HRID&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_task_execution_condition_class"><a class="anchor" href="#_task_execution_condition_class"></a>5.5.5. TASK_EXECUTION_CONDITION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_EXECUTION_CONDITION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Descriptor representing the condition for execution, which may simply be 'mandatory' or 'optional' or may be expressed as a formal run-time evaluable expression.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>required_status</strong>: <code>REQUIRED_STATUS</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Condition of execution (typically according to governing protocol): mandatory &#124; recommended &#124; optional &#124; expression .</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>condition_expression</strong>: <code>DV_PARSABLE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>In the case that execution_condition /= mandatory; a Boolean expression that can be evaluated at runtime to determine inclusion.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preconditions</strong>: <code>List&lt;DV_TEXT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Textual representation of preconditions for this Task to be performed, according to governing protocol. May be displayed as a safety check for human performer.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_task_costing_class"><a class="anchor" href="#_task_costing_class"></a>5.5.6. TASK_COSTING Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_COSTING</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_required_status_enumeration"><a class="anchor" href="#_required_status_enumeration"></a>5.5.7. REQUIRED_STATUS Enumeration</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Enumeration</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>REQUIRED_STATUS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Enumeration of inclusion condition types.</p>
+</div>
+<div class="paragraph">
+<p>TODO: probably should go in BASE component.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mandatory</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recommended</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_planned_time_class"><a class="anchor" href="#_planned_time_class"></a>5.5.8. PLANNED_TIME Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PLANNED_TIME</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Represents time at which a future event or action should take place.</p>
+</div>
+<div class="paragraph">
+<p>TODO: probably need an option for coded times like 'afternoon', 'midday' etc.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>execution_window</strong>: <code>Interval&lt;Date_time&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Time window during which the action should start. May be a point time or an interval. If set, relative_offset and relative_time_qualifier are not set.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relative_offset</strong>: <code>Duration</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Relative time offset with respect to origin nominated in relative_time_qualifier.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relative_time_qualifier</strong>: <code>CODE_PHRASE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Indicates what time origin to use for this action in terms of other actions. May take values such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>with_previous: at the same time as the previous action in a list; order is assumed not to matter;</p>
+</li>
+<li>
+<p>after_previous: after the previous action in a list, by the offset duration if any;</p>
+</li>
+<li>
+<p>after_start: after the start of the list, by the offset duration if any.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>event_alignment</strong>: <code>CODE_PHRASE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A qualifier that indicates that the action should be aligned with a real world event. Typical values: before_meal, with_meal, after_meal, before_sleeping, etc.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_planned_action_class"><a class="anchor" href="#_planned_action_class"></a>5.5.9. PLANNED_ACTION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PLANNED_ACTION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Describes the planned ACTION</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLANNED_TASK</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>narrative</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>careflow_step</strong>: <code>DV_CODED_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The specific careflow step represented by the ACTION to be performed.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instruction_archetype_ref</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The INSTRUCTION archetype to which the PLANNED_ACTION corresponds. This attribute is the String form of instruction_archetype_id() function.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instruction_activity_instance_ref</strong>: <code>LOCATABLE_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to ACTIVITY object within an INSTRUCTION (which must exist within a previously committed COMPOSITION) to which this PLANNED_ACTION corresponds.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instruction_archetype_id</strong>: <code>ARCHETYPE_HRID</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Structural form of instruction_archetype_ref produced by parsing.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_planned_observation_class"><a class="anchor" href="#_planned_observation_class"></a>5.5.10. PLANNED_OBSERVATION Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PLANNED_OBSERVATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Type of PLANNED_TASK corresponding to the OBSERVATION Entry subtype.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLANNED_TASK</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_task_planning_ms_interface"><a class="anchor" href="#_task_planning_ms_interface"></a>5.5.11. TASK_PLANNING_MS Interface</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Interface</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_PLANNING_MS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Task planning micro-service: a service that knows how to create and maintain correct Task Planning information structures.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>create_task_list</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add_task</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>remove_task</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cancel_task</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>link_perfomed_action</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>etc</strong></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scenarios"><a class="anchor" href="#_scenarios"></a>6. Scenarios</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_protocol_driven_plan"><a class="anchor" href="#_protocol_driven_plan"></a>6.1. Protocol-driven Plan</h3>
+<div class="paragraph">
+<p>The following UML instance diagram shows a partial state of an EHR containing orders and a related Task List. The upper part shows a <code>COMPOSITION</code> containing a number of <code>INSTRUCTIONs</code> that express the orders for Cyclophosphamide, Hydroxydaunorubicin (Doxorubicin), etc, that make up the order set for a CHOP chemotherapy protocol (to be more complete, Rituximab would also be included). It is assumed that the orders contain the correct dosages for the patient, i.e. that they have been calculated in advance for the patient&#8217;s body weight, surface area and other specifics. A few elements of an <code>ACTIVITY</code> for the Cyclophosphamide drug are shown here.</p>
+</div>
+<div class="paragraph">
+<p>In the lower part of the part of the diagram is a <code>COMPOSITION</code> containing a <code>TASK_LIST</code> structure representing the list of work items to perform in order to administer the chemotherapy to the patient. It is assumed that a specialised chemotherapy application has been used to created this structure. The first <code>PLANNED_ACTION</code> is shown in some detail, and includes a reference back to the related Instruction Activity, enabling an application to retrieve and display the details of the order. As a precaution, it also has the <code><em>narrative</em></code> attribute set to the value <code>"Cyclophosphamide 1400 mg IV"</code>, copied (or generated) from the <code>INSTRUCTION</code> when the <code>TASK_LIST</code> was created. The other attributes of the <code>PLANNED_ACTION</code> object indicate when to execute the Task, what professional role should do it (<code><em>participations</em></code>), the Careflow step ('administer') and the target state machine state (<code>active</code>).</p>
+</div>
+<div class="paragraph">
+<p>Each of the <code>PLANNED_TASK</code> instances in the <code>TASK_LIST</code> should logically speaking be almost a copy of the <code>ACTION</code> that would result from executing the Task. This is not literally true, since there are fields representing various kinds of links, identifiers and other protocol and care plan information, but for the core information of what to do, and when to do it the instance data for a Planned action should be a tight constraint version of the intended Action to result.</p>
+</div>
+<div id="planning_typical_instance" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/Planning-typical-instance.svg" alt="Planning typical instance">
+</div>
+<div class="title">Figure 5. Typical Task List - CHOP Chemotherapy</div>
+</div>
+<div class="paragraph">
+<p>It is worth considering some of the differences between how an order represents the Task and how it may be represented in a <code>PLANNED_ACTION</code> and an eventual <code>ACTION</code>. Consider the fourth drug in the CHOP regimen, a choice of Prednisone or Prednisolone. In the form expressed in the order, i.e. the <code>INSTRUCTION</code>, it may be expressed in the following form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>administer 80mg orally every day for 5 days</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This could be expressed as a single <code>ACTIVITY</code> with the <code>INSTRUCTION.<em>tming</em></code> attribute set to represent 'once a day for 5 days'.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>TASK_LIST</code> however, it will be expressed as 5 separate <code>PLANNED_ACTIONs</code>, each indicating a single dose for one day. This corresponds to how the drug is actually administered and enables the system (and openEHR data) to represent each action individually, as well as deviations such as not performing one or more of the administrations. The information displayed representing each Task to the human agent will therefore be somewhat different to the form in which it is expressed in the generating order.</p>
+</div>
+<div class="paragraph">
+<p>However, the order <code>INSTRUCTION</code> could have been created using a series of 5 <code>ACTIVITY</code> objects each representing a single day&#8217;s administration. In this case, the form defined in each <code>ACTIVITY</code> is very close to the form required to represent each Task in the Task list.</p>
+</div>
+<div class="paragraph">
+<p>It is assumed that determining how to populate the details of the <code>PLANNED_ACTIONs</code> is up to an intelligent application that knows the relationship between the relevant orders or order sets, and the exact form of Task lists to implement them.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_check_list_and_sign_off"><a class="anchor" href="#_check_list_and_sign_off"></a>6.2. Check-list and Sign-off</h3>
+<div class="paragraph tbd">
+<p>TBD</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_changes_during_execution"><a class="anchor" href="#_changes_during_execution"></a>6.3. Changes during Execution</h3>
+<div class="paragraph tbd">
+<p>TBD</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_abandonment"><a class="anchor" href="#_abandonment"></a>6.4. Abandonment</h3>
+<div class="paragraph tbd">
+<p>TBD</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_publications"><a class="anchor" href="#_publications"></a>Publications</h3>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Anderson_1996"></a>[Anderson_1996] Ross Anderson. <strong>Security in Clinical Information Systems</strong>. Available at <a href="http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html" class="bare">http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html</a>.</p>
+</li>
+<li>
+<p><a id="Baretto_2005"></a>[Baretto_2005] Barretto S A. <strong>Designing Guideline-based Workflow-Integrated Electronic Health Records.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf" class="bare">http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Beale_2000"></a>[Beale_2000] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> 2000.  Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Beale_2002"></a>[Beale_2002] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> Eleventh OOPSLA Workshop on Behavioral Semantics: Serving the Customer (Seattle, Washington, USA, November 4, 2002). Edited by Kenneth Baclawski and Haim Kilov. Northeastern University, Boston, 2002, pp. 16-32. Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Beale_Heard_2007"></a>[Beale_Heard_2007] Beale T, Heard S. <strong>An Ontology-based Model of Clinical Information.</strong> 2007. pp760-764 Proceedings MedInfo 2007, K. Kuhn et al. (Eds), IOS Publishing 2007. See <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Booch_1994"></a>[Booch_1994] Booch G. <strong>Object-Oriented Analysis and Design with applications. 2nd ed.</strong> Benjamin/Cummings 1994.</p>
+</li>
+<li>
+<p><a id="Browne_2005"></a>[Browne_2005] Browne E D. <strong>Workflow Modelling of Coordinated Inter-Health-Provider Care Plans.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm</a>.</p>
+</li>
+<li>
+<p><a id="Cimino_1997"></a>[Cimino_1997] Cimino J J. <strong>Desiderata for Controlled Medical vocabularies in the Twenty-First Century.</strong> IMIA WG6 Conference, Jacksonville, Florida, Jan 19-22, 1997.</p>
+</li>
+<li>
+<p><a id="Eiffel"></a>[Eiffel] Meyer B. <strong>Eiffel the Language (2nd Ed).</strong> Prentice Hall, 1992.</p>
+</li>
+<li>
+<p><a id="Elstein_1987"></a>[Elstein_1987] Elstein AS, Shulman LS, Sprafka SA. <strong>Medical problem solving: an analysis of clinical reasoning.</strong> Cambridge, MA: Harvard University Press 1987.</p>
+</li>
+<li>
+<p><a id="Elstein_Schwarz_2002"></a>[Elstein_Schwarz_2002] Elstein AS, Schwarz A. <strong>Evidence base of clinical diagnosis: Clinical problem solving and diagnostic decision making: selective review of the cognitive literature.</strong> BMJ 2002;324;729-732.</p>
+</li>
+<li>
+<p><a id="Fowler_1997"></a>[Fowler_1997] Fowler M. <strong>Analysis Patterns: Reusable Object Models.</strong> Addison Wesley 1997</p>
+</li>
+<li>
+<p><a id="Fowler_Scott_2000"></a>[Fowler_Scott_2000] Fowler M, Scott K. <strong>UML Distilled (2nd Ed.).</strong> Addison Wesley Longman 2000.</p>
+</li>
+<li>
+<p><a id="Gray_reuter_1993"></a>[Gray_reuter_1993] Gray J, Reuter A. <strong>Transaction Processing Concepts and Techniques.</strong> Morgan Kaufmann 1993.</p>
+</li>
+<li>
+<p><a id="Hein_2002"></a>[Hein_2002] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
+</li>
+<li>
+<p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
+</li>
+<li>
+<p><a id="Ingram_1995"></a>[Ingram_1995] Ingram D. <strong>The Good European Health Record Project.</strong> Laires, Laderia Christensen, Eds. Health in the New Communications Age. Amsterdam: IOS Press; 1995; pp. 66-74.</p>
+</li>
+<li>
+<p><a id="Kifer_Lausen_Wu_1995"></a>[Kifer_Lausen_Wu_1995] Kifer M, Lausen G, Wu J. <strong>Logical Foundations of Object-Oriented and FrameBased Languages.</strong> JACM May 1995. See See <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf" class="bare">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf</a>.</p>
+</li>
+<li>
+<p><a id="Kilov_1994"></a>[Kilov_1994] Kilov H, Ross J. <strong>Information Modelling - an object-oriented approach.</strong> Prentice Hall 1994.</p>
+</li>
+<li>
+<p><a id="Maier_2000"></a>[Maier_2000] Maier M. <strong>Architecting Principles for Systems-of-Systems.</strong> Technical Report, University of Alabama in Huntsville. 2000. Available at <a href="http://www.infoed.com/Open/PAPERS/systems.htm" class="bare">http://www.infoed.com/Open/PAPERS/systems.htm</a></p>
+</li>
+<li>
+<p><a id="Martin"></a>[Martin] Martin P. <strong>Translations between UML, OWL, KIF and the WebKB-2 languages (For-Taxonomy, Frame-CG, Formalized English)</strong>. May/June 2003. Available at <a href="http://www.webkb.org/doc/model/comparisons.html" class="bare">http://www.webkb.org/doc/model/comparisons.html</a> as at Aug 2004.</p>
+</li>
+<li>
+<p><a id="Meyer_OOSC2"></a>[Meyer_OOSC2] Meyer B. <strong>Object-oriented Software Construction, 2nd Ed.</strong> Prentice Hall 1997</p>
+</li>
+<li>
+<p><a id="Müller_2003"></a>[Müller_2003] Müller R. <strong>Event-oriented Dnamic Adaptation of Workflows: Model, Architecture, and Implementation.</strong> 2003. PhD dissertation, University of Leipzig. Available at <a href="http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm</a>.</p>
+</li>
+<li>
+<p><a id="Object_Z"></a>[Object_Z] Smith G. <strong>The Object Z Specification Language</strong>. Kluwer Academic Publishers 2000. See <a href="http://www.itee.uq.edu.au/~smith/objectz.html" class="bare">http://www.itee.uq.edu.au/~smith/objectz.html</a> .</p>
+</li>
+<li>
+<p><a id="GLIF"></a>[GLIF] Lucila Ohno-Machado, John H. Gennari, Shawn N. Murphy, Nilesh L. Jain, Samson W. Tu, Diane E. Oliver, Edward Pattison-Gordon, Robert A. Greenes, Edward H. Shortliffe, and G. Octo Barnett.  <strong>The GuideLine Interchange Format - A Model for Representing Guidelines</strong>. J Am Med Inform Assoc. 1998 Jul-Aug; 5(4): 357–372.</p>
+</li>
+<li>
+<p><a id="Rector_1994"></a>[Rector_1994] Rector A L, Nowlan W A, Kay S. <strong>Foundations for an Electronic Medical Record.</strong> The IMIA Yearbook of Medical Informatics 1992 (Eds. van Bemmel J, McRay A). Stuttgart Schattauer 1994.</p>
+</li>
+<li>
+<p><a id="Rector_1999"></a>[Rector_1999] Rector A L. <strong>Clinical terminology: why is it so hard?</strong> Methods Inf Med. 1999 Dec;38(4-5):239-52. Available at <a href="http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf" class="bare">http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
+</li>
+<li>
+<p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
+</li>
+<li>
+<p><a id="Sottile_1999"></a>[Sottile_1999] Sottile P.A., Ferrara F.M., Grimson W., Kalra D., and Scherrer J.R. <strong>The holistic healthcare information system. Toward an Electronic Health Record Europe.</strong> 1999. Nov 1999; 259-266.</p>
+</li>
+<li>
+<p><a id="Van_de_Velde_Degoulet_2003"></a>[Van_de_Velde_Degoulet_2003] Van de Velde R, Degoulet P. <strong>Clinical Information Systems: A Component-Based Approach.</strong> 2003. Springer-Verlag New York.</p>
+</li>
+<li>
+<p><a id="Weed_1969"></a>[Weed_1969] Weed LL. <strong>Medical records, medical education and patient care. 6 ed.</strong> Chicago: Year Book Medical Publishers Inc. 1969.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resources"><a class="anchor" href="#_resources"></a>Resources</h3>
+<div class="sect3">
+<h4 id="_general"><a class="anchor" href="#_general"></a>General</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="cov_contra"></a>[cov_contra] Wikipedia. <strong>Covariance and contravariance.</strong> See <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science" class="bare">https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science</a>) .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_health_standards"><a class="anchor" href="#_e_health_standards"></a>e-Health Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="Corbamed_PIDS"></a>[Corbamed_PIDS] Object Management Group. <strong>Person Identification Service.</strong> March 1999. See <a href="http://www.omg.org/spec/PIDS/" class="bare">http://www.omg.org/spec/PIDS/</a> .</p>
+</li>
+<li>
+<p><a id="Corbamed_LQS"></a>[Corbamed_LQS] Object Management Group. <strong>Lexicon Query Service.</strong> March 1999. <a href="http://www.omg.org/spec/LQS/" class="bare">http://www.omg.org/spec/LQS/</a> .</p>
+</li>
+<li>
+<p><a id="hl7_cda"></a>[hl7_cda] HL7 International. <strong>HL7 version Clinical Document Architecture (CDA)</strong>. Available at <a href="http://www.hl7.org.uk/version3group/cda.asp" class="bare">http://www.hl7.org.uk/version3group/cda.asp</a>.</p>
+</li>
+<li>
+<p><a id="HL7v3_ballot2"></a>[HL7v3_ballot2] HL7 International. <strong>HL7 version 3 2nd Ballot specification</strong>. Available at <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a>.</p>
+</li>
+<li>
+<p><a id="HL7v3_data_types"></a>[HL7v3_data_types] Schadow G, Biron P. <strong>HL7 version 3 deliverable: Version 3 Data Types.</strong> (2nd ballot 2002 version).</p>
+</li>
+<li>
+<p><a id="hl7_v3_rim"></a>[hl7_v3_rim] HL7 International. <strong>HL7 v3 RIM</strong>. See <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a> .</p>
+</li>
+<li>
+<p><a id="hl7_arden"></a>[hl7_arden] HL7 International. <strong>HL7 Arden Syntax</strong>. See <a href="http://www.hl7.org/Special/committees/Arden/index.cfm" class="bare">http://www.hl7.org/Special/committees/Arden/index.cfm</a> .</p>
+</li>
+<li>
+<p><a id="hl7_gello"></a>[hl7_gello] HL7 International. <strong>GELLO Decision Support Language</strong>. <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=5" class="bare">http://www.hl7.org/implement/standards/product_brief.cfm?product_id=5</a> .</p>
+</li>
+<li>
+<p><a id="IHTSDO_URIs"></a>[IHTSDO_URIs] IHTSDO. SNOMED CT URI Standard. <a href="http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok" class="bare">http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok</a>.</p>
+</li>
+<li>
+<p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784" class="bare">http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784</a> .</p>
+</li>
+<li>
+<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119</a> .</p>
+</li>
+<li>
+<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+</li>
+<li>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+</li>
+<li>
+<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_e_health_projects"><a class="anchor" href="#_e_health_projects"></a>e-Health Projects</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="EHCR_supA_14"></a>[EHCR_supA_14] Dixon R, Grubb P A, Lloyd D, and Kalra D. <strong>Consolidated List of Requirements. EHCR Support Action Deliverable 1.4.</strong> European Commission DGXIII, Brussels; May 2001 59pp Available from <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_35"></a>[EHCR_supA_35] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 3.5: "Final Recommendations to CEN for future work".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_24"></a>[EHCR_supA_24] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 2.4 "Guidelines on Interpretation and implementation of CEN EHCRA".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="EHCR_supA_31_32"></a>[EHCR_supA_31_32] Lloyd D, et al. <strong>EHCR Support Action Deliverable 3.1&amp;3.2 “Interim Report to CEN”.</strong> July 1998. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
+</li>
+<li>
+<p><a id="GEHR_del_4"></a>[GEHR_del_4] <strong>Deliverable 4: GEHR Requirements for Clinical Comprehensiveness.</strong> GEHR Project 1992. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GEHR_del_7"></a>[GEHR_del_7] <strong>Deliverable 7: Clinical Functional Specifications.</strong> GEHR Project 1993.</p>
+</li>
+<li>
+<p><a id="GEHR_del_8"></a>[GEHR_del_8] <strong>Deliverable 8: Ethical and legal Requirements of GEHR Architecture and Systems.</strong> GEHR Project 1994. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GEHR_del_19_20_24"></a>[GEHR_del_19_20_24] <strong>Deliverable 19,20,24: GEHR Architecture.</strong> GEHR Project 30/6/1995. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_AUS"></a>[GeHR_AUS] Heard S, Beale T. <strong>The Good Electronic Health Record (GeHR) (Australia).</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_gpcg"></a>[GeHR_Aus_gpcg] Heard S. <strong>GEHR Project Australia, GPCG Trial.</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
+</li>
+<li>
+<p><a id="GeHR_Aus_req"></a>[GeHR_Aus_req] Beale T, Heard S. <strong>GEHR Technical Requirements.</strong> See <a href="http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf</a> .</p>
+</li>
+<li>
+<p><a id="Synapses_req_A"></a>[Synapses_req_A] Kalra D. (Editor). <strong>The Synapses User Requirements and Functional Specification (Part A).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1a. 6 chapters, 176 pages.</p>
+</li>
+<li>
+<p><a id="Synapses_req_B"></a>[Synapses_req_B] Grimson W. and Groth T. (Editors). <strong>The Synapses User Requirements and Functional Specification (Part B).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1b.</p>
+</li>
+<li>
+<p><a id="Synapses_odp"></a>[Synapses_odp] Kalra D. (Editor). <strong>Synapses ODP Information Viewpoint.</strong> EU Telematics Application Programme, Brussels; 1998; The Synapses Project: Final Deliverable. 10 chapters, 64 pages. See <a href="http://discovery.ucl.ac.uk/66235/" class="bare">http://discovery.ucl.ac.uk/66235/</a> .</p>
+</li>
+<li>
+<p><a id="synex"></a>[synex] University College London. <strong>SynEx project</strong>. <a href="http://www.chime.ucl.ac.uk/HealthI/SynEx/" class="bare">http://www.chime.ucl.ac.uk/HealthI/SynEx/</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_general_standards"><a class="anchor" href="#_general_standards"></a>General Standards</h4>
+<div class="olist bibliography">
+<ol class="bibliography">
+<li>
+<p><a id="OCL"></a>[OCL] <strong>The Object Constraint Language 2.0.</strong> Object Management Group (OMG). Available at <a href="http://www.omg.org/cgi-bin/doc?ptc/2003-10-14" class="bare">http://www.omg.org/cgi-bin/doc?ptc/2003-10-14</a> .</p>
+</li>
+<li>
+<p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
+</li>
+<li>
+<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See <a href="https://en.wikipedia.org/wiki/ISO_8601" class="bare">https://en.wikipedia.org/wiki/ISO_8601</a>.</p>
+</li>
+<li>
+<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
+</li>
+<li>
+<p><a id="Perl_regex"></a>[Perl_regex] Perl.org. <strong>Perl Regular Expressions</strong>. Available at <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> .</p>
+</li>
+<li>
+<p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
+</li>
+<li>
+<p><a id="rfc_2440"></a>[rfc_2440] <strong>RFC 2440: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc2440.txt" class="bare">http://www.ietf.org/rfc/rfc2440.txt</a> and <a href="http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt" class="bare">http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt</a></p>
+</li>
+<li>
+<p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+</li>
+<li>
+<p><a id="rfc_4122"></a>[rfc_4122] <strong>RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
+</li>
+<li>
+<p><a id="rfc_2781"></a>[rfc_2781] IETF. <strong>RFC 2781: UTF-16, an encoding of ISO 10646</strong> See <a href="http://tools.ietf.org/html/rfc2781" class="bare">http://tools.ietf.org/html/rfc2781</a>.</p>
+</li>
+<li>
+<p><a id="rfc_5646"></a>[rfc_5646] IETF. <strong>RFC 5646.</strong> Available at <a href="http://tools.ietf.org/html/rfc5646" class="bare">http://tools.ietf.org/html/rfc5646</a>.</p>
+</li>
+<li>
+<p><a id="sem_ver"></a>[sem_ver] <strong>Semantic Versioning</strong>. <a href="http://semver.org" class="bare">http://semver.org</a> .</p>
+</li>
+<li>
+<p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
+</li>
+<li>
+<p><a id="uri_syntax"></a>[uri_syntax] <strong>Uniform Resource Identifier (URI): Generic Syntax, Internet proposed standard</strong>. January 2005. see <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
+</li>
+<li>
+<p><a id="w3c_owl"></a>[w3c_owl] W3C. <strong>OWL - the Web Ontology Language</strong>. See <a href="http://www.w3.org/TR/2003/CR-owl-ref-20030818/" class="bare">http://www.w3.org/TR/2003/CR-owl-ref-20030818/</a> .</p>
+</li>
+<li>
+<p><a id="w3c_xpath"></a>[w3c_xpath] W3C. <strong>XML Path Language</strong>. See <a href="http://w3c.org/TR/xpath" class="bare">http://w3c.org/TR/xpath</a> .</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-01-24 09:15:16 GMT
+</div>
+</div>
+</body>
+</html>
