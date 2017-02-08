@@ -296,7 +296,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2016 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2017 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -336,14 +336,22 @@
 </thead>
 <tbody>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.4</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.?.?</strong></p></th>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-52">SPECRM-52</a>. Remove <code>COMPOSITION</code> invariant preventing context for persistent Compositions. (Fixes <a href="https://openehr.atlassian.net/browse/SPECPR-78">SPECPR-78</a>)<br>
+ Update Clinical Investigator Recording Process diagram.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
+ S Heard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Feb 2017</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECPUB-3">SPECPUB-3</a>. Re-instate inheritance from descendants of <code>VERSIONED_OBJECT&lt;T&gt;</code> to <code>VERSIONED_OBJECT</code> from Release 1.0.2 (lost in original UML conversion).<br>
  Correct <code>EVENT_CONTEXT.<em>health_care_facility</em></code> and <code><em>participations</em></code> links that were mangled in initial UML conversion.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Jun 2016</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">07 Jun 2016</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -2261,8 +2269,17 @@
 <div class="paragraph">
 <p>In cases where Contributions are made to the record with no event context, the Event context of any Compositions from the original commit will remain intact and visible (unless the correction is to the event context itself of course), and will correctly reflect the fact that no new clinical interaction occurred. This is the case with Contribution D in the figure.</p>
 </div>
-<div class="paragraph">
-<p>Persistent Compositions do not have an Event context.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Persistent Compositions may optionally have an Event context. In openEHR releases up to 1.0.3, Persistent Compositions had no Event context. This was releaxed in subsequent releases, to allow the inclusion of context information (e.g. encounter data) for changes to Persistent Compositions where no Event Composition was created.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect4">
@@ -2423,12 +2440,6 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Category_validity</em></strong>: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_composition_category, category.defining_code)</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Is_persistent_validity</em></strong>: is_persistent implies context = Void</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2705,9 +2716,9 @@
 <div class="paragraph">
 <p>The design of <code>entry</code> package is based on the Clinical Investigator Recording process and ontology, described in <a href="#Beale_Heard_2007">[Beale_Heard_2007]</a>. The process is shown in following figure.</p>
 </div>
-<div id="clinical_investigator_process" class="imageblock text-center" style="text-align: center">
+<div id="clinical_investigator_recording_process" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/clinical_investigator_process.png" alt="clinical investigator process" width="80%">
+<img src="diagrams/clinical_investigator_recording_process.png" alt="clinical investigator recording process" width="80%">
 </div>
 <div class="title">Figure 16. Clinical Investigator Recording Process</div>
 </div>
@@ -2715,7 +2726,7 @@
 <p>This figure shows the cycle of information created by an iterative, problem solving process undertaken by a "clinical investigator system", which consists of health carers, and may include the patient (at points in time when the patient performs observational or therapeutic activities). Starting from the patient (right hand side of figure) observations are made, which lead to opinions on the part of the investigator, including assessment of the current situation, goals for a future situation, and plans for achieving the goals. Personal and published evidence and knowledge almost always play an important part in this process. The latter lead to instructions designed to help the patient achieve the goals. A complex or chronic problem may take numerous iterations - possibly a whole lifetime&#8217;s worth - with each step being quite small, and future steps depending heavily on past progress. The role of the investigator (and associated agents) is normally filled by health care professionals, but may also be filled by the patient, or a guardian or associate of the patient. Indeed, this is what happens every time a person goes home from the pharmacy with prescribed medication to take at home.</p>
 </div>
 <div class="paragraph">
-<p>The process illustrated in the figure <a href="#clinical_investigator_process">Clinical Investigator Recording Process</a> is a synthesis of the "problem-oriented" approach of Weed (<a href="#Weed_1969">[Weed_1969]</a>) and the "hypothetico-deductive model" of clinical reasoning described by Elstein <em>et al</em> <a href="#Elstein_1987">[Elstein_1987]</a>. However, as pointed out in <a href="#Elstein_Schwarz_2002">[Elstein_Schwarz_2002]</a>, hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion. As such, the openEHR information model does not impose any process model, only the types of information used.</p>
+<p>The process illustrated in the figure <a href="#clinical_investigator_recording_process">Clinical Investigator Recording Process</a> is a synthesis of the "problem-oriented" approach of Weed (<a href="#Weed_1969">[Weed_1969]</a>) and the "hypothetico-deductive model" of clinical reasoning described by Elstein <em>et al</em> <a href="#Elstein_1987">[Elstein_1987]</a>. However, as pointed out in <a href="#Elstein_Schwarz_2002">[Elstein_Schwarz_2002]</a>, hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion. As such, the openEHR information model does not impose any process model, only the types of information used.</p>
 </div>
 <div class="paragraph">
 <p>On the basis of this process, a Clinical Investigator Recording ontology is developed <a href="#Beale_Heard_2007">[Beale_Heard_2007]</a>, as shown below. From this ontology, the openEHR class model for Entries is derivde. The openEHR Entry class names are annotated next to their originating ontological categories.</p>
@@ -3096,10 +3107,10 @@ and includes the following:</p>
 <p>The approach taken to modelling these concepts in openEHR is heavily based upon the development of archetypes for assessments such as "diagnosis" (various kinds), "goal", "adverse reactions", "alert", "exclusion", "clinical synopsis", "risk based on family history" and so on. Experience has shown that the Opinion category is too variable for safely modelling its sub-categories directly in the reference model. Instead, a single class <code>EVALUATION</code> is used for all instances of the Opinion category. (The name Evaluation has been present in openEHR for some years, and is retained for reasons of continuity).</p>
 </div>
 <div class="paragraph">
-<p>The design of the <code>EVALUATION</code> class is very simple. In addition to the attributes inherited from <code>ENTRY</code> and <code>CARE_ENTRY</code>, it has only one attribute, <code><em>data</em></code>: <code>ITEM_STRUCTURE</code>. This structure is intended to be archetyped so as to model all the details of any particular clinical information in the Opinion category. No timing attributes are included, since there is no time associated with creation or capturing of Evaluation information as such, only times included in the information. The only times of generic significance are (potentially) the time of a patient consultation during which the Evaluation was created (recorded in <code>COMPOSITION</code>.<code><em>event_context</em></code>.<code>start_time_</code> and <code><em>end_time</em></code>) and the time of committal to the EHR system (recorded in <code>VERSION</code>.<code><em>commit_audit</em></code> attribute).</p>
+<p>The design of the <code>EVALUATION</code> class is very simple. In addition to the attributes inherited from <code>ENTRY</code> and <code>CARE_ENTRY</code>, it has only one attribute, <code><em>data</em></code>: <code>ITEM_STRUCTURE</code>. This structure is intended to be archetyped so as to model all the details of any particular clinical information in the Opinion category. No timing attributes are included, since there is no time associated with creation or capturing of Evaluation information as such, only times included in the information. The only times of generic significance are (potentially) the time of a patient consultation during which the Evaluation was created (recorded in <code>COMPOSITION.<em>event_context</em>.<em>start_time</em></code> and <code><em>end_time</em></code>) and the time of committal to the EHR system (recorded in <code>VERSION.<em>commit_audit</em></code> attribute).</p>
 </div>
 <div class="paragraph">
-<p>The general meaning of the inherited attributes is as for all Entries. In Evaluations, the provider is almost always the physician, while the protocol may be used to indicate how a particular assessment was made. The other_participations attribute is not as likely to be used for Evaluations representing diagnoses, since a diagnosis is usually the result of thinking on the part of the physician; an exception to this would be a case conference or if an expert system were used. However, Plans for complex patients may well be constructed by multiple physicians.</p>
+<p>The general meaning of the inherited attributes is as for all Entries. In Evaluations, the provider is almost always the physician, while the protocol may be used to indicate how a particular assessment was made. The <code><em>other_participations</em></code> attribute is not as likely to be used for Evaluations representing diagnoses, since a diagnosis is usually the result of thinking on the part of the physician; an exception to this would be a case conference or if an expert system were used. However, Plans for complex patients may well be constructed by multiple physicians.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3168,7 +3179,7 @@ and includes the following:</p>
 <div class="sect4">
 <h5 id="_model_overview"><a class="anchor" href="#_model_overview"></a>8.2.5.3. Model Overview</h5>
 <div class="paragraph">
-<p>Instruction definitions are modelled in terms of the <code>INSTRUCTION</code> and <code>ACTIVITY</code> classes, with optional workflow attributes. These two classes carry the basic information relating to an Instruction, with all formal workflow definition expressed in parsable syntax in the <code>INSTRUCTION</code>.<code><em>wf_definition</em></code> attribute. An <code>INSTRUCTION</code> instance includes the narrative description of the Instruction, and a list of <code>ACTIVITY</code> instances. It also includes all the attributes inherited from the <code>CARE_ENTRY</code> class, including subject, participations and so on.</p>
+<p>Instruction definitions are modelled in terms of the <code>INSTRUCTION</code> and <code>ACTIVITY</code> classes, with optional workflow attributes. These two classes carry the basic information relating to an Instruction, with all formal workflow definition expressed in parsable syntax in the <code>INSTRUCTION.<em>wf_definition</em></code> attribute. An <code>INSTRUCTION</code> instance includes the narrative description of the Instruction, and a list of <code>ACTIVITY</code> instances. It also includes all the attributes inherited from the <code>CARE_ENTRY</code> class, including subject, participations and so on.</p>
 </div>
 <div class="paragraph">
 <p>Many Instructions will have only one Activity, usually describing a medication to be administered and its timing. Some will have more than one drug or therapy, such as the typical 3 drug Losec-HP regime for treating ulcers, and multi-drug chemotherapy. The base Instruction model does not explicitly try to indicate the exact order, serial or parallel administration, or other dependencies, since the knowledge of how to administer the drugs is known by the relevant clinicians, and/or contained in published guidelines. However, the timing information in each Activity does indicate times, days and the usual specifications of "with meals" etc. The timing information is also sufficient to specify a three drug chemotherapy regime, by indicating which days each drug is administered on. It is only when the Instruction is to be automated by a workflow engine that the full structure of the Activity graph will be given. Activity instances may be completely absent from an Instruction, in which case only the narrative will be present. This will typically occur with imported legacy data which itself has no structured representation of medications.</p>
@@ -4613,7 +4624,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-05 11:58:29 GMT
+Last updated 2017-01-24 09:31:11 GMT
 </div>
 </div>
 </body>
