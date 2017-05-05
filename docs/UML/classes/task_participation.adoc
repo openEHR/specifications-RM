@@ -1,0 +1,37 @@
+=== TASK_PARTICIPATION Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*TASK_PARTICIPATION*
+
+h|*Description*
+2+a|Class defining a participation in Task(s), minimally in terms of function. Optionally, the role and mode may also be specified. The performer attribute enables a specific actor to be specified.
+
+h|*Inherit*
+2+|LOCATABLE
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*function*: `DV_TEXT`
+a|The function of the Party in this participation (note that a given party might participate in more than one way in a particular activity). This attribute should be coded, but cannot be limited to the HL7v3:ParticipationFunction vocabulary, since it is too limited and hospital-oriented.
+
+h|*0..1*
+|*role*: `DV_TEXT`
+a|Organisational role, i.e. the professional type of participant in the activity. Preferably coded.
+
+h|*0..1*
+|*mode*: `DV_CODED_TEXT`
+a|Optional field for recording the 'mode' of the performer / activity interaction, e.g. present, by telephone, by email etc.
+
+h|*0..1*
+|*performer*: `PARTY_PROXY`
+a|The id and possibly demographic system link of the party participating in the activity.
+
+h|*1..1*
+|*optionality*: `VALIDITY_KIND`
+a|Condition for participation in the Plan item.
+|===

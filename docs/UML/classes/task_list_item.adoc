@@ -1,0 +1,71 @@
+=== TASK_LIST_ITEM Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*_TASK_LIST_ITEM (abstract)_*
+
+h|*Description*
+2+a|Abstract parent of any type of the TASK_LIST member types TASK_GROUP and TASK.
+
+Supports definition of optionality, pre-conditions, wait conditions, indications and notifications with any Task Group or Task.
+
+Provides a place to record fine-grained costing data.
+
+Informal other participations can also be recorded for any Task Group or Task, although these do not replace the Task List principal_performer.
+
+h|*Inherit*
+2+|LOCATABLE
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*other_participations*: `List<TASK_PARTICIPATION>`
+a|List of participations for task item.
+
+h|*1..1*
+|*task_group_id*: `Integer`
+a|Integer indicating the ordinal number of this Task within its Task group. Used for referencing from other objects. Required to be unique with respect to other siblings in the same Task group.
+
+Identification of any Task in a Task list is done using paths of the form /task_group_id/task_group_id.
+
+h|*1..1*
+|*description*: `DV_TEXT`
+a|Human-readable form of the task directive.
+
+h|*0..1*
+|*costing_data*: `TASK_COSTING`
+a|Costing data related to this Task item.
+
+h|*0..1*
+|*preconditions*: `List<TASK_PRECONDITION>`
+a|Condition which must be met for the PLANNED_TASK to be available in a runtime execution context.
+
+h|*0..1*
+|*indications*: `List<DV_TEXT>`
+a|Causal drivers or applicability of this Task item to subject of work, e.g. 'pregnancy', 'lymphoma' etc. May be derived from a governing guideline. May be displayed as a safety precaution to human performer.
+
+h|*0..1*
+|*notifications*: `List<TASK_NOTIFICATION>`
+a|List of notifications to be generated on a state change of this Task during execution.
+
+h|*0..1*
+|*wait_conditions*: `List<TASK_WAIT_CONDITION>`
+a|Set of wait conditions for this Task, expressed in terms of external actors and Tasks that need to complete before this Task may be commenced.
+
+h|*1..1*
+|*optionality*: `VALIDITY_KIND`
+a|Condition of execution (typically according to governing protocol): mandatory &#124; recommended &#124; optional &#124; expression .
+
+h|*0..1*
+|*other_details*: `ITEM_STRUCTURE`
+a|Archetypable structure for recording non hard-modelled information.
+
+h|*0..1*
+|*execution_time*: `PLANNED_EVENT_TIME`
+a|Optional specifier of time at which the Task of Task Group should be performed. If not provided, the Task is assumed to be available to perform immediately following completion of the previous members of the parent Task Group.
+
+The Task may be performed earlier or later than this time; it is understood as a guide only.
+|===

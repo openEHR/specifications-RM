@@ -1,0 +1,13 @@
+= Implementation Guidance
+
+== Workflow Application Design
+
+TODO:
+
+== Versioning
+
+The information structures described in this specification may in some cases become non-trivial in size and complexity, and some attention as to when changing states of a Task List are committed to the EHR is likely to be needed. When a Task List is first instantiated, it may be committed to the EHR in order to act as a shared, visible statement of outstanding work, particularly work to be done by teams and/or across shift boundaries. When the work is underway, although it would be possible to commit changes due to changing lifecycle states of each Task, it may be preferable to allow these changes to be tracked only by the workflow application and for the Task List to only be recommitted once completed or abandoned, or possibly at strategic points in time prior to this, for example nursing shift changes.
+
+It does not appear likely that any single rule for when to commit the changed state of a Task List to the EHR can be established for all possible situations, but it is recommended that the commit points are chosen carefully so that their meaning is clear.
+
+Interim commits of a Task List to a persistent store for workflow management or some other application may of course be useful.

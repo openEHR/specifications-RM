@@ -1,0 +1,36 @@
+=== TASK_EVENT_RECORD Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*TASK_EVENT_RECORD*
+
+h|*Description*
+2+a|Record of an event for a single Task. Records task identifier, time, resulting lifecycle state and optional reason.
+
+h|*Inherit*
+2+|EVENT_RECORD
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*task_id*: `String`
+a|Identification of Task in the Task list structre using a path of the form /task_group_id/task_group_id.
+
+h|*1..1*
+|*lifecycle_state*: `TASK_LIFECYCLE`
+a|The lifecycle state that was reached due to this event.
+
+h|*0..1*
+|*notifications*: `List<TASK_NOTIFICATION_RECORD>`
+a|Notifications that were performed as part of this Task Event.
+
+h|*0..1*
+|*entry_instances*: `Hash<OBJECT_REF,ENTRY>`
+a|Forward references to Entry (e.g. ACTION, OBSERVATION etc) that was recorded as a result of this Task being performed. If this is set, it indicates that the planned Task is 'done' i.e. checked off the list.
+
+[.tbd]
+ISSUE-fwd-refs: entry_instance is a forward reference - which requires updating the Task List after the Tasks have beed performed and relevant Entries committed. Is this complication worth the benefit obtained, i.e. directly followable links rather than querying, to find Entries from the Task List items? Is being able to determine the resulting Entries starting from the Task List even useful?
+|===

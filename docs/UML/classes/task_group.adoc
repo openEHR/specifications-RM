@@ -1,0 +1,34 @@
+=== TASK_GROUP Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*TASK_GROUP*
+
+h|*Description*
+2+a|Grouping structure that defines the execution basis for a collection of Tasks, which may include more Task groups.
+
+The execution_type attribute defines the mode of execution. If not set, sequential execution is assumed.
+
+h|*Inherit*
+2+|TASK_LIST_ITEM
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*members*: `List<TASK_LIST_ITEM>`
+a|Set of Tasks to perform. Sequencing is either the natural order of the tasks list, or may be controlled by
+
+h|*0..1*
+|*execution_type*: `EXECUTION_TYPE`
+a|Basis for executing the Task items contained in this Task Group.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*lifecycle_state*: `TASK_LIFECYCLE`
+a|Effective lifecycle state, computed from the states of members of the group.
+|===

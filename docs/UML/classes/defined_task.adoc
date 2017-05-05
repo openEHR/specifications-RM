@@ -1,0 +1,25 @@
+=== DEFINED_TASK Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*DEFINED_TASK*
+
+h|*Description*
+2+a|Type of Task that represents concrete tasks, i.e. real work items. The definition of the work of the Task is expressed in terms of archetype of an ENTRY (usually an ACTION) that will be used to record the Task's execution.
+
+The entry_instance attribute can be used to record a forward reference to an ACTION or other ENTRY when it has been recorded.
+
+May be specialised in order to add attributes required by the Task form of specific Entry subtypes, hence, ACTION_TASK etc.
+
+h|*Inherit*
+2+|TASK
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*prototype*: `List<ENTRY>`
+a|Prototype instance of one or more Entries that express the Task specifics.
+|===

@@ -1,0 +1,22 @@
+=== TASK_PRECONDITION Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*TASK_PRECONDITION*
+
+h|*Description*
+2+a|Conditions expressing when the Task is executable with respect to the principal performer and subject. Coordination with other actors and Task lists are represented as Wait conditions.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*description*: `List<DV_TEXT>`
+a|Textual representation of preconditions for this Task to be performed, according to governing protocol. May be displayed as a safety check for human performer.
+
+h|*0..1*
+|*expression*: `DV_PARSABLE`
+a|In the case that required_status /= mandatory; a Boolean expression that can be evaluated at runtime to determine inclusion.
+|===
