@@ -2,34 +2,19 @@
 
 The design approach adopted here is based on a number of ideas. Firstly, it addresses only the 'Task list' level of the three conceptual levels mentioned earlier, leaving Care Plan and Care Pathway (guideline) to be addressed elsewhere. The other design elements are described below.
 
-== Phases of Work
+== Levels of Model Definition
 
-The design uses the notion of three potential phases of clinical work, namely 'ordering', 'planning', and 'performing'. Orders are a common way to generate tasks, but are not the only way, and many tasks are generated from a protocol or guideline or _ad hoc_. Corresponding to these phases, there are three possible levels of representation, the first and last of which already exist in the basic openEHR `ENTRY` model, as follows:
+In common with typical workflow systems, this specification recognises three levels of planned task model, as follows:
 
-* *Order*: statement of an order, if one exists, expressed in a _formulaic_ way, e.g. corresponding to "Amoxicillin 3 times a day, orally, for 7 days";
-** represented in openEHR with the `INSTRUCTION` type;
-** statement of order-related actions to be performed in the future, usually expressed in a compressed algorithmic way that requires further interpretation by the performing agent to determine when individual actions occur and their details;
-* *Planned task*: representation of a single executable task in the order, to be performed in the future e.g. 'give 1 Amoxycillin oral tab at lunch';
-** statement of each action to be performed in the future, expressed in a direct way as to a performing agent such as the patient or a nurse;
-* *Performed task*: statement of the action that was actually executed by the performer, in the past, e.g. 'gave 1 Amoxycillin tab at 13:37';
-** represented in openEHR using the types `ACTION`, `OBSERVATION` etc.
-** statement of actions, observations etc that were carried out in the past; may include different details from the Planned task.
+* _templated definition_: a Task List template is a definition of a Task List that may be used in multiple situations, where local modifications may be made; it is represented in the form of openEHR templated archetype(s);
+* _specific definition_: when a Task List templated archetype is instantiated, the result is understood as the _definition_ of the Task List to be used in a specific circumstance; any modifications allowed by the archetypes may be made to achieve the specific Task List needed;
+* _runtime instantiation_: at execution time, a Task List definition will be wholly or partly instantiated, along with execution state specific to the 'run', i.e. the session during which some or all of the Task List might be performed.
 
-There may be a non-trivial relationship between each form of expression, as suits its different purpose: expressing an order; directing personnel to perform tasks; documenting what was done after the fact.
-
-The model described here adds the second level of representation, which enables fine-grained lists of executable tasks to be explicitly stated and therefore stored in the EHR, displayed, and signed off.
-
-We can visualise this conceptually with a modified version of the {openehr_rm_ehr}#clinical_investigator_process[Clinical Investigator process diagram] as follows:
-
-[.text-center]
-.Clinical Investigator Process with Planning
-image::diagrams/clinical_process_planning.png[id=clinical_process_planning, align="center", width=80%]
-
-According to this scheme, `TASK_LIST` and `TASK` are new types of information that can be committed to the EHR.
+In this scheme, archetypes and templates conveniently achieve the 'template' or 'prototype' level of definition that is needed to support standard models of similar but not identical kinds of Task List. For example, a single set of archetypes and templates could be used to represent Task Lists for hospital drug administration.
 
 == Fractal Structure
 
-In reality, almost every Task can be sub-divided into a smaller set of Tasks. In addition, some sets of Tasks can be performed without regard to order - i.e. in parallel - while others must be ordered. This specification accordingly supports this hierarchical structure via three structural artefacts, namely Task List, Task Group and Task. These follow naturally from the requirements above, but we need to articulate the semantics of these concepts, as follows:
+In the real world, almost every Task can be sub-divided into a smaller set of Tasks. In addition, some sets of Tasks can be performed without regard to order - i.e. in parallel - while others must be ordered. This specification accordingly supports this hierarchical structure via three structural artefacts, namely Task List, Task Group and Task. These follow naturally from the requirements above, but we need to articulate the semantics of these concepts, as follows:
 
 * *Task*: a small, separately performable unit of planned work that typically corresponds to:
 ** the finest level of clinical responsibility, e.g. nurse administration of a drug, single observation of patient vital sign etc;
@@ -56,6 +41,31 @@ The consequences of this design principle are twofold:
 
 * where a team of executing actors is required to perform a logical clinical procedure, _each distinct actor has his or her own Task List_;
 * for a team to operate together, coordination is required between the Task Lists and relevant actors. This is described below in more detail.
+
+== Phases of Work
+
+This design uses the notion of three potential phases of clinical work, namely 'ordering', 'planning', and 'performing'. Orders are a common way to generate tasks, but are not the only way, and many tasks are generated from a protocol or guideline or _ad hoc_. Corresponding to these phases, there are three possible levels of representation, the first and last of which already exist in the basic openEHR `ENTRY` model, as follows:
+
+* *Order*: statement of an order, if one exists, expressed in a _formulaic_ way, e.g. corresponding to "Amoxicillin 3 times a day, orally, for 7 days";
+** represented in openEHR with the `INSTRUCTION` type;
+** statement of order-related actions to be performed in the future, usually expressed in a compressed algorithmic way that requires further interpretation by the performing agent to determine when individual actions occur and their details;
+* *Planned task*: representation of a single executable task in the order, to be performed in the future e.g. 'give 1 Amoxycillin oral tab at lunch';
+** statement of each action to be performed in the future, expressed in a direct way as to a performing agent such as the patient or a nurse;
+* *Performed task*: statement of the action that was actually executed by the performer, in the past, e.g. 'gave 1 Amoxycillin tab at 13:37';
+** represented in openEHR using the types `ACTION`, `OBSERVATION` etc.
+** statement of actions, observations etc that were carried out in the past; may include different details from the Planned task.
+
+There may be a non-trivial relationship between each form of expression, as suits its different purpose: expressing an order; directing personnel to perform tasks; documenting what was done after the fact.
+
+The model described here adds the second level of representation, which enables fine-grained lists of executable tasks to be explicitly stated and therefore stored in the EHR, displayed, and signed off.
+
+We can visualise this conceptually with a modified version of the {openehr_rm_ehr}#clinical_investigator_process[Clinical Investigator process diagram] as follows:
+
+[.text-center]
+.Clinical Investigator Process with Planning
+image::diagrams/clinical_process_planning.png[id=clinical_process_planning, align="center", width=80%]
+
+According to this scheme, `TASK_LIST` and `TASK` are new types of information that can be committed to the EHR.
 
 == Separation of Task Definition and Execution State
 

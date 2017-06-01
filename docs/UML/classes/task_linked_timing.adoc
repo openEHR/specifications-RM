@@ -1,0 +1,31 @@
+=== TASK_LINKED_TIMING Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*TASK_LINKED_TIMING*
+
+h|*Description*
+2+a|Represents a time at which a single future event or action should take place in terms of a time relative to completion of another Task or other task-related event.
+
+[.tbd]
+Need to specify this better.
+
+h|*Inherit*
+2+|TIMING_SPEC
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*reference_item*: `TIMING_REFERENCE`
+a|Indicates what time origin to use for this action in terms of other actions. May take values such as:
+
+* after_previous: after the previous action in a list, by the offset duration if any;
+* after_start: after the start of the list, by the offset duration if any.
+
+h|*0..1*
+|*relative_offset*: `Duration`
+a|Relative time offset with respect to origin nominated in relative_time_qualifier.
+|===

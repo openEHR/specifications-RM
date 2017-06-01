@@ -1,0 +1,25 @@
+=== CLOCK_TIMING Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*CLOCK_TIMING*
+
+h|*Description*
+2+a|Represents a time at which a single future event or action should take place in terms of an offset from an origin.
+
+h|*Inherit*
+2+|TIMING_SPEC
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*start_offset*: `Duration`
+a|Time at which the action should start, specified as an offset from the Task List origin time.  The effective real time to start operationally can be computed from an absolute origin time plus this offset.
+
+If start_window is set, the action may start within this a certain duration after the start_offset.
+
+If set, relative_offset and relative_time_qualifier are not set.
+|===

@@ -1,0 +1,143 @@
+= Task Execution Model
+
+== Overview
+
+The following figure shows the execution related part of the `rm.task_planning` package.
+
+[.text-center]
+.rm.task_planning package - execution model
+image::{uml_export_dir}/diagrams/RM-task_planning-execution.svg[id=rm_task_planning_execution, align="center"]
+
+== Task List Instantiation
+
+[.tbd]
+To be continued
+
+== Task Execution
+
+=== Task Lifecycle Model
+
+Each `TASK` in a `TASK_LIST` has a lifecycle consisting of various states it may pass through in time. The lifecycle is simple, since it only has to take account of the states a Task - understood as a task _definition_ - can pass through, with documentation of the Task execution occurring in the form of separate openEHR `ACTION` or other Entry objects. The states are as follows:
+
+* _initial_: initial pseudo-state, not used in operation;
+* _planned_: defined, but not available for execution;
+* _available_: available for execution, due to previous Tasks having been performed;
+* _cancelled_: cancelled prior to being performed;
+* _completed_: performed to completion;
+* _aborted_: execution was commenced but stopped before completion.
+
+The corresponding state machine is shown below.
+
+[.text-center]
+.Task lifecycle state machine
+image::{uml_export_dir}/diagrams/RM-TaskStateMachine.svg[id=task_state_machine, align="center", width=60%]
+
+The state for each Task is recorded in the `_lifecycle_state_` attribute. 
+
+NOTE: This is the only execution time related attribute in the Task List definition. If it is necessary to record the final lifecycle states of Tasks in a completed Task List, the `TASK_LIST` will need to be re-committed to the EHR as a new version in order to achieve this.
+
+Since a Task List is a hierarchical structure consisting of one or more Task Groups, a way of rolling up Task state is needed. The following algorithm is used to compute the effective lifecycle state of a `TASK_GROUP` from the set of states of its members (which may include other `TASK_GROUPs`).
+
+[source, java]
+--------
+//
+// Infer the state of a collection whose members have states in sourceStates.
+// The order of if/else evaluation determines the correct result.
+//
+TaskState inferredState (Set<TaskState> sourceStates) {
+    TaskState inferredStateValue;
+    if (sourceStates.contains(Available))
+        return Available;
+    else if (sourceStates.contains(Planned))
+        return Planned;
+    else if (sourceStates.contains(Completed))
+        return Completed;
+    else if (sourceStates.contains(Aborted))
+        return Aborted;
+    else if (sourceStates.contains(Cancelled))
+        return Cancelled;
+    else
+        return Initial;
+}
+--------
+
+Since the Task Group is also the top level structure of the Task List, the inferred state of the List as a whole is also provided by this algorithm.
+
+=== Notifications
+
+Notifications can be specified to be generated at various lifecycle state changes.
+
+[.tbd]
+To be continued
+
+== Task Execution Tracking
+
+Following the design principle of separation of Task definition and execution state, the model represents the history and state of execution of a Task List as a separate high-level part of the model, via the `_execution_history_` attribute of `TASK_LIST`. The execution of a Task List is represented in terms of transitions over time between the states of the Task lifecycle model, along with associated information.
+
+[.tbd]
+To be continued
+
+=== Class Descriptions
+
+include::{uml_export_dir}/classes/task_lifecycle.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/executing_task_list.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/executing_task_list_item.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/executing_task_group.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/executing_task.adoc[leveloffset=+1]
+
+== Task List Execution History
+
+The history of execution events is represented in the class `EXECUTION_HISTORY`. This is a history of real world execution events that accumulate over the duration of workflow processing of the Task List. Two types of event are used:
+
+* `TASK_EVENT_RECORD`: type representing a change to one consitutent Task. Thus, if the performer cancels a particular Task within the list, a `TASK_EVENT_RECORD` will be added to the history, including Task id, time, and reason; notifications can also be recorded on such events;
+* `_LIST_EVENT_RECORD_`: type representing any kind of execution event not linked to a specific Task, for example 'list abandonment'.
+
+The first type may also include forward references to EHR Entries that were committed as a result of a Task being performed. This facilitates logical indexing of planned and performed work items.
+
+The Execution history will clearly grow and might become quite long for some Task List executions. How it may be persisted in various ways. The following possibilities are all compatible with both the model, and typical EHR requirements:
+
+* In workflow application persistence:
+** persist the full history, delete or archive once the Task List is fully completed;
+* In the EHR:
+** persist the full history in some or all cases, if useful in the EHR environment (e.g. for teaching);
+** persist a partial / filtered version of the history, e.g. retain only _cancel_ and _abort_ events, on the basis that completed Tasks will show up as `ACTIONs` elsewhere in the EHR;
+** don't persist any of the history - rely on the workflow application persistence for it during execution, and forget afterward.
+
+This approach cleanly separates the definitional representation of a Task List, which should only change if changes to the plan are made, and the execution state, which is built during the work performance.
+
+=== Class Descriptions
+
+include::{uml_export_dir}/classes/task_execution_history.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/event_record.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/task_list_event_record.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/task_event_record.adoc[leveloffset=+1]
+
+include::{uml_export_dir}/classes/task_notification_record.adoc[leveloffset=+1]
+
+== Cost Tracking
+
+[.tbd]
+TBD: describe cost tracking.
+
+=== Class Descriptions
+
+include::{uml_export_dir}/classes/task_costing.adoc[leveloffset=+1]
+
+== Transactional Micro-service
+
+The information structures required to represent planned Tasks and references at runtime are likely to be non-trivial. For this reason, a Micro-service is defined, with a transactional interface that converts transactional calls to correct underlying information structures.
+
+[.tbd]
+TBC: 
+
+=== Class Descriptions
+
+include::{uml_export_dir}/classes/task_planning_ms.adoc[leveloffset=+1]
+

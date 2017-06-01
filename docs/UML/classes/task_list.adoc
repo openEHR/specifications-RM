@@ -26,24 +26,12 @@ h|*0..1*
 a|Optional indicator of subject of Task, which is normally the subject of the EHR. If this is not the case, this attribute states who the Task is to be performed on.
 
 h|*0..1*
-|*start_time*: `PLANNED_EVENT_TIME`
-a|Nominal start time for the Task list as a whole. The timings of individual Tasks may be specified as offsets from this time, via PLANNED_TIME.relative_offset.
-
-h|*0..1*
-|*completion_time*: `PLANNED_EVENT_TIME`
-a|Maximal completion date/time by which this Task list should be considered obsolete. If not set, the Task list would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the execution_time attribute of TASKs in the list.
-
-h|*0..1*
 |*description*: `DV_TEXT`
 a|Human-understandable description of the Task list, which may be specific to the work items and patient.
 
 h|*0..1*
 |*care_plan*: `LOCATABLE_REF`
 a|Care plan object from which this Task list is derived.
-
-h|*0..1*
-|*principal_performer*: `TASK_PARTICIPATION`
-a|Specification of principle performer of this Task List as a Participation, typically with role and function set.
 
 h|*0..1*
 |*guideline*: `DV_IDENTIFIER`
@@ -55,13 +43,9 @@ It is currently assumed that there is no reliable machine identifier system for 
 * id = "https://www.nice.org.uk/guidance/cg180"
 * type = "NHS guideline for Atrial fibrillation: management"
 
-h|*1..1*
-|*definition*: `TASK_GROUP`
-a|The Tasks for this Task List.
-
 h|*0..1*
-|*execution_history*: `EXECUTION_HISTORY`
-a|History of execution events for an execution of this Task List.
+|*principal_performer*: `TASK_PARTICIPATION`
+a|Specification of principle performer of this Task List as a Participation, typically with role and function set.
 
 h|*0..1*
 |*care_pathway*: `DV_IDENTIFIER`
@@ -73,9 +57,25 @@ It is currently assumed that there is no reliable machine identifier system for 
 * id = "https://pathways.nice.org.uk/pathways/sepsis"
 * type = "NICE Sepsis care pathway"
 
+h|*1..1*
+|*definition*: `TASK_GROUP`
+a|The Tasks for this Task List.
+
+h|*0..1*
+|*execution_history*: `TASK_EXECUTION_HISTORY`
+a|History of execution events for an execution of this Task List.
+
 h|*0..1*
 |*training_level*: `Integer`
 a|An integer value representing the training level for which this Task List is designed. A high value corresponds to a lower level of expertise. The default value is zero.
+
+h|*0..1*
+|*best_practice_ref*: `DV_URI`
+a|A URI (typically a local URL) that points to the document form of any governing guideline or other best practice publication in use in the current institution. This link provides a way for a clinician to cross-check the Task List design and functioning against the definitive document that acts as the source of its semantics.
+
+h|*0..1*
+|*expiry_time*: `Duration`
+a|Maximal date/time by which this Task list should be considered obsolete. If not set, the Task list would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the execution_time attribute of TASKs in the list.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*

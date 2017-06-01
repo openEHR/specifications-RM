@@ -1,0 +1,32 @@
+=== EVENT_LINKED_TIMING Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*EVENT_LINKED_TIMING*
+
+h|*Description*
+2+a|Represents a time at which a single future event or action should take place in terms of a real world event such as 'meal', a relative ordering with respect to the event, e.g. 'before', and an optional time offset, e.g. 3h. This allows time specifications like:
+
+* with (at) sleep time
+* 3h before
+
+h|*Inherit*
+2+|TIMING_SPEC
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*event_offset*: `Duration`
+a|Relative time offset with respect to origin nominated in relative_time_qualifier.
+
+h|*1..1*
+|*event_type*: `DV_CODED_TEXT`
+a|Indicates that the action should be aligned with a real world event. Typical values: meal, evening meal, sleep, toilet.
+
+h|*1..1*
+|*event_order*: `TEMPORAL_RELATION`
+a|
+|===
