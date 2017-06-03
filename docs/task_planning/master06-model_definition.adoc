@@ -10,29 +10,29 @@ image::{uml_export_dir}/diagrams/RM-task_planning-definition.svg[id=rm_task_plan
 
 === Compositions and Versioning
 
-If a `TASK_LIST` and its constituent parts is created within a `COMPOSITION` for committal to the EHR (or a workflow-specific part of the EHR), it may be re-versioned as changes are made to its contents. The causes of change include:
+If a `TASK_PLAN` and its constituent parts is created within a `COMPOSITION` for committal to the EHR (or a workflow-specific part of the EHR), it may be re-versioned as changes are made to its contents. The causes of change include:
 
 * changes to the definition, due to error correction and / or extension of the lookahead planning window;
-* additions to the execution history, corresponding to each Task or List level event, including completion or abandonment of the Task list.
+* additions to the execution history, corresponding to each Task or List level event, including completion or abandonment of the Task Plan.
 
-As the `TASK_LIST` gets progressively built and executed over time, its owning `COMPOSITION` will undergo numerous changes, corresponding both to changes to the plan definition, and also execution of the actions performed to fulfill it. Typically only the former will generate new committed versions to the EHR, whereas the latter will most likely only be used by the workflow application during execution of the Task List. How changes to Task List are versioned and added to the EHR (or not) can be handled flexibly according to local needs.
+As the `TASK_PLAN` gets progressively built and executed over time, its owning `COMPOSITION` will undergo numerous changes, corresponding both to changes to the plan definition, and also execution of the actions performed to fulfill it. Typically only the former will generate new committed versions to the EHR, whereas the latter will most likely only be used by the workflow application during execution of the Task Plan. How changes to Task Plan are versioned and added to the EHR (or not) can be handled flexibly according to local needs.
 
-=== Basic Semantics of a Task List
+=== Basic Semantics of a Task Plan
 
-A Task List is specified by a number of key attributes, following the design principles described earlier, namely:
+A Task Plan is specified by a number of key attributes, following the design principles described earlier, namely:
 
 * `_subject_`: the subject of the work (i.e. 'case' in workflow parlance), typically a single patient;
 * `_principal_performer_`: a definition of the responsible performer, normall in terms of role plus function;
-* `_description_`: natural language specification of what the Task List is for;
+* `_description_`: natural language specification of what the Task Plan is for;
 * `_care_plan_`: a reference to a driving Care Plan from elsewhere in the EHR, if any exists;
-* `_guideline_id_`, `_care_pathway_`: references to a guideline and/or care pathway from which this Task List was derived;
-* `_training_level_`: a value that can be used to filter out fine-grained Task Lists in a chained structure only of interest to trainees.
+* `_guideline_id_`, `_care_pathway_`: references to a guideline and/or care pathway from which this Task Plan was derived;
+* `_training_level_`: a value that can be used to filter out fine-grained Task Plans in a chained structure only of interest to trainees.
 
 These are described in more detail below.
 
 === Compositional Structure
 
-The set of Tasks in Task List is represented within a containment structure created using instances of the `TASK_GROUP` type. This provides a way of grouping Tasks that will be executed collectively on the same basis, via the `_execution_type_` attribute, which may be set to `sequential` or `parallel`. This includes the top-level set of Tasks. A `TASK_GROUP` instance is treated as a member of its enclosing `TASK_GROUP` in the same way as constituent `TASK` instances, and shares with the latter attributes for Task description, timing, and conditions for execution.
+The set of Tasks in Task Plan is represented within a containment structure created using instances of the `TASK_GROUP` type. This provides a way of grouping Tasks that will be executed collectively on the same basis, via the `_execution_type_` attribute, which may be set to `sequential` or `parallel`. This includes the top-level set of Tasks. A `TASK_GROUP` instance is treated as a member of its enclosing `TASK_GROUP` in the same way as constituent `TASK` instances, and shares with the latter attributes for Task description, timing, and conditions for execution.
 
 The following illustrates the Task group structure.
 
@@ -42,7 +42,7 @@ image::diagrams/task_grouping.svg[id=task_grouping, align="center", width=25%]
 
 === Basic Semantics of a Task
 
-The important semantics of the Task concept in the model are specified in the `TASK_LIST_ITEM` class, with further specifics appearing in the `TASK_GROUP` and `TASK` descendants. Key attributes of a `TASK_LIST_ITEM` include:
+The important semantics of the Task concept in the model are specified in the `TASK_PLAN_ITEM` class, with further specifics appearing in the `TASK_GROUP` and `TASK` descendants. Key attributes of a `TASK_PLAN_ITEM` include:
 
 * `_description_`: natural language specification of what the Task is;
 * `_preconditions_`, `_wait_conditions_`, `_execution_time_`: operational conditions for determining if a Task is available for execution by a performer;
@@ -58,18 +58,18 @@ Each of these is explained in detail below.
 
 As mentioned in the requirements section, the granularity of a Task can be variable from one healthcare context to another, as per the cannulation example. This leads to two possibilities for representing a real world Task:
 
-* _atomic representation_: a Task that may in reality consist of several fine-grained steps may be represented within a Task List as a single Task, on the assumption that the performer will correctly determine how to execute it;
-* _reference to composite representation_: a Task definition may refer out to a separate Task List containing further sub-tasks representing the detailed steps needed to achieve it.
+* _atomic representation_: a Task that may in reality consist of several fine-grained steps may be represented within a Task Plan as a single Task, on the assumption that the performer will correctly determine how to execute it;
+* _reference to composite representation_: a Task definition may refer out to a separate Task Plan containing further sub-tasks representing the detailed steps needed to achieve it.
 
-The model described here thus makes no _a priori_ assumptions about granularity of representation of a given real-world task, and both representations are possible. This first kind is thus represented as an instance of the class `DEFINED_TASK`, while the second is achieved with the use of an `EXTERNAL_TASK` which refers out to another `TASK_LIST` to be executed by the same performer.
+The model described here thus makes no _a priori_ assumptions about granularity of representation of a given real-world task, and both representations are possible. This first kind is thus represented as an instance of the class `DEFINED_TASK`, while the second is achieved with the use of an `EXTERNAL_TASK` which refers out to another `TASK_PLAN` to be executed by the same performer.
 
-The `EXTERNAL_TASK` type gives rise to the possibility of a hierarchy of linked Task Lists, with each successive member in the chain representing a more detailed form of a given real world task. This can be visualised as follows.
+The `EXTERNAL_TASK` type gives rise to the possibility of a hierarchy of linked Task Plans, with each successive member in the chain representing a more detailed form of a given real world task. This can be visualised as follows.
 
 [.text-center]
-.Task list linking
+.Task Plan linking
 image::diagrams/task_linking.svg[id=task_linking, align="center", width=70%]
 
-A structure like the above may be used differently by performers of differing training levels - since each `EXTERNAL_TASK` has its own `_description_`, an expert user may require no further list of steps, but a trainee might make use of the full hierarchical structure. The `_training_level_` attribute on `TASK_LIST` can be used to control this. A higher value corresponds to a lower level of expertise, and different values can be set on different linked `TASK_LISTs`. The workflow application may treat different users as being of different training levels, in which case Task Lists of higher training levels can be hidden. In the above example, a principal performer with trainee level = 7 will see the three Task Lists on the left, but not the final one, since it has a trainee level of 10.
+A structure like the above may be used differently by performers of differing training levels - since each `EXTERNAL_TASK` has its own `_description_`, an expert user may require no further list of steps, but a trainee might make use of the full hierarchical structure. The `_training_level_` attribute on `TASK_PLAN` can be used to control this. A higher value corresponds to a lower level of expertise, and different values can be set on different linked `TASK_PLANs`. The workflow application may treat different users as being of different training levels, in which case Task Plans of higher training levels can be hidden. In the above example, a principal performer with trainee level = 7 will see the three Task Plans on the left, but not the final one, since it has a trainee level of 10.
 
 The default value of `_training_level_` is 0.
 
@@ -77,7 +77,7 @@ The default value of `_training_level_` is 0.
 
 The job of specifying the work to be done in a concrete (i.e. inline) Task definition is achieved via the `DEFINED_TASK` class and its atttribute `_prototype_`, of type `ENTRY`, which enables the details of a Task to be specified in terms of a descendant of the `ENTRY` class. This is typically an `ACTION` instance but could be an `OBSERVATION`, `ADMIN_ENTRY` or other descendant.
 
-The attribute is called 'prototype' because the target Entry instance is understood as a partially populated, prototype 'planning time' partial copy of an Entry that will be created when the Task is actually performed. For example, a Task List for administering medication at 8 hourly intervals over a number of days could consist of a number of `DEFINED_TASKs`, each having a protoype of an `ACTION` instance based on the `openEHR-EHR-ACTION.medication.v1` archetype or a templated version thereof. Each such instance would contain the structured description of the medication administration and time, and when the administration was actually performed, an `ACTION` instance would be created from the prototype, modified to reflect any divergence from the planned form of the Task, and committed to the EHR in the normal way.
+The attribute is called 'prototype' because the target Entry instance is understood as a partially populated, prototype 'planning time' partial copy of an Entry that will be created when the Task is actually performed. For example, a Task Plan for administering medication at 8 hourly intervals over a number of days could consist of a number of `DEFINED_TASKs`, each having a protoype of an `ACTION` instance based on the `openEHR-EHR-ACTION.medication.v1` archetype or a templated version thereof. Each such instance would contain the structured description of the medication administration and time, and when the administration was actually performed, an `ACTION` instance would be created from the prototype, modified to reflect any divergence from the planned form of the Task, and committed to the EHR in the normal way.
 
 The following illustrates Task definitions using prototypes.
 
@@ -85,14 +85,14 @@ The following illustrates Task definitions using prototypes.
 .Task definition
 image::diagrams/task_definition.svg[id=task_definition, align="center", width=35%]
 
-Assuming that the Task List is archetyped in the same way as Entries and other elements of the EHR, this scheme supports various modes of design-time specification. The `_prototype_` attribute in a `TASK_LIST` archetype will usually be represented by an archetype slot or external reference, which specifies identifiers of permitted archetypes (or templates) of the target type, i.e. `ACTION` or other Entry. This can be used in various ways, as follows:
+Assuming that the Task Plan is archetyped in the same way as Entries and other elements of the EHR, this scheme supports various modes of design-time specification. The `_prototype_` attribute in a `TASK_PLAN` archetype will usually be represented by an archetype slot or external reference, which specifies identifiers of permitted archetypes (or templates) of the target type, i.e. `ACTION` or other Entry. This can be used in various ways, as follows:
 
-* {openehr_am_adl2}#_external_references[external reference]: specifies a fixed archetype identifier which will be substituted in the templated form of the Task List. This has the effect of creating `ACTION` or other prototype instances in the `TASK_LIST` structure;
+* {openehr_am_adl2}#_external_references[external reference]: specifies a fixed archetype identifier which will be substituted in the templated form of the Task Plan. This has the effect of creating `ACTION` or other prototype instances in the `TASK_PLAN` structure;
 * {openehr_am_adl2}#_archetype_slots[archetype slot]: specified using a slot constraint that is satisfied by one or more archetypes that may be specified by a template, or left open until runtime.
 
-In the latter case, the slot may be filled in the Task List template with an `ACTION` or other Entry archetype, allowing the Tasks to be fully specified inline as in the external reference case. Alternatively, it may be left unresolved, which would allow the workflow application to choose the exact Task definition archetype at runtime.
+In the latter case, the slot may be filled in the Task Plan template with an `ACTION` or other Entry archetype, allowing the Tasks to be fully specified inline as in the external reference case. Alternatively, it may be left unresolved, which would allow the workflow application to choose the exact Task definition archetype at runtime.
 
-One reason to allow a Task to contain a `_prototype_` reference that remains unresolved until runtime is if the Task represents the act of making an observation, for example, taking a blood pressure. In such cases, no prototype at all may be needed, and the Task `_description_` attribute (inherited from `TASK_LIST_ITEM`) may be sufficient information for the performer. On the other hand, a prototype `OBSERVATION` could be specified in the `TASK_LIST` template, which defines a particular form of the observation, e.g. a blood pressure which only records mean arterial pressure and cuff size.
+One reason to allow a Task to contain a `_prototype_` reference that remains unresolved until runtime is if the Task represents the act of making an observation, for example, taking a blood pressure. In such cases, no prototype at all may be needed, and the Task `_description_` attribute (inherited from `TASK_PLAN_ITEM`) may be sufficient information for the performer. On the other hand, a prototype `OBSERVATION` could be specified in the `TASK_PLAN` template, which defines a particular form of the observation, e.g. a blood pressure which only records mean arterial pressure and cuff size.
 
 To allow further flexibility, The multiplicity of the `_prototype_` attribute is unlimited, to allow for the possibility of one Task being prototyped by more than one Entry instance, e.g. an `ACTION` and an `OBSERVATION`, two `ADMIN_ENTRY` instances and so on.
 
@@ -101,7 +101,7 @@ ISSUE-task-entry-corr: the alternative seems to be to allow a Task to correspond
 
 === Coordinated Teamwork
 
-Performing teamwork in a coordinated fashion with task planning support necessarily requires multiple Task Lists - one for each actor, and a means of coordination among them. This is achieved by the use of `TASK_NOTIFICATION` class and the attributes `_notifications_` and `_wait_conditions_`, which respectively represent outgoing notifications to other actors, and a 'wait state' that is unblocked by receipt of a notification from another Task List and actor.
+Performing teamwork in a coordinated fashion with task planning support necessarily requires multiple Task Plans - one for each actor, and a means of coordination among them. This is achieved by the use of `TASK_NOTIFICATION` class and the attributes `_notifications_` and `_wait_conditions_`, which respectively represent outgoing notifications to other actors, and a 'wait state' that is unblocked by receipt of a notification from another Task Plan and actor.
 
 These two attributes enable both directions of communication between any two actors working in a coordinated workflow to be expressed. The following illustrates, using the example of an acute stroke management care process.
 
@@ -117,7 +117,7 @@ This is achieved via the `_execution_time_` attribute, whose value at runtime is
 
 The timing of a Task, may be expressed in three different ways, as follows:
 
-* _clock time_: the Task is to be executed at a specific clock time represented by an instance of `CLOCK_TIMING`; within a Task definition, this must be specified as a relative duration with respect to the origin clock time of the Task List, which is only known in absolute terms at execution time;
+* _clock time_: the Task is to be executed at a specific clock time represented by an instance of `CLOCK_TIMING`; within a Task definition, this must be specified as a relative duration with respect to the origin clock time of the Task Plan, which is only known in absolute terms at execution time;
 * _event-linked time_: the Task is to be executed at a time related to a real world event, such as a meal or sleeping; in this case, an instance of `EVENT_LINKED_TIME` is used; the attributes indicate the specifics such as '1 hour before', 'with meal' etc;
 * _task-link time_: the Task is to be executed at a time related to the timing of another Task event, such as completion of the previous Task; this is represented by an instance of `TASK_LINKED_TIME`, whose attributes define the specifics.
 
@@ -129,23 +129,23 @@ If no `_execution_time_` is specified, a Task is assumed to be available for exe
 * for Tasks in a parallel group, as soon as the group becomes available.
 
 [.tbd]
-ISSUE-time-relativity: time is somewhat complicated. In a TASK_LIST archetype we need to use relative offsets everywhere, but at runtime, we need absolute times. We could consider setting an 'origin time' for the Task List as a whole when it is instantiated, and computing absolute times for each Task at that point. However, at runtime, the timings may be changed by the performer (e.g. times to admin drugs) and the intention is probably to make them 'stick', even if the notional origin time is moved. However in other cases, the idea may be to move the origin and have all the times move.
+ISSUE-time-relativity: time is somewhat complicated. In a TASK_PLAN archetype we need to use relative offsets everywhere, but at runtime, we need absolute times. We could consider setting an 'origin time' for the Task Plan as a whole when it is instantiated, and computing absolute times for each Task at that point. However, at runtime, the timings may be changed by the performer (e.g. times to admin drugs) and the intention is probably to make them 'stick', even if the notional origin time is moved. However in other cases, the idea may be to move the origin and have all the times move.
 
 === Pre-conditions
 
-IN addition to timing, other conditions may determine when or if a Task can be performed. These are modelled as the `TASK_LIST_ITEM` attribute `_preconditions_: TASK_PRECONDITION`. The precondition is formally represented as a `DV_PARSABLE`, which would normally contain a string of {openehr_expression}[openEHR Expression Language] syntax, but may contain another syntax.
+IN addition to timing, other conditions may determine when or if a Task can be performed. These are modelled as the `TASK_PLAN_ITEM` attribute `_preconditions_: TASK_PRECONDITION`. The precondition is formally represented as a `DV_PARSABLE`, which would normally contain a string of {openehr_expression}[openEHR Expression Language] syntax, but may contain another syntax.
 
 Pre-conditions can be used in two ways. They may express real-world conditions containing references to EHR-available data items, such as vital signs, white cell count or other such things. Alternatively, they may be used as part of a decision group structure, in which case they reference a variable from a `DECISION_GROUP` instance. This is described in more detail below.
 
 == Decision Structures
 
-A more advanced application of Task Lists includes decision pathways, consisting of a decision point and a number of dependent pathays. This is used to represent the decision pathways found in guidelines.
+A more advanced application of Task Plans includes decision pathways, consisting of a decision point and a number of dependent pathays. This is used to represent the decision pathways found in guidelines.
 
 The following diagram shows a typical decision structure.
 
 [.text-center]
 .Decision structure
-image::diagrams/decision_structure.svg[id=decision_structure, align="center", width=45%]
+image::diagrams/decision_structure.svg[id=decision_structure, align="center", width=40%]
 
 A decision point is represented by a `DECISION_GROUP` instance, which contains a `_value_expression_` in the form of an assignment of an expression to a variable that can be later tested, and has its `_execution_type_` set to `conditional`. Each pathway is represented by a normal `TASK_GROUP` with a precondition in the form of an assertion on the same variable. By this method, the workflow engine can determine which group to execute based on the runtime value of the variable.
 
@@ -156,11 +156,11 @@ To be continued.
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/task_list.adoc[]
+include::{uml_export_dir}/classes/task_plan.adoc[]
 
 include::{uml_export_dir}/classes/task_participation.adoc[]
 
-include::{uml_export_dir}/classes/task_list_item.adoc[]
+include::{uml_export_dir}/classes/task_plan_item.adoc[]
 
 include::{uml_export_dir}/classes/timing_spec.adoc[]
 

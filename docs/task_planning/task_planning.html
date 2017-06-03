@@ -36,6 +36,7 @@
 <ul class="sectlevel2">
 <li><a href="#_functional_needs">2.1. Functional Needs</a></li>
 <li><a href="#_execution_paradigm">2.2. Execution Paradigm</a></li>
+<li><a href="#_relationship_to_workflow_formalisms_and_systems">2.3. Relationship to Workflow Formalisms and Systems</a></li>
 </ul>
 </li>
 <li><a href="#_requirements">3. Requirements</a>
@@ -47,7 +48,7 @@
 <li><a href="#_teamwork_and_notifications">3.5. Teamwork and Notifications</a></li>
 <li><a href="#_task_grouping_optionality_and_execution_basis">3.6. Task Grouping, Optionality and Execution Basis</a></li>
 <li><a href="#_changes_and_abandonment">3.7. Changes and Abandonment</a></li>
-<li><a href="#_rationalising_unrelated_task_lists">3.8. Rationalising Unrelated Task Lists</a></li>
+<li><a href="#_rationalising_unrelated_task_plans">3.8. Rationalising Unrelated Task Plans</a></li>
 <li><a href="#_support_process_analytics">3.9. Support Process Analytics</a></li>
 <li><a href="#_support_for_costing_and_billing_information">3.10. Support for Costing and Billing Information</a></li>
 </ul>
@@ -71,7 +72,7 @@
 <li><a href="#_overview_2">6.1. Overview</a>
 <ul class="sectlevel3">
 <li><a href="#_compositions_and_versioning">6.1.1. Compositions and Versioning</a></li>
-<li><a href="#_basic_semantics_of_a_task_list">6.1.2. Basic Semantics of a Task List</a></li>
+<li><a href="#_basic_semantics_of_a_task_plan">6.1.2. Basic Semantics of a Task Plan</a></li>
 <li><a href="#_compositional_structure">6.1.3. Compositional Structure</a></li>
 <li><a href="#_basic_semantics_of_a_task">6.1.4. Basic Semantics of a Task</a></li>
 <li><a href="#_task_types">6.1.5. Task Types</a></li>
@@ -88,9 +89,9 @@
 <li><a href="#_task_availability">6.4. Task Availability</a></li>
 <li><a href="#_class_descriptions">6.5. Class Descriptions</a>
 <ul class="sectlevel3">
-<li><a href="#_task_list_class">6.5.1. TASK_LIST Class</a></li>
+<li><a href="#_task_plan_class">6.5.1. TASK_PLAN Class</a></li>
 <li><a href="#_task_participation_class">6.5.2. TASK_PARTICIPATION Class</a></li>
-<li><a href="#_task_list_item_class">6.5.3. TASK_LIST_ITEM Class</a></li>
+<li><a href="#_task_plan_item_class">6.5.3. TASK_PLAN_ITEM Class</a></li>
 <li><a href="#_timing_spec_class">6.5.4. TIMING_SPEC Class</a></li>
 <li><a href="#_clock_timing_class">6.5.5. CLOCK_TIMING Class</a></li>
 <li><a href="#_event_linked_timing_class">6.5.6. EVENT_LINKED_TIMING Class</a></li>
@@ -112,7 +113,7 @@
 <li><a href="#_task_execution_model">7. Task Execution Model</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_3">7.1. Overview</a></li>
-<li><a href="#_task_list_instantiation">7.2. Task List Instantiation</a></li>
+<li><a href="#_task_plan_instantiation">7.2. Task Plan Instantiation</a></li>
 <li><a href="#_task_execution">7.3. Task Execution</a>
 <ul class="sectlevel3">
 <li><a href="#_task_lifecycle_model">7.3.1. Task Lifecycle Model</a></li>
@@ -124,21 +125,21 @@
 <li><a href="#_class_descriptions_2">7.4.1. Class Descriptions</a>
 <ul class="sectlevel4">
 <li><a href="#_task_lifecycle_enumeration">7.4.1.1. TASK_LIFECYCLE Enumeration</a></li>
-<li><a href="#_executing_task_list_class">7.4.1.2. EXECUTING_TASK_LIST Class</a></li>
-<li><a href="#_executing_task_list_item_class">7.4.1.3. EXECUTING_TASK_LIST_ITEM Class</a></li>
+<li><a href="#_executing_task_plan_class">7.4.1.2. EXECUTING_TASK_PLAN Class</a></li>
+<li><a href="#_executing_task_plan_item_class">7.4.1.3. EXECUTING_TASK_PLAN_ITEM Class</a></li>
 <li><a href="#_executing_task_group_class">7.4.1.4. EXECUTING_TASK_GROUP Class</a></li>
 <li><a href="#_executing_task_class">7.4.1.5. EXECUTING_TASK Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_task_list_execution_history">7.5. Task List Execution History</a>
+<li><a href="#_task_plan_execution_history">7.5. Task Plan Execution History</a>
 <ul class="sectlevel3">
 <li><a href="#_class_descriptions_3">7.5.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_task_execution_history_class">7.5.1.1. TASK_EXECUTION_HISTORY Class</a></li>
+<li><a href="#_task_plan_execution_history_class">7.5.1.1. TASK_PLAN_EXECUTION_HISTORY Class</a></li>
 <li><a href="#_event_record_class">7.5.1.2. EVENT_RECORD Class</a></li>
-<li><a href="#_task_list_event_record_class">7.5.1.3. TASK_LIST_EVENT_RECORD Class</a></li>
+<li><a href="#_task_plan_event_record_class">7.5.1.3. TASK_PLAN_EVENT_RECORD Class</a></li>
 <li><a href="#_task_event_record_class">7.5.1.4. TASK_EVENT_RECORD Class</a></li>
 <li><a href="#_task_notification_record_class">7.5.1.5. TASK_NOTIFICATION_RECORD Class</a></li>
 </ul>
@@ -188,14 +189,6 @@
 <li><a href="#_references">References</a>
 <ul class="sectlevel2">
 <li><a href="#_publications">Publications</a></li>
-<li><a href="#_resources">Resources</a>
-<ul class="sectlevel3">
-<li><a href="#_general">General</a></li>
-<li><a href="#_e_health_standards">e-Health Standards</a></li>
-<li><a href="#_e_health_projects">e-Health Projects</a></li>
-<li><a href="#_general_standards">General Standards</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -432,16 +425,16 @@
 <p>The Entry model described in the <a href="http://www.openehr.org/releases/RM/latest/ehr.html">openEHR EHR IM</a> defines a way to record clinical statements representing real observations, decisions, orders and actions that have occurred, in the EHR. In this scheme, Instructions represent orders for certain kinds of Actions to be performed. Actions and Observations represent events that have subsequently occurred in the real world - a real drug administration or an actual blood sugar measurement.</p>
 </div>
 <div class="paragraph">
-<p>There is however a common additional need to concretely plan individual Actions and sometimes Observations ahead of time, as a set of 'tasks'. The general concept is usually known as a <em>task list</em>, and is used to concretely specify actions to be performed by actors (usually human, but potentially machine as well) providing care.</p>
+<p>There is however a common additional need to concretely plan individual Actions and sometimes Observations ahead of time, as a set of 'tasks', often known as a 'task list'. Here we will use the more general term <em>task plan</em> to mean a specification of a set of actions to be performed by actors (usually human, but potentially machine as well) providing care.</p>
 </div>
 <div class="paragraph">
-<p>A list of planned tasks need not all relate to a single order, or indeed any order. The general picture is that a task list corresponds to some self-standing healthcare job to be done, which may include tasks designed to fulfill multiple orders, and also tasks not defined by orders.</p>
+<p>A list of planned tasks need not all relate to a single order, or indeed any order. The general picture is that a task plan corresponds to some self-standing healthcare job to be done, which may include tasks designed to fulfill multiple orders, and also tasks not defined by orders.</p>
 </div>
 <div class="paragraph">
-<p>To meet this need, a further kind of content can be recorded in the EHR, representing task lists containing tasks. Here we understand the word 'task' to mean 'definition of a planned task', i.e. a description of something to be performed in the future.</p>
+<p>To meet this need, a further kind of content can be recorded in the EHR, representing task plans containing tasks. Here we understand the word 'task' to mean 'definition of a planned task', i.e. a description of something to be performed in the future.</p>
 </div>
 <div class="paragraph">
-<p>The model described here considers task lists as the lower part of an overall information architecture that includes entities at multiple cognitive levels, i.e.:</p>
+<p>The model described here considers task plans as one element of a larger framwork that includes entities at multiple semantic levels, i.e.:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -452,15 +445,30 @@
 <p>care plan - a general plan for care of an actual patient, taking into account zero or more Care Pathways and individual specificities;</p>
 </li>
 <li>
-<p>task list - a concrete concept that defines a list of fine-grained planned tasks to perform over time to achieve a particular goal.</p>
+<p>task plan - a concrete concept that defines a set of fine-grained planned tasks to perform over time to achieve a particular goal.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The model described here does not address the representation of the care pathway or care plan levels, only the task list level. It does however assume that a task list may be created due to a care plan of some kind, and that the care plan may in turn have been derived from one or more care pathways or guidelines; accordingly, the means to identify the plan and pathway / guideline are provided.</p>
+<p>These can be envisaged as follows.</p>
+</div>
+<div id="pathway_plan_triad" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/pathway_plan_triad.svg" alt="pathway plan triad" width="70%">
+</div>
+<div class="title">Figure 1. The Care pathway / care plan / task plan triad</div>
 </div>
 <div class="paragraph">
-<p>In the following, the term 'task' thus denotes the definition of an action to be performed, and is normally documented in openEHR by the <code>ACTION</code> Entry subtype. However, 'task' is also understood more generally, so that it may also when performed, result in an openEHR <code>OBSERVATION</code> or other Entry subtype where appropriate. In the great majority of cases therefore, the term 'task' as it appears here equates to openEHR Actions and Observations.</p>
+<p>The above diagram shows task plans as a concrete planning artefact that results from a care plan for a specific patient, and may be partly based on published care pathways or clinical guidelines, each of which can be thought of as a basis for task plans for an ideal patient for a given condition (e.g. pregnancy, sepsis, stroke etc). Where care pathways (or parts thereof) can be represented as formal artefacts, they can act as prototypes for task pan structures. However, a care pathway for a model patient is not the same thing as a task plan(s) for an actual patient, since each real patient has his/her own specific combination of conditions, preferences and ultimately phenotypic specificities. Thus, where task plans are based on care pathways, the latter act as prototypes whose ideal form may be modified by the specific care plan and/or as the care team deems appropriate.</p>
+</div>
+<div class="paragraph">
+<p>The model described here addresses the representation and semantics of concrete task plans. It does not address the representation of the care plan and it does not say anything directly about formal care pathway representation, although it may be surmised for the future that the formal form of a care pathway may have significant commonality with the task plan model presented here, which may provide a useful guide for future work in care pathway representation.</p>
+</div>
+<div class="paragraph">
+<p>The task plan model does however assume that a task plan may be <em>created</em> due to a care plan of some kind, and that the care plan may in turn have been derived from one or more care pathways or guidelines; accordingly, the means to identify the plan and pathway / guideline are provided.</p>
+</div>
+<div class="paragraph">
+<p>In the following, the term 'task' denotes the definition of an action to be performed, the report of which is normally documented in openEHR by the <code>ACTION</code> Entry subtype. However, 'task' is also understood more generally, so that it may also when performed, result in an openEHR <code>OBSERVATION</code> or other Entry subtype where appropriate. In the great majority of cases therefore, the term 'task' as it appears here equates to openEHR Actions and Observations.</p>
 </div>
 <div class="paragraph">
 <p>For the sake of brevity, 'Action' below is intended to imply an openEHR <code>ACTION</code>, <code>OBSRVATION</code> or potentially other Entry sub-type, unless otherwise stated.</p>
@@ -469,10 +477,10 @@
 <div class="sect2">
 <h3 id="_execution_paradigm"><a class="anchor" href="#_execution_paradigm"></a>2.2. Execution Paradigm</h3>
 <div class="paragraph">
-<p>As soon as the notion of 'planning' is assumed, we enter some form of the workflow space, and it becomes essential to describe the intended paradigm of the human / machine execution environment. This is due to the fact that any description of planned tasks acts as a set of instructions to actors intended to perform the tasks. Since the instructions (task lists) will be represented in the IT layer and the executing actors (generally human, although they may also be devices or software applications) exist in the real world, an account of the interaction between the computing environment and the real world is required.</p>
+<p>As soon as the notion of 'planning' is assumed, we enter some form of the workflow space, and it becomes essential to describe the intended paradigm of the human / machine execution environment. This is due to the fact that any description of planned tasks acts as a set of instructions to actors intended to perform the tasks. Since the instructions (task plans) will be represented in the IT layer and the executing actors (generally human, although they may also be devices or software applications) exist in the real world, an account of the interaction between the computing environment and the real world is required.</p>
 </div>
 <div class="paragraph">
-<p>Although the task list facility described in this specification is relatively simple compared to some workflow tools, we can nevertheless distinguish the following entities in the environment:</p>
+<p>Although the task plan facility described in this specification is relatively simple compared to some workflow tools, we can nevertheless distinguish the following entities in the environment:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -527,7 +535,16 @@
 <div class="content">
 <img src="diagrams/workflow_execution_paradigm.svg" alt="workflow execution paradigm" width="60%">
 </div>
-<div class="title">Figure 1. Work plan execution paradigm</div>
+<div class="title">Figure 2. Work plan execution paradigm</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_relationship_to_workflow_formalisms_and_systems"><a class="anchor" href="#_relationship_to_workflow_formalisms_and_systems"></a>2.3. Relationship to Workflow Formalisms and Systems</h3>
+<div class="paragraph">
+<p>This specification describes a model for a 'task plan' concept that incudes support for work distribution across multiple performers, nested task plans, conditional branching, timing and various other facilities. Many of these are conceptually close to the features found in standard workflow languages such as BPMN (Business Process Modelling Notation) and YAWL (Yet another Workflow Language), as well as emerging case-based standards such as CMMN (Case Management Modelling Notation) and DMN (Decision Model and Notation).</p>
+</div>
+<div class="paragraph">
+<p>While the model described here takes many ideas from these languauges, there are some key differencs as well. The primary concptual difference is that the subjct (i.e. 'case') here is assumed to be an intentional organism (generally a human patient) that makes choices, reacts to drugs, and generally speaking, cannot be relied on to be a passive object (such as a package or blood sample), as the case for many logistic workflows defined in say BPMN are. The main consequence of this is that the design of a task plan is not taken to be a highly deterministic description whose exceptions are not generally knowable in advance as they would be for a logistic system whose subjects are passive objects. Note that even the patient can be a passive object in some circumstances, such as radiology.</p>
 </div>
 </div>
 </div>
@@ -536,7 +553,7 @@
 <h2 id="_requirements"><a class="anchor" href="#_requirements"></a>3. Requirements</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A number of commonly occurring requirements that can be addressed via the Task List concept are described below.</p>
+<p>A number of commonly occurring requirements that can be addressed via the Task Plan concept are described below.</p>
 </div>
 <div class="sect2">
 <h3 id="_planned_tasks_for_an_order"><a class="anchor" href="#_planned_tasks_for_an_order"></a>3.1. Planned Tasks for an Order</h3>
@@ -544,7 +561,7 @@
 <p>The simplest need is to be able to post a full plan of all actions to be performed for an order, in advance of the order commencing. This would result in a series of Tasks for each planned openEHR <code>ACTION</code> at execution time.</p>
 </div>
 <div class="paragraph">
-<p>In openEHR, an order is represented by an <code>INSTRUCTION</code> instance, which contains a directive to do something such as preform radiography or administer medication. The form of representation in the Instruction is normally <em>interpretable</em> by an agent who will convert it to separate tasks. For example, a drug order for Amoxicillin 500mg oral tablet 3 times/day x 7 days is converted by a human agent to 21 separate tasks, each consisting of taking one tablet at a certain time or day. These tasks can be represented in a task list, each task of which which can then be performed and signed off by a staff member, e.g. a shift nurse. The task list acts as a record of what has been done, and what is left to do.</p>
+<p>In openEHR, an order is represented by an <code>INSTRUCTION</code> instance, which contains a directive to do something such as preform radiography or administer medication. The form of representation in the Instruction is normally <em>interpretable</em> by an agent who will convert it to separate tasks. For example, a drug order for Amoxicillin 500mg oral tablet 3 times/day x 7 days is converted by a human agent to 21 separate tasks, each consisting of taking one tablet at a certain time or day. These tasks can be represented in a task plan, each task of which which can then be performed and signed off by a staff member, e.g. a shift nurse. The task plan acts as a record of what has been done, and what is left to do.</p>
 </div>
 <div class="paragraph">
 <p>One difficulty with posting a full plan is that in some cases, the order is effectively open-ended, i.e. it has no intended completion. This might be because the patient condition being treated is chronic, e.g. an insulin or Salbutamol (Ventolin) order; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma victim.</p>
@@ -553,7 +570,7 @@
 <div class="sect2">
 <h3 id="_order_sets_and_protocols"><a class="anchor" href="#_order_sets_and_protocols"></a>3.2. Order Sets and Protocols</h3>
 <div class="paragraph">
-<p>A plan for a clinical intervention will typically need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, in multi-drug chemotherapy based on protocols like CHOP (non-Hodgkin&#8217;s lymphoma), COPP or Stanford V (Hodgkin&#8217;s lymphoma) etc, a single drug such as Cyclophosphamide is just a component. A task list for administering chemotherapy according to a R-CHOP protocol would implicate orders for the drugs  (R)ituximab, (C)yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin, and (P)rednisolone or Prednisone, and would accordingly include planned tasks for each of these drugs as they are administered according to the protocol.</p>
+<p>A plan for a clinical intervention will typically need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, in multi-drug chemotherapy based on protocols like CHOP (non-Hodgkin&#8217;s lymphoma), COPP or Stanford V (Hodgkin&#8217;s lymphoma) etc, a single drug such as Cyclophosphamide is just a component. A task plan for administering chemotherapy according to a R-CHOP protocol would implicate orders for the drugs  (R)ituximab, (C)yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin, and (P)rednisolone or Prednisone, and would accordingly include planned tasks for each of these drugs as they are administered according to the protocol.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -630,16 +647,16 @@
 <div class="sect2">
 <h3 id="_checklist_sign_off"><a class="anchor" href="#_checklist_sign_off"></a>3.4. Checklist &amp; Sign-off</h3>
 <div class="paragraph">
-<p>If a task list is created, the constituent tasks can be viewed by workers as a checklist, and subsequently signed off as having been either performed or not done over time. The utility of this is that the correspondence between the tasks actually performed (represented by <code>ACTION</code>, <code>OBSERVATION</code> etc Entries) and the planned tasks is established. If a planned Action A1 is posted with execution time T, it might actually be performed at time T', but users still want to know that it was planned Action A1 that was intentionally performed, and not some other Action in the task list. Over the course of the order execution, a picture will emerge of planned Actions being performed and signed off, possibly with some being missed as not needed, or not done for some other reason. Additional Actions not originally posted in the plan might also be done if they are allowed by the general specification of the relevant archetypes.</p>
+<p>If a task plan is created, the constituent tasks can be viewed by workers as a checklist, and subsequently signed off as having been either performed or not done over time. The utility of this is that the correspondence between the tasks actually performed (represented by <code>ACTION</code>, <code>OBSERVATION</code> etc Entries) and the planned tasks is established. If a planned Action A1 is posted with execution time T, it might actually be performed at time T', but users still want to know that it was planned Action A1 that was intentionally performed, and not some other Action in the task plan. Over the course of the order execution, a picture will emerge of planned Actions being performed and signed off, possibly with some being missed as not needed, or not done for some other reason. Additional Actions not originally posted in the plan might also be done if they are allowed by the general specification of the relevant archetypes.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_teamwork_and_notifications"><a class="anchor" href="#_teamwork_and_notifications"></a>3.5. Teamwork and Notifications</h3>
 <div class="paragraph">
-<p>There are at least two possible situations in which a task list might need to refer to another task list. The first is a consequence of the standard problem of the fractal nature of description of phenomena. Applied to planned actions, it is clear that one institution may describe an action such as cannulation atomically, relying on professional training and situational specifics to generate the correct concrete outcome, whereas another may require nurses to follow a guideline such as this <a href="http://emedicine.medscape.com/article/1998177-overview">Medscape Intravenous Cannulation</a> guideline. In cases where a self-standing clinical task is itself fully described in terms of steps, it is possible to represent the latter as its own task list, and to be able to <em>refer</em> to it from another task list. The general case is that any task that could be represented by a single item in a task list could also be represented by a reference to a separate detailed task list.</p>
+<p>There are at least two possible situations in which a task plan might need to refer to another task plan. The first is a consequence of the standard problem of the fractal nature of description of phenomena. Applied to planned actions, it is clear that one institution may describe an action such as cannulation atomically, relying on professional training and situational specifics to generate the correct concrete outcome, whereas another may require nurses to follow a guideline such as this <a href="http://emedicine.medscape.com/article/1998177-overview">Medscape Intravenous Cannulation</a> guideline. In cases where a self-standing clinical task is itself fully described in terms of steps, it is possible to represent the latter as its own task plan, and to be able to <em>refer</em> to it from another task plan. The general case is that any task that could be represented by a single item in a task plan could also be represented by a reference to a separate detailed task plan.</p>
 </div>
 <div class="paragraph">
-<p>A second situation in which a task list might refer to another is where a team of actors performs the work, and each task list corresponds to a single actor. A typical example is acute stroke management, in which various healthcare professionals do the work. Coordination occurs when some workers inform other(s) of task completion, and/or wait for notification of completion of someone else&#8217;s task.</p>
+<p>A second situation in which a task plan might refer to another is where a team of actors performs the work, and each task plan corresponds to a single actor. A typical example is acute stroke management, in which various healthcare professionals do the work. Coordination occurs when some workers inform other(s) of task completion, and/or wait for notification of completion of someone else&#8217;s task.</p>
 </div>
 <div class="paragraph">
 <p>We can summarise these requirements as follows:</p>
@@ -647,13 +664,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p><em>drill-down reuse</em>: a task list for a given actor can refer to another self-standing task list for the same or a different actor;</p>
+<p><em>drill-down reuse</em>: a task plan for a given actor can refer to another self-standing task plan for the same or a different actor;</p>
 </li>
 <li>
-<p><em>notify completion</em>: it should be possble for completion to be notified for tasks in a task list; where applicable the system should be able to generate notifications to other workers as required by a more general coordinated care plan describing a team-based procedure;</p>
+<p><em>notify completion</em>: it should be possble for completion to be notified for tasks in a task plan; where applicable the system should be able to generate notifications to other workers as required by a more general coordinated care plan describing a team-based procedure;</p>
 </li>
 <li>
-<p><em>wait for completion</em>: a task list should be able to include a task that stands for awaiting notification of completion of another task by another actor.</p>
+<p><em>wait for completion</em>: a task plan should be able to include a task that stands for awaiting notification of completion of another task by another actor.</p>
 </li>
 </ul>
 </div>
@@ -661,19 +678,19 @@
 <div class="sect2">
 <h3 id="_task_grouping_optionality_and_execution_basis"><a class="anchor" href="#_task_grouping_optionality_and_execution_basis"></a>3.6. Task Grouping, Optionality and Execution Basis</h3>
 <div class="paragraph">
-<p>A set of tasks intended to achieve a defined goal could be performed sequentially or in parallel, and may include sub-groups of tasks that can performed together. A common situation is to have a task list intended for sequential (i.e. ordered) execution by the agent, one of whose steps is actually a sub-group of tasks which can be executed in parallel (i.e. in any order).</p>
+<p>A set of tasks intended to achieve a defined goal could be performed sequentially or in parallel, and may include sub-groups of tasks that can performed together. A common situation is to have a task plan intended for sequential (i.e. ordered) execution by the agent, one of whose steps is actually a sub-group of tasks which can be executed in parallel (i.e. in any order).</p>
 </div>
 <div class="paragraph">
-<p>It can also be assumed that some tasks in a task list may be designated as optional, to be executed 'if needed' or on some other condition being true.</p>
+<p>It can also be assumed that some tasks in a task plan may be designated as optional, to be executed 'if needed' or on some other condition being true.</p>
 </div>
 <div class="paragraph">
-<p>The general structure and execution semantics of a task list therefore includes the notion of sequential or parallel execution of groups of tasks, and also optional execution of some tasks. We can consider the task list itself as a outer group of tasks for which either sequential or parallel execution can be specified.</p>
+<p>The general structure and execution semantics of a task plan therefore includes the notion of sequential or parallel execution of groups of tasks, and also optional execution of some tasks. We can consider the task plan itself as a outer group of tasks for which either sequential or parallel execution can be specified.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_changes_and_abandonment"><a class="anchor" href="#_changes_and_abandonment"></a>3.7. Changes and Abandonment</h3>
 <div class="paragraph">
-<p>Inevitably, some task lists will have to be changed or abandoned partway through due to unexpected changes in the patient situation. The question here is: what should be done with the remaining planned tasks that will not be performed? Should they be marked as 'won&#8217;t do' (with some reason) and committed to the EHR, or should they be deleted prior to being committed to the EHR?</p>
+<p>Inevitably, some task plans will have to be changed or abandoned partway through due to unexpected changes in the patient situation. The question here is: what should be done with the remaining planned tasks that will not be performed? Should they be marked as 'won&#8217;t do' (with some reason) and committed to the EHR, or should they be deleted prior to being committed to the EHR?</p>
 </div>
 <div class="paragraph">
 <p>It is assumed that the answer will differ according to circumstance and local preference, in other words, that planned tasks that are created are not necessarily written into the EHR, but may initially exist in a separate 'planned tasks' buffer, and are only committed when each task is either performed or explicitly marked as not done, or else included in a list of not-done Actions to be committed to the EHR at a point of plan abandonment.</p>
@@ -684,7 +701,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>cancellation of an entire task list that has been posted to the EHR or a 'planning buffer' if one exists;</p>
+<p>cancellation of an entire task plan that has been posted to the EHR or a 'planning buffer' if one exists;</p>
 </li>
 <li>
 <p>cancellation of a particular task on a list ahead of time, with a reason;</p>
@@ -696,12 +713,12 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_rationalising_unrelated_task_lists"><a class="anchor" href="#_rationalising_unrelated_task_lists"></a>3.8. Rationalising Unrelated Task Lists</h3>
+<h3 id="_rationalising_unrelated_task_plans"><a class="anchor" href="#_rationalising_unrelated_task_plans"></a>3.8. Rationalising Unrelated Task Plans</h3>
 <div class="paragraph">
-<p>It is assumed that at any moment there could be multiple task lists extant for <em>different problems and timelines</em> for the same subject of care, e.g. chemotherapy, hypertension, ante-natal care. If naively created, these could clash in time and potentially in terms of other resources. There should therefore be support for being able to efficiently locate all existing task lists and scan their times, states and resources. This aids avoiding clashes and also finding opportunities for rationalising and bundling tasks e.g. grouping multiple tasks into a single visit, taking bloods require by two protocols at the same sitting etc.</p>
+<p>It is assumed that at any moment there could be multiple task plans extant for <em>different problems and timelines</em> for the same subject of care, e.g. chemotherapy, hypertension, ante-natal care. If naively created, these could clash in time and potentially in terms of other resources. There should therefore be support for being able to efficiently locate all existing task plans and scan their times, states and resources. This aids avoiding clashes and also finding opportunities for rationalising and bundling tasks e.g. grouping multiple tasks into a single visit, taking bloods require by two protocols at the same sitting etc.</p>
 </div>
 <div class="paragraph">
-<p>It should be possible to process multiple task lists as part of interfacing with or constructing a 'patient diary', i.e. rationalised list of all work to be done involving the patient.</p>
+<p>It should be possible to process multiple task plans as part of interfacing with or constructing a 'patient diary', i.e. rationalised list of all work to be done involving the patient.</p>
 </div>
 </div>
 <div class="sect2">
@@ -729,7 +746,7 @@
 <div class="sect2">
 <h3 id="_support_for_costing_and_billing_information"><a class="anchor" href="#_support_for_costing_and_billing_information"></a>3.10. Support for Costing and Billing Information</h3>
 <div class="paragraph">
-<p>It should be possible to record internal costing data against task lists as a whole, and also individual tasks. Additionally, it should be possible to attach external billing information to tasks and task lists. Costing information might be attached to each task, such as consumption of inventory items, time and other resources. Billing information is typically more coarse-grained and reported using nationally agreed code systems, e.g. ICD10 or similar.</p>
+<p>It should be possible to record internal costing data against task plans as a whole, and also individual tasks. Additionally, it should be possible to attach external billing information to tasks and task plans. Costing information might be attached to each task, such as consumption of inventory items, time and other resources. Billing information is typically more coarse-grained and reported using nationally agreed code systems, e.g. ICD10 or similar.</p>
 </div>
 </div>
 </div>
@@ -738,7 +755,7 @@
 <h2 id="_design_principles"><a class="anchor" href="#_design_principles"></a>4. Design Principles</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The design approach adopted here is based on a number of ideas. Firstly, it addresses only the 'Task list' level of the three conceptual levels mentioned earlier, leaving Care Plan and Care Pathway (guideline) to be addressed elsewhere. The other design elements are described below.</p>
+<p>The design approach adopted here is based on a number of ideas. Firstly, it addresses only the 'Task Plan' level of the three conceptual levels mentioned earlier, leaving Care Plan and Care Pathway (guideline) to be addressed elsewhere. The other design elements are described below.</p>
 </div>
 <div class="sect2">
 <h3 id="_levels_of_model_definition"><a class="anchor" href="#_levels_of_model_definition"></a>4.1. Levels of Model Definition</h3>
@@ -748,24 +765,24 @@
 <div class="ulist">
 <ul>
 <li>
-<p><em>templated definition</em>: a Task List template is a definition of a Task List that may be used in multiple situations, where local modifications may be made; it is represented in the form of openEHR templated archetype(s);</p>
+<p><em>templated definition</em>: a Task Plan template is a definition of a Task Plan that may be used in multiple situations, where local modifications may be made; it is represented in the form of openEHR templated archetype(s);</p>
 </li>
 <li>
-<p><em>specific definition</em>: when a Task List templated archetype is instantiated, the result is understood as the <em>definition</em> of the Task List to be used in a specific circumstance; any modifications allowed by the archetypes may be made to achieve the specific Task List needed;</p>
+<p><em>specific definition</em>: when a Task Plan templated archetype is instantiated, the result is understood as the <em>definition</em> of the Task Plan to be used in a specific circumstance; any modifications allowed by the archetypes may be made to achieve the specific Task Plan needed;</p>
 </li>
 <li>
-<p><em>runtime instantiation</em>: at execution time, a Task List definition will be wholly or partly instantiated, along with execution state specific to the 'run', i.e. the session during which some or all of the Task List might be performed.</p>
+<p><em>runtime instantiation</em>: at execution time, a Task Plan definition will be wholly or partly instantiated, along with execution state specific to the 'run', i.e. the session during which some or all of the Task Plan might be performed.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>In this scheme, archetypes and templates conveniently achieve the 'template' or 'prototype' level of definition that is needed to support standard models of similar but not identical kinds of Task List. For example, a single set of archetypes and templates could be used to represent Task Lists for hospital drug administration.</p>
+<p>In this scheme, archetypes and templates conveniently achieve the 'template' or 'prototype' level of definition that is needed to support standard models of similar but not identical kinds of Task Plan. For example, a single set of archetypes and templates could be used to represent Task Plans for hospital drug administration.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_fractal_structure"><a class="anchor" href="#_fractal_structure"></a>4.2. Fractal Structure</h3>
 <div class="paragraph">
-<p>In the real world, almost every Task can be sub-divided into a smaller set of Tasks. In addition, some sets of Tasks can be performed without regard to order - i.e. in parallel - while others must be ordered. This specification accordingly supports this hierarchical structure via three structural artefacts, namely Task List, Task Group and Task. These follow naturally from the requirements above, but we need to articulate the semantics of these concepts, as follows:</p>
+<p>In the real world, almost every Task can be sub-divided into a smaller set of Tasks. In addition, some sets of Tasks can be performed without regard to order - i.e. in parallel - while others must be ordered. This specification accordingly supports this hierarchical structure via three structural artefacts, namely Task Plan, Task Group and Task. These follow naturally from the requirements above, but we need to articulate the semantics of these concepts, as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -789,20 +806,20 @@
 </div>
 </li>
 <li>
-<p><strong>Task Group</strong>: a group of Tasks within a Task List that are to be executed on some basis, e.g. sequential, parallel;</p>
+<p><strong>Task Group</strong>: a group of Tasks within a Task Plan that are to be executed on some basis, e.g. sequential, parallel;</p>
 </li>
 <li>
-<p><strong>Task List</strong>: a logical list of Tasks whose execution is intended to achieve completion of a coarse-grained task or goal with respect to a particular subject of care, typically an intervention such as a course of medication or other therapy. May contain Task Groups.</p>
+<p><strong>Task Plan</strong>: a logical list of Tasks whose execution is intended to achieve completion of a coarse-grained task or goal with respect to a particular subject of care, typically an intervention such as a course of medication or other therapy. May contain Task Groups.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Any Task Group or Task may be marked as optional or mandatory for execution.</p>
 </li>
 <li>
-<p>Since a Task List is intended to achieve a purpose, it is assumed to have a <em>lifecycle</em> whose states indicate where its execution is with respect to the outcome. See below for a full explanation of the Task List lifecycle.</p>
+<p>Since a Task Plan is intended to achieve a purpose, it is assumed to have a <em>lifecycle</em> whose states indicate where its execution is with respect to the outcome. See below for a full explanation of the Task Plan lifecycle.</p>
 </li>
 <li>
-<p>It is assumed that any number of Task Lists could be active for a given subject of care at a given moment.</p>
+<p>It is assumed that any number of Task Plans could be active for a given subject of care at a given moment.</p>
 </li>
 </ul>
 </div>
@@ -810,19 +827,19 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>The consequence of the above is that a Task List is in general a hierarchical structure consisting of Task Group nodes and Task leaves. This enables grouping of particular Task subsets, and also the fine-grained specification of execution ordering.</p>
+<p>The consequence of the above is that a Task Plan is in general a hierarchical structure consisting of Task Group nodes and Task leaves. This enables grouping of particular Task subsets, and also the fine-grained specification of execution ordering.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_single_subject_principal_performer"><a class="anchor" href="#_single_subject_principal_performer"></a>4.3. Single Subject, Principal Performer</h3>
 <div class="paragraph">
-<p>A key design assumption is that a Task List is targetted at <em>single subject</em> and allocated to a <em>principle performer</em>, that is to say, a single logical actor. This is often a single person (or a device or possibly a software service, e.g. a CDS model of which questions can be asked), but might equally be a group of personnel, e.g. ward nurses, who execute the steps of a Task List during and across shift boundaries (wound dressing, turning patients, IV maintenance etc). In these cases there is an understanding by separate individuals that they constitute a common workforce with respect to the subject of care, for any given planned piece of work.</p>
+<p>A key design assumption is that a Task Plan is targetted at <em>single subject</em> and allocated to a <em>principle performer</em>, that is to say, a single logical actor. This is often a single person (or a device or possibly a software service, e.g. a CDS model of which questions can be asked), but might equally be a group of personnel, e.g. ward nurses, who execute the steps of a Task Plan during and across shift boundaries (wound dressing, turning patients, IV maintenance etc). In these cases there is an understanding by separate individuals that they constitute a common workforce with respect to the subject of care, for any given planned piece of work.</p>
 </div>
 <div class="paragraph">
 <p>The principal performer can accordingly be specified in terms of a professional role, and optionally a specific agent. This might even in some cases be the patient.</p>
 </div>
 <div class="paragraph">
-<p>In addition to the principal performer, other participations can be specified for the Task List or any contained step. However it is assumed that the principal performer is <em>responsible</em> for all actions, and is also the notifier of action completions and cancellations, as well as the target of notifications to do with linked Task Lists.</p>
+<p>In addition to the principal performer, other participations can be specified for the Task Plan or any contained step. However it is assumed that the principal performer is <em>responsible</em> for all actions, and is also the notifier of action completions and cancellations, as well as the target of notifications to do with linked Task Plans.</p>
 </div>
 <div class="paragraph">
 <p>The consequences of this design principle are twofold:</p>
@@ -830,10 +847,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>where a team of executing actors is required to perform a logical clinical procedure, <em>each distinct actor has his or her own Task List</em>;</p>
+<p>where a team of executing actors is required to perform a logical clinical procedure, <em>each distinct actor has his or her own Task Plan</em>;</p>
 </li>
 <li>
-<p>for a team to operate together, coordination is required between the Task Lists and relevant actors. This is described below in more detail.</p>
+<p>for a team to operate together, coordination is required between the Task Plans and relevant actors. This is described below in more detail.</p>
 </li>
 </ul>
 </div>
@@ -896,16 +913,16 @@
 <div class="content">
 <img src="diagrams/clinical_process_planning.png" alt="clinical process planning" width="80%">
 </div>
-<div class="title">Figure 2. Clinical Investigator Process with Planning</div>
+<div class="title">Figure 3. Clinical Investigator Process with Planning</div>
 </div>
 <div class="paragraph">
-<p>According to this scheme, <code>TASK_LIST</code> and <code>TASK</code> are new types of information that can be committed to the EHR.</p>
+<p>According to this scheme, <code>TASK_PLAN</code> and <code>TASK</code> are new types of information that can be committed to the EHR.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_separation_of_task_definition_and_execution_state"><a class="anchor" href="#_separation_of_task_definition_and_execution_state"></a>4.5. Separation of Task Definition and Execution State</h3>
 <div class="paragraph">
-<p>A Task List is essentially a definition of work to be done, or more precisely, an <em>instance</em> of a definition of work. When the work has been performed, the results are documented with openEHR Entries, such as Actions and Observations. However, there is usually a need to track the progress of the work between commencement and completion (or cancellation). Based on the model, it is possible to track:</p>
+<p>A Task Plan is essentially a definition of work to be done, or more precisely, an <em>instance</em> of a definition of work. When the work has been performed, the results are documented with openEHR Entries, such as Actions and Observations. However, there is usually a need to track the progress of the work between commencement and completion (or cancellation). Based on the model, it is possible to track:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -921,13 +938,13 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>It would be possible to track state by representing it in the Task List <em>definition</em>, and relying on versioning of successive commits of each update to provide the execution picture over time. However, this is not likely to correspond to the needs of the EHR, or workflow processing that occurs as the work is performed. In the former case, the execution of a non-trivial Task List may result in hundreds of state changes, notifications, etc, which will result in a similar number of commits to the EHR. This may be mitigated by only committing at certain points in time, but then the history of progress is lost.</p>
+<p>It would be possible to track state by representing it in the Task Plan <em>definition</em>, and relying on versioning of successive commits of each update to provide the execution picture over time. However, this is not likely to correspond to the needs of the EHR, or workflow processing that occurs as the work is performed. In the former case, the execution of a non-trivial Task Plan may result in hundreds of state changes, notifications, etc, which will result in a similar number of commits to the EHR. This may be mitigated by only committing at certain points in time, but then the history of progress is lost.</p>
 </div>
 <div class="paragraph">
-<p>On the other hand, a workflow application whose job is to use Task Lists to support work being undertaken by clinical personnel does need to carefully track the history of updates, in order to know which Tasks have been done, and which have not. Since this will often occur over multiple work shifts and/or long periods (up to two weeks for some chemotherapy), persistence is required.</p>
+<p>On the other hand, a workflow application whose job is to use Task Plans to support work being undertaken by clinical personnel does need to carefully track the history of updates, in order to know which Tasks have been done, and which have not. Since this will often occur over multiple work shifts and/or long periods (up to two weeks for some chemotherapy), persistence is required.</p>
 </div>
 <div class="paragraph">
-<p>The approach taken here is therefore to include in the model an explicit 'execution history ', which includes every change event during progress of the actors performing the work, as an attachment to the Task List, rather than to include state within each Task. This provides a means of separation of Task List definition from Task List execution state, and enables persistence of the two parts to be handled in flexible ways that suit particular environments.</p>
+<p>The approach taken here is therefore to include in the model an explicit 'execution history ', which includes every change event during progress of the actors performing the work, as an attachment to the Task Plan, rather than to include state within each Task. This provides a means of separation of Task Plan definition from Task Plan execution state, and enables persistence of the two parts to be handled in flexible ways that suit particular environments.</p>
 </div>
 </div>
 </div>
@@ -938,34 +955,34 @@
 <div class="sect2">
 <h3 id="_overview"><a class="anchor" href="#_overview"></a>5.1. Overview</h3>
 <div class="paragraph">
-<p>The following UML diagram shows the <code>rm.task_planning</code> package in overview form, with the essential classes, inheritance and compositional relationships. The class <code>TASK_LIST</code> is a descendant of <code>CONTENT_ITEM</code>, which makes it a type of content that may occur in a Composition. Compositions used for this purpose have their <code><em>category</em></code> attribute set to the openEHR coded term <code>|Task list|</code>. This enables Task Lists to be committed to the openEHR EHR if desired.</p>
+<p>The following UML diagram shows the <code>rm.task_planning</code> package in overview form, with the essential classes, inheritance and compositional relationships. The class <code>TASK_PLAN</code> is a descendant of <code>CONTENT_ITEM</code>, which makes it a type of content that may occur in a Composition. Compositions used for this purpose have their <code><em>category</em></code> attribute set to the openEHR coded term <code>|Task Plan|</code>. This enables Task Plans to be committed to the openEHR EHR if desired.</p>
 </div>
 <div class="paragraph">
-<p>Structurally, a <code>TASK_LIST</code> has a <code><em>principal_performer</em></code>, and a <code><em>definition</em></code> (blue classes). Individual Tasks that are <code>DEFINED_TASKs</code> (i.e. not references) may have a <code><em>prototype</em></code> whose type is an Entry descendant, that defines the Task data.</p>
+<p>Structurally, a <code>TASK_PLAN</code> has a <code><em>principal_performer</em></code>, and a <code><em>definition</em></code> (blue classes). Individual Tasks that are <code>DEFINED_TASKs</code> (i.e. not references) may have a <code><em>prototype</em></code> whose type is an Entry descendant, that defines the Task data.</p>
 </div>
 <div class="paragraph">
-<p>The <code>TASK_LIST</code> may also have an <code><em>execution_history</em></code> (gold classes at bottom), which acts as a record of events that have occurred to the Task List during execution. At runtime, execution-related <code>EXECUTING_XXX</code> classes may be instantiated to track state for those parts of the definition currently being processed (central orange classes).</p>
+<p>The <code>TASK_PLAN</code> may also have an <code><em>execution_history</em></code> (gold classes at bottom), which acts as a record of events that have occurred to the Task Plan during execution. At runtime, execution-related <code>EXECUTING_XXX</code> classes may be instantiated to track state for those parts of the definition currently being processed (central orange classes).</p>
 </div>
 <div id="rm_task_planning_overview" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="../UML/diagrams/RM-task_planning-overview.svg" alt="RM task planning overview">
 </div>
-<div class="title">Figure 3. rm.task_planning package overview</div>
+<div class="title">Figure 4. rm.task_planning package overview</div>
 </div>
 <div class="paragraph">
-<p>The key structural relationships are shown in the following instance diagram. On the left is the definition of a Task List, consisting of a Task Group and various Defined Tasks. Each of these Tasks has a prototype Entry attached, which represents the intended data of an action or observation that the Task defines.</p>
+<p>The key structural relationships are shown in the following instance diagram. On the left is the definition of a Task Plan, consisting of a Task Group and various Defined Tasks. Each of these Tasks has a prototype Entry attached, which represents the intended data of an action or observation that the Task defines.</p>
 </div>
 <div class="paragraph">
-<p>At the upper right is an Executing Task List, which is a runtime structure consisting of elements that correspond to the currently executing parts of the static definition structure (achieved by the <code>EXECUTING_TASK_LIST_ITEM.<em>definition</em></code> association). This structure allows the recording of all state to do with Task execution, including instances of variables, timing information and so on. The Executing Task List structure is not owned by the deifnition structure, but rather is created at run time, and points back to its definition (<em>owner</em> and <em>definition</em> links).</p>
+<p>At the upper right is an Executing Task Plan, which is a runtime structure consisting of elements that correspond to the currently executing parts of the static definition structure (achieved by the <code>EXECUTING_TASK_PLAN_ITEM.<em>definition</em></code> association). This structure allows the recording of all state to do with Task execution, including instances of variables, timing information and so on. The Executing Task Plan structure is not owned by the deifnition structure, but rather is created at run time, and points back to its definition (<em>owner</em> and <em>definition</em> links).</p>
 </div>
 <div class="paragraph">
-<p>At the lower right is a Task Execution History, which is a record of all events that were made during the execution of the original Task List.</p>
+<p>At the lower right is a Task Execution History, which is a record of all events that were made during the execution of the original Task Plan.</p>
 </div>
 <div id="task_planning_overview" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/task_planning_overview.svg" alt="task planning overview" width="50%">
 </div>
-<div class="title">Figure 4. Task planning overview</div>
+<div class="title">Figure 5. Task planning overview</div>
 </div>
 </div>
 </div>
@@ -982,12 +999,12 @@
 <div class="content">
 <img src="../UML/diagrams/RM-task_planning-definition.svg" alt="RM task planning definition">
 </div>
-<div class="title">Figure 5. rm.task_planning package definition model</div>
+<div class="title">Figure 6. rm.task_planning package definition model</div>
 </div>
 <div class="sect3">
 <h4 id="_compositions_and_versioning"><a class="anchor" href="#_compositions_and_versioning"></a>6.1.1. Compositions and Versioning</h4>
 <div class="paragraph">
-<p>If a <code>TASK_LIST</code> and its constituent parts is created within a <code>COMPOSITION</code> for committal to the EHR (or a workflow-specific part of the EHR), it may be re-versioned as changes are made to its contents. The causes of change include:</p>
+<p>If a <code>TASK_PLAN</code> and its constituent parts is created within a <code>COMPOSITION</code> for committal to the EHR (or a workflow-specific part of the EHR), it may be re-versioned as changes are made to its contents. The causes of change include:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -995,18 +1012,18 @@
 <p>changes to the definition, due to error correction and / or extension of the lookahead planning window;</p>
 </li>
 <li>
-<p>additions to the execution history, corresponding to each Task or List level event, including completion or abandonment of the Task list.</p>
+<p>additions to the execution history, corresponding to each Task or List level event, including completion or abandonment of the Task Plan.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>As the <code>TASK_LIST</code> gets progressively built and executed over time, its owning <code>COMPOSITION</code> will undergo numerous changes, corresponding both to changes to the plan definition, and also execution of the actions performed to fulfill it. Typically only the former will generate new committed versions to the EHR, whereas the latter will most likely only be used by the workflow application during execution of the Task List. How changes to Task List are versioned and added to the EHR (or not) can be handled flexibly according to local needs.</p>
+<p>As the <code>TASK_PLAN</code> gets progressively built and executed over time, its owning <code>COMPOSITION</code> will undergo numerous changes, corresponding both to changes to the plan definition, and also execution of the actions performed to fulfill it. Typically only the former will generate new committed versions to the EHR, whereas the latter will most likely only be used by the workflow application during execution of the Task Plan. How changes to Task Plan are versioned and added to the EHR (or not) can be handled flexibly according to local needs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_basic_semantics_of_a_task_list"><a class="anchor" href="#_basic_semantics_of_a_task_list"></a>6.1.2. Basic Semantics of a Task List</h4>
+<h4 id="_basic_semantics_of_a_task_plan"><a class="anchor" href="#_basic_semantics_of_a_task_plan"></a>6.1.2. Basic Semantics of a Task Plan</h4>
 <div class="paragraph">
-<p>A Task List is specified by a number of key attributes, following the design principles described earlier, namely:</p>
+<p>A Task Plan is specified by a number of key attributes, following the design principles described earlier, namely:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1017,16 +1034,16 @@
 <p><code><em>principal_performer</em></code>: a definition of the responsible performer, normall in terms of role plus function;</p>
 </li>
 <li>
-<p><code><em>description</em></code>: natural language specification of what the Task List is for;</p>
+<p><code><em>description</em></code>: natural language specification of what the Task Plan is for;</p>
 </li>
 <li>
 <p><code><em>care_plan</em></code>: a reference to a driving Care Plan from elsewhere in the EHR, if any exists;</p>
 </li>
 <li>
-<p><code><em>guideline_id</em></code>, <code><em>care_pathway</em></code>: references to a guideline and/or care pathway from which this Task List was derived;</p>
+<p><code><em>guideline_id</em></code>, <code><em>care_pathway</em></code>: references to a guideline and/or care pathway from which this Task Plan was derived;</p>
 </li>
 <li>
-<p><code><em>training_level</em></code>: a value that can be used to filter out fine-grained Task Lists in a chained structure only of interest to trainees.</p>
+<p><code><em>training_level</em></code>: a value that can be used to filter out fine-grained Task Plans in a chained structure only of interest to trainees.</p>
 </li>
 </ul>
 </div>
@@ -1037,7 +1054,7 @@
 <div class="sect3">
 <h4 id="_compositional_structure"><a class="anchor" href="#_compositional_structure"></a>6.1.3. Compositional Structure</h4>
 <div class="paragraph">
-<p>The set of Tasks in Task List is represented within a containment structure created using instances of the <code>TASK_GROUP</code> type. This provides a way of grouping Tasks that will be executed collectively on the same basis, via the <code><em>execution_type</em></code> attribute, which may be set to <code>sequential</code> or <code>parallel</code>. This includes the top-level set of Tasks. A <code>TASK_GROUP</code> instance is treated as a member of its enclosing <code>TASK_GROUP</code> in the same way as constituent <code>TASK</code> instances, and shares with the latter attributes for Task description, timing, and conditions for execution.</p>
+<p>The set of Tasks in Task Plan is represented within a containment structure created using instances of the <code>TASK_GROUP</code> type. This provides a way of grouping Tasks that will be executed collectively on the same basis, via the <code><em>execution_type</em></code> attribute, which may be set to <code>sequential</code> or <code>parallel</code>. This includes the top-level set of Tasks. A <code>TASK_GROUP</code> instance is treated as a member of its enclosing <code>TASK_GROUP</code> in the same way as constituent <code>TASK</code> instances, and shares with the latter attributes for Task description, timing, and conditions for execution.</p>
 </div>
 <div class="paragraph">
 <p>The following illustrates the Task group structure.</p>
@@ -1046,13 +1063,13 @@
 <div class="content">
 <img src="diagrams/task_grouping.svg" alt="task grouping" width="25%">
 </div>
-<div class="title">Figure 6. Task grouping</div>
+<div class="title">Figure 7. Task grouping</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_basic_semantics_of_a_task"><a class="anchor" href="#_basic_semantics_of_a_task"></a>6.1.4. Basic Semantics of a Task</h4>
 <div class="paragraph">
-<p>The important semantics of the Task concept in the model are specified in the <code>TASK_LIST_ITEM</code> class, with further specifics appearing in the <code>TASK_GROUP</code> and <code>TASK</code> descendants. Key attributes of a <code>TASK_LIST_ITEM</code> include:</p>
+<p>The important semantics of the Task concept in the model are specified in the <code>TASK_PLAN_ITEM</code> class, with further specifics appearing in the <code>TASK_GROUP</code> and <code>TASK</code> descendants. Key attributes of a <code>TASK_PLAN_ITEM</code> include:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1091,27 +1108,27 @@
 <div class="ulist">
 <ul>
 <li>
-<p><em>atomic representation</em>: a Task that may in reality consist of several fine-grained steps may be represented within a Task List as a single Task, on the assumption that the performer will correctly determine how to execute it;</p>
+<p><em>atomic representation</em>: a Task that may in reality consist of several fine-grained steps may be represented within a Task Plan as a single Task, on the assumption that the performer will correctly determine how to execute it;</p>
 </li>
 <li>
-<p><em>reference to composite representation</em>: a Task definition may refer out to a separate Task List containing further sub-tasks representing the detailed steps needed to achieve it.</p>
+<p><em>reference to composite representation</em>: a Task definition may refer out to a separate Task Plan containing further sub-tasks representing the detailed steps needed to achieve it.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The model described here thus makes no <em>a priori</em> assumptions about granularity of representation of a given real-world task, and both representations are possible. This first kind is thus represented as an instance of the class <code>DEFINED_TASK</code>, while the second is achieved with the use of an <code>EXTERNAL_TASK</code> which refers out to another <code>TASK_LIST</code> to be executed by the same performer.</p>
+<p>The model described here thus makes no <em>a priori</em> assumptions about granularity of representation of a given real-world task, and both representations are possible. This first kind is thus represented as an instance of the class <code>DEFINED_TASK</code>, while the second is achieved with the use of an <code>EXTERNAL_TASK</code> which refers out to another <code>TASK_PLAN</code> to be executed by the same performer.</p>
 </div>
 <div class="paragraph">
-<p>The <code>EXTERNAL_TASK</code> type gives rise to the possibility of a hierarchy of linked Task Lists, with each successive member in the chain representing a more detailed form of a given real world task. This can be visualised as follows.</p>
+<p>The <code>EXTERNAL_TASK</code> type gives rise to the possibility of a hierarchy of linked Task Plans, with each successive member in the chain representing a more detailed form of a given real world task. This can be visualised as follows.</p>
 </div>
 <div id="task_linking" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/task_linking.svg" alt="task linking" width="70%">
 </div>
-<div class="title">Figure 7. Task list linking</div>
+<div class="title">Figure 8. Task Plan linking</div>
 </div>
 <div class="paragraph">
-<p>A structure like the above may be used differently by performers of differing training levels - since each <code>EXTERNAL_TASK</code> has its own <code><em>description</em></code>, an expert user may require no further list of steps, but a trainee might make use of the full hierarchical structure. The <code><em>training_level</em></code> attribute on <code>TASK_LIST</code> can be used to control this. A higher value corresponds to a lower level of expertise, and different values can be set on different linked <code>TASK_LISTs</code>. The workflow application may treat different users as being of different training levels, in which case Task Lists of higher training levels can be hidden. In the above example, a principal performer with trainee level = 7 will see the three Task Lists on the left, but not the final one, since it has a trainee level of 10.</p>
+<p>A structure like the above may be used differently by performers of differing training levels - since each <code>EXTERNAL_TASK</code> has its own <code><em>description</em></code>, an expert user may require no further list of steps, but a trainee might make use of the full hierarchical structure. The <code><em>training_level</em></code> attribute on <code>TASK_PLAN</code> can be used to control this. A higher value corresponds to a lower level of expertise, and different values can be set on different linked <code>TASK_PLANs</code>. The workflow application may treat different users as being of different training levels, in which case Task Plans of higher training levels can be hidden. In the above example, a principal performer with trainee level = 7 will see the three Task Plans on the left, but not the final one, since it has a trainee level of 10.</p>
 </div>
 <div class="paragraph">
 <p>The default value of <code><em>training_level</em></code> is 0.</p>
@@ -1124,7 +1141,7 @@
 <p>The job of specifying the work to be done in a concrete (i.e. inline) Task definition is achieved via the <code>DEFINED_TASK</code> class and its atttribute <code><em>prototype</em></code>, of type <code>ENTRY</code>, which enables the details of a Task to be specified in terms of a descendant of the <code>ENTRY</code> class. This is typically an <code>ACTION</code> instance but could be an <code>OBSERVATION</code>, <code>ADMIN_ENTRY</code> or other descendant.</p>
 </div>
 <div class="paragraph">
-<p>The attribute is called 'prototype' because the target Entry instance is understood as a partially populated, prototype 'planning time' partial copy of an Entry that will be created when the Task is actually performed. For example, a Task List for administering medication at 8 hourly intervals over a number of days could consist of a number of <code>DEFINED_TASKs</code>, each having a protoype of an <code>ACTION</code> instance based on the <code>openEHR-EHR-ACTION.medication.v1</code> archetype or a templated version thereof. Each such instance would contain the structured description of the medication administration and time, and when the administration was actually performed, an <code>ACTION</code> instance would be created from the prototype, modified to reflect any divergence from the planned form of the Task, and committed to the EHR in the normal way.</p>
+<p>The attribute is called 'prototype' because the target Entry instance is understood as a partially populated, prototype 'planning time' partial copy of an Entry that will be created when the Task is actually performed. For example, a Task Plan for administering medication at 8 hourly intervals over a number of days could consist of a number of <code>DEFINED_TASKs</code>, each having a protoype of an <code>ACTION</code> instance based on the <code>openEHR-EHR-ACTION.medication.v1</code> archetype or a templated version thereof. Each such instance would contain the structured description of the medication administration and time, and when the administration was actually performed, an <code>ACTION</code> instance would be created from the prototype, modified to reflect any divergence from the planned form of the Task, and committed to the EHR in the normal way.</p>
 </div>
 <div class="paragraph">
 <p>The following illustrates Task definitions using prototypes.</p>
@@ -1133,15 +1150,15 @@
 <div class="content">
 <img src="diagrams/task_definition.svg" alt="task definition" width="35%">
 </div>
-<div class="title">Figure 8. Task definition</div>
+<div class="title">Figure 9. Task definition</div>
 </div>
 <div class="paragraph">
-<p>Assuming that the Task List is archetyped in the same way as Entries and other elements of the EHR, this scheme supports various modes of design-time specification. The <code><em>prototype</em></code> attribute in a <code>TASK_LIST</code> archetype will usually be represented by an archetype slot or external reference, which specifies identifiers of permitted archetypes (or templates) of the target type, i.e. <code>ACTION</code> or other Entry. This can be used in various ways, as follows:</p>
+<p>Assuming that the Task Plan is archetyped in the same way as Entries and other elements of the EHR, this scheme supports various modes of design-time specification. The <code><em>prototype</em></code> attribute in a <code>TASK_PLAN</code> archetype will usually be represented by an archetype slot or external reference, which specifies identifiers of permitted archetypes (or templates) of the target type, i.e. <code>ACTION</code> or other Entry. This can be used in various ways, as follows:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://www.openehr.org/releases/AM/latest/ADL2.html#_external_references">external reference</a>: specifies a fixed archetype identifier which will be substituted in the templated form of the Task List. This has the effect of creating <code>ACTION</code> or other prototype instances in the <code>TASK_LIST</code> structure;</p>
+<p><a href="http://www.openehr.org/releases/AM/latest/ADL2.html#_external_references">external reference</a>: specifies a fixed archetype identifier which will be substituted in the templated form of the Task Plan. This has the effect of creating <code>ACTION</code> or other prototype instances in the <code>TASK_PLAN</code> structure;</p>
 </li>
 <li>
 <p><a href="http://www.openehr.org/releases/AM/latest/ADL2.html#_archetype_slots">archetype slot</a>: specified using a slot constraint that is satisfied by one or more archetypes that may be specified by a template, or left open until runtime.</p>
@@ -1149,10 +1166,10 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>In the latter case, the slot may be filled in the Task List template with an <code>ACTION</code> or other Entry archetype, allowing the Tasks to be fully specified inline as in the external reference case. Alternatively, it may be left unresolved, which would allow the workflow application to choose the exact Task definition archetype at runtime.</p>
+<p>In the latter case, the slot may be filled in the Task Plan template with an <code>ACTION</code> or other Entry archetype, allowing the Tasks to be fully specified inline as in the external reference case. Alternatively, it may be left unresolved, which would allow the workflow application to choose the exact Task definition archetype at runtime.</p>
 </div>
 <div class="paragraph">
-<p>One reason to allow a Task to contain a <code><em>prototype</em></code> reference that remains unresolved until runtime is if the Task represents the act of making an observation, for example, taking a blood pressure. In such cases, no prototype at all may be needed, and the Task <code><em>description</em></code> attribute (inherited from <code>TASK_LIST_ITEM</code>) may be sufficient information for the performer. On the other hand, a prototype <code>OBSERVATION</code> could be specified in the <code>TASK_LIST</code> template, which defines a particular form of the observation, e.g. a blood pressure which only records mean arterial pressure and cuff size.</p>
+<p>One reason to allow a Task to contain a <code><em>prototype</em></code> reference that remains unresolved until runtime is if the Task represents the act of making an observation, for example, taking a blood pressure. In such cases, no prototype at all may be needed, and the Task <code><em>description</em></code> attribute (inherited from <code>TASK_PLAN_ITEM</code>) may be sufficient information for the performer. On the other hand, a prototype <code>OBSERVATION</code> could be specified in the <code>TASK_PLAN</code> template, which defines a particular form of the observation, e.g. a blood pressure which only records mean arterial pressure and cuff size.</p>
 </div>
 <div class="paragraph">
 <p>To allow further flexibility, The multiplicity of the <code><em>prototype</em></code> attribute is unlimited, to allow for the possibility of one Task being prototyped by more than one Entry instance, e.g. an <code>ACTION</code> and an <code>OBSERVATION</code>, two <code>ADMIN_ENTRY</code> instances and so on.</p>
@@ -1163,7 +1180,7 @@
 <div class="sect3">
 <h4 id="_coordinated_teamwork"><a class="anchor" href="#_coordinated_teamwork"></a>6.2.1. Coordinated Teamwork</h4>
 <div class="paragraph">
-<p>Performing teamwork in a coordinated fashion with task planning support necessarily requires multiple Task Lists - one for each actor, and a means of coordination among them. This is achieved by the use of <code>TASK_NOTIFICATION</code> class and the attributes <code><em>notifications</em></code> and <code><em>wait_conditions</em></code>, which respectively represent outgoing notifications to other actors, and a 'wait state' that is unblocked by receipt of a notification from another Task List and actor.</p>
+<p>Performing teamwork in a coordinated fashion with task planning support necessarily requires multiple Task Plans - one for each actor, and a means of coordination among them. This is achieved by the use of <code>TASK_NOTIFICATION</code> class and the attributes <code><em>notifications</em></code> and <code><em>wait_conditions</em></code>, which respectively represent outgoing notifications to other actors, and a 'wait state' that is unblocked by receipt of a notification from another Task Plan and actor.</p>
 </div>
 <div class="paragraph">
 <p>These two attributes enable both directions of communication between any two actors working in a coordinated workflow to be expressed. The following illustrates, using the example of an acute stroke management care process.</p>
@@ -1172,7 +1189,7 @@
 <div class="content">
 <img src="diagrams/task_coordination.svg" alt="task coordination" width="70%">
 </div>
-<div class="title">Figure 9. Task coordination</div>
+<div class="title">Figure 10. Task coordination</div>
 </div>
 </div>
 <div class="sect3">
@@ -1189,7 +1206,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p><em>clock time</em>: the Task is to be executed at a specific clock time represented by an instance of <code>CLOCK_TIMING</code>; within a Task definition, this must be specified as a relative duration with respect to the origin clock time of the Task List, which is only known in absolute terms at execution time;</p>
+<p><em>clock time</em>: the Task is to be executed at a specific clock time represented by an instance of <code>CLOCK_TIMING</code>; within a Task definition, this must be specified as a relative duration with respect to the origin clock time of the Task Plan, which is only known in absolute terms at execution time;</p>
 </li>
 <li>
 <p><em>event-linked time</em>: the Task is to be executed at a time related to a real world event, such as a meal or sleeping; in this case, an instance of <code>EVENT_LINKED_TIME</code> is used; the attributes indicate the specifics such as '1 hour before', 'with meal' etc;</p>
@@ -1216,13 +1233,13 @@
 </ul>
 </div>
 <div class="paragraph tbd">
-<p>ISSUE-time-relativity: time is somewhat complicated. In a TASK_LIST archetype we need to use relative offsets everywhere, but at runtime, we need absolute times. We could consider setting an 'origin time' for the Task List as a whole when it is instantiated, and computing absolute times for each Task at that point. However, at runtime, the timings may be changed by the performer (e.g. times to admin drugs) and the intention is probably to make them 'stick', even if the notional origin time is moved. However in other cases, the idea may be to move the origin and have all the times move.</p>
+<p>ISSUE-time-relativity: time is somewhat complicated. In a TASK_PLAN archetype we need to use relative offsets everywhere, but at runtime, we need absolute times. We could consider setting an 'origin time' for the Task Plan as a whole when it is instantiated, and computing absolute times for each Task at that point. However, at runtime, the timings may be changed by the performer (e.g. times to admin drugs) and the intention is probably to make them 'stick', even if the notional origin time is moved. However in other cases, the idea may be to move the origin and have all the times move.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_pre_conditions"><a class="anchor" href="#_pre_conditions"></a>6.2.3. Pre-conditions</h4>
 <div class="paragraph">
-<p>IN addition to timing, other conditions may determine when or if a Task can be performed. These are modelled as the <code>TASK_LIST_ITEM</code> attribute <code><em>preconditions</em>: TASK_PRECONDITION</code>. The precondition is formally represented as a <code>DV_PARSABLE</code>, which would normally contain a string of <a href="http://www.openehr.org/releases/BASE/latest/expression.html">openEHR Expression Language</a> syntax, but may contain another syntax.</p>
+<p>IN addition to timing, other conditions may determine when or if a Task can be performed. These are modelled as the <code>TASK_PLAN_ITEM</code> attribute <code><em>preconditions</em>: TASK_PRECONDITION</code>. The precondition is formally represented as a <code>DV_PARSABLE</code>, which would normally contain a string of <a href="http://www.openehr.org/releases/BASE/latest/expression.html">openEHR Expression Language</a> syntax, but may contain another syntax.</p>
 </div>
 <div class="paragraph">
 <p>Pre-conditions can be used in two ways. They may express real-world conditions containing references to EHR-available data items, such as vital signs, white cell count or other such things. Alternatively, they may be used as part of a decision group structure, in which case they reference a variable from a <code>DECISION_GROUP</code> instance. This is described in more detail below.</p>
@@ -1232,16 +1249,16 @@
 <div class="sect2">
 <h3 id="_decision_structures"><a class="anchor" href="#_decision_structures"></a>6.3. Decision Structures</h3>
 <div class="paragraph">
-<p>A more advanced application of Task Lists includes decision pathways, consisting of a decision point and a number of dependent pathays. This is used to represent the decision pathways found in guidelines.</p>
+<p>A more advanced application of Task Plans includes decision pathways, consisting of a decision point and a number of dependent pathays. This is used to represent the decision pathways found in guidelines.</p>
 </div>
 <div class="paragraph">
 <p>The following diagram shows a typical decision structure.</p>
 </div>
 <div id="decision_structure" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/decision_structure.svg" alt="decision structure" width="45%">
+<img src="diagrams/decision_structure.svg" alt="decision structure" width="40%">
 </div>
-<div class="title">Figure 10. Decision structure</div>
+<div class="title">Figure 11. Decision structure</div>
 </div>
 <div class="paragraph">
 <p>A decision point is represented by a <code>DECISION_GROUP</code> instance, which contains a <code><em>value_expression</em></code> in the form of an assignment of an expression to a variable that can be later tested, and has its <code><em>execution_type</em></code> set to <code>conditional</code>. Each pathway is represented by a normal <code>TASK_GROUP</code> with a precondition in the form of an assertion on the same variable. By this method, the workflow engine can determine which group to execute based on the runtime value of the variable.</p>
@@ -1256,7 +1273,7 @@
 <div class="sect2">
 <h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>6.5. Class Descriptions</h3>
 <div class="sect3">
-<h4 id="_task_list_class"><a class="anchor" href="#_task_list_class"></a>6.5.1. TASK_LIST Class</h4>
+<h4 id="_task_plan_class"><a class="anchor" href="#_task_plan_class"></a>6.5.1. TASK_PLAN Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1266,21 +1283,21 @@
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_LIST</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_PLAN</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Logical list of Tasks in a structure defining order and conditions of execution of items of work intended to achieve a goal. A Task List consists of a top-level TASK_GROUP containing TASK_LIST_ITEMs, which are either atomic TASKs or more TASK_GROUPs.</p>
+<p>Logical list of Tasks in a structure defining order and conditions of execution of items of work intended to achieve a goal. A Task Plan consists of a top-level TASK_GROUP containing TASK_PLAN_ITEMs, which are either atomic TASKs or more TASK_GROUPs.</p>
 </div>
 <div class="paragraph">
-<p>A Task List specifies a principal_performer, representing a kind of actor who can perform the Tasks, and bounding start_time and completion_time information.</p>
+<p>A Task Plan specifies a principal_performer, representing a kind of actor who can perform the Tasks, and bounding start_time and completion_time information.</p>
 </div>
 <div class="paragraph">
 <p>It has an associated execution_history that can be used to record work events in time.</p>
 </div>
 <div class="paragraph">
-<p>The attributes care_plan and guideline_id provide a way of associating a Task List with an operational care plan, and also a published guideline or protocol on which the Task List may be based.</p>
+<p>The attributes care_plan and guideline_id provide a way of associating a Task Plan with an operational care plan, and also a published guideline or protocol on which the Task Plan may be based.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1303,21 +1320,21 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Human-understandable description of the Task list, which may be specific to the work items and patient.</p>
+<p>Human-understandable description of the Task Plan, which may be specific to the work items and patient.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>care_plan</strong>: <code>LOCATABLE_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Care plan object from which this Task list is derived.</p>
+<p>Care plan object from which this Task Plan is derived.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>guideline</strong>: <code>DV_IDENTIFIER</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Identifier of guideline on which this Task List is based, if such exists. A 'guideline' is understood here as a published standard for performing a detailed Task.</p>
+<p>Identifier of guideline on which this Task Plan is based, if such exists. A 'guideline' is understood here as a published standard for performing a detailed Task.</p>
 </div>
 <div class="paragraph">
 <p>It is currently assumed that there is no reliable machine identifier system for guidelines. A DV_IDENTIFIER allows things like:</p>
@@ -1340,14 +1357,14 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>principal_performer</strong>: <code>TASK_PARTICIPATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Specification of principle performer of this Task List as a Participation, typically with role and function set.</p>
+<p>Specification of principle performer of this Task Plan as a Participation, typically with role and function set.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>care_pathway</strong>: <code>DV_IDENTIFIER</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Identifier of care pathway etc, on which this Task List is based, if such exists. A 'care pathway' is understood here as a published standard for performing care for a major condition or presenting complaint, e.g. sepsis, MI etc.</p>
+<p>Identifier of care pathway etc, on which this Task Plan is based, if such exists. A 'care pathway' is understood here as a published standard for performing care for a major condition or presenting complaint, e.g. sepsis, MI etc.</p>
 </div>
 <div class="paragraph">
 <p>It is currently assumed that there is no reliable machine identifier system for care pathways. A DV_IDENTIFIER allows things like:</p>
@@ -1370,21 +1387,21 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>TASK_GROUP</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The Tasks for this Task List.</p>
+<p>The Tasks for this Task Plan.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>execution_history</strong>: <code>TASK_EXECUTION_HISTORY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>execution_history</strong>: <code>TASK_PLAN_EXECUTION_HISTORY</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>History of execution events for an execution of this Task List.</p>
+<p>History of execution events for an execution of this Task Plan.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>training_level</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>An integer value representing the training level for which this Task List is designed. A high value corresponds to a lower level of expertise. The default value is zero.</p>
+<p>An integer value representing the training level for which this Task Plan is designed. A high value corresponds to a lower level of expertise. The default value is zero.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1398,7 +1415,7 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>expiry_time</strong>: <code>Duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Maximal date/time by which this Task list should be considered obsolete. If not set, the Task list would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the execution_time attribute of TASKs in the list.</p>
+<p>Maximal date/time by which this Task Plan should be considered obsolete. If not set, the Task Plan would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the execution_time attribute of TASKs in the plan.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1410,7 +1427,7 @@
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>TASK_LIFECYCLE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Lifecycle state of Task List, derived as a copy of the lifecycle_state() of the top-level TASK_GROUP.</p>
+<p>Lifecycle state of Task Plan, derived as a copy of the lifecycle_state() of the top-level TASK_GROUP.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1483,7 +1500,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_task_list_item_class"><a class="anchor" href="#_task_list_item_class"></a>6.5.3. TASK_LIST_ITEM Class</h4>
+<h4 id="_task_plan_item_class"><a class="anchor" href="#_task_plan_item_class"></a>6.5.3. TASK_PLAN_ITEM Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1493,12 +1510,12 @@
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>TASK_LIST_ITEM (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>TASK_PLAN_ITEM (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract parent of any type of the TASK_LIST member types TASK_GROUP and TASK.</p>
+<p>Abstract parent of any type of the TASK_PLAN member types TASK_GROUP and TASK.</p>
 </div>
 <div class="paragraph">
 <p>Supports definition of optionality, pre-conditions, wait conditions, indications and notifications with any Task Group or Task.</p>
@@ -1507,7 +1524,7 @@
 <p>Provides a place to record fine-grained costing data.</p>
 </div>
 <div class="paragraph">
-<p>Informal other participations can also be recorded for any Task Group or Task, although these do not replace the Task List principal_performer.</p>
+<p>Informal other participations can also be recorded for any Task Group or Task, although these do not replace the Task Plan principal_performer.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1533,7 +1550,10 @@
 <p>Integer indicating the ordinal number of this Task within its Task group. Used for referencing from other objects. Required to be unique with respect to other siblings in the same Task group.</p>
 </div>
 <div class="paragraph">
-<p>Identification of any Task in a Task list is done using paths of the form /task_group_id/task_group_id.</p>
+<p>Identification of any Task in a Task Plan is done using paths of the form /task_group_id/task_group_id.</p>
+</div>
+<div class="paragraph">
+<p>TODO: needed?</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1684,7 +1704,7 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>start_offset</strong>: <code>Duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Time at which the action should start, specified as an offset from the Task List origin time.  The effective real time to start operationally can be computed from an absolute origin time plus this offset.</p>
+<p>Time at which the action should start, specified as an offset from the Task Plan origin time.  The effective real time to start operationally can be computed from an absolute origin time plus this offset.</p>
 </div>
 <div class="paragraph">
 <p>If start_window is set, the action may start within this a certain duration after the start_offset.</p>
@@ -1915,7 +1935,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TASK_LIST_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TASK_PLAN_ITEM</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1924,7 +1944,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>List&lt;TASK_LIST_ITEM&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>List&lt;TASK_PLAN_ITEM&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Set of Tasks to perform. Sequencing is either the natural order of the tasks list, or may be controlled by</p>
 </div></div></td>
@@ -1955,7 +1975,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A specialised form of TASK_GROUP that represents as a decision node in guideline-based Task List definition. The decision is represented by the value_expression, which at runtime is instantiated as an ASSIGNMENT.</p>
+<p>A specialised form of TASK_GROUP that represents as a decision node in guideline-based Task Plan definition. The decision is represented by the value_expression, which at runtime is instantiated as an ASSIGNMENT.</p>
 </div>
 <div class="paragraph">
 <p>Instances of this class also act as a container for the subordinate decision paths which are modelled as TASK_GROUPs with execution_type = decisional, and each having a precondition representing a match expression for the value generated by the value_expression on the parent DECISION_GROUP object.</p>
@@ -2040,12 +2060,12 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract parent of various types of planned Task, which may be real work items (DEFINED_TASK) or references to another Task List (EXTERNAL_TASK).</p>
+<p>Abstract parent of various types of planned Task, which may be real work items (DEFINED_TASK) or references to another Task Plan (EXTERNAL_TASK).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TASK_LIST_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TASK_PLAN_ITEM</p></td>
 </tr>
 </tbody>
 </table>
@@ -2066,7 +2086,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Task type that represents a dispatch to another Task List to be executed by the current performer.</p>
+<p>Task type that represents a dispatch to another Task Plan to be executed by the current performer.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2080,7 +2100,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>TASK_LIST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>TASK_PLAN</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>UID of target TASK_LIST object.</p>
 </div></div></td>
@@ -2189,7 +2209,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Conditions expressing when the Task is executable with respect to the principal performer and subject. Coordination with other actors and Task lists are represented as Wait conditions.</p>
+<p>Conditions expressing when the Task is executable with respect to the principal performer and subject. Coordination with other actors and Task Plans are represented as Wait conditions.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2229,11 +2249,11 @@
 <div class="content">
 <img src="../UML/diagrams/RM-task_planning-execution.svg" alt="RM task planning execution">
 </div>
-<div class="title">Figure 11. rm.task_planning package - execution model</div>
+<div class="title">Figure 12. rm.task_planning package - execution model</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_task_list_instantiation"><a class="anchor" href="#_task_list_instantiation"></a>7.2. Task List Instantiation</h3>
+<h3 id="_task_plan_instantiation"><a class="anchor" href="#_task_plan_instantiation"></a>7.2. Task Plan Instantiation</h3>
 <div class="paragraph tbd">
 <p>To be continued</p>
 </div>
@@ -2243,7 +2263,7 @@
 <div class="sect3">
 <h4 id="_task_lifecycle_model"><a class="anchor" href="#_task_lifecycle_model"></a>7.3.1. Task Lifecycle Model</h4>
 <div class="paragraph">
-<p>Each <code>TASK</code> in a <code>TASK_LIST</code> has a lifecycle consisting of various states it may pass through in time. The lifecycle is simple, since it only has to take account of the states a Task - understood as a task <em>definition</em> - can pass through, with documentation of the Task execution occurring in the form of separate openEHR <code>ACTION</code> or other Entry objects. The states are as follows:</p>
+<p>Each <code>TASK</code> in a <code>TASK_PLAN</code> has a lifecycle consisting of various states it may pass through in time. The lifecycle is simple, since it only has to take account of the states a Task - understood as a task <em>definition</em> - can pass through, with documentation of the Task execution occurring in the form of separate openEHR <code>ACTION</code> or other Entry objects. The states are as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2274,7 +2294,7 @@
 <div class="content">
 <img src="../UML/diagrams/RM-TaskStateMachine.svg" alt="RM TaskStateMachine" width="60%">
 </div>
-<div class="title">Figure 12. Task lifecycle state machine</div>
+<div class="title">Figure 13. Task lifecycle state machine</div>
 </div>
 <div class="paragraph">
 <p>The state for each Task is recorded in the <code><em>lifecycle_state</em></code> attribute.</p>
@@ -2286,13 +2306,13 @@
 <div class="title">Note</div>
 </td>
 <td class="content">
-This is the only execution time related attribute in the Task List definition. If it is necessary to record the final lifecycle states of Tasks in a completed Task List, the <code>TASK_LIST</code> will need to be re-committed to the EHR as a new version in order to achieve this.
+This is the only execution time related attribute in the Task Plan definition. If it is necessary to record the final lifecycle states of Tasks in a completed Task Plan, the <code>TASK_PLAN</code> will need to be re-committed to the EHR as a new version in order to achieve this.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Since a Task List is a hierarchical structure consisting of one or more Task Groups, a way of rolling up Task state is needed. The following algorithm is used to compute the effective lifecycle state of a <code>TASK_GROUP</code> from the set of states of its members (which may include other <code>TASK_GROUPs</code>).</p>
+<p>Since a Task Plan is a hierarchical structure consisting of one or more Task Groups, a way of rolling up Task state is needed. The following algorithm is used to compute the effective lifecycle state of a <code>TASK_GROUP</code> from the set of states of its members (which may include other <code>TASK_GROUPs</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2318,7 +2338,7 @@ This is the only execution time related attribute in the Task List definition. I
 </div>
 </div>
 <div class="paragraph">
-<p>Since the Task Group is also the top level structure of the Task List, the inferred state of the List as a whole is also provided by this algorithm.</p>
+<p>Since the Task Group is also the top level structure of the Task Plan, the inferred state of the List as a whole is also provided by this algorithm.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2334,7 +2354,7 @@ This is the only execution time related attribute in the Task List definition. I
 <div class="sect2">
 <h3 id="_task_execution_tracking"><a class="anchor" href="#_task_execution_tracking"></a>7.4. Task Execution Tracking</h3>
 <div class="paragraph">
-<p>Following the design principle of separation of Task definition and execution state, the model represents the history and state of execution of a Task List as a separate high-level part of the model, via the <code><em>execution_history</em></code> attribute of <code>TASK_LIST</code>. The execution of a Task List is represented in terms of transitions over time between the states of the Task lifecycle model, along with associated information.</p>
+<p>Following the design principle of separation of Task definition and execution state, the model represents the history and state of execution of a Task Plan as a separate high-level part of the model, via the <code><em>execution_history</em></code> attribute of <code>TASK_PLAN</code>. The execution of a Task Plan is represented in terms of transitions over time between the states of the Task lifecycle model, along with associated information.</p>
 </div>
 <div class="paragraph tbd">
 <p>To be continued</p>
@@ -2404,7 +2424,7 @@ This is the only execution time related attribute in the Task List definition. I
 </table>
 </div>
 <div class="sect4">
-<h5 id="_executing_task_list_class"><a class="anchor" href="#_executing_task_list_class"></a>7.4.1.2. EXECUTING_TASK_LIST Class</h5>
+<h5 id="_executing_task_plan_class"><a class="anchor" href="#_executing_task_plan_class"></a>7.4.1.2. EXECUTING_TASK_PLAN Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2414,11 +2434,13 @@ This is the only execution time related attribute in the Task List definition. I
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXECUTING_TASK_LIST</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXECUTING_TASK_PLAN</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Root object of an executing Task Plan structure.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2429,7 +2451,7 @@ This is the only execution time related attribute in the Task List definition. I
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>start_time</strong>: <code>Date_time</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Nominal start time for the Task list as a whole. The timings of individual Tasks may be specified as offsets from this time, via PLANNED_TIME.relative_offset.</p>
+<p>Nominal start time for the Task Plan as a whole. The timings of individual Tasks may be specified as offsets from this time, via PLANNED_TIME.relative_offset.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2439,14 +2461,14 @@ This is the only execution time related attribute in the Task List definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner</strong>: <code>TASK_LIST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner</strong>: <code>TASK_PLAN</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_executing_task_list_item_class"><a class="anchor" href="#_executing_task_list_item_class"></a>7.4.1.3. EXECUTING_TASK_LIST_ITEM Class</h5>
+<h5 id="_executing_task_plan_item_class"><a class="anchor" href="#_executing_task_plan_item_class"></a>7.4.1.3. EXECUTING_TASK_PLAN_ITEM Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2456,11 +2478,13 @@ This is the only execution time related attribute in the Task List definition. I
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXECUTING_TASK_LIST_ITEM (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXECUTING_TASK_PLAN_ITEM (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent of execution-time types that correspond to design time TASK_PLAN_ITEM instances.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
@@ -2473,7 +2497,7 @@ This is the only execution time related attribute in the Task List definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>TASK_LIST_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>TASK_PLAN_ITEM</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
@@ -2499,11 +2523,13 @@ This is the only execution time related attribute in the Task List definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Execution-time homologue of TASK_GROUP from a Task Plan definition definition.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXECUTING_TASK_LIST_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXECUTING_TASK_PLAN_ITEM</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2512,7 +2538,7 @@ This is the only execution time related attribute in the Task List definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>List&lt;EXECUTING_TASK_LIST_ITEM&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>List&lt;EXECUTING_TASK_PLAN_ITEM&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
@@ -2545,11 +2571,13 @@ This is the only execution time related attribute in the Task List definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Execution-time homologue of TASK type and its descendants from a Task Plan definition.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXECUTING_TASK_LIST_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXECUTING_TASK_PLAN_ITEM</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2577,9 +2605,9 @@ This is the only execution time related attribute in the Task List definition. I
 </div>
 </div>
 <div class="sect2">
-<h3 id="_task_list_execution_history"><a class="anchor" href="#_task_list_execution_history"></a>7.5. Task List Execution History</h3>
+<h3 id="_task_plan_execution_history"><a class="anchor" href="#_task_plan_execution_history"></a>7.5. Task Plan Execution History</h3>
 <div class="paragraph">
-<p>The history of execution events is represented in the class <code>EXECUTION_HISTORY</code>. This is a history of real world execution events that accumulate over the duration of workflow processing of the Task List. Two types of event are used:</p>
+<p>The history of execution events is represented in the class <code>EXECUTION_HISTORY</code>. This is a history of real world execution events that accumulate over the duration of workflow processing of the Task Plan. Two types of event are used:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2595,7 +2623,7 @@ This is the only execution time related attribute in the Task List definition. I
 <p>The first type may also include forward references to EHR Entries that were committed as a result of a Task being performed. This facilitates logical indexing of planned and performed work items.</p>
 </div>
 <div class="paragraph">
-<p>The Execution history will clearly grow and might become quite long for some Task List executions. How it may be persisted in various ways. The following possibilities are all compatible with both the model, and typical EHR requirements:</p>
+<p>The Execution history will clearly grow and might become quite long for some Task Plan executions. How it may be persisted in various ways. The following possibilities are all compatible with both the model, and typical EHR requirements:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2604,7 +2632,7 @@ This is the only execution time related attribute in the Task List definition. I
 <div class="ulist">
 <ul>
 <li>
-<p>persist the full history, delete or archive once the Task List is fully completed;</p>
+<p>persist the full history, delete or archive once the Task Plan is fully completed;</p>
 </li>
 </ul>
 </div>
@@ -2628,12 +2656,12 @@ This is the only execution time related attribute in the Task List definition. I
 </ul>
 </div>
 <div class="paragraph">
-<p>This approach cleanly separates the definitional representation of a Task List, which should only change if changes to the plan are made, and the execution state, which is built during the work performance.</p>
+<p>This approach cleanly separates the definitional representation of a Task Plan, which should only change if changes to the plan are made, and the execution state, which is built during the work performance.</p>
 </div>
 <div class="sect3">
 <h4 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>7.5.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_task_execution_history_class"><a class="anchor" href="#_task_execution_history_class"></a>7.5.1.1. TASK_EXECUTION_HISTORY Class</h5>
+<h5 id="_task_plan_execution_history_class"><a class="anchor" href="#_task_plan_execution_history_class"></a>7.5.1.1. TASK_PLAN_EXECUTION_HISTORY Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2643,12 +2671,12 @@ This is the only execution time related attribute in the Task List definition. I
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_EXECUTION_HISTORY</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_PLAN_EXECUTION_HISTORY</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>History of Task execution events and notifications. May be used by a workflow application to record all events during execution.</p>
+<p>History of Task Plan execution events and notifications. May be used by a workflow application to record all events during execution.</p>
 </div>
 <div class="paragraph">
 <p>May be persisted in the EHR in partial or complete form, or not at all.</p>
@@ -2668,9 +2696,9 @@ This is the only execution time related attribute in the Task List definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>list_events</strong>: <code>List&lt;TASK_LIST_EVENT_RECORD&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>plan_events</strong>: <code>List&lt;TASK_PLAN_EVENT_RECORD&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Execution time events that occurred at the Task List level, i.e. not to a particular task. These include events such as Task list abandonment.</p>
+<p>Execution time events that occurred at the Task Plan level, i.e. not to a particular task. These include events such as Task Plan abandonment.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2692,7 +2720,7 @@ This is the only execution time related attribute in the Task List definition. I
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract parent of types representing execution time events on a Task List.</p>
+<p>Abstract parent of types representing execution time events on a Task Plan.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2718,7 +2746,7 @@ This is the only execution time related attribute in the Task List definition. I
 </table>
 </div>
 <div class="sect4">
-<h5 id="_task_list_event_record_class"><a class="anchor" href="#_task_list_event_record_class"></a>7.5.1.3. TASK_LIST_EVENT_RECORD Class</h5>
+<h5 id="_task_plan_event_record_class"><a class="anchor" href="#_task_plan_event_record_class"></a>7.5.1.3. TASK_PLAN_EVENT_RECORD Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2728,12 +2756,12 @@ This is the only execution time related attribute in the Task List definition. I
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_LIST_EVENT_RECORD</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TASK_PLAN_EVENT_RECORD</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Record of an execution time event to a Task List.</p>
+<p>Record of an execution time event to a Task Plan.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2787,7 +2815,7 @@ This is the only execution time related attribute in the Task List definition. I
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>task_id</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Identification of Task in the Task list structre using a path of the form /task_group_id/task_group_id.</p>
+<p>Identification of Task in the Task Plan structre using a path of the form /task_group_id/task_group_id.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2808,10 +2836,10 @@ This is the only execution time related attribute in the Task List definition. I
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entry_instances</strong>: <code>List&lt;ENTRY&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Forward references to Entry (e.g. ACTION, OBSERVATION etc) that was recorded as a result of this Task being performed. If this is set, it indicates that the planned Task is 'done' i.e. checked off the list.</p>
+<p>Forward references to Entry (e.g. ACTION, OBSERVATION etc) that was recorded as a result of this Task being performed. If this is set, it indicates that the planned Task is 'done' i.e. checked off the plan.</p>
 </div>
 <div class="paragraph tbd">
-<p>ISSUE-fwd-refs: entry_instance is a forward reference - which requires updating the Task List after the Tasks have beed performed and relevant Entries committed. Is this complication worth the benefit obtained, i.e. directly followable links rather than querying, to find Entries from the Task List items? Is being able to determine the resulting Entries starting from the Task List even useful?</p>
+<p>ISSUE-fwd-refs: entry_instance is a forward reference - which requires updating the Task Plan after the Tasks have beed performed and relevant Entries committed. Is this complication worth the benefit obtained, i.e. directly followable links rather than querying, to find Entries from the Task Plan items? Is being able to determine the resulting Entries starting from the Task Plan even useful?</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2850,9 +2878,9 @@ This is the only execution time related attribute in the Task List definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>receiver_task_list</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>receiver_task_plan</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Identifier of receiving Task List.</p>
+<p>Identifier of receiving Task Plan.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2978,31 +3006,31 @@ This is the only execution time related attribute in the Task List definition. I
 <div class="sect2">
 <h3 id="_principles"><a class="anchor" href="#_principles"></a>8.1. Principles</h3>
 <div class="paragraph">
-<p>The model enables a flexible relationship between a Task List and orders, i.e. openEHR <code>INSTRUCTIONs</code>. In simple cases, a Task List will just be the list of Tasks to fulfill one order, i.e. a single <code>INSTRUCTION</code>, such as a prescription for a course of antibiotics. The general case however is that the Task List corresponds to a clinical goal which implicates multiple orders, for example the CHOP chemotherapy mentioned above.</p>
+<p>The model enables a flexible relationship between a Task Plan and orders, i.e. openEHR <code>INSTRUCTIONs</code>. In simple cases, a Task Plan will just be the list of Tasks to fulfill one order, i.e. a single <code>INSTRUCTION</code>, such as a prescription for a course of antibiotics. The general case however is that the Task Plan corresponds to a clinical goal which implicates multiple orders, for example the CHOP chemotherapy mentioned above.</p>
 </div>
 <div class="paragraph">
-<p>It may also be the case that <em>not every Task is associated with an order</em>. While a typical case is that a Task corresponds to an openEHR <code>ACTION</code> that has not yet been recorded (and which normally has a driving <code>INSTRUCTION</code>), it may also correspond to an <code>ACTION</code> that has no <code>INSTRUCTION</code> or indeed an <code>OBSERVATION</code> or possibly an <code>EVALUATION</code> (perhaps some kind of check during a procedure). There is also no reason why a Task List cannot consist of Tasks that define administrative work and would be documented with openEHR <code>ADMIN_ENTRYs</code>.</p>
+<p>It may also be the case that <em>not every Task is associated with an order</em>. While a typical case is that a Task corresponds to an openEHR <code>ACTION</code> that has not yet been recorded (and which normally has a driving <code>INSTRUCTION</code>), it may also correspond to an <code>ACTION</code> that has no <code>INSTRUCTION</code> or indeed an <code>OBSERVATION</code> or possibly an <code>EVALUATION</code> (perhaps some kind of check during a procedure). There is also no reason why a Task Plan cannot consist of Tasks that define administrative work and would be documented with openEHR <code>ADMIN_ENTRYs</code>.</p>
 </div>
 <div class="paragraph">
-<p>We can infer from the above that the main driver of a Task List isn&#8217;t in general an order, but a guideline or protocol which usually includes orders. In simple cases, no formal protocol is used, and the orders (i.e. <code>INSTRUCTIONs</code>) may be <em>de facto</em> drivers, or the Task List may be created <em>ad hoc</em>, such an in-patient pain medication administration plan by nursing staff. At the other extreme, a Task List may be created with no corresponding orders (and therefore no <code>INSTRUCTIONs</code>) at all.</p>
+<p>We can infer from the above that the main driver of a Task Plan isn&#8217;t in general an order, but a guideline or protocol which usually includes orders. In simple cases, no formal protocol is used, and the orders (i.e. <code>INSTRUCTIONs</code>) may be <em>de facto</em> drivers, or the Task Plan may be created <em>ad hoc</em>, such an in-patient pain medication administration plan by nursing staff. At the other extreme, a Task Plan may be created with no corresponding orders (and therefore no <code>INSTRUCTIONs</code>) at all.</p>
 </div>
 <div class="paragraph">
-<p>The following figure shows the correspondences between the various type of openEHR artefact for the general case of Task Lists. The arrows indicate causal relationships.</p>
+<p>The following figure shows the correspondences between the various type of openEHR artefact for the general case of Task Plans. The arrows indicate causal relationships.</p>
 </div>
 <div id="planning_artefact_relationships" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/planning_artefacts.svg" alt="planning artefacts" width="50%">
 </div>
-<div class="title">Figure 13. openEHR Planning Artefact Relationships</div>
+<div class="title">Figure 14. openEHR Planning Artefact Relationships</div>
 </div>
 <div class="paragraph">
 <p>In the above, items in yellow are driven solely by the guideline and have no corresponding order; planned items with a red cross have been cancelled and have no corresponding performed Action or Observation.</p>
 </div>
 <div class="paragraph">
-<p>One of the side-effects of distinct state machines for <code>INSTRUCTIONs</code> and Task Lists is that not all careflow steps and states in the former need to be represented as Tasks in a Task List. For example, a significant number of careflow steps defined in <code>ACTION</code> archetypes are for non-Active states, i.e. Planning, Postponement, Suspension etc. These steps do not need to have Tasks defined for them, since by definition they are nearly all unplanned.</p>
+<p>One of the side-effects of distinct state machines for <code>INSTRUCTIONs</code> and Task Plans is that not all careflow steps and states in the former need to be represented as Tasks in a Task Plan. For example, a significant number of careflow steps defined in <code>ACTION</code> archetypes are for non-Active states, i.e. Planning, Postponement, Suspension etc. These steps do not need to have Tasks defined for them, since by definition they are nearly all unplanned.</p>
 </div>
 <div class="paragraph">
-<p>As a consequence, most Tasks in a Task List correspond only to Active-state careflow steps of constituent order <code>INSTRUCTIONs</code>.</p>
+<p>As a consequence, most Tasks in a Task Plan correspond only to Active-state careflow steps of constituent order <code>INSTRUCTIONs</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3016,7 +3044,7 @@ This is the only execution time related attribute in the Task List definition. I
 <p><em>ordering</em>: creation of <code>INSTRUCTIONs</code>;</p>
 </li>
 <li>
-<p><em>task planning</em>: creation of <code>TASK_LIST(s)</code> representing a plan of individual tasks that achieve the order intention;</p>
+<p><em>task planning</em>: creation of <code>TASK_PLAN(s)</code> representing a plan of individual tasks that achieve the order intention;</p>
 </li>
 <li>
 <p><em>execution</em>: creation of <code>ACTION</code> and other Entry types that document the Tasks as they were performed.</p>
@@ -3030,7 +3058,7 @@ This is the only execution time related attribute in the Task List definition. I
 <div class="content">
 <img src="diagrams/planning_runtime_structures.svg" alt="planning runtime structures" width="80%">
 </div>
-<div class="title">Figure 14. Runtime planning structures</div>
+<div class="title">Figure 15. Runtime planning structures</div>
 </div>
 <div class="paragraph">
 <p>Various links can be recorded at execution time, as follows:</p>
@@ -3060,19 +3088,19 @@ This is the only execution time related attribute in the Task List definition. I
 <p>This section to be rewritten.</p>
 </div>
 <div class="paragraph">
-<p>The following UML instance diagram shows a partial state of an EHR containing orders and a related Task List. The upper part shows a <code>COMPOSITION</code> containing a number of <code>INSTRUCTIONs</code> that express the orders for Cyclophosphamide, Hydroxydaunorubicin (Doxorubicin), etc, that make up the order set for a CHOP chemotherapy protocol (to be more complete, Rituximab would also be included). It is assumed that the orders contain the correct dosages for the patient, i.e. that they have been calculated in advance for the patient&#8217;s body weight, surface area and other specifics. A few elements of an <code>ACTIVITY</code> for the Cyclophosphamide drug are shown here.</p>
+<p>The following UML instance diagram shows a partial state of an EHR containing orders and a related Task Plan. The upper part shows a <code>COMPOSITION</code> containing a number of <code>INSTRUCTIONs</code> that express the orders for Cyclophosphamide, Hydroxydaunorubicin (Doxorubicin), etc, that make up the order set for a CHOP chemotherapy protocol (to be more complete, Rituximab would also be included). It is assumed that the orders contain the correct dosages for the patient, i.e. that they have been calculated in advance for the patient&#8217;s body weight, surface area and other specifics. A few elements of an <code>ACTIVITY</code> for the Cyclophosphamide drug are shown here.</p>
 </div>
 <div class="paragraph">
-<p>In the lower part of the part of the diagram is a <code>COMPOSITION</code> containing a <code>TASK_LIST</code> structure representing the list of work items to perform in order to administer the chemotherapy to the patient. It is assumed that a specialised chemotherapy application has been used to created this structure. The first <code>DEFINED_TASK</code> is shown in some detail, and includes a reference back to the related Instruction Activity, enabling an application to retrieve and display the details of the order. As a precaution, it also has the <code><em>description</em></code> attribute set to the value <code>"Cyclophosphamide 1400 mg IV"</code>, copied (or generated) from the <code>INSTRUCTION</code> when the <code>TASK_LIST</code> was created. The other attributes of the <code>DEFINED_TASK</code> object indicate when to execute the Task, what professional role should do it (<code><em>participations</em></code>), the Careflow step ('administer') and the target state machine state (<code>active</code>).</p>
+<p>In the lower part of the part of the diagram is a <code>COMPOSITION</code> containing a <code>TASK_PLAN</code> structure representing the list of work items to perform in order to administer the chemotherapy to the patient. It is assumed that a specialised chemotherapy application has been used to created this structure. The first <code>DEFINED_TASK</code> is shown in some detail, and includes a reference back to the related Instruction Activity, enabling an application to retrieve and display the details of the order. As a precaution, it also has the <code><em>description</em></code> attribute set to the value <code>"Cyclophosphamide 1400 mg IV"</code>, copied (or generated) from the <code>INSTRUCTION</code> when the <code>TASK_PLAN</code> was created. The other attributes of the <code>DEFINED_TASK</code> object indicate when to execute the Task, what professional role should do it (<code><em>participations</em></code>), the Careflow step ('administer') and the target state machine state (<code>active</code>).</p>
 </div>
 <div class="paragraph">
-<p>Each of the <code>DEFINED_TASK</code> protype instances in the <code>TASK_LIST</code> should logically speaking be almost a copy of the <code>ACTION</code> that would result from performing the Task. This is not literally true, since there are fields representing various kinds of links, identifiers and other protocol and care plan information, but for the core information of what to do, and when to do it the instance data for a Planned action should be a tight constraint version of the intended Action to result.</p>
+<p>Each of the <code>DEFINED_TASK</code> protype instances in the <code>TASK_PLAN</code> should logically speaking be almost a copy of the <code>ACTION</code> that would result from performing the Task. This is not literally true, since there are fields representing various kinds of links, identifiers and other protocol and care plan information, but for the core information of what to do, and when to do it the instance data for a Planned action should be a tight constraint version of the intended Action to result.</p>
 </div>
 <div id="planning_typical_instance" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="../UML/diagrams/Planning-typical-instance.svg" alt="Planning typical instance">
 </div>
-<div class="title">Figure 15. Typical Task List - CHOP Chemotherapy</div>
+<div class="title">Figure 16. Typical Task Plan - CHOP Chemotherapy</div>
 </div>
 <div class="paragraph">
 <p>It is worth considering some of the differences between how an order represents the Task and how it may be represented in a <code>DEFINED_TASK</code> and an eventual <code>ACTION</code>. Consider the fourth drug in the CHOP regimen, a choice of Prednisone or Prednisolone. In the form expressed in the order, i.e. the <code>INSTRUCTION</code>, it may be expressed in the following form:</p>
@@ -3088,13 +3116,13 @@ This is the only execution time related attribute in the Task List definition. I
 <p>This could be expressed as a single <code>ACTIVITY</code> with the <code>INSTRUCTION.<em>timing</em></code> attribute set to represent 'once a day for 5 days'.</p>
 </div>
 <div class="paragraph">
-<p>In the <code>TASK_LIST</code> however, it will be expressed as 5 separate <code>DEFINED_TASK</code> instances, each with an associated prototype <code>ACTION</code> instance. Each of these indicates a single dose for one day. This corresponds to how the drug is actually administered and enables the system (and openEHR data) to represent each action individually, as well as deviations such as not performing one or more of the administrations. The information displayed representing each Task to the human agent will therefore be somewhat different to the form in which it is expressed in the generating order.</p>
+<p>In the <code>TASK_PLAN</code> however, it will be expressed as 5 separate <code>DEFINED_TASK</code> instances, each with an associated prototype <code>ACTION</code> instance. Each of these indicates a single dose for one day. This corresponds to how the drug is actually administered and enables the system (and openEHR data) to represent each action individually, as well as deviations such as not performing one or more of the administrations. The information displayed representing each Task to the human agent will therefore be somewhat different to the form in which it is expressed in the generating order.</p>
 </div>
 <div class="paragraph">
-<p>However, the order <code>INSTRUCTION</code> could have been created using a series of 5 <code>ACTIVITY</code> objects each representing a single day&#8217;s administration. In this case, the form defined in each <code>ACTIVITY</code> is very close to the form required to represent each Task in the Task list.</p>
+<p>However, the order <code>INSTRUCTION</code> could have been created using a series of 5 <code>ACTIVITY</code> objects each representing a single day&#8217;s administration. In this case, the form defined in each <code>ACTIVITY</code> is very close to the form required to represent each Task in the Task Plan.</p>
 </div>
 <div class="paragraph">
-<p>It is assumed that determining how to populate the details of the <code>DEFINED_TASK</code> is up to an intelligent application that knows the relationship between the relevant orders or order sets, and the exact form of Task lists to implement them.</p>
+<p>It is assumed that determining how to populate the details of the <code>DEFINED_TASK</code> is up to an intelligent application that knows the relationship between the relevant orders or order sets, and the exact form of Task Plans to implement them.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3129,13 +3157,13 @@ This is the only execution time related attribute in the Task List definition. I
 <div class="sect2">
 <h3 id="_versioning"><a class="anchor" href="#_versioning"></a>10.2. Versioning</h3>
 <div class="paragraph">
-<p>The information structures described in this specification may in some cases become non-trivial in size and complexity, and some attention as to when changing states of a Task List are committed to the EHR is likely to be needed. When a Task List is first instantiated, it may be committed to the EHR in order to act as a shared, visible statement of outstanding work, particularly work to be done by teams and/or across shift boundaries. When the work is underway, although it would be possible to commit changes due to changing lifecycle states of each Task, it may be preferable to allow these changes to be tracked only by the workflow application and for the Task List to only be recommitted once completed or abandoned, or possibly at strategic points in time prior to this, for example nursing shift changes.</p>
+<p>The information structures described in this specification may in some cases become non-trivial in size and complexity, and some attention as to when changing states of a Task Plan are committed to the EHR is likely to be needed. When a Task Plan is first instantiated, it may be committed to the EHR in order to act as a shared, visible statement of outstanding work, particularly work to be done by teams and/or across shift boundaries. When the work is underway, although it would be possible to commit changes due to changing lifecycle states of each Task, it may be preferable to allow these changes to be tracked only by the workflow application and for the Task Plan to only be recommitted once completed or abandoned, or possibly at strategic points in time prior to this, for example nursing shift changes.</p>
 </div>
 <div class="paragraph">
-<p>It does not appear likely that any single rule for when to commit the changed state of a Task List to the EHR can be established for all possible situations, but it is recommended that the commit points are chosen carefully so that their meaning is clear.</p>
+<p>It does not appear likely that any single rule for when to commit the changed state of a Task Plan to the EHR can be established for all possible situations, but it is recommended that the commit points are chosen carefully so that their meaning is clear.</p>
 </div>
 <div class="paragraph">
-<p>Interim commits of a Task List to a persistent store for workflow management or some other application may of course be useful.</p>
+<p>Interim commits of a Task Plan to a persistent store for workflow management or some other application may of course be useful.</p>
 </div>
 </div>
 </div>
@@ -3148,7 +3176,10 @@ This is the only execution time related attribute in the Task List definition. I
 <div class="olist bibliography">
 <ol class="bibliography">
 <li>
-<p><a id="Anderson_1996"></a>[Anderson_1996] Ross Anderson. <strong>Security in Clinical Information Systems</strong>. Available at <a href="http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html" class="bare">http://www.cl.cam.ac.uk/users/rja14/policy11/policy11.html</a>.</p>
+<p><a id="van_der_Aalst_2005a"></a>[van_der_Aalst_2005a] Van der Aalst, Weske, Grunbauer. <strong>Case Handling: A New Paradigm for Business Process Support.</strong> Data and Knowledge Engineering, 53(2):129-162, 2005.</p>
+</li>
+<li>
+<p><a id="van_der_Aalst_2013a"></a>[van_der_Aalst_2013a] Wil van der Aalst. <strong>Business Process Management: A Comprehensive Survey.</strong> ISRN Software Engineering, pages 1-37, 2013. doi:10.1155/2013/507984.</p>
 </li>
 <li>
 <p><a id="Baretto_2005"></a>[Baretto_2005] Barretto S A. <strong>Designing Guideline-based Workflow-Integrated Electronic Health Records.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf" class="bare">http://www.cis.unisa.edu.au/~cissab/Barretto_PhD_Thesis_Revised_FINAL.pdf</a>.</p>
@@ -3160,268 +3191,45 @@ This is the only execution time related attribute in the Task List definition. I
 <p><a id="Beale_2002"></a>[Beale_2002] Beale T. <strong>Archetypes: Constraint-based Domain Models for Future-proof Information Systems.</strong> Eleventh OOPSLA Workshop on Behavioral Semantics: Serving the Customer (Seattle, Washington, USA, November 4, 2002). Edited by Kenneth Baclawski and Haim Kilov. Northeastern University, Boston, 2002, pp. 16-32. Available at <a href="http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf" class="bare">http://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_oopsla_2002.pdf</a> .</p>
 </li>
 <li>
-<p><a id="Beale_Heard_2007"></a>[Beale_Heard_2007] Beale T, Heard S. <strong>An Ontology-based Model of Clinical Information.</strong> 2007. pp760-764 Proceedings MedInfo 2007, K. Kuhn et al. (Eds), IOS Publishing 2007. See <a href="http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf" class="bare">http://www.openehr.org/publications/health_ict/MedInfo2007-BealeHeard.pdf</a>.</p>
+<p><a id="BPTrends_2009"></a>[BPTrends_2009] <strong>Case Management: Combining Knowledge With Process.</strong> White paper in BPTrends July 2009.</p>
 </li>
 <li>
-<p><a id="Booch_1994"></a>[Booch_1994] Booch G. <strong>Object-Oriented Analysis and Design with applications. 2nd ed.</strong> Benjamin/Cummings 1994.</p>
-</li>
-<li>
-<p><a id="Browne_2005"></a>[Browne_2005] Browne E D. <strong>Workflow Modelling of Coordinated Inter-Health-Provider Care Plans.</strong> 2005. PhD dissertation, University of South Australia. Available at <a href="http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_browne_thesis_abstract.htm</a>.</p>
-</li>
-<li>
-<p><a id="Cimino_1997"></a>[Cimino_1997] Cimino J J. <strong>Desiderata for Controlled Medical vocabularies in the Twenty-First Century.</strong> IMIA WG6 Conference, Jacksonville, Florida, Jan 19-22, 1997.</p>
-</li>
-<li>
-<p><a id="Eiffel"></a>[Eiffel] Meyer B. <strong>Eiffel the Language (2nd Ed).</strong> Prentice Hall, 1992.</p>
-</li>
-<li>
-<p><a id="Elstein_1987"></a>[Elstein_1987] Elstein AS, Shulman LS, Sprafka SA. <strong>Medical problem solving: an analysis of clinical reasoning.</strong> Cambridge, MA: Harvard University Press 1987.</p>
-</li>
-<li>
-<p><a id="Elstein_Schwarz_2002"></a>[Elstein_Schwarz_2002] Elstein AS, Schwarz A. <strong>Evidence base of clinical diagnosis: Clinical problem solving and diagnostic decision making: selective review of the cognitive literature.</strong> BMJ 2002;324;729-732.</p>
-</li>
-<li>
-<p><a id="Fowler_1997"></a>[Fowler_1997] Fowler M. <strong>Analysis Patterns: Reusable Object Models.</strong> Addison Wesley 1997</p>
-</li>
-<li>
-<p><a id="Fowler_Scott_2000"></a>[Fowler_Scott_2000] Fowler M, Scott K. <strong>UML Distilled (2nd Ed.).</strong> Addison Wesley Longman 2000.</p>
-</li>
-<li>
-<p><a id="Gray_reuter_1993"></a>[Gray_reuter_1993] Gray J, Reuter A. <strong>Transaction Processing Concepts and Techniques.</strong> Morgan Kaufmann 1993.</p>
-</li>
-<li>
-<p><a id="Hein_2002"></a>[Hein_2002] Hein J L. Discrete Structures, Logic and Computability (2nd Ed). Jones and Bartlett 2002.</p>
-</li>
-<li>
-<p><a id="Hnìtynka_2004"></a>[Hnìtynka_2004] Hnìtynka P, Plášil F. <strong>Distributed Versioning Model for MOF.</strong> Proceedings of WISICT 2004, Cancun, Mexico, A volume in the ACM international conference proceedings series, published by Computer Science Press, Trinity College Dublin Ireland, 2004.</p>
-</li>
-<li>
-<p><a id="Ingram_1995"></a>[Ingram_1995] Ingram D. <strong>The Good European Health Record Project.</strong> Laires, Laderia Christensen, Eds. Health in the New Communications Age. Amsterdam: IOS Press; 1995; pp. 66-74.</p>
-</li>
-<li>
-<p><a id="Kifer_Lausen_Wu_1995"></a>[Kifer_Lausen_Wu_1995] Kifer M, Lausen G, Wu J. <strong>Logical Foundations of Object-Oriented and FrameBased Languages.</strong> JACM May 1995. See See <a href="ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf" class="bare">ftp://ftp.cs.sunysb.edu/pub/TechReports/kifer/flogic.pdf</a>.</p>
-</li>
-<li>
-<p><a id="Kilov_1994"></a>[Kilov_1994] Kilov H, Ross J. <strong>Information Modelling - an object-oriented approach.</strong> Prentice Hall 1994.</p>
-</li>
-<li>
-<p><a id="Maier_2000"></a>[Maier_2000] Maier M. <strong>Architecting Principles for Systems-of-Systems.</strong> Technical Report, University of Alabama in Huntsville. 2000. Available at <a href="http://www.infoed.com/Open/PAPERS/systems.htm" class="bare">http://www.infoed.com/Open/PAPERS/systems.htm</a></p>
-</li>
-<li>
-<p><a id="Martin"></a>[Martin] Martin P. <strong>Translations between UML, OWL, KIF and the WebKB-2 languages (For-Taxonomy, Frame-CG, Formalized English)</strong>. May/June 2003. Available at <a href="http://www.webkb.org/doc/model/comparisons.html" class="bare">http://www.webkb.org/doc/model/comparisons.html</a> as at Aug 2004.</p>
-</li>
-<li>
-<p><a id="Meyer_OOSC2"></a>[Meyer_OOSC2] Meyer B. <strong>Object-oriented Software Construction, 2nd Ed.</strong> Prentice Hall 1997</p>
-</li>
-<li>
-<p><a id="Müller_2003"></a>[Müller_2003] Müller R. <strong>Event-oriented Dnamic Adaptation of Workflows: Model, Architecture, and Implementation.</strong> 2003. PhD dissertation, University of Leipzig. Available at <a href="http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm" class="bare">http://www.openehr.org/publications/workflow/t_mueller_thesis_abstract.htm</a>.</p>
-</li>
-<li>
-<p><a id="Object_Z"></a>[Object_Z] Smith G. <strong>The Object Z Specification Language</strong>. Kluwer Academic Publishers 2000. See <a href="http://www.itee.uq.edu.au/~smith/objectz.html" class="bare">http://www.itee.uq.edu.au/~smith/objectz.html</a> .</p>
+<p><a id="Browne_2005"></a>[Browne_2005] Eric Browne. <strong>Workflow Modelling of Coordinated Inter-Health-Provider Care Plans.</strong> PhD thesis submitted to the School of Computer and Information Science, University of South Australia. January 2005.</p>
 </li>
 <li>
 <p><a id="GLIF"></a>[GLIF] Lucila Ohno-Machado, John H. Gennari, Shawn N. Murphy, Nilesh L. Jain, Samson W. Tu, Diane E. Oliver, Edward Pattison-Gordon, Robert A. Greenes, Edward H. Shortliffe, and G. Octo Barnett.  <strong>The GuideLine Interchange Format - A Model for Representing Guidelines</strong>. J Am Med Inform Assoc. 1998 Jul-Aug; 5(4): 357–372.</p>
 </li>
 <li>
-<p><a id="Rector_1994"></a>[Rector_1994] Rector A L, Nowlan W A, Kay S. <strong>Foundations for an Electronic Medical Record.</strong> The IMIA Yearbook of Medical Informatics 1992 (Eds. van Bemmel J, McRay A). Stuttgart Schattauer 1994.</p>
+<p><a id="Hull_et_al_2010a"></a>[Hull_et_al_2010a] Richard Hull et al. <strong>Introducing the Guard-Stage-Milestone Approach for Specifying Business Entity Lifecycles.</strong> Preprint from Proc. Intl. Workshop on Web Services and Formal Methods (WS-FM), 2010. To appear in Springer-VerlagLNCS 6551.</p>
 </li>
 <li>
-<p><a id="Rector_1999"></a>[Rector_1999] Rector A L. <strong>Clinical terminology: why is it so hard?</strong> Methods Inf Med. 1999 Dec;38(4-5):239-52. Available at <a href="http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf" class="bare">http://www.cs.man.ac.uk/~rector/papers/Why-is-terminology-hard-single-r2.pdf</a> .</p>
+<p><a id="Mulyar_et_al_2007"></a>[Mulyar_et_al_2007]  Nataliya Mulyar, Maja Pesic, Wil M.P. van der Aalst and Mor Peleg. <strong>Declarative and Procedural Approaches for Modelling Clinical Guidelines: Addressing Flexibility Issues.</strong> Conference: Business Process Management Workshops, BPM 2007 International Workshops, BPI, BPD, CBP, ProHealth, RefMod, semantics4ws, Brisbane, Australia, September 24, 2007.</p>
 </li>
 <li>
-<p><a id="Richards_1998"></a>[Richards_1998] Richards E G. <strong>Mapping Time - The Calendar and its History.</strong> Oxford University Press 1998.</p>
+<p><a id="Mulyar_et_al_2008"></a>[Mulyar_et_al_2008] Nataliya Mulyar, Maja Pesic, Wil M.P. van der Aalst and Mor Peleg. <strong>Towards the Flexibility in Clinical Guideline Modelling Languages.</strong></p>
 </li>
 <li>
-<p><a id="Sowa_2000"></a>[Sowa_2000] Sowa J F. <strong>Knowledge Representation: Logical, philosophical and Computational Foundations.</strong> 2000, Brooks/Cole, California.</p>
+<p><a id="Hofstede_van_der_Aalst_2009"></a>[Hofstede_van_der_Aalst_2009] Hofstede, van der Aalst et al. <strong>Modern Business Process Automation: YAWL and its Support Environment.</strong> Springer 2009.</p>
 </li>
 <li>
-<p><a id="Sottile_1999"></a>[Sottile_1999] Sottile P.A., Ferrara F.M., Grimson W., Kalra D., and Scherrer J.R. <strong>The holistic healthcare information system. Toward an Electronic Health Record Europe.</strong> 1999. Nov 1999; 259-266.</p>
+<p><a id="Mei_et_al_2014"></a>[Mei_et_al_2014] Jing MEI, Jing LI, Yiqin YU, Xiang LI, Haifeng LIU and Guotong XIE. <strong>Embracing case management for computerization of care pathways.</strong> e-Health – For Continuity of Care C. Lovis et al. (Eds.) 2014 European Federation for Medical Informatics and IOS Press. doi:10.3233/978-1-61499-432-9-3</p>
 </li>
 <li>
-<p><a id="Van_de_Velde_Degoulet_2003"></a>[Van_de_Velde_Degoulet_2003] Van de Velde R, Degoulet P. <strong>Clinical Information Systems: A Component-Based Approach.</strong> 2003. Springer-Verlag New York.</p>
+<p><a id="Müller_2003"></a>[Müller_2003] Robert Müller. <strong>Event-Oriented Dynamic Adaptation of Workflows: Model, Architecture, and Implementation.</strong> PhD thesis submitted to Fakultät für Mathematik und Informatik at the Universität Leipzig, 2003.</p>
 </li>
 <li>
-<p><a id="Weed_1969"></a>[Weed_1969] Weed LL. <strong>Medical records, medical education and patient care. 6 ed.</strong> Chicago: Year Book Medical Publishers Inc. 1969.</p>
+<p><a id="Pescosolido"></a>[Pescosolido] Bernice A. Pescosolido, Indiana University, USA. <strong>Patient trajectories.</strong> <a href="http://onlinelibrary.wiley.com/doi/10.1002/9781118410868.wbehibs282/pdf">Wiley Online Library</a></p>
+</li>
+<li>
+<p><a id="Russell_et_al_2007"></a>[Russell_et_al_2007]  N. Russell, A.H.M. ter Hofstede, and W.M.P. van der Aalst. <strong>newYAWL: Specifying a Workflow Reference Language using Coloured Petri Nets.</strong> In K. Jensen, editor, Proceedings of the Eighth Workshop on the Practical Use of Coloured Petri Nets and CPN Tools (CPN 2007), volume 584 of DAIMI, pages 107-126, Aarhus, Denmark, October 2007. University of Aarhus.</p>
+</li>
+<li>
+<p><a id="Schrijvers_et_al_2012"></a>[Schrijvers_et_al_2012] Guus Schrijvers, Arjan van Hoorn, Nicolette Huiskes. <strong>The Care Pathway Concept: concepts and theories: an introduction.</strong> International Journal of Integrated Care. 2012;12(6). DOI: <a href="http://doi.org/10.5334/ijic.812" class="bare">http://doi.org/10.5334/ijic.812</a></p>
+</li>
+<li>
+<p><a id="Vanhaecht_et_al_2007"></a>[Vanhaecht_et_al_2007] Vanhaecht K, De Witte K, Sermeus W. <strong>The impact of clinical pathways on the organisation of care processes.</strong> PhD dissertation, Belgium: KU Leuven; 2007.</p>
 </li>
 </ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_resources"><a class="anchor" href="#_resources"></a>Resources</h3>
-<div class="sect3">
-<h4 id="_general"><a class="anchor" href="#_general"></a>General</h4>
-<div class="olist bibliography">
-<ol class="bibliography">
-<li>
-<p><a id="cov_contra"></a>[cov_contra] Wikipedia. <strong>Covariance and contravariance.</strong> See <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science" class="bare">https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science</a>) .</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_e_health_standards"><a class="anchor" href="#_e_health_standards"></a>e-Health Standards</h4>
-<div class="olist bibliography">
-<ol class="bibliography">
-<li>
-<p><a id="Corbamed_PIDS"></a>[Corbamed_PIDS] Object Management Group. <strong>Person Identification Service.</strong> March 1999. See <a href="http://www.omg.org/spec/PIDS/" class="bare">http://www.omg.org/spec/PIDS/</a> .</p>
-</li>
-<li>
-<p><a id="Corbamed_LQS"></a>[Corbamed_LQS] Object Management Group. <strong>Lexicon Query Service.</strong> March 1999. <a href="http://www.omg.org/spec/LQS/" class="bare">http://www.omg.org/spec/LQS/</a> .</p>
-</li>
-<li>
-<p><a id="hl7_cda"></a>[hl7_cda] HL7 International. <strong>HL7 version Clinical Document Architecture (CDA)</strong>. Available at <a href="http://www.hl7.org.uk/version3group/cda.asp" class="bare">http://www.hl7.org.uk/version3group/cda.asp</a>.</p>
-</li>
-<li>
-<p><a id="HL7v3_ballot2"></a>[HL7v3_ballot2] HL7 International. <strong>HL7 version 3 2nd Ballot specification</strong>. Available at <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a>.</p>
-</li>
-<li>
-<p><a id="HL7v3_data_types"></a>[HL7v3_data_types] Schadow G, Biron P. <strong>HL7 version 3 deliverable: Version 3 Data Types.</strong> (2nd ballot 2002 version).</p>
-</li>
-<li>
-<p><a id="hl7_v3_rim"></a>[hl7_v3_rim] HL7 International. <strong>HL7 v3 RIM</strong>. See <a href="http://www.hl7.org" class="bare">http://www.hl7.org</a> .</p>
-</li>
-<li>
-<p><a id="hl7_arden"></a>[hl7_arden] HL7 International. <strong>HL7 Arden Syntax</strong>. See <a href="http://www.hl7.org/Special/committees/Arden/index.cfm" class="bare">http://www.hl7.org/Special/committees/Arden/index.cfm</a> .</p>
-</li>
-<li>
-<p><a id="hl7_gello"></a>[hl7_gello] HL7 International. <strong>GELLO Decision Support Language</strong>. <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=5" class="bare">http://www.hl7.org/implement/standards/product_brief.cfm?product_id=5</a> .</p>
-</li>
-<li>
-<p><a id="IHTSDO_URIs"></a>[IHTSDO_URIs] IHTSDO. SNOMED CT URI Standard. <a href="http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok" class="bare">http://ihtsdo.org/fileadmin/user_upload/doc/download/doc_UriStandard_Current-en-US_INT_20140527.pdf?ok</a>.</p>
-</li>
-<li>
-<p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
-</li>
-<li>
-<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784" class="bare">http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784</a> .</p>
-</li>
-<li>
-<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119</a> .</p>
-</li>
-<li>
-<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
-</li>
-<li>
-<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
-</li>
-<li>
-<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
-</li>
-<li>
-<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_e_health_projects"><a class="anchor" href="#_e_health_projects"></a>e-Health Projects</h4>
-<div class="olist bibliography">
-<ol class="bibliography">
-<li>
-<p><a id="EHCR_supA_14"></a>[EHCR_supA_14] Dixon R, Grubb P A, Lloyd D, and Kalra D. <strong>Consolidated List of Requirements. EHCR Support Action Deliverable 1.4.</strong> European Commission DGXIII, Brussels; May 2001 59pp Available from <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/del1-4v1_3.PDF</a>.</p>
-</li>
-<li>
-<p><a id="EHCR_supA_35"></a>[EHCR_supA_35] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 3.5: "Final Recommendations to CEN for future work".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCRSupA/documents.htm</a>.</p>
-</li>
-<li>
-<p><a id="EHCR_supA_24"></a>[EHCR_supA_24] Dixon R, Grubb P, Lloyd D. <strong>EHCR Support Action Deliverable 2.4 "Guidelines on Interpretation and implementation of CEN EHCRA".</strong> Oct 2000. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
-</li>
-<li>
-<p><a id="EHCR_supA_31_32"></a>[EHCR_supA_31_32] Lloyd D, et al. <strong>EHCR Support Action Deliverable 3.1&amp;3.2 “Interim Report to CEN”.</strong> July 1998. Available at <a href="http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm" class="bare">http://www.chime.ucl.ac.uk/HealthI/EHCR-SupA/documents.htm</a>.</p>
-</li>
-<li>
-<p><a id="GEHR_del_4"></a>[GEHR_del_4] <strong>Deliverable 4: GEHR Requirements for Clinical Comprehensiveness.</strong> GEHR Project 1992. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-4.pdf</a> .</p>
-</li>
-<li>
-<p><a id="GEHR_del_7"></a>[GEHR_del_7] <strong>Deliverable 7: Clinical Functional Specifications.</strong> GEHR Project 1993.</p>
-</li>
-<li>
-<p><a id="GEHR_del_8"></a>[GEHR_del_8] <strong>Deliverable 8: Ethical and legal Requirements of GEHR Architecture and Systems.</strong> GEHR Project 1994. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-8.pdf</a> .</p>
-</li>
-<li>
-<p><a id="GEHR_del_19_20_24"></a>[GEHR_del_19_20_24] <strong>Deliverable 19,20,24: GEHR Architecture.</strong> GEHR Project 30/6/1995. Available at <a href="http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr/gehr_deliverable-19_20_24.pdf</a> .</p>
-</li>
-<li>
-<p><a id="GeHR_AUS"></a>[GeHR_AUS] Heard S, Beale T. <strong>The Good Electronic Health Record (GeHR) (Australia).</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
-</li>
-<li>
-<p><a id="GeHR_Aus_gpcg"></a>[GeHR_Aus_gpcg] Heard S. <strong>GEHR Project Australia, GPCG Trial.</strong> See <a href="http://www.openehr.org/resources/related_projects#gehraus" class="bare">http://www.openehr.org/resources/related_projects#gehraus</a> .</p>
-</li>
-<li>
-<p><a id="GeHR_Aus_req"></a>[GeHR_Aus_req] Beale T, Heard S. <strong>GEHR Technical Requirements.</strong> See <a href="http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf" class="bare">http://www.openehr.org/files/resources/related_projects/gehr_australia/gehr_requirements.pdf</a> .</p>
-</li>
-<li>
-<p><a id="Synapses_req_A"></a>[Synapses_req_A] Kalra D. (Editor). <strong>The Synapses User Requirements and Functional Specification (Part A).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1a. 6 chapters, 176 pages.</p>
-</li>
-<li>
-<p><a id="Synapses_req_B"></a>[Synapses_req_B] Grimson W. and Groth T. (Editors). <strong>The Synapses User Requirements and Functional Specification (Part B).</strong> EU Telematics Application Programme, Brussels; 1996; The Synapses Project: Deliverable USER 1.1.1b.</p>
-</li>
-<li>
-<p><a id="Synapses_odp"></a>[Synapses_odp] Kalra D. (Editor). <strong>Synapses ODP Information Viewpoint.</strong> EU Telematics Application Programme, Brussels; 1998; The Synapses Project: Final Deliverable. 10 chapters, 64 pages. See <a href="http://discovery.ucl.ac.uk/66235/" class="bare">http://discovery.ucl.ac.uk/66235/</a> .</p>
-</li>
-<li>
-<p><a id="synex"></a>[synex] University College London. <strong>SynEx project</strong>. <a href="http://www.chime.ucl.ac.uk/HealthI/SynEx/" class="bare">http://www.chime.ucl.ac.uk/HealthI/SynEx/</a> .</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_general_standards"><a class="anchor" href="#_general_standards"></a>General Standards</h4>
-<div class="olist bibliography">
-<ol class="bibliography">
-<li>
-<p><a id="OCL"></a>[OCL] <strong>The Object Constraint Language 2.0.</strong> Object Management Group (OMG). Available at <a href="http://www.omg.org/cgi-bin/doc?ptc/2003-10-14" class="bare">http://www.omg.org/cgi-bin/doc?ptc/2003-10-14</a> .</p>
-</li>
-<li>
-<p><a id="IEEE_828"></a>[IEEE_828] IEEE. <strong>IEEE 828-2005: standard for Software Configuration Management Plans.</strong></p>
-</li>
-<li>
-<p><a id="ISO_8601"></a>[ISO_8601] <strong>ISO 8601 standard describing formats for representing times, dates, and durations.</strong> See <a href="https://en.wikipedia.org/wiki/ISO_8601" class="bare">https://en.wikipedia.org/wiki/ISO_8601</a>.</p>
-</li>
-<li>
-<p><a id="ISO_2788"></a>[ISO_2788] ISO. ISO 2788 <strong>Guide to Establishment and development of monolingual thesauri</strong>.</p>
-</li>
-<li>
-<p><a id="ISO_5964"></a>[ISO_5964] ISO. ISO 5964 <strong>Guide to Establishment and development of multilingual thesauri</strong>.</p>
-</li>
-<li>
-<p><a id="Perl_regex"></a>[Perl_regex] Perl.org. <strong>Perl Regular Expressions</strong>. Available at <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> .</p>
-</li>
-<li>
-<p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
-</li>
-<li>
-<p><a id="rfc_2440"></a>[rfc_2440] <strong>RFC 2440: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc2440.txt" class="bare">http://www.ietf.org/rfc/rfc2440.txt</a> and <a href="http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt" class="bare">http://www.ietf.org/internet-drafts/draft-ietf-openpgp-rfc2440bis-18.txt</a></p>
-</li>
-<li>
-<p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
-</li>
-<li>
-<p><a id="rfc_4122"></a>[rfc_4122] <strong>RFC 4122: A Universally Unique IDentifier (UUID) URN Namespace</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc4122.txt" class="bare">http://www.ietf.org/rfc/rfc4122.txt</a> .</p>
-</li>
-<li>
-<p><a id="rfc_2781"></a>[rfc_2781] IETF. <strong>RFC 2781: UTF-16, an encoding of ISO 10646</strong> See <a href="http://tools.ietf.org/html/rfc2781" class="bare">http://tools.ietf.org/html/rfc2781</a>.</p>
-</li>
-<li>
-<p><a id="rfc_5646"></a>[rfc_5646] IETF. <strong>RFC 5646.</strong> Available at <a href="http://tools.ietf.org/html/rfc5646" class="bare">http://tools.ietf.org/html/rfc5646</a>.</p>
-</li>
-<li>
-<p><a id="sem_ver"></a>[sem_ver] <strong>Semantic Versioning</strong>. <a href="http://semver.org" class="bare">http://semver.org</a> .</p>
-</li>
-<li>
-<p><a id="Xpath"></a>[Xpath] W3C <strong>Xpath 1.0 specification</strong>. 1999. Available at <a href="http://www.w3.org/TR/xpath" class="bare">http://www.w3.org/TR/xpath</a>.</p>
-</li>
-<li>
-<p><a id="uri_syntax"></a>[uri_syntax] <strong>Uniform Resource Identifier (URI): Generic Syntax, Internet proposed standard</strong>. January 2005. see <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
-</li>
-<li>
-<p><a id="w3c_owl"></a>[w3c_owl] W3C. <strong>OWL - the Web Ontology Language</strong>. See <a href="http://www.w3.org/TR/2003/CR-owl-ref-20030818/" class="bare">http://www.w3.org/TR/2003/CR-owl-ref-20030818/</a> .</p>
-</li>
-<li>
-<p><a id="w3c_xpath"></a>[w3c_xpath] W3C. <strong>XML Path Language</strong>. See <a href="http://w3c.org/TR/xpath" class="bare">http://w3c.org/TR/xpath</a> .</p>
-</li>
-</ol>
-</div>
 </div>
 </div>
 </div>
@@ -3429,7 +3237,7 @@ This is the only execution time related attribute in the Task List definition. I
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-01 05:14:27 BST
+Last updated 2017-06-01 18:45:18 MDT
 </div>
 </div>
 </body>

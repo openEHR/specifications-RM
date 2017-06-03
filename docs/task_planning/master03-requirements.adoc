@@ -1,18 +1,18 @@
 = Requirements
 
-A number of commonly occurring requirements that can be addressed via the Task List concept are described below.
+A number of commonly occurring requirements that can be addressed via the Task Plan concept are described below.
 
 == Planned Tasks for an Order
 
 The simplest need is to be able to post a full plan of all actions to be performed for an order, in advance of the order commencing. This would result in a series of Tasks for each planned openEHR `ACTION` at execution time. 
 
-In openEHR, an order is represented by an `INSTRUCTION` instance, which contains a directive to do something such as preform radiography or administer medication. The form of representation in the Instruction is normally _interpretable_ by an agent who will convert it to separate tasks. For example, a drug order for Amoxicillin 500mg oral tablet 3 times/day x 7 days is converted by a human agent to 21 separate tasks, each consisting of taking one tablet at a certain time or day. These tasks can be represented in a task list, each task of which which can then be performed and signed off by a staff member, e.g. a shift nurse. The task list acts as a record of what has been done, and what is left to do.
+In openEHR, an order is represented by an `INSTRUCTION` instance, which contains a directive to do something such as preform radiography or administer medication. The form of representation in the Instruction is normally _interpretable_ by an agent who will convert it to separate tasks. For example, a drug order for Amoxicillin 500mg oral tablet 3 times/day x 7 days is converted by a human agent to 21 separate tasks, each consisting of taking one tablet at a certain time or day. These tasks can be represented in a task plan, each task of which which can then be performed and signed off by a staff member, e.g. a shift nurse. The task plan acts as a record of what has been done, and what is left to do.
 
 One difficulty with posting a full plan is that in some cases, the order is effectively open-ended, i.e. it has no intended completion. This might be because the patient condition being treated is chronic, e.g. an insulin or Salbutamol (Ventolin) order; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma victim.
 
 == Order Sets and Protocols
 
-A plan for a clinical intervention will typically need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, in multi-drug chemotherapy based on protocols like CHOP (non-Hodgkin's lymphoma), COPP or Stanford V (Hodgkin's lymphoma) etc, a single drug such as Cyclophosphamide is just a component. A task list for administering chemotherapy according to a R-CHOP protocol would implicate orders for the drugs  \(R)ituximab, \(C)yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin, and (P)rednisolone or Prednisone, and would accordingly include planned tasks for each of these drugs as they are administered according to the protocol.
+A plan for a clinical intervention will typically need to encompass more than one order, in situations where drugs and other therapies are used according to a protocol or regime. For example, in multi-drug chemotherapy based on protocols like CHOP (non-Hodgkin's lymphoma), COPP or Stanford V (Hodgkin's lymphoma) etc, a single drug such as Cyclophosphamide is just a component. A task plan for administering chemotherapy according to a R-CHOP protocol would implicate orders for the drugs  \(R)ituximab, \(C)yclophosphamide, (H)ydroxydaunorubicin, (O)ncovin, and (P)rednisolone or Prednisone, and would accordingly include planned tasks for each of these drugs as they are administered according to the protocol.
 
 [cols="2,2,1,1,1", options="header"]
 |===
@@ -38,45 +38,45 @@ For the open-ended cases mentioned above, the only option is a lookahead plan th
 
 == Checklist & Sign-off
 
-If a task list is created, the constituent tasks can be viewed by workers as a checklist, and subsequently signed off as having been either performed or not done over time. The utility of this is that the correspondence between the tasks actually performed (represented by `ACTION`, `OBSERVATION` etc Entries) and the planned tasks is established. If a planned Action A1 is posted with execution time T, it might actually be performed at time T', but users still want to know that it was planned Action A1 that was intentionally performed, and not some other Action in the task list. Over the course of the order execution, a picture will emerge of planned Actions being performed and signed off, possibly with some being missed as not needed, or not done for some other reason. Additional Actions not originally posted in the plan might also be done if they are allowed by the general specification of the relevant archetypes.
+If a task plan is created, the constituent tasks can be viewed by workers as a checklist, and subsequently signed off as having been either performed or not done over time. The utility of this is that the correspondence between the tasks actually performed (represented by `ACTION`, `OBSERVATION` etc Entries) and the planned tasks is established. If a planned Action A1 is posted with execution time T, it might actually be performed at time T', but users still want to know that it was planned Action A1 that was intentionally performed, and not some other Action in the task plan. Over the course of the order execution, a picture will emerge of planned Actions being performed and signed off, possibly with some being missed as not needed, or not done for some other reason. Additional Actions not originally posted in the plan might also be done if they are allowed by the general specification of the relevant archetypes.
 
 == Teamwork and Notifications
 
-There are at least two possible situations in which a task list might need to refer to another task list. The first is a consequence of the standard problem of the fractal nature of description of phenomena. Applied to planned actions, it is clear that one institution may describe an action such as cannulation atomically, relying on professional training and situational specifics to generate the correct concrete outcome, whereas another may require nurses to follow a guideline such as this {medscape_cannulation}[Medscape Intravenous Cannulation] guideline. In cases where a self-standing clinical task is itself fully described in terms of steps, it is possible to represent the latter as its own task list, and to be able to _refer_ to it from another task list. The general case is that any task that could be represented by a single item in a task list could also be represented by a reference to a separate detailed task list.
+There are at least two possible situations in which a task plan might need to refer to another task plan. The first is a consequence of the standard problem of the fractal nature of description of phenomena. Applied to planned actions, it is clear that one institution may describe an action such as cannulation atomically, relying on professional training and situational specifics to generate the correct concrete outcome, whereas another may require nurses to follow a guideline such as this {medscape_cannulation}[Medscape Intravenous Cannulation] guideline. In cases where a self-standing clinical task is itself fully described in terms of steps, it is possible to represent the latter as its own task plan, and to be able to _refer_ to it from another task plan. The general case is that any task that could be represented by a single item in a task plan could also be represented by a reference to a separate detailed task plan.
 
-A second situation in which a task list might refer to another is where a team of actors performs the work, and each task list corresponds to a single actor. A typical example is acute stroke management, in which various healthcare professionals do the work. Coordination occurs when some workers inform other(s) of task completion, and/or wait for notification of completion of someone else's task.
+A second situation in which a task plan might refer to another is where a team of actors performs the work, and each task plan corresponds to a single actor. A typical example is acute stroke management, in which various healthcare professionals do the work. Coordination occurs when some workers inform other(s) of task completion, and/or wait for notification of completion of someone else's task.
 
 We can summarise these requirements as follows:
 
-* _drill-down reuse_: a task list for a given actor can refer to another self-standing task list for the same or a different actor;
-* _notify completion_: it should be possble for completion to be notified for tasks in a task list; where applicable the system should be able to generate notifications to other workers as required by a more general coordinated care plan describing a team-based procedure;
-* _wait for completion_: a task list should be able to include a task that stands for awaiting notification of completion of another task by another actor.
+* _drill-down reuse_: a task plan for a given actor can refer to another self-standing task plan for the same or a different actor;
+* _notify completion_: it should be possble for completion to be notified for tasks in a task plan; where applicable the system should be able to generate notifications to other workers as required by a more general coordinated care plan describing a team-based procedure;
+* _wait for completion_: a task plan should be able to include a task that stands for awaiting notification of completion of another task by another actor.
 
 == Task Grouping, Optionality and Execution Basis
 
-A set of tasks intended to achieve a defined goal could be performed sequentially or in parallel, and may include sub-groups of tasks that can performed together. A common situation is to have a task list intended for sequential (i.e. ordered) execution by the agent, one of whose steps is actually a sub-group of tasks which can be executed in parallel (i.e. in any order).
+A set of tasks intended to achieve a defined goal could be performed sequentially or in parallel, and may include sub-groups of tasks that can performed together. A common situation is to have a task plan intended for sequential (i.e. ordered) execution by the agent, one of whose steps is actually a sub-group of tasks which can be executed in parallel (i.e. in any order).
 
-It can also be assumed that some tasks in a task list may be designated as optional, to be executed 'if needed' or on some other condition being true.
+It can also be assumed that some tasks in a task plan may be designated as optional, to be executed 'if needed' or on some other condition being true.
 
-The general structure and execution semantics of a task list therefore includes the notion of sequential or parallel execution of groups of tasks, and also optional execution of some tasks. We can consider the task list itself as a outer group of tasks for which either sequential or parallel execution can be specified.
+The general structure and execution semantics of a task plan therefore includes the notion of sequential or parallel execution of groups of tasks, and also optional execution of some tasks. We can consider the task plan itself as a outer group of tasks for which either sequential or parallel execution can be specified.
 
 == Changes and Abandonment
 
-Inevitably, some task lists will have to be changed or abandoned partway through due to unexpected changes in the patient situation. The question here is: what should be done with the remaining planned tasks that will not be performed? Should they be marked as 'won't do' (with some reason) and committed to the EHR, or should they be deleted prior to being committed to the EHR?
+Inevitably, some task plans will have to be changed or abandoned partway through due to unexpected changes in the patient situation. The question here is: what should be done with the remaining planned tasks that will not be performed? Should they be marked as 'won't do' (with some reason) and committed to the EHR, or should they be deleted prior to being committed to the EHR?
 
 It is assumed that the answer will differ according to circumstance and local preference, in other words, that planned tasks that are created are not necessarily written into the EHR, but may initially exist in a separate 'planned tasks' buffer, and are only committed when each task is either performed or explicitly marked as not done, or else included in a list of not-done Actions to be committed to the EHR at a point of plan abandonment.
 
 The following kinds of abandonment of tasks should be supported:
 
-* cancellation of an entire task list that has been posted to the EHR or a 'planning buffer' if one exists;
+* cancellation of an entire task plan that has been posted to the EHR or a 'planning buffer' if one exists;
 * cancellation of a particular task on a list ahead of time, with a reason;
 * marking a task as 'did not perform' after the planned time has passed, with a reason.
 
-== Rationalising Unrelated Task Lists
+== Rationalising Unrelated Task Plans
 
-It is assumed that at any moment there could be multiple task lists extant for _different problems and timelines_ for the same subject of care, e.g. chemotherapy, hypertension, ante-natal care. If naively created, these could clash in time and potentially in terms of other resources. There should therefore be support for being able to efficiently locate all existing task lists and scan their times, states and resources. This aids avoiding clashes and also finding opportunities for rationalising and bundling tasks e.g. grouping multiple tasks into a single visit, taking bloods require by two protocols at the same sitting etc.
+It is assumed that at any moment there could be multiple task plans extant for _different problems and timelines_ for the same subject of care, e.g. chemotherapy, hypertension, ante-natal care. If naively created, these could clash in time and potentially in terms of other resources. There should therefore be support for being able to efficiently locate all existing task plans and scan their times, states and resources. This aids avoiding clashes and also finding opportunities for rationalising and bundling tasks e.g. grouping multiple tasks into a single visit, taking bloods require by two protocols at the same sitting etc.
 
-It should be possible to process multiple task lists as part of interfacing with or constructing a 'patient diary', i.e. rationalised list of all work to be done involving the patient.
+It should be possible to process multiple task plans as part of interfacing with or constructing a 'patient diary', i.e. rationalised list of all work to be done involving the patient.
 
 == Support Process Analytics
 
@@ -90,5 +90,5 @@ These differences are obtainable from the EHR since both planned tasks and perfo
 
 == Support for Costing and Billing Information
 
-It should be possible to record internal costing data against task lists as a whole, and also individual tasks. Additionally, it should be possible to attach external billing information to tasks and task lists. Costing information might be attached to each task, such as consumption of inventory items, time and other resources. Billing information is typically more coarse-grained and reported using nationally agreed code systems, e.g. ICD10 or similar.
+It should be possible to record internal costing data against task plans as a whole, and also individual tasks. Additionally, it should be possible to attach external billing information to tasks and task plans. Costing information might be attached to each task, such as consumption of inventory items, time and other resources. Billing information is typically more coarse-grained and reported using nationally agreed code systems, e.g. ICD10 or similar.
 

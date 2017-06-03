@@ -1,18 +1,18 @@
-=== TASK_LIST_ITEM Class
+=== TASK_PLAN_ITEM Class
 
 [cols="^1,2,3"]
 |===
 h|*Class*
-2+^h|*_TASK_LIST_ITEM (abstract)_*
+2+^h|*_TASK_PLAN_ITEM (abstract)_*
 
 h|*Description*
-2+a|Abstract parent of any type of the TASK_LIST member types TASK_GROUP and TASK.
+2+a|Abstract parent of any type of the TASK_PLAN member types TASK_GROUP and TASK.
 
 Supports definition of optionality, pre-conditions, wait conditions, indications and notifications with any Task Group or Task.
 
 Provides a place to record fine-grained costing data.
 
-Informal other participations can also be recorded for any Task Group or Task, although these do not replace the Task List principal_performer.
+Informal other participations can also be recorded for any Task Group or Task, although these do not replace the Task Plan principal_performer.
 
 h|*Inherit*
 2+|LOCATABLE
@@ -29,7 +29,9 @@ h|*1..1*
 |*task_group_id*: `Integer`
 a|Integer indicating the ordinal number of this Task within its Task group. Used for referencing from other objects. Required to be unique with respect to other siblings in the same Task group.
 
-Identification of any Task in a Task list is done using paths of the form /task_group_id/task_group_id.
+Identification of any Task in a Task Plan is done using paths of the form /task_group_id/task_group_id.
+
+TODO: needed?
 
 h|*1..1*
 |*description*: `DV_TEXT`

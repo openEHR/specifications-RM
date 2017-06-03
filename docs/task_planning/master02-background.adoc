@@ -4,29 +4,39 @@
 
 The Entry model described in the {openehr_rm_ehr}[openEHR EHR IM] defines a way to record clinical statements representing real observations, decisions, orders and actions that have occurred, in the EHR. In this scheme, Instructions represent orders for certain kinds of Actions to be performed. Actions and Observations represent events that have subsequently occurred in the real world - a real drug administration or an actual blood sugar measurement. 
 
-There is however a common additional need to concretely plan individual Actions and sometimes Observations ahead of time, as a set of 'tasks'. The general concept is usually known as a _task list_, and is used to concretely specify actions to be performed by actors (usually human, but potentially machine as well) providing care.
+There is however a common additional need to concretely plan individual Actions and sometimes Observations ahead of time, as a set of 'tasks', often known as a 'task list'. Here we will use the more general term _task plan_ to mean a specification of a set of actions to be performed by actors (usually human, but potentially machine as well) providing care.
 
-A list of planned tasks need not all relate to a single order, or indeed any order. The general picture is that a task list corresponds to some self-standing healthcare job to be done, which may include tasks designed to fulfill multiple orders, and also tasks not defined by orders.
+A list of planned tasks need not all relate to a single order, or indeed any order. The general picture is that a task plan corresponds to some self-standing healthcare job to be done, which may include tasks designed to fulfill multiple orders, and also tasks not defined by orders.
 
-To meet this need, a further kind of content can be recorded in the EHR, representing task lists containing tasks. Here we understand the word 'task' to mean 'definition of a planned task', i.e. a description of something to be performed in the future. 
+To meet this need, a further kind of content can be recorded in the EHR, representing task plans containing tasks. Here we understand the word 'task' to mean 'definition of a planned task', i.e. a description of something to be performed in the future. 
 
-The model described here considers task lists as the lower part of an overall information architecture that includes entities at multiple cognitive levels, i.e.:
+The model described here considers task plans as one element of a larger framwork that includes entities at multiple semantic levels, i.e.:
 
 * care pathway - a model of a guideline for care of a condition / ideal patient;
 * care plan - a general plan for care of an actual patient, taking into account zero or more Care Pathways and individual specificities;
-* task list - a concrete concept that defines a list of fine-grained planned tasks to perform over time to achieve a particular goal.
+* task plan - a concrete concept that defines a set of fine-grained planned tasks to perform over time to achieve a particular goal.
 
-The model described here does not address the representation of the care pathway or care plan levels, only the task list level. It does however assume that a task list may be created due to a care plan of some kind, and that the care plan may in turn have been derived from one or more care pathways or guidelines; accordingly, the means to identify the plan and pathway / guideline are provided.
+These can be envisaged as follows.
 
-In the following, the term 'task' thus denotes the definition of an action to be performed, and is normally documented in openEHR by the `ACTION` Entry subtype. However, 'task' is also understood more generally, so that it may also when performed, result in an openEHR `OBSERVATION` or other Entry subtype where appropriate. In the great majority of cases therefore, the term 'task' as it appears here equates to openEHR Actions and Observations.
+[.text-center]
+.The Care pathway / care plan / task plan triad
+image::diagrams/pathway_plan_triad.svg[id=pathway_plan_triad, align="center", width=70%]
+
+The above diagram shows task plans as a concrete planning artefact that results from a care plan for a specific patient, and may be partly based on published care pathways or clinical guidelines, each of which can be thought of as a basis for task plans for an ideal patient for a given condition (e.g. pregnancy, sepsis, stroke etc). Where care pathways (or parts thereof) can be represented as formal artefacts, they can act as prototypes for task pan structures. However, a care pathway for a model patient is not the same thing as a task plan(s) for an actual patient, since each real patient has his/her own specific combination of conditions, preferences and ultimately phenotypic specificities. Thus, where task plans are based on care pathways, the latter act as prototypes whose ideal form may be modified by the specific care plan and/or as the care team deems appropriate.
+
+The model described here addresses the representation and semantics of concrete task plans. It does not address the representation of the care plan and it does not say anything directly about formal care pathway representation, although it may be surmised for the future that the formal form of a care pathway may have significant commonality with the task plan model presented here, which may provide a useful guide for future work in care pathway representation. 
+
+The task plan model does however assume that a task plan may be _created_ due to a care plan of some kind, and that the care plan may in turn have been derived from one or more care pathways or guidelines; accordingly, the means to identify the plan and pathway / guideline are provided.
+
+In the following, the term 'task' denotes the definition of an action to be performed, the report of which is normally documented in openEHR by the `ACTION` Entry subtype. However, 'task' is also understood more generally, so that it may also when performed, result in an openEHR `OBSERVATION` or other Entry subtype where appropriate. In the great majority of cases therefore, the term 'task' as it appears here equates to openEHR Actions and Observations.
 
 For the sake of brevity, 'Action' below is intended to imply an openEHR `ACTION`, `OBSRVATION` or potentially other Entry sub-type, unless otherwise stated.
 
 == Execution Paradigm
 
-As soon as the notion of 'planning' is assumed, we enter some form of the workflow space, and it becomes essential to describe the intended paradigm of the human / machine execution environment. This is due to the fact that any description of planned tasks acts as a set of instructions to actors intended to perform the tasks. Since the instructions (task lists) will be represented in the IT layer and the executing actors (generally human, although they may also be devices or software applications) exist in the real world, an account of the interaction between the computing environment and the real world is required.
+As soon as the notion of 'planning' is assumed, we enter some form of the workflow space, and it becomes essential to describe the intended paradigm of the human / machine execution environment. This is due to the fact that any description of planned tasks acts as a set of instructions to actors intended to perform the tasks. Since the instructions (task plans) will be represented in the IT layer and the executing actors (generally human, although they may also be devices or software applications) exist in the real world, an account of the interaction between the computing environment and the real world is required.
 
-Although the task list facility described in this specification is relatively simple compared to some workflow tools, we can nevertheless distinguish the following entities in the environment:
+Although the task plan facility described in this specification is relatively simple compared to some workflow tools, we can nevertheless distinguish the following entities in the environment:
 
 * _computing environment_:
 ** *work plan definition*: a reusable definition of work to be done, consisting of tasks, potentially standardised according to a guideline or protocol;
@@ -47,3 +57,9 @@ This environment can be illustrated as follows.
 [.text-center]
 .Work plan execution paradigm
 image::diagrams/workflow_execution_paradigm.svg[id=workflow_execution_paradigm, align="center", width=60%]
+
+== Relationship to Workflow Formalisms and Systems
+
+This specification describes a model for a 'task plan' concept that incudes support for work distribution across multiple performers, nested task plans, conditional branching, timing and various other facilities. Many of these are conceptually close to the features found in standard workflow languages such as BPMN (Business Process Modelling Notation) and YAWL (Yet another Workflow Language), as well as emerging case-based standards such as CMMN (Case Management Modelling Notation) and DMN (Decision Model and Notation).
+
+While the model described here takes many ideas from these languauges, there are some key differencs as well. The primary concptual difference is that the subjct (i.e. 'case') here is assumed to be an intentional organism (generally a human patient) that makes choices, reacts to drugs, and generally speaking, cannot be relied on to be a passive object (such as a package or blood sample), as the case for many logistic workflows defined in say BPMN are. The main consequence of this is that the design of a task plan is not taken to be a highly deterministic description whose exceptions are not generally knowable in advance as they would be for a logistic system whose subjects are passive objects. Note that even the patient can be a passive object in some circumstances, such as radiology.
