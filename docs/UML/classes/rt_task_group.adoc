@@ -1,0 +1,33 @@
+=== RT_TASK_GROUP Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*RT_TASK_GROUP*
+
+h|*Description*
+2+a|Run-time homologue of TASK_GROUP from a Task Plan definition.
+
+h|*Inherit*
+2+|RT_TASK_ITEM
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(redefined)*
+|*definition*: `TASK_GROUP`
+a|Reference to corresponding TASK_GROUP instance in Task Plan definition.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*lifecycle_state*: `TASK_LIFECYCLE`
+a|Effective lifecycle state, computed from the states of members of the group.
+
+h|
+|*members*: `List<RT_PLAN_ITEM>`
+a|Member items, computed by following definition link to the corresponding TASK_GROUP object in Task Plan definition.
+|===

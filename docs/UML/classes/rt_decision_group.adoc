@@ -1,0 +1,33 @@
+=== RT_DECISION_GROUP Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*RT_DECISION_GROUP*
+
+h|*Description*
+2+a|Run-time homologue of DECISION_GROUP from a Task Plan definition.
+
+h|*Inherit*
+2+|RT_PLAN_ITEM
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*value_expression*: `ASSIGNMENT`
+a|Runtime form of value_expression from ask Plan definition.
+
+h|*1..1 +
+(redefined)*
+|*definition*: `DECISION_GROUP`
+a|Reference to corresponding DECISION_GROUP instance in Task Plan definition.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*paths*: `List<RT_DECISION_PATH_GROUP>`
+a|Decision path groups, computed by following definition link to the corresponding DECISION_GROUP object in Task Plan definition.
+|===

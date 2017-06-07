@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*TASK_PLAN*
 
 h|*Description*
-2+a|Logical list of Tasks in a structure defining order and conditions of execution of items of work intended to achieve a goal. A Task Plan consists of a top-level TASK_GROUP containing TASK_PLAN_ITEMs, which are either atomic TASKs or more TASK_GROUPs.
+2+a|Logical list of Tasks in a structure defining order and conditions of execution of items of work intended to achieve a goal. A Task Plan consists of a top-level TASK_GROUP containing PLAN_ITEMs, which are either atomic TASKs, more TASK_GROUPs or DECISION nodes.
 
 A Task Plan specifies a principal_performer, representing a kind of actor who can perform the Tasks, and bounding start_time and completion_time information.
 
@@ -45,7 +45,7 @@ It is currently assumed that there is no reliable machine identifier system for 
 
 h|*0..1*
 |*principal_performer*: `TASK_PARTICIPATION`
-a|Specification of principle performer of this Task Plan as a Participation, typically with role and function set.
+a|Specification of principle performer of this Task Plan as a Participation, in terms of role and optionally function, mode and specific performer as appropriate.
 
 h|*0..1*
 |*care_pathway*: `DV_IDENTIFIER`
@@ -71,16 +71,9 @@ a|An integer value representing the training level for which this Task Plan is d
 
 h|*0..1*
 |*best_practice_ref*: `DV_URI`
-a|A URI (typically a local URL) that points to the document form of any governing guideline or other best practice publication in use in the current institution. This link provides a way for a clinician to cross-check the Task List design and functioning against the definitive document that acts as the source of its semantics.
+a|A URI (typically a local URL) that points to the document form of any governing guideline or other best practice publication in use in the current institution. This link provides a way for a clinician to cross-check the Task Plan design and functioning against the definitive document that acts as the source of its semantics.
 
 h|*0..1*
 |*expiry_time*: `Duration`
 a|Maximal date/time by which this Task Plan should be considered obsolete. If not set, the Task Plan would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the execution_time attribute of TASKs in the plan.
-h|*Functions*
-^h|*Signature*
-^h|*Meaning*
-
-h|
-|*lifecycle_state*: `TASK_LIFECYCLE`
-a|Lifecycle state of Task Plan, derived as a copy of the lifecycle_state() of the top-level TASK_GROUP.
 |===

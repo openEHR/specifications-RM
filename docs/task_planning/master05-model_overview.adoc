@@ -6,15 +6,15 @@ The following UML diagram shows the `rm.task_planning` package in overview form,
 
 Structurally, a `TASK_PLAN` has a `_principal_performer_`, and a `_definition_` (blue classes). Individual Tasks that are `DEFINED_TASKs` (i.e. not references) may have a `_prototype_` whose type is an Entry descendant, that defines the Task data. 
 
-The `TASK_PLAN` may also have an `_execution_history_` (gold classes at bottom), which acts as a record of events that have occurred to the Task Plan during execution. At runtime, execution-related `EXECUTING_XXX` classes may be instantiated to track state for those parts of the definition currently being processed (central orange classes).
+The `TASK_PLAN` may also have an `_execution_history_` (gold classes at bottom), which acts as a record of events that have occurred to the Task Plan during execution. At runtime, execution-related `RT_XXX` classes may be instantiated to track state for those parts of the definition currently being processed (central orange classes).
 
 [.text-center]
 .rm.task_planning package overview
 image::{uml_export_dir}/diagrams/RM-task_planning-overview.svg[id=rm_task_planning_overview, align="center"]
 
-The key structural relationships are shown in the following instance diagram. On the left is the definition of a Task Plan, consisting of a Task Group and various Defined Tasks. Each of these Tasks has a prototype Entry attached, which represents the intended data of an action or observation that the Task defines.
+The key structural relationships are shown in the following instance diagram. On the left is the definition of a Task Plan, consisting of a Task Group and various Defined Tasks. Each of these Tasks may have a prototype Entry attached, which represents the intended data of an action or observation that the Task defines.
 
-At the upper right is an Executing Task Plan, which is a runtime structure consisting of elements that correspond to the currently executing parts of the static definition structure (achieved by the `EXECUTING_TASK_PLAN_ITEM._definition_` association). This structure allows the recording of all state to do with Task execution, including instances of variables, timing information and so on. The Executing Task Plan structure is not owned by the deifnition structure, but rather is created at run time, and points back to its definition (_owner_ and _definition_ links).
+At the upper right is an Executing Task Plan, which is a runtime structure consisting of elements that correspond to the currently executing parts of the static definition structure (achieved by the `RT_PLAN_ITEM._definition_` association). This structure allows the recording of all state to do with Task execution, including instances of variables, timing information and so on. The Executing Task Plan structure is not owned by the deifnition structure, but rather is created at run time, and points back to its definition (_owner_ and _definition_ links).
 
 At the lower right is a Task Execution History, which is a record of all events that were made during the execution of the original Task Plan.
 

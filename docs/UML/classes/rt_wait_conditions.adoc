@@ -1,0 +1,26 @@
+=== RT_WAIT_CONDITIONS Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*RT_WAIT_CONDITIONS*
+
+h|*Description*
+2+a|Class representing the runtime tracked form of wait_conditions on a single TASK_ITEM.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*task_item*: `RT_TASK_ITEM`
+a|Reference to the Task Item being tracked.
+
+h|*0..1*
+|*outstanding*: `List<TASK_NOTIFICATION>`
+a|Outstanding wait conditions of the referenced Task item.
+
+h|*1..1*
+|*satisfied*: `TASK_NOTIFICATION`
+a|Wait conditions from Task definition that have been satisfied so far by receipt of relevant notifications.
+|===

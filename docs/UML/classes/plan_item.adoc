@@ -1,0 +1,29 @@
+=== PLAN_ITEM Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*_PLAN_ITEM (abstract)_*
+
+h|*Description*
+2+a|Parent type of all item types that may appear within a Task Plan structure.
+
+h|*Inherit*
+2+|LOCATABLE
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*item_id*: `Integer`
+a|Integer indicating the ordinal number of this Task within its Task group. Used for referencing from other objects. Required to be unique with respect to other siblings in the same Task group.
+
+Identification of any Task in a Task Plan is done using paths of the form /task_group_id/task_group_id.
+
+TODO: needed?
+
+h|*1..1*
+|*description*: `DV_TEXT`
+a|Human-readable form of the task directive.
+|===

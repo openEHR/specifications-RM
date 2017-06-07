@@ -34,9 +34,10 @@
 </li>
 <li><a href="#_background">2. Background</a>
 <ul class="sectlevel2">
-<li><a href="#_functional_needs">2.1. Functional Needs</a></li>
-<li><a href="#_execution_paradigm">2.2. Execution Paradigm</a></li>
-<li><a href="#_relationship_to_workflow_formalisms_and_systems">2.3. Relationship to Workflow Formalisms and Systems</a></li>
+<li><a href="#_survey_of_requirements">2.1. Survey of Requirements</a></li>
+<li><a href="#_limitations_of_openehr_standard_entry_model">2.2. Limitations of openEHR standard Entry Model</a></li>
+<li><a href="#_execution_paradigm">2.3. Execution Paradigm</a></li>
+<li><a href="#_relationship_to_workflow_formalisms_and_systems">2.4. Relationship to Workflow Formalisms and Systems</a></li>
 </ul>
 </li>
 <li><a href="#_requirements">3. Requirements</a>
@@ -47,10 +48,11 @@
 <li><a href="#_checklist_sign_off">3.4. Checklist &amp; Sign-off</a></li>
 <li><a href="#_teamwork_and_notifications">3.5. Teamwork and Notifications</a></li>
 <li><a href="#_task_grouping_optionality_and_execution_basis">3.6. Task Grouping, Optionality and Execution Basis</a></li>
-<li><a href="#_changes_and_abandonment">3.7. Changes and Abandonment</a></li>
-<li><a href="#_rationalising_unrelated_task_plans">3.8. Rationalising Unrelated Task Plans</a></li>
-<li><a href="#_support_process_analytics">3.9. Support Process Analytics</a></li>
-<li><a href="#_support_for_costing_and_billing_information">3.10. Support for Costing and Billing Information</a></li>
+<li><a href="#_decision_pathways">3.7. Decision Pathways</a></li>
+<li><a href="#_changes_and_abandonment">3.8. Changes and Abandonment</a></li>
+<li><a href="#_rationalising_unrelated_task_plans">3.9. Rationalising Unrelated Task Plans</a></li>
+<li><a href="#_support_process_analytics">3.10. Support Process Analytics</a></li>
+<li><a href="#_support_for_costing_and_billing_information">3.11. Support for Costing and Billing Information</a></li>
 </ul>
 </li>
 <li><a href="#_design_principles">4. Design Principles</a>
@@ -75,7 +77,7 @@
 <li><a href="#_basic_semantics_of_a_task_plan">6.1.2. Basic Semantics of a Task Plan</a></li>
 <li><a href="#_compositional_structure">6.1.3. Compositional Structure</a></li>
 <li><a href="#_basic_semantics_of_a_task">6.1.4. Basic Semantics of a Task</a></li>
-<li><a href="#_task_types">6.1.5. Task Types</a></li>
+<li><a href="#_task_plan_compositional_structure">6.1.5. Task Plan Compositional Structure</a></li>
 </ul>
 </li>
 <li><a href="#_task_definition">6.2. Task Definition</a>
@@ -91,21 +93,23 @@
 <ul class="sectlevel3">
 <li><a href="#_task_plan_class">6.5.1. TASK_PLAN Class</a></li>
 <li><a href="#_task_participation_class">6.5.2. TASK_PARTICIPATION Class</a></li>
-<li><a href="#_task_plan_item_class">6.5.3. TASK_PLAN_ITEM Class</a></li>
-<li><a href="#_timing_spec_class">6.5.4. TIMING_SPEC Class</a></li>
-<li><a href="#_clock_timing_class">6.5.5. CLOCK_TIMING Class</a></li>
-<li><a href="#_event_linked_timing_class">6.5.6. EVENT_LINKED_TIMING Class</a></li>
-<li><a href="#_temporal_relation_enumeration">6.5.7. TEMPORAL_RELATION Enumeration</a></li>
-<li><a href="#_task_linked_timing_class">6.5.8. TASK_LINKED_TIMING Class</a></li>
-<li><a href="#_timing_reference_enumeration">6.5.9. TIMING_REFERENCE Enumeration</a></li>
-<li><a href="#_task_group_class">6.5.10. TASK_GROUP Class</a></li>
-<li><a href="#_decision_group_class">6.5.11. DECISION_GROUP Class</a></li>
-<li><a href="#_execution_type_enumeration">6.5.12. EXECUTION_TYPE Enumeration</a></li>
-<li><a href="#_task_class">6.5.13. TASK Class</a></li>
-<li><a href="#_external_task_class">6.5.14. EXTERNAL_TASK Class</a></li>
-<li><a href="#_defined_task_class">6.5.15. DEFINED_TASK Class</a></li>
-<li><a href="#_task_notification_class">6.5.16. TASK_NOTIFICATION Class</a></li>
-<li><a href="#_task_precondition_class">6.5.17. TASK_PRECONDITION Class</a></li>
+<li><a href="#_plan_item_class">6.5.3. PLAN_ITEM Class</a></li>
+<li><a href="#_task_item_class">6.5.4. TASK_ITEM Class</a></li>
+<li><a href="#_timing_spec_class">6.5.5. TIMING_SPEC Class</a></li>
+<li><a href="#_clock_timing_class">6.5.6. CLOCK_TIMING Class</a></li>
+<li><a href="#_event_linked_timing_class">6.5.7. EVENT_LINKED_TIMING Class</a></li>
+<li><a href="#_temporal_relation_enumeration">6.5.8. TEMPORAL_RELATION Enumeration</a></li>
+<li><a href="#_task_linked_timing_class">6.5.9. TASK_LINKED_TIMING Class</a></li>
+<li><a href="#_timing_reference_enumeration">6.5.10. TIMING_REFERENCE Enumeration</a></li>
+<li><a href="#_task_group_class">6.5.11. TASK_GROUP Class</a></li>
+<li><a href="#_decision_group_class">6.5.12. DECISION_GROUP Class</a></li>
+<li><a href="#_decision_path_group_class">6.5.13. DECISION_PATH_GROUP Class</a></li>
+<li><a href="#_execution_type_enumeration">6.5.14. EXECUTION_TYPE Enumeration</a></li>
+<li><a href="#_task_class">6.5.15. TASK Class</a></li>
+<li><a href="#_external_plan_class">6.5.16. EXTERNAL_PLAN Class</a></li>
+<li><a href="#_defined_task_class">6.5.17. DEFINED_TASK Class</a></li>
+<li><a href="#_task_notification_class">6.5.18. TASK_NOTIFICATION Class</a></li>
+<li><a href="#_task_precondition_class">6.5.19. TASK_PRECONDITION Class</a></li>
 </ul>
 </li>
 </ul>
@@ -113,53 +117,55 @@
 <li><a href="#_task_execution_model">7. Task Execution Model</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_3">7.1. Overview</a></li>
-<li><a href="#_task_plan_instantiation">7.2. Task Plan Instantiation</a></li>
-<li><a href="#_task_execution">7.3. Task Execution</a>
+<li><a href="#_task_plan_execution_tracking">7.2. Task Plan Execution Tracking</a>
 <ul class="sectlevel3">
-<li><a href="#_task_lifecycle_model">7.3.1. Task Lifecycle Model</a></li>
-<li><a href="#_notifications">7.3.2. Notifications</a></li>
-</ul>
-</li>
-<li><a href="#_task_execution_tracking">7.4. Task Execution Tracking</a>
-<ul class="sectlevel3">
-<li><a href="#_class_descriptions_2">7.4.1. Class Descriptions</a>
+<li><a href="#_task_plan_instantiation">7.2.1. Task Plan Instantiation</a></li>
+<li><a href="#_allocation">7.2.2. Allocation</a></li>
+<li><a href="#_task_execution">7.2.3. Task Execution</a></li>
+<li><a href="#_task_lifecycle_model">7.2.4. Task Lifecycle Model</a></li>
+<li><a href="#_notifications">7.2.5. Notifications</a></li>
+<li><a href="#_class_descriptions_2">7.2.6. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_task_lifecycle_enumeration">7.4.1.1. TASK_LIFECYCLE Enumeration</a></li>
-<li><a href="#_executing_task_plan_class">7.4.1.2. EXECUTING_TASK_PLAN Class</a></li>
-<li><a href="#_executing_task_plan_item_class">7.4.1.3. EXECUTING_TASK_PLAN_ITEM Class</a></li>
-<li><a href="#_executing_task_group_class">7.4.1.4. EXECUTING_TASK_GROUP Class</a></li>
-<li><a href="#_executing_task_class">7.4.1.5. EXECUTING_TASK Class</a></li>
+<li><a href="#_task_lifecycle_enumeration">7.2.6.1. TASK_LIFECYCLE Enumeration</a></li>
+<li><a href="#_rt_task_plan_class">7.2.6.2. RT_TASK_PLAN Class</a></li>
+<li><a href="#_rt_wait_conditions_class">7.2.6.3. RT_WAIT_CONDITIONS Class</a></li>
+<li><a href="#_rt_plan_item_class">7.2.6.4. RT_PLAN_ITEM Class</a></li>
+<li><a href="#_rt_task_item_class">7.2.6.5. RT_TASK_ITEM Class</a></li>
+<li><a href="#_rt_decision_group_class">7.2.6.6. RT_DECISION_GROUP Class</a></li>
+<li><a href="#_rt_task_group_class">7.2.6.7. RT_TASK_GROUP Class</a></li>
+<li><a href="#_rt_task_class">7.2.6.8. RT_TASK Class</a></li>
+<li><a href="#_rt_decision_path_group_class">7.2.6.9. RT_DECISION_PATH_GROUP Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_task_plan_execution_history">7.5. Task Plan Execution History</a>
+<li><a href="#_task_plan_execution_history">7.3. Task Plan Execution History</a>
 <ul class="sectlevel3">
-<li><a href="#_class_descriptions_3">7.5.1. Class Descriptions</a>
+<li><a href="#_class_descriptions_3">7.3.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_task_plan_execution_history_class">7.5.1.1. TASK_PLAN_EXECUTION_HISTORY Class</a></li>
-<li><a href="#_event_record_class">7.5.1.2. EVENT_RECORD Class</a></li>
-<li><a href="#_task_plan_event_record_class">7.5.1.3. TASK_PLAN_EVENT_RECORD Class</a></li>
-<li><a href="#_task_event_record_class">7.5.1.4. TASK_EVENT_RECORD Class</a></li>
-<li><a href="#_task_notification_record_class">7.5.1.5. TASK_NOTIFICATION_RECORD Class</a></li>
+<li><a href="#_task_plan_execution_history_class">7.3.1.1. TASK_PLAN_EXECUTION_HISTORY Class</a></li>
+<li><a href="#_event_record_class">7.3.1.2. EVENT_RECORD Class</a></li>
+<li><a href="#_task_plan_event_record_class">7.3.1.3. TASK_PLAN_EVENT_RECORD Class</a></li>
+<li><a href="#_task_event_record_class">7.3.1.4. TASK_EVENT_RECORD Class</a></li>
+<li><a href="#_task_notification_record_class">7.3.1.5. TASK_NOTIFICATION_RECORD Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_cost_tracking">7.6. Cost Tracking</a>
+<li><a href="#_cost_tracking">7.4. Cost Tracking</a>
 <ul class="sectlevel3">
-<li><a href="#_class_descriptions_4">7.6.1. Class Descriptions</a>
+<li><a href="#_class_descriptions_4">7.4.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_task_costing_class">7.6.1.1. TASK_COSTING Class</a></li>
+<li><a href="#_task_costing_class">7.4.1.1. TASK_COSTING Class</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_transactional_micro_service">7.7. Transactional Micro-service</a>
+<li><a href="#_transactional_micro_service">7.5. Transactional Micro-service</a>
 <ul class="sectlevel3">
-<li><a href="#_class_descriptions_5">7.7.1. Class Descriptions</a>
+<li><a href="#_class_descriptions_5">7.5.1. Class Descriptions</a>
 <ul class="sectlevel4">
-<li><a href="#_task_planning_ms_interface">7.7.1.1. TASK_PLANNING_MS Interface</a></li>
+<li><a href="#_task_planning_ms_interface">7.5.1.1. TASK_PLANNING_MS Interface</a></li>
 </ul>
 </li>
 </ul>
@@ -288,10 +294,23 @@
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.1.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>0.7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-58">SPECRM-58</a>. Major rewrite, incorporating structure, parallelism, decision paths, and execution history.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>0.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rework runtime model.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>31 May 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Jun 2017</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incorporate review comments.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">06 Jun 2017</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Major rewrite, incorporating structure, parallelism, decision paths, and execution history.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31 May 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.6.0</p></td>
@@ -420,7 +439,38 @@
 <h2 id="_background"><a class="anchor" href="#_background"></a>2. Background</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_functional_needs"><a class="anchor" href="#_functional_needs"></a>2.1. Functional Needs</h3>
+<h3 id="_survey_of_requirements"><a class="anchor" href="#_survey_of_requirements"></a>2.1. Survey of Requirements</h3>
+<div class="paragraph">
+<p>This specification for a Task Planning facility for openEHR addresses requirements in a number of areas in which some form of 'planning' of clinical work is required. The defining characteristic of the requirements is that they primarily relate to an active human subject, rather than a passive object, such as a parcel or tissue sample. The requirements covered include one-off scheduled tasks (e.g. surgical procedure), long-running scheduled tasks (e.g. drug administration), recurring tasks (e.g. monitoring), and coordinated teamwork (e.g. acute stroke management).</p>
+</div>
+<div class="paragraph">
+<p>The specification also addresses the lack of fine-grained task planning facilities in the basic openEHR specificaitons, which are limited to the Instruction and Action concepts. These provide ways of stating orders and recording actions performed after the fact, but no way of representing or sharing plans for actions before they are performed. This limitation is described in more detail below.</p>
+</div>
+<div class="paragraph">
+<p>The general approach followed here is to specify a representation of task plans at various stages in the planning lifecycle, i.e.:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>design time</strong>: templates or prototypes of standard task plans are developed and published;</p>
+</li>
+<li>
+<p><strong>runtime - planning</strong>: task plan prototypes are turned into concrete plans for specific work items for specific patients and activated;</p>
+</li>
+<li>
+<p><strong>runtime - work execution</strong>: task plans are executed by clinical performers and the plan maintained up to date in real time;</p>
+</li>
+<li>
+<p><strong>runtime - work completion</strong>: as each task is performed, standard clinical statements (openEHR Entries) are committed to the EHR to record what was done.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The models described here are thus designed to support both design-time modelling (via archetypes, terminology subsetting) and runtime execution with modifications and abandonment possible while the work is being performed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_limitations_of_openehr_standard_entry_model"><a class="anchor" href="#_limitations_of_openehr_standard_entry_model"></a>2.2. Limitations of openEHR standard Entry Model</h3>
 <div class="paragraph">
 <p>The Entry model described in the <a href="http://www.openehr.org/releases/RM/latest/ehr.html">openEHR EHR IM</a> defines a way to record clinical statements representing real observations, decisions, orders and actions that have occurred, in the EHR. In this scheme, Instructions represent orders for certain kinds of Actions to be performed. Actions and Observations represent events that have subsequently occurred in the real world - a real drug administration or an actual blood sugar measurement.</p>
 </div>
@@ -428,13 +478,13 @@
 <p>There is however a common additional need to concretely plan individual Actions and sometimes Observations ahead of time, as a set of 'tasks', often known as a 'task list'. Here we will use the more general term <em>task plan</em> to mean a specification of a set of actions to be performed by actors (usually human, but potentially machine as well) providing care.</p>
 </div>
 <div class="paragraph">
-<p>A list of planned tasks need not all relate to a single order, or indeed any order. The general picture is that a task plan corresponds to some self-standing healthcare job to be done, which may include tasks designed to fulfill multiple orders, and also tasks not defined by orders.</p>
+<p>A set of planned tasks need not all relate to a single order, or indeed any order. The general picture is that a task plan corresponds to some self-standing healthcare job to be done, which may include tasks designed to fulfill multiple orders, and also tasks not defined by orders.</p>
 </div>
 <div class="paragraph">
 <p>To meet this need, a further kind of content can be recorded in the EHR, representing task plans containing tasks. Here we understand the word 'task' to mean 'definition of a planned task', i.e. a description of something to be performed in the future.</p>
 </div>
 <div class="paragraph">
-<p>The model described here considers task plans as one element of a larger framwork that includes entities at multiple semantic levels, i.e.:</p>
+<p>The model described here considers task plans as one element of a larger framework that includes entities at multiple semantic levels, i.e.:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -454,9 +504,9 @@
 </div>
 <div id="pathway_plan_triad" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/pathway_plan_triad.svg" alt="pathway plan triad" width="70%">
+<img src="diagrams/pathway_plan_triad.svg" alt="pathway plan triad" width="60%">
 </div>
-<div class="title">Figure 1. The Care pathway / care plan / task plan triad</div>
+<div class="title">Figure 1. The care pathway / care plan / task plan triad</div>
 </div>
 <div class="paragraph">
 <p>The above diagram shows task plans as a concrete planning artefact that results from a care plan for a specific patient, and may be partly based on published care pathways or clinical guidelines, each of which can be thought of as a basis for task plans for an ideal patient for a given condition (e.g. pregnancy, sepsis, stroke etc). Where care pathways (or parts thereof) can be represented as formal artefacts, they can act as prototypes for task pan structures. However, a care pathway for a model patient is not the same thing as a task plan(s) for an actual patient, since each real patient has his/her own specific combination of conditions, preferences and ultimately phenotypic specificities. Thus, where task plans are based on care pathways, the latter act as prototypes whose ideal form may be modified by the specific care plan and/or as the care team deems appropriate.</p>
@@ -471,11 +521,11 @@
 <p>In the following, the term 'task' denotes the definition of an action to be performed, the report of which is normally documented in openEHR by the <code>ACTION</code> Entry subtype. However, 'task' is also understood more generally, so that it may also when performed, result in an openEHR <code>OBSERVATION</code> or other Entry subtype where appropriate. In the great majority of cases therefore, the term 'task' as it appears here equates to openEHR Actions and Observations.</p>
 </div>
 <div class="paragraph">
-<p>For the sake of brevity, 'Action' below is intended to imply an openEHR <code>ACTION</code>, <code>OBSRVATION</code> or potentially other Entry sub-type, unless otherwise stated.</p>
+<p>For the sake of brevity, 'Action' below is intended to imply an openEHR <code>ACTION</code>, <code>OBSERVATION</code> or potentially other Entry sub-type, unless otherwise stated.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_execution_paradigm"><a class="anchor" href="#_execution_paradigm"></a>2.2. Execution Paradigm</h3>
+<h3 id="_execution_paradigm"><a class="anchor" href="#_execution_paradigm"></a>2.3. Execution Paradigm</h3>
 <div class="paragraph">
 <p>As soon as the notion of 'planning' is assumed, we enter some form of the workflow space, and it becomes essential to describe the intended paradigm of the human / machine execution environment. This is due to the fact that any description of planned tasks acts as a set of instructions to actors intended to perform the tasks. Since the instructions (task plans) will be represented in the IT layer and the executing actors (generally human, although they may also be devices or software applications) exist in the real world, an account of the interaction between the computing environment and the real world is required.</p>
 </div>
@@ -533,18 +583,21 @@
 </div>
 <div id="workflow_execution_paradigm" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/workflow_execution_paradigm.svg" alt="workflow execution paradigm" width="60%">
+<img src="diagrams/workflow_execution_paradigm.svg" alt="workflow execution paradigm" width="55%">
 </div>
 <div class="title">Figure 2. Work plan execution paradigm</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_relationship_to_workflow_formalisms_and_systems"><a class="anchor" href="#_relationship_to_workflow_formalisms_and_systems"></a>2.3. Relationship to Workflow Formalisms and Systems</h3>
+<h3 id="_relationship_to_workflow_formalisms_and_systems"><a class="anchor" href="#_relationship_to_workflow_formalisms_and_systems"></a>2.4. Relationship to Workflow Formalisms and Systems</h3>
 <div class="paragraph">
-<p>This specification describes a model for a 'task plan' concept that incudes support for work distribution across multiple performers, nested task plans, conditional branching, timing and various other facilities. Many of these are conceptually close to the features found in standard workflow languages such as BPMN (Business Process Modelling Notation) and YAWL (Yet another Workflow Language), as well as emerging case-based standards such as CMMN (Case Management Modelling Notation) and DMN (Decision Model and Notation).</p>
+<p>This specification describes a model for a 'task plan' concept that incudes support for work distribution across multiple performers, nested task plans, conditional branching, timing and various other facilities. Many of these are conceptually close to the features found in standard workflow languages such as <a href="http://www.bpmn.org/">BPMN</a> (Business Process Modelling Notation) and <a href="http://yawlfoundation.org/">YAWL</a> (Yet another Workflow Language), as well as emerging case-based standards such as <a href="http://www.omg.org/spec/CMMN/1.0/">CMMN</a> (Case Management Modelling Notation) and <a href="http://www.omg.org/spec/DMN/">DMN</a> (Decision Model and Notation).</p>
 </div>
 <div class="paragraph">
-<p>While the model described here takes many ideas from these languauges, there are some key differencs as well. The primary concptual difference is that the subjct (i.e. 'case') here is assumed to be an intentional organism (generally a human patient) that makes choices, reacts to drugs, and generally speaking, cannot be relied on to be a passive object (such as a package or blood sample), as the case for many logistic workflows defined in say BPMN are. The main consequence of this is that the design of a task plan is not taken to be a highly deterministic description whose exceptions are not generally knowable in advance as they would be for a logistic system whose subjects are passive objects. Note that even the patient can be a passive object in some circumstances, such as radiology.</p>
+<p>While the model described here takes many ideas from these languauges, there are some key differencs as well. The primary conceptual difference is that the subjct (i.e. 'case') here is assumed to be an intentional organism (generally a human patient) that makes choices, reacts to drugs, and generally speaking, cannot be relied on to be a passive object (such as a package or blood sample), as is the case for most logistic workflows, for which languages such as BPMN are suited.</p>
+</div>
+<div class="paragraph">
+<p>The main consequence of this is that the design of a task plan is not taken to be a highly deterministic description whose exceptions are generally knowable in advance as they would be for a logistic system whose subjects are passive objects. Instead, tasks and groups of tightly-coupled tasks are specified in a more self-standing way, using preconditions rather than logical join and split operators. Note that even the patient can be a passive object in some circumstances, such as radiology.</p>
 </div>
 </div>
 </div>
@@ -553,7 +606,35 @@
 <h2 id="_requirements"><a class="anchor" href="#_requirements"></a>3. Requirements</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A number of commonly occurring requirements that can be addressed via the Task Plan concept are described below.</p>
+<p>Task planning is applicable to numerous clinical scenarios, exemplified by the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>routine simple medication administration, e.g. for post-operative pain - tasks extend across worker shifts;</p>
+</li>
+<li>
+<p>complex drug administration e.g. multi-drug chemotherapy over multiple days;</p>
+</li>
+<li>
+<p>physiotherapy rehabilitation sessions - recurrent therapeutic procedure, with defined end-point;</p>
+</li>
+<li>
+<p>dialysis - recurrent therapeutic procedure;</p>
+</li>
+<li>
+<p>diet + physical activity plan for overweight treatment - recurrent tasks, patient as a performer;</p>
+</li>
+<li>
+<p>surgery planning - one time event;</p>
+</li>
+<li>
+<p>acute stroke management - multiple sets of tasks coordinated across multiple performers.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Within these and many other similar clinical procedures, a number of commonly occurring generic requirements appear, as described below.</p>
 </div>
 <div class="sect2">
 <h3 id="_planned_tasks_for_an_order"><a class="anchor" href="#_planned_tasks_for_an_order"></a>3.1. Planned Tasks for an Order</h3>
@@ -564,7 +645,7 @@
 <p>In openEHR, an order is represented by an <code>INSTRUCTION</code> instance, which contains a directive to do something such as preform radiography or administer medication. The form of representation in the Instruction is normally <em>interpretable</em> by an agent who will convert it to separate tasks. For example, a drug order for Amoxicillin 500mg oral tablet 3 times/day x 7 days is converted by a human agent to 21 separate tasks, each consisting of taking one tablet at a certain time or day. These tasks can be represented in a task plan, each task of which which can then be performed and signed off by a staff member, e.g. a shift nurse. The task plan acts as a record of what has been done, and what is left to do.</p>
 </div>
 <div class="paragraph">
-<p>One difficulty with posting a full plan is that in some cases, the order is effectively open-ended, i.e. it has no intended completion. This might be because the patient condition being treated is chronic, e.g. an insulin or Salbutamol (Ventolin) order; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma victim.</p>
+<p>One difficulty with posting a full plan is that in some cases, the work is effectively open-ended, i.e. it has no currently known completion date. This might be because the patient condition being treated is chronic, e.g. insulin or Salbutamol (Ventolin) treatment; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma patient.</p>
 </div>
 </div>
 <div class="sect2">
@@ -688,7 +769,38 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_changes_and_abandonment"><a class="anchor" href="#_changes_and_abandonment"></a>3.7. Changes and Abandonment</h3>
+<h3 id="_decision_pathways"><a class="anchor" href="#_decision_pathways"></a>3.7. Decision Pathways</h3>
+<div class="paragraph">
+<p>Task plans derived from semi-formal care pathways or guidelines (and potentially ad hoc designed plans) may contain 'decision points', which are of the following logical form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>decision point</strong>: a step containing a variable assignment of the form <code>$v := expression</code>;</p>
+</li>
+<li>
+<p><strong>subordinate decision paths</strong>: groups of tasks each group of which has attached a variable test of the form <code>$v rel_op value</code>, where <code>rel_op</code> is one of <code>=</code>, <code>/=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code> or <code>&gt;=</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>An example of decision points is shown below, in an extract from the <a href="https://intermountainhealthcare.org/ext/Dcmnt?ncid=520500199">Intermountain Healthcare Care Process Module (CPM) for Ischemic Stroke Management</a>:</p>
+</div>
+<div id="decision_pathway_example" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/IHC_stroke_decision_path.png" alt="IHC stroke decision path" width="80%">
+</div>
+<div class="title">Figure 3. Decision pathway example (Intermountain Healthcare Acute Stroke CPM)</div>
+</div>
+<div class="paragraph">
+<p>In this example, the node containing the text "Further CLASSIFY &#8230;&#8203;" corresponds to a decision point that can be represented as <code>$symptom_onset_time := t</code>, where <code>t</code> is a time entered by a user. The subsequent nodes in the chart can be understood as paths based respectively on the tests <code>$symptom_onset_time &lt; 4.5h</code> and <code>4.5h &lt; $symptom_onset_time &lt; 6h</code>.</p>
+</div>
+<div class="paragraph">
+<p>The ability to include decision pathways enables conditional sections of care pathways to be directly represented within a task plan.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_changes_and_abandonment"><a class="anchor" href="#_changes_and_abandonment"></a>3.8. Changes and Abandonment</h3>
 <div class="paragraph">
 <p>Inevitably, some task plans will have to be changed or abandoned partway through due to unexpected changes in the patient situation. The question here is: what should be done with the remaining planned tasks that will not be performed? Should they be marked as 'won&#8217;t do' (with some reason) and committed to the EHR, or should they be deleted prior to being committed to the EHR?</p>
 </div>
@@ -713,7 +825,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_rationalising_unrelated_task_plans"><a class="anchor" href="#_rationalising_unrelated_task_plans"></a>3.8. Rationalising Unrelated Task Plans</h3>
+<h3 id="_rationalising_unrelated_task_plans"><a class="anchor" href="#_rationalising_unrelated_task_plans"></a>3.9. Rationalising Unrelated Task Plans</h3>
 <div class="paragraph">
 <p>It is assumed that at any moment there could be multiple task plans extant for <em>different problems and timelines</em> for the same subject of care, e.g. chemotherapy, hypertension, ante-natal care. If naively created, these could clash in time and potentially in terms of other resources. There should therefore be support for being able to efficiently locate all existing task plans and scan their times, states and resources. This aids avoiding clashes and also finding opportunities for rationalising and bundling tasks e.g. grouping multiple tasks into a single visit, taking bloods require by two protocols at the same sitting etc.</p>
 </div>
@@ -722,7 +834,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_support_process_analytics"><a class="anchor" href="#_support_process_analytics"></a>3.9. Support Process Analytics</h3>
+<h3 id="_support_process_analytics"><a class="anchor" href="#_support_process_analytics"></a>3.10. Support Process Analytics</h3>
 <div class="paragraph">
 <p>As tasks are performed and signed off on the list of posted planned tasks, there will generally be differences between Actions actually performed and the tasks on the list. Differences may include:</p>
 </div>
@@ -744,7 +856,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_support_for_costing_and_billing_information"><a class="anchor" href="#_support_for_costing_and_billing_information"></a>3.10. Support for Costing and Billing Information</h3>
+<h3 id="_support_for_costing_and_billing_information"><a class="anchor" href="#_support_for_costing_and_billing_information"></a>3.11. Support for Costing and Billing Information</h3>
 <div class="paragraph">
 <p>It should be possible to record internal costing data against task plans as a whole, and also individual tasks. Additionally, it should be possible to attach external billing information to tasks and task plans. Costing information might be attached to each task, such as consumption of inventory items, time and other resources. Billing information is typically more coarse-grained and reported using nationally agreed code systems, e.g. ICD10 or similar.</p>
 </div>
@@ -911,9 +1023,9 @@
 </div>
 <div id="clinical_process_planning" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/clinical_process_planning.png" alt="clinical process planning" width="80%">
+<img src="diagrams/clinical_process_planning.svg" alt="clinical process planning" width="80%">
 </div>
-<div class="title">Figure 3. Clinical Investigator Process with Planning</div>
+<div class="title">Figure 4. Clinical Investigator Process with Planning</div>
 </div>
 <div class="paragraph">
 <p>According to this scheme, <code>TASK_PLAN</code> and <code>TASK</code> are new types of information that can be committed to the EHR.</p>
@@ -961,19 +1073,19 @@
 <p>Structurally, a <code>TASK_PLAN</code> has a <code><em>principal_performer</em></code>, and a <code><em>definition</em></code> (blue classes). Individual Tasks that are <code>DEFINED_TASKs</code> (i.e. not references) may have a <code><em>prototype</em></code> whose type is an Entry descendant, that defines the Task data.</p>
 </div>
 <div class="paragraph">
-<p>The <code>TASK_PLAN</code> may also have an <code><em>execution_history</em></code> (gold classes at bottom), which acts as a record of events that have occurred to the Task Plan during execution. At runtime, execution-related <code>EXECUTING_XXX</code> classes may be instantiated to track state for those parts of the definition currently being processed (central orange classes).</p>
+<p>The <code>TASK_PLAN</code> may also have an <code><em>execution_history</em></code> (gold classes at bottom), which acts as a record of events that have occurred to the Task Plan during execution. At runtime, execution-related <code>RT_XXX</code> classes may be instantiated to track state for those parts of the definition currently being processed (central orange classes).</p>
 </div>
 <div id="rm_task_planning_overview" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="../UML/diagrams/RM-task_planning-overview.svg" alt="RM task planning overview">
 </div>
-<div class="title">Figure 4. rm.task_planning package overview</div>
+<div class="title">Figure 5. rm.task_planning package overview</div>
 </div>
 <div class="paragraph">
-<p>The key structural relationships are shown in the following instance diagram. On the left is the definition of a Task Plan, consisting of a Task Group and various Defined Tasks. Each of these Tasks has a prototype Entry attached, which represents the intended data of an action or observation that the Task defines.</p>
+<p>The key structural relationships are shown in the following instance diagram. On the left is the definition of a Task Plan, consisting of a Task Group and various Defined Tasks. Each of these Tasks may have a prototype Entry attached, which represents the intended data of an action or observation that the Task defines.</p>
 </div>
 <div class="paragraph">
-<p>At the upper right is an Executing Task Plan, which is a runtime structure consisting of elements that correspond to the currently executing parts of the static definition structure (achieved by the <code>EXECUTING_TASK_PLAN_ITEM.<em>definition</em></code> association). This structure allows the recording of all state to do with Task execution, including instances of variables, timing information and so on. The Executing Task Plan structure is not owned by the deifnition structure, but rather is created at run time, and points back to its definition (<em>owner</em> and <em>definition</em> links).</p>
+<p>At the upper right is an Executing Task Plan, which is a runtime structure consisting of elements that correspond to the currently executing parts of the static definition structure (achieved by the <code>RT_PLAN_ITEM.<em>definition</em></code> association). This structure allows the recording of all state to do with Task execution, including instances of variables, timing information and so on. The Executing Task Plan structure is not owned by the deifnition structure, but rather is created at run time, and points back to its definition (<em>owner</em> and <em>definition</em> links).</p>
 </div>
 <div class="paragraph">
 <p>At the lower right is a Task Execution History, which is a record of all events that were made during the execution of the original Task Plan.</p>
@@ -982,7 +1094,7 @@
 <div class="content">
 <img src="diagrams/task_planning_overview.svg" alt="task planning overview" width="50%">
 </div>
-<div class="title">Figure 5. Task planning overview</div>
+<div class="title">Figure 6. Task planning overview</div>
 </div>
 </div>
 </div>
@@ -999,7 +1111,7 @@
 <div class="content">
 <img src="../UML/diagrams/RM-task_planning-definition.svg" alt="RM task planning definition">
 </div>
-<div class="title">Figure 6. rm.task_planning package definition model</div>
+<div class="title">Figure 7. rm.task_planning package definition model</div>
 </div>
 <div class="sect3">
 <h4 id="_compositions_and_versioning"><a class="anchor" href="#_compositions_and_versioning"></a>6.1.1. Compositions and Versioning</h4>
@@ -1057,36 +1169,42 @@
 <p>The set of Tasks in Task Plan is represented within a containment structure created using instances of the <code>TASK_GROUP</code> type. This provides a way of grouping Tasks that will be executed collectively on the same basis, via the <code><em>execution_type</em></code> attribute, which may be set to <code>sequential</code> or <code>parallel</code>. This includes the top-level set of Tasks. A <code>TASK_GROUP</code> instance is treated as a member of its enclosing <code>TASK_GROUP</code> in the same way as constituent <code>TASK</code> instances, and shares with the latter attributes for Task description, timing, and conditions for execution.</p>
 </div>
 <div class="paragraph">
-<p>The following illustrates the Task group structure.</p>
+<p>The following illustrates the Task Plan structure including nested Task Groups.</p>
 </div>
 <div id="task_grouping" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/task_grouping.svg" alt="task grouping" width="25%">
 </div>
-<div class="title">Figure 7. Task grouping</div>
+<div class="title">Figure 8. Task grouping</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_basic_semantics_of_a_task"><a class="anchor" href="#_basic_semantics_of_a_task"></a>6.1.4. Basic Semantics of a Task</h4>
 <div class="paragraph">
-<p>The important semantics of the Task concept in the model are specified in the <code>TASK_PLAN_ITEM</code> class, with further specifics appearing in the <code>TASK_GROUP</code> and <code>TASK</code> descendants. Key attributes of a <code>TASK_PLAN_ITEM</code> include:</p>
+<p>The important semantics of the Task concept in the model are specified in the <code>PLAN_ITEM</code> and <code>TASK_ITEM</code> classes, with further specifics appearing in the <code>TASK_GROUP</code> and <code>TASK</code> descendants. Key attributes the <code>PLAN_ITEM</code> and <code>TASK_ITEM</code> include:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code><em>description</em></code>: natural language specification of what the Task is;</p>
+<p><code><em>description</em></code>: natural language specification of the work of the Task;</p>
 </li>
 <li>
-<p><code><em>preconditions</em></code>, <code><em>wait_conditions</em></code>, <code><em>execution_time</em></code>: operational conditions for determining if a Task is available for execution by a performer;</p>
+<p><code><em>preconditions</em></code>: operational conditions for determining if a Task is available for execution by a performer;</p>
+</li>
+<li>
+<p><code><em>wait_conditions</em></code>: specification of coordinating wait conditions for Task completion by another performer;</p>
+</li>
+<li>
+<p><code><em>notifications</em></code>: specfication of coordinating notifications to be sent to other performer / Task contexts;</p>
+</li>
+<li>
+<p><code><em>execution_time</em></code>: optional timing plan for Tasks;</p>
 </li>
 <li>
 <p><code><em>indications</em></code>: clinical conditions for the Task being applicable;</p>
 </li>
 <li>
-<p><code><em>optionality</em></code>: indicates whether the Task is regarded as optional or mandatory in the overall Task definition, typically set by a guideline;</p>
-</li>
-<li>
-<p><code><em>notifications</em></code>: specfication of coordinating notifications to be sent to other performer / Task contexts;</p>
+<p><code><em>optionality</em></code>: indicates whether the Task is regarded as optional or mandatory in the overall Task plan, typically set by a guideline;</p>
 </li>
 <li>
 <p><code><em>costing_data</em></code>: fine-grained data to enable cost determination of work performed;</p>
@@ -1101,7 +1219,7 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_task_types"><a class="anchor" href="#_task_types"></a>6.1.5. Task Types</h4>
+<h4 id="_task_plan_compositional_structure"><a class="anchor" href="#_task_plan_compositional_structure"></a>6.1.5. Task Plan Compositional Structure</h4>
 <div class="paragraph">
 <p>As mentioned in the requirements section, the granularity of a Task can be variable from one healthcare context to another, as per the cannulation example. This leads to two possibilities for representing a real world Task:</p>
 </div>
@@ -1116,19 +1234,19 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>The model described here thus makes no <em>a priori</em> assumptions about granularity of representation of a given real-world task, and both representations are possible. This first kind is thus represented as an instance of the class <code>DEFINED_TASK</code>, while the second is achieved with the use of an <code>EXTERNAL_TASK</code> which refers out to another <code>TASK_PLAN</code> to be executed by the same performer.</p>
+<p>The model described here thus makes no <em>a priori</em> assumptions about granularity of representation of a given real-world task, and both representations are possible. This first kind is thus represented as an instance of the class <code>DEFINED_TASK</code>, while the second is achieved with the use of an <code>EXTERNAL_PLAN</code> which refers out to another <code>TASK_PLAN</code> to be executed by the same performer.</p>
 </div>
 <div class="paragraph">
-<p>The <code>EXTERNAL_TASK</code> type gives rise to the possibility of a hierarchy of linked Task Plans, with each successive member in the chain representing a more detailed form of a given real world task. This can be visualised as follows.</p>
+<p>The <code>EXTERNAL_PLAN</code> type gives rise to the possibility of a hierarchy of linked Task Plans, with each successive member in the chain representing a more detailed form of a given real world task. This can be visualised as follows.</p>
 </div>
 <div id="task_linking" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="diagrams/task_linking.svg" alt="task linking" width="70%">
 </div>
-<div class="title">Figure 8. Task Plan linking</div>
+<div class="title">Figure 9. Task Plan linking</div>
 </div>
 <div class="paragraph">
-<p>A structure like the above may be used differently by performers of differing training levels - since each <code>EXTERNAL_TASK</code> has its own <code><em>description</em></code>, an expert user may require no further list of steps, but a trainee might make use of the full hierarchical structure. The <code><em>training_level</em></code> attribute on <code>TASK_PLAN</code> can be used to control this. A higher value corresponds to a lower level of expertise, and different values can be set on different linked <code>TASK_PLANs</code>. The workflow application may treat different users as being of different training levels, in which case Task Plans of higher training levels can be hidden. In the above example, a principal performer with trainee level = 7 will see the three Task Plans on the left, but not the final one, since it has a trainee level of 10.</p>
+<p>A structure like the above may be used differently by performers of differing training levels - since each <code>EXTERNAL_PLAN</code> has its own inherited <code><em>description</em></code>, an expert user may require no further list of steps, but a trainee might make use of the full hierarchical structure. The <code><em>training_level</em></code> attribute on <code>TASK_PLAN</code> can be used to control this. A higher value corresponds to a lower level of expertise, and different values can be set on different linked <code>TASK_PLANs</code>. The workflow application may treat different users as being of different training levels, in which case Task Plans of higher training levels can be hidden. In the above example, a principal performer with trainee level = 7 will see the three Task Plans on the left, but not the final one, since it has a trainee level of 10.</p>
 </div>
 <div class="paragraph">
 <p>The default value of <code><em>training_level</em></code> is 0.</p>
@@ -1138,7 +1256,7 @@
 <div class="sect2">
 <h3 id="_task_definition"><a class="anchor" href="#_task_definition"></a>6.2. Task Definition</h3>
 <div class="paragraph">
-<p>The job of specifying the work to be done in a concrete (i.e. inline) Task definition is achieved via the <code>DEFINED_TASK</code> class and its atttribute <code><em>prototype</em></code>, of type <code>ENTRY</code>, which enables the details of a Task to be specified in terms of a descendant of the <code>ENTRY</code> class. This is typically an <code>ACTION</code> instance but could be an <code>OBSERVATION</code>, <code>ADMIN_ENTRY</code> or other descendant.</p>
+<p>The description of the work of a Task or Task Group is stated in the <code><em>description</em></code> attribute, inherited from <code>PLAN_ITEM</code>. This applies to <code>DEFINED_TASKs</code> (inline definitions) and external Plan references. A detailed specification of the work to be done in concrete (i.e. inline) Task definition may be stated via the <code>DEFINED_TASK</code> class optional atttribute <code><em>prototype</em></code>, of type <code>ENTRY</code>, which enables the details of a Task to be specified in terms of a descendant of the <code>ENTRY</code> class. This is typically an <code>ACTION</code> instance but could be an <code>OBSERVATION</code>, <code>ADMIN_ENTRY</code> or other descendant.</p>
 </div>
 <div class="paragraph">
 <p>The attribute is called 'prototype' because the target Entry instance is understood as a partially populated, prototype 'planning time' partial copy of an Entry that will be created when the Task is actually performed. For example, a Task Plan for administering medication at 8 hourly intervals over a number of days could consist of a number of <code>DEFINED_TASKs</code>, each having a protoype of an <code>ACTION</code> instance based on the <code>openEHR-EHR-ACTION.medication.v1</code> archetype or a templated version thereof. Each such instance would contain the structured description of the medication administration and time, and when the administration was actually performed, an <code>ACTION</code> instance would be created from the prototype, modified to reflect any divergence from the planned form of the Task, and committed to the EHR in the normal way.</p>
@@ -1150,7 +1268,7 @@
 <div class="content">
 <img src="diagrams/task_definition.svg" alt="task definition" width="35%">
 </div>
-<div class="title">Figure 9. Task definition</div>
+<div class="title">Figure 10. Task definition</div>
 </div>
 <div class="paragraph">
 <p>Assuming that the Task Plan is archetyped in the same way as Entries and other elements of the EHR, this scheme supports various modes of design-time specification. The <code><em>prototype</em></code> attribute in a <code>TASK_PLAN</code> archetype will usually be represented by an archetype slot or external reference, which specifies identifiers of permitted archetypes (or templates) of the target type, i.e. <code>ACTION</code> or other Entry. This can be used in various ways, as follows:</p>
@@ -1169,7 +1287,7 @@
 <p>In the latter case, the slot may be filled in the Task Plan template with an <code>ACTION</code> or other Entry archetype, allowing the Tasks to be fully specified inline as in the external reference case. Alternatively, it may be left unresolved, which would allow the workflow application to choose the exact Task definition archetype at runtime.</p>
 </div>
 <div class="paragraph">
-<p>One reason to allow a Task to contain a <code><em>prototype</em></code> reference that remains unresolved until runtime is if the Task represents the act of making an observation, for example, taking a blood pressure. In such cases, no prototype at all may be needed, and the Task <code><em>description</em></code> attribute (inherited from <code>TASK_PLAN_ITEM</code>) may be sufficient information for the performer. On the other hand, a prototype <code>OBSERVATION</code> could be specified in the <code>TASK_PLAN</code> template, which defines a particular form of the observation, e.g. a blood pressure which only records mean arterial pressure and cuff size.</p>
+<p>One reason to allow a Task to contain a <code><em>prototype</em></code> reference that remains unresolved until runtime is if the Task represents the act of making an observation, for example, taking a blood pressure. In such cases, no prototype at all may be needed, and the Task <code><em>description</em></code> attribute (inherited from <code>PLAN_ITEM</code>) may be sufficient information for the performer. On the other hand, a prototype <code>OBSERVATION</code> could be specified in the <code>TASK_PLAN</code> template, which defines a particular form of the observation, e.g. a blood pressure which only records mean arterial pressure and cuff size.</p>
 </div>
 <div class="paragraph">
 <p>To allow further flexibility, The multiplicity of the <code><em>prototype</em></code> attribute is unlimited, to allow for the possibility of one Task being prototyped by more than one Entry instance, e.g. an <code>ACTION</code> and an <code>OBSERVATION</code>, two <code>ADMIN_ENTRY</code> instances and so on.</p>
@@ -1189,7 +1307,7 @@
 <div class="content">
 <img src="diagrams/task_coordination.svg" alt="task coordination" width="70%">
 </div>
-<div class="title">Figure 10. Task coordination</div>
+<div class="title">Figure 11. Task coordination</div>
 </div>
 </div>
 <div class="sect3">
@@ -1239,7 +1357,7 @@
 <div class="sect3">
 <h4 id="_pre_conditions"><a class="anchor" href="#_pre_conditions"></a>6.2.3. Pre-conditions</h4>
 <div class="paragraph">
-<p>IN addition to timing, other conditions may determine when or if a Task can be performed. These are modelled as the <code>TASK_PLAN_ITEM</code> attribute <code><em>preconditions</em>: TASK_PRECONDITION</code>. The precondition is formally represented as a <code>DV_PARSABLE</code>, which would normally contain a string of <a href="http://www.openehr.org/releases/BASE/latest/expression.html">openEHR Expression Language</a> syntax, but may contain another syntax.</p>
+<p>In addition to timing, other conditions may determine when or if a Task can be performed. These are modelled as the <code>TASK_ITEM</code> attribute <code><em>preconditions</em>: TASK_PRECONDITION</code>. A precondition is formally represented as a <code>DV_PARSABLE</code>, which would normally contain a string in <a href="http://www.openehr.org/releases/BASE/latest/expression.html">openEHR Expression Language</a> syntax, but may contain another syntax.</p>
 </div>
 <div class="paragraph">
 <p>Pre-conditions can be used in two ways. They may express real-world conditions containing references to EHR-available data items, such as vital signs, white cell count or other such things. Alternatively, they may be used as part of a decision group structure, in which case they reference a variable from a <code>DECISION_GROUP</code> instance. This is described in more detail below.</p>
@@ -1249,25 +1367,51 @@
 <div class="sect2">
 <h3 id="_decision_structures"><a class="anchor" href="#_decision_structures"></a>6.3. Decision Structures</h3>
 <div class="paragraph">
-<p>A more advanced application of Task Plans includes decision pathways, consisting of a decision point and a number of dependent pathays. This is used to represent the decision pathways found in guidelines.</p>
-</div>
-<div class="paragraph">
-<p>The following diagram shows a typical decision structure.</p>
+<p>A more advanced application of Task Plans includes decision structures in which Tasks are executed conditionally according to logic statements included in the Task Plan. In this model, a decision structure is represented by the classes <code>DECISION_GROUP</code> and <code>DECISION_PATH_GROUP</code>. These enable the decision points found in guidelines to be represented. The following diagram shows a typical decision structure.</p>
 </div>
 <div id="decision_structure" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/decision_structure.svg" alt="decision structure" width="40%">
+<img src="diagrams/decision_structure.svg" alt="decision structure" width="50%">
 </div>
-<div class="title">Figure 11. Decision structure</div>
+<div class="title">Figure 12. Decision structure</div>
 </div>
 <div class="paragraph">
-<p>A decision point is represented by a <code>DECISION_GROUP</code> instance, which contains a <code><em>value_expression</em></code> in the form of an assignment of an expression to a variable that can be later tested, and has its <code><em>execution_type</em></code> set to <code>conditional</code>. Each pathway is represented by a normal <code>TASK_GROUP</code> with a precondition in the form of an assertion on the same variable. By this method, the workflow engine can determine which group to execute based on the runtime value of the variable.</p>
+<p>A decision point is represented by a <code>DECISION_GROUP</code> instance, which contains a <code><em>value_expression</em></code> in the form of an assignment of an expression to a variable that can be later tested, and has its <code><em>execution_type</em></code> set to <code>conditional</code>. Each pathway is represented by a <code>DECISION_PATH_GROUP</code> instance with a <code><em>test_expression</em></code> in the form of an assertion on the same variable. By this method, the workflow engine can determine which group to execute based on the runtime value of the variable.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_task_availability"><a class="anchor" href="#_task_availability"></a>6.4. Task Availability</h3>
-<div class="paragraph tbd">
-<p>To be continued.</p>
+<div class="paragraph">
+<p>A workflow application or engine executing a Task Plan can determine the availability for execution of any Task Group or Task as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>timing</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Task execution time, if set, with respect to current time;</p>
+</li>
+<li>
+<p>check completion status of preceding Tasks / Groups within the current Task Group;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>validity</strong>:</p>
+</li>
+<li>
+<p>check that Task wait notifications have been received from related Task Plans executing in the same group;</p>
+</li>
+<li>
+<p>check Task preconditions, assessed by executing precondition expressions against the EHR.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The workflow application may provide an override capability so that a Task can be performed before it is determined to be available. This would enable a user to perform the Task anyway, with the corresponding <code>TASK_EVENT_RECORD</code> recording the use of override.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1288,7 +1432,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Logical list of Tasks in a structure defining order and conditions of execution of items of work intended to achieve a goal. A Task Plan consists of a top-level TASK_GROUP containing TASK_PLAN_ITEMs, which are either atomic TASKs or more TASK_GROUPs.</p>
+<p>Logical list of Tasks in a structure defining order and conditions of execution of items of work intended to achieve a goal. A Task Plan consists of a top-level TASK_GROUP containing PLAN_ITEMs, which are either atomic TASKs, more TASK_GROUPs or DECISION nodes.</p>
 </div>
 <div class="paragraph">
 <p>A Task Plan specifies a principal_performer, representing a kind of actor who can perform the Tasks, and bounding start_time and completion_time information.</p>
@@ -1357,7 +1501,7 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>principal_performer</strong>: <code>TASK_PARTICIPATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Specification of principle performer of this Task Plan as a Participation, typically with role and function set.</p>
+<p>Specification of principle performer of this Task Plan as a Participation, in terms of role and optionally function, mode and specific performer as appropriate.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1408,7 +1552,7 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>best_practice_ref</strong>: <code>DV_URI</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>A URI (typically a local URL) that points to the document form of any governing guideline or other best practice publication in use in the current institution. This link provides a way for a clinician to cross-check the Task List design and functioning against the definitive document that acts as the source of its semantics.</p>
+<p>A URI (typically a local URL) that points to the document form of any governing guideline or other best practice publication in use in the current institution. This link provides a way for a clinician to cross-check the Task Plan design and functioning against the definitive document that acts as the source of its semantics.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1416,18 +1560,6 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>expiry_time</strong>: <code>Duration</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Maximal date/time by which this Task Plan should be considered obsolete. If not set, the Task Plan would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the execution_time attribute of TASKs in the plan.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>TASK_LIFECYCLE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Lifecycle state of Task Plan, derived as a copy of the lifecycle_state() of the top-level TASK_GROUP.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1500,7 +1632,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_task_plan_item_class"><a class="anchor" href="#_task_plan_item_class"></a>6.5.3. TASK_PLAN_ITEM Class</h4>
+<h4 id="_plan_item_class"><a class="anchor" href="#_plan_item_class"></a>6.5.3. PLAN_ITEM Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1510,21 +1642,12 @@
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>TASK_PLAN_ITEM (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>PLAN_ITEM (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract parent of any type of the TASK_PLAN member types TASK_GROUP and TASK.</p>
-</div>
-<div class="paragraph">
-<p>Supports definition of optionality, pre-conditions, wait conditions, indications and notifications with any Task Group or Task.</p>
-</div>
-<div class="paragraph">
-<p>Provides a place to record fine-grained costing data.</p>
-</div>
-<div class="paragraph">
-<p>Informal other participations can also be recorded for any Task Group or Task, although these do not replace the Task Plan principal_performer.</p>
+<p>Parent type of all item types that may appear within a Task Plan structure.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1537,15 +1660,8 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_participations</strong>: <code>List&lt;TASK_PARTICIPATION&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>List of participations for task item.</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>task_group_id</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_id</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Integer indicating the ordinal number of this Task within its Task group. Used for referencing from other objects. Required to be unique with respect to other siblings in the same Task group.</p>
 </div>
@@ -1563,6 +1679,53 @@
 <p>Human-readable form of the task directive.</p>
 </div></div></td>
 </tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_task_item_class"><a class="anchor" href="#_task_item_class"></a>6.5.4. TASK_ITEM Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>TASK_ITEM (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent type of the Task definition types TASK_GROUP and TASK.</p>
+</div>
+<div class="paragraph">
+<p>Supports definition of optionality, pre-conditions, wait conditions, indications and notifications with any Task Group or Task.</p>
+</div>
+<div class="paragraph">
+<p>Provides a place to record fine-grained costing data.</p>
+</div>
+<div class="paragraph">
+<p>Informal other participations can also be recorded for any Task Group or Task, although these do not replace the Task Plan principal_performer.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLAN_ITEM</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_participations</strong>: <code>List&lt;TASK_PARTICIPATION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of participations for task item.</p>
+</div></div></td>
+</tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>costing_data</strong>: <code>TASK_COSTING</code></p></td>
@@ -1574,7 +1737,7 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preconditions</strong>: <code>List&lt;TASK_PRECONDITION&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Condition which must be met for the PLANNED_TASK to be available in a runtime execution context.</p>
+<p>Condition which must be met for the TASK_ITEM to be available to perform in a runtime execution context.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1633,7 +1796,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_timing_spec_class"><a class="anchor" href="#_timing_spec_class"></a>6.5.4. TIMING_SPEC Class</h4>
+<h4 id="_timing_spec_class"><a class="anchor" href="#_timing_spec_class"></a>6.5.5. TIMING_SPEC Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1673,7 +1836,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_clock_timing_class"><a class="anchor" href="#_clock_timing_class"></a>6.5.5. CLOCK_TIMING Class</h4>
+<h4 id="_clock_timing_class"><a class="anchor" href="#_clock_timing_class"></a>6.5.6. CLOCK_TIMING Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1717,7 +1880,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_event_linked_timing_class"><a class="anchor" href="#_event_linked_timing_class"></a>6.5.6. EVENT_LINKED_TIMING Class</h4>
+<h4 id="_event_linked_timing_class"><a class="anchor" href="#_event_linked_timing_class"></a>6.5.7. EVENT_LINKED_TIMING Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1771,13 +1934,15 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>event_order</strong>: <code>TEMPORAL_RELATION</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Order of event_offset with respect to event_type.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_temporal_relation_enumeration"><a class="anchor" href="#_temporal_relation_enumeration"></a>6.5.7. TEMPORAL_RELATION Enumeration</h4>
+<h4 id="_temporal_relation_enumeration"><a class="anchor" href="#_temporal_relation_enumeration"></a>6.5.8. TEMPORAL_RELATION Enumeration</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1803,23 +1968,29 @@
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">before</p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Before a reference event.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">with</p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>At the same time as a reference event.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">after</p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>After a reference event.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_task_linked_timing_class"><a class="anchor" href="#_task_linked_timing_class"></a>6.5.8. TASK_LINKED_TIMING Class</h4>
+<h4 id="_task_linked_timing_class"><a class="anchor" href="#_task_linked_timing_class"></a>6.5.9. TASK_LINKED_TIMING Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1877,7 +2048,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_timing_reference_enumeration"><a class="anchor" href="#_timing_reference_enumeration"></a>6.5.9. TIMING_REFERENCE Enumeration</h4>
+<h4 id="_timing_reference_enumeration"><a class="anchor" href="#_timing_reference_enumeration"></a>6.5.10. TIMING_REFERENCE Enumeration</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1891,7 +2062,9 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Enumeration of types of temporal reference within a Task Plan.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1901,18 +2074,22 @@
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">previous_task</p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The previous task in a series of tasks.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">current_group</p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The start time of the current group.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_task_group_class"><a class="anchor" href="#_task_group_class"></a>6.5.10. TASK_GROUP Class</h4>
+<h4 id="_task_group_class"><a class="anchor" href="#_task_group_class"></a>6.5.11. TASK_GROUP Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1935,7 +2112,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TASK_PLAN_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TASK_ITEM</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1944,7 +2121,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>List&lt;TASK_PLAN_ITEM&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>List&lt;PLAN_ITEM&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Set of Tasks to perform. Sequencing is either the natural order of the tasks list, or may be controlled by</p>
 </div></div></td>
@@ -1960,7 +2137,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_decision_group_class"><a class="anchor" href="#_decision_group_class"></a>6.5.11. DECISION_GROUP Class</h4>
+<h4 id="_decision_group_class"><a class="anchor" href="#_decision_group_class"></a>6.5.12. DECISION_GROUP Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1975,10 +2152,55 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A specialised form of TASK_GROUP that represents as a decision node in guideline-based Task Plan definition. The decision is represented by the value_expression, which at runtime is instantiated as an ASSIGNMENT.</p>
+<p>A specialised node that represents a decision point in guideline-based Task Plan definition. The decision is represented by the value_expression, which at runtime is instantiated as an ASSIGNMENT.</p>
 </div>
 <div class="paragraph">
 <p>Instances of this class also act as a container for the subordinate decision paths which are modelled as TASK_GROUPs with execution_type = decisional, and each having a precondition representing a match expression for the value generated by the value_expression on the parent DECISION_GROUP object.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PLAN_ITEM</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value_expression</strong>: <code>DV_PARSABLE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>An expression in the form of a variable assignment from an expression or a plain variable reference, if no expression is required. The same variable will appear in the test_expressions of all immediate child paths.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>paths</strong>: <code>List&lt;DECISION_PATH_GROUP&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Set of Task Groups that are also decision paths in this Decision Group.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_decision_path_group_class"><a class="anchor" href="#_decision_path_group_class"></a>6.5.13. DECISION_PATH_GROUP Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>DECISION_PATH_GROUP</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A specialised kind of TASK_GROUP that corresponds to a particular decision path branch from a DECISION_GROUP.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1992,14 +2214,16 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value_expression</strong>: <code>DV_PARSABLE</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>test_expression</strong>: <code>DV_PARSABLE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A test expression on a variable whose value is defined by the value_expression attribute of the owning DECISION_GROUP.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_execution_type_enumeration"><a class="anchor" href="#_execution_type_enumeration"></a>6.5.12. EXECUTION_TYPE Enumeration</h4>
+<h4 id="_execution_type_enumeration"><a class="anchor" href="#_execution_type_enumeration"></a>6.5.14. EXECUTION_TYPE Enumeration</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2036,16 +2260,11 @@
 <p>Items may be executed in parallel, with no regard to order in the representation.</p>
 </div></div></td>
 </tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">conditional</p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_task_class"><a class="anchor" href="#_task_class"></a>6.5.13. TASK Class</h4>
+<h4 id="_task_class"><a class="anchor" href="#_task_class"></a>6.5.15. TASK Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2060,18 +2279,18 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract parent of various types of planned Task, which may be real work items (DEFINED_TASK) or references to another Task Plan (EXTERNAL_TASK).</p>
+<p>Abstract parent of various types of planned Task, which may be real work items (DEFINED_TASK) or references to another Task Plan (EXTERNAL_PLAN).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TASK_PLAN_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TASK_ITEM</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_external_task_class"><a class="anchor" href="#_external_task_class"></a>6.5.14. EXTERNAL_TASK Class</h4>
+<h4 id="_external_plan_class"><a class="anchor" href="#_external_plan_class"></a>6.5.16. EXTERNAL_PLAN Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2081,7 +2300,7 @@
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXTERNAL_TASK</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXTERNAL_PLAN</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2109,7 +2328,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_defined_task_class"><a class="anchor" href="#_defined_task_class"></a>6.5.15. DEFINED_TASK Class</h4>
+<h4 id="_defined_task_class"><a class="anchor" href="#_defined_task_class"></a>6.5.17. DEFINED_TASK Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2146,14 +2365,14 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>prototype</strong>: <code>List&lt;ENTRY&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Prototype instance of one or more Entries that express the Task specifics.</p>
+<p>Prototype instance of one or more Entries that express the specific work of the Task. Normally one Entry would be used, typically an ACTION, but more than one may sometimes make sense, e.g. an ACTION and an OBSERVATION.</p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_task_notification_class"><a class="anchor" href="#_task_notification_class"></a>6.5.16. TASK_NOTIFICATION Class</h4>
+<h4 id="_task_notification_class"><a class="anchor" href="#_task_notification_class"></a>6.5.18. TASK_NOTIFICATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2194,7 +2413,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_task_precondition_class"><a class="anchor" href="#_task_precondition_class"></a>6.5.17. TASK_PRECONDITION Class</h4>
+<h4 id="_task_precondition_class"><a class="anchor" href="#_task_precondition_class"></a>6.5.19. TASK_PRECONDITION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2243,27 +2462,72 @@
 <div class="sect2">
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>7.1. Overview</h3>
 <div class="paragraph">
-<p>The following figure shows the execution related part of the <code>rm.task_planning</code> package.</p>
+<p>The following figure shows the execution related part of the <code>rm.task_planning</code> package. The consists of two parts: the runtime part, and the 'execution history' part. The former is a partial specification of classes that could be instantiated at Task Plan execution time to track Plan execution, and is provided as a guide to how execution tracking can be done. The latter classes describe the execution history after the fact, in the form of 'event records' that can optionally be stored in the EHR after Task Plan execution has completed.</p>
 </div>
 <div id="rm_task_planning_execution" class="imageblock text-center" style="text-align: center">
 <div class="content">
 <img src="../UML/diagrams/RM-task_planning-execution.svg" alt="RM task planning execution">
 </div>
-<div class="title">Figure 12. rm.task_planning package - execution model</div>
+<div class="title">Figure 13. rm.task_planning package - execution model</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_task_plan_instantiation"><a class="anchor" href="#_task_plan_instantiation"></a>7.2. Task Plan Instantiation</h3>
-<div class="paragraph tbd">
-<p>To be continued</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_task_execution"><a class="anchor" href="#_task_execution"></a>7.3. Task Execution</h3>
-<div class="sect3">
-<h4 id="_task_lifecycle_model"><a class="anchor" href="#_task_lifecycle_model"></a>7.3.1. Task Lifecycle Model</h4>
+<h3 id="_task_plan_execution_tracking"><a class="anchor" href="#_task_plan_execution_tracking"></a>7.2. Task Plan Execution Tracking</h3>
 <div class="paragraph">
-<p>Each <code>TASK</code> in a <code>TASK_PLAN</code> has a lifecycle consisting of various states it may pass through in time. The lifecycle is simple, since it only has to take account of the states a Task - understood as a task <em>definition</em> - can pass through, with documentation of the Task execution occurring in the form of separate openEHR <code>ACTION</code> or other Entry objects. The states are as follows:</p>
+<p>There are various aspects to Task Plan execution, some of which are complex, and not directly covered by this specification. The execution phases are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>instantiation</strong>: create an instance of this Task Plan in the Task Plan application;</p>
+</li>
+<li>
+<p><strong>allocation</strong>: allocate the Plan instance to an authenticated user, as principal performer;</p>
+</li>
+<li>
+<p><strong>execution</strong>: the Task Plan application displays Tasks and advances the state of execution view interactions with the user;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>each interaction, also change of principal performer, abandonment, and any other events will cause generation of Execution history events, which may be persisted;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>commit to EHR</strong>: an updated state of the Task Plan may be committed to the EHR, containing final lifecycle states and execution history.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>During a long-running Task Plan, the principal performer may change. This will usually be the case for Task Plans that run longer than a work shift.</p>
+</div>
+<div class="sect3">
+<h4 id="_task_plan_instantiation"><a class="anchor" href="#_task_plan_instantiation"></a>7.2.1. Task Plan Instantiation</h4>
+<div class="paragraph">
+<p>Initially, a Task Plan definition that has been created will have the lifecycle state value <code>planned</code> in each <code>TASK_ITEM</code> instance. When the definition is activated, it is instantiated within a Task execution application. This creates a copy of it, or part of it, along with instances of the <code>RT_XXX</code> classes ('RT' = runtime).</p>
+</div>
+<div class="paragraph">
+<p>At instantiation, an instance of <code>RT_TASK_PLAN</code> is created and the  <code><em>start_time</em></code> attributes set to the current time respectively. This object will normally be maintained for the lifetime of execution of the Task Plan. If there are execution times in the plan, they will be trivially convertable to absolute clock times. The <code><em>lifecycle_state</em></code> attribute of one or more <code>RT_TASK</code> instances may be set to <code>available</code> at this point, or at a later time if scheduled for specific times.</p>
+</div>
+<div class="paragraph">
+<p>At the same time, an instance of <code>EXECUTION_HISTORY</code> is also created, proving a root points to accumulate Task Plan execution event records.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_allocation"><a class="anchor" href="#_allocation"></a>7.2.2. Allocation</h4>
+<div class="paragraph">
+<p>Before an instantiated Task Plan can be executed, it must be allocated. This is done by user authenticating to the Task Plan application; this user will be set as the <code><em>principal_performer</em></code> in the <code>RT_TASK_PLAN</code> instance.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_task_execution"><a class="anchor" href="#_task_execution"></a>7.2.3. Task Execution</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_task_lifecycle_model"><a class="anchor" href="#_task_lifecycle_model"></a>7.2.4. Task Lifecycle Model</h4>
+<div class="paragraph">
+<p>During execution, each Task is represented by an instance of <code>RT_TASK</code> that refers back to its <code>TASK</code> definition instance. Each Task in the Plan has a lifecycle consisting of various states it may pass through in time. Changes in the lifecycle are recorded in <code>RT_TASK.<em>lifecycle_state</em></code>. The lifecycle is simple, since it only has to take account of the states a Task itself can pass through, with documentation of the Task execution occurring in the form of separate openEHR <code>ACTION</code> or other Entry objects. The states are as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2274,7 +2538,7 @@
 <p><em>planned</em>: defined, but not available for execution;</p>
 </li>
 <li>
-<p><em>available</em>: available for execution, due to previous Tasks having been performed;</p>
+<p><em>available</em>: available for execution, due to previous Tasks having been performed, preconditions being met, wait conditions having been satisfied and if there is a time specification on the Task, the current time being at or later than the stated time;</p>
 </li>
 <li>
 <p><em>cancelled</em>: cancelled prior to being performed;</p>
@@ -2294,25 +2558,13 @@
 <div class="content">
 <img src="../UML/diagrams/RM-TaskStateMachine.svg" alt="RM TaskStateMachine" width="60%">
 </div>
-<div class="title">Figure 13. Task lifecycle state machine</div>
+<div class="title">Figure 14. Task lifecycle state machine</div>
 </div>
 <div class="paragraph">
-<p>The state for each Task is recorded in the <code><em>lifecycle_state</em></code> attribute.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-This is the only execution time related attribute in the Task Plan definition. If it is necessary to record the final lifecycle states of Tasks in a completed Task Plan, the <code>TASK_PLAN</code> will need to be re-committed to the EHR as a new version in order to achieve this.
-</td>
-</tr>
-</table>
+<p>It may be that one or more Tasks do not evaluate to <code>available</code> at runtime when the principal performer wants to treat them as being available. This may happen if the performer wants to execute a Task earlier than scheduled, or decides that an unmet precondition or wait condition does not matter (for example, they may know that it is met, but the Task Plan application may not yet know). Accordingly, an override option</p>
 </div>
 <div class="paragraph">
-<p>Since a Task Plan is a hierarchical structure consisting of one or more Task Groups, a way of rolling up Task state is needed. The following algorithm is used to compute the effective lifecycle state of a <code>TASK_GROUP</code> from the set of states of its members (which may include other <code>TASK_GROUPs</code>).</p>
+<p>Since a Task Plan is a hierarchical structure consisting of one or more Task Groups, a way of rolling up Task state is needed. The following algorithm is used to compute the effective lifecycle state of a <code>RT_TASK_GROUP</code> from the set of states of its members (which may include other <code>RT_TASK_GROUPs</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2338,11 +2590,26 @@ This is the only execution time related attribute in the Task Plan definition. I
 </div>
 </div>
 <div class="paragraph">
-<p>Since the Task Group is also the top level structure of the Task Plan, the inferred state of the List as a whole is also provided by this algorithm.</p>
+<p>Since the runtime Task Group is also the top-level structure of the runtime Task Plan, the inferred state of the Plan as a whole is also provided by this algorithm applied to the top-level runtime Task Group.</p>
+</div>
+<div class="paragraph">
+<p>Lifecycle state values recorded in <code>RT_TASK</code> objects may be copied into the <code><em>lifecycle_state</em></code> attributes of the corresponding definition Task objects if required, for example, in order to persist a final snapshot of the Task Plan into the EHR.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This is the only execution time related attribute in the Task Plan definition. If it is necessary to record the final lifecycle states of Tasks in a completed Task Plan, the <code>TASK_PLAN</code> will need to be re-committed to the EHR as a new version in order to achieve this.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_notifications"><a class="anchor" href="#_notifications"></a>7.3.2. Notifications</h4>
+<h4 id="_notifications"><a class="anchor" href="#_notifications"></a>7.2.5. Notifications</h4>
 <div class="paragraph">
 <p>Notifications can be specified to be generated at various lifecycle state changes.</p>
 </div>
@@ -2350,19 +2617,10 @@ This is the only execution time related attribute in the Task Plan definition. I
 <p>To be continued</p>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_task_execution_tracking"><a class="anchor" href="#_task_execution_tracking"></a>7.4. Task Execution Tracking</h3>
-<div class="paragraph">
-<p>Following the design principle of separation of Task definition and execution state, the model represents the history and state of execution of a Task Plan as a separate high-level part of the model, via the <code><em>execution_history</em></code> attribute of <code>TASK_PLAN</code>. The execution of a Task Plan is represented in terms of transitions over time between the states of the Task lifecycle model, along with associated information.</p>
-</div>
-<div class="paragraph tbd">
-<p>To be continued</p>
-</div>
 <div class="sect3">
-<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>7.4.1. Class Descriptions</h4>
+<h4 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>7.2.6. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_task_lifecycle_enumeration"><a class="anchor" href="#_task_lifecycle_enumeration"></a>7.4.1.1. TASK_LIFECYCLE Enumeration</h5>
+<h5 id="_task_lifecycle_enumeration"><a class="anchor" href="#_task_lifecycle_enumeration"></a>7.2.6.1. TASK_LIFECYCLE Enumeration</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2424,7 +2682,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </table>
 </div>
 <div class="sect4">
-<h5 id="_executing_task_plan_class"><a class="anchor" href="#_executing_task_plan_class"></a>7.4.1.2. EXECUTING_TASK_PLAN Class</h5>
+<h5 id="_rt_task_plan_class"><a class="anchor" href="#_rt_task_plan_class"></a>7.2.6.2. RT_TASK_PLAN Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2434,7 +2692,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXECUTING_TASK_PLAN</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RT_TASK_PLAN</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2456,19 +2714,49 @@ This is the only execution time related attribute in the Task Plan definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>EXECUTING_TASK_GROUP</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>RT_TASK_GROUP</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Root of run-time Task Plan Task structure.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner</strong>: <code>TASK_PLAN</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Owning Task Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>wait_conditions</strong>: <code>List&lt;RT_WAIT_CONDITIONS&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference list of all wait conditions in the Task Plan, and current status.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>principal_performer</strong>: <code>PARTY_PROXY</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Run-time principal performer - a person or other agent.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>TASK_LIFECYCLE</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Lifecycle state of Task Plan, derived as a copy of the lifecycle_state() of the definition TASK_GROUP.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_executing_task_plan_item_class"><a class="anchor" href="#_executing_task_plan_item_class"></a>7.4.1.3. EXECUTING_TASK_PLAN_ITEM Class</h5>
+<h5 id="_rt_wait_conditions_class"><a class="anchor" href="#_rt_wait_conditions_class"></a>7.2.6.3. RT_WAIT_CONDITIONS Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2478,12 +2766,60 @@ This is the only execution time related attribute in the Task Plan definition. I
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EXECUTING_TASK_PLAN_ITEM (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RT_WAIT_CONDITIONS</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract parent of execution-time types that correspond to design time TASK_PLAN_ITEM instances.</p>
+<p>Class representing the runtime tracked form of wait_conditions on a single TASK_ITEM.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>task_item</strong>: <code>RT_TASK_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to the Task Item being tracked.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>outstanding</strong>: <code>List&lt;TASK_NOTIFICATION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Outstanding wait conditions of the referenced Task item.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>satisfied</strong>: <code>TASK_NOTIFICATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Wait conditions from Task definition that have been satisfied so far by receipt of relevant notifications.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_rt_plan_item_class"><a class="anchor" href="#_rt_plan_item_class"></a>7.2.6.4. RT_PLAN_ITEM Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RT_PLAN_ITEM (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Abstract parent of run-time types that correspond to design time PLAN_ITEM instances.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2496,20 +2832,24 @@ This is the only execution time related attribute in the Task Plan definition. I
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>TASK_PLAN_ITEM</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>participations</strong>: <code>List&lt;PARTICIPATION&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Run-time participations of this Plan Item in addition to principal performer.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>PLAN_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Corresponding item from Task Plan definition. Redefined in descendants to the definition type corresponding to each runtime (RT_XXX) type.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_executing_task_group_class"><a class="anchor" href="#_executing_task_group_class"></a>7.4.1.4. EXECUTING_TASK_GROUP Class</h5>
+<h5 id="_rt_task_item_class"><a class="anchor" href="#_rt_task_item_class"></a>7.2.6.5. RT_TASK_ITEM Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2519,17 +2859,17 @@ This is the only execution time related attribute in the Task Plan definition. I
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXECUTING_TASK_GROUP</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RT_TASK_ITEM (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Execution-time homologue of TASK_GROUP from a Task Plan definition definition.</p>
+<p>Abstract parent of run-time types that correspond to design time TASK_ITEM instances.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXECUTING_TASK_PLAN_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RT_PLAN_ITEM</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2537,9 +2877,109 @@ This is the only execution time related attribute in the Task Plan definition. I
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>List&lt;EXECUTING_TASK_PLAN_ITEM&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>TASK_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to corresponding TASK_ITEM instance in Task Plan definition. Redefined in descendants.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_rt_decision_group_class"><a class="anchor" href="#_rt_decision_group_class"></a>7.2.6.6. RT_DECISION_GROUP Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RT_DECISION_GROUP</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Run-time homologue of DECISION_GROUP from a Task Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RT_PLAN_ITEM</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value_expression</strong>: <code>ASSIGNMENT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Runtime form of value_expression from ask Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>DECISION_GROUP</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to corresponding DECISION_GROUP instance in Task Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>paths</strong>: <code>List&lt;RT_DECISION_PATH_GROUP&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Decision path groups, computed by following definition link to the corresponding DECISION_GROUP object in Task Plan definition.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_rt_task_group_class"><a class="anchor" href="#_rt_task_group_class"></a>7.2.6.7. RT_TASK_GROUP Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RT_TASK_GROUP</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Run-time homologue of TASK_GROUP from a Task Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RT_TASK_ITEM</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>TASK_GROUP</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to corresponding TASK_GROUP instance in Task Plan definition.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2553,11 +2993,18 @@ This is the only execution time related attribute in the Task Plan definition. I
 <p>Effective lifecycle state, computed from the states of members of the group.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code>List&lt;RT_PLAN_ITEM&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Member items, computed by following definition link to the corresponding TASK_GROUP object in Task Plan definition.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_executing_task_class"><a class="anchor" href="#_executing_task_class"></a>7.4.1.5. EXECUTING_TASK Class</h5>
+<h5 id="_rt_task_class"><a class="anchor" href="#_rt_task_class"></a>7.2.6.8. RT_TASK Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2567,17 +3014,17 @@ This is the only execution time related attribute in the Task Plan definition. I
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EXECUTING_TASK</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RT_TASK</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Execution-time homologue of TASK type and its descendants from a Task Plan definition.</p>
+<p>Run-time homologue of TASK type and its descendants from a Task Plan definition.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EXECUTING_TASK_PLAN_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RT_TASK_ITEM</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2587,17 +3034,77 @@ This is the only execution time related attribute in the Task Plan definition. I
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>TASK_LIFECYCLE</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Current lifecycle state of this Task at run-time.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>events</strong>: <code>List&lt;TASK_EVENT_RECORD&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>List of references to run-time events that have occurred on this Task.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preconditions</strong>: <code>List&lt;ASSERTION&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Run-time form of preconditions on corresponding TASK in Task Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>TASK</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to corresponding TASK instance in Task Plan definition.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_rt_decision_path_group_class"><a class="anchor" href="#_rt_decision_path_group_class"></a>7.2.6.9. RT_DECISION_PATH_GROUP Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RT_DECISION_PATH_GROUP</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Run-time homologue of DECISION_PATH_GROUP from a Task Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">RT_TASK_ITEM</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>test_expression</strong>: <code>ASSERTION</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Runtime form of test_expression from ask Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>DECISION_PATH_GROUP</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to corresponding DECISION_PATH_GROUP instance in Task Plan definition.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -2605,9 +3112,9 @@ This is the only execution time related attribute in the Task Plan definition. I
 </div>
 </div>
 <div class="sect2">
-<h3 id="_task_plan_execution_history"><a class="anchor" href="#_task_plan_execution_history"></a>7.5. Task Plan Execution History</h3>
+<h3 id="_task_plan_execution_history"><a class="anchor" href="#_task_plan_execution_history"></a>7.3. Task Plan Execution History</h3>
 <div class="paragraph">
-<p>The history of execution events is represented in the class <code>EXECUTION_HISTORY</code>. This is a history of real world execution events that accumulate over the duration of workflow processing of the Task Plan. Two types of event are used:</p>
+<p>The history of execution events is represented in the runtime instance of <code>EXECUTION_HISTORY</code>. This is a history of real world execution events that accumulate over the duration of processing of the Task Plan. Two types of event are used:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2615,7 +3122,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 <p><code>TASK_EVENT_RECORD</code>: type representing a change to one consitutent Task. Thus, if the performer cancels a particular Task within the list, a <code>TASK_EVENT_RECORD</code> will be added to the history, including Task id, time, and reason; notifications can also be recorded on such events;</p>
 </li>
 <li>
-<p><code><em>LIST_EVENT_RECORD</em></code>: type representing any kind of execution event not linked to a specific Task, for example 'list abandonment'.</p>
+<p><code>TASK_PLAN_EVENT_RECORD_</code>: type representing any kind of execution event not linked to a specific Task, for example 'plan abandonment', 'new principal performer'.</p>
 </li>
 </ul>
 </div>
@@ -2628,7 +3135,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 <div class="ulist">
 <ul>
 <li>
-<p>In workflow application persistence:</p>
+<p>In the Task Plan application persistence:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -2659,9 +3166,9 @@ This is the only execution time related attribute in the Task Plan definition. I
 <p>This approach cleanly separates the definitional representation of a Task Plan, which should only change if changes to the plan are made, and the execution state, which is built during the work performance.</p>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>7.5.1. Class Descriptions</h4>
+<h4 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>7.3.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_task_plan_execution_history_class"><a class="anchor" href="#_task_plan_execution_history_class"></a>7.5.1.1. TASK_PLAN_EXECUTION_HISTORY Class</h5>
+<h5 id="_task_plan_execution_history_class"><a class="anchor" href="#_task_plan_execution_history_class"></a>7.3.1.1. TASK_PLAN_EXECUTION_HISTORY Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2705,7 +3212,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </table>
 </div>
 <div class="sect4">
-<h5 id="_event_record_class"><a class="anchor" href="#_event_record_class"></a>7.5.1.2. EVENT_RECORD Class</h5>
+<h5 id="_event_record_class"><a class="anchor" href="#_event_record_class"></a>7.3.1.2. EVENT_RECORD Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2746,7 +3253,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </table>
 </div>
 <div class="sect4">
-<h5 id="_task_plan_event_record_class"><a class="anchor" href="#_task_plan_event_record_class"></a>7.5.1.3. TASK_PLAN_EVENT_RECORD Class</h5>
+<h5 id="_task_plan_event_record_class"><a class="anchor" href="#_task_plan_event_record_class"></a>7.3.1.3. TASK_PLAN_EVENT_RECORD Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2761,7 +3268,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Record of an execution time event to a Task Plan.</p>
+<p>Record of an runtime event to a Task Plan.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2784,7 +3291,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </table>
 </div>
 <div class="sect4">
-<h5 id="_task_event_record_class"><a class="anchor" href="#_task_event_record_class"></a>7.5.1.4. TASK_EVENT_RECORD Class</h5>
+<h5 id="_task_event_record_class"><a class="anchor" href="#_task_event_record_class"></a>7.3.1.4. TASK_EVENT_RECORD Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2827,7 +3334,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>notifications</strong>: <code>List&lt;TASK_NOTIFICATION_RECORD&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>notifications_sent</strong>: <code>List&lt;TASK_NOTIFICATION_RECORD&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Notifications that were performed as part of this Task Event.</p>
 </div></div></td>
@@ -2842,11 +3349,25 @@ This is the only execution time related attribute in the Task Plan definition. I
 <p>ISSUE-fwd-refs: entry_instance is a forward reference - which requires updating the Task Plan after the Tasks have beed performed and relevant Entries committed. Is this complication worth the benefit obtained, i.e. directly followable links rather than querying, to find Entries from the Task Plan items? Is being able to determine the resulting Entries starting from the Task Plan even useful?</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preconditions_satisfied</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Set to True if all preconditions defined on the corresponding Task were satisfied at runtime. If set to False, and there were preconditions, this means that preconditions were overridden by the user at runtime.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>wait_conditions_satisfied</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Set to True if all wait_conditions for the corresponding Task were satisfied when it was performed. If False, and there were wait_conditions, wait_conditions were overridden by the user at runtime.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_task_notification_record_class"><a class="anchor" href="#_task_notification_record_class"></a>7.5.1.5. TASK_NOTIFICATION_RECORD Class</h5>
+<h5 id="_task_notification_record_class"><a class="anchor" href="#_task_notification_record_class"></a>7.3.1.5. TASK_NOTIFICATION_RECORD Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2896,14 +3417,14 @@ This is the only execution time related attribute in the Task Plan definition. I
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cost_tracking"><a class="anchor" href="#_cost_tracking"></a>7.6. Cost Tracking</h3>
+<h3 id="_cost_tracking"><a class="anchor" href="#_cost_tracking"></a>7.4. Cost Tracking</h3>
 <div class="paragraph tbd">
 <p>TBD: describe cost tracking.</p>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions_4"><a class="anchor" href="#_class_descriptions_4"></a>7.6.1. Class Descriptions</h4>
+<h4 id="_class_descriptions_4"><a class="anchor" href="#_class_descriptions_4"></a>7.4.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_task_costing_class"><a class="anchor" href="#_task_costing_class"></a>7.6.1.1. TASK_COSTING Class</h5>
+<h5 id="_task_costing_class"><a class="anchor" href="#_task_costing_class"></a>7.4.1.1. TASK_COSTING Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2930,7 +3451,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </div>
 </div>
 <div class="sect2">
-<h3 id="_transactional_micro_service"><a class="anchor" href="#_transactional_micro_service"></a>7.7. Transactional Micro-service</h3>
+<h3 id="_transactional_micro_service"><a class="anchor" href="#_transactional_micro_service"></a>7.5. Transactional Micro-service</h3>
 <div class="paragraph">
 <p>The information structures required to represent planned Tasks and references at runtime are likely to be non-trivial. For this reason, a Micro-service is defined, with a transactional interface that converts transactional calls to correct underlying information structures.</p>
 </div>
@@ -2938,9 +3459,9 @@ This is the only execution time related attribute in the Task Plan definition. I
 <p>TBC:</p>
 </div>
 <div class="sect3">
-<h4 id="_class_descriptions_5"><a class="anchor" href="#_class_descriptions_5"></a>7.7.1. Class Descriptions</h4>
+<h4 id="_class_descriptions_5"><a class="anchor" href="#_class_descriptions_5"></a>7.5.1. Class Descriptions</h4>
 <div class="sect4">
-<h5 id="_task_planning_ms_interface"><a class="anchor" href="#_task_planning_ms_interface"></a>7.7.1.1. TASK_PLANNING_MS Interface</h5>
+<h5 id="_task_planning_ms_interface"><a class="anchor" href="#_task_planning_ms_interface"></a>7.5.1.1. TASK_PLANNING_MS Interface</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3021,7 +3542,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 <div class="content">
 <img src="diagrams/planning_artefacts.svg" alt="planning artefacts" width="50%">
 </div>
-<div class="title">Figure 14. openEHR Planning Artefact Relationships</div>
+<div class="title">Figure 15. openEHR Planning Artefact Relationships</div>
 </div>
 <div class="paragraph">
 <p>In the above, items in yellow are driven solely by the guideline and have no corresponding order; planned items with a red cross have been cancelled and have no corresponding performed Action or Observation.</p>
@@ -3058,7 +3579,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 <div class="content">
 <img src="diagrams/planning_runtime_structures.svg" alt="planning runtime structures" width="80%">
 </div>
-<div class="title">Figure 15. Runtime planning structures</div>
+<div class="title">Figure 16. Runtime planning structures</div>
 </div>
 <div class="paragraph">
 <p>Various links can be recorded at execution time, as follows:</p>
@@ -3100,7 +3621,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 <div class="content">
 <img src="../UML/diagrams/Planning-typical-instance.svg" alt="Planning typical instance">
 </div>
-<div class="title">Figure 16. Typical Task Plan - CHOP Chemotherapy</div>
+<div class="title">Figure 17. Typical Task Plan - CHOP Chemotherapy</div>
 </div>
 <div class="paragraph">
 <p>It is worth considering some of the differences between how an order represents the Task and how it may be represented in a <code>DEFINED_TASK</code> and an eventual <code>ACTION</code>. Consider the fourth drug in the CHOP regimen, a choice of Prednisone or Prednisolone. In the form expressed in the order, i.e. the <code>INSTRUCTION</code>, it may be expressed in the following form:</p>
@@ -3237,7 +3758,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-01 18:45:18 MDT
+Last updated 2017-06-02 01:45:18 BST
 </div>
 </div>
 </body>

@@ -1,0 +1,41 @@
+=== RT_TASK_PLAN Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*RT_TASK_PLAN*
+
+h|*Description*
+2+a|Root object of an executing Task Plan structure.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*start_time*: `Date_time`
+a|Nominal start time for the Task Plan as a whole. The timings of individual Tasks may be specified as offsets from this time, via PLANNED_TIME.relative_offset.
+
+h|*1..1*
+|*definition*: `RT_TASK_GROUP`
+a|Root of run-time Task Plan Task structure.
+
+h|*0..1*
+|*owner*: `TASK_PLAN`
+a|Owning Task Plan definition.
+
+h|*0..1*
+|*wait_conditions*: `List<RT_WAIT_CONDITIONS>`
+a|Reference list of all wait conditions in the Task Plan, and current status.
+
+h|*1..1*
+|*principal_performer*: `PARTY_PROXY`
+a|Run-time principal performer - a person or other agent.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|
+|*lifecycle_state*: `TASK_LIFECYCLE`
+a|Lifecycle state of Task Plan, derived as a copy of the lifecycle_state() of the definition TASK_GROUP.
+|===

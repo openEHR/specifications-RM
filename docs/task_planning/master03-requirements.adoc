@@ -1,6 +1,16 @@
 = Requirements
 
-A number of commonly occurring requirements that can be addressed via the Task Plan concept are described below.
+Task planning is applicable to numerous clinical scenarios, exemplified by the following:
+
+* routine simple medication administration, e.g. for post-operative pain - tasks extend across worker shifts;
+* complex drug administration e.g. multi-drug chemotherapy over multiple days;
+* physiotherapy rehabilitation sessions - recurrent therapeutic procedure, with defined end-point;
+* dialysis - recurrent therapeutic procedure;
+* diet + physical activity plan for overweight treatment - recurrent tasks, patient as a performer;
+* surgery planning - one time event;
+* acute stroke management - multiple sets of tasks coordinated across multiple performers.
+
+Within these and many other similar clinical procedures, a number of commonly occurring generic requirements appear, as described below.
 
 == Planned Tasks for an Order
 
@@ -8,7 +18,7 @@ The simplest need is to be able to post a full plan of all actions to be perform
 
 In openEHR, an order is represented by an `INSTRUCTION` instance, which contains a directive to do something such as preform radiography or administer medication. The form of representation in the Instruction is normally _interpretable_ by an agent who will convert it to separate tasks. For example, a drug order for Amoxicillin 500mg oral tablet 3 times/day x 7 days is converted by a human agent to 21 separate tasks, each consisting of taking one tablet at a certain time or day. These tasks can be represented in a task plan, each task of which which can then be performed and signed off by a staff member, e.g. a shift nurse. The task plan acts as a record of what has been done, and what is left to do.
 
-One difficulty with posting a full plan is that in some cases, the order is effectively open-ended, i.e. it has no intended completion. This might be because the patient condition being treated is chronic, e.g. an insulin or Salbutamol (Ventolin) order; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma victim.
+One difficulty with posting a full plan is that in some cases, the work is effectively open-ended, i.e. it has no currently known completion date. This might be because the patient condition being treated is chronic, e.g. insulin or Salbutamol (Ventolin) treatment; or it might be that although the condition is assumed to be limited in time, no current assumption can be made about when, e.g. pain medication of a trauma patient.
 
 == Order Sets and Protocols
 
@@ -59,6 +69,23 @@ A set of tasks intended to achieve a defined goal could be performed sequentiall
 It can also be assumed that some tasks in a task plan may be designated as optional, to be executed 'if needed' or on some other condition being true.
 
 The general structure and execution semantics of a task plan therefore includes the notion of sequential or parallel execution of groups of tasks, and also optional execution of some tasks. We can consider the task plan itself as a outer group of tasks for which either sequential or parallel execution can be specified.
+
+== Decision Pathways
+
+Task plans derived from semi-formal care pathways or guidelines (and potentially ad hoc designed plans) may contain 'decision points', which are of the following logical form:
+
+* *decision point*: a step containing a variable assignment of the form `$v := expression`;
+* *subordinate decision paths*: groups of tasks each group of which has attached a variable test of the form `$v rel_op value`, where `rel_op` is one of `=`, `/=`, `<`, `>`, `\<=` or `>=`.
+
+An example of decision points is shown below, in an extract from the https://intermountainhealthcare.org/ext/Dcmnt?ncid=520500199[Intermountain Healthcare Care Process Module (CPM) for Ischemic Stroke Management]:
+
+[.text-center]
+.Decision pathway example (Intermountain Healthcare Acute Stroke CPM)
+image::diagrams/IHC_stroke_decision_path.png[id=decision_pathway_example, align="center", width=80%]
+
+In this example, the node containing the text "Further CLASSIFY ..." corresponds to a decision point that can be represented as `$symptom_onset_time := t`, where `t` is a time entered by a user. The subsequent nodes in the chart can be understood as paths based respectively on the tests `$symptom_onset_time < 4.5h` and `4.5h < $symptom_onset_time < 6h`. 
+
+The ability to include decision pathways enables conditional sections of care pathways to be directly represented within a task plan.
 
 == Changes and Abandonment
 
