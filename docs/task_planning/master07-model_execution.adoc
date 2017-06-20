@@ -24,15 +24,19 @@ During a long-running Task Plan, the principal performer may change. This will u
 
 Initially, a Task Plan definition that has been created will have the lifecycle state value `planned` in each `TASK_ITEM` instance. When the definition is activated, it is instantiated within a Task execution application. This creates a copy of it, or part of it, along with instances of the `RT_XXX` classes ('RT' = runtime). 
 
-At instantiation, an instance of `RT_TASK_PLAN` is created and the  `_start_time_` attributes set to the current time respectively. This object will normally be maintained for the lifetime of execution of the Task Plan. If there are execution times in the plan, they will be trivially convertable to absolute clock times. The `_lifecycle_state_` attribute of one or more `RT_TASK` instances may be set to `available` at this point, or at a later time if scheduled for specific times.
+At instantiation, an instance of `RT_TASK_PLAN` is created and the  `_start_time_` attributes set to the current time respectively. This object will normally be maintained for the lifetime of execution of the Task Plan. If there are execution times in the plan, they will be trivially convertable to absolute clock times.
+
+The runtime form of the detailed structure of the plan may be instantiated fully, or only partially, where convenient. For example, if most of the plan has been completed, and only some steps remain, it may make sense to instantiate only the `RT_XX` instances corresponding to those steps. On the other hand, an applicaiton may want to display the details of the whole plan, even when only a small part remains to be executed.
+
+The structure created will mirror the structure of the definition, to the extent of run-time structure creation, if it is partial. That is to say, `RT_TASK_GROUP` instances will have `_members_` containing further `RT_XX` instances, that mimic the `TASK_GROUP` structures within the Plan definition.
+
+When the structure creation has been completed, the `_lifecycle_state_` attribute of one or more `RT_TASK` instances may be set to `available`, or if picking up from a previous session, to other states (i.e. `completed` etc), as appropriate.
 
 At the same time, an instance of `EXECUTION_HISTORY` is also created, proving a root points to accumulate Task Plan execution event records.
 
 === Allocation
 
 Before an instantiated Task Plan can be executed, it must be allocated. This is done by user authenticating to the Task Plan application; this user will be set as the `_principal_performer_` in the `RT_TASK_PLAN` instance.
-
-=== Task Execution
 
 === Task Lifecycle Model
 
@@ -90,6 +94,13 @@ Notifications can be specified to be generated at various lifecycle state change
 
 [.tbd]
 To be continued
+
+=== Persistence
+
+The run-time instance structure may need to be persisted to enable a partial execution of a long-running Task Plan to be recorded and picked up when later tasks become ready. In theory, this could be within the EHR, but it is recommended that either a specific EHR area be used for this, or that run-time state persistence be implemented outside the EHR proper.
+
+[.tbd]
+issue-runtime-persistence: if within the EHR, we could create a new 'pointer' on the EHR object that points to 'task runtime state' data or similar. Is this a useful thing to do?
 
 === Class Descriptions
 

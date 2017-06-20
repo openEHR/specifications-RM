@@ -4,7 +4,7 @@
 
 This specification for a Task Planning facility for openEHR addresses requirements in a number of areas in which some form of 'planning' of clinical work is required. The defining characteristic of the requirements is that they primarily relate to an active human subject, rather than a passive object, such as a parcel or tissue sample. The requirements covered include one-off scheduled tasks (e.g. surgical procedure), long-running scheduled tasks (e.g. drug administration), recurring tasks (e.g. monitoring), and coordinated teamwork (e.g. acute stroke management).
 
-The specification also addresses the lack of fine-grained task planning facilities in the basic openEHR specificaitons, which are limited to the Instruction and Action concepts. These provide ways of stating orders and recording actions performed after the fact, but no way of representing or sharing plans for actions before they are performed. This limitation is described in more detail below.
+The specification also addresses the lack of fine-grained task planning facilities in the basic openEHR specifications, which are limited to the Instruction and Action concepts. These provide ways of stating orders and recording actions performed after the fact, but no way of representing or sharing plans for actions before they are performed. This limitation is described in more detail below.
 
 The general approach followed here is to specify a representation of task plans at various stages in the planning lifecycle, i.e.:
 
@@ -23,15 +23,17 @@ There is however a common additional need to concretely plan individual Actions 
 
 A set of planned tasks need not all relate to a single order, or indeed any order. The general picture is that a task plan corresponds to some self-standing healthcare job to be done, which may include tasks designed to fulfill multiple orders, and also tasks not defined by orders.
 
-To meet this need, a further kind of content can be recorded in the EHR, representing task plans containing tasks. Here we understand the word 'task' to mean 'definition of a planned task', i.e. a description of something to be performed in the future. 
+To meet this need, a further kind of content can be recorded in the EHR, representing task plans containing tasks. Here we understand the word 'task' to mean 'definition of a planned task', i.e. a description of something to be performed in the future.
 
-The model described here considers task plans as one element of a larger framework that includes entities at multiple semantic levels, i.e.:
+== xxx
+
+In order to respond to the need to formally represent clinical Task Plans, and to close the gap between orders and reported actions in openEHR, this specification provides a model of a _task planning_ facility, which is conceptually situated in a larger semantic framework that includes entities at multiple levels, i.e.:
 
 * care pathway - a model of a guideline for care of a condition / ideal patient;
 * care plan - a general plan for care of an actual patient, taking into account zero or more Care Pathways and individual specificities;
 * task plan - a concrete concept that defines a set of fine-grained planned tasks to perform over time to achieve a particular goal.
 
-These can be envisaged as follows.
+These entities and their relationships can be envisaged as follows.
 
 [.text-center]
 .The care pathway / care plan / task plan triad
@@ -77,6 +79,6 @@ image::diagrams/workflow_execution_paradigm.svg[id=workflow_execution_paradigm, 
 
 This specification describes a model for a 'task plan' concept that incudes support for work distribution across multiple performers, nested task plans, conditional branching, timing and various other facilities. Many of these are conceptually close to the features found in standard workflow languages such as {bpmn}[BPMN] (Business Process Modelling Notation) and {yawl}[YAWL] (Yet another Workflow Language), as well as emerging case-based standards such as {cmmn}[CMMN] (Case Management Modelling Notation) and {dmn}[DMN] (Decision Model and Notation).
 
-While the model described here takes many ideas from these languauges, there are some key differencs as well. The primary conceptual difference is that the subjct (i.e. 'case') here is assumed to be an intentional organism (generally a human patient) that makes choices, reacts to drugs, and generally speaking, cannot be relied on to be a passive object (such as a package or blood sample), as is the case for most logistic workflows, for which languages such as BPMN are suited. 
+While the model described here takes many ideas from these languauges, there are some key differencs as well. The primary conceptual difference is that the subject (i.e. 'case') here is assumed to be an intentional organism (generally a human patient) that makes choices, reacts to drugs, and generally speaking, cannot be relied on to be a passive object (such as a package or blood sample), as is the case for most logistic workflows, for which languages such as BPMN are suited. 
 
 The main consequence of this is that the design of a task plan is not taken to be a highly deterministic description whose exceptions are generally knowable in advance as they would be for a logistic system whose subjects are passive objects. Instead, tasks and groups of tightly-coupled tasks are specified in a more self-standing way, using preconditions rather than logical join and split operators. Note that even the patient can be a passive object in some circumstances, such as radiology.

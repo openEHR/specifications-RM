@@ -15,6 +15,10 @@ h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
+h|*0..1*
+|*members*: `List<RT_PLAN_ITEM>`
+a|Member run-time items in group, mimicking structure of the corresponding definition group instance.
+
 h|*1..1 +
 (redefined)*
 |*definition*: `TASK_GROUP`
@@ -26,8 +30,4 @@ h|*Functions*
 h|
 |*lifecycle_state*: `TASK_LIFECYCLE`
 a|Effective lifecycle state, computed from the states of members of the group.
-
-h|
-|*members*: `List<RT_PLAN_ITEM>`
-a|Member items, computed by following definition link to the corresponding TASK_GROUP object in Task Plan definition.
 |===

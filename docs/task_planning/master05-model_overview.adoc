@@ -14,7 +14,7 @@ image::{uml_export_dir}/diagrams/RM-task_planning-overview.svg[id=rm_task_planni
 
 The key structural relationships are shown in the following instance diagram. On the left is the definition of a Task Plan, consisting of a Task Group and various Defined Tasks. Each of these Tasks may have a prototype Entry attached, which represents the intended data of an action or observation that the Task defines.
 
-At the upper right is an Executing Task Plan, which is a runtime structure consisting of elements that correspond to the currently executing parts of the static definition structure (achieved by the `RT_PLAN_ITEM._definition_` association). This structure allows the recording of all state to do with Task execution, including instances of variables, timing information and so on. The Executing Task Plan structure is not owned by the deifnition structure, but rather is created at run time, and points back to its definition (_owner_ and _definition_ links).
+At the upper right is an Executing Task Plan, which is a runtime structure consisting of elements that correspond to the currently executing parts of the static definition structure (achieved by the `RT_PLAN_ITEM._definition_` association). This structure allows the recording of all state to do with Task execution, including instances of variables, timing information and so on. The Executing Task Plan structure is not owned by the definition structure, but rather is created at run time, and points back to its definition (_owner_ and _definition_ links).
 
 At the lower right is a Task Execution History, which is a record of all events that were made during the execution of the original Task Plan.
 

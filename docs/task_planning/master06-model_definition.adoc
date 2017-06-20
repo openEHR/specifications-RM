@@ -22,7 +22,7 @@ As the `TASK_PLAN` gets progressively built and executed over time, its owning `
 A Task Plan is specified by a number of key attributes, following the design principles described earlier, namely:
 
 * `_subject_`: the subject of the work (i.e. 'case' in workflow parlance), typically a single patient;
-* `_principal_performer_`: a definition of the responsible performer, normall in terms of role plus function;
+* `_principal_performer_`: a definition of the responsible performer, normally in terms of role plus function;
 * `_description_`: natural language specification of what the Task Plan is for;
 * `_care_plan_`: a reference to a driving Care Plan from elsewhere in the EHR, if any exists;
 * `_guideline_id_`, `_care_pathway_`: references to a guideline and/or care pathway from which this Task Plan was derived;
@@ -47,7 +47,7 @@ The important semantics of the Task concept in the model are specified in the `P
 * `_description_`: natural language specification of the work of the Task;
 * `_preconditions_`: operational conditions for determining if a Task is available for execution by a performer;
 * `_wait_conditions_`: specification of coordinating wait conditions for Task completion by another performer;
-* `_notifications_`: specfication of coordinating notifications to be sent to other performer / Task contexts;
+* `_notifications_`: specification of coordinating notifications to be sent to other performer / Task contexts;
 * `_execution_time_`: optional timing plan for Tasks;
 * `_indications_`: clinical conditions for the Task being applicable;
 * `_optionality_`: indicates whether the Task is regarded as optional or mandatory in the overall Task plan, typically set by a guideline;
@@ -157,8 +157,8 @@ A workflow application or engine executing a Task Plan can determine the availab
 ** Task execution time, if set, with respect to current time;
 ** check completion status of preceding Tasks / Groups within the current Task Group;
 * *validity*:
-* check that Task wait notifications have been received from related Task Plans executing in the same group;
-* check Task preconditions, assessed by executing precondition expressions against the EHR.
+** check that Task wait notifications have been received from related Task Plans executing in the same group;
+** check Task preconditions, assessed by executing precondition expressions against the EHR.
 
 The workflow application may provide an override capability so that a Task can be performed before it is determined to be available. This would enable a user to perform the Task anyway, with the corresponding `TASK_EVENT_RECORD` recording the use of override.
 
