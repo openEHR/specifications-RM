@@ -2,7 +2,7 @@
 
 == Overview
 
-The following figure shows the execution related part of the `rm.task_planning` package. The consists of two parts: the runtime part, and the 'execution history' part. The former is a partial specification of classes that could be instantiated at Task Plan execution time to track Plan execution, and is provided as a guide to how execution tracking can be done. The latter classes describe the execution history after the fact, in the form of 'event records' that can optionally be stored in the EHR after Task Plan execution has completed.
+The following figure shows the execution related parts of the `rm.task_planning` package. The consists of two parts: the _materialised_ representation, and the _execution history_ part. The former is a partial specification of classes that could be instantiated at Task Plan execution time to track Plan execution, and is provided as a guide to how execution tracking can be done. The latter classes describe the execution history after the fact, in the form of _event records_ that can optionally be stored in the EHR after Task Plan execution has completed.
 
 [.text-center]
 .rm.task_planning package - execution model
@@ -12,7 +12,7 @@ image::{uml_export_dir}/diagrams/RM-task_planning-execution.svg[id=rm_task_plann
 
 There are various aspects to Task Plan execution, some of which are complex, and not directly covered by this specification. The execution phases are as follows: 
 
-* *instantiation*: create an instance of this Task Plan in the Task Plan application;
+* *materialisation*: create an instance of (parts of) this Task Plan in the Task Plan execution engine;
 * *allocation*: allocate the Plan instance to an authenticated user, as principal performer;
 * *execution*: the Task Plan application displays Tasks and advances the state of execution view interactions with the user;
 ** each interaction, also change of principal performer, abandonment, and any other events will cause generation of Execution history events, which may be persisted;
@@ -20,23 +20,25 @@ There are various aspects to Task Plan execution, some of which are complex, and
 
 During a long-running Task Plan, the principal performer may change. This will usually be the case for Task Plans that run longer than a work shift.
 
-=== Task Plan Instantiation
+=== Task Plan Materialisation
 
-Initially, a Task Plan definition that has been created will have the lifecycle state value `planned` in each `TASK_ITEM` instance. When the definition is activated, it is instantiated within a Task execution application. This creates a copy of it, or part of it, along with instances of the `RT_XXX` classes ('RT' = runtime). 
+Initially, one or more Task Plan definitions of a Work Plan that has been defined will have the lifecycle state value `planned` in each `TASK_ITEM` instance. When the definition is activated, it is instantiated within a Plan execution engine. This creates a copy of it, or part of it, along with instances of the `RT_XXX` classes ('RT' = runtime). This particular instance form is called the _materialised form_ in this specification.
 
-At instantiation, an instance of `RT_TASK_PLAN` is created and the  `_start_time_` attributes set to the current time respectively. This object will normally be maintained for the lifetime of execution of the Task Plan. If there are execution times in the plan, they will be trivially convertable to absolute clock times.
+At materialisation, an instance of `RT_TASK_PLAN` is created and the  `_start_time_` attributes set to the current time respectively. This object will normally be maintained for the lifetime of execution of the Task Plan. If there are execution times in the plan, they will be trivially convertable to absolute clock times.
 
-The runtime form of the detailed structure of the plan may be instantiated fully, or only partially, where convenient. For example, if most of the plan has been completed, and only some steps remain, it may make sense to instantiate only the `RT_XX` instances corresponding to those steps. On the other hand, an applicaiton may want to display the details of the whole plan, even when only a small part remains to be executed.
+The materialised form of the detailed structure of the plan may be instantiated fully, or only partially, where convenient. For example, if most of the plan has been completed, and only some steps remain, it may make sense to instantiate only the `RT_XX` instances corresponding to those steps. On the other hand, an applicaiton may want to display the details of the whole plan, even when only a small part remains to be executed.
 
 The structure created will mirror the structure of the definition, to the extent of run-time structure creation, if it is partial. That is to say, `RT_TASK_GROUP` instances will have `_members_` containing further `RT_XX` instances, that mimic the `TASK_GROUP` structures within the Plan definition.
 
 When the structure creation has been completed, the `_lifecycle_state_` attribute of one or more `RT_TASK` instances may be set to `available`, or if picking up from a previous session, to other states (i.e. `completed` etc), as appropriate.
 
-At the same time, an instance of `EXECUTION_HISTORY` is also created, proving a root points to accumulate Task Plan execution event records.
+At materialisation time, an instance of `EXECUTION_HISTORY` is also created, proving a root point to accumulate Task Plan execution event records.
 
-=== Allocation
+=== Allocation and re-allocation
 
-Before an instantiated Task Plan can be executed, it must be allocated. This is done by user authenticating to the Task Plan application; this user will be set as the `_principal_performer_` in the `RT_TASK_PLAN` instance.
+Before a materialised Task Plan can be executed, the `_principal_performers_` of its `TASK_GROUPs` must be _allocated_ to real actors. This is done by user(s) authenticating to the Plan execution engine and signing up for specific roles and functions within the Plan. Not all performers are needed at any time, only those implicated in some defined part of the Plan to be executed, e.g. for the current day within a multi-day Plan.
+
+At various moments during the execution of a Plan, a performer may leave and be replaced by another performer, e.g. due to worker shift changeover. This requires a de-allocation of the leaving performer from the Plan and a new allocation of a new actor.
 
 === Task Lifecycle Model
 
@@ -102,6 +104,11 @@ The run-time instance structure may need to be persisted to enable a partial exe
 [.tbd]
 issue-runtime-persistence: if within the EHR, we could create a new 'pointer' on the EHR object that points to 'task runtime state' data or similar. Is this a useful thing to do?
 
+=== Context Switching
+
+[.tbd]
+TBD: describe context switch for hand-off, external requests etc.
+
 === Class Descriptions
 
 include::{uml_export_dir}/classes/task_lifecycle.adoc[leveloffset=+1]
@@ -124,7 +131,7 @@ include::{uml_export_dir}/classes/rt_decision_path_group.adoc[leveloffset=+1]
 
 == Task Plan Execution History
 
-The history of execution events is represented in the runtime instance of `EXECUTION_HISTORY`. This is a history of real world execution events that accumulate over the duration of processing of the Task Plan. Two types of event are used:
+The history of execution events is represented in the runtime instance of `EXECUTION_HISTORY`. This is a history of real world execution events that accumulates over the duration of processing of the Task Plan. Two types of event are used:
 
 * `TASK_EVENT_RECORD`: type representing a change to one consitutent Task. Thus, if the performer cancels a particular Task within the list, a `TASK_EVENT_RECORD` will be added to the history, including Task id, time, and reason; notifications can also be recorded on such events;
 * `TASK_PLAN_EVENT_RECORD_`: type representing any kind of execution event not linked to a specific Task, for example 'plan abandonment', 'new principal performer'.

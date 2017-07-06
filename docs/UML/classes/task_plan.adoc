@@ -30,10 +30,6 @@ h|*0..1*
 a|Human-understandable description of the Task Plan, which may be specific to the work items and patient.
 
 h|*0..1*
-|*care_plan*: `LOCATABLE_REF`
-a|Care plan object from which this Task Plan is derived.
-
-h|*0..1*
 |*guideline*: `DV_IDENTIFIER`
 a|Identifier of guideline on which this Task Plan is based, if such exists. A 'guideline' is understood here as a published standard for performing a detailed Task.
 
@@ -43,31 +39,13 @@ It is currently assumed that there is no reliable machine identifier system for 
 * id = "https://www.nice.org.uk/guidance/cg180"
 * type = "NHS guideline for Atrial fibrillation: management"
 
-h|*0..1*
-|*principal_performer*: `TASK_PARTICIPATION`
-a|Specification of principle performer of this Task Plan as a Participation, in terms of role and optionally function, mode and specific performer as appropriate.
-
-h|*0..1*
-|*care_pathway*: `DV_IDENTIFIER`
-a|Identifier of care pathway etc, on which this Task Plan is based, if such exists. A 'care pathway' is understood here as a published standard for performing care for a major condition or presenting complaint, e.g. sepsis, MI etc.
-
-It is currently assumed that there is no reliable machine identifier system for care pathways. A DV_IDENTIFIER allows things like:
-
-* issuer = "NICE";
-* id = "https://pathways.nice.org.uk/pathways/sepsis"
-* type = "NICE Sepsis care pathway"
-
 h|*1..1*
 |*definition*: `TASK_GROUP`
-a|The Tasks for this Task Plan.
+a|The Tasks for the main part of this Task Plan; this section of the plan may be repeatable.
 
 h|*0..1*
 |*execution_history*: `TASK_PLAN_EXECUTION_HISTORY`
 a|History of execution events for an execution of this Task Plan.
-
-h|*0..1*
-|*training_level*: `Integer`
-a|An integer value representing the training level for which this Task Plan is designed. A high value corresponds to a lower level of expertise. The default value is zero.
 
 h|*0..1*
 |*best_practice_ref*: `DV_URI`
@@ -76,4 +54,16 @@ a|A URI (typically a local URL) that points to the document form of any governin
 h|*0..1*
 |*expiry_time*: `Duration`
 a|Maximal date/time by which this Task Plan should be considered obsolete. If not set, the Task Plan would normally be inferred to be obsolete after a discharge from acute care, but in primary or social care situations, no value may be assumed to indicate that the Tasks are still to be performed, depending on the times specified in the execution_time attribute of TASKs in the plan.
+
+h|*0..1*
+|*due_time*: `Duration`
+a|Due date/time expressed as an offset, to be converted to a real date/time at instantiation.
+
+h|*0..1*
+|*workflow_id*: `OBJECT_REF`
+a|Identifier of instance of order set from which this Task Plan is drawn, if there is one. Should match the workflow_id in all INSTRUCTION and other ENTRY instances created due to the same order set instance.
+
+h|*0..1*
+|*order_set*: `DV_IDENTIFIER`
+a|Optional identifier for an order set, which is understood as a kind of order set, e.g. 'R-CHOP-14'.
 |===

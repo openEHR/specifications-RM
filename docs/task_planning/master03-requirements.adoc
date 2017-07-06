@@ -46,21 +46,21 @@ A more flexible version of a plan is 'lookahead' planning, i.e. posting a plan o
 
 For the open-ended cases mentioned above, the only option is a lookahead plan that extends as far ahead in time as the treating physicians are prepared to go.
 
+== Recurring / Repeatable Tasks
+
+Many clinical plans involve repetition over time. For example, the 14-day version of the CHOP protocol (CHOP-14) involves execution of the 5 day treatment every 14 days, for 3 iterations. Other clinical plans are essentially permanently recurring for the life of the patient, e.g asthma therapy.
+
 == Checklist & Sign-off
 
 If a task plan is created, the constituent tasks can be viewed by workers as a checklist, and subsequently signed off as having been either performed or not done over time. The utility of this is that the correspondence between the tasks actually performed (represented by `ACTION`, `OBSERVATION` etc Entries) and the planned tasks is established. If a planned Action A1 is posted with execution time T, it might actually be performed at time T', but users still want to know that it was planned Action A1 that was intentionally performed, and not some other Action in the task plan. Over the course of the order execution, a picture will emerge of planned Actions being performed and signed off, possibly with some being missed as not needed, or not done for some other reason. Additional Actions not originally posted in the plan might also be done if they are allowed by the general specification of the relevant archetypes.
 
 == Teamwork and Notifications
 
-There are at least two possible situations in which a task plan might need to refer to another task plan. The first is a consequence of the standard problem of the fractal nature of description of phenomena. Applied to planned actions, it is clear that one institution may describe an action such as cannulation atomically, relying on professional training and situational specifics to generate the correct concrete outcome, whereas another may require nurses to follow a guideline such as this {medscape_cannulation}[Medscape Intravenous Cannulation] guideline. In cases where a self-standing clinical task is itself fully described in terms of steps, it is possible to represent the latter as its own task plan, and to be able to _refer_ to it from another task plan. The general case is that any task that could be represented by a single item in a task plan could also be represented by a reference to a separate detailed task plan.
+In many cases, a task plan is intended for execution by a team of specialised performers, with each performer doing their part of the work, and at various points, passing control to another team member. Management of acute stroke is an example of this. In other cases, team members are working more or less in parallel, or by communicating in real time to each other. In both situations, if the workers are not physically in the same room at the same time, notifications are needed to alert each person when to start working on the subject; similarly, callback notifications are needed to alert original workers when other work has been completed, for example, an MRI image taken and report written.
 
-A second situation in which a task plan might refer to another is where a team of actors performs the work, and each task plan corresponds to a single actor. A typical example is acute stroke management, in which various healthcare professionals do the work. Coordination occurs when some workers inform other(s) of task completion, and/or wait for notification of completion of someone else's task.
+== Sub-plans
 
-We can summarise these requirements as follows:
-
-* _drill-down reuse_: a task plan for a given actor can refer to another self-standing task plan for the same or a different actor;
-* _notify completion_: it should be possble for completion to be notified for tasks in a task plan; where applicable the system should be able to generate notifications to other workers as required by a more general coordinated care plan describing a team-based procedure;
-* _wait for completion_: a task plan should be able to include a task that stands for awaiting notification of completion of another task by another actor.
+Plans can be described at varying levels of detail, depending on how workers are intended to work with them. One institution may describe an action such as cannulation atomically, relying on professional training and situational specifics to generate the correct concrete outcome, whereas another may require nurses to follow a guideline such as this {medscape_cannulation}[Medscape Intravenous Cannulation] guideline. In cases where a self-standing clinical task is itself fully described in terms of steps, it is possible to represent the latter as its own task plan, and to be able to _refer_ to it from another task plan. The general case is that any task that could be represented by a single item in a task plan could also be represented by a reference to a separate detailed task plan.
 
 == Task Grouping, Optionality and Execution Basis
 
@@ -86,6 +86,12 @@ image::diagrams/IHC_stroke_decision_path.png[id=decision_pathway_example, align=
 In this example, the node containing the text "Further CLASSIFY ..." corresponds to a decision point that can be represented as `$symptom_onset_time := t`, where `t` is a time entered by a user. The subsequent nodes in the chart can be understood as paths based respectively on the tests `$symptom_onset_time < 4.5h` and `4.5h < $symptom_onset_time < 6h`. 
 
 The ability to include decision pathways enables conditional sections of care pathways to be directly represented within a task plan.
+
+== Different types of Cancellation
+
+Tasks in a plan can be cancelled before being attempted for two types of reasons. One case is when the performer or the system realises the task can't be performed (perhaps for lack of resources), and it is cancelled from the plan ahead of time. The other case is when the performer or system realises that the task isn't needed, and can be cancelled as unnecessary, or already done by an external agent (e.g. an examination done at a night clinic).
+
+In the first, case, the cancellation can be understood as a 'failed' task, whereas in the second, it is equivalent to a successful task. These two flavours of cancellation should be understood by the system so that plan success or failure can be reliably determiined.
 
 == Changes and Abandonment
 

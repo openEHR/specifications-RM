@@ -28,7 +28,7 @@ h|*0..1*
 a|Notifications that were performed as part of this Task Event.
 
 h|*0..1*
-|*entry_instances*: `List<ENTRY>`
+|*entry_instances*: `List<LOCATABLE_REF>`
 a|Forward references to Entry (e.g. ACTION, OBSERVATION etc) that was recorded as a result of this Task being performed. If this is set, it indicates that the planned Task is 'done' i.e. checked off the plan.
 
 [.tbd]
@@ -41,4 +41,8 @@ a|Set to True if all preconditions defined on the corresponding Task were satisf
 h|*1..1*
 |*wait_conditions_satisfied*: `Boolean`
 a|Set to True if all wait_conditions for the corresponding Task were satisfied when it was performed. If False, and there were wait_conditions, wait_conditions were overridden by the user at runtime.
+
+h|*0..1*
+|*lifecycle_transition_reason*: `String`
+a|Additional reason for lifecycle
 |===

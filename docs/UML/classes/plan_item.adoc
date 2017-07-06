@@ -26,4 +26,12 @@ TODO: needed?
 h|*1..1*
 |*description*: `DV_TEXT`
 a|Human-readable form of the task directive.
+
+h|*0..1*
+|*training_level*: `Integer`
+a|An integer value representing the training level for which this Task Plan is designed. A high value corresponds to a lower level of expertise. The default value is zero.
+
+h|*0..1*
+|*system_request*: `List<SYSTEM_REQUEST>`
+a|Optional request(s) to make to information or other (e.g. decision support) systems to perform specific retrievals or writes. Typical examples: obtain medication interaction check; write Task data to log.
 |===

@@ -1,0 +1,32 @@
+=== DISPATCHABLE Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*DISPATCHABLE*
+
+h|*Description*
+2+a|Mixin type that provides attributes for representing what to do at a context switch, i.e. when the current Plan dispatches a call to another performer or service.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*wait*: `Boolean`
+a|Flag indicating whether to wait or continue in the current Plan after the dispatch notification has been achieved.
+
+h|*0..1*
+|*wait_timout*: `Duration`
+a|Maximum time to wait, if wait attribute is set True. Used by the Plan execution engine to set a timer.
+
+h|*1..1*
+|*callback_action*: `CALLBACK_ACTION`
+a|Procedure to execute when completion notification received, for example, to display a form, notify performer etc.
+
+TODO: determine details.
+
+h|*0..1*
+|*resume_task*: `UID_BASED_ID`
+a|Reference to a resume location, usually an earlier Task, in the current Plan, at which to restart when the request / handoff has completed.
+|===

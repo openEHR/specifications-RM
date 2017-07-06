@@ -2,6 +2,32 @@
 
 The design approach adopted here is based on a number of ideas. Firstly, it addresses only the 'Task Plan' level of the three conceptual levels mentioned earlier, leaving Care Plan and Care Pathway (guideline) to be addressed elsewhere. The other design elements are described below.
 
+== Conceptual Basis: Work Plan and Task Plan
+
+This specification takes the approach that a 'Task Plan' (or 'Plan', for short), is a set of Tasks designed to achieve a particular outcome for a single subject of care, generally a single patient. It may have one or more performers, depending on whether a team is needed. It may also be composed of sub-plans, represented as other Task Plans. Since the work that multiple performers may be definable in a standalone sense (e.g. scans, tests, routine procedures such as IV catheterisation), but also used together in a guideline or pathway-based larger plan, such as stroke management, it is assumed that in general, more than one concrete 'Plan' may be collected together to achieve an overall plan intention. This construct is known here as a 'Work Plan'.
+
+A Work Plan is a high-level construct that groups together Task Plans, includes descriptive meta-data, and can be used by the Plan execution engine to determine the overall state of progress on the Plan.
+
+Most of this specification focuses on the Task Plan, which is where the primary representation of the tasks sits.
+
+=== Fractal Structure
+
+In the real world, almost every Task can be sub-divided into a smaller set of Tasks. In addition, some sets of Tasks can be performed without regard to order - i.e. in parallel - while others must be ordered. This specification accordingly supports this hierarchical structure via three structural artefacts, namely Task Plan, Task Group and Task. These follow naturally from the requirements above, but we need to articulate the semantics of these concepts, as follows:
+
+* *Task*: a small, separately performable unit of planned work that typically corresponds to:
+** the finest level of clinical responsibility, e.g. nurse administration of a drug, single observation of patient vital sign etc;
+** the finest level of re-imbursement / billing;
+** granularity of check-list and protocol single items, designed to be signed off as performed;
+** a particular planned time of execution;
+* *Task Group*: a group of Tasks within a Task Plan that are to be executed on some basis, e.g. sequential, parallel;
+* *Task Plan*: a logical set of Tasks contained in a top-level Task Group, whose execution is intended to achieve completion of a coarse-grained task or goal with respect to a particular subject of care, typically an intervention such as a course of medication or other therapy. The top-level Task Group may contain further nested Task Groups. Task Plans are a unit of reuse.
+* *Work Plan*: top-level structure containing all Task Plans needed to implement the intended specific outcome for a subject.
+** Any Task Group or Task may be marked as optional or mandatory for execution.
+** Since a Task Plan is intended to achieve a purpose, it is assumed to have a _lifecycle_ whose states indicate where its execution is with respect to the outcome. In fact, the lifecycle has to be tracked on a runtime version of the Task, with the definition of the Task only being able to record snapshot states from the runtime instantiation. See below for a full explanation of the Task Plan lifecycle.
+** It is assumed that any number of Task Plans could be active for a given subject of care at a given moment.
+
+The consequence of the above is that a Task Plan is in general a hierarchical structure consisting of Task Group nodes and Task leaves. This enables grouping of particular Task subsets, and also the fine-grained specification of execution ordering.
+
 == Levels of Model Definition
 
 In common with typical workflow systems, this specification recognises three levels of planned task model, as follows:
@@ -12,34 +38,19 @@ In common with typical workflow systems, this specification recognises three lev
 
 In this scheme, archetypes and templates conveniently achieve the 'template' or 'prototype' level of definition that is needed to support standard models of similar but not identical kinds of Task Plan. For example, a single set of archetypes and templates could be used to represent Task Plans for hospital drug administration.
 
-== Fractal Structure
+== Principal Performer
 
-In the real world, almost every Task can be sub-divided into a smaller set of Tasks. In addition, some sets of Tasks can be performed without regard to order - i.e. in parallel - while others must be ordered. This specification accordingly supports this hierarchical structure via three structural artefacts, namely Task Plan, Task Group and Task. These follow naturally from the requirements above, but we need to articulate the semantics of these concepts, as follows:
+All Tasks in a Plan are defined to have a _principle performer_, that is to say, a single logical actor. This is often a single person (or a device or possibly a software service, e.g. a CDS model of which questions can be asked), but might equally be a group of personnel, e.g. ward nurses, who execute the steps of a Task Plan during and across shift boundaries (wound dressing, turning patients, IV maintenance etc). In these cases there is an understanding by separate individuals that they constitute a common workforce with respect to the subject of care, for any given planned piece of work.
 
-* *Task*: a small, separately performable unit of planned work that typically corresponds to:
-** the finest level of clinical responsibility, e.g. nurse administration of a drug, single observation of patient vital sign etc;
-** the finest level of re-imbursement / billing;
-** granularity of check-list and protocol single items, designed to be signed off as performed;
-** a particular planned time of execution;
-* *Task Group*: a group of Tasks within a Task Plan that are to be executed on some basis, e.g. sequential, parallel;
-* *Task Plan*: a logical list of Tasks whose execution is intended to achieve completion of a coarse-grained task or goal with respect to a particular subject of care, typically an intervention such as a course of medication or other therapy. May contain Task Groups.
-** Any Task Group or Task may be marked as optional or mandatory for execution.
-** Since a Task Plan is intended to achieve a purpose, it is assumed to have a _lifecycle_ whose states indicate where its execution is with respect to the outcome. See below for a full explanation of the Task Plan lifecycle.
-** It is assumed that any number of Task Plans could be active for a given subject of care at a given moment.
+The principal performer can accordingly be specified in terms of professional roles, and optionally a specific agent. This might even in some cases be the patient.
 
-The consequence of the above is that a Task Plan is in general a hierarchical structure consisting of Task Group nodes and Task leaves. This enables grouping of particular Task subsets, and also the fine-grained specification of execution ordering.
+The principle performer is for practical reasons defined to be on a Task Group in the model. This enables a Task Plan by default to have a single principle performer attached to the top-level Task Group, but to be overridden at lower level Groups.
 
-== Single Subject, Principal Performer
-
-A key design assumption is that a Task Plan is targetted at _single subject_ and allocated to a _principle performer_, that is to say, a single logical actor. This is often a single person (or a device or possibly a software service, e.g. a CDS model of which questions can be asked), but might equally be a group of personnel, e.g. ward nurses, who execute the steps of a Task Plan during and across shift boundaries (wound dressing, turning patients, IV maintenance etc). In these cases there is an understanding by separate individuals that they constitute a common workforce with respect to the subject of care, for any given planned piece of work.
-
-The principal performer can accordingly be specified in terms of a professional role, and optionally a specific agent. This might even in some cases be the patient.
-
-In addition to the principal performer, other participations can be specified for the Task Plan or any contained step. However it is assumed that the principal performer is _responsible_ for all actions, and is also the notifier of action completions and cancellations, as well as the target of notifications to do with linked Task Plans.
+In addition to the principal performer, other participations can be specified for any contained Task in a Plan. However it is assumed that the principal performer is _responsible_ for all actions, and is also the notifier of action completions and cancellations, as well as the target of notifications to do with linked Task Plans.
 
 The consequences of this design principle are twofold:
 
-* where a team of executing actors is required to perform a logical clinical procedure, _each distinct actor has his or her own Task Plan_;
+* where a team of executing actors is required to perform a logical procedure, _a Plan may have more than one principal performer in different Group sections, or alternatively, each distinct actor has his or her own Task Plan_;
 * for a team to operate together, coordination is required between the Task Plans and relevant actors. This is described below in more detail.
 
 == Phases of Work
@@ -75,8 +86,10 @@ A Task Plan is essentially a definition of work to be done, or more precisely, a
 * Notifications to other actors of Task events, usually completion;
 * Receipt of notifications from other actors, which enable waiting Task(s) to proceed.
 
-It would be possible to track state by representing it in the Task Plan _definition_, and relying on versioning of successive commits of each update to provide the execution picture over time. However, this is not likely to correspond to the needs of the EHR, or workflow processing that occurs as the work is performed. In the former case, the execution of a non-trivial Task Plan may result in hundreds of state changes, notifications, etc, which will result in a similar number of commits to the EHR. This may be mitigated by only committing at certain points in time, but then the history of progress is lost.
+It would in theory be possible to track state by representing it in the Task Plan _definition_, and relying on versioning of successive commits of each update to provide the execution picture over time. However, this is not likely to correspond to the needs of the EHR, or workflow processing that occurs as the work is performed. In the former case, the execution of a non-trivial Task Plan may result in hundreds of state changes, notifications, etc, which will result in a similar number of commits to the EHR. This may be mitigated by only committing at certain points in time, but then the history of progress is lost.
 
-On the other hand, a workflow application whose job is to use Task Plans to support work being undertaken by clinical personnel does need to carefully track the history of updates, in order to know which Tasks have been done, and which have not. Since this will often occur over multiple work shifts and/or long periods (up to two weeks for some chemotherapy), persistence is required.
+On the other hand, a workflow application whose job is to use Task Plans to support work being undertaken by clinical personnel needs to carefully track the history of updates, in order to know which Tasks have been done, and which have not. Since this will often occur over multiple work shifts and/or long periods (up to two weeks for some chemotherapy), persistence is required.
 
-The approach taken here is therefore to include in the model an explicit 'execution history ', which includes every change event during progress of the actors performing the work, as an attachment to the Task Plan, rather than to include state within each Task. This provides a means of separation of Task Plan definition from Task Plan execution state, and enables persistence of the two parts to be handled in flexible ways that suit particular environments.
+The approach taken is therefore to include two runtime representations of a Work Plan and its Task Plans. The first is known as the 'materialised' form, which is an instance representation used _during_ execution.
+
+The second runtime-related representation in the model is an explicit 'execution history', consisting of every change event during progress of the work. This history can be attached to the Task Plan, and represents an after-the-fact view of execution - something like a specialised execution log.

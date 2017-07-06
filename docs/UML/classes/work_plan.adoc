@@ -1,0 +1,39 @@
+=== WORK_PLAN Class
+
+[cols="^1,2,3"]
+|===
+h|*Class*
+2+^h|*WORK_PLAN*
+
+h|*Description*
+2+a|Top-level object of any logical work plan. References one or more TASK_PLANs that described the work, typically of each performer, although a single TASK_PLAN may also have multiple performers.
+
+h|*Inherit*
+2+|AUTHORED_RESOURCE, CONTENT_ITEM
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*care_pathway*: `DV_IDENTIFIER`
+a|Identifier of care pathway etc, on which this Work Plan is based, if such exists. A 'care pathway' is understood here as a published standard for performing care for a major condition or presenting complaint, e.g. sepsis, MI etc.
+
+It is currently assumed that there is no reliable machine identifier system for care pathways. A DV_IDENTIFIER allows things like:
+
+* issuer = "NICE";
+* id = "https://pathways.nice.org.uk/pathways/sepsis"
+* type = "NICE Sepsis care pathway"
+
+h|*0..1*
+|*care_plan*: `LOCATABLE_REF`
+a|Care plan in EHR from which this Work Plan is derived, if any.
+
+h|*1..1*
+|*plans*: `Hash<UID_BASED_ID,TASK_PLAN>`
+a|
+
+h|*0..1*
+|*order_list*: `List<LOCATABLE_REF>`
+a|Reference list of orders in this Work Plan.
+|===

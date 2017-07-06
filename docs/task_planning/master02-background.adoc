@@ -4,6 +4,14 @@
 
 This specification for a Task Planning facility for openEHR addresses requirements in a number of areas in which some form of 'planning' of clinical work is required. The defining characteristic of the requirements is that they primarily relate to an active human subject, rather than a passive object, such as a parcel or tissue sample. The requirements covered include one-off scheduled tasks (e.g. surgical procedure), long-running scheduled tasks (e.g. drug administration), recurring tasks (e.g. monitoring), and coordinated teamwork (e.g. acute stroke management).
 
+In more sophisticated environments (generally hospitals), much task planning relates to guideline-based orders and medication administration. There are various levels at which to understand this, from care pathways (potentially covering management of a complex condition like sepsis) to specific workflows for particular elements of care within a pathway. One common conceptual entity is the so-called _order set_, which is generally understood as:
+
+* a set of orders for medications and/or other therapies that are used together to achieve a particular clinical goal, e.g. the drugs for a particular chemotherapy regimen are often modelled as an order set;
+* potentially a detailed plan for administration of the items in the order set, which may be a fully planned out schedule of single administrations on particular days and times;
+* descriptive meta-data, including authors, history, evidence base, etc.
+
+In openEHR, the first element corresponds to a set of Instructions, while the second is a candidate for representation in openEHR via the Task Planning facility documented in this specification. Hence, the addition of Task Planning to openEHR provides an important element enabling the order set notion to be formalised in openEHR.
+
 The specification also addresses the lack of fine-grained task planning facilities in the basic openEHR specifications, which are limited to the Instruction and Action concepts. These provide ways of stating orders and recording actions performed after the fact, but no way of representing or sharing plans for actions before they are performed. This limitation is described in more detail below.
 
 The general approach followed here is to specify a representation of task plans at various stages in the planning lifecycle, i.e.:
@@ -15,7 +23,7 @@ The general approach followed here is to specify a representation of task plans 
 
 The models described here are thus designed to support both design-time modelling (via archetypes, terminology subsetting) and runtime execution with modifications and abandonment possible while the work is being performed.
 
-== Limitations of openEHR standard Entry Model
+== Limitations of the openEHR standard Entry Model
 
 The Entry model described in the {openehr_rm_ehr}[openEHR EHR IM] defines a way to record clinical statements representing real observations, decisions, orders and actions that have occurred, in the EHR. In this scheme, Instructions represent orders for certain kinds of Actions to be performed. Actions and Observations represent events that have subsequently occurred in the real world - a real drug administration or an actual blood sugar measurement. 
 
@@ -25,7 +33,7 @@ A set of planned tasks need not all relate to a single order, or indeed any orde
 
 To meet this need, a further kind of content can be recorded in the EHR, representing task plans containing tasks. Here we understand the word 'task' to mean 'definition of a planned task', i.e. a description of something to be performed in the future.
 
-== xxx
+== Care Pathways and Task Planning
 
 In order to respond to the need to formally represent clinical Task Plans, and to close the gap between orders and reported actions in openEHR, this specification provides a model of a _task planning_ facility, which is conceptually situated in a larger semantic framework that includes entities at multiple levels, i.e.:
 
