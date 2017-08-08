@@ -6,11 +6,9 @@ h|*Class*
 2+^h|*DEFINED_TASK*
 
 h|*Description*
-2+a|Type of Task that represents concrete tasks, i.e. real work items. The definition of the work of the Task is expressed in terms of archetype of an ENTRY (usually an ACTION) that will be used to record the Task's execution.
+2+a|Task sub-type that represents concretely defined work items. The definition of the work of the Task is expressed in terms of archetype of an ENTRY (usually an ACTION) that will be used to record the Task's execution.
 
 The entry_instance attribute can be used to record a forward reference to an ACTION or other ENTRY when it has been recorded.
-
-May be specialised in order to add attributes required by the Task form of specific Entry subtypes, hence, ACTION_TASK etc.
 
 h|*Inherit*
 2+|TASK
@@ -30,4 +28,10 @@ a|Optional data-set to review prior to / as part of performing Task. This implie
 h|*0..1*
 |*capture_dataset*: `List<DATASET_SPEC>`
 a|Associated data-set template and/or form via which data to be captured during this Task will actually be entered.
+
+h|*0..1*
+|*optionality*: `VALIDITY_KIND`
+a|Informal indication of whether Task is considered optional or not from the point of view of any guideline. If not set, the Task is treated as mandatory.
+
+TODO: is this useful or meaningful, since it can change
 |===

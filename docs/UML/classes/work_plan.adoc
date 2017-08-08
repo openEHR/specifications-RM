@@ -25,15 +25,20 @@ It is currently assumed that there is no reliable machine identifier system for 
 * id = "https://pathways.nice.org.uk/pathways/sepsis"
 * type = "NICE Sepsis care pathway"
 
-h|*0..1*
-|*care_plan*: `LOCATABLE_REF`
-a|Care plan in EHR from which this Work Plan is derived, if any.
-
 h|*1..1*
 |*plans*: `Hash<UID_BASED_ID,TASK_PLAN>`
 a|
 
 h|*0..1*
+|*care_plan*: `LOCATABLE_REF`
+a|Care plan in EHR from which this Work Plan is derived, if any.
+
+h|*0..1*
 |*order_list*: `List<LOCATABLE_REF>`
 a|Reference list of orders in this Work Plan.
+
+h|*1..1 +
+(redefined)*
+|*description*: `DV_TEXT`
+a|Human-understandable description of the Task Plan, which may be specific to the work items and patient.
 |===

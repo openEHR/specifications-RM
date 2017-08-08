@@ -1,8 +1,8 @@
-=== CALLBACK_ACTION Enumeration
+=== CALLBACK_ACTION Class
 
 [cols="^1,2,3"]
 |===
-h|*Enumeration*
+h|*Class*
 2+^h|*CALLBACK_ACTION*
 
 h|*Description*
@@ -12,11 +12,19 @@ h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
-|resume
-a|
+h|*1..1*
+|*type*: `CALLBACK_TYPE`
+a|Procedure to execute when completion notification received, for example, to display a form, notify performer etc.
 
-h|
-|display_form
+TODO: determine details.
+
+h|*0..1*
+|*resume_task*: `UID_BASED_ID`
+a|Reference to a resume Task in the current Plan, at which to restart when the request / handoff has completed.
+
+If not set, the following Task is assumed. It set, is typically an earlier Task, in situations where the current Task(s) are no longer needed once the external action has been completed.
+
+h|*0..1*
+|*system_call*: `List<SYSTEM_CALL>`
 a|
 |===

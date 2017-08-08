@@ -34,22 +34,6 @@ h|*0..1*
 a|Condition which must be met for the TASK_ITEM to be available to perform in a runtime execution context.
 
 h|*0..1*
-|*indications*: `List<DV_TEXT>`
-a|Causal drivers or applicability of this Task item to subject of work, e.g. 'pregnancy', 'lymphoma' etc. May be derived from a governing guideline. May be displayed as a safety precaution to human performer.
-
-h|*0..1*
-|*notifications*: `List<TASK_NOTIFICATION>`
-a|List of notifications to be generated on a state change of this Task during execution.
-
-h|*0..1*
-|*wait_conditions*: `List<TASK_NOTIFICATION>`
-a|Set of wait conditions for this Task, expressed in terms of external actors and Tasks that need to complete before this Task may be commenced.
-
-h|*1..1*
-|*optionality*: `VALIDITY_KIND`
-a|Condition of execution (typically according to governing protocol): mandatory &#124; recommended &#124; optional &#124; expression .
-
-h|*0..1*
 |*other_details*: `ITEM_STRUCTURE`
 a|Archetypable structure for recording non hard-modelled information.
 
@@ -58,8 +42,4 @@ h|*0..1*
 a|Optional specifier of time at which the Task of Task Group should be performed. If not provided, the Task is assumed to be available to perform immediately following completion of the previous members of the parent Task Group.
 
 The Task may be performed earlier or later than this time; it is understood as a guide only.
-
-h|*0..1*
-|*lifecycle_state*: `TASK_LIFECYCLE`
-a|Attribute for recording lifecycle_state of this Task from corresponding Task in live execution model.
 |===

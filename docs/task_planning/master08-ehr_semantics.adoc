@@ -1,20 +1,6 @@
 = Relationship with other openEHR EHR Artefacts
 
-== Principles
-
-The model enables a flexible relationship between a Task Plan and orders, i.e. openEHR `INSTRUCTIONs`. In simple cases, a Task Plan will just be the list of Tasks to fulfill one order, i.e. a single `INSTRUCTION`, such as a prescription for a course of antibiotics. The general case however is that the Task Plan corresponds to a clinical goal which implicates multiple orders, for example the CHOP chemotherapy mentioned above. 
-
-It may also be the case that _not every Task is associated with an order_. While a typical case is that a Task corresponds to an openEHR `ACTION` that has not yet been recorded (and which normally has a driving `INSTRUCTION`), it may also correspond to an `ACTION` that has no `INSTRUCTION` or indeed an `OBSERVATION` or possibly an `EVALUATION` (perhaps some kind of check during a procedure). There is also no reason why a Task Plan cannot consist of Tasks that define administrative work and would be documented with openEHR `ADMIN_ENTRYs`.
-
-We can infer from the above that the main driver of a Task Plan isn't in general an order, but a guideline or protocol which usually includes orders. In simple cases, no formal protocol is used, and the orders (i.e. `INSTRUCTIONs`) may be _de facto_ drivers, or the Task Plan may be created _ad hoc_, such an in-patient pain medication administration plan by nursing staff. At the other extreme, a Task Plan may be created with no corresponding orders (and therefore no `INSTRUCTIONs`) at all.
-
-The following figure shows the correspondences between the various type of openEHR artefact for the general case of Task Plans. The arrows indicate causal relationships.
-
-[.text-center]
-.openEHR Planning Artefact Relationships
-image::diagrams/planning_artefacts.svg[id=planning_artefact_relationships, align="center", width=50%]
-
-In the above, items in yellow are driven solely by the guideline and have no corresponding order; planned items with a red cross have been cancelled and have no corresponding performed Action or Observation.
+== TODO
 
 One of the side-effects of distinct state machines for `INSTRUCTIONs` and Task Plans is that not all careflow steps and states in the former need to be represented as Tasks in a Task Plan. For example, a significant number of careflow steps defined in `ACTION` archetypes are for non-Active states, i.e. Planning, Postponement, Suspension etc. These steps do not need to have Tasks defined for them, since by definition they are nearly all unplanned. 
 

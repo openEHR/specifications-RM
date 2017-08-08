@@ -2,38 +2,50 @@
 
 == Overview
 
-The following figure shows the definition part of the `rm.task_planning` package.
+The following figure shows the `rm.task_planning.definition` package in full.
 
 [.text-center]
-.rm.task_planning model (definition view)
-image::{uml_export_dir}/diagrams/RM-task_planning-definition-tasks.svg[id=rm_task_planning_definition_tasks, align="center"]
+.rm.task_planning.definition model
+image::{uml_export_dir}/diagrams/RM-task_planning.definition.svg[id=rm_task_planning_definition, align="center"]
 
-=== Compositions and Versioning
+== Principal Types and Structures
 
-If a `TASK_PLAN` and its constituent parts is created within a `COMPOSITION` for committal to the EHR (or a workflow-specific part of the EHR), it may be re-versioned as changes are made to its contents. The causes of change include:
+The following view of the above static model enables the key types and relationships that provide structure to be seen more easily.
 
-* changes to the definition, due to error correction and / or extension of the lookahead planning window;
-* additions to the execution history, corresponding to each Task or List level event, including completion or abandonment of the Task Plan.
+[.text-center]
+.rm.task_planning model.definition - Tasks view
+image::{uml_export_dir}/diagrams/RM-task_planning.definition-tasks.svg[id=rm_task_planning_definition_tasks, align="center"]
 
-As the `TASK_PLAN` gets progressively built and executed over time, its owning `COMPOSITION` will undergo numerous changes, corresponding both to changes to the plan definition, and also execution of the actions performed to fulfill it. Typically only the former will generate new committed versions to the EHR, whereas the latter will most likely only be used by the workflow application during execution of the Task Plan. How changes to Task Plan are versioned and added to the EHR (or not) can be handled flexibly according to local needs.
+The top-level structure for defining plans is a `WORK_PLAN`, which includes one or more related `TASK_PLANs` making up a logical goal-oriented plan. Inclusion is achieved via UID references to Task Plans (`WORK_PLAN._plans_`), not physical containment. This relationship allows related Task Plans to be grouped, which occurs for two reasons described earlier: re-use of Task Plans as _sub-plans_ of other Task Plans, and team-based Plans, featuring _hand-offs_. How the Task Plans are linked to create these structures is enabled by particular sub-types of `TASK`, which may be understood by considering the model view above.
 
-=== Basic Semantics of a Task Plan
+As can be seen, the `_definition_` of a `TASK_PLAN` is a `TASK_GROUP`, which has as its `_members_` any number of `PLAN_ITEMs`, of which the Task Group and various Task types are descendants. (The classes `DECISION_GROUP` and `DECISION_PATH_GROUP` are also `PLAN_ITEM` descendants, but are not included in the above view and are explained later.) This structure means that every Task Plan definition is contained in a Task Group, which contains any combination of more Task Groups and/or descendants of `TASK`. 
 
-The top-level Work Plan includes a number of key attributes as follows:
+The subtypes of `TASK` consist of the following (reaidng from the right hand side):
 
-* `_care_plan_`: a reference to a driving Care Plan from elsewhere in the EHR, if any exists;
-* `_care_pathway_`: references to a care pathway from which this Task Plan was derived;
+* `DEFINED_TASK`: an inline-defined Task to be performed by the principal performer of the Group;
+* `SYSTEM_REQUEST`: a kind of Task that consists of a request to a computational system, such as a data retrieval or procedure call, on behalf of the current performer;
+* `EXTERNAL_REQUEST`: a Task type that consists of a request to an external organisational entity that is outside the current Work Plan and its execution environment, on behalf of the current performer;
+* `HAND_OFF`: a kind of Task that hands off to another Task Plan in the same Work Plan, having a different performer (identified via the `_target_` attribute inherited from `LINKED_PLAN`);
+* `SUB_PLAN`: a kind of Task that stands for another Task Plan (identified by the inherited `LINKED_PLAN._target_` attribute) to be performed by the current performer - usually a fine-grained set of steps designed to achieve the result of this Task.
 
-A Task Plan is specified by a number of key attributes, following the design principles described earlier, namely:
+Three of these - `SYSTEM_REQUEST`, `EXTERNAL_REQUEST` and `HAND_OFF` - require passing the flow of work to another context, involving another party, which may be another human performer, an IT system or a machine. The flow may be specified to continue in the target context and then return to the current (block and wait), or it may be specified to fork so that the current flow continues in parallel with the external flow just created. These classes inherit from the class `DISPATCHABLE` which defines model attributes relevant to defining and controlling context switch.
 
-* `_subject_`: the subject of the work (i.e. 'case' in workflow parlance), typically a single patient;
-* `_description_`: natural language specification of what the Task Plan is for;
-* `_guideline_id_`: references to a guideline from which this particular Task Plan was derived;
-* `_training_level_`: a value that can be used to filter out fine-grained Task Plans in a chained structure only of interest to trainees.
+The following sections provide more detail on some of these model features.
 
-These are described in more detail below.
+=== Basic Semantics of all Task Types
 
-=== Compositional Structure
+The important semantics of the Task concept in the model are specified in the `PLAN_ITEM` and `TASK_ITEM` classes, with further specifics appearing in the `TASK_GROUP` and `TASK` descendants. Key attributes the `PLAN_ITEM` and `TASK_ITEM` include:
+
+* `_description_`: natural language specification of the work of the Task;
+* `_preconditions_`: operational conditions for determining if a Task is available for execution by a performer;
+* `_execution_time_`: optional timing plan for Tasks;
+* `_costing_data_`: fine-grained data to enable cost determination of work performed;
+* `_other_participations_`: participations other than the principal performer;
+* `_training_level_`: level of experience of performer; higher numbers indicate more experience.
+
+From the control flow point of view, the `_preconditions_` and `_execution_time_` attributes are the ones that matter. 
+
+=== Task Group Structure
 
 The set of Tasks in Task Plan is represented within a containment structure created using instances of the `TASK_GROUP` type. This provides a way of grouping Tasks that will be executed collectively on the same basis, via the `_execution_type_` attribute, which may be set to `sequential` or `parallel`. This includes the top-level set of Tasks. A `TASK_GROUP` instance is treated as a member of its enclosing `TASK_GROUP` in the same way as constituent `TASK` instances, and shares with the latter attributes for Task description, timing, and conditions for execution.
 
@@ -43,48 +55,48 @@ The following illustrates the Task Plan structure including nested Task Groups.
 .Task grouping
 image::diagrams/task_grouping.svg[id=task_grouping, align="center", width=25%]
 
-=== Basic Semantics of a Task
+=== Sub-plans and Re-use
 
-The important semantics of the Task concept in the model are specified in the `PLAN_ITEM` and `TASK_ITEM` classes, with further specifics appearing in the `TASK_GROUP` and `TASK` descendants. Key attributes the `PLAN_ITEM` and `TASK_ITEM` include:
+As described above, multiple Task Plans may be used to define a single logical plan of work. This occurs for two main reasons:
 
-* `_description_`: natural language specification of the work of the Task;
-* `_preconditions_`: operational conditions for determining if a Task is available for execution by a performer;
-* `_wait_conditions_`: specification of coordinating wait conditions for Task completion by another performer;
-* `_notifications_`: specification of coordinating notifications to be sent to other performer / Task contexts;
-* `_execution_time_`: optional timing plan for Tasks;
-* `_indications_`: clinical conditions for the Task being applicable;
-* `_optionality_`: indicates whether the Task is regarded as optional or mandatory in the overall Task plan, typically set by a guideline;
-* `_costing_data_`: fine-grained data to enable cost determination of work performed;
-* `_other_participations_`: participations other than the principal performer.
+* _re-use_: Task Plans that can be used on their own, e.g. 'set up IV drip', are combined within a larger plan;
+* _level of granularity_: a Task Plan can contain Tasks that can be represented as finer-grained Task Plans, which may potentially be used or passed over depending on the level of experience, known here as _training level_ of the performer.
 
-Each of these is explained in detail below.
-
-=== Task Plan Compositional Structure
-
-As mentioned in the requirements section, the granularity of a Task can be variable from one healthcare context to another, as per the cannulation example. This leads to two possibilities for representing a real world Task:
-
-* _atomic representation_: a Task that may in reality consist of several fine-grained steps may be represented within a Task Plan as a single Task, on the assumption that the performer will correctly determine how to execute it;
-* _reference to composite representation_: a Task definition may refer out to a separate Task Plan containing further sub-tasks representing the detailed steps needed to achieve it.
-
-The model described here thus makes no _a priori_ assumptions about granularity of representation of a given real-world task, and both representations are possible. This first kind is thus represented as an instance of the class `DEFINED_TASK`, while the second is achieved with the use of an `LINKED_PLAN` which refers out to another `TASK_PLAN` to be executed by the same performer.
-
-The `LINKED_PLAN` type gives rise to the possibility of a hierarchy of linked Task Plans, with each successive member in the chain representing a more detailed form of a given real world task. This can be visualised as follows.
+The following instance diagram illustrates.
 
 [.text-center]
 .Task Plan linking
 image::diagrams/task_linking.svg[id=task_linking, align="center", width=70%]
 
-=== Training Level
+This shows a Plan for dialysis with a single performer, 'dialysis nurse', and several sub-plans, each referred to by an instance of the `SUB_PLAN` class. Since a Sub-plan is a kind of Task, it has a _description_ and could be performed and signed off as if it were a normal inline `DEFINED_TASK` by an experienced performer (training level high), or it might be entered into by a performer such as a trainee nurse. The `PLAN_ITME._training_level_` attribute can be used to set the experience level of sub-plans if required; implementing this behaviour at execution time would rely in the Plan execution engine using these settings.
 
-TODO: under review; `_training_level_` moved to `PLAN_ITEM` in model.
+=== Hand-offs and Coordinated Teamwork
 
-A structure like the above may be used differently by performers of differing training levels - since each `LINKED_PLAN` has its own inherited `_description_`, an expert user may require no further list of steps, but a trainee might make use of the full hierarchical structure. The `_training_level_` attribute on `TASK_PLAN` can be used to control this. A higher value corresponds to a lower level of expertise, and different values can be set on different linked `TASK_PLANs`. The workflow application may treat different users as being of different training levels, in which case Task Plans of higher training levels can be hidden. In the above example, a principal performer with trainee level = 7 will see the three Task Plans on the left, but not the final one, since it has a trainee level of 10.
+The second kind of Work Plan containing multiple Task Plans corresponds to a team work situation, where each Task Plan has a distinct principal performer, normally defined in terms of role and/or function, e.g. 'chemotherapy nurse' + 'assistant'.
 
-The default value of `_training_level_` is 0.
+Performing teamwork in a coordinated fashion with task planning support necessarily requires multiple Task Plans - one for each actor, and a means of coordination among them. This is achieved by the use of `HAND_OFF` class and the attributes inherited from `DISPATCHABLE`, i.e. `_wait_`, which determines switch or fork behaviour, and `_xxx_action_` attributes, which determine what to do depending on whether the requested work fails, succeeds or times out, for situations where the `_wait_` flag was set to `True`. 
 
-== Task Definition
+The following illustrates, using the example of an acute stroke management care process.
 
-The description of the work of a Task or Task Group is stated in the `_description_` attribute, inherited from `PLAN_ITEM`. This applies to `DEFINED_TASKs` (inline definitions) and external Plan references. A detailed specification of the work to be done in concrete (i.e. inline) Task definition may be stated via the `DEFINED_TASK` class optional atttribute `_prototype_`, of type `ENTRY`, which enables the details of a Task to be specified in terms of a descendant of the `ENTRY` class. This is typically an `ACTION` instance but could be an `OBSERVATION`, `ADMIN_ENTRY` or other descendant.
+[.text-center]
+.Task coordination
+image::diagrams/task_coordination.svg[id=task_coordination, align="center", width=75%]
+
+In this Work Plan, three Task Plans are used to perform (parts of) the clinical work coordinated for managing an acute stroke, as per a Care Pathway. There are two Hand-offs, the first synchronous (`_wait_` = `True`; `_resume_task_` = `next`) and the second an asynchronous fork (`_wait_` = `False`).
+
+=== External Request
+
+The Task sub-type `EXTERNAL_REQUEST` represents a request by the current performer to an external entity outside of the current Plan computation context to perform some work on behalf of the performer. This is normally an organisation of which routine requests can be made. The request is defined in terms of an organisation identifier, a request identifier (i.e. a name or type of job) and a list of other details, represented by the standard archetypable `ITEM_STRUCTURE`.
+
+Since an External Request represents a context change, the `EXTERNAL_REQUEST` class inherits from `DISPATCHABLE`, which enables a switch or fork to be specified, and in the case of a switch, how to process the return of control or a timeout.
+
+=== System Request
+
+In a similar way to External Request, the `SYSTEM_REQUEST` Task sub-type represents a request to a system with a computational interface on behalf of the performer. This might be to a special logging facility or a decision support system for example. The request is modelled in terms of a `SYSTEM_CALL` instance. It also inherits from `DISPATCHABLE` to enable context change handling.
+
+=== Inline Defined Tasks
+
+Tasks whose definitions are stated within a Task Plan are modelled using the `DEFINED_TASK` type. A detailed specification of the work to be done in a Defined Task  may be stated via optional atttribute `_prototype_` of type `ENTRY`, which enables the details of a Task to be specified in terms of a descendant of the `ENTRY` class. This is typically an `ACTION` instance but could be an `OBSERVATION`, `ADMIN_ENTRY` or other descendant.
 
 The attribute is called 'prototype' because the target Entry instance is understood as a partially populated, prototype 'planning time' partial copy of an Entry that will be created when the Task is actually performed. For example, a Task Plan for administering medication at 8 hourly intervals over a number of days could consist of a number of `DEFINED_TASKs`, each having a protoype of an `ACTION` instance based on the `openEHR-EHR-ACTION.medication.v1` archetype or a templated version thereof. Each such instance would contain the structured description of the medication administration and time, and when the administration was actually performed, an `ACTION` instance would be created from the prototype, modified to reflect any divergence from the planned form of the Task, and committed to the EHR in the normal way.
 
@@ -108,15 +120,28 @@ To allow further flexibility, The multiplicity of the `_prototype_` attribute is
 [.tbd]
 ISSUE-task-entry-corr: the alternative seems to be to allow a Task to correspond to e.g. a whole Composition template, where the `COMPOSITION` contains a number of e.g. `ACTIONs` or `OBSERVATIONs`. Problems I see with this: a) who knows what is in the Composition template? It may change over time; b) what if only some of the items in the Composition template can be done? Is the Task half complete? Or should the performer not do any of it?
 
-=== Coordinated Teamwork
+== Decision Structures
 
-Performing teamwork in a coordinated fashion with task planning support necessarily requires multiple Task Plans - one for each actor, and a means of coordination among them. This is achieved by the use of `TASK_NOTIFICATION` class and the attributes `_notifications_` and `_wait_conditions_`, which respectively represent outgoing notifications to other actors, and a 'wait state' that is unblocked by receipt of a notification from another Task Plan and actor.
-
-These two attributes enable both directions of communication between any two actors working in a coordinated workflow to be expressed. The following illustrates, using the example of an acute stroke management care process.
+A more advanced application of Task Plans includes decision structures in which Tasks are executed conditionally according to logic statements included in the Task Plan. In this model, a decision structure is represented by the classes `DECISION_GROUP` and `DECISION_PATH_GROUP`. These enable the decision points found in guidelines to be represented. 
 
 [.text-center]
-.Task coordination
-image::diagrams/task_coordination.svg[id=task_coordination, align="center", width=90%]
+.rm.task_planning package definition model (decision view)
+image::{uml_export_dir}/diagrams/RM-task_planning.definition-decision.svg[id=rm_task_planning_definition_decision, align="center"]
+
+The following diagram shows a typical decision structure.
+
+[.text-center]
+.Decision structure
+image::diagrams/decision_structure.svg[id=decision_structure, align="center", width=50%]
+
+A decision point is represented by a `DECISION_GROUP` instance, which contains a `_value_expression_` in the form of an assignment of an expression to a variable that can be later tested, and has its `_execution_type_` set to `conditional`. Each pathway is represented by a `DECISION_PATH_GROUP` instance with a `_test_expression_` in the form of an assertion on the same variable. By this method, the workflow engine can determine which group to execute based on the runtime value of the variable.
+
+== The Plan Data Context
+
+[.tbd]
+TBD: to be described
+
+== Detailed Plan Semantics
 
 === Timing
 
@@ -124,7 +149,7 @@ In the coordinated team work situation, the timing of Tasks tends to be based on
 
 [.text-center]
 .rm.task_planning package definition model (timing view)
-image::{uml_export_dir}/diagrams/RM-task_planning-definition-timing.svg[id=rm_task_planning_definition_timing, align="center"]
+image::{uml_export_dir}/diagrams/RM-task_planning.definition-timing.svg[id=rm_task_planning_definition_timing, align="center"]
 
 This is achieved via the `_execution_time_` attribute, whose value at runtime is understood as a guide, enabling Tasks to be placed on a scheduled timeline. A performer may execute the Task earlier or later than the indicated time, with the final `ACTION` or other Entry recording the actual time.
 
@@ -132,7 +157,10 @@ The timing of a Task, may be expressed in three different ways, as follows:
 
 * _clock time_: the Task is to be executed at a specific clock time represented by an instance of `CLOCK_TIMING`; within a Task definition, this must be specified as a relative duration with respect to the origin clock time of the Task Plan, which is only known in absolute terms at execution time;
 * _event-linked time_: the Task is to be executed at a time related to a real world event, such as a meal or sleeping; in this case, an instance of `EVENT_LINKED_TIME` is used; the attributes indicate the specifics such as '1 hour before', 'with meal' etc;
-* _task-link time_: the Task is to be executed at a time related to the timing of another Task event, such as completion of the previous Task; this is represented by an instance of `TASK_LINKED_TIME`, whose attributes define the specifics.
+* _task-link time_: the Task is to be executed at a time related to the timing of another Task event, such as completion of the previous Task; this is represented by an instance of `TASK_LINKED_TIME`, whose attributes define the specifics;
+* _state-linked time_: the Task is to be executed at a time related to the state of the subject, as specified by an instance of `STATE_LINKED_TIMING`. This uses a Boolean-valued `_condition_` attribute to state a condition which when true indicates that a Task time-to-execute has been reached. The `_test_period_` attribute indicates when to retest the condition.
+
+TODO: add a max time or time-out.
 
 Each of these timing specification types inherits from the `TIMING_SPEC` class, which provides an optional `_start_window_` attribute, enabling any time to be specified with an additional 'within x time'.
 
@@ -150,34 +178,55 @@ In addition to timing, other conditions may determine when or if a Task can be p
 
 Pre-conditions are intended to be used to express real-world conditions containing references to EHR-available data items, such as vital signs, white cell count and so on. Pre-conditions should be evaluated at the point at which the Task to which they are attached enter the lifecycle state `available`. If any pre-condition evaluates to False, the Task is in theory unable to be performed. A clinical professional override should be available at execution time, since it may always be the case that particular circumstances obviate the need for a particular pre-condition that normally applies.
 
-== Decision Structures
+=== Data-sets and Application Interaction
 
-A more advanced application of Task Plans includes decision structures in which Tasks are executed conditionally according to logic statements included in the Task Plan. In this model, a decision structure is represented by the classes `DECISION_GROUP` and `DECISION_PATH_GROUP`. These enable the decision points found in guidelines to be represented. 
+[.tbd]
+TBD: to be described
 
-[.text-center]
-.rm.task_planning package definition model (decision view)
-image::{uml_export_dir}/diagrams/RM-task_planning-definition-decision.svg[id=rm_task_planning_definition_decision, align="center"]
+=== Training Level
 
-The following diagram shows a typical decision structure.
+TODO: under review; `_training_level_` moved to `PLAN_ITEM` in model.
 
-[.text-center]
-.Decision structure
-image::diagrams/decision_structure.svg[id=decision_structure, align="center", width=50%]
+A structure like the above may be used differently by performers of differing training levels - since each `LINKED_PLAN` has its own inherited `_description_`, an expert user may require no further list of steps, but a trainee might make use of the full hierarchical structure. The `_training_level_` attribute on `TASK_PLAN` can be used to control this. A higher value corresponds to a lower level of expertise, and different values can be set on different linked `TASK_PLANs`. The workflow application may treat different users as being of different training levels, in which case Task Plans of higher training levels can be hidden. In the above example, a principal performer with trainee level = 7 will see the three Task Plans on the left, but not the final one, since it has a trainee level of 10.
 
-A decision point is represented by a `DECISION_GROUP` instance, which contains a `_value_expression_` in the form of an assignment of an expression to a variable that can be later tested, and has its `_execution_type_` set to `conditional`. Each pathway is represented by a `DECISION_PATH_GROUP` instance with a `_test_expression_` in the form of an assertion on the same variable. By this method, the workflow engine can determine which group to execute based on the runtime value of the variable.
+The default value of `_training_level_` is 0.
+
+=== References to Design-time Artefacts
+
+`WORK_PLAN` and `TASK_PLAN` contain various references to external artefacts that they are typically based on or relate to, as follows:
+
+* In `WORK_PLAN`:
+** `_care_plan_`: a reference to a driving Care Plan from elsewhere in the EHR, if any exists;
+** `_care_pathway_`: references to a care pathway from which this Task Plan was derived, if any;
+* In `TASK_PLAN`:
+* `_guideline_`: reference to a published guideline from which this particular Task Plan was derived, if any;
+* `_best_practice_ref_`: reference to an institutional document that defines the best practice on which this Task Plan is based, if any;
+* `_order_set_`: the identifier of an Order Set which this Task Plan uses, if any;
+* `_workflow_id_`: an identifier shared among orders (`INSTRUCTIONs` and `ACTIONs`) from the Order Set instance used in this Task Plan, if any.
+
+== Interaction with the EHR
+
+=== Versioning and EHR Committal
+
+If a `WORK_PLAN` and its constituent parts is created within a `COMPOSITION` for committal to the EHR (or a workflow-specific part of the EHR), it may be re-versioned as changes are made to its contents. The causes of change include:
+
+* changes to the definition;
+* additions to the execution history, corresponding to each Task or Plan level event, including completion or abandonment of the Task Plan.
+
+[.tbd]
+TBD: review the following para
+
+As the `TASK_PLAN` gets progressively built and executed over time, its owning `COMPOSITION` will undergo numerous changes, corresponding both to changes to the plan definition, and also execution of the actions performed to fulfill it. Typically only the former will generate new committed versions to the EHR, whereas the latter will most likely only be used by the workflow application during execution of the Task Plan. How changes to Task Plan are versioned and added to the EHR (or not) can be handled flexibly according to local needs.
 
 == Task Availability
 
 A workflow application or engine executing a Task Plan can determine the availability for execution of any Task Group or Task as follows:
 
-* *timing*:
-** Task execution time, if set, with respect to current time;
-** check completion status of preceding Tasks / Groups within the current Task Group;
+* *control-flow*: check completion status of preceding Tasks / Groups within the current Task Group;
+* *timing*: check Task execution time, if set, with respect to current time;
 * *validity*:
 ** check that Task wait notifications have been received from related Task Plans executing in the same group;
-** check Task preconditions, assessed by executing precondition expressions against the EHR;
-* *resources*:
-** check that a `_principal_performer_` has been allocated.
+** check Task preconditions, assessed by executing precondition expressions against the EHR.
 
 The workflow application may provide an override capability so that a Task can be performed before it is determined to be available. This would enable a user to perform the Task anyway, with the corresponding `TASK_EVENT_RECORD` recording the use of override.
 
@@ -191,11 +240,7 @@ include::{uml_export_dir}/classes/task_participation.adoc[]
 
 include::{uml_export_dir}/classes/plan_item.adoc[]
 
-include::{uml_export_dir}/classes/system_request.adoc[]
-
 include::{uml_export_dir}/classes/task_item.adoc[]
-
-include::{uml_export_dir}/classes/task_notification.adoc[]
 
 include::{uml_export_dir}/classes/task_precondition.adoc[]
 
@@ -208,6 +253,8 @@ include::{uml_export_dir}/classes/event_linked_timing.adoc[]
 include::{uml_export_dir}/classes/temporal_relation.adoc[]
 
 include::{uml_export_dir}/classes/task_linked_timing.adoc[]
+
+include::{uml_export_dir}/classes/state_linked_timing.adoc[]
 
 include::{uml_export_dir}/classes/timing_reference.adoc[]
 
@@ -225,11 +272,12 @@ include::{uml_export_dir}/classes/linked_plan.adoc[]
 
 include::{uml_export_dir}/classes/sub_plan.adoc[]
 
-include::{uml_export_dir}/classes/handoff.adoc[]
+include::{uml_export_dir}/classes/hand_off.adoc[]
 
 include::{uml_export_dir}/classes/external_request.adoc[]
+
+include::{uml_export_dir}/classes/system_request.adoc[]
 
 include::{uml_export_dir}/classes/defined_task.adoc[]
 
 include::{uml_export_dir}/classes/dataset_spec.adoc[]
-

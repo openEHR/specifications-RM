@@ -15,19 +15,19 @@ It has an associated execution_history that can be used to record work events in
 The attributes care_plan and guideline_id provide a way of associating a Task Plan with an operational care plan, and also a published guideline or protocol on which the Task Plan may be based.
 
 h|*Inherit*
-2+|CONTENT_ITEM
+2+|LOCATABLE
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
+h|*1..1*
+|*description*: `DV_TEXT`
+a|Human-understandable description of the Task Plan, which may be specific to the work items and patient.
+
 h|*0..1*
 |*subject*: `PARTY_PROXY`
 a|Optional indicator of subject of Task, which is normally the subject of the EHR. If this is not the case, this attribute states who the Task is to be performed on.
-
-h|*0..1*
-|*description*: `DV_TEXT`
-a|Human-understandable description of the Task Plan, which may be specific to the work items and patient.
 
 h|*0..1*
 |*guideline*: `DV_IDENTIFIER`
@@ -57,13 +57,23 @@ a|Maximal date/time by which this Task Plan should be considered obsolete. If no
 
 h|*0..1*
 |*due_time*: `Duration`
-a|Due date/time expressed as an offset, to be converted to a real date/time at instantiation.
+a|Due date/time expressed as an offset, to be converted to a real date/time at activation.
+
+h|*0..1*
+|*order_set*: `DV_IDENTIFIER`
+a|Optional identifier for an order set, which is understood as a _type_ of order set, e.g. 'R-CHOP-14'.
 
 h|*0..1*
 |*workflow_id*: `OBJECT_REF`
 a|Identifier of instance of order set from which this Task Plan is drawn, if there is one. Should match the workflow_id in all INSTRUCTION and other ENTRY instances created due to the same order set instance.
 
+TODO: needed?
+
 h|*0..1*
-|*order_set*: `DV_IDENTIFIER`
-a|Optional identifier for an order set, which is understood as a kind of order set, e.g. 'R-CHOP-14'.
+|*context*: `PLAN_DATA_CONTEXT`
+a|
+
+h|*0..1*
+|*indications*: `List<DV_TEXT>`
+a|Clinical applicability of this Task item to subject of work, e.g. 'pregnancy', 'lymphoma' etc. May be derived from a governing guideline. May be displayed as a safety precaution to human performer.
 |===

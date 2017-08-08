@@ -22,15 +22,15 @@ During a long-running Task Plan, the principal performer may change. This will u
 
 === Task Plan Materialisation
 
-Initially, one or more Task Plan definitions of a Work Plan that has been defined will have the lifecycle state value `planned` in each `TASK_ITEM` instance. When the definition is activated, it is instantiated within a Plan execution engine. This creates a copy of it, or part of it, along with instances of the `RT_XXX` classes ('RT' = runtime). This particular instance form is called the _materialised form_ in this specification.
+Initially, one or more Task Plan definitions of a Work Plan that has been defined will have the lifecycle state value `planned` in each `TASK_ITEM` instance. When the definition is activated, it is instantiated within a Plan execution engine. This creates a copy of it, or part of it, along with instances of the `M_XXX` classes ('RT' = runtime). This particular instance form is called the _materialised form_ in this specification.
 
-At materialisation, an instance of `RT_TASK_PLAN` is created and the  `_start_time_` attributes set to the current time respectively. This object will normally be maintained for the lifetime of execution of the Task Plan. If there are execution times in the plan, they will be trivially convertable to absolute clock times.
+At materialisation, an instance of `M_TASK_PLAN` is created and the  `_start_time_` attributes set to the current time respectively. This object will normally be maintained for the lifetime of execution of the Task Plan. If there are execution times in the plan, they will be trivially convertable to absolute clock times.
 
-The materialised form of the detailed structure of the plan may be instantiated fully, or only partially, where convenient. For example, if most of the plan has been completed, and only some steps remain, it may make sense to instantiate only the `RT_XX` instances corresponding to those steps. On the other hand, an applicaiton may want to display the details of the whole plan, even when only a small part remains to be executed.
+The materialised form of the detailed structure of the plan may be instantiated fully, or only partially, where convenient. For example, if most of the plan has been completed, and only some steps remain, it may make sense to instantiate only the `M_XX` instances corresponding to those steps. On the other hand, an applicaiton may want to display the details of the whole plan, even when only a small part remains to be executed.
 
-The structure created will mirror the structure of the definition, to the extent of run-time structure creation, if it is partial. That is to say, `RT_TASK_GROUP` instances will have `_members_` containing further `RT_XX` instances, that mimic the `TASK_GROUP` structures within the Plan definition.
+The structure created will mirror the structure of the definition, to the extent of run-time structure creation, if it is partial. That is to say, `M_TASK_GROUP` instances will have `_members_` containing further `M_XX` instances, that mimic the `TASK_GROUP` structures within the Plan definition.
 
-When the structure creation has been completed, the `_lifecycle_state_` attribute of one or more `RT_TASK` instances may be set to `available`, or if picking up from a previous session, to other states (i.e. `completed` etc), as appropriate.
+When the structure creation has been completed, the `_lifecycle_state_` attribute of one or more `M_TASK` instances may be set to `available`, or if picking up from a previous session, to other states (i.e. `completed` etc), as appropriate.
 
 At materialisation time, an instance of `EXECUTION_HISTORY` is also created, proving a root point to accumulate Task Plan execution event records.
 
@@ -42,7 +42,7 @@ At various moments during the execution of a Plan, a performer may leave and be 
 
 === Task Lifecycle Model
 
-During execution, each Task is represented by an instance of `RT_TASK` that refers back to its `TASK` definition instance. Each Task in the Plan has a lifecycle consisting of various states it may pass through in time. Changes in the lifecycle are recorded in `RT_TASK._lifecycle_state_`. The lifecycle is simple, since it only has to take account of the states a Task itself can pass through, with documentation of the Task execution occurring in the form of separate openEHR `ACTION` or other Entry objects. The states are as follows:
+During execution, each Task is represented by an instance of `M_TASK` that refers back to its `TASK` definition instance. Each Task in the Plan has a lifecycle consisting of various states it may pass through in time. Changes in the lifecycle are recorded in `M_TASK._lifecycle_state_`. The lifecycle is simple, since it only has to take account of the states a Task itself can pass through, with documentation of the Task execution occurring in the form of separate openEHR `ACTION` or other Entry objects. The states are as follows:
 
 * _initial_: initial pseudo-state, not used in operation;
 * _planned_: defined, but not available for execution;
@@ -59,7 +59,7 @@ image::{uml_export_dir}/diagrams/RM-TaskStateMachine.svg[id=task_state_machine, 
 
 It may be that one or more Tasks do not evaluate to `available` at runtime when the principal performer wants to treat them as being available. This may happen if the performer wants to execute a Task earlier than scheduled, or decides that an unmet precondition or wait condition does not matter (for example, they may know that it is met, but the Task Plan application may not yet know). Accordingly, an override option 
 
-Since a Task Plan is a hierarchical structure consisting of one or more Task Groups, a way of rolling up Task state is needed. The following algorithm is used to compute the effective lifecycle state of a `RT_TASK_GROUP` from the set of states of its members (which may include other `RT_TASK_GROUPs`).
+Since a Task Plan is a hierarchical structure consisting of one or more Task Groups, a way of rolling up Task state is needed. The following algorithm is used to compute the effective lifecycle state of a `M_TASK_GROUP` from the set of states of its members (which may include other `M_TASK_GROUPs`).
 
 [source, java]
 --------
@@ -86,7 +86,7 @@ TaskState inferredState (Set<TaskState> sourceStates) {
 
 Since the runtime Task Group is also the top-level structure of the runtime Task Plan, the inferred state of the Plan as a whole is also provided by this algorithm applied to the top-level runtime Task Group.
 
-Lifecycle state values recorded in `RT_TASK` objects may be copied into the `_lifecycle_state_` attributes of the corresponding definition Task objects if required, for example, in order to persist a final snapshot of the Task Plan into the EHR.
+Lifecycle state values recorded in `M_TASK` objects may be copied into the `_lifecycle_state_` attributes of the corresponding definition Task objects if required, for example, in order to persist a final snapshot of the Task Plan into the EHR.
 
 NOTE: This is the only execution time related attribute in the Task Plan definition. If it is necessary to record the final lifecycle states of Tasks in a completed Task Plan, the `TASK_PLAN` will need to be re-committed to the EHR as a new version in order to achieve this.
 
@@ -111,23 +111,21 @@ TBD: describe context switch for hand-off, external requests etc.
 
 === Class Descriptions
 
-include::{uml_export_dir}/classes/task_lifecycle.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_task_plan.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/rt_task_plan.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_wait_conditions.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/rt_wait_conditions.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_plan_item.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/rt_plan_item.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_task_item.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/rt_task_item.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_decision_group.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/rt_decision_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_task_group.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/rt_task_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_task.adoc[leveloffset=+1]
 
-include::{uml_export_dir}/classes/rt_task.adoc[leveloffset=+1]
-
-include::{uml_export_dir}/classes/rt_decision_path_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_decision_path_group.adoc[leveloffset=+1]
 
 == Task Plan Execution History
 

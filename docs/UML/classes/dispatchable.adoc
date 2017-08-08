@@ -20,13 +20,15 @@ h|*0..1*
 |*wait_timout*: `Duration`
 a|Maximum time to wait, if wait attribute is set True. Used by the Plan execution engine to set a timer.
 
-h|*1..1*
-|*callback_action*: `CALLBACK_ACTION`
-a|Procedure to execute when completion notification received, for example, to display a form, notify performer etc.
-
-TODO: determine details.
+h|*0..1*
+|*timeout_action*: `CALLBACK_ACTION`
+a|Action to perform if dispatched to target times out with no response.
 
 h|*0..1*
-|*resume_task*: `UID_BASED_ID`
-a|Reference to a resume location, usually an earlier Task, in the current Plan, at which to restart when the request / handoff has completed.
+|*fail_action*: `CALLBACK_ACTION`
+a|Action to perform if dispatched work returns with a fail result.
+
+h|*0..1*
+|*success_action*: `CALLBACK_ACTION`
+a|Action to perform if dispatched work returns with a success result.
 |===

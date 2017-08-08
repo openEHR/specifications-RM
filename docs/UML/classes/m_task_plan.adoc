@@ -1,12 +1,12 @@
-=== RT_TASK_PLAN Class
+=== M_TASK_PLAN Class
 
 [cols="^1,2,3"]
 |===
 h|*Class*
-2+^h|*RT_TASK_PLAN*
+2+^h|*M_TASK_PLAN*
 
 h|*Description*
-2+a|Root object of an executing Task Plan structure.
+2+a|Root object of a materialised Task Plan structure, used in execution.
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,7 +17,7 @@ h|*0..1*
 a|Nominal start time for the Task Plan as a whole. The timings of individual Tasks may be specified as offsets from this time, via PLANNED_TIME.relative_offset.
 
 h|*1..1*
-|*definition*: `RT_TASK_GROUP`
+|*definition*: `M_TASK_GROUP`
 a|Root of run-time Task Plan Task structure.
 
 h|*1..1*
@@ -25,8 +25,12 @@ h|*1..1*
 a|Owning Task Plan definition.
 
 h|*0..1*
-|*wait_conditions*: `List<RT_WAIT_CONDITIONS>`
+|*wait_conditions*: `List<M_WAIT_CONDITIONS>`
 a|Reference list of all wait conditions in the Task Plan, and current status.
+
+h|*1..1*
+|*context*: `M_PLAN_DATA_CONTEXT`
+a|
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
