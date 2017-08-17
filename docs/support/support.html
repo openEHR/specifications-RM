@@ -70,13 +70,13 @@
 </li>
 <li><a href="#_date_time_types">3.4. Date/Time Types</a>
 <ul class="sectlevel3">
-<li><a href="#_time_definitions_class">3.4.1. TIME_DEFINITIONS Class</a></li>
-<li><a href="#_iso8601_type_class">3.4.2. ISO8601_TYPE Class</a></li>
-<li><a href="#_iso8601_date_class">3.4.3. ISO8601_DATE Class</a></li>
-<li><a href="#_iso8601_time_class">3.4.4. ISO8601_TIME Class</a></li>
-<li><a href="#_iso8601_date_time_class">3.4.5. ISO8601_DATE_TIME Class</a></li>
-<li><a href="#_iso8601_duration_class">3.4.6. ISO8601_DURATION Class</a></li>
-<li><a href="#_iso8601_timezone_class">3.4.7. ISO8601_TIMEZONE Class</a></li>
+<li><a href="#_time_definitions_class">3.4.1. Time_Definitions Class</a></li>
+<li><a href="#_iso8601_type_class">3.4.2. Iso8601_type Class</a></li>
+<li><a href="#_iso8601_date_class">3.4.3. Iso8601_date Class</a></li>
+<li><a href="#_iso8601_time_class">3.4.4. Iso8601_time Class</a></li>
+<li><a href="#_iso8601_date_time_class">3.4.5. Iso8601_date_time Class</a></li>
+<li><a href="#_iso8601_duration_class">3.4.6. Iso8601_duration Class</a></li>
+<li><a href="#_iso8601_timezone_class">3.4.7. Iso8601_timezone Class</a></li>
 </ul>
 </li>
 </ul>
@@ -255,7 +255,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2016 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2017 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -678,7 +678,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Special thanks to Prof David Ingram, head of CHIME, who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
+<p>Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL, who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
 </div>
 </div>
 </div>
@@ -1390,7 +1390,7 @@ openEHR.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Any</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1453,7 +1453,7 @@ Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Number of items in container.</p>
+<p>Abstract ancestor of container types whose items are addressable in some way.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1475,7 +1475,9 @@ Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>count</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of items in container.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
@@ -1612,7 +1614,7 @@ Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Type representing a keyed table of values. V is the value type, and K the type of the keys.</p>
+<p>Type representing a keyed table of values. T is the value type, and U the type of the keys.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1652,12 +1654,13 @@ Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Interval</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Interval (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Interval of ordered items.</p>
+<p>Interval abstraction, featuring upper and lower limits that may be open or closed, included or not included.
+Interval of ordered items.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1674,13 +1677,6 @@ Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lower</strong>: <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>lower bound.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong>: <code>T</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Upper bound.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1724,6 +1720,32 @@ Model. It encompasses all existing character sets. In openEHR, UTF-8 encoding is
 lower_included and v &gt;= lower) or v &gt; lower and
 (upper_unbounded or
 upper_included and v &lt;= upper or v &lt; upper)</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>intersects</strong> (other: <code>Interval</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if there is any overlap between intervals represented by Current and `other'. True if at least one limit of other is strictly inside the limits of this interval.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contains</strong> (other: <code>Interval</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if current interval properly contains `other'? True if all points of `other' are inside the current interval.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>upper</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (other: <code>Any</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if current object&#8217;s interval is semantically same as `other'.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1852,7 +1874,7 @@ of ISO 8601:2004 used by openEHR.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_time_definitions_class"><a class="anchor" href="#_time_definitions_class"></a>3.4.1. TIME_DEFINITIONS Class</h4>
+<h4 id="_time_definitions_class"><a class="anchor" href="#_time_definitions_class"></a>3.4.1. Time_Definitions Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -1862,7 +1884,7 @@ of ISO 8601:2004 used by openEHR.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TIME_DEFINITIONS</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Time_Definitions</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2007,7 +2029,7 @@ of ISO 8601:2004 used by openEHR.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_type_class"><a class="anchor" href="#_iso8601_type_class"></a>3.4.2. ISO8601_TYPE Class</h4>
+<h4 id="_iso8601_type_class"><a class="anchor" href="#_iso8601_type_class"></a>3.4.2. Iso8601_type Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2017,17 +2039,27 @@ of ISO 8601:2004 used by openEHR.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>ISO8601_TYPE (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>Iso8601_type (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract ancestor type of ISO8601 types.</p>
+<p>Abstract ancestor type of ISO 8601 types, defining interface for 'extended' and 'partial' concepts from ISO 8601.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered, TIME_DEFINITIONS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Ordered</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2052,7 +2084,7 @@ of ISO 8601:2004 used by openEHR.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_date_class"><a class="anchor" href="#_iso8601_date_class"></a>3.4.3. ISO8601_DATE Class</h4>
+<h4 id="_iso8601_date_class"><a class="anchor" href="#_iso8601_date_class"></a>3.4.3. Iso8601_date Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2062,44 +2094,22 @@ of ISO 8601:2004 used by openEHR.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ISO8601_DATE</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Iso8601_date</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Represents an absolute point in time, as measured on the Gregorian calendar, and specified only to the day.</p>
+<p>Represents an ISO 8601 date, including partial and extended forms.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ISO8601_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Iso8601_type, IDate</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>year</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Year.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not month_unknown</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Month in year.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Day in month.</p>
-</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
@@ -2113,13 +2123,6 @@ of ISO 8601:2004 used by openEHR.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day_unknown</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether day in month is unknown. If so, and month is known, the date is of the form “YYYY-MM” or “YYYYMM”.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for date, in format YYYYMMDD or YYYY-MM-DD, or a partial invariant. See valid_iso8601_date for validity.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2189,6 +2192,13 @@ of ISO 8601:2004 used by openEHR.</p>
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>ISO8601 string for date, in format YYYYMMDD or YYYY-MM-DD, or a partial invariant. See valid_iso8601_date for validity.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Year_valid</em></strong>: valid_year (year)</p>
@@ -2216,7 +2226,7 @@ of ISO 8601:2004 used by openEHR.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_time_class"><a class="anchor" href="#_iso8601_time_class"></a>3.4.4. ISO8601_TIME Class</h4>
+<h4 id="_iso8601_time_class"><a class="anchor" href="#_iso8601_time_class"></a>3.4.4. Iso8601_time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2226,12 +2236,12 @@ of ISO 8601:2004 used by openEHR.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ISO8601_TIME</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Iso8601_time</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Represents an absolute point in time from an origin usually interpreted as meaning the start of the current day, specified to a fraction of a second.</p>
+<p>Represents an ISO 8601 time, including partial and extended forms.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2248,46 +2258,12 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ISO8601_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Iso8601_type, ITime</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Hour in day, in 24-hour time.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Minute in hour.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong>: <code>Real</code><br>
-<strong><em>Pre</em></strong>: not second_unknown</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Fractional seconds.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if the fractional_second part is signficant (i.e. even if = 0.0).</p>
-</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
@@ -2308,18 +2284,6 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong>: <code>ISO8601_TIMEZONE</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for time, i.e. in form: hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]], or a partial invariant. See valid_iso8601_time for validity.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2399,6 +2363,20 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>ISO8601 string for time, i.e. in form: hhmmss[,sss][Z&#124;±hh[mm]] or the extended form: hh:mm:ss[,sss][Z&#124;±hh[mm]], or a partial invariant. See valid_iso8601_time for validity.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the fractional_second part is signficant (i.e. even if = 0.0).</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_partial</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
@@ -2446,7 +2424,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_date_time_class"><a class="anchor" href="#_iso8601_date_time_class"></a>3.4.5. ISO8601_DATE_TIME Class</h4>
+<h4 id="_iso8601_date_time_class"><a class="anchor" href="#_iso8601_date_time_class"></a>3.4.5. Iso8601_date_time Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2456,12 +2434,12 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ISO8601_DATE_TIME</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Iso8601_date_time</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Represents an absolute point in time, specified to the second.</p>
+<p>Represents an ISO 8601 date/time, including partial and extended forms.</p>
 </div>
 <div class="paragraph">
 <p>Note that this class includes 2 deviations from ISO 8601:2004:</p>
@@ -2479,35 +2457,12 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ISO8601_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Iso8601_type, IDate_time</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>year</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Year.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>month</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not month_unknown</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Month in year.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not day_unknown</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Day in month.</p>
-</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
@@ -2521,44 +2476,6 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>day_unknown</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether day in month is unknown.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not hour_unknown</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Hour in day.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not minute_unknown</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Minute in hour.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>second</strong>: <code>Integer</code><br>
-<strong><em>Pre</em></strong>: not second_unknown</p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Second in minute.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_second</strong>: <code>Real</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Fractional seconds.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if the fractional_second part is signficant (i.e. even if = 0.0).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2580,20 +2497,6 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this time has a decimal part indicated by ‘,’ (comma) rather than ‘.’ (period).</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timezone</strong>: <code>ISO8601_TIMEZONE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Timezone; may be Void.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for date/time, in format YYYYMMDDThhmmss[(,&#124;.)s+][Z&#124;±hh[mm]] or in extended format YYYY-MM-DDThh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]] or a partial variant; see valid_iso8601_date_time() below.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2647,6 +2550,20 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </div>
 <div class="paragraph">
 <p>(meanings as in DV_DATE, DV_TIME) and the values in each field are valid.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>ISO8601 string for date/time, in format <code>YYYYMMDDThhmmss[,sss][Z &#124; ±hh[mm]]</code> or in extended format <code>YYYY-MM-DDThh:mm:ss[,sss][Z &#124; ±hh[mm]]</code> or a partial variant; see valid_iso8601_date_time() below.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_fractional_second</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the fractional_second part is signficant (i.e. even if = 0.0).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2739,7 +2656,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_duration_class"><a class="anchor" href="#_iso8601_duration_class"></a>3.4.6. ISO8601_DURATION Class</h4>
+<h4 id="_iso8601_duration_class"><a class="anchor" href="#_iso8601_duration_class"></a>3.4.6. Iso8601_duration Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2749,17 +2666,17 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ISO8601_DURATION</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Iso8601_duration</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Represents a period of time corresponding to a difference between two timepoints.</p>
+<p>Represents an ISO 8601 duration.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ISO8601_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Iso8601_type, IDuration</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2768,77 +2685,9 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>years</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of years of nominal 365-day length.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>months</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>days</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of 24 hour days.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hours</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of 60 minute hours.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minutes</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of 60 second minutes.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>seconds</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of seconds.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fractional_seconds</strong>: <code>Real</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Fractional seconds.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_decimal_sign_comma</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>weeks</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Number of 7 day weeks.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>ISO8601 string for duration, in format</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]</p>
-</li>
-</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -2863,9 +2712,16 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>to_seconds</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Total number of seconds equivalent (including fractional) of entire duration.</p>
+<p>ISO8601 string for duration, in format</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]]</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -2934,7 +2790,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </table>
 </div>
 <div class="sect3">
-<h4 id="_iso8601_timezone_class"><a class="anchor" href="#_iso8601_timezone_class"></a>3.4.7. ISO8601_TIMEZONE Class</h4>
+<h4 id="_iso8601_timezone_class"><a class="anchor" href="#_iso8601_timezone_class"></a>3.4.7. Iso8601_timezone Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -2944,7 +2800,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ISO8601_TIMEZONE</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Iso8601_timezone</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2954,7 +2810,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ISO8601_TYPE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">Iso8601_type, ITimezone</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2963,35 +2819,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hour</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Hour part of timezone - in the range 00 - 13.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Minute part of timezone. Generally 00 or 30.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_gmt</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if timezone is UTC, i.e. +0000.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sign</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Direction of timezone expresssed as +1 or -1.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>minute_unknown</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether minute part known.</p>
 </div></div></td>
@@ -3005,7 +2833,7 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <div class="ulist">
 <ul>
 <li>
-<p>Z &#124; ±hh[mm] &#124; ±hh[:mm] (extended form)</p>
+<p>Z &#124; ±hh[mm]</p>
 </li>
 </ul>
 </div>
@@ -3024,6 +2852,13 @@ A small deviation to the ISO 8601:2004 standard in this class is that the time 2
 <p>Z is a literal meaning UTC (modern replacement for GMT), i.e. timezone +0000</p>
 </li>
 </ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_gmt</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if timezone is UTC, i.e. +0000.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3885,7 +3720,7 @@ object (e.g. "GP") or any proper ancestor (e.g. <code>PARTY</code>).</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Globally unique identifier for one version of a versioned object; lexical form: object_id  ::' creating_system_id  ::' version_tree_id</p>
+<p>Globally unique identifier for one version of a versioned object; lexical form: object_id  '::' creating_system_id  '::' version_tree_id</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4057,8 +3892,14 @@ object (e.g. "GP") or any proper ancestor (e.g. <code>PARTY</code>).</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p>Identifier for archetypes. Ideally these would identify globally unique archetypes.
-Lexical form:
-rm_originator  -' rm_name  -' rm_entity  .' concept_name {  -' specialisation }*  .v' number</p>
+Lexical form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>rm_originator  '-' rm_name  '-' rm_entity  '.' concept_name {  '-' specialisation }*  '.v' number</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -4172,7 +4013,14 @@ openehr ,  cen ,  hl7 .</p>
 <p>The value if the id attribute is the precise terminology id identifier, including actual release (i.e. actual  version), local modifications etc; e.g. ICPC2.</p>
 </div>
 <div class="paragraph">
-<p>Lexical form:    name [  (' version  )' ]</p>
+<p>Lexical form:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>name [  (' version  )' ]</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -4267,8 +4115,20 @@ openehr ,  cen ,  hl7 .</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>namespace</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for the namespace are:
-local  &#124;  unknown  &#124;  [a-zA-Z][a-zA-Z0-9_-:/&amp;+?]*</p>
+<p>Namespace to which this identifier belongs in the local system context (and possibly in any other openEHR compliant environment) e.g.  terminology ,  demographic . These names are not yet standardised. Legal values for the namespace are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>local</p>
+</li>
+<li>
+<p>unknown</p>
+</li>
+<li>
+<p>[a-zA-Z][a-zA-Z0-9_-:/&amp;+?]*</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -5159,10 +5019,20 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (name: <code>String</code>): <code>TERMINOLOGY_ACCESS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Return an interface to the terminology named name. Allowable names include:-
-* openehr,
-* centc251,
-* any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
+<p>Return an interface to the terminology named name. Allowable names include:-</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>openehr,</p>
+</li>
+<li>
+<p>centc251,</p>
+</li>
+<li>
+<p>any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -5185,11 +5055,20 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (name: <code>String</code>): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if terminology named name known by this service. Allowable names include:-
-*  openehr
-* centc251
-* any name from are taken from the US NLM UMLS meta-data list at
-<a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
+<p>True if terminology named name known by this service. Allowable names include:-</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>openehr</p>
+</li>
+<li>
+<p>centc251</p>
+</li>
+<li>
+<p>any name from are taken from the US NLM UMLS meta-data list at       <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -5616,10 +5495,20 @@ only the minimum functions required by the openEHR Reference Model.</p>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (name: <code>String</code>): <code>TERMINOLOGY_ACCESS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Return an interface to the terminology named name. Allowable names include:-
-* openehr,
-* centc251,
-* any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
+<p>Return an interface to the terminology named name. Allowable names include:-</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>openehr,</p>
+</li>
+<li>
+<p>centc251,</p>
+</li>
+<li>
+<p>any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -5642,11 +5531,20 @@ only the minimum functions required by the openEHR Reference Model.</p>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (name: <code>String</code>): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if terminology named name known by this service. Allowable names include:-
-*  openehr
-* centc251
-* any name from are taken from the US NLM UMLS meta-data list at
-<a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
+<p>True if terminology named name known by this service. Allowable names include:-</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>openehr</p>
+</li>
+<li>
+<p>centc251</p>
+</li>
+<li>
+<p>any name from are taken from the US NLM UMLS meta-data list at       <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -5741,7 +5639,7 @@ number are currently defined.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Constants</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
@@ -6054,7 +5952,7 @@ number are currently defined.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-05 11:56:43 GMT
+Last updated 2017-04-27 11:23:36 BST
 </div>
 </div>
 </body>

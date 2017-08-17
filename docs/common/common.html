@@ -258,7 +258,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2016 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2017 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -837,7 +837,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Special thanks to Prof David Ingram, head of CHIME, who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
+<p>Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL, who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
 </div>
 <div class="sect2">
 <h3 id="_trademarks">Trademarks</h3>
@@ -1696,7 +1696,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>PARTY_PROXY</code> class and subtypes model references to parties based on these assumptions. The semantics of PARTY_PROXY enable a flexible approach: in stricter environments that have identity management and demographic services, and where there is an entry in such a service for the party in question, <code>PARTY_PROXY</code>.<code><em>external_ref</em></code> will be non-Void, while in other environments, it will be empty.</p>
+<p>The <code>PARTY_PROXY</code> class and subtypes model references to parties based on these assumptions. The semantics of <code>PARTY_PROXY</code> enable a flexible approach: in stricter environments that have identity management and demographic services, and where there is an entry in such a service for the party in question, <code>PARTY_PROXY.<em>external_ref</em></code> will be non-Void, while in other environments, it will be empty.</p>
 </div>
 <div class="paragraph">
 <p>The two subtypes correspond to the mutually distinct categories of the 'subject of the record', known as the 'self' party in openEHR, and any other party. Whenever the record subject has to be referred to in the record, an instance of <code>PARTY_SELF</code> is used, while <code>PARTY_IDENTIFIED</code> is used for all other situations. The latter class provides for optional human-readable names and formal identifiers, each keyed by purpose or meaning.</p>
@@ -1715,7 +1715,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <p>The external_ref attribute is not set on any instances of <code>PARTY_SELF</code>, i.e. nowhere in the EHR. This is the most secure approach, and means that the link between the EHR and the patient has to be done outside the EHR, by associating EHR.ehr_id and the patient demographic/ PMI identifier. This approach is more likely in more open data sharing environments.</p>
 </li>
 <li>
-<p>The external_ref attribute is set once only in <code>EHR_STATUS</code>.<code><em>subject</em></code>. Since the <code>EHR_STATUS</code> object is separate from the EHR contents, the root instance of <code>PARTY_SELF</code> will generally not be visible.</p>
+<p>The external_ref attribute is set once only in <code>EHR_STATUS.<em>subject</em></code>. Since the <code>EHR_STATUS</code> object is separate from the EHR contents, the root instance of <code>PARTY_SELF</code> will generally not be visible.</p>
 </li>
 <li>
 <p>Setting the external_ref in every instance of <code>PARTY_SELF</code>; this solution makes the patient external_ref visible in every instance of <code>PARTY_SELF</code>, which is reasonable in a secure environment, and convenient for copying parts of the record around locally.</p>
@@ -1730,7 +1730,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <div class="sect3">
 <h4 id="_participation"><a class="anchor" href="#_participation"></a>4.2.2. Participation</h4>
 <div class="paragraph">
-<p>The Participation abstraction models the interaction of some Party in an activity. In the openEHR reference models, participations are actually modelled in two ways. In situations where the kinds of participation are known and constant, they are modelled as a named attribute in the relevant reference model. For example, the <code><em>committer</em></code>: <code>PARTY_PROXY</code> attribute in <code>AUDIT_DETAILS</code> models a participation in which the function is "committal". Where the kind of participation is not known at design time, a descendant of the generic <code>PARTICIPATION</code> class is used.</p>
+<p>The Participation abstraction models the interaction of some Party in an activity. In the openEHR reference models, participations are actually modelled in two ways. In situations where the kinds of participation are known and constant, they are modelled as a named attribute in the relevant reference model. For example, the <code><em>committer</em>: PARTY_PROXY</code> attribute in <code>AUDIT_DETAILS</code> models a participation in which the function is "committal". Where the kind of participation is not known at design time, a descendant of the generic <code>PARTICIPATION</code> class is used.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1738,7 +1738,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <div class="sect4">
 <h5 id="_audit_details"><a class="anchor" href="#_audit_details"></a>4.2.3.1. Audit Details</h5>
 <div class="paragraph">
-<p>Three classes are provided to represent audit information. The first, <code>AUDIT_DETAILS</code> expresses the details that would be captured about a user when committing some information to a repository of some kind, which may be version controlled. It records committer, time, change type and description. Committer is recorded using a <code>PARTY_PROXY</code>, allowing for <code>PARTY_SELF</code> to be used when the committer is the record subject, and for other identifying information to be included for other users, expressed using <code>PARTY_IDENTIFIED</code>. The kind of identifying information used in <code>PARTY_PROXY</code> instances in <code>AUDIT_DETAILS</code> may be different from that used in <code>COMPOSITION</code>.<code><em>composer</em></code> or elsewhere, i.e. in the form of a system login identifier, e.g. "<a href="mailto:maxime.lavache@stpatricks.health.ie">maxime.lavache@stpatricks.health.ie</a>".</p>
+<p>Three classes are provided to represent audit information. The first, <code>AUDIT_DETAILS</code> expresses the details that would be captured about a user when committing some information to a repository of some kind, which may be version controlled. It records committer, time, change type and description. Committer is recorded using a <code>PARTY_PROXY</code>, allowing for <code>PARTY_SELF</code> to be used when the committer is the record subject, and for other identifying information to be included for other users, expressed using <code>PARTY_IDENTIFIED</code>. The kind of identifying information used in <code>PARTY_PROXY</code> instances in <code>AUDIT_DETAILS</code> may be different from that used in <code>COMPOSITION.<em>composer</em></code> or elsewhere, i.e. in the form of a system login identifier, e.g. <code>"<a href="mailto:maxime.lavache@stpatricks.health.ie">maxime.lavache@stpatricks.health.ie</a>"</code>.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1772,16 +1772,16 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <div class="ulist">
 <ul>
 <li>
-<p>the identity of the attesting party (<code>AUDIT_DETAILS</code>.<code><em>committer</em></code>);</p>
+<p>the identity of the attesting party (<code>AUDIT_DETAILS.<em>committer</em></code>);</p>
 </li>
 <li>
-<p>the date and time of the action of attestation (<code>AUDIT_DETAILS</code>.<code><em>time_committed</em></code>);</p>
+<p>the date and time of the action of attestation (<code>AUDIT_DETAILS.<em>time_committed</em></code>);</p>
 </li>
 <li>
-<p>references to items in the record being attested to (<code>ATTESTATION</code>.<code><em>items</em></code>); if this list is empty, the attestation is for the entire object (usually the content of an <code>ORIGINAL_VERSION</code>) to which the attestation is attached, otherwise the list must contain a set of paths to items within the item to which the attestation is attached;</p>
+<p>references to items in the record being attested to (<code>ATTESTATION.<em>items</em></code>); if this list is empty, the attestation is for the entire object (usually the content of an <code>ORIGINAL_VERSION</code>) to which the attestation is attached, otherwise the list must contain a set of paths to items within the item to which the attestation is attached;</p>
 </li>
 <li>
-<p>an optionally coded reason for attestation (<code>ATTESTATION</code>.<code><em>reason</em></code>);</p>
+<p>an optionally coded reason for attestation (<code>ATTESTATION.<em>reason</em></code>);</p>
 </li>
 <li>
 <p>an optional literal view of the the content attested, e.g. a binary screen image;</p>
@@ -2031,17 +2031,17 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code>DV_INTERVAL&lt;DV_DATE_TIME&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The time interval during which the participation took place, if it is used in an observational context (i.e. recording facts about the past); or the intended time interval of the participation when used in future contexts, such as EHR Instructions.</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>performer</strong>: <code>PARTY_PROXY</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The id and possibly demographic system link of the party participating in the activity.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code>DV_INTERVAL&lt;DV_DATE_TIME&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The time interval during which the participation took place, if it is used in an observational context (i.e. recording facts about the past); or the intended time interval of the participation when used in future contexts, such as EHR Instructions.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3476,7 +3476,7 @@ signature.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>versions</strong>: <code>List&lt;OBJECT_REF&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Set of references to versions causing changes to this EHR. Each contribution contains a list of versions, which may include paths pointing to any number of VERSIONABLE items, i.e. items of type COMPOSITION and FOLDER.</p>
+<p>Set of references to Versions causing changes to this EHR. Each contribution contains a list of versions, which may include paths pointing to any number of VERSIONABLE items, i.e. items of type COMPOSITION and FOLDER.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4240,7 +4240,7 @@ translations.has_key (d.language.code_string)))</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-05 12:00:08 GMT
+Last updated 2017-04-27 11:22:04 BST
 </div>
 </div>
 </body>

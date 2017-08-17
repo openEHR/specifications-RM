@@ -144,7 +144,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2016 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2017 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -379,7 +379,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Special thanks to Prof David Ingram, head of CHIME, who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
+<p>Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL, who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
 </div>
 </div>
 </div>
@@ -645,7 +645,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relationships</strong>: <code>List&lt;PARTY_RELATIONSHIP&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relationships</strong>: <code>List&lt;LOCATABLE_REF&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Relationships in which this role takes part as source.</p>
 </div></div></td>
@@ -797,6 +797,13 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>PARTY_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Target of relationship.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_validity</strong>: <code>DV_INTERVAL&lt;DV_DATE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
@@ -808,13 +815,6 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source</strong>: <code>PARTY_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Source of relationship.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>PARTY_REF</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Target of relationship.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1597,7 +1597,7 @@ associated credentials which document its official nature within the healthcare 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-05 11:58:59 GMT
+Last updated 2017-04-27 11:22:36 BST
 </div>
 </div>
 </body>
