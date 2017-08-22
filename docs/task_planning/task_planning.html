@@ -61,11 +61,11 @@
 </li>
 <li><a href="#_design_principles">4. Design Principles</a>
 <ul class="sectlevel2">
-<li><a href="#_conceptual_basis">4.1. Conceptual Basis</a>
+<li><a href="#_conceptual_basics">4.1. Conceptual Basics</a>
 <ul class="sectlevel3">
 <li><a href="#_key_entities_work_plan_and_task_plan">4.1.1. Key Entities: Work Plan and Task Plan</a></li>
 <li><a href="#_compositional_structure">4.1.2. Compositional Structure</a></li>
-<li><a href="#_semantics_of_a_task">4.1.3. Semantics of a Task</a></li>
+<li><a href="#_performers_and_allocation">4.1.3. Performers and Allocation</a></li>
 <li><a href="#_principal_performer">4.1.4. Principal Performer</a></li>
 <li><a href="#_work_flow_and_context_switching_and_forking">4.1.5. Work Flow and Context Switching and Forking</a></li>
 </ul>
@@ -76,8 +76,14 @@
 <li><a href="#_model_of_change">4.2.2. Model of Change</a></li>
 </ul>
 </li>
-<li><a href="#_relationship_of_task_plans_with_existing_openehr_entry_types">4.3. Relationship of Task Plans with existing openEHR Entry Types</a></li>
-<li><a href="#_order_semantics_versus_plan_semantics">4.4. Order Semantics versus Plan Semantics</a></li>
+<li><a href="#_execution_semantics">4.3. Execution Semantics</a>
+<ul class="sectlevel3">
+<li><a href="#_task_lifecycle">4.3.1. Task Lifecycle</a></li>
+<li><a href="#_task_availability">4.3.2. Task Availability</a></li>
+</ul>
+</li>
+<li><a href="#_relationship_of_task_plans_with_existing_openehr_entry_types">4.4. Relationship of Task Plans with existing openEHR Entry Types</a></li>
+<li><a href="#_order_semantics_versus_plan_semantics">4.5. Order Semantics versus Plan Semantics</a></li>
 </ul>
 </li>
 <li><a href="#_task_planning_model">5. Task Planning Model</a>
@@ -122,7 +128,7 @@
 <li><a href="#_versioning_and_ehr_committal">6.6.1. Versioning and EHR Committal</a></li>
 </ul>
 </li>
-<li><a href="#_task_availability">6.7. Task Availability</a></li>
+<li><a href="#_task_availability_2">6.7. Task Availability</a></li>
 <li><a href="#_class_descriptions_2">6.8. Class Descriptions</a>
 <ul class="sectlevel3">
 <li><a href="#_work_plan_class">6.8.1. WORK_PLAN Class</a></li>
@@ -168,13 +174,15 @@
 <li><a href="#_class_descriptions_3">7.2.7. Class Descriptions</a>
 <ul class="sectlevel4">
 <li><a href="#_m_task_plan_class">7.2.7.1. M_TASK_PLAN Class</a></li>
-<li><a href="#_m_wait_conditions_class">7.2.7.2. M_WAIT_CONDITIONS Class</a></li>
-<li><a href="#_m_plan_item_class">7.2.7.3. M_PLAN_ITEM Class</a></li>
-<li><a href="#_m_task_item_class">7.2.7.4. M_TASK_ITEM Class</a></li>
-<li><a href="#_m_decision_group_class">7.2.7.5. M_DECISION_GROUP Class</a></li>
+<li><a href="#_m_plan_data_context_class">7.2.7.2. M_PLAN_DATA_CONTEXT Class</a></li>
+<li><a href="#_m_wait_conditions_class">7.2.7.3. M_WAIT_CONDITIONS Class</a></li>
+<li><a href="#_m_plan_item_class">7.2.7.4. M_PLAN_ITEM Class</a></li>
+<li><a href="#_m_task_item_class">7.2.7.5. M_TASK_ITEM Class</a></li>
 <li><a href="#_m_task_group_class">7.2.7.6. M_TASK_GROUP Class</a></li>
 <li><a href="#_m_task_class">7.2.7.7. M_TASK Class</a></li>
-<li><a href="#_m_decision_path_group_class">7.2.7.8. M_DECISION_PATH_GROUP Class</a></li>
+<li><a href="#_m_decision_group_class">7.2.7.8. M_DECISION_GROUP Class</a></li>
+<li><a href="#_m_decision_path_group_class">7.2.7.9. M_DECISION_PATH_GROUP Class</a></li>
+<li><a href="#_m_allocation_class">7.2.7.10. M_ALLOCATION Class</a></li>
 </ul>
 </li>
 </ul>
@@ -335,9 +343,10 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>0.8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New Task subtypes; re-design 'system request' concept; build out callback classes; remove explicit notifications from model.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New Task subtypes; re-design 'system request' concept; build out callback classes; remove explicit notifications from model.<br>
+ Improve performer model. Add more design material.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Aug 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>22 Aug 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.8.0</p></td>
@@ -957,7 +966,7 @@
 <p>The following sections describe some of the key ideas in the design of the Task Planning model defined in this specification.</p>
 </div>
 <div class="sect2">
-<h3 id="_conceptual_basis"><a class="anchor" href="#_conceptual_basis"></a>4.1. Conceptual Basis</h3>
+<h3 id="_conceptual_basics"><a class="anchor" href="#_conceptual_basics"></a>4.1. Conceptual Basics</h3>
 <div class="sect3">
 <h4 id="_key_entities_work_plan_and_task_plan"><a class="anchor" href="#_key_entities_work_plan_and_task_plan"></a>4.1.1. Key Entities: Work Plan and Task Plan</h4>
 <div class="paragraph">
@@ -988,9 +997,6 @@
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_semantics_of_a_task"><a class="anchor" href="#_semantics_of_a_task"></a>4.1.3. Semantics of a Task</h4>
 <div class="paragraph">
 <p>The Task concept defined in this specification is relatively straightforward in the abstract: it corresponds to a separately performable <em>item of work</em> for a <em>performer</em> to execute, and may be either locally defined within a Plan, or else be a reference to work to be done elsewhere, either within the current Plan or in an external system or organisation. A Task within a Plan has a lifecycle whose states indicate whether it is planned, available, complete etc.</p>
 </div>
@@ -1009,33 +1015,15 @@
 <p>granularity of check-list and protocol single items, designed to be signed off as performed;</p>
 </li>
 <li>
-<p>a particular planned time of execution;</p>
+<p>a particular planned time of execution.</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_performers_and_allocation"><a class="anchor" href="#_performers_and_allocation"></a>4.1.3. Performers and Allocation</h4>
 <div class="paragraph">
-<p>A Task is <em>available</em> to perform when three kinds of condition are met: Plan control flow, real world time, and subject pre-conditions. Control flow reaches a Task in a Plan when either preceding Tasks have been performed (local control flow) or a previously dispatched external Task completes, whose restart location in the current Plan is the Task in question.</p>
-</div>
-<div class="paragraph">
-<p>Real-world execution time can be set for a Task, which means that even if it is available in terms of control flow, execution must wait until a specified time is reached. This may be simple clock time, a conventional time of day such as 'after lunch', or an event-relative time, such as 'at least 1 hour after last meal'.</p>
-</div>
-<div class="paragraph">
-<p>If the control flow and time conditions are met, a Task will still not be available until any subject-related pre-conditions are met. These are conditions that may be specified to ensure the Task is only performed if it is clinically appropriate and safe to do so, such as 'systolic blood pressure &lt; 160 mmHg'.</p>
-</div>
-<div class="paragraph">
-<p>Since the Task Plan cannot presume to have perfect knowledge of the real world situation, the performer is always allowed to override the time and subject pre-conditions, due to better knowledge. In such cases, the control flow requirement still holds - since this can already be 'overridden' by the performing cancelling preceding Tasks where appropruate.</p>
-</div>
-<div class="paragraph">
-<p>When a Task does become available for execution, nothing will happen until a performer is allocated to do it. When an available worker is allocated, further life-cycle states can be reached, i.e. 'completed', 'aborted' etc.</p>
-</div>
-<div class="paragraph">
-<p>The following diagram illustrates these concepts.</p>
-</div>
-<div id="task_semantics" class="imageblock text-center" style="text-align: center">
-<div class="content">
-<img src="diagrams/task_semantics.svg" alt="task semantics" width="90%">
-</div>
-<div class="title">Figure 4. Task Semantics</div>
+<p>Since a Task in a Task Plan being executed at runtime represents the Plan execution system&#8217;s knowledge of some work being performed in the real world, a way to connect the Task in the system (e.g. as shown on a UI application, or via notifications such as instant messaging) to the real-world actor performing it is needed. Following YAWL, the architecture described here treats <em>allocation</em> as a formal step in the execution phase. As per YAWL, more sophisicated implementations of Task Planning may offer numerous allocation strategies, such as first-available, quickest-to-complete, least-frequently-used and so on.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1065,6 +1053,12 @@
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>A couple of subtleties are created by the design choice to allow more than one principal performer for a Plan. Firstly, where a change of principle performer is indicated in a Task Plan, a change of concrete actor is normally intended at execution time, but this need not always be so. A Plan designed for mainly nursing tasks with one or two tasks for a consultant or other specialist could be fully performed by a single professional having the specific capacities required by the Plan.</p>
+</div>
+<div class="paragraph">
+<p>Secondly, a change in principal performer is not treated as a formal context switch, i.e. one formally represented in the Plan. Instead, the switch is assumed to be undertaken by means of allocation of the relevant actors, with no concept of blocking or continuing or other context change mechanism as described below.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_work_flow_and_context_switching_and_forking"><a class="anchor" href="#_work_flow_and_context_switching_and_forking"></a>4.1.5. Work Flow and Context Switching and Forking</h4>
@@ -1089,9 +1083,9 @@
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 60%;">
+<col style="width: 18.1818%;">
+<col style="width: 27.2727%;">
+<col style="width: 54.5455%;">
 </colgroup>
 <thead>
 <tr>
@@ -1106,7 +1100,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition template</strong><br>
                           (archetypes of definition<br>
                           classes)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A Task Plan template is a 'prototypical' definition of a Task Plan that may be used in multiple situations;                               it is represented in the form of openEHR templated archetype(s) based on the Task Planning definition
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Task Plan template is a 'prototypical' definition of a Task Plan that may be used in multiple situations;                                     it is represented in the form of openEHR templated archetype(s) based on the Task Planning definition
                                                       model of this specification.</p></td>
 </tr>
 <tr>
@@ -1122,11 +1116,11 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Clinical time -<br>
  plan execution</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Materialisation</strong><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Materialised form</strong><br>
                         (instances of<br>
                          materialised classes,<br>
                          persisted over sessions)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">At Plan execution time, a Task Plan definition will be 'materialised', i.e. instantiated into a form that can                              be used for execution and tracking of the Plan. In this form, repeatable sections of the definition are                                    'unfolded' into literal sections, for as many repetitions as required by the relevant performer(s).
+<td class="tableblock halign-left valign-top"><p class="tableblock">At Plan execution time, a Task Plan definition will be 'materialised', i.e. instantiated into a form that can                                    be used for execution and tracking of the Plan. In this form, repeatable sections of the definition are                                          'unfolded' into literal sections, for as many repetitions as required by the relevant performer(s).
 </p><p class="tableblock">                                                      Accordingly, parts of the materialised expression of a Plan may have an N:1 relationship with the original definition form. The materialised form has its own class model, containing additional data items to enable run-time tracking of the Plan as it is performed. During execution time, various kinds of deletions and modifications to the materialised representation, corresponding to changes in plan that respond to unexpected events.</p></td>
 </tr>
 <tr>
@@ -1136,7 +1130,7 @@
                         (instances of<br>
                          materialised classes,<br>
                          during session)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Since a Plan execution may run over many hours, days or longer, the materialised expression will in general                               correspond to something larger than the literal in-memory instantiation of (parts of) the Plan required during                             any given user-application the session during which some or all of the Task Plan might be performed. The part                             of the plan currently being displayed, performed, tracked etc, is known here as the 'run-time instantiation',                             and consists of a subset of the total materialised form instances.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Since a Plan execution may run over many hours, days or longer, the materialised expression will in general                                     correspond to something larger than the literal in-memory instantiation of (parts of) the Plan required during                                   any given user-application the session during which some or all of the Task Plan might be performed. The part                                   of the plan currently being displayed, performed, tracked etc, is known here as the 'run-time instantiation',                                   and consists of a subset of the total materialised form instances.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1152,10 +1146,10 @@
 <p>As per the above table, the model defined in this specification separates the definition of Task Plans from their executions. This is achieved via <code>definition</code> and <code>materialised</code> parts of the model, corresponding to the concrete definition and materialised phases described above. Instances of the former are used to represent the definition of a plan, and would accordingly be used by a tools designed for that purpose. Similarly, run-time execution tools would be built using the <code>materialised</code> part of the model, as well as the <code>definition</code> part, since the latter is referred to by the former.</p>
 </div>
 <div class="paragraph">
-<p>It is the materialised expression of a plan that is used to record all plan-related actions by Task performers. This state may be persisted for plans whose execution takes place over more than a user-application session.</p>
+<p>It is the materialised expression of a Plan that is used to record all Plan-related actions by Task performers. This state may be persisted for plans whose execution takes place over more than a user-application session.</p>
 </div>
 <div class="paragraph">
-<p>The history of actions can be understood as a set of <em>transactions</em> over time, and the model provides a third <code>history</code> part that can be used to efficiently represent this history, allowing it to be permanently recorded.</p>
+<p>The history of actions on the Plan can be understood as a set of <em>transactions</em> over time, and the model provides a third <code>history</code> part that can be used to efficiently represent this history, allowing it to be permanently recorded.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1166,7 +1160,74 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_relationship_of_task_plans_with_existing_openehr_entry_types"><a class="anchor" href="#_relationship_of_task_plans_with_existing_openehr_entry_types"></a>4.3. Relationship of Task Plans with existing openEHR Entry Types</h3>
+<h3 id="_execution_semantics"><a class="anchor" href="#_execution_semantics"></a>4.3. Execution Semantics</h3>
+<div class="paragraph">
+<p>A number of basic concepts apply to the execution phase of a materialised Task Plan. The general model is as follows.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>At any time after instantiation of the materialised Plan from its definition form, various changes can be made to the materialised structure, as long as they do not violate the constraints on the definition.</p>
+</li>
+<li>
+<p>Advance allocations of Tasks to concrete participants may be made in this phase.</p>
+</li>
+<li>
+<p>Connection to a notification push-channel must be made for every principal participant and external system mentioned in the Plan definition; these channels do not have to be all different (i.e. multiple parties may be communicated with via a single channel that talks to say a ward screen).</p>
+</li>
+<li>
+<p>The materialised Plan is <em>activated</em> at some point in time after creation. This establishes the zero point of the execution clock, and will cause various kinds of notifications to occur as time moves forward.</p>
+</li>
+<li>
+<p>The execution system then creates notifications through the various channels to indicate Tasks to be executed for each type of performer. Where performers are already allocated, they may commence work and indicate back to the system the state of each Task as it proceeds through its lifecycle (below). For Tasks that are not yet allocated, a notification soliciting an acceptance is postedl when this is responded to by a user, work begins.</p>
+</li>
+<li>
+<p>During the work, Tasks become <em>available</em> (see below) as earlier Tasks are completed or cancelled. When a Task is available to be done, the performer has various options, including doing the work, cancelling the Task as not needed, completing the Task, aborting it, and abandoning the entire Plan.</p>
+</li>
+<li>
+<p>Over time, the Plan remains in the active state until abandoned or completed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tbd">
+<p>TBC: more</p>
+</div>
+<div class="sect3">
+<h4 id="_task_lifecycle"><a class="anchor" href="#_task_lifecycle"></a>4.3.1. Task Lifecycle</h4>
+<div class="paragraph">
+<p>Every Task in a Plan has a lifecycle described by a state machine. The states represent the state of a real world item of work, <em>as known by the Plan execution system</em>; setting them is entirely reliant on the system receiving input from performers. The successful execution path is through the states <code>planned</code> &#8658; <code>available</code> &#8658; <code>completed</code>, with other terminal states <code>cancelled</code> and <code>aborted</code> available for cases where a Task is cancelled (not needed) and aborted (unable to complete) respectively.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_task_availability"><a class="anchor" href="#_task_availability"></a>4.3.2. Task Availability</h4>
+<div class="paragraph">
+<p>A Task becomes <em>available</em> to perform when three kinds of condition are met: Plan control flow, real world time, and subject pre-conditions. Control flow reaches a Task in a Plan when either preceding Tasks have been performed (local control flow) or a previously dispatched external Task completes, whose restart location in the current Plan is the Task in question.</p>
+</div>
+<div class="paragraph">
+<p>Real-world execution time can be set for a Task, which means that even if it is available in terms of control flow, execution must wait until a specified time is reached. This may be simple clock time, a conventional time of day such as 'after lunch', or an event-relative time, such as 'at least 1 hour after last meal'.</p>
+</div>
+<div class="paragraph">
+<p>If the control flow and time conditions are met, a Task will still not be available until any subject-related pre-conditions are met. These are conditions that may be specified to ensure the Task is only performed if it is clinically appropriate and safe to do so, such as 'systolic blood pressure &lt; 160 mmHg'.</p>
+</div>
+<div class="paragraph">
+<p>Since the Task Plan cannot presume to have perfect knowledge of the real world situation, the performer is always allowed to override the time and subject pre-conditions, due to better knowledge. In such cases, the control flow requirement still holds - since this can already be 'overridden' by the performing cancelling preceding Tasks where appropruate.</p>
+</div>
+<div class="paragraph">
+<p>When a Task does become available for execution, nothing will happen until a performer is allocated to do it. When an available worker is allocated, further life-cycle states can be reached, i.e. 'completed', 'aborted' etc.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram illustrates these concepts.</p>
+</div>
+<div id="task_semantics" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/task_semantics.svg" alt="task semantics" width="90%">
+</div>
+<div class="title">Figure 4. Task Semantics</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_relationship_of_task_plans_with_existing_openehr_entry_types"><a class="anchor" href="#_relationship_of_task_plans_with_existing_openehr_entry_types"></a>4.4. Relationship of Task Plans with existing openEHR Entry Types</h3>
 <div class="paragraph">
 <p>Within the phases of clinical planning and execution time described above, the Task Plan is not the only information artefact that may be created. The existing openEHR model <code>ENTRY</code> types provide the standard way to represent orders, via <code>INSTRUCTION</code>, and order-related performed activities, via <code>ACTION</code>. In addition, the usual <code>OBSERVATION</code>, <code>EVALUATION</code> and <code>ADMIN_ENTRY</code> types are used to record observations, diagnoses, and administrative events as they occur in clinical time. In abstract terms, Instructions may be understood as formal statements of 'what is to be done', and the other types, as records of 'what was done'. However, Instructions are most suited to concise representations of orderable actions, particularly medication administration, but not for general purpose detailed plans of events. The addition of Task Plans provides a way to specify such plans more flexibly, and in a step-by-step manner.</p>
 </div>
@@ -1202,7 +1263,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_order_semantics_versus_plan_semantics"><a class="anchor" href="#_order_semantics_versus_plan_semantics"></a>4.4. Order Semantics versus Plan Semantics</h3>
+<h3 id="_order_semantics_versus_plan_semantics"><a class="anchor" href="#_order_semantics_versus_plan_semantics"></a>4.5. Order Semantics versus Plan Semantics</h3>
 <div class="paragraph">
 <p>Despite the above explanation, the difference between Instructions (as defined in openEHR) and Task Plans may not be completely clear. However, there is a key difference, which is the semantic level at which the two are expressed. A typical order, represented in an openEHR <code>INSTRUCTION</code> has an <em>algorithmic</em> form, such as  "Amoxicillin 3 times a day, orally, for 7 days". Although healthcare professionals do not typically think about it, this expression is in fact a small program that is mentally <em>interpreted</em> to produce resultant actions such as giving one tablet at 9:15 am, one at lunch and so on.</p>
 </div>
@@ -1249,7 +1310,7 @@
 </div>
 <div id="task_planning_overview" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="diagrams/task_planning_overview.svg" alt="task planning overview" width="90%">
+<img src="diagrams/task_planning_overview.svg" alt="task planning overview" width="75%">
 </div>
 <div class="title">Figure 8. Task planning overview</div>
 </div>
@@ -1822,7 +1883,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_task_availability"><a class="anchor" href="#_task_availability"></a>6.7. Task Availability</h3>
+<h3 id="_task_availability_2"><a class="anchor" href="#_task_availability_2"></a>6.7. Task Availability</h3>
 <div class="paragraph">
 <p>A workflow application or engine executing a Task Plan can determine the availability for execution of any Task Group or Task as follows:</p>
 </div>
@@ -1908,7 +1969,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>plans</strong>: <code>Hash&lt;UID_BASED_ID,TASK_PLAN&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>plans</strong>: <code>List&lt;UID_BASED_ID&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
@@ -2866,7 +2927,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instruction_activity</strong>: <code>ACTIVITY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instruction_activity</strong>: <code>LOCATABLE_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Optional reference back to the ACTIVITY of an INSTRUCTION that generated this TASK.</p>
 </div></div></td>
@@ -2904,7 +2965,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>TASK_PLAN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>UID_BASED_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>UID of target TASK_PLAN object.</p>
 </div></div></td>
@@ -3003,7 +3064,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>organisation</strong>: <code>DV_IDENTIFIER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>organisation</strong>: <code>PARTY_PROXY</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Identifier of organisation to which the request or order is addressed.</p>
 </div></div></td>
@@ -3438,7 +3499,27 @@ This is the only execution time related attribute in the Task Plan definition. I
 </table>
 </div>
 <div class="sect4">
-<h5 id="_m_wait_conditions_class"><a class="anchor" href="#_m_wait_conditions_class"></a>7.2.7.2. M_WAIT_CONDITIONS Class</h5>
+<h5 id="_m_plan_data_context_class"><a class="anchor" href="#_m_plan_data_context_class"></a>7.2.7.2. M_PLAN_DATA_CONTEXT Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>M_PLAN_DATA_CONTEXT</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_m_wait_conditions_class"><a class="anchor" href="#_m_wait_conditions_class"></a>7.2.7.3. M_WAIT_CONDITIONS Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3486,7 +3567,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </table>
 </div>
 <div class="sect4">
-<h5 id="_m_plan_item_class"><a class="anchor" href="#_m_plan_item_class"></a>7.2.7.3. M_PLAN_ITEM Class</h5>
+<h5 id="_m_plan_item_class"><a class="anchor" href="#_m_plan_item_class"></a>7.2.7.4. M_PLAN_ITEM Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3511,7 +3592,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>participations</strong>: <code>List&lt;PARTICIPATION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_participations</strong>: <code>List&lt;M_ALLOCATION&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Run-time participations of this Plan Item in addition to principal performer.</p>
 </div></div></td>
@@ -3527,7 +3608,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </table>
 </div>
 <div class="sect4">
-<h5 id="_m_task_item_class"><a class="anchor" href="#_m_task_item_class"></a>7.2.7.4. M_TASK_ITEM Class</h5>
+<h5 id="_m_task_item_class"><a class="anchor" href="#_m_task_item_class"></a>7.2.7.5. M_TASK_ITEM Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3560,64 +3641,6 @@ This is the only execution time related attribute in the Task Plan definition. I
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>TASK_ITEM</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Reference to corresponding TASK_ITEM instance in Task Plan definition. Redefined in descendants.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="_m_decision_group_class"><a class="anchor" href="#_m_decision_group_class"></a>7.2.7.5. M_DECISION_GROUP Class</h5>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>M_DECISION_GROUP</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Materialised run-time homologue of DECISION_GROUP from a Task Plan definition.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">M_PLAN_ITEM</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value_expression</strong>: <code>ASSIGNMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Runtime form of value_expression from ask Plan definition.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>DECISION_GROUP</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Reference to corresponding DECISION_GROUP instance in Task Plan definition.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>paths</strong>: <code>List&lt;M_DECISION_PATH_GROUP&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Decision path groups, computed by following definition link to the corresponding DECISION_GROUP object in Task Plan definition.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3660,7 +3683,7 @@ This is the only execution time related attribute in the Task Plan definition. I
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>principal_performer</strong>: <code>PARTY_PROXY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>principal_performer</strong>: <code>M_ALLOCATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Run-time principal performer - a person or other agent.</p>
 </div></div></td>
@@ -3749,7 +3772,65 @@ This is the only execution time related attribute in the Task Plan definition. I
 </table>
 </div>
 <div class="sect4">
-<h5 id="_m_decision_path_group_class"><a class="anchor" href="#_m_decision_path_group_class"></a>7.2.7.8. M_DECISION_PATH_GROUP Class</h5>
+<h5 id="_m_decision_group_class"><a class="anchor" href="#_m_decision_group_class"></a>7.2.7.8. M_DECISION_GROUP Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>M_DECISION_GROUP</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>Materialised run-time homologue of DECISION_GROUP from a Task Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">M_PLAN_ITEM</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value_expression</strong>: <code>ASSIGNMENT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Runtime form of value_expression from ask Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>definition</strong>: <code>DECISION_GROUP</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Reference to corresponding DECISION_GROUP instance in Task Plan definition.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>paths</strong>: <code>List&lt;M_DECISION_PATH_GROUP&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Decision path groups, computed by following definition link to the corresponding DECISION_GROUP object in Task Plan definition.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_m_decision_path_group_class"><a class="anchor" href="#_m_decision_path_group_class"></a>7.2.7.9. M_DECISION_PATH_GROUP Class</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 16.6666%;">
@@ -3802,6 +3883,48 @@ This is the only execution time related attribute in the Task Plan definition. I
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Effective lifecycle state, computed from the states of members of the group.</p>
 </div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_m_allocation_class"><a class="anchor" href="#_m_allocation_class"></a>7.2.7.10. M_ALLOCATION Class</h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 50.0001%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>M_ALLOCATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>performer</strong>: <code>PARTY_IDENTIFIED</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>connection</strong>: <code>URI</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>URI used to connect to performer (e.g. application, messaging channel) for notifications.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 </tbody>
 </table>

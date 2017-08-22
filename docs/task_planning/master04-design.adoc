@@ -2,7 +2,7 @@
 
 The following sections describe some of the key ideas in the design of the Task Planning model defined in this specification.
 
-== Conceptual Basis
+== Conceptual Basics
 
 === Key Entities: Work Plan and Task Plan
 
@@ -19,8 +19,6 @@ In the real world, almost every Task can be sub-divided into a smaller set of Ta
 * *Task Plan*: a logical Task / Task Group structure, whose execution is intended to achieve completion of a coarse-grained task or goal with respect to a particular subject of care. Task Plans are a unit of reuse.
 * *Work Plan*: top-level structure containing related Task Plans needed to implement the intended specific outcome for a subject of care.
 
-=== Semantics of a Task
-
 The Task concept defined in this specification is relatively straightforward in the abstract: it corresponds to a separately performable _item of work_ for a _performer_ to execute, and may be either locally defined within a Plan, or else be a reference to work to be done elsewhere, either within the current Plan or in an external system or organisation. A Task within a Plan has a lifecycle whose states indicate whether it is planned, available, complete etc.
 
 In business terms, a Task typically corresponds to:
@@ -28,23 +26,11 @@ In business terms, a Task typically corresponds to:
 * an explicit level of clinical responsibility, e.g. nurse administration of a drug, single observation of patient vital sign etc;
 * an explicit level of re-imbursement / billing;
 * granularity of check-list and protocol single items, designed to be signed off as performed;
-* a particular planned time of execution;
+* a particular planned time of execution.
 
-A Task is _available_ to perform when three kinds of condition are met: Plan control flow, real world time, and subject pre-conditions. Control flow reaches a Task in a Plan when either preceding Tasks have been performed (local control flow) or a previously dispatched external Task completes, whose restart location in the current Plan is the Task in question. 
+=== Performers and Allocation
 
-Real-world execution time can be set for a Task, which means that even if it is available in terms of control flow, execution must wait until a specified time is reached. This may be simple clock time, a conventional time of day such as 'after lunch', or an event-relative time, such as 'at least 1 hour after last meal'.
-
-If the control flow and time conditions are met, a Task will still not be available until any subject-related pre-conditions are met. These are conditions that may be specified to ensure the Task is only performed if it is clinically appropriate and safe to do so, such as 'systolic blood pressure < 160 mmHg'.
-
-Since the Task Plan cannot presume to have perfect knowledge of the real world situation, the performer is always allowed to override the time and subject pre-conditions, due to better knowledge. In such cases, the control flow requirement still holds - since this can already be 'overridden' by the performing cancelling preceding Tasks where appropruate.
-
-When a Task does become available for execution, nothing will happen until a performer is allocated to do it. When an available worker is allocated, further life-cycle states can be reached, i.e. 'completed', 'aborted' etc.
-
-The following diagram illustrates these concepts.
-
-[.text-center]
-.Task Semantics
-image::diagrams/task_semantics.svg[id=task_semantics, align="center", width=90%]
+Since a Task in a Task Plan being executed at runtime represents the Plan execution system's knowledge of some work being performed in the real world, a way to connect the Task in the system (e.g. as shown on a UI application, or via notifications such as instant messaging) to the real-world actor performing it is needed. Following YAWL, the architecture described here treats _allocation_ as a formal step in the execution phase. As per YAWL, more sophisicated implementations of Task Planning may offer numerous allocation strategies, such as first-available, quickest-to-complete, least-frequently-used and so on.
 
 === Principal Performer
 
@@ -61,6 +47,10 @@ The consequences of this design principle are twofold:
 * where a team of executing actors is required to perform a logical procedure, _a Plan may have more than one principal performer in different Group sections, or alternatively, each distinct actor has his or her own Task Plan_;
 * for a team to operate together, coordination is required between the Task Plans and relevant actors. This is described in more detail below.
 
+A couple of subtleties are created by the design choice to allow more than one principal performer for a Plan. Firstly, where a change of principle performer is indicated in a Task Plan, a change of concrete actor is normally intended at execution time, but this need not always be so. A Plan designed for mainly nursing tasks with one or two tasks for a consultant or other specialist could be fully performed by a single professional having the specific capacities required by the Plan. 
+
+Secondly, a change in principal performer is not treated as a formal context switch, i.e. one formally represented in the Plan. Instead, the switch is assumed to be undertaken by means of allocation of the relevant actors, with no concept of blocking or continuing or other context change mechanism as described below.
+
 === Work Flow and Context Switching and Forking
 
 The definition of a set of Tasks within a Plan unavoidably implies a 'work flow' notion, i.e. a _thread of control_ embodied in the current performer performing work. Since the idea of parallel processing is supported by the model specified here, there may be more than one extant Task or series of Tasks which the same performer works on. Each thread is denoted a _task thread_ within this specification.
@@ -75,35 +65,32 @@ Two types of context change are supported in the model: _context switching_ and 
 
 Task Plans are defined, refined and used in various phases in time. A number of related technical representations are used, each appropriate to its phase.
 
-[cols="1,1,3", options="header"]
+[cols="2,3,6", options="header"]
 |===
 |Phase                   |Representation             |Purpose
 
 |Design time             |*Definition template* +
                           (archetypes of definition +
-                          classes)                   |A Task Plan template is a 'prototypical' definition of a Task Plan that may be used in multiple situations;                               it is represented in the form of openEHR templated archetype(s) based on the Task Planning definition
+                          classes)                   |A Task Plan template is a 'prototypical' definition of a Task Plan that may be used in multiple situations;                                     it is represented in the form of openEHR templated archetype(s) based on the Task Planning definition
                                                       model of this specification.
-
 |Clinical time - +
  planning               |*Concrete definition* +
                          (instances of definition +
                           classes)                   |When a Task Plan prototype is _used_, it is created as instances of the Task Planning definition
                                                       model (i.e. in the technical class/instance sense), and the result is understood as a _concrete_ definition
                                                       of the Task Plan to be used in a specific situation for a specific subject (i.e. patient); any modifications allowed by the archetypes may be made to achieve the specific Task Plan needed.
-
 |Clinical time - +
- plan execution         |*Materialisation* +
+ plan execution         |*Materialised form* +
                         (instances of +
                          materialised classes, +
-                         persisted over sessions)    |At Plan execution time, a Task Plan definition will be 'materialised', i.e. instantiated into a form that can                              be used for execution and tracking of the Plan. In this form, repeatable sections of the definition are                                    'unfolded' into literal sections, for as many repetitions as required by the relevant performer(s). 
+                         persisted over sessions)    |At Plan execution time, a Task Plan definition will be 'materialised', i.e. instantiated into a form that can                                    be used for execution and tracking of the Plan. In this form, repeatable sections of the definition are                                          'unfolded' into literal sections, for as many repetitions as required by the relevant performer(s). 
                          
                                                       Accordingly, parts of the materialised expression of a Plan may have an N:1 relationship with the original definition form. The materialised form has its own class model, containing additional data items to enable run-time tracking of the Plan as it is performed. During execution time, various kinds of deletions and modifications to the materialised representation, corresponding to changes in plan that respond to unexpected events.
- 
 |Clinical time - +
  task execution         |*Runtime instantiation* +
                         (instances of +
                          materialised classes, +
-                         during session)            |Since a Plan execution may run over many hours, days or longer, the materialised expression will in general                               correspond to something larger than the literal in-memory instantiation of (parts of) the Plan required during                             any given user-application the session during which some or all of the Task Plan might be performed. The part                             of the plan currently being displayed, performed, tracked etc, is known here as the 'run-time instantiation',                             and consists of a subset of the total materialised form instances.
+                         during session)            |Since a Plan execution may run over many hours, days or longer, the materialised expression will in general                                     correspond to something larger than the literal in-memory instantiation of (parts of) the Plan required during                                   any given user-application the session during which some or all of the Task Plan might be performed. The part                                   of the plan currently being displayed, performed, tracked etc, is known here as the 'run-time instantiation',                                   and consists of a subset of the total materialised form instances.
  
 |===
 
@@ -115,13 +102,50 @@ According to the above, the concrete definition of a Task Plan is constructed in
 
 As per the above table, the model defined in this specification separates the definition of Task Plans from their executions. This is achieved via `definition` and `materialised` parts of the model, corresponding to the concrete definition and materialised phases described above. Instances of the former are used to represent the definition of a plan, and would accordingly be used by a tools designed for that purpose. Similarly, run-time execution tools would be built using the `materialised` part of the model, as well as the `definition` part, since the latter is referred to by the former.
 
-It is the materialised expression of a plan that is used to record all plan-related actions by Task performers. This state may be persisted for plans whose execution takes place over more than a user-application session.
+It is the materialised expression of a Plan that is used to record all Plan-related actions by Task performers. This state may be persisted for plans whose execution takes place over more than a user-application session.
 
-The history of actions can be understood as a set of _transactions_ over time, and the model provides a third `history` part that can be used to efficiently represent this history, allowing it to be permanently recorded.
+The history of actions on the Plan can be understood as a set of _transactions_ over time, and the model provides a third `history` part that can be used to efficiently represent this history, allowing it to be permanently recorded.
 
 === Model of Change
 
 TODO: document how / when changes can be made, including during execution.
+
+== Execution Semantics
+
+A number of basic concepts apply to the execution phase of a materialised Task Plan. The general model is as follows.
+
+* At any time after instantiation of the materialised Plan from its definition form, various changes can be made to the materialised structure, as long as they do not violate the constraints on the definition.
+* Advance allocations of Tasks to concrete participants may be made in this phase.
+* Connection to a notification push-channel must be made for every principal participant and external system mentioned in the Plan definition; these channels do not have to be all different (i.e. multiple parties may be communicated with via a single channel that talks to say a ward screen).
+* The materialised Plan is _activated_ at some point in time after creation. This establishes the zero point of the execution clock, and will cause various kinds of notifications to occur as time moves forward.
+* The execution system then creates notifications through the various channels to indicate Tasks to be executed for each type of performer. Where performers are already allocated, they may commence work and indicate back to the system the state of each Task as it proceeds through its lifecycle (below). For Tasks that are not yet allocated, a notification soliciting an acceptance is postedl when this is responded to by a user, work begins.
+* During the work, Tasks become _available_ (see below) as earlier Tasks are completed or cancelled. When a Task is available to be done, the performer has various options, including doing the work, cancelling the Task as not needed, completing the Task, aborting it, and abandoning the entire Plan.
+* Over time, the Plan remains in the active state until abandoned or completed.
+
+[.tbd]
+TBC: more
+
+=== Task Lifecycle
+
+Every Task in a Plan has a lifecycle described by a state machine. The states represent the state of a real world item of work, _as known by the Plan execution system_; setting them is entirely reliant on the system receiving input from performers. The successful execution path is through the states `planned` => `available` => `completed`, with other terminal states `cancelled` and `aborted` available for cases where a Task is cancelled (not needed) and aborted (unable to complete) respectively.
+
+=== Task Availability
+
+A Task becomes _available_ to perform when three kinds of condition are met: Plan control flow, real world time, and subject pre-conditions. Control flow reaches a Task in a Plan when either preceding Tasks have been performed (local control flow) or a previously dispatched external Task completes, whose restart location in the current Plan is the Task in question. 
+
+Real-world execution time can be set for a Task, which means that even if it is available in terms of control flow, execution must wait until a specified time is reached. This may be simple clock time, a conventional time of day such as 'after lunch', or an event-relative time, such as 'at least 1 hour after last meal'.
+
+If the control flow and time conditions are met, a Task will still not be available until any subject-related pre-conditions are met. These are conditions that may be specified to ensure the Task is only performed if it is clinically appropriate and safe to do so, such as 'systolic blood pressure < 160 mmHg'.
+
+Since the Task Plan cannot presume to have perfect knowledge of the real world situation, the performer is always allowed to override the time and subject pre-conditions, due to better knowledge. In such cases, the control flow requirement still holds - since this can already be 'overridden' by the performing cancelling preceding Tasks where appropruate.
+
+When a Task does become available for execution, nothing will happen until a performer is allocated to do it. When an available worker is allocated, further life-cycle states can be reached, i.e. 'completed', 'aborted' etc.
+
+The following diagram illustrates these concepts.
+
+[.text-center]
+.Task Semantics
+image::diagrams/task_semantics.svg[id=task_semantics, align="center", width=90%]
 
 == Relationship of Task Plans with existing openEHR Entry Types
 
