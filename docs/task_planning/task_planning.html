@@ -110,7 +110,11 @@
 <li><a href="#_hand_offs_and_coordinated_teamwork">6.2.4. Hand-offs and Coordinated Teamwork</a></li>
 <li><a href="#_external_request">6.2.5. External Request</a></li>
 <li><a href="#_system_request">6.2.6. System Request</a></li>
-<li><a href="#_inline_defined_tasks">6.2.7. Inline Defined Tasks</a></li>
+<li><a href="#_inline_defined_tasks">6.2.7. Inline Defined Tasks</a>
+<ul class="sectlevel4">
+<li><a href="#_data_sets_and_application_interaction">6.2.7.1. Data-sets and Application Interaction</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_decision_structures">6.3. Decision Structures</a></li>
@@ -120,9 +124,8 @@
 <li><a href="#_repetition">6.5.1. Repetition</a></li>
 <li><a href="#_timing">6.5.2. Timing</a></li>
 <li><a href="#_pre_conditions">6.5.3. Pre-conditions</a></li>
-<li><a href="#_data_sets_and_application_interaction">6.5.4. Data-sets and Application Interaction</a></li>
-<li><a href="#_training_level">6.5.5. Training Level</a></li>
-<li><a href="#_references_to_design_time_artefacts">6.5.6. References to Design-time Artefacts</a></li>
+<li><a href="#_training_level">6.5.4. Training Level</a></li>
+<li><a href="#_references_to_design_time_artefacts">6.5.5. References to Design-time Artefacts</a></li>
 </ul>
 </li>
 <li><a href="#_interaction_with_the_ehr">6.6. Interaction with the EHR</a>
@@ -174,8 +177,8 @@
 <li><a href="#_allocation_and_re_allocation">7.5.1. Allocation and re-allocation</a></li>
 <li><a href="#_task_lifecycle_model">7.5.2. Task Lifecycle Model</a></li>
 <li><a href="#_notifications">7.5.3. Notifications</a></li>
-<li><a href="#_persistence">7.5.4. Persistence</a></li>
-<li><a href="#_context_switching">7.5.5. Context Switching</a></li>
+<li><a href="#_context_switching">7.5.4. Context Switching</a></li>
+<li><a href="#_persistence">7.5.5. Persistence</a></li>
 </ul>
 </li>
 <li><a href="#_class_descriptions_3">7.6. Class Descriptions</a>
@@ -349,9 +352,9 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>0.8.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">New Task subtypes; re-design 'system request' concept; build out callback classes; remove explicit notifications from model.<br>
- Improve performer model. Add more design material.</p></td>
+ Improve performer model. Add more design material. Improved Task state machine.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>22 Aug 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>25 Aug 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0.8.0</p></td>
@@ -1762,6 +1765,15 @@
 <div class="paragraph tbd">
 <p>ISSUE-task-entry-corr: the alternative seems to be to allow a Task to correspond to e.g. a whole Composition template, where the <code>COMPOSITION</code> contains a number of e.g. <code>ACTIONs</code> or <code>OBSERVATIONs</code>. Problems I see with this: a) who knows what is in the Composition template? It may change over time; b) what if only some of the items in the Composition template can be done? Is the Task half complete? Or should the performer not do any of it?</p>
 </div>
+<div class="sect4">
+<h5 id="_data_sets_and_application_interaction"><a class="anchor" href="#_data_sets_and_application_interaction"></a>6.2.7.1. Data-sets and Application Interaction</h5>
+<div class="paragraph">
+<p>Within the definition of a Defined Task, one or more data-sets may be specified for review and / or capture purposes (<code>DEFINED_TASK.<em>review_dataset</em></code> and <code><em>caputre_dataset</em></code>). A 'data-set' in openEHR is a template, normally displayed as a form within an application. Either a template or form identifier (or both) maybe be used to specify a data-set. A review data-set is specified to signal to the Task Plan runtime system to request the display of data at the start of the Task, in order to provide data needed by the user for the Task and potentially following Tasks. A capture data-set is specified when the purpose of the Task is to record data.</p>
+</div>
+<div class="paragraph tbd">
+<p>TBD: a single attribute may be sufficient.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1890,16 +1902,7 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_data_sets_and_application_interaction"><a class="anchor" href="#_data_sets_and_application_interaction"></a>6.5.4. Data-sets and Application Interaction</h4>
-<div class="paragraph">
-<p>Within the definition of a Defined Task, one or more data-sets may be specified for review and / or capture purposes (<code>DEFINED_TASK.<em>review_dataset</em></code> and <code><em>caputre_dataset</em></code>). A 'data-set' in openEHR is a template, normally displayed as a form within an application. Either a template or form identifier (or both) maybe be used to specify a data-set. A review data-set is specified to signal to the Task Plan runtime system to request the display of data at the start of the Task, in order to provide data needed by the user for the Task and potentially following Tasks. A capture data-set is specified when the purpose of the Task is to record data.</p>
-</div>
-<div class="paragraph tbd">
-<p>TBD: a single attribute may be sufficient.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_training_level"><a class="anchor" href="#_training_level"></a>6.5.5. Training Level</h4>
+<h4 id="_training_level"><a class="anchor" href="#_training_level"></a>6.5.4. Training Level</h4>
 <div class="paragraph">
 <p>One challenge with creating Task Plan definitions is the level of detail to use, with respect to the variable level of skill of different performers. For a senior nurse, a briefer version of the Plan would be preferable with actions such as 'set up IV with catheter' being a single atom, whereas a trainee may need to see a more detailed set of sub-tasks.</p>
 </div>
@@ -1911,7 +1914,7 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_references_to_design_time_artefacts"><a class="anchor" href="#_references_to_design_time_artefacts"></a>6.5.6. References to Design-time Artefacts</h4>
+<h4 id="_references_to_design_time_artefacts"><a class="anchor" href="#_references_to_design_time_artefacts"></a>6.5.5. References to Design-time Artefacts</h4>
 <div class="paragraph">
 <p><code>WORK_PLAN</code> and <code>TASK_PLAN</code> contain various references to external artefacts that they are typically based on or relate to, as follows:</p>
 </div>
@@ -1932,7 +1935,8 @@
 </li>
 <li>
 <p>In <code>TASK_PLAN</code>:</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p><code><em>guideline</em></code>: reference to a published guideline from which this particular Task Plan was derived, if any;</p>
 </li>
@@ -1944,6 +1948,9 @@
 </li>
 <li>
 <p><code><em>workflow_id</em></code>: an identifier shared among orders (<code>INSTRUCTIONs</code> and <code>ACTIONs</code>) from the Order Set instance used in this Task Plan, if any.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1991,9 +1998,6 @@
 <p><strong>validity</strong>:</p>
 <div class="ulist">
 <ul>
-<li>
-<p>check that Task wait notifications have been received from related Task Plans executing in the same group;</p>
-</li>
 <li>
 <p>check Task preconditions, assessed by executing precondition expressions against the EHR.</p>
 </li>
@@ -3553,7 +3557,7 @@
 <p><code>completed</code> (T): performed to completion;</p>
 </li>
 <li>
-<p><code>abandonned</code> (T): execution was stopped before or after commencement due to completion being impossible.;</p>
+<p><code>abandoned</code> (T): execution was stopped before or after commencement due to completion being impossible.;</p>
 </li>
 <li>
 <p><code>underway</code>: indicates that a Task execution has been commenced;</p>
@@ -3573,10 +3577,13 @@
 <div class="title">Figure 20. Task lifecycle state machine</div>
 </div>
 <div class="paragraph">
-<p>A key feature of the state model is that the terminal states determine whether the Plan exeuction continues or not: if the <code>abandonned</code> state is entered, it does not.</p>
+<p>A key feature of the state model is that the terminal states determine whether the Plan exeuction continues or not: if the <code>abandoned</code> state is entered, it does not.</p>
+</div>
+<div class="paragraph tbd">
+<p>ISSUE: in this scheme, if a Task has been started and has to be aborted, but the Plan doesn&#8217;t need to be abandoned, a transition to cencelled is required. There are thus no distinct state for 'Task aborted (continue)' and 'Task aborted (abandon).</p>
 </div>
 <div class="paragraph">
-<p>The state machine is primarily designed to allow a stateless view of the actual execution state of a Task. That is to say, the standard pathway is <code>available</code> &#8658; <code>completed</code> or <code>abandonned</code> or <code>cancelled</code>, which enables a user to indicate the outcome of executing a Task, but not interim states during execution. The pathways through the states <code>underway</code> and <code>suspended</code> are provided to represent in-execution states if needed, typically for longer-running atomic Tasks.</p>
+<p>The state machine is primarily designed to allow a stateless view of the actual execution state of a Task. That is to say, the standard pathway is <code>available</code> &#8658; <code>completed</code> or <code>abandoned</code> or <code>cancelled</code>, which enables a user to indicate the outcome of executing a Task, but not interim states during execution. The pathways through the states <code>underway</code> and <code>suspended</code> are provided to represent in-execution states if needed, typically for longer-running atomic Tasks.</p>
 </div>
 <div class="paragraph">
 <p>It may be that one or more Tasks do not evaluate to <code>available</code> at runtime when the principal performer wants to treat them as being available. This may happen if the performer wants to execute a Task earlier than scheduled, or decides that an unmet precondition or wait condition does not matter (for example, they may know that it is met, but the Task Plan application may not yet know). Accordingly, a user override can be used, represented by the override pathway from <code>planned</code> &#8658; <code>available</code>.</p>
@@ -3625,18 +3632,18 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_persistence"><a class="anchor" href="#_persistence"></a>7.5.4. Persistence</h4>
+<h4 id="_context_switching"><a class="anchor" href="#_context_switching"></a>7.5.4. Context Switching</h4>
+<div class="paragraph tbd">
+<p>TBD: describe context switch for hand-off, external requests etc. The notion of resume_location implies a need to reset Task states for re-entrant processing.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_persistence"><a class="anchor" href="#_persistence"></a>7.5.5. Persistence</h4>
 <div class="paragraph">
 <p>The run-time instance structure may need to be persisted to enable a partial execution of a long-running Task Plan to be recorded and picked up when later tasks become ready. In theory, this could be within the EHR, but it is recommended that either a specific EHR area be used for this, or that run-time state persistence be implemented outside the EHR proper.</p>
 </div>
 <div class="paragraph tbd">
 <p>issue-runtime-persistence: if within the EHR, we could create a new 'pointer' on the EHR object that points to 'task runtime state' data or similar. Is this a useful thing to do?</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_context_switching"><a class="anchor" href="#_context_switching"></a>7.5.5. Context Switching</h4>
-<div class="paragraph tbd">
-<p>TBD: describe context switch for hand-off, external requests etc.</p>
 </div>
 </div>
 </div>

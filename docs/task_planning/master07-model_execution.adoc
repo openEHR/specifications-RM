@@ -82,7 +82,7 @@ During execution, each Task is represented by an instance of `M_TASK` that refer
 * `available`: available for execution, due to previous Tasks having been performed, preconditions being met, and if there is a time specification on the Task, the current time being at or later than the stated time;
 * `cancelled` (T): cancelled prior or during execution as not needed for success of the Plan;
 * `completed` (T): performed to completion;
-* `abandonned` (T): execution was stopped before or after commencement due to completion being impossible.;
+* `abandoned` (T): execution was stopped before or after commencement due to completion being impossible.;
 * `underway`: indicates that a Task execution has been commenced;
 * `suspended`: indicates that a Task execution has been suspended.
 
@@ -92,9 +92,12 @@ In the above, the terminal states are marked with '(T)'. The state machine is sh
 .Task lifecycle state machine
 image::{uml_export_dir}/diagrams/RM-TaskStateMachine.svg[id=task_state_machine, align="center", width=60%]
 
-A key feature of the state model is that the terminal states determine whether the Plan exeuction continues or not: if the `abandonned` state is entered, it does not.
+A key feature of the state model is that the terminal states determine whether the Plan exeuction continues or not: if the `abandoned` state is entered, it does not.
 
-The state machine is primarily designed to allow a stateless view of the actual execution state of a Task. That is to say, the standard pathway is `available` => `completed` or `abandonned` or `cancelled`, which enables a user to indicate the outcome of executing a Task, but not interim states during execution. The pathways through the states `underway` and `suspended` are provided to represent in-execution states if needed, typically for longer-running atomic Tasks.
+[.tbd]
+ISSUE: in this scheme, if a Task has been started and has to be aborted, but the Plan doesn't need to be abandoned, a transition to cencelled is required. There are thus no distinct state for 'Task aborted (continue)' and 'Task aborted (abandon).
+
+The state machine is primarily designed to allow a stateless view of the actual execution state of a Task. That is to say, the standard pathway is `available` => `completed` or `abandoned` or `cancelled`, which enables a user to indicate the outcome of executing a Task, but not interim states during execution. The pathways through the states `underway` and `suspended` are provided to represent in-execution states if needed, typically for longer-running atomic Tasks.
 
 It may be that one or more Tasks do not evaluate to `available` at runtime when the principal performer wants to treat them as being available. This may happen if the performer wants to execute a Task earlier than scheduled, or decides that an unmet precondition or wait condition does not matter (for example, they may know that it is met, but the Task Plan application may not yet know). Accordingly, a user override can be used, represented by the override pathway from `planned` => `available`.
 
@@ -136,17 +139,17 @@ Notifications can be specified to be generated at various lifecycle state change
 [.tbd]
 To be continued
 
+=== Context Switching
+
+[.tbd]
+TBD: describe context switch for hand-off, external requests etc. The notion of resume_location implies a need to reset Task states for re-entrant processing.
+
 === Persistence
 
 The run-time instance structure may need to be persisted to enable a partial execution of a long-running Task Plan to be recorded and picked up when later tasks become ready. In theory, this could be within the EHR, but it is recommended that either a specific EHR area be used for this, or that run-time state persistence be implemented outside the EHR proper.
 
 [.tbd]
 issue-runtime-persistence: if within the EHR, we could create a new 'pointer' on the EHR object that points to 'task runtime state' data or similar. Is this a useful thing to do?
-
-=== Context Switching
-
-[.tbd]
-TBD: describe context switch for hand-off, external requests etc.
 
 == Class Descriptions
 

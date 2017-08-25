@@ -124,6 +124,13 @@ To allow further flexibility, The multiplicity of the `_prototype_` attribute is
 [.tbd]
 ISSUE-task-entry-corr: the alternative seems to be to allow a Task to correspond to e.g. a whole Composition template, where the `COMPOSITION` contains a number of e.g. `ACTIONs` or `OBSERVATIONs`. Problems I see with this: a) who knows what is in the Composition template? It may change over time; b) what if only some of the items in the Composition template can be done? Is the Task half complete? Or should the performer not do any of it?
 
+==== Data-sets and Application Interaction
+
+Within the definition of a Defined Task, one or more data-sets may be specified for review and / or capture purposes (`DEFINED_TASK._review_dataset_` and `_caputre_dataset_`). A 'data-set' in openEHR is a template, normally displayed as a form within an application. Either a template or form identifier (or both) maybe be used to specify a data-set. A review data-set is specified to signal to the Task Plan runtime system to request the display of data at the start of the Task, in order to provide data needed by the user for the Task and potentially following Tasks. A capture data-set is specified when the purpose of the Task is to record data.
+
+[.tbd]
+TBD: a single attribute may be sufficient.
+
 == Decision Structures
 
 A more advanced application of Task Plans includes decision structures in which Tasks are executed conditionally according to logic statements included in the Task Plan. In this model, a decision structure is represented by the classes `DECISION_GROUP` and `DECISION_PATH_GROUP`. These enable the decision points found in guidelines to be represented. 
@@ -197,13 +204,6 @@ In addition to timing, other conditions may determine when or if a Task can be p
 
 Pre-conditions are intended to be used to express real-world conditions containing references to subject state, such as vital signs, white cell count and so on. Pre-conditions should be evaluated at the point at which the Task to which they are attached enter the lifecycle state `available`. If any pre-condition evaluates to False, the Task is in theory unable to be performed. A clinical professional may override at execution time, since it may always be the case that particular circumstances obviate the need for a particular pre-condition that normally applies.
 
-=== Data-sets and Application Interaction
-
-Within the definition of a Defined Task, one or more data-sets may be specified for review and / or capture purposes (`DEFINED_TASK._review_dataset_` and `_caputre_dataset_`). A 'data-set' in openEHR is a template, normally displayed as a form within an application. Either a template or form identifier (or both) maybe be used to specify a data-set. A review data-set is specified to signal to the Task Plan runtime system to request the display of data at the start of the Task, in order to provide data needed by the user for the Task and potentially following Tasks. A capture data-set is specified when the purpose of the Task is to record data.
-
-[.tbd]
-TBD: a single attribute may be sufficient.
-
 === Training Level
 
 One challenge with creating Task Plan definitions is the level of detail to use, with respect to the variable level of skill of different performers. For a senior nurse, a briefer version of the Plan would be preferable with actions such as 'set up IV with catheter' being a single atom, whereas a trainee may need to see a more detailed set of sub-tasks. 
@@ -220,10 +220,10 @@ The default value of `_training_level_` is 0.
 ** `_care_plan_`: a reference to a driving Care Plan from elsewhere in the EHR, if any exists;
 ** `_care_pathway_`: references to a care pathway from which this Task Plan was derived, if any;
 * In `TASK_PLAN`:
-* `_guideline_`: reference to a published guideline from which this particular Task Plan was derived, if any;
-* `_best_practice_ref_`: reference to an institutional document that defines the best practice on which this Task Plan is based, if any;
-* `_order_set_`: the identifier of an Order Set which this Task Plan uses, if any;
-* `_workflow_id_`: an identifier shared among orders (`INSTRUCTIONs` and `ACTIONs`) from the Order Set instance used in this Task Plan, if any.
+** `_guideline_`: reference to a published guideline from which this particular Task Plan was derived, if any;
+** `_best_practice_ref_`: reference to an institutional document that defines the best practice on which this Task Plan is based, if any;
+** `_order_set_`: the identifier of an Order Set which this Task Plan uses, if any;
+** `_workflow_id_`: an identifier shared among orders (`INSTRUCTIONs` and `ACTIONs`) from the Order Set instance used in this Task Plan, if any.
 
 == Interaction with the EHR
 
@@ -246,7 +246,6 @@ A workflow application or engine executing a Task Plan can determine the availab
 * *control-flow*: check completion status of preceding Tasks / Groups within the current Task Group;
 * *timing*: check Task execution time, if set, with respect to current time;
 * *validity*:
-** check that Task wait notifications have been received from related Task Plans executing in the same group;
 ** check Task preconditions, assessed by executing precondition expressions against the EHR.
 
 The workflow application may provide an override capability so that a Task can be performed before it is determined to be available. This would enable a user to perform the Task anyway, with the corresponding `TASK_EVENT_RECORD` recording the use of override.
