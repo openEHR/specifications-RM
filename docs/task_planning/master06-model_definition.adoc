@@ -13,7 +13,7 @@ image::{uml_export_dir}/diagrams/RM-task_planning.definition.svg[id=rm_task_plan
 The following view of the above static model enables the key types and relationships that provide structure to be seen more easily.
 
 [.text-center]
-.rm.task_planning model.definition - Tasks view
+.rm.task_planning.definition - Tasks view
 image::{uml_export_dir}/diagrams/RM-task_planning.definition-tasks.svg[id=rm_task_planning_definition_tasks, align="center"]
 
 The top-level structure for defining plans is a `WORK_PLAN`, which includes one or more related `TASK_PLANs` making up a logical goal-oriented plan. Inclusion is achieved via UID references to Task Plans (`WORK_PLAN._plans_`), not physical containment. This relationship allows related Task Plans to be grouped, which occurs for two reasons described earlier: re-use of Task Plans as _sub-plans_ of other Task Plans, and team-based Plans, featuring _hand-offs_. How the Task Plans are linked to create these structures is enabled by particular sub-types of `TASK`, which may be understood by considering the model view above.
@@ -96,7 +96,11 @@ In a similar way to External Request, the `SYSTEM_REQUEST` Task sub-type represe
 
 === Inline Defined Tasks
 
-Tasks whose definitions are stated within a Task Plan are modelled using the `DEFINED_TASK` type. A detailed specification of the work to be done in a Defined Task  may be stated via optional atttribute `_prototype_` of type `ENTRY`, which enables the details of a Task to be specified in terms of a descendant of the `ENTRY` class. This is typically an `ACTION` instance but could be an `OBSERVATION`, `ADMIN_ENTRY` or other descendant.
+Tasks whose definitions are stated within a Task Plan are modelled using the `DEFINED_TASK` type. A detailed specification of the work to be done in a Defined Task  may be stated via optional atttribute `_prototype_` of type `ENTRY`, which enables the details of a Task to be specified in terms of a descendant of the `ENTRY` class. This is typically an `ACTION` instance but could be an `OBSERVATION`, `ADMIN_ENTRY` or other descendant. The following view of the UML illustrates.
+
+[.text-center]
+.rm.task_planning.definition - Definition Task
+image::{uml_export_dir}/diagrams/RM-task_planning.definition-defined_task.svg[id=rm_task_planning_definition_defined_task, align="center"]
 
 The attribute is called 'prototype' because the target Entry instance is understood as a partially populated, prototype 'planning time' partial copy of an Entry that will be created when the Task is actually performed. For example, a Task Plan for administering medication at 8 hourly intervals over a number of days could consist of a number of `DEFINED_TASKs`, each having a protoype of an `ACTION` instance based on the `openEHR-EHR-ACTION.medication.v1` archetype or a templated version thereof. Each such instance would contain the structured description of the medication administration and time, and when the administration was actually performed, an `ACTION` instance would be created from the prototype, modified to reflect any divergence from the planned form of the Task, and committed to the EHR in the normal way.
 
@@ -136,12 +140,27 @@ image::diagrams/decision_structure.svg[id=decision_structure, align="center", wi
 
 A decision point is represented by a `DECISION_GROUP` instance, which contains a `_value_expression_` in the form of an assignment of an expression to a variable that can be later tested, and has its `_execution_type_` set to `conditional`. Each pathway is represented by a `DECISION_PATH_GROUP` instance with a `_test_expression_` in the form of an assertion on the same variable. By this method, the workflow engine can determine which group to execute based on the runtime value of the variable.
 
-== The Plan Data Context
+== Plan Data Context
+
+A Task Plan may contain various logic _expressions_, occurring in the following places:
+
+* `TASK_PRECONDITION._expression_`;
+* `DECISION_GROUP._value_expression_` and `DECISION_PATH_GROUP._test_expression_`;
+* `TASK_REPEAT._terminate_condition_`.
+
+These expressions may mention variables that are typically related to subject state, such as patient vital signs, key demographic characteristics and so on, or the clinical care process, such as the 'time since stroke event'. In order to allow expressions to use symbolic variables such as `is_female` or `stroke_time` within logical expressions, a way of defining each variable is required. This is provided by the `CONTEXT_VARIABLE` type within `PLAN_DATA_CONTEXT`, a data context object at the Task Plan level.
+
+Each context variable has a symbolic name, type from within the openEHR type system, and a _populating_request_, which defines how to populate the variable with a System Request, typically an EHR query or similar. 
+
+[.tbd]
+TBD: to be continued; see also {openehr_expression}[openEHR Expression language].
+
+== Detailed Plan Semantics
+
+=== Repetition
 
 [.tbd]
 TBD: to be described
-
-== Detailed Plan Semantics
 
 === Timing
 
@@ -176,18 +195,20 @@ ISSUE-time-relativity: time is somewhat complicated. In a TASK_PLAN archetype we
 
 In addition to timing, other conditions may determine when or if a Task can be performed. These are modelled as the `TASK_ITEM` attribute `_preconditions_: TASK_PRECONDITION`. A precondition is formally represented as a `DV_PARSABLE`, which would normally contain a string in {openehr_expression}[openEHR Expression Language] syntax, but may contain another syntax.
 
-Pre-conditions are intended to be used to express real-world conditions containing references to EHR-available data items, such as vital signs, white cell count and so on. Pre-conditions should be evaluated at the point at which the Task to which they are attached enter the lifecycle state `available`. If any pre-condition evaluates to False, the Task is in theory unable to be performed. A clinical professional override should be available at execution time, since it may always be the case that particular circumstances obviate the need for a particular pre-condition that normally applies.
+Pre-conditions are intended to be used to express real-world conditions containing references to subject state, such as vital signs, white cell count and so on. Pre-conditions should be evaluated at the point at which the Task to which they are attached enter the lifecycle state `available`. If any pre-condition evaluates to False, the Task is in theory unable to be performed. A clinical professional may override at execution time, since it may always be the case that particular circumstances obviate the need for a particular pre-condition that normally applies.
 
 === Data-sets and Application Interaction
 
+Within the definition of a Defined Task, one or more data-sets may be specified for review and / or capture purposes (`DEFINED_TASK._review_dataset_` and `_caputre_dataset_`). A 'data-set' in openEHR is a template, normally displayed as a form within an application. Either a template or form identifier (or both) maybe be used to specify a data-set. A review data-set is specified to signal to the Task Plan runtime system to request the display of data at the start of the Task, in order to provide data needed by the user for the Task and potentially following Tasks. A capture data-set is specified when the purpose of the Task is to record data.
+
 [.tbd]
-TBD: to be described
+TBD: a single attribute may be sufficient.
 
 === Training Level
 
-TODO: under review; `_training_level_` moved to `PLAN_ITEM` in model.
+One challenge with creating Task Plan definitions is the level of detail to use, with respect to the variable level of skill of different performers. For a senior nurse, a briefer version of the Plan would be preferable with actions such as 'set up IV with catheter' being a single atom, whereas a trainee may need to see a more detailed set of sub-tasks. 
 
-A structure like the above may be used differently by performers of differing training levels - since each `LINKED_PLAN` has its own inherited `_description_`, an expert user may require no further list of steps, but a trainee might make use of the full hierarchical structure. The `_training_level_` attribute on `TASK_PLAN` can be used to control this. A higher value corresponds to a lower level of expertise, and different values can be set on different linked `TASK_PLANs`. The workflow application may treat different users as being of different training levels, in which case Task Plans of higher training levels can be hidden. In the above example, a principal performer with trainee level = 7 will see the three Task Plans on the left, but not the final one, since it has a trainee level of 10.
+To enable a single Plan to be used in both ways, the concept of 'training level' is included in the model, on the `TASK_GROUP` class. This enables any Group of Tasks to be marked as having a specific training level, where a higher number corresponds to less experience. At execution time, the training level of the allocated performer can be obtained, and then used in comparison to the training level indicated on each Group (including the top-level Group of the whole Plan). If the user training level is higher, then the Group may be shown only as a single step (using its `_description_`, inherited from `PLAN_ITEM`); otherwise it may be shown as the set of sub-steps. This provides a simple way for the same Plan to be presented in different forms matching different performer experience levels.
 
 The default value of `_training_level_` is 0.
 
@@ -259,6 +280,8 @@ include::{uml_export_dir}/classes/state_linked_timing.adoc[]
 include::{uml_export_dir}/classes/timing_reference.adoc[]
 
 include::{uml_export_dir}/classes/task_group.adoc[]
+
+include::{uml_export_dir}/classes/task_repeat.adoc[]
 
 include::{uml_export_dir}/classes/decision_group.adoc[]
 

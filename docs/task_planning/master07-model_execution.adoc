@@ -8,31 +8,64 @@ The following figure shows the execution related parts of the `rm.task_planning`
 .rm.task_planning package - execution model
 image::{uml_export_dir}/diagrams/RM-task_planning-execution.svg[id=rm_task_planning_execution, align="center"]
 
-== Task Plan Execution Tracking
+As described in <<Execution Semantics>>, Plan execution traverses three states: `materialised`, `activated` and `terminated`, as follows:
 
-There are various aspects to Task Plan execution, some of which are complex, and not directly covered by this specification. The execution phases are as follows: 
-
-* *materialisation*: create an instance of (parts of) this Task Plan in the Task Plan execution engine;
-* *allocation*: allocate the Plan instance to an authenticated user, as principal performer;
-* *execution*: the Task Plan application displays Tasks and advances the state of execution view interactions with the user;
-** each interaction, also change of principal performer, abandonment, and any other events will cause generation of Execution history events, which may be persisted;
-* *commit to EHR*: an updated state of the Task Plan may be committed to the EHR, containing final lifecycle states and execution history.
+* `materialised` state: at any time after creation of the materialised Plan from its definition form, the following actions are possible:
+** Various changes can be made to the materialised structure, as long as they do not violate the constraints on the definition;
+** Connection to a notification push-channel must be made for every principal participant and external system mentioned in the Plan definition; these channels do not have to be all different (i.e. multiple parties may be communicated with via a single channel that talks to say a ward screen).
+** Advance allocations of Tasks to concrete participants may be made in this phase;
+* `activated` state: the materialised Plan is _activated_ at some point in time after creation. 
+** This establishes the zero point of the execution clock, and will cause various kinds of notifications to occur as time moves forward.
+** The execution system then creates notifications through the various channels to indicate Tasks to be executed for each type of performer.
+** Where performers are already allocated, they may commence work and indicate back to the system the state of each Task as it proceeds through its lifecycle (below).
+** For Tasks that are not yet allocated, a notification soliciting an acceptance is posted when this is responded to by a user, work begins.
+** During the work, Tasks become _available_ (see below) as earlier Tasks are completed or cancelled. When a Task is available to be done, the performer has various options, including doing the work, cancelling the Task as not needed, completing the Task, aborting it, and abandoning the entire Plan.
+** As the work proceeds, event records are generated and added to the execution history.
+** The Plan remains in the active state until abandoned or completed.
+* `terminated` state: A Plan terminates when a path taken through the materialised Task graph terminates, either due to finishing, or due to abandonment at an intermediate Task. 
+** The Plan as a whole returns a termination status of success or fail, which may be used to control behaviour if it is part of a handover chain in which a context switch follows termination.
+** A final event record is added to the execution history.
 
 During a long-running Task Plan, the principal performer may change. This will usually be the case for Task Plans that run longer than a work shift.
 
-=== Task Plan Materialisation
+== Materialisation
 
-Initially, one or more Task Plan definitions of a Work Plan that has been defined will have the lifecycle state value `planned` in each `TASK_ITEM` instance. When the definition is activated, it is instantiated within a Plan execution engine. This creates a copy of it, or part of it, along with instances of the `M_XXX` classes ('RT' = runtime). This particular instance form is called the _materialised form_ in this specification.
+When a Work Plan is to be executed, it will be materialised. Some user input may be required, e.g. number of repetitions of repeatable sections. The materialised representation consists of:
 
-At materialisation, an instance of `M_TASK_PLAN` is created and the  `_start_time_` attributes set to the current time respectively. This object will normally be maintained for the lifetime of execution of the Task Plan. If there are execution times in the plan, they will be trivially convertable to absolute clock times.
+* A copy of the definition form of the Plan;
+* An instance of the Plan using Materialised model instances, i.e. the `M_XXX` classes, representing the concrete executable Tasks, each with a reference back to a definition Task. For Plans with repeatable sections, the Materialised model contains these sections 'unrolled' into as many instances as required by the Plan activator. Thus, more than one `M_TASK` may point to the same generating `TASK` from the definition form.
+
+The structure created will this mirror the structure of the original definition, with extra copies for repeatable sections. That is to say, `M_TASK_GROUP` instances will have `_members_` containing further `M_XX` instances, that mimic the `TASK_GROUP` structures within the Plan definition.
+
+[.tbd]
+TBD: Structural modifications
+
+* alter repeating section repeats
+* remove decision branches and Tasks whose conditions will never be met
+
+[.tbd]
+TBD: Connection setup
+
+[.tbd]
+TBD: Allow pre-allocations
+
+== Activation
+
+A materialised Plan is activated when it is ready to be used. Activation 'starts the clock'; accordingly, the `M_TASK_PLAN` attribute `_start_time_` is set to the current time. Execution times in the Plan are converted to absolute clock times, or a form that can be related to clock time.
 
 The materialised form of the detailed structure of the plan may be instantiated fully, or only partially, where convenient. For example, if most of the plan has been completed, and only some steps remain, it may make sense to instantiate only the `M_XX` instances corresponding to those steps. On the other hand, an applicaiton may want to display the details of the whole plan, even when only a small part remains to be executed.
 
-The structure created will mirror the structure of the definition, to the extent of run-time structure creation, if it is partial. That is to say, `M_TASK_GROUP` instances will have `_members_` containing further `M_XX` instances, that mimic the `TASK_GROUP` structures within the Plan definition.
 
 When the structure creation has been completed, the `_lifecycle_state_` attribute of one or more `M_TASK` instances may be set to `available`, or if picking up from a previous session, to other states (i.e. `completed` etc), as appropriate.
 
 At materialisation time, an instance of `EXECUTION_HISTORY` is also created, proving a root point to accumulate Task Plan execution event records.
+
+== Termination
+
+[.tbd]
+TBD
+
+== Execution Time Semantics
 
 === Allocation and re-allocation
 
@@ -42,22 +75,28 @@ At various moments during the execution of a Plan, a performer may leave and be 
 
 === Task Lifecycle Model
 
-During execution, each Task is represented by an instance of `M_TASK` that refers back to its `TASK` definition instance. Each Task in the Plan has a lifecycle consisting of various states it may pass through in time. Changes in the lifecycle are recorded in `M_TASK._lifecycle_state_`. The lifecycle is simple, since it only has to take account of the states a Task itself can pass through, with documentation of the Task execution occurring in the form of separate openEHR `ACTION` or other Entry objects. The states are as follows:
+During execution, each Task is represented by an instance of `M_TASK` that refers back to its `TASK` definition instance. Each Task in the Plan has a lifecycle consisting of various states it may pass through in time. Changes in the lifecycle are recorded in `M_TASK._lifecycle_state_`. The lifecycle is simple, since it only has to take account of the states a Task itself can pass through - states of any order with which the Task may be associated will be visible in the documentation of the Task execution, i.e. separate openEHR `ACTION` or other Entry objects. The states are as follows:
 
-* _initial_: initial pseudo-state, not used in operation;
-* _planned_: defined, but not available for execution;
-* _available_: available for execution, due to previous Tasks having been performed, preconditions being met, wait conditions having been satisfied and if there is a time specification on the Task, the current time being at or later than the stated time;
-* _cancelled_: cancelled prior to being performed;
-* _completed_: performed to completion;
-* _aborted_: execution was commenced but stopped before completion.
+* `initial`: initial pseudo-state, not used in operation;
+* `planned`: defined, but not yet available for execution;
+* `available`: available for execution, due to previous Tasks having been performed, preconditions being met, and if there is a time specification on the Task, the current time being at or later than the stated time;
+* `cancelled` (T): cancelled prior or during execution as not needed for success of the Plan;
+* `completed` (T): performed to completion;
+* `abandonned` (T): execution was stopped before or after commencement due to completion being impossible.;
+* `underway`: indicates that a Task execution has been commenced;
+* `suspended`: indicates that a Task execution has been suspended.
 
-The corresponding state machine is shown below.
+In the above, the terminal states are marked with '(T)'. The state machine is shown below.
 
 [.text-center]
 .Task lifecycle state machine
 image::{uml_export_dir}/diagrams/RM-TaskStateMachine.svg[id=task_state_machine, align="center", width=60%]
 
-It may be that one or more Tasks do not evaluate to `available` at runtime when the principal performer wants to treat them as being available. This may happen if the performer wants to execute a Task earlier than scheduled, or decides that an unmet precondition or wait condition does not matter (for example, they may know that it is met, but the Task Plan application may not yet know). Accordingly, an override option 
+A key feature of the state model is that the terminal states determine whether the Plan exeuction continues or not: if the `abandonned` state is entered, it does not.
+
+The state machine is primarily designed to allow a stateless view of the actual execution state of a Task. That is to say, the standard pathway is `available` => `completed` or `abandonned` or `cancelled`, which enables a user to indicate the outcome of executing a Task, but not interim states during execution. The pathways through the states `underway` and `suspended` are provided to represent in-execution states if needed, typically for longer-running atomic Tasks.
+
+It may be that one or more Tasks do not evaluate to `available` at runtime when the principal performer wants to treat them as being available. This may happen if the performer wants to execute a Task earlier than scheduled, or decides that an unmet precondition or wait condition does not matter (for example, they may know that it is met, but the Task Plan application may not yet know). Accordingly, a user override can be used, represented by the override pathway from `planned` => `available`.
 
 Since a Task Plan is a hierarchical structure consisting of one or more Task Groups, a way of rolling up Task state is needed. The following algorithm is used to compute the effective lifecycle state of a `M_TASK_GROUP` from the set of states of its members (which may include other `M_TASK_GROUPs`).
 
@@ -68,15 +107,19 @@ Since a Task Plan is a hierarchical structure consisting of one or more Task Gro
 // The order of if/else evaluation determines the correct result.
 //
 TaskState inferredState (Set<TaskState> sourceStates) {
-    TaskState inferredStateValue;
-    if (sourceStates.contains(Available))
+    
+    if (sourceStates.contains(Abandonned))
+        return Abandonned;
+    else if (sourceStates.contains(Available))
         return Available;
     else if (sourceStates.contains(Planned))
         return Planned;
     else if (sourceStates.contains(Completed))
         return Completed;
-    else if (sourceStates.contains(Aborted))
-        return Aborted;
+    else if (sourceStates.contains(Suspended))
+        return Suspended;
+    else if (sourceStates.contains(Suspended))
+        return Suspended;
     else if (sourceStates.contains(Cancelled))
         return Cancelled;
     else
@@ -85,10 +128,6 @@ TaskState inferredState (Set<TaskState> sourceStates) {
 --------
 
 Since the runtime Task Group is also the top-level structure of the runtime Task Plan, the inferred state of the Plan as a whole is also provided by this algorithm applied to the top-level runtime Task Group.
-
-Lifecycle state values recorded in `M_TASK` objects may be copied into the `_lifecycle_state_` attributes of the corresponding definition Task objects if required, for example, in order to persist a final snapshot of the Task Plan into the EHR.
-
-NOTE: This is the only execution time related attribute in the Task Plan definition. If it is necessary to record the final lifecycle states of Tasks in a completed Task Plan, the `TASK_PLAN` will need to be re-committed to the EHR as a new version in order to achieve this.
 
 === Notifications
 
@@ -109,27 +148,27 @@ issue-runtime-persistence: if within the EHR, we could create a new 'pointer' on
 [.tbd]
 TBD: describe context switch for hand-off, external requests etc.
 
-=== Class Descriptions
+== Class Descriptions
 
-include::{uml_export_dir}/classes/m_task_plan.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_task_plan.adoc[]
 
-include::{uml_export_dir}/classes/m_plan_data_context.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_plan_data_context.adoc[]
 
-include::{uml_export_dir}/classes/m_wait_conditions.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_callback.adoc[]
 
-include::{uml_export_dir}/classes/m_plan_item.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_plan_item.adoc[]
 
-include::{uml_export_dir}/classes/m_task_item.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_task_item.adoc[]
 
-include::{uml_export_dir}/classes/m_task_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_task_group.adoc[]
 
-include::{uml_export_dir}/classes/m_task.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_task.adoc[]
 
-include::{uml_export_dir}/classes/m_decision_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_decision_group.adoc[]
 
-include::{uml_export_dir}/classes/m_decision_path_group.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_decision_path_group.adoc[]
 
-include::{uml_export_dir}/classes/m_allocation.adoc[leveloffset=+1]
+include::{uml_export_dir}/classes/m_allocation.adoc[]
 
 == Task Plan Execution History
 
