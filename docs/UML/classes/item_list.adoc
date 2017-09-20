@@ -32,6 +32,10 @@ h|
 |*names*: `List<DV_TEXT>`
 a|Retrieve the names of all items.
 
+h|(effected)
+|*as_hierarchy*: `CLUSTER`
+a|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.
+
 h|
 |*named_item* (a_name: `String`): `ELEMENT`
 a|Retrieve the item with name ‘a_name’.
@@ -39,10 +43,6 @@ a|Retrieve the item with name ‘a_name’.
 h|
 |*ith_item* (i: `Integer`): `ELEMENT`
 a|Retrieve the i-th item with name.
-
-h|(effected)
-|*as_hierarchy*: `CLUSTER`
-a|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.
 
 h|*Invariant*
 2+a|*_Valid_structure_*:  items.forall (i:ITEM &#124; i.type = "ELEMENT")

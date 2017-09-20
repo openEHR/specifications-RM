@@ -28,6 +28,10 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
+h|(effected)
+|*as_hierarchy*: `CLUSTER`
+a|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table.
+
 h|
 |*row_count*: `Integer`
 a|
@@ -71,10 +75,6 @@ a|
 h|
 |*element_at_cell_ij* (i, j: `Integer`): `ELEMENT`
 a|
-
-h|(effected)
-|*as_hierarchy*: `CLUSTER`
-a|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table.
 
 h|*Invariant*
 2+a|*_Valid_structure_*: rows.for_all (items.for_all (instance_of ("ELEMENT")))
