@@ -64,12 +64,12 @@
 4+^h|*R E L E A S E{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}1.0.1*
 
 |2.1.0
-|{openehr_jira}/SPEC-209[SPEC-209]: Minor changes to correctly define `AUTHORED_RESOURCE`.`_current_revision_`. Functions added to `REVISION_HISTORY`; `AUTHORED_RESOURCE`.`_current_revision_` postcondition added.
+|{openehr_jira}/SPEC-209[SPEC-209]: Minor changes to correctly define `AUTHORED_RESOURCE._current_revision_`. Functions added to `REVISION_HISTORY`; `AUTHORED_RESOURCE._current_revision_` postcondition added.
 |Y S Lim
 |08 Apr 2007
 
 |
-|{openehr_jira}/SPEC-206[SPEC-206]: Change `LOCATABLE`.`_item_at_path_` to return `ANY`.
+|{openehr_jira}/SPEC-206[SPEC-206]: Change `LOCATABLE._item_at_path_` to return `ANY`.
 |H Frankel
 |
 
@@ -90,29 +90,29 @@
 |
 
 |
-|{openehr_jira}/SPEC-202[SPEC-202]: Correct minor errors in `VERSION`.`_preceding_version_id_`. Rename `_preceding_version_id_` to `_preceding_version_uid_`. Add `_preceding_version_uid_` invariant to `VERSION<T>`.
+|{openehr_jira}/SPEC-202[SPEC-202]: Correct minor errors in `VERSION._preceding_version_id_`. Rename `_preceding_version_id_` to `_preceding_version_uid_`. Add `_preceding_version_uid_` invariant to `VERSION<T>`.
 |T Beale
 |
 
 |
-|{openehr_jira}/SPEC-197[SPEC-197]: Change `LOCATABLE`.`_uid_` to `HIER_OBJECT_ID`.
+|{openehr_jira}/SPEC-197[SPEC-197]: Change `LOCATABLE._uid_` to `HIER_OBJECT_ID`.
 |H Frankel
 |
 
 |
-|{openehr_jira}/SPEC-214[SPEC-214]: Changes to `VERSION` preparatory to EHR Extract upgrade. Added `_lifecycle_state_` to `VERSION<T>`, extra functions on `VERSIONED_OBJECT<T>`. Corrected and added commit functions to `VERSIONED_OBJECT`. Added `ATTESTATION`.`_attested_view_` (conforms to CEN EN13606-1).
+|{openehr_jira}/SPEC-214[SPEC-214]: Changes to `VERSION` preparatory to EHR Extract upgrade. Added `_lifecycle_state_` to `VERSION<T>`, extra functions on `VERSIONED_OBJECT<T>`. Corrected and added commit functions to `VERSIONED_OBJECT`. Added `ATTESTATION._attested_view_` (conforms to CEN EN13606-1).
 |H Frankel +
  S Heard +
  T Beale
 |
 
 |
-|{openehr_jira}/SPEC-212[SPEC-212]: Allow `VERSION`.`_data_` to be optional to enable logical deletion.
+|{openehr_jira}/SPEC-212[SPEC-212]: Allow `VERSION._data_` to be optional to enable logical deletion.
 |T Beale
 |
 
 |
-|{openehr_jira}/SPEC-130[SPEC-130]: Correct security details in `LOCATABLE` and `ARCHETYPED` classes. Remove `ARCHETYPED`.`_access_control_`.
+|{openehr_jira}/SPEC-130[SPEC-130]: Correct security details in `LOCATABLE` and `ARCHETYPED` classes. Remove `ARCHETYPED._access_control_`.
 |T Beale
 |
 
@@ -122,7 +122,7 @@
 |
 
 |
-|{openehr_jira}/SPEC-231[SPEC-231]: Change `RESOURCE_DESCRIPTION`.`_details_` from List to Hash.
+|{openehr_jira}/SPEC-231[SPEC-231]: Change `RESOURCE_DESCRIPTION`.`_details_` from `List` to `Hash`.
 |R Chen
 |
 
@@ -183,7 +183,7 @@
 |
 
 |
-|{openehr_jira}/SPEC-182[SPEC-182]: Rationalise `VERSION`.`_lifecycle_state_` and `ATTESTATION`.`_status_`.
+|{openehr_jira}/SPEC-182[SPEC-182]: Rationalise `VERSION._lifecycle_state_` and `ATTESTATION._status_`.
 |C Ma +
  D Kalra
 |
@@ -204,7 +204,7 @@
 |
 
 |
-|{openehr_jira}/SPEC-165[SPEC-165]. Clarify use of system_id in FEEDER_AUDIT and AUDIT_DETAILS.
+|{openehr_jira}/SPEC-165[SPEC-165]. Clarify use of `_system_id_` in `FEEDER_AUDIT` and `AUDIT_DETAILS`.
 |H Frankel
 |
 
@@ -214,7 +214,7 @@
 |
 
 |
-|{openehr_jira}/SPEC-161[SPEC-161]. Support distributed versioning. Additions to change_control package. Rename `REVISION_HISTORY_ITEM`.`_revision_` to `_version_id_`, and change type to `OBJECT_VERSION_ID`.
+|{openehr_jira}/SPEC-161[SPEC-161]. Support distributed versioning. Additions to change_control package. Rename `REVISION_HISTORY_ITEM._revision_` to `_version_id_`, and change type to `OBJECT_VERSION_ID`.
 |H Frankel, +
  T Beale
 |
@@ -252,17 +252,17 @@
 |
 
 |
-|{openehr_jira}/SPEC-99[SPEC-99]. `PARTICIPATION`.`_function_` type in diagram not in sync with spec.
+|{openehr_jira}/SPEC-99[SPEC-99]. `PARTICIPATION._function_` type in diagram not in sync with spec.
 |R Shackel (DSTC)
 |
 
 |
-|{openehr_jira}/SPEC-116[SPEC-116]. Add `PARTICIPATION`.`_function_` vocabulary and invariant.
+|{openehr_jira}/SPEC-116[SPEC-116]. Add `PARTICIPATION._function_` vocabulary and invariant.
 |T Beale
 |
 
 |
-|{openehr_jira}/SPEC-118[SPEC-118]. Make package names lower case.  Improve presentation of `identification` section; move some text to data types IM document, `basic` package.
+|{openehr_jira}/SPEC-118[SPEC-118]. Make package names lower case.  Improve presentation of `identification` section; move some text to Data Types IM document, `basic` package.
 |T Beale
 |
 
@@ -274,17 +274,18 @@
 4+^h|*R E L E A S E{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}0.9*
 
 |1.5 
-|{openehr_jira}/SPEC-80[SPEC-80]. Remove `ARCHETYPED`.`_concept_` - not needed in data +
- {openehr_jira}/SPEC-81[SPEC-81]. `LINK` should be unidirectional.
- {openehr_jira}/SPEC-83[SPEC-83]. `RELATED_PARTY`.`_party_` should be optional.
- {openehr_jira}/SPEC-85[SPEC-85]. `LOCATABLE`.`_synthesised_` not needed. Add vocabulary for `FEEDER_AUDIT`.`_change_type_`.
- {openehr_jira}/SPEC-86[SPEC-86]. `LOCATABLE`.`_presentation_` not needed.
+|{openehr_jira}/SPEC-80[SPEC-80]. Remove `ARCHETYPED._concept_` - not needed in data +
+ {openehr_jira}/SPEC-81[SPEC-81]. `LINK` should be unidirectional. +
+ {openehr_jira}/SPEC-83[SPEC-83]. `RELATED_PARTY._party_` should be optional. +
+ {openehr_jira}/SPEC-85[SPEC-85]. `LOCATABLE._synthesised_` not needed. Add vocabulary for `FEEDER_AUDIT._change_type_`. +
+ {openehr_jira}/SPEC-86[SPEC-86]. `LOCATABLE._presentation_` not needed.
 |DSTC
 |09 Mar 2004
 
 
 |
-|{openehr_jira}/SPEC-91[SPEC-91]. Correct anomalies in use of `CODE_PHRASE` and `DV_CODED_TEXT`. Changed `PARTICIPATION`.`_mode_`, changed `ATTESTATION`.`_status_`, `RELATED_PARTY`.`_relationship_`, `VERSION_AUDIT`.`_change_type_`, `FEEDER_AUDIT`.`_change_type_` to to `DV_CODED_TEXT`.
+|{openehr_jira}/SPEC-91[SPEC-91]. Correct anomalies in use of `CODE_PHRASE` and `DV_CODED_TEXT`. +
+ Changed `PARTICIPATION._mode_`, changed `ATTESTATION._status_`, `RELATED_PARTY._relationship_`, `VERSION_AUDIT._change_type_`, `FEEDER_AUDIT._change_type_` to to `DV_CODED_TEXT`.
 |T Beale, +
  S Heard
 |
@@ -306,7 +307,7 @@
 
 
 |
-|{openehr_jira}/SPEC-44[SPEC-44]. Add reverse ref from `VERSION_REPOSITORY<T`> to owner object.
+|{openehr_jira}/SPEC-44[SPEC-44]. Add reverse ref from `VERSION_REPOSITORY<T>` to owner object.
 |D Lloyd
 |
 
@@ -316,7 +317,7 @@
 |
 
 |
-|{openehr_jira}/SPEC-46[SPEC-46]. Rename `COORDINATED_TERM` and `DV_CODED_TEXT`.`_definition_`.
+|{openehr_jira}/SPEC-46[SPEC-46]. Rename `COORDINATED_TERM` and `DV_CODED_TEXT._definition_`.
 |T Beale
 |
 |1.4.11 
@@ -326,7 +327,7 @@
 
 
 |1.4.10 
-|{openehr_jira}/SPEC-45[SPEC-45]. Remove `VERSION_REPOSITORY`.`_status_`. 
+|{openehr_jira}/SPEC-45[SPEC-45]. Remove `VERSION_REPOSITORY._status_`. 
 |D Lloyd, T Beale
 |21 Oct 2003
 
@@ -357,13 +358,13 @@
 |20 Jun 2003
 
 |1.4.5 
-|{openehr_jira}/SPEC-20[SPEC-20]. Move `VERSION`.`_charset_` to `DV_TEXT`, `_territory_` to `TRANSACTION`. Remove `VERSION`.`_language_`.
+|{openehr_jira}/SPEC-20[SPEC-20]. Move `VERSION._charset_` to `DV_TEXT`, `_territory_` to `TRANSACTION`. Remove `VERSION._language_`.
 |A Goodchild 
 |10 Jun 2003
 
 |1.4.4 
 |{openehr_jira}/SPEC-7[SPEC-7]. Add `RELATED_PARTY` class to `generic` package. +
- {openehr_jira}/SPEC-17[SPEC-17]. Renamed `VERSION`.`_parent_version_id_` to `_preceding_version_id_`.
+ {openehr_jira}/SPEC-17[SPEC-17]. Renamed `VERSION._parent_version_id_` to `_preceding_version_id_`.
 |S Heard, +
  D Kalra
 |11 Apr 2003
@@ -380,13 +381,13 @@
 |25 Feb 2003
 
 |1.4.1 
-|Formally validated using ISE Eiffel 5.2. Corrected types of `VERSIONABLE`.`_language_`, `_charset_`, `_territory_`. Added `ARCHETYPED`.`_uid_`: `OBJECT_ID`. Renamed `ARCHETYPE_ID`.`_rm_source_` to `_rm_originator_`, and `_rm_level_` to `_rm_concept_`; added `_archetype_originator_`. Rewrote archetype id section. Changed `PARTICIPATION`.`_mode`_ to `COORDINATED_TERM` & fixed invariant.
+|Formally validated using ISE Eiffel 5.2. Corrected types of `VERSIONABLE._language_`, `_charset_`, `_territory_`. Added `ARCHETYPED`.`_uid_`: `OBJECT_ID`. Renamed `ARCHETYPE_ID._rm_source_` to `_rm_originator_`, and `_rm_level_` to `_rm_concept_`; added `_archetype_originator_`. Rewrote archetype id section. Changed `PARTICIPATION._mode`_ to `COORDINATED_TERM` & fixed invariant.
 |T Beale, +
  D Kalra
 |18 Feb 2003
 
 |1.4 
-|Changes post CEN WG meeting Rome Feb 2003. Changed `ARCHETYPED`.`_meaning_` from `STRING` to `DV_TEXT`. Added `CONTRIBUTION`.  name invariant. Removed `AUTHORED_VA` and `ACQUIRED_VA` audit types, moved feeder audit to the EHR RM.  `VERSIONABLE`.`_code_set_` renamed to `_charset_`. Fixed pre/post condition of `OBJECT_ID`.`_context_id_`, added `OBJECT_ID`.`_has_context_id_`. Changed `TERMINOLOGY_ID` string syntax.
+|Changes post CEN WG meeting Rome Feb 2003. Changed `ARCHETYPED._meaning_` from `STRING` to `DV_TEXT`. Added `CONTRIBUTION`.  name invariant. Removed `AUTHORED_VA` and `ACQUIRED_VA` audit types, moved feeder audit to the EHR RM. `VERSIONABLE._code_set_` renamed to `_charset_`. Fixed pre/post condition of `OBJECT_ID._context_id_`, added `OBJECT_ID._has_context_id_`. Changed `TERMINOLOGY_ID` string syntax.
 |T Beale, +
  D Kalra, +
  D Lloyd
@@ -414,7 +415,7 @@
 |8 Nov 2002
 
 |1.3.1 
-|Removed EXTERNAL_ID.iso_oid. Remodelled `EXTERNAL_ID` into new classes - `OBJECT_REF` and `OBJECT_ID`. Remodelled all change control classes.
+|Removed `EXTERNAL_ID._iso_oid_`. Remodelled `EXTERNAL_ID` into new classes - `OBJECT_REF` and `OBJECT_ID`. Remodelled all change control classes.
 |T Beale, +
  D Lloyd, +
  M Darlison, +

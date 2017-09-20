@@ -2,7 +2,7 @@
 
 == Overview
 
-The Composition is the primary ‘data container’ in the openEHR EHR and is the root point of clinical content. Instances of the `COMPOSITION` class can be considered as self-standing data aggregations, or documents in a document-oriented system. The key information in a `COMPOSITION` is found in its `_content_`, `_context_`, and `_composer_` attributes. The UML diagram below illustrates the `composition` package.
+The Composition is the primary 'data container' in the openEHR EHR and is the root point of clinical content. Instances of the `COMPOSITION` class can be considered as self-standing data aggregations, or documents in a document-oriented system. The key information in a `COMPOSITION` is found in its `_content_`, `_context_`, and `_composer_` attributes. The UML diagram below illustrates the `composition` package.
 
 [.text-center]
 .rm.composition package
@@ -33,7 +33,7 @@ In the situation of patient-entered data, the special "self" `PARTY_PROXY` insta
 
 ==== Overview
 
-The optional event_context in the `COMPOSITION` class is used to document the healthcare event causing new or changed content in the record. Here, ‘healthcare event’ means ‘a (generally billable) business activity of the healthcare system with, for or on behalf of the patient’. Generally this will an encounter involving the subject of care and physician, but is variable in a hospital environment. In this sense, a visit to a GP is a single care event, but so is an episode in a hospital, which may encompass multiple encounters. The information recorded in Event context includes start and (optional) end time of the event, health care facility, setting (e.g. primary care, aged care, hospital), participating healthcare professionals, and optional further details defined by an archetype.
+The optional event_context in the `COMPOSITION` class is used to document the healthcare event causing new or changed content in the record. Here, 'healthcare event' means 'a (generally billable) business activity of the healthcare system with, for or on behalf of the patient'. Generally this will an encounter involving the subject of care and physician, but is variable in a hospital environment. In this sense, a visit to a GP is a single care event, but so is an episode in a hospital, which may encompass multiple encounters. The information recorded in Event context includes start and (optional) end time of the event, health care facility, setting (e.g. primary care, aged care, hospital), participating healthcare professionals, and optional further details defined by an archetype.
 
 Healthcare events that require an Event_context instance in their recorded information include the following.
 
@@ -41,7 +41,7 @@ Healthcare events that require an Event_context instance in their recorded infor
 * Case conferences about a patient, leading to modifications to the health record; here the Event context documents the case conference time, place and participants.
 * Pathology, imaging or other test process. In this case, the Event context documents the place and period during which testing and analysis was carried out, and by whom.
 * Data resulting from care in the home provided by health professional(s) (often allied health care workers). Situations in which Event context is optional include the following.
-* Nurse interactions with patients in hospital, including checking vital signs, adjusting medication or other aspects of bed situation for the patient. Each instance of a nurse’s observations are generally not considered to be a separate ‘care event’, rather they are seen as the continuation of the general activities of monitoring. In such situations, the overall context is given by `ADMIN_ENTRY` instances in the record indicating date/time and place of admission and discharge.
+* Nurse interactions with patients in hospital, including checking vital signs, adjusting medication or other aspects of bed situation for the patient. Each instance of a nurse's observations are generally not considered to be a separate 'care event', rather they are seen as the continuation of the general activities of monitoring. In such situations, the overall context is given by `ADMIN_ENTRY` instances in the record indicating date/time and place of admission and discharge.
 
 Situations in which Event context is not used include:
 
@@ -52,7 +52,7 @@ Ultimately, the use of Event context will be controlled by Composition-level arc
 
 ==== Occurrence in Data
 
-For situations requiring an `EVENT_CONTEXT` object to be recorded, it is worth clarifying which Compositions carry such objects. Consider the example shown in in the figure <<event_context>>. In this example, a Contribution is made to the EHR, consisting of one or more Compositions that were each created or modified due to some clinical activity. Within such a set, there will usually be one Composition relating directly to the event, such as the patient contact - this is the Composition containing the doctor’s observations, nurses’ activities etc, during the visit, and is therefore the one which contains the `EVENT_CONTEXT` instance. Other Compositions changed during the same event (e.g. updates to medication list, family history and so on) do not require an Event context, since they are part of the same Contribution, and the event context of the primary Composition can always be retrieved if desired. Contributions A, B and C in the figure illustrate this case.
+For situations requiring an `EVENT_CONTEXT` object to be recorded, it is worth clarifying which Compositions carry such objects. Consider the example shown in in the figure <<event_context>>. In this example, a Contribution is made to the EHR, consisting of one or more Compositions that were each created or modified due to some clinical activity. Within such a set, there will usually be one Composition relating directly to the event, such as the patient contact - this is the Composition containing the doctor's observations, nurses' activities etc, during the visit, and is therefore the one which contains the `EVENT_CONTEXT` instance. Other Compositions changed during the same event (e.g. updates to medication list, family history and so on) do not require an Event context, since they are part of the same Contribution, and the event context of the primary Composition can always be retrieved if desired. Contributions A, B and C in the figure illustrate this case.
 
 [.text-center]
 .Use of Event context
@@ -86,11 +86,11 @@ The setting attribute is used to document the "setting" of the care event. In cl
 The data in a Composition is stored in the `_content_` attribute. There are four kinds of data structuring possible in the content attribute:
 
 * it may be empty. Although for most situations, there should be content in a Compostion, there are at least two cases where an empty Composition makes sense:
-** the first is a Composition in ‘draft’ editing state (`VERSION`.`_lifecycle_state_` = ‘incomplete’)
-** the second is for systems that are only interested in the fact of an event having taken place, but want no details, such as so-called clinical ‘event summary’ systems, which might record the fact of visits to the doctor, but contain no further information. This can be achieved using Compositions with event context, and no further content.
+** the first is a Composition in 'draft' editing state (`VERSION._lifecycle_state_` = 'incomplete')
+** the second is for systems that are only interested in the fact of an event having taken place, but want no details, such as so-called clinical 'event summary' systems, which might record the fact of visits to the doctor, but contain no further information. This can be achieved using Compositions with event context, and no further content.
 * it may contain one or more `SECTIONs` which are defined in the archetype of the Composition;
 * it may contain one or more `SECTION` trees, each of which is a separately archetyped structure;
-* it may contain one or more ENTRYs directly, with no intermediate `SECTIONs`;
+* it may contain one or more `ENTRYs` directly, with no intermediate `SECTIONs`;
 * it may be any combination of the previous three possibilities.
 
 The actual structures used in a Composition at runtime are controlled by a template, which in turn controls the particular combination of archetypes used.

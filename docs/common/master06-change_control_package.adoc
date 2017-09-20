@@ -49,7 +49,7 @@ An underlying design concept of the versioning model defined here is known as th
 * longitudinal data that stands as a proxy for the state or situation of the patient such as "Medications" or "Problem list" (persistent Compositions in openEHR) is created and maintained in one or more care delivery organisations, and shared across a larger number of organisations;
 * some EHRs in an EHR server in one location are mirrored into one or more other EHR servers (e.g. at care providers where the relevant patients are also treated); the mirroring process requires asynchronous synchronisation between servers to work seamlessly, regardless of the location, time, or author of any data created.
 
-The uid attribute of the class `VERSIONED_OBJECT<T>` is in fact the uid of the virtual version tree for a given logical item (such as the "problem list" of a certain patient) - that is to say, the uid will be the same in all copies of the same Versioned object in a distributed system.
+The `_uid_` attribute of the class `VERSIONED_OBJECT<T>` is in fact the Uid of the virtual version tree for a given logical item (such as the "problem list" of a certain patient) - that is to say, the `_uid_` will be the same in all copies of the same Versioned object in a distributed system.
 
 The versioning scheme used in openEHR guarantees that no matter where data are created or copied, there are no inconsistencies due to sharing, and that logical copies are explicitly represented. This is achieved by the design of Version identifiers.
 
@@ -111,9 +111,9 @@ The `ORIGINAL_VERSION`.`_attestations_` attribute allows attestations to be asso
 
 Attestations may be used in different ways as follows.
 
-* Signing content at committal: for some reason, the information being committed needs to be digitally signed. It may be that sensitive information is to be added to the EHR, e.g. recording the fact of sectioning of a patient under the mental health act, diagnosis of a fatal disease etc, or simply something which the user wants to sign. In this case, `ORIGINAL_VERSION`.`_commit_audit_` is of type `ATTESTATION` rather than `AUDIT_DETAILS`.
-* Marking content for review and signing: data entered and committed by a data-entry person e.g. a secretary, transcriptionist or student need to be reviewed and signed by a senior clinician. Similarly to the above case, this will cause `ORIGINAL_VERSION`.`_commit_audit_` to be of type `ATTESTATION`, but in this case, the Attestation will have its `_is_pending_` flag set True to indicate that attestation is required.
-* Post-committal signing: data committed with an Attestation in the is_pending state is reviewed and signed at a later point in tme by an appropriate member of staff. This action will cause an `ATTESTATION` to be added to the `ORIGINAL_VERSION`.`_attestations_` list.
+* Signing content at committal: for some reason, the information being committed needs to be digitally signed. It may be that sensitive information is to be added to the EHR, e.g. recording the fact of sectioning of a patient under the mental health act, diagnosis of a fatal disease etc, or simply something which the user wants to sign. In this case, `ORIGINAL_VERSION._commit_audit_` is of type `ATTESTATION` rather than `AUDIT_DETAILS`.
+* Marking content for review and signing: data entered and committed by a data-entry person e.g. a secretary, transcriptionist or student need to be reviewed and signed by a senior clinician. Similarly to the above case, this will cause `ORIGINAL_VERSION._commit_audit_` to be of type `ATTESTATION`, but in this case, the Attestation will have its `_is_pending_` flag set True to indicate that attestation is required.
+* Post-committal signing: data committed with an Attestation in the is_pending state is reviewed and signed at a later point in tme by an appropriate member of staff. This action will cause an `ATTESTATION` to be added to the `ORIGINAL_VERSION._attestations_` list.
 
 Normally, Attestations refer to the entire version to which they are attached. However, it is possible for an `ATTESTATION` instance to refer to some finer-grained item within the data of the version, such as a single `ENTRY` within a `COMPOSITION`.
 
@@ -123,9 +123,9 @@ When subsequent Versions are added, the existing Attestations can not be assumed
 
 === Version Lifecycle
 
-Content in Original versions has a lifecycle state associated with it, modelled using the `ORIGINAL_VERSION`.`_lifecycle_state_` attribute, which is coded from the openEHR Terminology "version lifecycle state" group. The possible values are "complete", "incomplete" and "deleted". Usually content will be committed in the "complete" state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as "incomplete" meaning that it is either incomplete or at least unreviewed. In hospitals this is a common occurrence. Unfinished Compositions cannot be saved locally on the client machine, since this represents a security risk (a small client-side database would be much easier to hack into than a secure server). They must therefore be persisted on the server, either in the actual EHR, or in a 'holding bay' which was recognised as not being part of the EHR proper. Either way, the author would have to explicitly retrieve the Composition(s) and after further work or review, 'promote' them into the EHR as 'active' Compositions; alternatively, they might decide to throw them away.
+Content in Original versions has a lifecycle state associated with it, modelled using the `ORIGINAL_VERSION._lifecycle_state_` attribute, which is coded from the openEHR Terminology "version lifecycle state" group. The possible values are 'complete', 'incomplete' and 'deleted'. Usually content will be committed in the 'complete' state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as "incomplete" meaning that it is either incomplete or at least unreviewed. In hospitals this is a common occurrence. Unfinished Compositions cannot be saved locally on the client machine, since this represents a security risk (a small client-side database would be much easier to hack into than a secure server). They must therefore be persisted on the server, either in the actual EHR, or in a 'holding bay' which was recognised as not being part of the EHR proper. Either way, the author would have to explicitly retrieve the Composition(s) and after further work or review, 'promote' them into the EHR as 'active' Compositions; alternatively, they might decide to throw them away.
 
-Going from "incomplete" to "complete" almost always corresponds to a change in content, and corresponds to a new `VERSION` regardless. This modelling approach allows such content to exist on the EHR system, but to be flagged as incomplete when viewed by a user.
+Going from 'incomplete' to 'complete' almost always corresponds to a change in content, and corresponds to a new `VERSION` regardless. This modelling approach allows such content to exist on the EHR system, but to be flagged as incomplete when viewed by a user.
 
 Systems are responsible for implementing checks to find 'old' Versions in "incomplete" state, and bring them to the relevant user's notice, or automatically deleting them or progressing them to "complete" as appropriate.
 
@@ -157,7 +157,8 @@ The following figure provides an example of multiple `VERSIONs` within a `VERSIO
 image::diagrams/version_identification_example.svg[id=version_identification_example, align="center", width=80%]
 
 ==== Local Versioning
-The `_version_tree_id_` attribute of `VERSION`.`_uid_` identifies a version of an item with respect to other versions in the same tree. The requirements of the identifier are the same as for typical versioning systems in use in software configuration management, and are as follows:
+
+The `_version_tree_id_` attribute of `VERSION._uid_` identifies a version of an item with respect to other versions in the same tree. The requirements of the identifier are the same as for typical versioning systems in use in software configuration management, and are as follows:
 
 * to encode the relationship between versions in the version id, that is to say, version identifiers are constructed such that given a series of identifiers, the relative positions in the tree can be determined;
 * to allow for branches, so that variants of a particular node can be created; e.g. due to translation, or for training purposes.
@@ -174,7 +175,7 @@ However, in a distributed environment where copying and subsequent modification 
 * it must be possible to send more recent versions from the original system to a target system that has already received earlier versions, and for these versions to be distinguishable from versions in the receiving system, including the previously imported versions - this enables the receiving system to know how and where to commit the received versions;
 * it must be guaranteed that any version of any object is uniquely identified globally, no matter whether it is a locally created trunk version, a locally created branch version or a version containing changes made to a copied version.
 
-To satisfy these needs, two modifications are made to the identification scheme. The first is the addition of the creating_system_id attribute of `VERSION`.`_uid_`, representing the system where the version was created. This is a machine processable identifier, such as a reverse internet address or GUID.
+To satisfy these needs, two modifications are made to the identification scheme. The first is the addition of the creating_system_id attribute of `VERSION._uid_`, representing the system where the version was created. This is a machine processable identifier, such as a reverse internet address or GUID.
 
 Whenever a new `ORIGINAL_VERSION` in a particular `VERSIONED_OBJECT` (with a particular uid) is created locally, the `VERSION`.`_uid_`.`_creating_system_id_` is set to the identifier of the local system; if the version was imported, `_creating_system_id_` will already have been set to the identifier of the system of original creation.
 
@@ -185,6 +186,7 @@ The second modification is to require branching version identifiers to be used w
 === Copying
 
 ==== The Copy Operation
+
 In openEHR, the smallest unit of copying of content between systems that satisfies traceability requirements is the `ORIGINAL_VERSION`. In order to copy a `OBSERVATION` or even an `COMPOSITION` somewhere else and retain versioning capability, its enclosing `ORIGINAL_VERSION` object must be sent. When the type of content is a `COMPOSITION` for example, an `ORIGINAL_VERSION<COMPOSITION>` object is sent. At the receiving system various steps will occur depending on whether:
 
 * any items for the EHR in question have ever been copied before;
@@ -194,20 +196,21 @@ In openEHR, the smallest unit of copying of content between systems that satisfi
 
 In the first situation, there is not even an EHR (i.e. repository of Versioned objects for the patient in question) in the target system. A new one has to be created. As mentioned in the {openehr_rm_ehr}#_ehr_creation_semantics[EHR IM specification], the newly created EHR should re-use the EHR identifier from the source system. This establishes the new EHR as an intentional clone of the source EHR (or more correctly, part of the family of EHRs making up the virtual EHR for that patient).
 
-If it is the first time any version of the item logically identified by its `ORIGINAL_VERSION`.`_uid_`.`_object_id_` (i.e. the `_uid_` of its original `VERSIONED_OBJECT`, common to all Versions in the same container) was received from the originating system, a new `VERSIONED_OBJECT<T>` (e.g. `VERSIONED_OBJECT<COMPOSITION>`) is created, with its uid set to the same value as the received `VERSION`.`_uid_`.`_object_id_`. This establishes the newly created `VERSIONED_OBJECT` as being a logical clone of the one from which the received `ORIGINAL_VERSION` was copied. If some version of the item had already been received, this step will have already occurred, and the requisite `VERSIONED_OBJECT` would already exist.
+If it is the first time any version of the item logically identified by its `ORIGINAL_VERSION._uid_._object_id_` (i.e. the `_uid_` of its original `VERSIONED_OBJECT`, common to all Versions in the same container) was received from the originating system, a new `VERSIONED_OBJECT<T>` (e.g. `VERSIONED_OBJECT<COMPOSITION>`) is created, with its uid set to the same value as the received `VERSION._uid_._object_id_`. This establishes the newly created `VERSIONED_OBJECT` as being a logical clone of the one from which the received `ORIGINAL_VERSION` was copied. If some version of the item had already been received, this step will have already occurred, and the requisite `VERSIONED_OBJECT` would already exist.
 
 An `IMPORTED_VERSION` instance is then created, its item set to the received `ORIGINAL_VERSION`, and it is committed in the normal way (i.e. as part of a Contribution). The `IMPORTED_VERSION` commit_audit and contribution attributes record the local act of committal. In this operation, the `ORIGINAL_VERSION` instance is never modified - it remains a faithful copy of its original, no matter how many systems it may be copied through.
 
 ==== Subsequent Local Modifications
-In most cases, the received information will remain as is for the duration. However, in some cases, users at the receiver system might want to make modifications as well. This is likely to happen in the case of information items representing things like medication lists and allergies. When new versions are added locally to a copied object, the local system id is recorded in the `_uid_`.`_creating_system_id_` attribute, while branching numbering is used in the `_uid_`.`_version_tree_id_`.
 
-These copying scenarios are illustrated in the figure below. On the left hand-side of the figure, a version container (i.e. an instance of `VERSIONED_OBJECT`) with `_uid_` = "1" is shown; the first Version has `_uid_`.`_creating_system_id_` = "sysA"; `_uid_`.`_version_tree_id_` = "1". Further local trunk and branch versions are also shown.
+In most cases, the received information will remain as is for the duration. However, in some cases, users at the receiver system might want to make modifications as well. This is likely to happen in the case of information items representing things like medication lists and allergies. When new versions are added locally to a copied object, the local system id is recorded in the `_uid_._creating_system_id_` attribute, while branching numbering is used in the `_uid_._version_tree_id_`.
+
+These copying scenarios are illustrated in the figure below. On the left hand-side of the figure, a version container (i.e. an instance of `VERSIONED_OBJECT`) with `_uid_` = "1" is shown; the first Version has `_uid_._creating_system_id_` = "sysA"; `_uid_._version_tree_id_` = "1". Further local trunk and branch versions are also shown.
 
 [.text-center]
 .Distributed versioning
 image::diagrams/distributed_versioning.png[id=distributed_versioning, align="center", width=70%]
 
-When the first `ORIGINAL_VERSION` is copied (copy #1) to system B, it is committed as an `IMPORTED_VERSION` to a `VERSIONED_OBJECT` which is a clone of the original. Subsequent copies (copy #2 and copy #3) can be made of later versions from system A to system B, with the effect that the version tree can be recreated inside system B (if required; there is of course no obligation to do anything with the received information). Users in system B an also make modifications to the received Version copies; these modifications are shown in grey, as branched versions with `_uid_`.`_creating_system_id_` = "sysB". Independently, users in system B will of course be creating other content locally, e.g. as shown on the right-hand side, where a Versioned object with `_uid_`= "2" has been created. Two places are indicated on the diagram where identification clashes could have occurred, but are prevented due to the use of the 3-part unique Version identifier scheme.
+When the first `ORIGINAL_VERSION` is copied (copy #1) to system B, it is committed as an `IMPORTED_VERSION` to a `VERSIONED_OBJECT` which is a clone of the original. Subsequent copies (copy #2 and copy #3) can be made of later versions from system A to system B, with the effect that the version tree can be recreated inside system B (if required; there is of course no obligation to do anything with the received information). Users in system B an also make modifications to the received Version copies; these modifications are shown in grey, as branched versions with `_uid_._creating_system_id_` = "sysB". Independently, users in system B will of course be creating other content locally, e.g. as shown on the right-hand side, where a Versioned object with `_uid_`= "2" has been created. Two places are indicated on the diagram where identification clashes could have occurred, but are prevented due to the use of the 3-part unique Version identifier scheme.
 
 Two rules are required to make this system work, as follows:
 

@@ -2166,7 +2166,7 @@
 <div class="sect2">
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>5.1. Overview</h3>
 <div class="paragraph">
-<p>The Composition is the primary ‘data container’ in the openEHR EHR and is the root point of clinical content. Instances of the <code>COMPOSITION</code> class can be considered as self-standing data aggregations, or documents in a document-oriented system. The key information in a <code>COMPOSITION</code> is found in its <code><em>content</em></code>, <code><em>context</em></code>, and <code><em>composer</em></code> attributes. The UML diagram below illustrates the <code>composition</code> package.</p>
+<p>The Composition is the primary 'data container' in the openEHR EHR and is the root point of clinical content. Instances of the <code>COMPOSITION</code> class can be considered as self-standing data aggregations, or documents in a document-oriented system. The key information in a <code>COMPOSITION</code> is found in its <code><em>content</em></code>, <code><em>context</em></code>, and <code><em>composer</em></code> attributes. The UML diagram below illustrates the <code>composition</code> package.</p>
 </div>
 <div id="rm_composition" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2210,7 +2210,7 @@
 <div class="sect4">
 <h5 id="_overview_5"><a class="anchor" href="#_overview_5"></a>5.2.3.1. Overview</h5>
 <div class="paragraph">
-<p>The optional event_context in the <code>COMPOSITION</code> class is used to document the healthcare event causing new or changed content in the record. Here, ‘healthcare event’ means ‘a (generally billable) business activity of the healthcare system with, for or on behalf of the patient’. Generally this will an encounter involving the subject of care and physician, but is variable in a hospital environment. In this sense, a visit to a GP is a single care event, but so is an episode in a hospital, which may encompass multiple encounters. The information recorded in Event context includes start and (optional) end time of the event, health care facility, setting (e.g. primary care, aged care, hospital), participating healthcare professionals, and optional further details defined by an archetype.</p>
+<p>The optional event_context in the <code>COMPOSITION</code> class is used to document the healthcare event causing new or changed content in the record. Here, 'healthcare event' means 'a (generally billable) business activity of the healthcare system with, for or on behalf of the patient'. Generally this will an encounter involving the subject of care and physician, but is variable in a hospital environment. In this sense, a visit to a GP is a single care event, but so is an episode in a hospital, which may encompass multiple encounters. The information recorded in Event context includes start and (optional) end time of the event, health care facility, setting (e.g. primary care, aged care, hospital), participating healthcare professionals, and optional further details defined by an archetype.</p>
 </div>
 <div class="paragraph">
 <p>Healthcare events that require an Event_context instance in their recorded information include the following.</p>
@@ -2230,7 +2230,7 @@
 <p>Data resulting from care in the home provided by health professional(s) (often allied health care workers). Situations in which Event context is optional include the following.</p>
 </li>
 <li>
-<p>Nurse interactions with patients in hospital, including checking vital signs, adjusting medication or other aspects of bed situation for the patient. Each instance of a nurse’s observations are generally not considered to be a separate ‘care event’, rather they are seen as the continuation of the general activities of monitoring. In such situations, the overall context is given by <code>ADMIN_ENTRY</code> instances in the record indicating date/time and place of admission and discharge.</p>
+<p>Nurse interactions with patients in hospital, including checking vital signs, adjusting medication or other aspects of bed situation for the patient. Each instance of a nurse&#8217;s observations are generally not considered to be a separate 'care event', rather they are seen as the continuation of the general activities of monitoring. In such situations, the overall context is given by <code>ADMIN_ENTRY</code> instances in the record indicating date/time and place of admission and discharge.</p>
 </li>
 </ul>
 </div>
@@ -2254,7 +2254,7 @@
 <div class="sect4">
 <h5 id="_occurrence_in_data"><a class="anchor" href="#_occurrence_in_data"></a>5.2.3.2. Occurrence in Data</h5>
 <div class="paragraph">
-<p>For situations requiring an <code>EVENT_CONTEXT</code> object to be recorded, it is worth clarifying which Compositions carry such objects. Consider the example shown in in the figure <a href="#event_context">Use of Event context</a>. In this example, a Contribution is made to the EHR, consisting of one or more Compositions that were each created or modified due to some clinical activity. Within such a set, there will usually be one Composition relating directly to the event, such as the patient contact - this is the Composition containing the doctor’s observations, nurses’ activities etc, during the visit, and is therefore the one which contains the <code>EVENT_CONTEXT</code> instance. Other Compositions changed during the same event (e.g. updates to medication list, family history and so on) do not require an Event context, since they are part of the same Contribution, and the event context of the primary Composition can always be retrieved if desired. Contributions A, B and C in the figure illustrate this case.</p>
+<p>For situations requiring an <code>EVENT_CONTEXT</code> object to be recorded, it is worth clarifying which Compositions carry such objects. Consider the example shown in in the figure <a href="#event_context">Use of Event context</a>. In this example, a Contribution is made to the EHR, consisting of one or more Compositions that were each created or modified due to some clinical activity. Within such a set, there will usually be one Composition relating directly to the event, such as the patient contact - this is the Composition containing the doctor&#8217;s observations, nurses' activities etc, during the visit, and is therefore the one which contains the <code>EVENT_CONTEXT</code> instance. Other Compositions changed during the same event (e.g. updates to medication list, family history and so on) do not require an Event context, since they are part of the same Contribution, and the event context of the primary Composition can always be retrieved if desired. Contributions A, B and C in the figure illustrate this case.</p>
 </div>
 <div id="event_context" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2322,10 +2322,10 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <div class="ulist">
 <ul>
 <li>
-<p>the first is a Composition in ‘draft’ editing state (<code>VERSION</code>.<code><em>lifecycle_state</em></code> = ‘incomplete’)</p>
+<p>the first is a Composition in 'draft' editing state (<code>VERSION.<em>lifecycle_state</em></code> = 'incomplete')</p>
 </li>
 <li>
-<p>the second is for systems that are only interested in the fact of an event having taken place, but want no details, such as so-called clinical ‘event summary’ systems, which might record the fact of visits to the doctor, but contain no further information. This can be achieved using Compositions with event context, and no further content.</p>
+<p>the second is for systems that are only interested in the fact of an event having taken place, but want no details, such as so-called clinical 'event summary' systems, which might record the fact of visits to the doctor, but contain no further information. This can be achieved using Compositions with event context, and no further content.</p>
 </li>
 </ul>
 </div>
@@ -2337,7 +2337,7 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <p>it may contain one or more <code>SECTION</code> trees, each of which is a separately archetyped structure;</p>
 </li>
 <li>
-<p>it may contain one or more ENTRYs directly, with no intermediate <code>SECTIONs</code>;</p>
+<p>it may contain one or more <code>ENTRYs</code> directly, with no intermediate <code>SECTIONs</code>;</p>
 </li>
 <li>
 <p>it may be any combination of the previous three possibilities.</p>
@@ -4543,7 +4543,10 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
 </li>
 <li>
-<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=39525</a> .</p>
+<p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="https://www.iso.org/standard/39525.html" class="bare">https://www.iso.org/standard/39525.html</a> .</p>
+</li>
+<li>
+<p><a id="ISO_13940"></a>[ISO_13940] ISO. <strong>Health informatics - System of concepts to support continuity of care.</strong> See <a href="https://www.iso.org/standard/58102.html" class="bare">https://www.iso.org/standard/58102.html</a>.</p>
 </li>
 </ol>
 </div>
@@ -4664,7 +4667,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-27 11:23:00 BST
+Last updated 2017-04-27 12:23:00 CEST
 </div>
 </div>
 </body>
