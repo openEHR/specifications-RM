@@ -1819,9 +1819,9 @@
 <h4 id="_ehr_class"><a class="anchor" href="#_ehr_class"></a>4.7.1. EHR Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1896,33 +1896,33 @@
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Contributions_valid</em></strong>: contributions.for_all (c &#124; c.type.is_equal(“CONTRIBUTION”))</p>
+<p><strong><em>Contributions_valid</em></strong>: <code>contributions.for_all (c &#124; c.type.is_equal(“CONTRIBUTION”))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Ehr_access_valid</em></strong>: ehr_access.type.is_equal (“VERSIONED_EHR_ACCESS”)</p>
+<p><strong><em>Ehr_access_valid</em></strong>: <code>ehr_access.type.is_equal (“VERSIONED_EHR_ACCESS”)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Ehr_status_valid</em></strong>: ehr_status.type.is_equal(“VERSIONED_EHR_STATUS”)</p>
+<p><strong><em>Ehr_status_valid</em></strong>: <code>ehr_status.type.is_equal(“VERSIONED_EHR_STATUS”)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Compositions_valid</em></strong>: compositions.for_all (c &#124; c.type.is_equal (“VERSIONED_COMPOSITION”))</p>
+<p><strong><em>Compositions_valid</em></strong>: <code>compositions.for_all (c &#124; c.type.is_equal (“VERSIONED_COMPOSITION”))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Directory_valid</em></strong>: directory /= Void implies directory.type.is_equal (“VERSIONED_FOLDER”)</p>
+<p><strong><em>Directory_valid</em></strong>: <code>directory /= Void implies directory.type.is_equal (“VERSIONED_FOLDER”)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1932,9 +1932,9 @@
 <h4 id="_versioned_ehr_access_class"><a class="anchor" href="#_versioned_ehr_access_class"></a>4.7.2. VERSIONED_EHR_ACCESS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1949,7 +1949,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">VERSIONED_OBJECT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>VERSIONED_OBJECT</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1958,9 +1958,9 @@
 <h4 id="_ehr_access_class"><a class="anchor" href="#_ehr_access_class"></a>4.7.3. EHR_ACCESS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1975,7 +1975,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1996,21 +1996,21 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The name of the access control scheme in use; corresponds to the concrete instance of the settings attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Scheme_valid</em></strong>: not scheme.is_empty</p>
+<p><strong><em>Scheme_valid</em></strong>: <code>not scheme.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Is_archetype_root</em></strong>: is_archetype_root</p>
+<p><strong><em>Is_archetype_root</em></strong>: <code>is_archetype_root</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2020,9 +2020,9 @@
 <h4 id="_versioned_ehr_status_class"><a class="anchor" href="#_versioned_ehr_status_class"></a>4.7.4. VERSIONED_EHR_STATUS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2037,7 +2037,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">VERSIONED_OBJECT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>VERSIONED_OBJECT</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2046,9 +2046,9 @@
 <h4 id="_ehr_status_class"><a class="anchor" href="#_ehr_status_class"></a>4.7.5. EHR_STATUS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2063,7 +2063,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2099,9 +2099,9 @@
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Is_archetype_root</em></strong>: is_archetype_root</p>
+<p><strong><em>Is_archetype_root</em></strong>: <code>is_archetype_root</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2111,9 +2111,9 @@
 <h4 id="_versioned_composition_class"><a class="anchor" href="#_versioned_composition_class"></a>4.7.6. VERSIONED_COMPOSITION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2128,7 +2128,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">VERSIONED_OBJECT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>VERSIONED_OBJECT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -2137,21 +2137,21 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_persistent</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_persistent</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether this composition set is persistent; derived from first version.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Archetype_node_id_valid</em></strong>: all_versions.for_all (v &#124; v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))</p>
+<p><strong><em>Archetype_node_id_valid</em></strong>: <code>all_versions.for_all (v &#124; v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Persistent_validity</em></strong>: all_versions.for_all (v &#124; v.is_persistent = all_versions.first.data.is_persistent)</p>
+<p><strong><em>Persistent_validity</em></strong>: <code>all_versions.for_all (v &#124; v.is_persistent = all_versions.first.data.is_persistent)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2354,9 +2354,9 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <h4 id="_composition_class"><a class="anchor" href="#_composition_class"></a>5.4.1. COMPOSITION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2371,7 +2371,7 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2427,39 +2427,39 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_persistent</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_persistent</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if category is a  persistent  type, False otherwise. Useful for finding Compositions in an EHR which are guaranteed to be of interest to most users.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Category_validity</em></strong>: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_composition_category, category.defining_code)</p>
+<p><strong><em>Category_validity</em></strong>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_composition_category, category.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Territory_valid</em></strong>: code_set(Code_set_id_countries).has_code(territory)</p>
+<p><strong><em>Territory_valid</em></strong>: <code>code_set(Code_set_id_countries).has_code(territory)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: code_set(Code_set_id_languages).has_code(language)</p>
+<p><strong><em>Language_valid</em></strong>: <code>code_set(Code_set_id_languages).has_code(language)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Content_valid</em></strong>: content /= Void implies not content.is_empty</p>
+<p><strong><em>Content_valid</em></strong>: <code>content /= Void implies not content.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Is_archetype_root</em></strong>: is_archetype_root</p>
+<p><strong><em>Is_archetype_root</em></strong>: <code>is_archetype_root</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2469,9 +2469,9 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <h4 id="_event_context_class"><a class="anchor" href="#_event_context_class"></a>5.4.2. EVENT_CONTEXT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2486,7 +2486,7 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PATHABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>PATHABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2543,21 +2543,21 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Setting_valid</em></strong>: Terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_setting, setting.defining_code)</p>
+<p><strong><em>Setting_valid</em></strong>: <code>Terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_setting, setting.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Participations_validity</em></strong>: participations /= Void implies not participations.is_empty</p>
+<p><strong><em>Participations_validity</em></strong>: <code>participations /= Void implies not participations.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>location_valid</em></strong>: location /= Void implies not location.is_empty</p>
+<p><strong><em>location_valid</em></strong>: <code>location /= Void implies not location.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2581,9 +2581,9 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <h4 id="_content_item_class"><a class="anchor" href="#_content_item_class"></a>6.2.1. CONTENT_ITEM Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2598,7 +2598,7 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2639,9 +2639,9 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <h4 id="_section_class"><a class="anchor" href="#_section_class"></a>7.2.1. SECTION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2656,7 +2656,7 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">CONTENT_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>CONTENT_ITEM</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2681,9 +2681,9 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Items_valid</em></strong>: items /= Void implies not items.is_empty</p>
+<p><strong><em>Items_valid</em></strong>: <code>items /= Void implies not items.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3509,9 +3509,9 @@ EXPIRED
 <h4 id="_entry_class"><a class="anchor" href="#_entry_class"></a>8.3.1. ENTRY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3529,7 +3529,7 @@ EXPIRED
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">CONTENT_ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>CONTENT_ITEM</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3620,40 +3620,40 @@ EXPIRED
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subject_is_self</strong>: <code>Boolean</code><br>
-<strong><em>Post_condition</em></strong>: Result implies subject.generating_type = “PARTY_SELF”</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subject_is_self</strong> (): <code>Boolean</code><br>
+<strong><em>Post_condition</em></strong>: <code>Result implies subject.generating_type = “PARTY_SELF”</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Returns True if this Entry is about the subject of the EHR, in which case the subject attribute is of type PARTY_SELF.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: code_set (Code_set_id_languages).has_code (language)</p>
+<p><strong><em>Language_valid</em></strong>: <code>code_set (Code_set_id_languages).has_code (language)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Encoding_valid</em></strong>: code_set (Code_set_id_character_sets).has_code (encoding)</p>
+<p><strong><em>Encoding_valid</em></strong>: <code>code_set (Code_set_id_character_sets).has_code (encoding)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Subject_validity</em></strong>: subject_is_self implies subject.generating_type = “PARTY_SELF”</p>
+<p><strong><em>Subject_validity</em></strong>: <code>subject_is_self implies subject.generating_type = “PARTY_SELF”</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Other_participations_valid</em></strong>: other_participations /= Void implies not other_participations.is_empty</p>
+<p><strong><em>Other_participations_valid</em></strong>: <code>other_participations /= Void implies not other_participations.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Is_archetype_root</em></strong>: is_archetype_root</p>
+<p><strong><em>Is_archetype_root</em></strong>: <code>is_archetype_root</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3663,9 +3663,9 @@ EXPIRED
 <h4 id="_admin_entry_class"><a class="anchor" href="#_admin_entry_class"></a>8.3.2. ADMIN_ENTRY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3682,7 +3682,7 @@ Not to be used for any clinically significant information.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ENTRY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ENTRY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3703,9 +3703,9 @@ Not to be used for any clinically significant information.</p>
 <h4 id="_care_entry_class"><a class="anchor" href="#_care_entry_class"></a>8.3.3. CARE_ENTRY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3720,7 +3720,7 @@ Not to be used for any clinically significant information.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ENTRY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ENTRY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3748,9 +3748,9 @@ Not to be used for any clinically significant information.</p>
 <h4 id="_observation_class"><a class="anchor" href="#_observation_class"></a>8.3.4. OBSERVATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3768,7 +3768,7 @@ Not to be used for any clinically significant information.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">CARE_ENTRY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>CARE_ENTRY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3796,9 +3796,9 @@ Not to be used for any clinically significant information.</p>
 <h4 id="_evaluation_class"><a class="anchor" href="#_evaluation_class"></a>8.3.5. EVALUATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3816,7 +3816,7 @@ Not to be used for any clinically significant information.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">CARE_ENTRY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>CARE_ENTRY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3837,9 +3837,9 @@ Not to be used for any clinically significant information.</p>
 <h4 id="_instruction_class"><a class="anchor" href="#_instruction_class"></a>8.3.6. INSTRUCTION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3857,7 +3857,7 @@ Not to be used for any clinically significant information.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">CARE_ENTRY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>CARE_ENTRY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3893,9 +3893,9 @@ Not to be used for any clinically significant information.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Activities_valid</em></strong>: activities /= Void implies not activities.is_empty</p>
+<p><strong><em>Activities_valid</em></strong>: <code>activities /= Void implies not activities.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3905,9 +3905,9 @@ Not to be used for any clinically significant information.</p>
 <h4 id="_activity_class"><a class="anchor" href="#_activity_class"></a>8.3.7. ACTIVITY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3922,7 +3922,7 @@ Not to be used for any clinically significant information.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3954,9 +3954,9 @@ Not to be used for any clinically significant information.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Action_archteype_id_valid</em></strong>: not action_archetype_ids.is_empty</p>
+<p><strong><em>Action_archteype_id_valid</em></strong>: <code>not action_archetype_ids.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3966,9 +3966,9 @@ Not to be used for any clinically significant information.</p>
 <h4 id="_action_class"><a class="anchor" href="#_action_class"></a>8.3.8. ACTION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3983,7 +3983,7 @@ Not to be used for any clinically significant information.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">CARE_ENTRY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>CARE_ENTRY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -4025,9 +4025,9 @@ Not to be used for any clinically significant information.</p>
 <h4 id="_instruction_details_class"><a class="anchor" href="#_instruction_details_class"></a>8.3.9. INSTRUCTION_DETAILS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -4042,7 +4042,7 @@ Not to be used for any clinically significant information.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PATHABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>PATHABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -4087,9 +4087,9 @@ Not to be used for any clinically significant information.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Activity_path_valid</em></strong>: not activity_id.is_empty</p>
+<p><strong><em>Activity_path_valid</em></strong>: <code>not activity_id.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4099,9 +4099,9 @@ Not to be used for any clinically significant information.</p>
 <h4 id="_ism_transition_class"><a class="anchor" href="#_ism_transition_class"></a>8.3.10. ISM_TRANSITION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -4116,7 +4116,7 @@ Not to be used for any clinically significant information.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PATHABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>PATHABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -4152,16 +4152,16 @@ Not to be used for any clinically significant information.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Current_state_valid</em></strong>: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_instruction_states, current_state.defining_code)</p>
+<p><strong><em>Current_state_valid</em></strong>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_instruction_states, current_state.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Transition_valid</em></strong>: transition /= Void implies terminology (Terminology_id_openehr).
-has_code_for_group_id (Group_id_instruction_transitions, transition.defining_code)</p>
+<p><strong><em>Transition_valid</em></strong>: <code>transition /= Void implies terminology (Terminology_id_openehr).
+has_code_for_group_id (Group_id_instruction_transitions, transition.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4528,25 +4528,28 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784" class="bare">http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784</a> .</p>
+<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> See <a href="https://www.iso.org/standard/40784.html" class="bare">https://www.iso.org/standard/40784.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119</a> .</p>
+<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> See <a href="https://www.iso.org/standard/50119.html" class="bare">https://www.iso.org/standard/50119.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> See <a href="https://www.iso.org/standard/50120.html" class="bare">https://www.iso.org/standard/50120.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> See <a href="https://www.iso.org/standard/50121.html" class="bare">https://www.iso.org/standard/50121.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> See <a href="https://www.iso.org/standard/52823.html" class="bare">https://www.iso.org/standard/52823.html</a>.</p>
 </li>
 <li>
 <p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="https://www.iso.org/standard/39525.html" class="bare">https://www.iso.org/standard/39525.html</a> .</p>
 </li>
 <li>
 <p><a id="ISO_13940"></a>[ISO_13940] ISO. <strong>Health informatics - System of concepts to support continuity of care.</strong> See <a href="https://www.iso.org/standard/58102.html" class="bare">https://www.iso.org/standard/58102.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_22600"></a>[ISO_22600] ISO. <strong>Health informatics - Privilege management and access control.</strong> See <a href="https://www.iso.org/standard/62653.html" class="bare">https://www.iso.org/standard/62653.html</a>.</p>
 </li>
 </ol>
 </div>
@@ -4667,7 +4670,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-27 12:23:00 CEST
+Last updated 2017-04-27 11:23:00 BST
 </div>
 </div>
 </body>

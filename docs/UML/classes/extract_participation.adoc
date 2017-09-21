@@ -1,6 +1,6 @@
 === EXTRACT_PARTICIPATION Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*EXTRACT_PARTICIPATION*
@@ -30,9 +30,9 @@ h|*1..1*
 |*performer*: `String`
 a|Uid of demographic entity within Extract who performed this participation.
 
-h|*Invariant*
-2+a|*_Function_valid_*: function /= Void and then function.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)
+h|*Invariants*
+2+a|*_Function_valid_*: `function /= Void and then function.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)`
 
 h|
-2+a|*_Mode_valid_*: mode /= Void and terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)
+2+a|*_Mode_valid_*: `mode /= Void and terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)`
 |===

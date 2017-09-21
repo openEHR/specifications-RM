@@ -1,6 +1,6 @@
 === DV_TIME Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*DV_TIME*
@@ -11,7 +11,7 @@ h|*Description*
 Used for recording real world times, rather than scientifically measured fine amounts of time. The partial form is used for approximate times of events and substance administrations.
 
 h|*Inherit*
-2+|DV_TEMPORAL, Iso8601_time
+2+|`DV_TEMPORAL`, `Iso8601_time`
 
 h|*Attributes*
 ^h|*Signature*
@@ -26,29 +26,39 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*operator=* (source: `DV_TIME`): `DV_TIME`
+|*operator=* ( +
+source: `DV_TIME[1]` +
+): `DV_TIME`
 a|
 
 h|(effected)
-|*magnitude*: `Real`
+|*magnitude* (): `Real`
 a|Numeric value of the time as seconds since the start of day, i.e. 00:00:00.
 
 h|(effected)
-|*is_strictly_comparable_to* (other: `DV_ORDERED`): `Boolean`
+|*is_strictly_comparable_to* ( +
+other: `DV_ORDERED[1]` +
+): `Boolean`
 a|Test if two instances are strictly comparable.
 
 h|(effected)
-|*add* (a_diff: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
+|*add* ( +
+a_diff: `DV_AMOUNT[1]` +
+): `DV_ABSOLUTE_QUANTITY`
 a|Add a time period to this time.
 
 h|(effected)
-|*subtract* (a_diif: `DV_AMOUNT`): `DV_ABSOLUTE_QUANTITY`
+|*subtract* ( +
+a_diif: `DV_AMOUNT[1]` +
+): `DV_ABSOLUTE_QUANTITY`
 a|Subtract a duration from this time.
 
 h|(effected)
-|*diff* (other: `DV_TIME`): `DV_DURATION`
+|*diff* ( +
+other: `DV_TIME[1]` +
+): `DV_DURATION`
 a|Difference of two quantities.
 
-h|*Invariant*
-2+a|*_Value_valid_*: valid_iso8601_time (value)
+h|*Invariants*
+2+a|*_Value_valid_*: `valid_iso8601_time (value)`
 |===

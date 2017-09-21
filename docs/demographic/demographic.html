@@ -591,9 +591,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_party_class"><a class="anchor" href="#_party_class"></a>2.2.1. PARTY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -608,7 +608,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -665,39 +665,39 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Type of party, such as  PERSON ,  ORGANISATION , etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited name attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Type_valid</em></strong>: type = name</p>
+<p><strong><em>Type_valid</em></strong>: <code>type = name</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Contacts_valid</em></strong>: contacts /= Void implies not contacts.is_empty</p>
+<p><strong><em>Contacts_valid</em></strong>: <code>contacts /= Void implies not contacts.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Relationships_validity</em></strong>: relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r &#124; r.source = self)</p>
+<p><strong><em>Relationships_validity</em></strong>: <code>relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r &#124; r.source = self)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Reverse_relationships_validity</em></strong>: reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))</p>
+<p><strong><em>Reverse_relationships_validity</em></strong>: <code>reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Is_archetype_root</em></strong>: is_archetype_root</p>
+<p><strong><em>Is_archetype_root</em></strong>: <code>is_archetype_root</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -707,9 +707,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_role_class"><a class="anchor" href="#_role_class"></a>2.2.2. ROLE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -724,7 +724,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PARTY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>PARTY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -753,9 +753,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Capabilities_valid</em></strong>: capabilities /= Void implies not capabilities.empty</p>
+<p><strong><em>Capabilities_valid</em></strong>: <code>capabilities /= Void implies not capabilities.empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -765,9 +765,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_party_relationship_class"><a class="anchor" href="#_party_relationship_class"></a>2.2.3. PARTY_RELATIONSHIP Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -782,7 +782,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -824,27 +824,27 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Type of relationship, such as  employment,  authority,  health provision</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Source_valid</em></strong>: source /= Void and then source.relationships.has (self)</p>
+<p><strong><em>Source_valid</em></strong>: <code>source /= Void and then source.relationships.has (self)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Target_valid</em></strong>: target /= Void and then not target.reverse_relationships.has (self)</p>
+<p><strong><em>Target_valid</em></strong>: <code>target /= Void and then not target.reverse_relationships.has (self)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Type_validity</em></strong>: type = name</p>
+<p><strong><em>Type_validity</em></strong>: <code>type = name</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -854,9 +854,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_party_identity_class"><a class="anchor" href="#_party_identity_class"></a>2.2.4. PARTY_IDENTITY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -871,7 +871,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -892,15 +892,15 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Purpose of identity, e.g.  legal ,  stagename ,  nickname ,  tribal name ,  trading name . Taken from value of inherited name attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Purpose_valid</em></strong>: purpose = name</p>
+<p><strong><em>Purpose_valid</em></strong>: <code>purpose = name</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -910,9 +910,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_contact_class"><a class="anchor" href="#_contact_class"></a>2.2.5. CONTACT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -927,7 +927,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -955,15 +955,15 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Purpose for which this contact is used, e.g.  mail ,  daytime phone , etc. Taken from value of inherited name attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Purpose_valid</em></strong>: purpose = name</p>
+<p><strong><em>Purpose_valid</em></strong>: <code>purpose = name</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -973,9 +973,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_address_class"><a class="anchor" href="#_address_class"></a>2.2.6. ADDRESS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -990,7 +990,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1009,15 +1009,15 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Type of address, e.g.  electronic ,  locality . Taken from value of inherited name attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Type_valid</em></strong>: type = name</p>
+<p><strong><em>Type_valid</em></strong>: <code>type = name</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1027,9 +1027,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_capability_class"><a class="anchor" href="#_capability_class"></a>2.2.7. CAPABILITY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1044,7 +1044,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1072,9 +1072,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_actor_class"><a class="anchor" href="#_actor_class"></a>2.2.8. ACTOR Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1089,7 +1089,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PARTY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>PARTY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1117,9 +1117,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_person_class"><a class="anchor" href="#_person_class"></a>2.2.9. PERSON Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1134,7 +1134,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ACTOR</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ACTOR</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1143,9 +1143,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_organisation_class"><a class="anchor" href="#_organisation_class"></a>2.2.10. ORGANISATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1160,7 +1160,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ACTOR</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ACTOR</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1169,9 +1169,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_group_class"><a class="anchor" href="#_group_class"></a>2.2.11. GROUP Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1186,7 +1186,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ACTOR</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ACTOR</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1195,9 +1195,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <h4 id="_agent_class"><a class="anchor" href="#_agent_class"></a>2.2.12. AGENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1212,7 +1212,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ACTOR</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ACTOR</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1461,25 +1461,28 @@ associated credentials which document its official nature within the healthcare 
 <p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784" class="bare">http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784</a> .</p>
+<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> See <a href="https://www.iso.org/standard/40784.html" class="bare">https://www.iso.org/standard/40784.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119</a> .</p>
+<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> See <a href="https://www.iso.org/standard/50119.html" class="bare">https://www.iso.org/standard/50119.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> See <a href="https://www.iso.org/standard/50120.html" class="bare">https://www.iso.org/standard/50120.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> See <a href="https://www.iso.org/standard/50121.html" class="bare">https://www.iso.org/standard/50121.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> See <a href="https://www.iso.org/standard/52823.html" class="bare">https://www.iso.org/standard/52823.html</a>.</p>
 </li>
 <li>
 <p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="https://www.iso.org/standard/39525.html" class="bare">https://www.iso.org/standard/39525.html</a> .</p>
 </li>
 <li>
 <p><a id="ISO_13940"></a>[ISO_13940] ISO. <strong>Health informatics - System of concepts to support continuity of care.</strong> See <a href="https://www.iso.org/standard/58102.html" class="bare">https://www.iso.org/standard/58102.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_22600"></a>[ISO_22600] ISO. <strong>Health informatics - Privilege management and access control.</strong> See <a href="https://www.iso.org/standard/62653.html" class="bare">https://www.iso.org/standard/62653.html</a>.</p>
 </li>
 </ol>
 </div>
@@ -1600,7 +1603,7 @@ associated credentials which document its official nature within the healthcare 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-27 12:22:36 CEST
+Last updated 2017-04-27 11:22:36 BST
 </div>
 </div>
 </body>

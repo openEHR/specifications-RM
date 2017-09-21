@@ -679,9 +679,9 @@ access, access to externally defined scientific units and conversion information
 <h4 id="_external_environment_access_class"><a class="anchor" href="#_external_environment_access_class"></a>2.2.1. EXTERNAL_ENVIRONMENT_ACCESS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -696,7 +696,7 @@ access, access to externally defined scientific units and conversion information
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">TERMINOLOGY_SERVICE, MEASUREMENT_SERVICE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>TERMINOLOGY_SERVICE</code>, <code>MEASUREMENT_SERVICE</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1433,9 +1433,9 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 <h4 id="_terminology_service_class"><a class="anchor" href="#_terminology_service_class"></a>5.4.1. TERMINOLOGY_SERVICE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1450,7 +1450,7 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS, OPENEHR_CODE_SET_IDENTIFIERS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</code>, <code>OPENEHR_CODE_SET_IDENTIFIERS</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1459,7 +1459,9 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (name: <code>String</code>): <code>TERMINOLOGY_ACCESS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (<br>
+name: <code>String[1]</code><br>
+): <code>TERMINOLOGY_ACCESS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return an interface to the terminology named name. Allowable names include:-</p>
 </div>
@@ -1479,23 +1481,29 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (name: <code>String</code>): <code>CODE_SET_ACCESS</code><br>
-<strong><em>Pre</em></strong>: has_code_set (name)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (<br>
+name: <code>String[1]</code><br>
+): <code>CODE_SET_ACCESS</code><br>
+<strong><em>Pre</em></strong>: <code>has_code_set (name)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return an interface to the code_set identified by the external identifier name (e.g.  ISO_639-1).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (id: <code>String</code>): <code>CODE_SET_ACCESS</code><br>
-<strong><em>Pre</em></strong>: valid_code_set_id (id)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (<br>
+id: <code>String[1]</code><br>
+): <code>CODE_SET_ACCESS</code><br>
+<strong><em>Pre</em></strong>: <code>valid_code_set_id (id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return an interface to the code_set identified internally in openEHR by id.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (name: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (<br>
+name: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if terminology named name known by this service. Allowable names include:-</p>
 </div>
@@ -1515,28 +1523,30 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (name: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (<br>
+name: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if code_set linked to internal name (e.g. languages ) is available.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Set of all terminology identifiers known in the terminology service. Values from the US NLM UMLS meta-data list at:- <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openehr_code_sets</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openehr_code_sets</strong> (): <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Set of all code set identifiers known in the terminology service.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Set of all code sets identifiers for which there is an internal openEHR name; returned as a Map of ids keyed by internal name.</p>
 </div></div></td>
@@ -1548,9 +1558,9 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 <h4 id="_terminology_access_interface"><a class="anchor" href="#_terminology_access_interface"></a>5.4.2. TERMINOLOGY_ACCESS Interface</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1570,42 +1580,49 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Identification of this Terminology.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong>: <code>CODE_PHRASE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return all codes known in this terminology.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_id</strong> (a_group_id: <code>String</code>): <code>List&lt;CODE_PHRASE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_id</strong> (<br>
+a_group_id: <code>String[1]</code><br>
+): <code>List&lt;CODE_PHRASE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return all codes under grouper 'a_group_id' from this terminology.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_name</strong> (a_lang: <code>String</code>, a_name: <code>String</code>): <code>List&lt;CODE_PHRASE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_name</strong> (<br>
+a_lang: <code>String[1]</code>,<br>
+a_name: <code>String[1]</code><br>
+): <code>List&lt;CODE_PHRASE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return all codes under grouper whose name in 'a_lang' is 'a_name' from this terminology.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_for_group_id</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_for_group_id</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if  a_code' is known in group  group_id' in the openEHR terminology.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rubric_for_code</strong> (a_code: <code>String</code>): <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rubric_for_code</strong> (<br>
+a_code: <code>String[1]</code><br>
+): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return all rubric of code  code' in language  lang'.</p>
 </div></div></td>
@@ -1617,9 +1634,9 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 <h4 id="_code_set_access_interface"><a class="anchor" href="#_code_set_access_interface"></a>5.4.3. CODE_SET_ACCESS Interface</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1639,28 +1656,32 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>External identifier of this code set.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong>: <code>List&lt;CODE_PHRASE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code>List&lt;CODE_PHRASE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return all codes known in this code set.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_lang</strong> (a_lang: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_lang</strong> (<br>
+a_lang: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if code set knows about 'a_lang' .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code</strong> (a_code: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code</strong> (<br>
+a_code: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if code set knows about  'a_code'.</p>
 </div></div></td>
@@ -1672,9 +1693,9 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 <h4 id="_openehr_terminology_group_identifiers_class"><a class="anchor" href="#_openehr_terminology_group_identifiers_class"></a>5.4.4. OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1776,7 +1797,9 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_terminology_group_id</strong> (an_id: <code>Boolean</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_terminology_group_id</strong> (<br>
+an_id: <code>Boolean[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Validity function to test if an identifier is in the set defined by this class.</p>
 </div></div></td>
@@ -1788,9 +1811,9 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 <h4 id="_openehr_code_set_identifiers_class"><a class="anchor" href="#_openehr_code_set_identifiers_class"></a>5.4.5. OPENEHR_CODE_SET_IDENTIFIERS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1850,7 +1873,9 @@ list. A definitive up-to-date list may be found on the NLM website <a href="#NLM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_code_set_id</strong> (an_id: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_code_set_id</strong> (<br>
+an_id: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Validity function to test if an identifier is in the set defined by this class.</p>
 </div></div></td>
@@ -1909,9 +1934,9 @@ only the minimum functions required by the openEHR Reference Model.</p>
 <h4 id="_terminology_service_class_2"><a class="anchor" href="#_terminology_service_class_2"></a>6.3.1. TERMINOLOGY_SERVICE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1926,7 +1951,7 @@ only the minimum functions required by the openEHR Reference Model.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS, OPENEHR_CODE_SET_IDENTIFIERS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</code>, <code>OPENEHR_CODE_SET_IDENTIFIERS</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1935,7 +1960,9 @@ only the minimum functions required by the openEHR Reference Model.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (name: <code>String</code>): <code>TERMINOLOGY_ACCESS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (<br>
+name: <code>String[1]</code><br>
+): <code>TERMINOLOGY_ACCESS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return an interface to the terminology named name. Allowable names include:-</p>
 </div>
@@ -1955,23 +1982,29 @@ only the minimum functions required by the openEHR Reference Model.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (name: <code>String</code>): <code>CODE_SET_ACCESS</code><br>
-<strong><em>Pre</em></strong>: has_code_set (name)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (<br>
+name: <code>String[1]</code><br>
+): <code>CODE_SET_ACCESS</code><br>
+<strong><em>Pre</em></strong>: <code>has_code_set (name)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return an interface to the code_set identified by the external identifier name (e.g.  ISO_639-1).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (id: <code>String</code>): <code>CODE_SET_ACCESS</code><br>
-<strong><em>Pre</em></strong>: valid_code_set_id (id)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (<br>
+id: <code>String[1]</code><br>
+): <code>CODE_SET_ACCESS</code><br>
+<strong><em>Pre</em></strong>: <code>valid_code_set_id (id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return an interface to the code_set identified internally in openEHR by id.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (name: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (<br>
+name: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if terminology named name known by this service. Allowable names include:-</p>
 </div>
@@ -1991,28 +2024,30 @@ only the minimum functions required by the openEHR Reference Model.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (name: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (<br>
+name: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if code_set linked to internal name (e.g. languages ) is available.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Set of all terminology identifiers known in the terminology service. Values from the US NLM UMLS meta-data list at:- <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openehr_code_sets</strong>: <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openehr_code_sets</strong> (): <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Set of all code set identifiers known in the terminology service.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Set of all code sets identifiers for which there is an internal openEHR name; returned as a Map of ids keyed by internal name.</p>
 </div></div></td>

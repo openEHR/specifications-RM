@@ -726,9 +726,9 @@ well-known attribute names:</p>
 <h4 id="_data_structure_class"><a class="anchor" href="#_data_structure_class"></a>3.2.1. DATA_STRUCTURE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -743,7 +743,7 @@ well-known attribute names:</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -752,7 +752,7 @@ well-known attribute names:</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong>: <code>ITEM</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>ITEM</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Hierarchical equivalent of the physical representation of each subtype, compatible with CEN EN 13606 structures.</p>
 </div></div></td>
@@ -847,9 +847,9 @@ from the openEHR list.</p>
 <h4 id="_item_structure_class"><a class="anchor" href="#_item_structure_class"></a>4.3.1. ITEM_STRUCTURE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -864,7 +864,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">DATA_STRUCTURE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>DATA_STRUCTURE</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -873,9 +873,9 @@ from the openEHR list.</p>
 <h4 id="_item_single_class"><a class="anchor" href="#_item_single_class"></a>4.3.2. ITEM_SINGLE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -890,7 +890,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ITEM_STRUCTURE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM_STRUCTURE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -909,7 +909,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong>: <code>ELEMENT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>ELEMENT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single ELEMENT.</p>
 </div></div></td>
@@ -921,9 +921,9 @@ from the openEHR list.</p>
 <h4 id="_item_list_class"><a class="anchor" href="#_item_list_class"></a>4.3.3. ITEM_LIST Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -941,7 +941,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ITEM_STRUCTURE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM_STRUCTURE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -962,43 +962,47 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_count</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_count</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Count of all items.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>names</strong>: <code>List&lt;DV_TEXT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Retrieve the names of all items.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_item</strong> (a_name: <code>String</code>): <code>ELEMENT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_item</strong> (<br>
+a_name: <code>String[1]</code><br>
+): <code>ELEMENT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Retrieve the item with name ‘a_name’.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_item</strong> (i: <code>Integer</code>): <code>ELEMENT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_item</strong> (<br>
+i: <code>Integer[1]</code><br>
+): <code>ELEMENT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Retrieve the i-th item with name.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong>: <code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Valid_structure</em></strong>:  items.forall (i:ITEM &#124; i.type = "ELEMENT")</p>
+<p><strong><em>Valid_structure</em></strong>: ` items.forall (i:ITEM &#124; i.type = "ELEMENT")`</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1008,9 +1012,9 @@ from the openEHR list.</p>
 <h4 id="_item_table_class"><a class="anchor" href="#_item_table_class"></a>4.3.4. ITEM_TABLE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1034,7 +1038,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ITEM_STRUCTURE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM_STRUCTURE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1055,70 +1059,85 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_count</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_count</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_count</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_count</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_names</strong>: <code>List&lt;DV_TEXT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_names</strong>: <code>List&lt;DV_TEXT&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_row</strong> (i: <code>Integer</code>): <code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_row</strong> (<br>
+i: <code>Integer[1]</code><br>
+): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_name</strong> (a_key: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_name</strong> (<br>
+a_key: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_column_with_name</strong> (a_key: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_column_with_name</strong> (<br>
+a_key: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_row</strong> (a_key: <code>String</code>): <code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_row</strong> (<br>
+a_key: <code>String[1]</code><br>
+): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_key</strong> (keys: <code>List&lt;String&gt;</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_key</strong> (<br>
+keys: <code>List&lt;String&gt;[0..1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_with_key</strong> (keys: <code>List&lt;String&gt;</code>): <code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_with_key</strong> (<br>
+keys: <code>List&lt;String&gt;[0..1]</code><br>
+): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>element_at_cell_ij</strong> (i, j: <code>Integer</code>): <code>ELEMENT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>element_at_cell_ij</strong> (<br>
+i,<br>
+j: <code>Integer[1]</code><br>
+): <code>ELEMENT</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong>: <code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Valid_structure</em></strong>: rows.for_all (items.for_all (instance_of ("ELEMENT")))</p>
+<p><strong><em>Valid_structure</em></strong>: <code>rows.for_all (items.for_all (instance_of ("ELEMENT")))</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1128,9 +1147,9 @@ from the openEHR list.</p>
 <h4 id="_item_tree_class"><a class="anchor" href="#_item_tree_class"></a>4.3.5. ITEM_TREE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1145,7 +1164,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ITEM_STRUCTURE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM_STRUCTURE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1166,21 +1185,25 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_element_path</strong> (a_path: <code>String</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_element_path</strong> (<br>
+a_path: <code>String[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if path  a_path' is a valid leaf path.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>element_at_path</strong> (a_path: <code>String</code>): <code>ELEMENT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>element_at_path</strong> (<br>
+a_path: <code>String[1]</code><br>
+): <code>ELEMENT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return the leaf element at the path  a_path'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong>: <code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy, which is the same as the tree&#8217;s physical representation.</p>
 </div></div></td>
@@ -1260,9 +1283,9 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 <h4 id="_item_class"><a class="anchor" href="#_item_class"></a>5.2.1. ITEM Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1277,7 +1300,7 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1286,9 +1309,9 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 <h4 id="_cluster_class"><a class="anchor" href="#_cluster_class"></a>5.2.2. CLUSTER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1303,7 +1326,7 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1324,9 +1347,9 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 <h4 id="_element_class"><a class="anchor" href="#_element_class"></a>5.2.3. ELEMENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1341,7 +1364,7 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">ITEM</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1369,27 +1392,27 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_null</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_null</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if value logically not known, e.g. if indeterminate, not asked etc.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Is_null_valid</em></strong>: is_null = (value = Void)</p>
+<p><strong><em>Is_null_valid</em></strong>: <code>is_null = (value = Void)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Null_flavour_indicated</em></strong>: is_null xor null_flavour = Void</p>
+<p><strong><em>Null_flavour_indicated</em></strong>: <code>is_null xor null_flavour = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Null_flavour_valid</em></strong>: is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)</p>
+<p><strong><em>Null_flavour_valid</em></strong>: <code>is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1761,9 +1784,9 @@ test. The state information for each event is, respectively (in a typical test):
 <h4 id="_history_class"><a class="anchor" href="#_history_class"></a>6.2.1. HISTORY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1778,7 +1801,7 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">DATA_STRUCTURE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>DATA_STRUCTURE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1827,27 +1850,27 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_periodic</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_periodic</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates whether history is periodic.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Events_valid</em></strong>: (events /= Void and then not events.is_empty) or summary /= Void</p>
+<p><strong><em>Events_valid</em></strong>: <code>(events /= Void and then not events.is_empty) or summary /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Periodic_validity</em></strong>: is_periodic xor period = Void</p>
+<p><strong><em>Periodic_validity</em></strong>: <code>is_periodic xor period = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Period_consistency</em></strong>: is_periodic implies events.for_all (e: EVENT &#124; e.offset. to_seconds.mod(period.to_seconds) = 0)</p>
+<p><strong><em>Period_consistency</em></strong>: <code>is_periodic implies events.for_all (e: EVENT &#124; e.offset. to_seconds.mod(period.to_seconds) = 0)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1857,9 +1880,9 @@ test. The state information for each event is, respectively (in a typical test):
 <h4 id="_event_class"><a class="anchor" href="#_event_class"></a>6.2.2. EVENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1874,7 +1897,7 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1909,16 +1932,16 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>offset</strong>: <code>DV_DURATION</code><br>
-<strong><em>Post_condition</em></strong>: Result = time.diff(parent.origin)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>offset</strong> (): <code>DV_DURATION</code><br>
+<strong><em>Post_condition</em></strong>: <code>Result = time.diff(parent.origin)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Offset of this event from origin, computed as time.diff(parent.origin).</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Offset_validity1</em></strong>: offset /= Void and then offset = time.diff (parent.origin)</p>
+<p><strong><em>Offset_validity1</em></strong>: <code>offset /= Void and then offset = time.diff (parent.origin)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1928,9 +1951,9 @@ test. The state information for each event is, respectively (in a typical test):
 <h4 id="_point_event_class"><a class="anchor" href="#_point_event_class"></a>6.2.3. POINT_EVENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1945,7 +1968,7 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EVENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EVENT</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1954,9 +1977,9 @@ test. The state information for each event is, respectively (in a typical test):
 <h4 id="_interval_event_class"><a class="anchor" href="#_interval_event_class"></a>6.2.4. INTERVAL_EVENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1971,7 +1994,7 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">EVENT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EVENT</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2006,21 +2029,21 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval_start_time</strong>: <code>DV_DATE_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval_start_time</strong> (): <code>DV_DATE_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Start time of the interval of this event.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Math_function_validity</em></strong>: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_event_math_function, math_function.defining_code)</p>
+<p><strong><em>Math_function_validity</em></strong>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_event_math_function, math_function.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Interval_start_time_valid</em></strong>: interval_start_time = time - width</p>
+<p><strong><em>Interval_start_time_valid</em></strong>: <code>interval_start_time = time - width</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2211,25 +2234,28 @@ which in this case is simply the time of measurement (the origin).</p>
 <p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784" class="bare">http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784</a> .</p>
+<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> See <a href="https://www.iso.org/standard/40784.html" class="bare">https://www.iso.org/standard/40784.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119</a> .</p>
+<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> See <a href="https://www.iso.org/standard/50119.html" class="bare">https://www.iso.org/standard/50119.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> See <a href="https://www.iso.org/standard/50120.html" class="bare">https://www.iso.org/standard/50120.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> See <a href="https://www.iso.org/standard/50121.html" class="bare">https://www.iso.org/standard/50121.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> See <a href="https://www.iso.org/standard/52823.html" class="bare">https://www.iso.org/standard/52823.html</a>.</p>
 </li>
 <li>
 <p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="https://www.iso.org/standard/39525.html" class="bare">https://www.iso.org/standard/39525.html</a> .</p>
 </li>
 <li>
 <p><a id="ISO_13940"></a>[ISO_13940] ISO. <strong>Health informatics - System of concepts to support continuity of care.</strong> See <a href="https://www.iso.org/standard/58102.html" class="bare">https://www.iso.org/standard/58102.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_22600"></a>[ISO_22600] ISO. <strong>Health informatics - Privilege management and access control.</strong> See <a href="https://www.iso.org/standard/62653.html" class="bare">https://www.iso.org/standard/62653.html</a>.</p>
 </li>
 </ol>
 </div>
@@ -2350,7 +2376,7 @@ which in this case is simply the time of measurement (the origin).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-27 12:22:17 CEST
+Last updated 2017-04-27 11:22:17 BST
 </div>
 </div>
 </body>

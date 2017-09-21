@@ -1229,9 +1229,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_pathable_class"><a class="anchor" href="#_pathable_class"></a>3.2.1. PATHABLE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1245,51 +1245,65 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>Any</code></p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent</strong>: <code>PATHABLE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent</strong> (): <code>PATHABLE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Parent of this node in a compositional hierarchy.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_at_path</strong> (a_path: <code>String</code>): <code>Any</code><br>
-<strong><em>Pre</em></strong>: path_unique (a_path)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_at_path</strong> (<br>
+a_path: <code>String[1]</code><br>
+): <code>Any</code><br>
+<strong><em>Pre</em></strong>: <code>path_unique (a_path)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items_at_path</strong> (a_path: <code>String</code>): <code>List&lt;Any&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items_at_path</strong> (<br>
+a_path: <code>String[1]</code><br>
+): <code>List&lt;Any&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>List of items corresponding to a non-unique path.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_exists</strong> (a_path: <code>String</code>): <code>Boolean</code><br>
-<strong><em>Pre</em></strong>: not a_path.is_empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_exists</strong> (<br>
+a_path: <code>String[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Pre</em></strong>: <code>not a_path.is_empty</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the path exists in the data with respect to the current item.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_unique</strong> (a_path: <code>String</code>): <code>Boolean</code><br>
-<strong><em>Pre</em></strong>: path_exists (a_path)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_unique</strong> (<br>
+a_path: <code>String[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Pre</em></strong>: <code>path_exists (a_path)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if the path corresponds to a single item in the data.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_of_item</strong> (a_loc: <code>PATHABLE</code>): <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_of_item</strong> (<br>
+a_loc: <code>PATHABLE[1]</code><br>
+): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The path to an item relative to the root of this archetyped structure.</p>
 </div></div></td>
@@ -1301,9 +1315,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_locatable_class"><a class="anchor" href="#_locatable_class"></a>3.2.2. LOCATABLE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1318,7 +1332,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PATHABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>PATHABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1377,34 +1391,34 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept</strong>: <code>DV_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Clinical concept of the archetype as a whole (= derived from the archetype_node_id' of the root node)</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_archetype_root</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_archetype_root</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this node is the root of an archetyped structure.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Links_valid</em></strong>: links /= Void implies not links.is_empty</p>
+<p><strong><em>Links_valid</em></strong>: <code>links /= Void implies not links.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Archetyped_valid</em></strong>: is_archetype_root xor archetype_details = Void</p>
+<p><strong><em>Archetyped_valid</em></strong>: <code>is_archetype_root xor archetype_details = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Archetype_node_id_valid</em></strong>: not archetype_node_id.is_empty</p>
+<p><strong><em>Archetype_node_id_valid</em></strong>: <code>not archetype_node_id.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1414,9 +1428,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_archetyped_class"><a class="anchor" href="#_archetyped_class"></a>3.2.3. ARCHETYPED Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1459,9 +1473,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Rm_version_valid</em></strong>: not rm_version.is_empty</p>
+<p><strong><em>Rm_version_valid</em></strong>: <code>not rm_version.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1471,9 +1485,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_link_class"><a class="anchor" href="#_link_class"></a>3.2.4. LINK Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1525,9 +1539,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_feeder_audit_class"><a class="anchor" href="#_feeder_audit_class"></a>3.2.5. FEEDER_AUDIT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1587,9 +1601,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_feeder_audit_details_class"><a class="anchor" href="#_feeder_audit_details_class"></a>3.2.6. FEEDER_AUDIT_DETAILS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1650,9 +1664,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>System_id_valid</em></strong>: not system_id.is_empty</p>
+<p><strong><em>System_id_valid</em></strong>: <code>not system_id.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1824,9 +1838,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_party_proxy_class"><a class="anchor" href="#_party_proxy_class"></a>4.3.1. PARTY_PROXY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1858,9 +1872,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_party_self_class"><a class="anchor" href="#_party_self_class"></a>4.3.2. PARTY_SELF Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1875,7 +1889,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PARTY_PROXY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>PARTY_PROXY</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1884,9 +1898,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_party_identified_class"><a class="anchor" href="#_party_identified_class"></a>4.3.3. PARTY_IDENTIFIED Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1907,7 +1921,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PARTY_PROXY</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>PARTY_PROXY</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1929,21 +1943,21 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Basic_validity</em></strong>: name /= Void or identifiers /= Void or external_ref /= Void</p>
+<p><strong><em>Basic_validity</em></strong>: <code>name /= Void or identifiers /= Void or external_ref /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Name_valid</em></strong>: name /= Void implies not name.is_empty</p>
+<p><strong><em>Name_valid</em></strong>: <code>name /= Void implies not name.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Identifiers_valid</em></strong>: identifiers /= Void implies not identifiers.is_empty</p>
+<p><strong><em>Identifiers_valid</em></strong>: <code>identifiers /= Void implies not identifiers.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1953,9 +1967,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_party_related_class"><a class="anchor" href="#_party_related_class"></a>4.3.4. PARTY_RELATED Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1970,7 +1984,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">PARTY_IDENTIFIED</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>PARTY_IDENTIFIED</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1985,9 +1999,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Relationship_valid</em></strong>: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_subject_relationship, relationship.defining_code)</p>
+<p><strong><em>Relationship_valid</em></strong>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_subject_relationship, relationship.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1997,9 +2011,9 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <h4 id="_participation_class"><a class="anchor" href="#_participation_class"></a>4.3.5. PARTICIPATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2046,16 +2060,16 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Function_valid</em></strong>: function.generating_type.is_equal ("DV_CODED_TEXT") implies
-terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)</p>
+<p><strong><em>Function_valid</em></strong>: <code>function.generating_type.is_equal ("DV_CODED_TEXT") implies
+terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Mode_valid</em></strong>: mode /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)</p>
+<p><strong><em>Mode_valid</em></strong>: <code>mode /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2065,9 +2079,9 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <h4 id="_audit_details_class"><a class="anchor" href="#_audit_details_class"></a>4.3.6. AUDIT_DETAILS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2121,15 +2135,15 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>System_id_valid</em></strong>: not system_id.is_empty</p>
+<p><strong><em>System_id_valid</em></strong>: <code>not system_id.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Change_type_valid</em></strong>: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)</p>
+<p><strong><em>Change_type_valid</em></strong>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2139,9 +2153,9 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <h4 id="_attestation_class"><a class="anchor" href="#_attestation_class"></a>4.3.7. ATTESTATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2159,7 +2173,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">AUDIT_DETAILS</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>AUDIT_DETAILS</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2202,15 +2216,15 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Items_valid</em></strong>: items /= Void implies not items.is_empty</p>
+<p><strong><em>Items_valid</em></strong>: <code>items /= Void implies not items.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Reason_valid</em></strong>: (reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))</p>
+<p><strong><em>Reason_valid</em></strong>: <code>(reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2220,9 +2234,9 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <h4 id="_revision_history_class"><a class="anchor" href="#_revision_history_class"></a>4.3.8. REVISION_HISTORY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2254,16 +2268,16 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version</strong>: <code>String</code><br>
-<strong><em>Post</em></strong>: Result.is_equal (items.last.version_id.value)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version</strong> (): <code>String</code><br>
+<strong><em>Post</em></strong>: <code>Result.is_equal (items.last.version_id.value)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The version id of the most recent item, as a String.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version_time_committed</strong>: <code>String</code><br>
-<strong><em>Post</em></strong>: Result.is_equal (items.last.audits.first. time_committed.value)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version_time_committed</strong> (): <code>String</code><br>
+<strong><em>Post</em></strong>: <code>Result.is_equal (items.last.audits.first. time_committed.value)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The commit date/time of the most recent item, as a String.</p>
 </div></div></td>
@@ -2275,9 +2289,9 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <h4 id="_revision_history_item_class"><a class="anchor" href="#_revision_history_item_class"></a>4.3.9. REVISION_HISTORY_ITEM Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2361,9 +2375,9 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <h4 id="_versioned_folder_class"><a class="anchor" href="#_versioned_folder_class"></a>5.2.1. VERSIONED_FOLDER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2378,7 +2392,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">VERSIONED_OBJECT</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>VERSIONED_OBJECT</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2387,9 +2401,9 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <h4 id="_folder_class"><a class="anchor" href="#_folder_class"></a>5.2.2. FOLDER Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -2404,7 +2418,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">LOCATABLE</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2426,9 +2440,9 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Folders_valid</em></strong>: not folders.is_empty</p>
+<p><strong><em>Folders_valid</em></strong>: <code>not folders.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2953,9 +2967,9 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <h4 id="_versioned_object_class"><a class="anchor" href="#_versioned_object_class"></a>6.5.1. VERSIONED_OBJECT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3001,152 +3015,187 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_count</strong>: <code>Integer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_count</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return the total number of versions in this object.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_version_ids</strong>: <code>List&lt;OBJECT_VERSION_ID&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_version_ids</strong> (): <code>List&lt;OBJECT_VERSION_ID&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return a list of ids of all versions in this object.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_versions</strong>: <code>List&lt;VERSION&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_versions</strong> (): <code>List&lt;VERSION&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return a list of all versions in this object.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_version_at_time</strong> (a_ver_id: <code>OBJECT_VERSION_ID</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_version_at_time</strong> (<br>
+a_ver_id: <code>OBJECT_VERSION_ID[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if a version for time  'a_time' exists.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_version_id</strong> (a_ver_id: <code>OBJECT_VERSION_ID</code>): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_version_id</strong> (<br>
+a_ver_id: <code>OBJECT_VERSION_ID[1]</code><br>
+): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if a version with an_id exists.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_with_id</strong> (a_ver_id: <code>OBJECT_VERSION_ID</code>): <code>VERSION</code><br>
-<strong><em>Pre</em></strong>: has_version_id (a_ver_id)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_with_id</strong> (<br>
+a_ver_id: <code>OBJECT_VERSION_ID[1]</code><br>
+): <code>VERSION</code><br>
+<strong><em>Pre</em></strong>: <code>has_version_id (a_ver_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return the version with id =  'a_ver_id'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_original_version</strong> (a_ver_id: <code>OBJECT_VERSION_ID</code>): <code>Boolean</code><br>
-<strong><em>Pre</em></strong>: has_version_id(a_ver_id)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_original_version</strong> (<br>
+a_ver_id: <code>OBJECT_VERSION_ID[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Pre</em></strong>: <code>has_version_id(a_ver_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if version with an_id is an ORIGINAL_VERSION.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_at_time</strong> (a_time: <code>DV_DATE_TIME</code>): <code>VERSION</code><br>
-<strong><em>Pre</em></strong>: has_version_at_time (a_time)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_at_time</strong> (<br>
+a_time: <code>DV_DATE_TIME[1]</code><br>
+): <code>VERSION</code><br>
+<strong><em>Pre</em></strong>: <code>has_version_at_time (a_time)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return the version for time  'a_time'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code>REVISION_HISTORY</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong> (): <code>REVISION_HISTORY</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>History of all audits and attestations in this versioned repository.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_version</strong>: <code>VERSION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_version</strong> (): <code>VERSION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return the most recently added version (i.e. on trunk or any branch).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_trunk_version</strong>: <code>VERSION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_trunk_version</strong> (): <code>VERSION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return the most recently added trunk version.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong>: <code>DV_CODED_TEXT</code><br>
-<strong><em>Post</em></strong>: Result = latest_trunk_version.lifecycle_state</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong> (): <code>DV_CODED_TEXT</code><br>
+<strong><em>Post</em></strong>: <code>Result = latest_trunk_version.lifecycle_state</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Return the lifecycle state from the latest trunk version. Useful for determining if the version container is logically deleted.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_original_version</strong> (a_contribution: <code>OBJECT_REF</code>, a_new_version_uid: <code>OBJECT_VERSION_ID</code>, a_preceding_version_id: <code>OBJECT_VERSION_ID</code>, an_audit: <code>AUDIT_DETAILS</code>, a_lifecycle_state: <code>DV_CODED_TEXT</code>, a_data: <code>T</code>, signing_key: <code>String</code>): <code>void</code><br>
-<strong><em>Pre</em></strong>: all_version_ids.has (a_preceding_version_uid) or else version_count = 0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_original_version</strong> (<br>
+a_contribution: <code>OBJECT_REF[1]</code>,<br>
+a_new_version_uid: <code>OBJECT_VERSION_ID[1]</code>,<br>
+a_preceding_version_id: <code>OBJECT_VERSION_ID[1]</code>,<br>
+an_audit: <code>AUDIT_DETAILS[1]</code>,<br>
+a_lifecycle_state: <code>DV_CODED_TEXT[1]</code>,<br>
+a_data: <code>T[1]</code>,<br>
+signing_key: <code>String[1]</code><br>
+): <code>void</code><br>
+<strong><em>Pre</em></strong>: <code>all_version_ids.has (a_preceding_version_uid) or else version_count = 0</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Add a new original version.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_original_merged_version</strong> (a_contribution: <code>OBJECT_REF</code>, a_new_version_uid: <code>OBJECT_VERSION_ID</code>, a_preceding_version_id: <code>OBJECT_VERSION_ID</code>, an_audit: <code>AUDIT_DETAILS</code>, a_lifecycle_state: <code>DV_CODED_TEXT</code>, a_data: <code>T</code>, an_other_input_uids: <code>List&lt;OBJECT_VERSION_ID&gt;</code>, signing_key: <code>String</code>): <code>void</code><br>
-<strong><em>Pre</em></strong>: all_version_ids.has (a_preceding_version_uid) or else version_count = 0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_original_merged_version</strong> (<br>
+a_contribution: <code>OBJECT_REF[1]</code>,<br>
+a_new_version_uid: <code>OBJECT_VERSION_ID[1]</code>,<br>
+a_preceding_version_id: <code>OBJECT_VERSION_ID[1]</code>,<br>
+an_audit: <code>AUDIT_DETAILS[1]</code>,<br>
+a_lifecycle_state: <code>DV_CODED_TEXT[1]</code>,<br>
+a_data: <code>T[1]</code>,<br>
+an_other_input_uids: <code>List&lt;OBJECT_VERSION_ID&gt;[1]</code>,<br>
+signing_key: <code>String[1]</code><br>
+): <code>void</code><br>
+<strong><em>Pre</em></strong>: <code>all_version_ids.has (a_preceding_version_uid) or else version_count = 0</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Add a new original merged version. This commit function adds a parameter containing the ids of other versions merged into the current one.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_imported_version</strong> (a_contribution: <code>OBJECT_REF</code>, an_audit: <code>AUDIT_DETAILS</code>, a_version: <code>ORIGINAL_VERSION</code>): <code>void</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_imported_version</strong> (<br>
+a_contribution: <code>OBJECT_REF[1]</code>,<br>
+an_audit: <code>AUDIT_DETAILS[1]</code>,<br>
+a_version: <code>ORIGINAL_VERSION[1]</code><br>
+): <code>void</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Add a new imported version. Details of version id etc come from the ORIGINAL_VERSION being committed.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_attestation</strong> (an_attestation: <code>ATTESTATION</code>, a_ver_id: <code>OBJECT_VERSION_ID</code>, signing_key: <code>String</code>): <code>void</code><br>
-<strong><em>Pre</em></strong>: has_version_id(a_ver_id)
-and is_original_version(a_ver_id)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_attestation</strong> (<br>
+an_attestation: <code>ATTESTATION[1]</code>,<br>
+a_ver_id: <code>OBJECT_VERSION_ID[1]</code>,<br>
+signing_key: <code>String[1]</code><br>
+): <code>void</code><br>
+<strong><em>Pre</em></strong>: <code>has_version_id(a_ver_id)
+and is_original_version(a_ver_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Add a new attestation to a specified original version. Attestations can only be added to Original versions.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Version_count_valid</em></strong>: version_count &gt;= 0</p>
+<p><strong><em>Version_count_valid</em></strong>: <code>version_count &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>All_version_ids_valid</em></strong>: all_version_ids.count = version_count</p>
+<p><strong><em>All_version_ids_valid</em></strong>: <code>all_version_ids.count = version_count</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>All_versions_valid</em></strong>: all_versions.count = version_count</p>
+<p><strong><em>All_versions_valid</em></strong>: <code>all_versions.count = version_count</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Latest_version_valid</em></strong>: version_count &gt; 0 implies latest_version /= Void</p>
+<p><strong><em>Latest_version_valid</em></strong>: <code>version_count &gt; 0 implies latest_version /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Uid_validity</em></strong>: extension.is_empty</p>
+<p><strong><em>Uid_validity</em></strong>: <code>extension.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3156,9 +3205,9 @@ and is_original_version(a_ver_id)</p></td>
 <h4 id="_version_class"><a class="anchor" href="#_version_class"></a>6.5.2. VERSION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3204,35 +3253,35 @@ and is_original_version(a_ver_id)</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>OBJECT_VERSION_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong> (): <code>OBJECT_VERSION_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Unique identifier of this VERSION, in the form of an {object_id, a version_tree_id, creating_system_id} triple, where the object_id has the same value as the containing VERSIONED_OBJECT&#8217;s uid.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preceding_version_uid</strong>: <code>OBJECT_VERSION_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preceding_version_uid</strong> (): <code>OBJECT_VERSION_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Unique identifier of the version of which this version is a modification; Void if this is the first version.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong> (): <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Original content of this Version.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>DV_CODED_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Lifecycle state of this version; coded by openEHR vocabulary version lifecycle state .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_form</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_form</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Canonical form of Version object, created by serialising all attributes except
 signature.</p>
@@ -3240,29 +3289,29 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner_id</strong>: <code>HIER_OBJECT_ID</code><br>
-<strong><em>Post</em></strong>: Result.value.is_equal (uid.object_id.value)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner_id</strong> (): <code>HIER_OBJECT_ID</code><br>
+<strong><em>Post</em></strong>: <code>Result.value.is_equal (uid.object_id.value)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Copy of the owning VERSIONED_OBJECT.uid value; extracted from the local uid property&#8217;s object_id.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this Version represents a branch. Derived from uid attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Preceding_version_uid_validity</em></strong>: uid.version_tree_id.is_first xor preceding_version_uid /= Void</p>
+<p><strong><em>Preceding_version_uid_validity</em></strong>: <code>uid.version_tree_id.is_first xor preceding_version_uid /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Lifecycle_state</em> valid_</strong>: lifecycle_state /= Void and then terminology (Term_id_openehr).has_code_for_group_id (Group_id_version_lifecycle_state, lifecycle_state.defining_code)</p>
+<p><strong><em>Lifecycle_state</em> valid_</strong>: <code>lifecycle_state /= Void and then terminology (Term_id_openehr).has_code_for_group_id (Group_id_version_lifecycle_state, lifecycle_state.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3272,9 +3321,9 @@ signature.</p>
 <h4 id="_original_version_class"><a class="anchor" href="#_original_version_class"></a>6.5.3. ORIGINAL_VERSION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3289,7 +3338,7 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">VERSION</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>VERSION</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3343,27 +3392,27 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_merged</strong>: <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_merged</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>True if this Version was created from more than just the preceding (checked out) version.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Attestations_valid</em></strong>: attestations /= Void implies not attestations.is_empty</p>
+<p><strong><em>Attestations_valid</em></strong>: <code>attestations /= Void implies not attestations.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Is_merged_validity</em></strong>: other_input_version_ids = Void xor is_merged</p>
+<p><strong><em>Is_merged_validity</em></strong>: <code>other_input_version_ids = Void xor is_merged</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Other_input_version_uids_valid</em></strong>: other_input_version_uids /= Void implies not other_input_version_uids.is_empty</p>
+<p><strong><em>Other_input_version_uids_valid</em></strong>: <code>other_input_version_uids /= Void implies not other_input_version_uids.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3373,9 +3422,9 @@ signature.</p>
 <h4 id="_imported_version_class"><a class="anchor" href="#_imported_version_class"></a>6.5.4. IMPORTED_VERSION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3390,7 +3439,7 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">VERSION</p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>VERSION</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -3411,30 +3460,30 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>OBJECT_VERSION_ID</code><br>
-<strong><em>Post</em></strong>: Result = item.uid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong> (): <code>OBJECT_VERSION_ID</code><br>
+<strong><em>Post</em></strong>: <code>Result = item.uid</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Computed version of inheritance precursor, derived as item.uid.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preceding_version_uid</strong>: <code>OBJECT_VERSION_ID</code><br>
-<strong><em>Post</em></strong>: Result = item.preceding_version_uid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preceding_version_uid</strong> (): <code>OBJECT_VERSION_ID</code><br>
+<strong><em>Post</em></strong>: <code>Result = item.preceding_version_uid</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Computed version of inheritance precursor, derived as item.preceding_version_uid.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>DV_CODED_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Lifecycle state of the content item in wrapped ORIGINAL_VERSION, derived as item.lifecycle_state.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong> (): <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Original content of this Version.</p>
 </div></div></td>
@@ -3446,9 +3495,9 @@ signature.</p>
 <h4 id="_contribution_class"><a class="anchor" href="#_contribution_class"></a>6.5.5. CONTRIBUTION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3554,9 +3603,9 @@ signature.</p>
 <h4 id="_authored_resource_class"><a class="anchor" href="#_authored_resource_class"></a>7.2.1. AUTHORED_RESOURCE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3616,54 +3665,54 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong>: <code>String</code><br>
-<strong><em>Post</em></strong>: Result = revision_history.most_recent_version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong> (): <code>String</code><br>
+<strong><em>Post</em></strong>: <code>Result = revision_history.most_recent_version</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Most recent revision in revision_history if is_controlled else  (uncontrolled) .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages_available</strong>: <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages_available</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Total list of languages available in this resource, derived from original_language and translations.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Original_language_valid</em></strong>: code_set (Code_set_id_languages).has_code (original_language.as_string)</p>
+<p><strong><em>Original_language_valid</em></strong>: <code>code_set (Code_set_id_languages).has_code (original_language.as_string)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Languages_available_valid</em></strong>: languages_available.has (original_language)</p>
+<p><strong><em>Languages_available_valid</em></strong>: <code>languages_available.has (original_language)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Revision_history_valid</em></strong>: is_controlled xor revision_history = Void</p>
+<p><strong><em>Revision_history_valid</em></strong>: <code>is_controlled xor revision_history = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Current_revision_valid</em></strong>: (current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)</p>
+<p><strong><em>Current_revision_valid</em></strong>: <code>(current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Translations_valid</em></strong>: translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</p>
+<p><strong><em>Translations_valid</em></strong>: <code>translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Description_valid</em></strong>: translations /= Void implies (description.details.for_all (d &#124;
-translations.has_key (d.language.code_string)))</p>
+<p><strong><em>Description_valid</em></strong>: <code>translations /= Void implies (description.details.for_all (d &#124;
+translations.has_key (d.language.code_string)))</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3673,9 +3722,9 @@ translations.has_key (d.language.code_string)))</p>
 <h4 id="_translation_details_class"><a class="anchor" href="#_translation_details_class"></a>7.2.2. TRANSLATION_DETAILS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3722,9 +3771,9 @@ translations.has_key (d.language.code_string)))</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: code_set (Code_set_id_languages).has_code (language)</p>
+<p><strong><em>Language_valid</em></strong>: <code>code_set (Code_set_id_languages).has_code (language)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3734,9 +3783,9 @@ translations.has_key (d.language.code_string)))</p>
 <h4 id="_resource_description_class"><a class="anchor" href="#_resource_description_class"></a>7.2.3. RESOURCE_DESCRIPTION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3804,33 +3853,33 @@ translations.has_key (d.language.code_string)))</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Original_author_valid</em></strong>: not original_author.is_empty</p>
+<p><strong><em>Original_author_valid</em></strong>: <code>not original_author.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Lifecycle_state_valid</em></strong>: not lifecycle_state.is_empty</p>
+<p><strong><em>Lifecycle_state_valid</em></strong>: <code>not lifecycle_state.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Details_valid</em></strong>: not details.is_empty</p>
+<p><strong><em>Details_valid</em></strong>: <code>not details.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: parent_resource /= Void implies details.for_all (d &#124; parent_resource.languages_available.has (d.language.code_string))</p>
+<p><strong><em>Language_valid</em></strong>: <code>parent_resource /= Void implies details.for_all (d &#124; parent_resource.languages_available.has (d.language.code_string))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Parent_resource_valid</em></strong>: parent_resource /= Void implies parent_resource.description = self</p>
+<p><strong><em>Parent_resource_valid</em></strong>: <code>parent_resource /= Void implies parent_resource.description = self</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3840,9 +3889,9 @@ translations.has_key (d.language.code_string)))</p>
 <h4 id="_resource_description_item_class"><a class="anchor" href="#_resource_description_item_class"></a>7.2.4. RESOURCE_DESCRIPTION_ITEM Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 16.6666%;">
+<col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
-<col style="width: 50.0001%;">
+<col style="width: 55.5556%;">
 </colgroup>
 <tbody>
 <tr>
@@ -3917,33 +3966,33 @@ translations.has_key (d.language.code_string)))</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariant</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: code_set (Code_set_id_languages).has_code (language)</p>
+<p><strong><em>Language_valid</em></strong>: <code>code_set (Code_set_id_languages).has_code (language)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Purpose_valid</em></strong>: not purpose.is_empty</p>
+<p><strong><em>Purpose_valid</em></strong>: <code>not purpose.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Use_valid</em></strong>: use /= Void implies not use.is_empty</p>
+<p><strong><em>Use_valid</em></strong>: <code>use /= Void implies not use.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>misuse_valid</em></strong>: misuse /= Void implies not misuse.is_empty</p>
+<p><strong><em>misuse_valid</em></strong>: <code>misuse /= Void implies not misuse.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>copyright_valid</em></strong>: copyright /= Void implies not copyright.is_empty</p>
+<p><strong><em>copyright_valid</em></strong>: <code>copyright /= Void implies not copyright.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4105,25 +4154,28 @@ translations.has_key (d.language.code_string)))</p>
 <p><a id="NLM_UML_list"></a>[NLM_UML_list] National Library of Medicine. UMLS Terminologies List. <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784" class="bare">http://www.iso.org/iso/catalogue_detail.htm?csnumber=40784</a> .</p>
+<p><a id="ISO_13606-1"></a>[ISO_13606-1] <strong>ISO 13606-1 - Electronic healthcare record communication - Part 1: Extended architecture.</strong> See <a href="https://www.iso.org/standard/40784.html" class="bare">https://www.iso.org/standard/40784.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> CEN TC251 Health Informatics Technical Committee. Available at <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119" class="bare">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50119</a> .</p>
+<p><a id="ISO_13606-2"></a>[ISO_13606-2] <strong>ISO 13606-2 - Electronic healthcare record communication - Part 2: Domain term list.</strong> See <a href="https://www.iso.org/standard/50119.html" class="bare">https://www.iso.org/standard/50119.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+<p><a id="ISO_13606-3"></a>[ISO_13606-3] <strong>ISO 13606-3 - Electronic healthcare record communication - Part 3: Distribution rules.</strong> See <a href="https://www.iso.org/standard/50120.html" class="bare">https://www.iso.org/standard/50120.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> CEN TC251 Health Informatics Technical Committee.</p>
+<p><a id="ISO_13606-4"></a>[ISO_13606-4] <strong>ISO 13606-4 - Electronic Healthcare Record Communication standard Part 4: Messages for the exchange of information.</strong> See <a href="https://www.iso.org/standard/50121.html" class="bare">https://www.iso.org/standard/50121.html</a>.</p>
 </li>
 <li>
-<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> (ISO TC 215/SC N; ISO/WD 18308). International Standards Organisation, Australia, 2002.</p>
+<p><a id="ISO_18308"></a>[ISO_18308] Schloeffel P. (Editor). <strong>Requirements for an Electronic Health Record Reference Architecture.</strong> See <a href="https://www.iso.org/standard/52823.html" class="bare">https://www.iso.org/standard/52823.html</a>.</p>
 </li>
 <li>
 <p><a id="ISO_20514"></a>[ISO_20514] ISO. <strong>The Integrated Care EHR.</strong> See <a href="https://www.iso.org/standard/39525.html" class="bare">https://www.iso.org/standard/39525.html</a> .</p>
 </li>
 <li>
 <p><a id="ISO_13940"></a>[ISO_13940] ISO. <strong>Health informatics - System of concepts to support continuity of care.</strong> See <a href="https://www.iso.org/standard/58102.html" class="bare">https://www.iso.org/standard/58102.html</a>.</p>
+</li>
+<li>
+<p><a id="ISO_22600"></a>[ISO_22600] ISO. <strong>Health informatics - Privilege management and access control.</strong> See <a href="https://www.iso.org/standard/62653.html" class="bare">https://www.iso.org/standard/62653.html</a>.</p>
 </li>
 </ol>
 </div>
@@ -4244,7 +4296,7 @@ translations.has_key (d.language.code_string)))</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-04-27 12:22:04 CEST
+Last updated 2017-04-27 11:22:04 BST
 </div>
 </div>
 </body>

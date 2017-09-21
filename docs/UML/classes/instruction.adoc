@@ -1,6 +1,6 @@
 === INSTRUCTION Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*INSTRUCTION*
@@ -11,7 +11,7 @@ h|*Description*
 Not to be used for plan items which are only specified in general terms.
 
 h|*Inherit*
-2+|CARE_ENTRY
+2+|`CARE_ENTRY`
 
 h|*Attributes*
 ^h|*Signature*
@@ -33,6 +33,6 @@ h|*0..1*
 |*activities*: `List<ACTIVITY>`
 a|List of all activities in Instruction.
 
-h|*Invariant*
-2+a|*_Activities_valid_*: activities /= Void implies not activities.is_empty
+h|*Invariants*
+2+a|*_Activities_valid_*: `activities /= Void implies not activities.is_empty`
 |===
