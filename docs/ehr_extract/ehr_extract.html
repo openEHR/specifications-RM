@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
 <meta name="description" content="openEHR EHR Extract Information Model specification">
 <meta name="keywords" content="EHR, Extract, openehr">
 <title>EHR Extract Information Model</title>
-<link rel="stylesheet" href="/releases/BASE/latest/resources/css/openehr.css">
-<link rel="stylesheet" href="/releases/BASE/latest/resources/css/pygments-default.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -275,7 +275,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2017 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2018 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -1857,10 +1857,10 @@ the EHR and generic Extract sections below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>The manifest for one entity (e.g. EHR subject), identifying the entity and optionally specifying top-level items to be included in the Extract. The list actually included may be modified by the version_spec part of the specification, and also by the link_depth attribute. In repeat (standing order) requests, the final inclusion may be modified by the send_changes_only value for EXTRACT_UPDATE_SPEC.update_method.</p>
+<p>The manifest for one entity (e.g. EHR subject), identifying the entity and optionally specifying top-level items to be included in the Extract. The list actually included may be modified by the <code><em>version_spec</em></code> part of the specification, and also by the link_depth attribute. In repeat (standing order) requests, the final inclusion may be modified by the send_changes_only value for <code>EXTRACT_UPDATE_SPEC.<em>update_method</em></code>.</p>
 </div>
 <div class="paragraph">
-<p>Various identifiers may be provided for the entity; these are to be used by the receiver system to locate the entity. The extract_id_key attribute is used to record the identifier that will be used throughout the Extract for this entity, including in instances of EXTRACT_ENTITY_IDENTIFIER.</p>
+<p>Various identifiers may be provided for the entity; these are to be used by the receiver system to locate the entity. The <code><em>extract_id_key</em></code> attribute is used to record the identifier that will be used throughout the Extract for this entity, including in instances of <code>EXTRACT_ENTITY_IDENTIFIER</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2515,7 +2515,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Form of EHR EXTRACT_ITEM containing openEHR serialised VERSIONED_OBJECTs.</p>
+<p>Form of <code>EHR EXTRACT_ITEM</code> containing openEHR serialised <code>VERSIONED_OBJECTs</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2554,7 +2554,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Variety of Extract content that consists is a sharable data-oriented version of VERSIONED_OBJECT&lt;T&gt;.</p>
+<p>Variety of Extract content that consists is a sharable data-oriented version of <code>VERSIONED_OBJECT&lt;T&gt;</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2566,7 +2566,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>HIER_OBJECT_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Uid of original VERSIONED_OBJECT.</p>
+<p>Uid of original <code>VERSIONED_OBJECT</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2580,14 +2580,14 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code>DV_DATE_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Creation time of original VERSIONED_OBJECT.</p>
+<p>Creation time of original <code>VERSIONED_OBJECT</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>total_version_count</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Total number of versions in original VERSIONED_OBJECT at time of creation of this X_VERSIONED_OBJECT.</p>
+<p>Total number of versions in original <code>VERSIONED_OBJECT</code> at time of creation of this <code>X_VERSIONED_OBJECT</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2601,14 +2601,14 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code>REVISION_HISTORY</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional revision history of the original VERSIONED_OBJECT. If included, it is the complete revision history.</p>
+<p>Optional revision history of the original <code>VERSIONED_OBJECT</code>. If included, it is the complete revision history.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>versions</strong>: <code>List&lt;ORIGINAL_VERSION&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>0 or more Versions from the original VERSIONED_OBJECT, according to the Extract specification.</p>
+<p>0 or more Versions from the original <code>VERSIONED_OBJECT</code>, according to the Extract specification.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2630,7 +2630,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Form of X_VERSIONED_OBJECT for EHR_ACCESS EHR object.</p>
+<p>Form of <code>X_VERSIONED_OBJECT</code> for <code>EHR_ACCESS</code> EHR object.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2656,7 +2656,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Form of X_VERSIONED_OBJECT for EHR_STATUS EHR object.</p>
+<p>Form of <code>X_VERSIONED_OBJECT</code> for <code>EHR_STATUS</code> EHR object.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2682,7 +2682,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Form of X_VERSIONED_OBJECT for COMPOSITION EHR object.</p>
+<p>Form of <code>X_VERSIONED_OBJECT</code> for <code>COMPOSITION</code> EHR object.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2708,7 +2708,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Form of X_VERSIONED_OBJECT for FOLDER EHR object.</p>
+<p>Form of <code>X_VERSIONED_OBJECT</code> for <code>FOLDER</code> EHR object.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2734,7 +2734,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Form of X_VERSIONED_OBJECT for PARTY demographic object.</p>
+<p>Form of <code>X_VERSIONED_OBJECT</code> for <code>PARTY</code> demographic object.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3329,7 +3329,7 @@ environments, such as a private hospital or community health network.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A “message” is an authored, possibly signed, piece of content intended for one or more recipients. Since the recipient may or may not be known directly, recipients are specified in the ADDRESSED_MESSAGE class.</p>
+<p>A “message” is an authored, possibly signed, piece of content intended for one or more recipients. Since the recipient may or may not be known directly, recipients are specified in the <code>ADDRESSED_MESSAGE</code> class.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3822,7 +3822,7 @@ set <code><em>is_primary</em></code> = False, write the path and write the targe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-30 00:03:14 GMT
+Last updated 2017-11-30 01:03:14 CET
 </div>
 </div>
 </body>

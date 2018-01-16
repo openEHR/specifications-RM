@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
 <meta name="description" content="openEHR Data Structures Information Model specification">
 <meta name="keywords" content="EHR, data structures, openehr">
 <title>Data Structures Information Model</title>
-<link rel="stylesheet" href="/releases/BASE/latest/resources/css/openehr.css">
-<link rel="stylesheet" href="/releases/BASE/latest/resources/css/pygments-default.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -183,7 +183,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2017 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2018 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -738,7 +738,7 @@ well-known attribute names:</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract parent class of all data structure types. Includes the as_hierarchy function which can generate the equivalent CEN EN13606 single hierarchy for each subtype&#8217;s physical representation. For example, the physical representation of an ITEM_LIST is List&lt;ELEMENT&gt;; its implementation of as_hierarchy will generate a CLUSTER containing the set of ELEMENT nodes from the list.</p>
+<p>Abstract parent class of all data structure types. Includes the <code><em>as_hierarchy</em></code> function which can generate the equivalent CEN EN13606 single hierarchy for each subtype&#8217;s physical representation. For example, the physical representation of an <code>ITEM_LIST</code> is <code>List&lt;ELEMENT&gt;</code>; its implementation of <code><em>as_hierarchy</em></code> will generate a <code>CLUSTER</code> containing the set of <code>ELEMENT</code> nodes from the list.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -936,7 +936,7 @@ from the openEHR list.</p>
 <p>Logical list data structure, where each item has a value and can be referred to by a name and a positional index in the list. The list may be empty. Use Used to represent any data which is logically a list of values, such as blood pressure, most protocols, many blood tests etc.</p>
 </div>
 <div class="paragraph">
-<p>Misuse: Not to be used for time-based lists, which should be represented with the proper temporal class, i.e. HISTORY.</p>
+<p>Misuse: Not to be used for time-based lists, which should be represented with the proper temporal class, i.e. <code>HISTORY</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1033,7 +1033,7 @@ i: <code>Integer[1]</code><br>
 <p>Used for representing any data which is logically a table of values, such as blood pressure, most protocols, many blood tests etc.</p>
 </div>
 <div class="paragraph">
-<p>Misuse: Not to be used for time-based data, which should be represented with the temporal class HISTORY. The table may be empty.</p>
+<p>Misuse: Not to be used for time-based data, which should be represented with the temporal class <code>HISTORY</code>. The table may be empty.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1060,64 +1060,84 @@ i: <code>Integer[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_count</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Number of rows in the table.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_count</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return number of columns in the table.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return set of row names.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return set of column names.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_row</strong> (<br>
 i: <code>Integer[1]</code><br>
 ): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return i-th row.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_name</strong> (<br>
 a_key: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return <code>True</code> if there is a column with name = <code><em>a_key</em></code>.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_column_with_name</strong> (<br>
 a_key: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return <code>True</code> if there is a column with name = <code><em>a_key</em></code>.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_row</strong> (<br>
 a_key: <code>String[1]</code><br>
 ): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return row with name = <code><em>a_key</em></code>.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_key</strong> (<br>
 keys: <code>List&lt;String&gt;[0..1]</code><br>
 ): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return <code>True</code> if there is a row with key <code><em>keys</em></code>.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_with_key</strong> (<br>
 keys: <code>List&lt;String&gt;[0..1]</code><br>
 ): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return rows with particular keys.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
@@ -1125,13 +1145,15 @@ keys: <code>List&lt;String&gt;[0..1]</code><br>
 i,<br>
 j: <code>Integer[1]</code><br>
 ): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Return cell at a particular location.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table.</p>
+<p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>CLUSTER</code> containing the <code>CLUSTERs</code> representing the columns of this table.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1295,7 +1317,7 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>The abstract parent of CLUSTER and ELEMENT representation classes.</p>
+<p>The abstract parent of <code>CLUSTER</code> and <code>ELEMENT</code> representation classes.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1321,7 +1343,7 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>The grouping variant of ITEM, which may contain further instances of ITEM, in an ordered list.</p>
+<p>The grouping variant of <code>ITEM</code>, which may contain further instances of <code>ITEM</code>, in an ordered list.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1359,7 +1381,7 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>The leaf variant of ITEM, to which a DATA_VALUE instance is attached.</p>
+<p>The leaf variant of <code>ITEM</code>, to which a <code>DATA_VALUE</code> instance is attached.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1796,7 +1818,7 @@ test. The state information for each event is, respectively (in a typical test):
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Root object of a linear history, i.e. time series structure. For a periodic series of events, period will be set, and the time of each Event in the History must correspond; i.e. the EVENT.offset must be a multiple of period for each Event. Missing events in a period History are however allowed.</p>
+<p>Root object of a linear history, i.e. time series structure. For a periodic series of events, period will be set, and the time of each Event in the History must correspond; i.e. the <code>EVENT.&#124;_offset_</code> must be a multiple of period for each Event. Missing events in a period History are however allowed.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1892,7 +1914,7 @@ test. The state information for each event is, respectively (in a typical test):
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Defines the abstract notion of a single event in a series. This class is generic, allowing types to be generated which are locked to particular spatial types, such as EVENT&lt;ITEM_LIST&gt;. Subtypes express point or intveral data.</p>
+<p>Defines the abstract notion of a single event in a series. This class is generic, allowing types to be generated which are locked to particular spatial types, such as <code>EVENT&lt;ITEM_LIST&gt;</code>. Subtypes express point or intveral data.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2019,7 +2041,7 @@ test. The state information for each event is, respectively (in a typical test):
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>math_function</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Mathematical function of the data of this event, e.g.  maximum ,  mean  etc. Coded using openEHR Terminology group  event math function.</p>
+<p>Mathematical function of the data of this event, e.g.  maximum, mean etc. Coded using openEHR Terminology group <code>event math function</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2376,7 +2398,7 @@ which in this case is simply the time of measurement (the origin).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-30 00:02:44 GMT
+Last updated 2017-11-30 01:02:44 CET
 </div>
 </div>
 </body>

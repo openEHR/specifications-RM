@@ -6,9 +6,9 @@ h|*Class*
 2+^h|*_DV_ORDERED (abstract)_*
 
 h|*Description*
-2+a|Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  <' and is_strictly_comparable_to, the latter of which must evaluate to True for instances being compared with the  <' function, or used as limits in the DV_INTERVAL<T> class.
+2+a|Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  `<` and is_strictly_comparable_to, the latter of which must evaluate to `True` for instances being compared with the  `<` function, or used as limits in the `DV_INTERVAL<T>` class.
 
-Data value types which are to be used as limits in the DV_INTERVAL<T> class must inherit from this class, and implement the function is_strictly_comparable_to to ensure that instances compare meaningfully. For example, instances of DV_QUANTITY can only be compared if they measure the same kind of physical quantity.
+Data value types which are to be used as limits in the `DV_INTERVAL<T>` class must inherit from this class, and implement the function `_is_strictly_comparable_to_` to ensure that instances compare meaningfully. For example, instances of `DV_QUANTITY` can only be compared if they measure the same kind of physical quantity.
 
 h|*Inherit*
 2+|`DATA_VALUE`, `Ordered`
@@ -19,7 +19,7 @@ h|*Attributes*
 
 h|*0..1*
 |*normal_status*: `CODE_PHRASE`
-a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  normal status .
+a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`.
 
 h|*0..1*
 |*normal_range*: `DV_INTERVAL`

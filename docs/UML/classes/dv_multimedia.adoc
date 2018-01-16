@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*DV_MULTIMEDIA*
 
 h|*Description*
-2+a|A specialisation of DV_ENCAPSULATED for audiovisual and biosignal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of DV_ENCAPSULATED.
+2+a|A specialisation of `DV_ENCAPSULATED` for audiovisual and bio-signal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of `DV_ENCAPSULATED`.
 
 h|*Inherit*
 2+|`DV_ENCAPSULATED`
@@ -25,7 +25,7 @@ a|URI reference to electronic information stored outside the record as a file, d
 
 h|*0..1*
 |*data*: `Byte`
-a|The actual data found at uri, if supplied inline.
+a|The actual data found at `_uri_`, if supplied inline.
 
 h|*1..1*
 |*media_type*: `CODE_PHRASE`
@@ -33,7 +33,7 @@ a|Data media type coded from openEHR code set  media types  (interface for the I
 
 h|*0..1*
 |*compression_algorithm*: `CODE_PHRASE`
-a|Compression type, a coded value from the openEHR  Integrity check  code set. Void means no compression.
+a|Compression type, a coded value from the openEHR Integrity check code set. Void means no compression.
 
 h|*0..1*
 |*integrity_check*: `Byte`
@@ -41,7 +41,7 @@ a|Binary cryptographic integrity checksum.
 
 h|*0..1*
 |*integrity_check_algorithm*: `List<CODE_PHRASE>`
-a|Type of integrity check, a coded value from the openEHR  Integrity check  code set.
+a|Type of integrity check, a coded value from the openEHR `Integrity check` code set.
 
 h|*0..1*
 |*thumbnail*: `DV_MULTIMEDIA`
@@ -56,7 +56,7 @@ h|*Functions*
 
 h|
 |*is_external* (): `Boolean`
-a|Computed from the value of the uri attribute: True if  the data is stored externally to the record, as indicated by `uri'. A copy may also be stored internally, in which case `is_expanded' is also true.
+a|Computed from the value of the `_uri_` attribute: True if  the data is stored externally to the record, as indicated by `_uri_`. A copy may also be stored internally, in which case `_is_expanded_` is also true.
 
 h|
 |*is_inline* (): `Boolean`
@@ -64,11 +64,11 @@ a|Computed from the value of the data attribute. True if  the  data is stored  i
 
 h|
 |*is_compressed* (): `Boolean`
-a|Computed from the value of the compression_algorithm attribute: True if  the  data is stored  in  compressed form.
+a|Computed from the value of the `_compression_algorithm_` attribute: True if  the  data is stored in compressed form.
 
 h|
 |*has_integrity_check* (): `Boolean`
-a|Computed from the value of the integrity_check_algorithm attribute: True if an integrity check has been computed.
+a|Computed from the value of the `_integrity_check_algorithm_` attribute: True if an integrity check has been computed.
 
 h|*Invariants*
 2+a|*_Not_empty_*: `is_inline or is_external`

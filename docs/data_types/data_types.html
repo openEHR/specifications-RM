@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
 <meta name="description" content="openEHR Data Types Information Model specification">
 <meta name="keywords" content="EHR, clinical, data types, openehr">
 <title>Data Types Information Model</title>
-<link rel="stylesheet" href="/releases/BASE/latest/resources/css/openehr.css">
-<link rel="stylesheet" href="/releases/BASE/latest/resources/css/pygments-default.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -345,7 +345,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2017 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2018 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -1280,7 +1280,8 @@ such as names or addresses.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Serves as a common ancestor of all data value types in openEHR models.</p>
+<p>Abstract parent of all <code>DV_</code> data value types.
+Serves as a common ancestor of all data value types in openEHR models.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1965,10 +1966,10 @@ indicate the language of the text item.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A text item, which may contain any amount of legal characters arranged as e.g. words, sentences etc (i.e. one DV_TEXT may be more than one word). Visual formatting and hyperlinks may be included.</p>
+<p>A text item, which may contain any amount of legal characters arranged as e.g. words, sentences etc (i.e. one <code>DV_TEXT</code> may be more than one word). Visual formatting and hyperlinks may be included.</p>
 </div>
 <div class="paragraph">
-<p>A DV_TEXT can be  coded  by adding mappings to it.</p>
+<p>A <code>DV_TEXT</code> can be  coded  by adding mappings to it.</p>
 </div>
 <div class="paragraph">
 <p>Fragments of text, whether coded or not are used on their own as values, or to make up larger tracts of text which may be marked up in some way, eventually going to make up paragraphs.</p>
@@ -1987,7 +1988,7 @@ indicate the language of the text item.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Displayable rendition of the item, regardless of its underlying structure. For DV_CODED_TEXT, this is the rubric of the complete term as provided by the terminology service. No carriage returns, line feeds, or other non-printing characters permitted.</p>
+<p>Displayable rendition of the item, regardless of its underlying structure. For <code>DV_CODED_TEXT</code>, this is the rubric of the complete term as provided by the terminology service. No carriage returns, line feeds, or other non-printing characters permitted.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2001,10 +2002,10 @@ indicate the language of the text item.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>formatting</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>A format string of the form  name:value; name:value&#8230;&#8203; , e.g. "font-weight : bold; font-family : Arial; font-size : 12pt;".</p>
+<p>A format string of the form <code>"name:value; name:value&#8230;&#8203;"</code> , e.g. <code>"font-weight : bold; font-family : Arial; font-size : 12pt;"</code>.</p>
 </div>
 <div class="paragraph">
-<p>Values taken from W3C CSS2 properties lists  back-ground  and  font .</p>
+<p>Values taken from W3C CSS2 properties lists  back-ground and font .</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2018,7 +2019,7 @@ indicate the language of the text item.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional indicator of the localised language in which the value is written. Coded from openEHR Code Set  languages . Only used when either the text object is in a different language from the enclosing ENTRY, or else the text object is being used outside of an ENTRY or other enclosing structure which indicates the language.</p>
+<p>Optional indicator of the localised language in which the value is written. Coded from openEHR Code Set  languages . Only used when either the text object is in a different language from the enclosing <code>ENTRY</code>, or else the text object is being used outside of an <code>ENTRY</code> or other enclosing structure which indicates the language.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2077,8 +2078,10 @@ indicate the language of the text item.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Represents a coded term mapped to a DV_TEXT, and the relative match of the target term with respect to the mapped item. Plain or coded text items may appear in the EHR for which one or mappings in alternative terminologies are required. Mappings are only used to enable computer processing, so they can only be instances of DV_CODED_TEXT.
-Used for adding classification terms (e.g. adding ICD classifiers to SNOMED descriptive terms), or mapping into equivalents in other terminologies (e.g. across nursing vocabularies).</p>
+<p>Represents a coded term mapped to a <code>DV_TEXT</code>, and the relative match of the target term with respect to the mapped item. Plain or coded text items may appear in the EHR for which one or mappings in alternative terminologies are required. Mappings are only used to enable computer processing, so they can only be instances of <code>DV_CODED_TEXT</code>.</p>
+</div>
+<div class="paragraph">
+<p>Used for adding classification terms (e.g. adding ICD classifiers to SNOMED descriptive terms), or mapping into equivalents in other terminologies (e.g. across nursing vocabularies).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2095,28 +2098,28 @@ Used for adding classification terms (e.g. adding ICD classifiers to SNOMED desc
 <div class="ulist">
 <ul>
 <li>
-<p>'&gt;': the mapping is to a broader term e.g. orginal text =  arbovirus infection , target =  viral infection</p>
+<p><code>'&gt;'</code>: the mapping is to a broader term e.g. orginal text =  arbovirus infection , target =  viral infection</p>
 </li>
 <li>
-<p>'=': the mapping is to a (supposedly) equivalent to the original item</p>
+<p><code>'='</code>: the mapping is to a (supposedly) equivalent to the original item</p>
 </li>
 <li>
-<p>'&lt;': the mapping is to a narrower term. e.g. original text =  diabetes , mapping =  diabetes mellitus .</p>
+<p><code>'&lt;'</code>: the mapping is to a narrower term. e.g. original text =  diabetes , mapping =  diabetes mellitus .</p>
 </li>
 <li>
-<p>'?': the kind of mapping is unknown.</p>
+<p><code>'?'</code>: the kind of mapping is unknown.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The first three values are taken from the ISO standards 2788 ( Guide to Establishment and development of monolingual thesauri ) and 5964 ( Guide to Establishment and development of multilingual thesauri ).</p>
+<p>The first three values are taken from the ISO standards 2788 ( Guide to Establishment and development of monolingual thesauri) and 5964 (Guide to Establishment and development of multilingual thesauri).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Purpose of the mapping e.g.  automated data mining ,  billing ,  interoperability</p>
+<p>Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2203,7 +2206,7 @@ c: <code>char[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A fully coordinated (i.e. all  coordination  has been performed) term from a terminology service (as distinct from a particular terminology).</p>
+<p>A fully coordinated (i.e. all coordination has been performed) term from a terminology service (as distinct from a particular terminology).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2222,7 +2225,7 @@ c: <code>char[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_string</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The key used by the terminology service to identify a concept or coordination of concepts.  This string is most likely parsable inside the terminology service, but nothing can be assumed about its syntax outside that context.</p>
+<p>The key used by the terminology service to identify a concept or coordination of concepts. This string is most likely parsable inside the terminology service, but nothing can be assumed about its syntax outside that context.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2250,13 +2253,13 @@ c: <code>char[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A text item whose value must be the rubric from a controlled terminology, the key (i.e. the  code') of which is the defining_code attribute. In other words: a DV_CODED_TEXT is a combination of a CODE_PHRASE (effectively a code) and the rubric of that term, from a terminology service, in the language in which the data was authored.</p>
+<p>A text item whose value must be the rubric from a controlled terminology, the key (i.e. the 'code') of which is the <code><em>defining_code</em></code> attribute. In other words: a <code>DV_CODED_TEXT</code> is a combination of a <code>CODE_PHRASE</code> (effectively a code) and the rubric of that term, from a terminology service, in the language in which the data were authored.</p>
 </div>
 <div class="paragraph">
-<p>Since DV_CODED_TEXT is a subtype of DV_TEXT, it can be used in place of it, effectively allowing the type DV_TEXT to mean  a text item, which may optionally be coded.</p>
+<p>Since <code>DV_CODED_TEXT</code> is a subtype of <code>DV_TEXT</code>, it can be used in place of it, effectively allowing the type <code>DV_TEXT</code> to mean  a text item, which may optionally be coded.</p>
 </div>
 <div class="paragraph">
-<p>Misuse: If the intention is to represent a term code attached in some way to a fragment of plain text, DV_CODED_TEXT should not be used; instead use a DV_TEXT and a TERM_MAPPING to a CODE_PHRASE.</p>
+<p>Misuse: If the intention is to represent a term code attached in some way to a fragment of plain text, <code>DV_CODED_TEXT</code> should not be used; instead use a <code>DV_TEXT</code> and a <code>TERM_MAPPING</code> to a <code>CODE_PHRASE</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2272,7 +2275,7 @@ c: <code>char[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>defining_code</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The term which the  value' attribute is the textual rendition (i.e. rubric) of.</p>
+<p>The term of which the  <code><em>value</em></code> attribute is the textual rendition (i.e. rubric).</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2294,10 +2297,10 @@ c: <code>char[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A logical composite text value consisting of a series of DV_TEXTs, i.e. plain text (optionally coded) potentially with simple formatting, to form a larger tract of prose, which may be interpreted for display purposes as a paragraph.</p>
+<p>A logical composite text value consisting of a series of <code>DV_TEXTs</code>, i.e. plain text (optionally coded) potentially with simple formatting, to form a larger tract of prose, which may be interpreted for display purposes as a paragraph.</p>
 </div>
 <div class="paragraph">
-<p>DV_PARAGRAPH is the standard way for constructing longer text items in summaries, reports and so on.</p>
+<p><code>DV_PARAGRAPH</code> is the standard way for constructing longer text items in summaries, reports and so on.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2842,10 +2845,10 @@ rather than a time, is recorded using a <code>DV_QUANTITY</code> with units = 's
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  &lt;' and is_strictly_comparable_to, the latter of which must evaluate to True for instances being compared with the  &lt;' function, or used as limits in the DV_INTERVAL&lt;T&gt; class.</p>
+<p>Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  <code>&lt;</code> and is_strictly_comparable_to, the latter of which must evaluate to <code>True</code> for instances being compared with the  <code>&lt;</code> function, or used as limits in the <code>DV_INTERVAL&lt;T&gt;</code> class.</p>
 </div>
 <div class="paragraph">
-<p>Data value types which are to be used as limits in the DV_INTERVAL&lt;T&gt; class must inherit from this class, and implement the function is_strictly_comparable_to to ensure that instances compare meaningfully. For example, instances of DV_QUANTITY can only be compared if they measure the same kind of physical quantity.</p>
+<p>Data value types which are to be used as limits in the <code>DV_INTERVAL&lt;T&gt;</code> class must inherit from this class, and implement the function <code><em>is_strictly_comparable_to</em></code> to ensure that instances compare meaningfully. For example, instances of <code>DV_QUANTITY</code> can only be compared if they measure the same kind of physical quantity.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2861,7 +2864,7 @@ rather than a time, is recorded using a <code>DV_QUANTITY</code> with units = 's
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>normal_status</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  normal status .</p>
+<p>Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  <code>normal_status</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2959,13 +2962,13 @@ other: <code>Ordered[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Generic class defining an interval (i.e. range) of a comparable type. An interval is a contiguous subrange of a comparable base type. Used to define intervals of dates, times, quantities (whose units match) and so on. The type parameter, T, must be a descendant of the type DV_ORDERED, which is necessary (but not sufficient) for instances to be compared (strictly_comparable is also needed).</p>
+<p>Generic class defining an interval (i.e. range) of a comparable type. An interval is a contiguous subrange of a comparable base type. Used to define intervals of dates, times, quantities (whose units match) and so on. The type parameter, <code>T</code>, must be a descendant of the type <code>DV_ORDERED</code>, which is necessary (but not sufficient) for instances to be compared (<code><em>strictly_comparable</em></code> is also needed).</p>
 </div>
 <div class="paragraph">
-<p>Without the DV_INTERVAL class, quite a few more DV_ classes would be needed to express logical intervals, namely interval versions of all the date/time classes, and of quantity classes. Further, it allows the semantics of intervals to be stated in one place unequivocally, including the conditions for strict comparison.</p>
+<p>Without the <code>DV_INTERVAL</code> class, quite a few more <code>DV_</code> classes would be needed to express logical intervals, namely interval versions of all the date/time classes, and of quantity classes. Further, it allows the semantics of intervals to be stated in one place unequivocally, including the conditions for strict comparison.</p>
 </div>
 <div class="paragraph">
-<p>The basic semantics are derived from the class Interval&lt;T&gt;, described in the support RM.</p>
+<p>The basic semantics are derived from the class <code>Interval&lt;T&gt;</code>, described in the support RM.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2997,7 +3000,7 @@ other: <code>Ordered[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Defines a named range to be associated with any ORDERED datum. Each such range is particular to the patient and context, e.g. sex, age, and any other factor which affects ranges. May be used to represent normal, therapeutic, dangerous, critical etc ranges.</p>
+<p>Defines a named range to be associated with any <code>DV_ORDERED</code> datum. Each such range is particular to the patient and context, e.g. sex, age, and any other factor which affects ranges. May be used to represent normal, therapeutic, dangerous, critical etc ranges.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3058,7 +3061,15 @@ v: <code>DV_ORDERED[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Models rankings and scores, e.g. pain, Apgar values, etc, where there is a) implied ordering, b) no implication that the distance between each value is constant, and c) the total number of values is finite. Note that although the term  ordinal' in mathematics means natural numbers only, here any integer is allowed, since negative and zero values are often used by medical professionals for values around a neutral point. Examples of sets of ordinal values:</p>
+<p>Models rankings and scores, e.g. pain, Apgar values, etc, where there is</p>
+</div>
+<div class="paragraph">
+<p>a) implied ordering,
+b) no implication that the distance between each value is constant, and
+c) the total number of values is finite.</p>
+</div>
+<div class="paragraph">
+<p>Note that although the term  ordinal' in mathematics means natural numbers only, here any integer is allowed, since negative and zero values are often used by medical professionals for values around a neutral point. Examples of sets of ordinal values:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3071,7 +3082,7 @@ v: <code>DV_ORDERED[1]</code><br>
 </ul>
 </div>
 <div class="paragraph">
-<p>This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. {neg, trace, , , } are used for leucocytes, protein, nitrites etc; for non-haemolysed blood {neg, trace, moderate}; for haemolysed blood small, moderate, large}.</p>
+<p>This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. <code>{neg, trace, , , }</code> are used for leucocytes, protein, nitrites etc; for non-haemolysed blood <code>{neg, trace, moderate}</code>; for haemolysed blood <code>{small, moderate, large}</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3178,33 +3189,35 @@ other: <code>DV_ORDERED[1]</code><br>
 <div class="ulist">
 <ul>
 <li>
-<p>=   :   magnitude is a point value</p>
+<p><code>"="</code>   :   magnitude is a point value</p>
 </li>
 <li>
-<p>&lt;   :   value is &lt; magnitude</p>
+<p><code>"&lt;"</code>   :   value is &lt; magnitude</p>
 </li>
 <li>
-<p>&gt;   :   value is &gt; magnitude</p>
+<p><code>"&gt;"</code>   :   value is &gt; magnitude</p>
 </li>
 <li>
-<p>\&lt;= : value is &lt;= magnitude</p>
+<p><code>"&lt;="</code> : value is &lt;= magnitude</p>
 </li>
 <li>
-<p>&gt;= : value is &gt;= magnitude</p>
+<p><code>"&gt;="</code> : value is &gt;= magnitude</p>
 </li>
 <li>
-<p>~   :   value is approximately magnitude</p>
+<p><code>"~"</code>   :   value is approximately magnitude</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>If not present, meaning is  = .</p>
+<p>If not present, assumed meaning is  <code>"="</code> .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accuracy</strong>: <code>Any</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Accuracy of measurement. Exact form of expression determined in descendants.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -3256,7 +3269,7 @@ other: <code>DV_ORDERED[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract class defining the concept of relative quantified  amounts'. For relative quantities, the  +' and  -' operators are defined (unlike descendants of DV_ABSOLUTE_QUANTITY, such as the date/time types).</p>
+<p>Abstract class defining the concept of relative quantified  'amounts'. For relative quantities, the  <code>+</code> and  <code>-</code> operators are defined (unlike descendants of <code>DV_ABSOLUTE_QUANTITY</code>, such as the date/time types).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3272,7 +3285,7 @@ other: <code>DV_ORDERED[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accuracy_is_percent</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>If True, indicates that when this object was created, accuracy was recorded as a percent value; if False, as an absolute quantity value.</p>
+<p>If <code>True</code>, indicates that when this object was created, accuracy was recorded as a percent value; if <code>False</code>, as an absolute quantity value.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3280,10 +3293,10 @@ other: <code>DV_ORDERED[1]</code><br>
 (redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accuracy</strong>: <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Accuracy of measurement, expressed either as a half-range percent value (accuracy_is_percent = True) or a half-range quantity. A value of 0 means that accuracy is 100%, i.e. no error.</p>
+<p>Accuracy of measurement, expressed either as a half-range percent value (<code><em>accuracy_is_percent</em></code> = <code>True</code>) or a half-range quantity. A value of <code>0</code> means that accuracy is 100%, i.e. no error.</p>
 </div>
 <div class="paragraph">
-<p>A value of unknown_accuracy_value means that accuracy was not recorded.</p>
+<p>A value of <code><em>unknown_accuracy_value</em></code> means that accuracy was not recorded.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3392,7 +3405,7 @@ source: <code>DV_AMOUNT[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Quantitified type representing  scientific  quantities, i.e. quantities expressed as a magnitude and units.  Units were inspired by the Unified Code for Units of Measure (UCUM), developed by Gunther Schadow and Clement J. McDonald of The Regenstrief Institute.</p>
+<p>Quantitified type representing  scientific  quantities, i.e. quantities expressed as a magnitude and units. Units were inspired by the <a href="http://unitsofmeasure.org/ucum.html">Unified Code for Units of Measure (UCUM)</a>, developed by Gunther Schadow and Clement J. McDonald of The Regenstrief Institute.</p>
 </div>
 <div class="paragraph">
 <p>Can also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years.</p>
@@ -3531,14 +3544,13 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Models a ratio of values, i.e. where the numerator and denominator are both pure numbers. The valid_proportion_kind property of the PROPORTION_KIND class is
-used to control the type attribute to be one of a defined set.</p>
+<p>Models a ratio of values, i.e. where the numerator and denominator are both pure numbers. The <code><em>valid_proportion_kind</em></code> property of the <code>PROPORTION_KIND</code> class is used to control the type attribute to be one of a defined set.</p>
 </div>
 <div class="paragraph">
 <p>Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary denominator), albumin:creatinine ratio, and percentages, e.g. red cell distirbution width (RDW).</p>
 </div>
 <div class="paragraph">
-<p>Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) “6/24” in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations.</p>
+<p>Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) "6/24" in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3683,7 +3695,7 @@ source: <code>DV_PROPORTION[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Class of enumeration constants defining types of proportion for the DV_PROPORTION class.</p>
+<p>Class of enumeration constants defining types of proportion for the <code>DV_PROPORTION</code> class.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4141,7 +4153,7 @@ defined below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Specialised temporal variant of DV_ABSOLUTE_QUANTITY whose diff type is DV_DURATION.</p>
+<p>Specialised temporal variant of <code>DV_ABSOLUTE_QUANTITY</code> whose diff type is <code>DV_DURATION</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4157,7 +4169,9 @@ defined below.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
 (redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accuracy</strong>: <code>DV_DURATION</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Time accuracy, expressed as a duration.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -4221,7 +4235,7 @@ other: <code>DV_TEMPORAL[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Numeric value of the date as days since the calendar origin date 0001-01-01.</p>
+<p>Numeric value of the date as days since the calendar origin date <code>0001-01-01</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4333,7 +4347,7 @@ source: <code>DV_TIME[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Numeric value of the time as seconds since the start of day, i.e. 00:00:00.</p>
+<p>Numeric value of the time as seconds since the start of day, i.e. <code>00:00:00</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4400,7 +4414,7 @@ other: <code>DV_TIME[1]</code><br>
 <p>Represents an absolute point in time, specified to the second. Semantics defined by ISO 8601.</p>
 </div>
 <div class="paragraph">
-<p>Used for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a HISTORY in an OBSERVATION which is only partially known.</p>
+<p>Used for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a <code>HISTORY</code> in an <code>OBSERVATION</code> which is only partially known.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4436,7 +4450,7 @@ source: <code>DV_DATE_TIME[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>double</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Numeric value of the date/time as seconds since the calendar origin date/time 0001-01-01T00:00:00Z.</p>
+<p>Numeric value of the date/time as seconds since the calendar origin date/time <code>0001-01-01T00:00:00Z</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4692,7 +4706,7 @@ using a syntax which is equivalet to a series of <code>IVL&lt;TS&gt;</code> (i.e
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>DV_PARSABLE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The specification, in the HL7v3 syntax for PIVL or EIVL types.</p>
+<p>The specification, in the HL7v3 syntax for <code>PIVL</code> or <code>EIVL</code> types.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4740,10 +4754,10 @@ using a syntax which is equivalet to a series of <code>IVL&lt;TS&gt;</code> (i.e
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Specifies periodic points in time, linked to the calendar (phase-linked), or a real world repeating event, such as  breakfast  (event-linked). Based on the HL7v3 data types PIVL&lt;T&gt; and EIVL&lt;T&gt;.</p>
+<p>Specifies periodic points in time, linked to the calendar (phase-linked), or a real world repeating event, such as  breakfast  (event-linked). Based on the HL7v3 data types <code>PIVL&lt;T&gt;</code> and <code>EIVL&lt;T&gt;</code>.</p>
 </div>
 <div class="paragraph">
-<p>Used in therapeutic prescriptions, expressed as INSTRUCTIONs in the openEHR model.</p>
+<p>Used in therapeutic prescriptions, expressed as <code>INSTRUCTIONs</code> in the openEHR model.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5093,7 +5107,7 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set  languages.</p>
+<p>Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set <code>languages</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5127,7 +5141,7 @@ ED type from the HL7v3 data types specification.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A specialisation of DV_ENCAPSULATED for audiovisual and biosignal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of DV_ENCAPSULATED.</p>
+<p>A specialisation of <code>DV_ENCAPSULATED</code> for audiovisual and bio-signal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of <code>DV_ENCAPSULATED</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5157,7 +5171,7 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code>Byte</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The actual data found at uri, if supplied inline.</p>
+<p>The actual data found at <code><em>uri</em></code>, if supplied inline.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5171,7 +5185,7 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>compression_algorithm</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Compression type, a coded value from the openEHR  Integrity check  code set. Void means no compression.</p>
+<p>Compression type, a coded value from the openEHR Integrity check code set. Void means no compression.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5185,7 +5199,7 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>integrity_check_algorithm</strong>: <code>List&lt;CODE_PHRASE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Type of integrity check, a coded value from the openEHR  Integrity check  code set.</p>
+<p>Type of integrity check, a coded value from the openEHR <code>Integrity check</code> code set.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5211,7 +5225,7 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_external</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Computed from the value of the uri attribute: True if  the data is stored externally to the record, as indicated by `uri'. A copy may also be stored internally, in which case `is_expanded' is also true.</p>
+<p>Computed from the value of the <code><em>uri</em></code> attribute: True if  the data is stored externally to the record, as indicated by <code><em>uri</em></code>. A copy may also be stored internally, in which case <code><em>is_expanded</em></code> is also true.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5225,14 +5239,14 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_compressed</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Computed from the value of the compression_algorithm attribute: True if  the  data is stored  in  compressed form.</p>
+<p>Computed from the value of the <code><em>compression_algorithm</em></code> attribute: True if  the  data is stored in compressed form.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_integrity_check</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Computed from the value of the integrity_check_algorithm attribute: True if an integrity check has been computed.</p>
+<p>Computed from the value of the <code><em>integrity_check_algorithm</em></code> attribute: True if an integrity check has been computed.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5506,7 +5520,7 @@ See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addres
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A DV_EHR_URI is a DV_URI which has the scheme name  'ehr', and which can only reference items in EHRs.</p>
+<p>A <code>DV_EHR_URI</code> is a <code>DV_URI</code> which has the scheme name 'ehr', and which can only reference items in EHRs.</p>
 </div>
 <div class="paragraph">
 <p>Used to reference items in an EHR, which may be the same as the current EHR (containing this link), or another.</p>
@@ -6387,7 +6401,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-30 00:02:51 GMT
+Last updated 2017-11-30 01:02:51 CET
 </div>
 </div>
 </body>

@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
 <meta name="description" content="openEHR Common Information Model specification">
 <meta name="keywords" content="common, EHR, reference model, openehr">
 <title>Common Information Model</title>
-<link rel="stylesheet" href="/releases/BASE/latest/resources/css/openehr.css">
-<link rel="stylesheet" href="/releases/BASE/latest/resources/css/pygments-murphy.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/pygments-murphy.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -258,7 +258,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2017 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2018 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -1327,7 +1327,7 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Root class of all information model classes that can be archetyped. Most classes in the openEHR reference model inherit from the LOCATABLE class, which defines the idea of  locatability in an archetyped structure. LOCATABLE defines a runtime name and an rchetype_node_id.</p>
+<p>Root class of all information model classes that can be archetyped. Most classes in the openEHR reference model inherit from the <code>LOCATABLE</code> class, which defines the idea of  locatability in an archetyped structure. <code>LOCATABLE</code> defines a runtime name and an <code><em>archetype_node_id</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1497,13 +1497,13 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>The LINK type defines a logical relationship between two items, such as two ENTRYs or an ENTRY and a COMPOSITION. Links can be used across compositions, and across EHRs. Links can potentially be used between interior (i.e. non archetype root) nodes, although this probably should be prevented in archetypes. Multiple LINKs can be attached to the root object of any archetyped structure to give the effect of a 1&#8594;N link.</p>
+<p>The <code>LINK</code> type defines a logical relationship between two items, such as two <code>ENTRYs</code> or an <code>ENTRY</code> and a <code>COMPOSITION</code>. Links can be used across compositions, and across EHRs. Links can potentially be used between interior (i.e. non archetype root) nodes, although this probably should be prevented in archetypes. Multiple <code>LINKs</code> can be attached to the root object of any archetyped structure to give the effect of a 1&#8594;N link.</p>
 </div>
 <div class="paragraph">
-<p>1:1 and 1:N relationships between archetyped content elements (e.g. ENTRYs) can be expressed by using one, or more than one, respectively, LINKs. Chains of links can be used to see  problem threads  or other logical groupings of items.</p>
+<p>1:1 and 1:N relationships between archetyped content elements (e.g. <code>ENTRYs</code>) can be expressed by using one, or more than one, respectively, <code>LINKs</code>. Chains of links can be used to see  problem threads  or other logical groupings of items.</p>
 </div>
 <div class="paragraph">
-<p>Links should be between archetyped structures only, i.e. between objects representing complete domain concepts because relationships between sub-elements of whole concepts are not necessarily meaningful, and may be downright confusing. Sensible links only exist between whole ENTRYs, SECTIONs, COMPOSITIONs and so on.</p>
+<p>Links should be between archetyped structures only, i.e. between objects representing complete domain concepts because relationships between sub-elements of whole concepts are not necessarily meaningful, and may be downright confusing. Sensible links only exist between whole <code>ENTRYs</code>, <code>SECTIONs</code>, <code>COMPOSITIONs</code> and so on.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1551,7 +1551,7 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>The FEEDER_AUDIT class defines the semantics of an audit trail which is constructed to describe the origin of data that have been transformed into openEHR form and committed to the system.</p>
+<p>The <code>FEEDER_AUDIT</code> class defines the semantics of an audit trail which is constructed to describe the origin of data that have been transformed into openEHR form and committed to the system.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1850,7 +1850,7 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract concept of a proxy description of a party, including an optional link to data for this party in a demographic or other identity management system. Sub- typed into PARTY_IDENTIFIED and PARTY_SELF.</p>
+<p>Abstract concept of a proxy description of a party, including an optional link to data for this party in a demographic or other identity management system. Sub- typed into <code>PARTY_IDENTIFIED</code> and <code>PARTY_SELF</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1884,7 +1884,7 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Party proxy representing the subject of the record. Used to indicate that the party is the owner of the record. May or may not have external_ref set.</p>
+<p>Party proxy representing the subject of the record. Used to indicate that the party is the owner of the record. May or may not have <code><em>external_ref</em></code> set.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2023,7 +2023,10 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Model of a participation of a Party (any Actor or Role) in an activity.  Used to represent any participation of a Party in some activity, which is not  explicitly in the model, e.g. assisting nurse. Can be used to record past or  future participations. Should not be used in place of more permanent relationships between demographic entities.</p>
+<p>Model of a participation of a Party (any Actor or Role) in an activity.  Used to represent any participation of a Party in some activity, which is not  explicitly in the model, e.g. assisting nurse. Can be used to record past or  future participations.</p>
+</div>
+<div class="paragraph">
+<p>Should not be used in place of more permanent relationships between demographic entities.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2165,10 +2168,20 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Record an attestation of a party (the committer) to item(s) of record content. An attestation is an explicit signing by one healthcare agent of particular content for various particular purposes, including:
-for authorisation of a controlled substance or procedure (e.g. sectioning of patient under mental health act);
-witnessing of content by senior clinical professional;
-indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result.</p>
+<p>Record an attestation of a party (the committer) to item(s) of record content. An attestation is an explicit signing by one healthcare agent of particular content for various particular purposes, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>for authorisation of a controlled substance or procedure (e.g. sectioning of patient under mental health act);</p>
+</li>
+<li>
+<p>witnessing of content by senior clinical professional;</p>
+</li>
+<li>
+<p>indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result.</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -2387,7 +2400,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>A version-controlled hierarchy of FOLDERs giving the effect of a directory.</p>
+<p>A version-controlled hierarchy of <code>FOLDERs</code> giving the effect of a directory.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3901,7 +3914,7 @@ translations.has_key (d.language.code_string)))</code></p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Language-specific detail of resource description. When a resource is translated for use in another language environment, each RESOURCE_DESCRIPTION_ITEM needs to be copied and translated into the new language.</p>
+<p>Language-specific detail of resource description. When a resource is translated for use in another language environment, each <code>RESOURCE_DESCRIPTION_ITEM</code> needs to be copied and translated into the new language.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4296,7 +4309,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-30 00:02:37 GMT
+Last updated 2017-11-30 01:02:37 CET
 </div>
 </div>
 </body>

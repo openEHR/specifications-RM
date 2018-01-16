@@ -12,7 +12,7 @@ Some columns may be designated  key' columns, containing key data for each row, 
 
 Used for representing any data which is logically a table of values, such as blood pressure, most protocols, many blood tests etc.
 
-Misuse: Not to be used for time-based data, which should be represented with the temporal class HISTORY. The table may be empty.
+Misuse: Not to be used for time-based data, which should be represented with the temporal class `HISTORY`. The table may be empty.
 
 h|*Inherit*
 2+|`ITEM_STRUCTURE`
@@ -30,66 +30,66 @@ h|*Functions*
 
 h|
 |*row_count* (): `Integer`
-a|
+a|Number of rows in the table.
 
 h|
 |*column_count* (): `Integer`
-a|
+a|Return number of columns in the table.
 
 h|
 |*row_names* (): `List<DV_TEXT>`
-a|
+a|Return set of row names.
 
 h|
 |*column_names* (): `List<DV_TEXT>`
-a|
+a|Return set of column names.
 
 h|
 |*ith_row* ( +
 i: `Integer[1]` +
 ): `CLUSTER`
-a|
+a|Return i-th row.
 
 h|
 |*has_row_with_name* ( +
 a_key: `String[1]` +
 ): `Boolean`
-a|
+a|Return `True` if there is a column with name = `_a_key_`.
 
 h|
 |*has_column_with_name* ( +
 a_key: `String[1]` +
 ): `Boolean`
-a|
+a|Return `True` if there is a column with name = `_a_key_`.
 
 h|
 |*named_row* ( +
 a_key: `String[1]` +
 ): `CLUSTER`
-a|
+a|Return row with name = `_a_key_`.
 
 h|
 |*has_row_with_key* ( +
 keys: `List<String>[0..1]` +
 ): `Boolean`
-a|
+a|Return `True` if there is a row with key `_keys_`.
 
 h|
 |*row_with_key* ( +
 keys: `List<String>[0..1]` +
 ): `CLUSTER`
-a|
+a|Return rows with particular keys.
 
 h|
 |*element_at_cell_ij* ( +
 i, +
 j: `Integer[1]` +
 ): `ELEMENT`
-a|
+a|Return cell at a particular location.
 
 h|(effected)
 |*as_hierarchy* (): `CLUSTER`
-a|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table.
+a|Generate a CEN EN13606-compatible hierarchy consisting of a single `CLUSTER` containing the `CLUSTERs` representing the columns of this table.
 
 h|*Invariants*
 2+a|*_Valid_structure_*: `rows.for_all (items.for_all (instance_of ("ELEMENT")))`

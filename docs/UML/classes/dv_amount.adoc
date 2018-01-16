@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*_DV_AMOUNT (abstract)_*
 
 h|*Description*
-2+a|Abstract class defining the concept of relative quantified  amounts'. For relative quantities, the  +' and  -' operators are defined (unlike descendants of DV_ABSOLUTE_QUANTITY, such as the date/time types).
+2+a|Abstract class defining the concept of relative quantified  'amounts'. For relative quantities, the  `+` and  `-` operators are defined (unlike descendants of `DV_ABSOLUTE_QUANTITY`, such as the date/time types).
 
 h|*Inherit*
 2+|`DV_QUANTIFIED`
@@ -17,14 +17,14 @@ h|*Attributes*
 
 h|*0..1*
 |*accuracy_is_percent*: `Boolean`
-a|If True, indicates that when this object was created, accuracy was recorded as a percent value; if False, as an absolute quantity value.
+a|If `True`, indicates that when this object was created, accuracy was recorded as a percent value; if `False`, as an absolute quantity value.
 
 h|*0..1 +
 (redefined)*
 |*accuracy*: `Real`
-a|Accuracy of measurement, expressed either as a half-range percent value (accuracy_is_percent = True) or a half-range quantity. A value of 0 means that accuracy is 100%, i.e. no error.
+a|Accuracy of measurement, expressed either as a half-range percent value (`_accuracy_is_percent_` = `True`) or a half-range quantity. A value of `0` means that accuracy is 100%, i.e. no error.
 
-A value of unknown_accuracy_value means that accuracy was not recorded.
+A value of `_unknown_accuracy_value_` means that accuracy was not recorded.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*

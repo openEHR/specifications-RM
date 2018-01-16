@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.4">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
 <meta name="description" content="openEHR EHR Information Model specification">
 <meta name="keywords" content="EHR, EMR, reference model, openehr">
 <title>EHR Information Model</title>
-<link rel="stylesheet" href="/releases/BASE/latest/resources/css/openehr.css">
-<link rel="stylesheet" href="/releases/BASE/latest/resources/css/pygments-murphy.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/openehr.css">
+<link rel="stylesheet" href="https://www.openehr.org/releases/BASE/latest/resources/css/pygments-murphy.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -299,7 +299,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2017 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2018 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -2722,7 +2722,7 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Represents a heading in a heading structure, or  section tree .  Created according to archetyped structures for typical headings such as SOAP,  physical examination, but also pathology result heading structures.  Should not be used instead of ENTRY hierarchical structures.</p>
+<p>Represents a heading in a heading structure, or  section tree.  Created according to archetyped structures for typical headings such as SOAP,  physical examination, but also pathology result heading structures.  Should not be used instead of <code>ENTRY</code> hierarchical structures.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3592,10 +3592,10 @@ EXPIRED
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>The abstract parent of all ENTRY subtypes. An ENTRY is the root of a logical item of  hard  clinical information created in the  clinical statement  context, within a clinical session. There can be numerous such contexts in a clinical session. Observations and other Entry types only ever document information captured/created in the event documented by the enclosing Composition.</p>
+<p>The abstract parent of all <code>ENTRY</code> subtypes. An <code>ENTRY</code> is the root of a logical item of  hard  clinical information created in the  clinical statement  context, within a clinical session. There can be numerous such contexts in a clinical session. Observations and other Entry types only ever document information captured/created in the event documented by the enclosing Composition.</p>
 </div>
 <div class="paragraph">
-<p>An ENTRY is also the minimal unit of information any query should return, since a whole ENTRY (including subparts) records spatial structure, timing information, and contextual information, as well as the subject and generator of the information.</p>
+<p>An <code>ENTRY</code> is also the minimal unit of information any query should return, since a whole <code>ENTRY</code> (including subparts) records spatial structure, timing information, and contextual information, as well as the subject and generator of the information.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3746,8 +3746,10 @@ EXPIRED
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Entry subtype for administrative information, i.e. information about setting up the clinical process, but not itself clinically relevant. Archetypes will define contained information.
-Used for admistrative details of admission, episode, ward location, discharge, appointment (if not stored in a practice management or appointments system).
+<p>Entry subtype for administrative information, i.e. information about setting up the clinical process, but not itself clinically relevant. Archetypes will define contained information.</p>
+</div>
+<div class="paragraph">
+<p>Used for admistrative details of admission, episode, ward location, discharge, appointment (if not stored in a practice management or appointments system).
 Not to be used for any clinically significant information.</p>
 </div></div></td>
 </tr>
@@ -3786,7 +3788,7 @@ Not to be used for any clinically significant information.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>The abstract parent of all clinical ENTRY subtypes. A CARE_ENTRY defines protocol and guideline attributes for all clinical Entry subtypes.</p>
+<p>The abstract parent of all clinical <code>ENTRY</code> subtypes. A <code>CARE_ENTRY</code> defines protocol and guideline attributes for all clinical Entry subtypes.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3831,7 +3833,7 @@ Not to be used for any clinically significant information.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Entry subtype for all clinical data in the past or present, i.e. which (by the time it is recorded) has already occurred. OBSERVATION data is expressed using the class HISTORY&lt;T&gt;, which guarantees that it is situated in time. OBSERVATION is used for all notionally objective (i.e. measured in some way) observations of phenomena, and patient-reported phenomena, e.g. pain.</p>
+<p>Entry subtype for all clinical data in the past or present, i.e. which (by the time it is recorded) has already occurred. <code>OBSERVATION</code> data is expressed using the class <code>HISTORY&lt;T&gt;</code>, which guarantees that it is situated in time. <code>OBSERVATION</code> is used for all notionally objective (i.e. measured in some way) observations of phenomena, and patient-reported phenomena, e.g. pain.</p>
 </div>
 <div class="paragraph">
 <p>Not to be used for recording opinion or future statements of any kind, including instructions, intentions, plans etc.</p>
@@ -3879,10 +3881,10 @@ Not to be used for any clinically significant information.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Entry type for evaluation statements. Used for all kinds of statements which evaluate other information, such as interpretations of obvservations, diagnoses, differential diagnoses, hypotheses, risk assessments, goals and plans.</p>
+<p>Entry type for evaluation statements. Used for all kinds of statements which evaluate other information, such as interpretations of observations, diagnoses, differential diagnoses, hypotheses, risk assessments, goals and plans.</p>
 </div>
 <div class="paragraph">
-<p>Should not be used for actionable statements such as medication orders - these are represented using the INSTRUCTION type.</p>
+<p>Should not be used for actionable statements such as medication orders - these are represented using the <code>INSTRUCTION</code> type.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4741,7 +4743,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-30 00:03:06 GMT
+Last updated 2017-11-30 01:03:06 CET
 </div>
 </div>
 </body>
