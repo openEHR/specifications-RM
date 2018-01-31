@@ -28,6 +28,10 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
+h|(redefined)
+|*as_hierarchy* (): `CLUSTER`
+a|Generate a CEN EN13606-compatible hierarchy consisting of a single `CLUSTER` containing the `CLUSTERs` representing the columns of this table.
+
 h|
 |*row_count* (): `Integer`
 a|Number of rows in the table.
@@ -86,10 +90,6 @@ i, +
 j: `Integer[1]` +
 ): `ELEMENT`
 a|Return cell at a particular location.
-
-h|(effected)
-|*as_hierarchy* (): `CLUSTER`
-a|Generate a CEN EN13606-compatible hierarchy consisting of a single `CLUSTER` containing the `CLUSTERs` representing the columns of this table.
 
 h|*Invariants*
 2+a|*_Valid_structure_*: `rows.for_all (items.for_all (instance_of ("ELEMENT")))`

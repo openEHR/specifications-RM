@@ -2887,7 +2887,7 @@ rather than a time, is recorded using a <code>DV_QUANTITY</code> with units = 's
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -3122,19 +3122,19 @@ value to its limits.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>&lt;</strong> (<br>
-other: <code>Ordered[1]</code><br>
-): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: <code>Result = value &lt; other.value</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post</em></strong>: <code>symbol.is_comparable (other.symbol) implies Result</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>&lt;</strong> (<br>
+other: <code>Ordered[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post</em></strong>: <code>Result = value &lt; other.value</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
@@ -3233,7 +3233,7 @@ other: <code>DV_ORDERED[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Ordered_Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
@@ -3314,6 +3314,13 @@ number: <code>Ordered_Numeric[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (<br>
+source: <code>DV_AMOUNT[1]</code><br>
+): <code>DV_AMOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (<br>
 other: <code>DV_AMOUNT[1]</code><br>
@@ -3366,13 +3373,6 @@ other: <code>DV_AMOUNT[1]</code><br>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Negated version of current object, such as used for representing a difference, e.g. a weight loss.</p>
 </div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (<br>
-source: <code>DV_AMOUNT[1]</code><br>
-): <code>DV_AMOUNT</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -3612,13 +3612,6 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integral</strong> (): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if the numerator and denominator values are integers, i.e. if the precision is 0.</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
@@ -3626,7 +3619,14 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integral</strong> (): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>True if the numerator and denominator values are integers, i.e. if the precision is 0.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (<br>
 source: <code>DV_PROPORTION[1]</code><br>
 ): <code>DV_PROPORTION</code></p></td>
@@ -3795,7 +3795,7 @@ nq: <code>Integer[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
 other: <code>DV_ABSOLUTE_QUANTITY[1]</code><br>
 ): <code>DV_AMOUNT</code></p></td>
@@ -3817,7 +3817,7 @@ other: <code>DV_ABSOLUTE_QUANTITY[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
 a_diff: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
@@ -3839,7 +3839,7 @@ a_diff: <code>DV_AMOUNT[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
 a_diif: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
@@ -4337,13 +4337,6 @@ other: <code>DV_DATE[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator=</strong> (<br>
-source: <code>DV_TIME[1]</code><br>
-): <code>DV_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
@@ -4376,6 +4369,13 @@ a_diif: <code>DV_AMOUNT[1]</code><br>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Subtract a duration from this time.</p>
 </div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator=</strong> (<br>
+source: <code>DV_TIME[1]</code><br>
+): <code>DV_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
@@ -4440,13 +4440,6 @@ other: <code>DV_TIME[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator=</strong> (<br>
-source: <code>DV_DATE_TIME[1]</code><br>
-): <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>double</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
@@ -4490,7 +4483,14 @@ other: <code>DV_ABSOLUTE_QUANTITY[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator=</strong> (<br>
+source: <code>DV_DATE_TIME[1]</code><br>
+): <code>DV_DATE_TIME</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
@@ -4715,21 +4715,21 @@ using a syntax which is equivalet to a series of <code>IVL&lt;TS&gt;</code> (i.e
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>calendar_alignment</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates what prototypical point in the calendar the specification is aligned to, e.g.  5th of the month . Empty if not aligned. Extracted from the  value' attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>event_alignment</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates what real-world event the specification is aligned to if any. Extracted from the  value' attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>institution_specified</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Indicates if the specification is aligned with institution schedules, e.g. a hospital nursing changeover or meal serving times. Extracted from the  value' attribute.</p>
@@ -6401,7 +6401,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-30 01:02:51 CET
+Last updated 2017-11-30 00:02:51 GMT
 </div>
 </div>
 </body>

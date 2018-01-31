@@ -908,7 +908,7 @@ from the openEHR list.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>ELEMENT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single ELEMENT.</p>
@@ -975,6 +975,13 @@ from the openEHR list.</p>
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_item</strong> (<br>
 a_name: <code>String[1]</code><br>
@@ -990,13 +997,6 @@ i: <code>Integer[1]</code><br>
 ): <code>ELEMENT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Retrieve the i-th item with name.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1056,6 +1056,13 @@ i: <code>Integer[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>CLUSTER</code> containing the <code>CLUSTERs</code> representing the columns of this table.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
@@ -1150,13 +1157,6 @@ j: <code>Integer[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>CLUSTER</code> containing the <code>CLUSTERs</code> representing the columns of this table.</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Valid_structure</em></strong>: <code>rows.for_all (items.for_all (instance_of ("ELEMENT")))</code></p>
@@ -1224,7 +1224,7 @@ a_path: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy, which is the same as the tree&#8217;s physical representation.</p>
@@ -2398,7 +2398,7 @@ which in this case is simply the time of measurement (the origin).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-30 01:02:44 CET
+Last updated 2017-11-30 00:02:44 GMT
 </div>
 </div>
 </body>

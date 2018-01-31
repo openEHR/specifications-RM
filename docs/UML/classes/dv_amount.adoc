@@ -35,6 +35,12 @@ number: `Ordered_Numeric[1]` +
 ): `Boolean`
 a|Test whether a number is a valid percentage, i.e. between 0 and 100.
 
+h|(redefined)
+|*infix =* ( +
+source: `DV_AMOUNT[1]` +
+): `DV_AMOUNT`
+a|
+
 h|
 |*infix +* ( +
 other: `DV_AMOUNT[1]` +
@@ -62,12 +68,6 @@ If the accuracy value is a percentage in one operand and not in the other, the f
 h|
 |*prefix -* (): `DV_AMOUNT`
 a|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
-
-h|(effected)
-|*infix =* ( +
-source: `DV_AMOUNT[1]` +
-): `DV_AMOUNT`
-a|
 
 h|*Invariants*
 2+a|*_Accuracy_is_percent_validity_*: `accuracy = 0 implies not accuracy_is_percent`
