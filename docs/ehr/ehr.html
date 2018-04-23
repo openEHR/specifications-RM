@@ -339,15 +339,21 @@
 </thead>
 <tbody>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.?.?</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.4</strong></p></th>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-59">SPECRM-59</a>. Add identifier recommendations to EHR spec(s).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B Lah</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Apr 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-52">SPECRM-52</a>. Remove <code>COMPOSITION</code> invariant preventing context for persistent Compositions. (Fixes <a href="https://openehr.atlassian.net/browse/SPECPR-78">SPECPR-78</a>)<br>
  Update Clinical Investigator Recording Process diagram.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
  S Heard</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>07 Feb 2017</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">07 Feb 2017</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1432,33 +1438,28 @@
 <div class="paragraph">
 <p>The packages are as follows:</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">ehr</dt>
-<dd>
-<p>This package contains the top level structure, the EHR, which consists of an <code>EHR_ACCESS</code> object, an <code>EHR_STATUS</code> object, versioned data containers in the form of <code>VERSIONED_COMPOSITIONs</code>, optionally indexed by a hierarchical directory of <code>FOLDERs</code>. A collection of <code>CONTRIBUTIONs</code> which document the changes to the EHR over time is also included.</p>
-</dd>
-<dt class="hdlist1">composition</dt>
-<dd>
-<p>The Composition is the EHR’s top level "data container", and is described by the <code>COMPOSITION</code> class.</p>
-</dd>
-<dt class="hdlist1">content</dt>
-<dd>
-<p>This package contains the Navigation and Entry packages, whose classes describe the structure and semantics of the contents of Compositions in the health record.</p>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">navigation</dt>
-<dd>
-<p>The <code>SECTION</code> class provides a navigational structure to the record, similar to "headings" in the paper record. ENTRYs and other SECTIONs can appear under <code>SECTIONs</code>.</p>
-</dd>
-<dt class="hdlist1">entry</dt>
-<dd>
-<p>This package contains the generic structures for recording clinical statements. Entry types include <code>ADMIN_ENTRY</code>, <code>OBSERVATION</code> (for all observed phenomena, including mechanically or manually measured, and responses in interview), <code>EVALUATION</code> (for assessments, diagnoses, plans), <code>INSTRUCTION</code> (actionable statements such as medication orders, recalls, monitoring, reviews), and <code>ACTION</code> (information recorded as a result of performing Instructions).</p>
-</dd>
-</dl>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ehr</code>: this package contains the top level structure, the EHR, which consists of an <code>EHR_ACCESS</code> object, an <code>EHR_STATUS</code> object, versioned data containers in the form of <code>VERSIONED_COMPOSITIONs</code>, optionally indexed by a hierarchical directory of <code>FOLDERs</code>. A collection of <code>CONTRIBUTIONs</code> which document the changes to the EHR over time is also included.</p>
+</li>
+<li>
+<p><code>composition</code>: the Composition is the EHR’s top level "data container", and is described by the <code>COMPOSITION</code> class.</p>
+</li>
+<li>
+<p><code>content</code>: this package contains the Navigation and Entry packages, whose classes describe the structure and semantics of the contents of Compositions in the health record.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>navigation</code>: the <code>SECTION</code> class provides a navigational structure to the record, similar to "headings" in the paper record. <code>ENTRYs</code> and other <code>SECTIONs</code> can appear under <code>SECTIONs</code>.</p>
+</li>
+<li>
+<p><code>entry</code>: This package contains the generic structures for recording clinical statements. Entry types include <code>ADMIN_ENTRY</code>, <code>OBSERVATION</code> (for all observed phenomena, including mechanically or manually measured, and responses in interview), <code>EVALUATION</code> (for assessments, diagnoses, plans), <code>INSTRUCTION</code> (actionable statements such as medication orders, recalls, monitoring, reviews), and <code>ACTION</code> (information recorded as a result of performing Instructions).</p>
+</li>
+</ul>
 </div>
-</dd>
-</dl>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>The figure below illustrates an overview of the class structure of the EHR Information Model, along with the main concepts on which they rely, namely Data Types, Data Structures, Archetyped, and Identification.</p>
@@ -1817,24 +1818,36 @@
 <div class="ulist">
 <ul>
 <li>
-<p><code><em>system_id</em></code> - identifier of EHR repository of the system.</p>
+<p><code><em>system_id</em></code> - identifier of EHR repository of the system;</p>
 </li>
 <li>
-<p><code><em>ehr_id</em></code></p>
+<p><code><em>ehr_id</em></code> - the unique identifier of this EHR;</p>
 </li>
 <li>
-<p><code><em>subject_id</em></code> - optional; the use of <code>PARTY_SELF</code> allows completely anonymous EHRs</p>
+<p><code><em>subject_id</em></code> - optional; the use of <code>PARTY_SELF</code> allows completely anonymous EHRs;</p>
 </li>
 <li>
-<p><code><em>is_queryable</em></code> flag</p>
+<p><code><em>is_queryable</em></code> flag;</p>
 </li>
 <li>
-<p><code><em>is_modifiable</em></code> flag - indicates whether the EHR is allowed to be modified (excepting the <code>EHR_STATUS</code> object which is always modifiable)</p>
+<p><code><em>is_modifiable</em></code> flag - indicates whether the EHR is allowed to be modified (excepting the <code>EHR_STATUS</code> object which is always modifiable);</p>
 </li>
 <li>
 <p>any other flags required by the EHR Status object in the local implementation.</p>
 </li>
 </ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+is is strongly recommended that a UUID always be used for the <code><em>ehr_id</em></code> field. This is common practice among implementers.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The EHR id will either be a new globally unique identifier, in the case of first time EHR creation for this patient in the health system, or else the same identifier as an existing EHR for the same subject in another system, in the case of an EHR move or copy. The effect of EHR copying / synchronising between systems is that EHRs with the same identifier can be found within multiple systems. However if the same patient presented at multiple provider locations with no EHR sharing capability, a new EHR with a unique identifier will be created at each place. If a later request for copying occurs (e.g. due to a request for an EHR Extract) between two providers, the requesting institution will perform the merge of the received copy into the existing EHR for the same patient.</p>
@@ -1921,7 +1934,19 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ehr_id</strong>: <code>HIER_OBJECT_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The id of this EHR.</p>
+<p>The unique identifier of this EHR.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+is is strongly recommended that a UUID always be used for this field.
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>

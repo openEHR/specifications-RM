@@ -58,6 +58,7 @@ The main data of the EHR is found in its Compositions. The Composition concept i
 The Transaction concept was later been renamed to "Composition", which is the name of the equivalent concept in the current CEN EN13606, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.
 
 ==== Event Compositions
+
 Events record what happens during healthcare system events with or for the patient, such as patient contacts, but also sessions in which the patient is not a participant (e.g. surgery) or not present (e.g. pathology testing). The figure below illustrates a simple EHR comprising an accumulation of event Compositions.
 
 [.text-center]
@@ -67,6 +68,7 @@ image::diagrams/basic_event_oriented_ehr.png[id=basic_event_oriented_ehr, align=
 An important job of the event Composition is to record not only the data from the healthcare event, such as observations on the patient, but also to record the event context information, i.e. the who, when, where and why of the event. For this reason, a specific class representing clinical context is associated with event compositions in the formal model.
 
 ==== Persistent Compositions
+
 In a more sophisticated EHR, there is also a need to record items of long-term interest in the record. These are often separated by clinicians into well-known categories, such as:
 
 * Problem list
@@ -172,12 +174,14 @@ In theory such a scheme could guarantee one EHR id per patient, but of course in
 
 When an EHR is created, the result should be a root EHR object, an EHR Status object, and an EHR Access object, plus any other house-keeping information the versioning implementation requires. In a normal implementation, the EHR Status and EHR Access objects would be created and committed in a Contribution, just as any Composition would be. The EHR Status object has a special status in the EHR, indicating whether the EHR should be included in querying, whether it is modifiable, and by implication, whether it is active. Flags might be set to indicate that it is test record, or for educational or training purposes. The initial creation operation has to supply sufficient parameters for creation of these two objects, including:
 
-* `_system_id_` - identifier of EHR repository of the system.
-* `_ehr_id_`
-* `_subject_id_` - optional; the use of `PARTY_SELF` allows completely anonymous EHRs
-* `_is_queryable_` flag
-* `_is_modifiable_` flag - indicates whether the EHR is allowed to be modified (excepting the `EHR_STATUS` object which is always modifiable)
+* `_system_id_` - identifier of EHR repository of the system;
+* `_ehr_id_` - the unique identifier of this EHR;
+* `_subject_id_` - optional; the use of `PARTY_SELF` allows completely anonymous EHRs;
+* `_is_queryable_` flag;
+* `_is_modifiable_` flag - indicates whether the EHR is allowed to be modified (excepting the `EHR_STATUS` object which is always modifiable);
 * any other flags required by the EHR Status object in the local implementation.
+
+NOTE: is is strongly recommended that a UUID always be used for the `_ehr_id_` field. This is common practice among implementers.
 
 The EHR id will either be a new globally unique identifier, in the case of first time EHR creation for this patient in the health system, or else the same identifier as an existing EHR for the same subject in another system, in the case of an EHR move or copy. The effect of EHR copying / synchronising between systems is that EHRs with the same identifier can be found within multiple systems. However if the same patient presented at multiple provider locations with no EHR sharing capability, a new EHR with a unique identifier will be created at each place. If a later request for copying occurs (e.g. due to a request for an EHR Extract) between two providers, the requesting institution will perform the merge of the received copy into the existing EHR for the same patient.
 
