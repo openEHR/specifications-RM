@@ -22,14 +22,14 @@ a|OpenPGP digital signature or digest of content committed in this Version.
 
 h|*1..1*
 |*commit_audit*: `AUDIT_DETAILS`
-a|Audit trail corresponding to the committal of this version to the VERSIONED_OBJECT.
+a|Audit trail corresponding to the committal of this version to the `VERSIONED_OBJECT`.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|(abstract)
 |*uid* (): `OBJECT_VERSION_ID`
-a|Unique identifier of this VERSION, in the form of an {object_id, a version_tree_id, creating_system_id} triple, where the object_id has the same value as the containing VERSIONED_OBJECT's uid.
+a|Unique identifier of this `VERSION`, in the form of an `{object_id, a version_tree_id, creating_system_id}` triple, where the `_object_id_` has the same value as the containing `VERSIONED_OBJECT _uid_`.
 
 h|(abstract)
 |*preceding_version_uid* (): `OBJECT_VERSION_ID`
@@ -37,25 +37,27 @@ a|Unique identifier of the version of which this version is a modification; Void
 
 h|(abstract)
 |*data* (): `T`
-a|Original content of this Version.
+a|The data of this Version.
+Original content of this Version.
 
 h|(abstract)
 |*lifecycle_state* (): `DV_CODED_TEXT`
-a|Lifecycle state of this version; coded by openEHR vocabulary version lifecycle state .
+a|Lifecycle state of this version; coded by openEHR vocabulary 'version lifecycle state'.
 
 h|
 |*canonical_form* (): `String`
-a|Canonical form of Version object, created by serialising all attributes except
+a|A canonical serial form of this Version, suitable for generating reliable hashes and signatures.
+Canonical form of Version object, created by serialising all attributes except
 signature.
 
 h|
 |*owner_id* (): `HIER_OBJECT_ID` +
 *_Post_*: `Result.value.is_equal (uid.object_id.value)`
-a|Copy of the owning VERSIONED_OBJECT.uid value; extracted from the local uid property's object_id.
+a|Copy of the owning `VERSIONED_OBJECT._uid_` value; extracted from the local `_uid_` property's `_object_id_`.
 
 h|
 |*is_branch* (): `Boolean`
-a|True if this Version represents a branch. Derived from uid attribute.
+a|True if this Version represents a branch. Derived from `_uid_` attribute.
 
 h|*Invariants*
 2+a|*_Preceding_version_uid_validity_*: `uid.version_tree_id.is_first xor preceding_version_uid /= Void`

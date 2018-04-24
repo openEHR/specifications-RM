@@ -128,11 +128,17 @@ When subsequent Versions are added, the existing Attestations can not be assumed
 
 === Version Lifecycle
 
-Content in Original versions has a lifecycle state associated with it, modelled using the `ORIGINAL_VERSION._lifecycle_state_` attribute, which is coded from the openEHR Terminology "version lifecycle state" group. The possible values are 'complete', 'incomplete' and 'deleted'. Usually content will be committed in the 'complete' state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as "incomplete" meaning that it is either incomplete or at least unreviewed. In hospitals this is a common occurrence. Unfinished Compositions cannot be saved locally on the client machine, since this represents a security risk (a small client-side database would be much easier to hack into than a secure server). They must therefore be persisted on the server, either in the actual EHR, or in a 'holding bay' which was recognised as not being part of the EHR proper. Either way, the author would have to explicitly retrieve the Composition(s) and after further work or review, 'promote' them into the EHR as 'active' Compositions; alternatively, they might decide to throw them away.
+Content in Original versions has a lifecycle state associated with it, modelled using the `ORIGINAL_VERSION._lifecycle_state_` attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are `532|complete|`, `553|incomplete|` and `523|deleted|`. Usually content will be committed in the `complete` state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as `incomplete` meaning that it is either incomplete or at least unreviewed. In hospitals this is a common occurrence. Unfinished Compositions cannot be saved locally on the client machine, since this represents a security risk (a small client-side database would be much easier to hack into than a secure server). They must therefore be persisted on the server, either in the actual EHR, or in a 'holding bay' which was recognised as not being part of the EHR proper. Either way, the author would have to explicitly retrieve the Composition(s) and after further work or review, 'promote' them into the EHR as 'active' Compositions; alternatively, they might decide to throw them away.
 
-Going from 'incomplete' to 'complete' almost always corresponds to a change in content, and corresponds to a new `VERSION` regardless. This modelling approach allows such content to exist on the EHR system, but to be flagged as incomplete when viewed by a user.
+Going from `incomplete` to `complete` states almost always corresponds to a change in content, and corresponds to a new `VERSION` regardless. This modelling approach allows such content to exist on the EHR system, but to be flagged as incomplete when viewed by a user.
 
-Systems are responsible for implementing checks to find 'old' Versions in "incomplete" state, and bring them to the relevant user's notice, or automatically deleting them or progressing them to "complete" as appropriate.
+Systems are responsible for implementing checks to find 'old' Versions in `incomplete` state, and bring them to the relevant user's notice, or automatically deleting them or progressing them to `complete` as appropriate.
+
+The following diagram shows the formal state machine of the `ORIGINAL_VERSION._lifecycle_state_` attribute.
+
+[.text-center]
+.`ORIGINAL_VERSION _lifecycle_state_` state machine
+image::{uml_export_dir}/diagrams/RM-version_lifecycle.svg[id=version_lifecycle, align="center"]
 
 === Logical Deletion
 

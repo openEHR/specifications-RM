@@ -302,9 +302,10 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-66">SPECRM-66</a>. Improve description in specification of <code>AUDIT_DETAILS.<em>change_type</em></code> and <code><em>description</em></code> fields. Add informative text in Section 6.2.5 Contributions.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Apr 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-60">SPECRM-60</a>. Add Version lifecycle state machine to RM;<br>
+ <a href="https://openehr.atlassian.net/browse/SPECRM-66">SPECRM-66</a>. Improve description in specification of <code>AUDIT_DETAILS.<em>change_type</em></code> and <code><em>description</em></code> fields. Add informative text   in Section 6.2.5 Contributions.<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>24 Apr 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -2706,13 +2707,22 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="sect3">
 <h4 id="_version_lifecycle"><a class="anchor" href="#_version_lifecycle"></a>6.3.1. Version Lifecycle</h4>
 <div class="paragraph">
-<p>Content in Original versions has a lifecycle state associated with it, modelled using the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute, which is coded from the openEHR Terminology "version lifecycle state" group. The possible values are 'complete', 'incomplete' and 'deleted'. Usually content will be committed in the 'complete' state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as "incomplete" meaning that it is either incomplete or at least unreviewed. In hospitals this is a common occurrence. Unfinished Compositions cannot be saved locally on the client machine, since this represents a security risk (a small client-side database would be much easier to hack into than a secure server). They must therefore be persisted on the server, either in the actual EHR, or in a 'holding bay' which was recognised as not being part of the EHR proper. Either way, the author would have to explicitly retrieve the Composition(s) and after further work or review, 'promote' them into the EHR as 'active' Compositions; alternatively, they might decide to throw them away.</p>
+<p>Content in Original versions has a lifecycle state associated with it, modelled using the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are <code>532|complete|</code>, <code>553|incomplete|</code> and <code>523|deleted|</code>. Usually content will be committed in the <code>complete</code> state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as <code>incomplete</code> meaning that it is either incomplete or at least unreviewed. In hospitals this is a common occurrence. Unfinished Compositions cannot be saved locally on the client machine, since this represents a security risk (a small client-side database would be much easier to hack into than a secure server). They must therefore be persisted on the server, either in the actual EHR, or in a 'holding bay' which was recognised as not being part of the EHR proper. Either way, the author would have to explicitly retrieve the Composition(s) and after further work or review, 'promote' them into the EHR as 'active' Compositions; alternatively, they might decide to throw them away.</p>
 </div>
 <div class="paragraph">
-<p>Going from 'incomplete' to 'complete' almost always corresponds to a change in content, and corresponds to a new <code>VERSION</code> regardless. This modelling approach allows such content to exist on the EHR system, but to be flagged as incomplete when viewed by a user.</p>
+<p>Going from <code>incomplete</code> to <code>complete</code> states almost always corresponds to a change in content, and corresponds to a new <code>VERSION</code> regardless. This modelling approach allows such content to exist on the EHR system, but to be flagged as incomplete when viewed by a user.</p>
 </div>
 <div class="paragraph">
-<p>Systems are responsible for implementing checks to find 'old' Versions in "incomplete" state, and bring them to the relevant user&#8217;s notice, or automatically deleting them or progressing them to "complete" as appropriate.</p>
+<p>Systems are responsible for implementing checks to find 'old' Versions in <code>incomplete</code> state, and bring them to the relevant user&#8217;s notice, or automatically deleting them or progressing them to <code>complete</code> as appropriate.</p>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the formal state machine of the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute.</p>
+</div>
+<div id="version_lifecycle" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../UML/diagrams/RM-version_lifecycle.svg" alt="RM version lifecycle">
+</div>
+<div class="title">Figure 10. <code>ORIGINAL_VERSION <em>lifecycle_state</em></code> state machine</div>
 </div>
 </div>
 <div class="sect3">
@@ -2752,7 +2762,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="content">
 <img src="diagrams/version_identification_system.svg" alt="version identification system" width="80%">
 </div>
-<div class="title">Figure 10. Version identification system</div>
+<div class="title">Figure 11. Version identification system</div>
 </div>
 <div class="paragraph">
 <p>The following figure provides an example of multiple <code>VERSIONs</code> within a <code>VERSIONED_OBJECT</code>, where one of the versions has been merged from another system. This highlights the identifiers; details of original and merged versions are described below.</p>
@@ -2761,7 +2771,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="content">
 <img src="diagrams/version_identification_example.svg" alt="version identification example" width="80%">
 </div>
-<div class="title">Figure 11. Version identification Example</div>
+<div class="title">Figure 12. Version identification Example</div>
 </div>
 <div class="sect4">
 <h5 id="_local_versioning"><a class="anchor" href="#_local_versioning"></a>6.3.3.1. Local Versioning</h5>
@@ -2862,7 +2872,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="content">
 <img src="diagrams/distributed_versioning.png" alt="distributed versioning" width="70%">
 </div>
-<div class="title">Figure 12. Distributed versioning</div>
+<div class="title">Figure 13. Distributed versioning</div>
 </div>
 <div class="paragraph">
 <p>When the first <code>ORIGINAL_VERSION</code> is copied (copy #1) to system B, it is committed as an <code>IMPORTED_VERSION</code> to a <code>VERSIONED_OBJECT</code> which is a clone of the original. Subsequent copies (copy #2 and copy #3) can be made of later versions from system A to system B, with the effect that the version tree can be recreated inside system B (if required; there is of course no obligation to do anything with the received information). Users in system B an also make modifications to the received Version copies; these modifications are shown in grey, as branched versions with <code><em>uid</em>.<em>creating_system_id</em></code> = "sysB". Independently, users in system B will of course be creating other content locally, e.g. as shown on the right-hand side, where a Versioned object with <code><em>uid</em></code>= "2" has been created. Two places are indicated on the diagram where identification clashes could have occurred, but are prevented due to the use of the 3-part unique Version identifier scheme.</p>
@@ -2897,7 +2907,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="content">
 <img src="diagrams/version_merging.png" alt="version merging" width="60%">
 </div>
-<div class="title">Figure 13. Version merging</div>
+<div class="title">Figure 14. Version merging</div>
 </div>
 <div class="paragraph">
 <p>In this figure, versions 1 and 2 of the content (e.g. a medication list) from Versioned object with <code><em>uid</em></code>=1 are copied from system A (e.g. a GP) to system B (e.g. a hospital). In system B, changes are made to version 2, creating a branch (as an instance of <code>IMPORTED_VERSION&lt;T&gt;</code>) as required by the rules described above. These changes (modified medication list) are then imported back into system A. The system A user performs a merge operation to create a new trunk version 3, using the sysB::2.1.2 and sysA::2 content; most likely, he simply reviews the two input versions and uses the sysB::2.1.2 content unchanged (the result is that system A now has an up-to-date medication list for the patient, including medications orginally recorded at system A, as well as additions recorded at system B). The new Version is an instance of <code>ORIGINAL_VERSION&lt;T&gt;</code>, with its other_input_version_ids attribute set to include the <code>OBJECT_VERSION_ID</code> representing sysB::2.1.2 (it does not need to include sysA::2, since this is already known in the <code><em>preceding_version_uid</em></code>).</p>
@@ -2915,7 +2925,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="content">
 <img src="diagrams/disjoint_merging.png" alt="disjoint merging" width="80%">
 </div>
-<div class="title">Figure 14. Disjoint merging</div>
+<div class="title">Figure 15. Disjoint merging</div>
 </div>
 <div class="paragraph">
 <p>The merge procedure is as follows:</p>
@@ -2992,7 +3002,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="content">
 <img src="diagrams/moving_version_container.png" alt="moving version container" width="50%">
 </div>
-<div class="title">Figure 15. Moving a version container</div>
+<div class="title">Figure 16. Moving a version container</div>
 </div>
 </div>
 </div>
@@ -3075,7 +3085,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 a_ver_id: <code>OBJECT_VERSION_ID[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if a version for time  'a_time' exists.</p>
+<p>True if a version for time  <code><em>a_time</em></code> exists.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3084,7 +3094,7 @@ a_ver_id: <code>OBJECT_VERSION_ID[1]</code><br>
 a_ver_id: <code>OBJECT_VERSION_ID[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if a version with an_id exists.</p>
+<p>True if a version with <code><em>an_id</em></code> exists.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3094,7 +3104,7 @@ a_ver_id: <code>OBJECT_VERSION_ID[1]</code><br>
 ): <code>VERSION</code><br>
 <strong><em>Pre</em></strong>: <code>has_version_id (a_ver_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Return the version with id =  'a_ver_id'.</p>
+<p>Return the version with <code><em>uid</em></code> =  <code><em>a_ver_id</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3104,7 +3114,7 @@ a_ver_id: <code>OBJECT_VERSION_ID[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Pre</em></strong>: <code>has_version_id(a_ver_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if version with an_id is an ORIGINAL_VERSION.</p>
+<p>True if version with <code><em>an_id</em></code> is an <code>ORIGINAL_VERSION</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3114,7 +3124,7 @@ a_time: <code>DV_DATE_TIME[1]</code><br>
 ): <code>VERSION</code><br>
 <strong><em>Pre</em></strong>: <code>has_version_at_time (a_time)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Return the version for time  'a_time'.</p>
+<p>Return the version for time  <code><em>a_time</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3187,7 +3197,7 @@ an_audit: <code>AUDIT_DETAILS[1]</code>,<br>
 a_version: <code>ORIGINAL_VERSION[1]</code><br>
 ): <code>void</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Add a new imported version. Details of version id etc come from the ORIGINAL_VERSION being committed.</p>
+<p>Add a new imported version. Details of version id etc come from the <code>ORIGINAL_VERSION</code> being committed.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3278,7 +3288,7 @@ and is_original_version(a_ver_id)</code></p></td>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_audit</strong>: <code>AUDIT_DETAILS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Audit trail corresponding to the committal of this version to the VERSIONED_OBJECT.</p>
+<p>Audit trail corresponding to the committal of this version to the <code>VERSIONED_OBJECT</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3290,7 +3300,7 @@ and is_original_version(a_ver_id)</code></p></td>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong> (): <code>OBJECT_VERSION_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Unique identifier of this VERSION, in the form of an {object_id, a version_tree_id, creating_system_id} triple, where the object_id has the same value as the containing VERSIONED_OBJECT&#8217;s uid.</p>
+<p>Unique identifier of this <code>VERSION</code>, in the form of an <code>{object_id, a version_tree_id, creating_system_id}</code> triple, where the <code><em>object_id</em></code> has the same value as the containing <code>VERSIONED_OBJECT <em>uid</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3304,21 +3314,23 @@ and is_original_version(a_ver_id)</code></p></td>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong> (): <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Original content of this Version.</p>
+<p>The data of this Version.
+Original content of this Version.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Lifecycle state of this version; coded by openEHR vocabulary version lifecycle state .</p>
+<p>Lifecycle state of this version; coded by openEHR vocabulary 'version lifecycle state'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_form</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Canonical form of Version object, created by serialising all attributes except
+<p>A canonical serial form of this Version, suitable for generating reliable hashes and signatures.
+Canonical form of Version object, created by serialising all attributes except
 signature.</p>
 </div></div></td>
 </tr>
@@ -3327,14 +3339,14 @@ signature.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner_id</strong> (): <code>HIER_OBJECT_ID</code><br>
 <strong><em>Post</em></strong>: <code>Result.value.is_equal (uid.object_id.value)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Copy of the owning VERSIONED_OBJECT.uid value; extracted from the local uid property&#8217;s object_id.</p>
+<p>Copy of the owning <code>VERSIONED_OBJECT.<em>uid</em></code> value; extracted from the local <code><em>uid</em></code> property&#8217;s <code><em>object_id</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this Version represents a branch. Derived from uid attribute.</p>
+<p>True if this Version represents a branch. Derived from <code><em>uid</em></code> attribute.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3405,7 +3417,7 @@ signature.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Lifecycle state of the content item in this version.</p>
+<p>Lifecycle state of the content item in this version; coded by openEHR vocabulary 'version lifecycle state'.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3418,7 +3430,9 @@ signature.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code>T</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Data content of this Version.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -3498,7 +3512,7 @@ signature.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong> (): <code>OBJECT_VERSION_ID</code><br>
 <strong><em>Post</em></strong>: <code>Result = item.uid</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Computed version of inheritance precursor, derived as item.uid.</p>
+<p>Computed version of inheritance precursor, derived as <code><em>item.uid</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3506,14 +3520,14 @@ signature.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preceding_version_uid</strong> (): <code>OBJECT_VERSION_ID</code><br>
 <strong><em>Post</em></strong>: <code>Result = item.preceding_version_uid</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Computed version of inheritance precursor, derived as item.preceding_version_uid.</p>
+<p>Computed version of inheritance precursor, derived as <code><em>item.preceding_version_uid</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Lifecycle state of the content item in wrapped ORIGINAL_VERSION, derived as item.lifecycle_state.</p>
+<p>Lifecycle state of the content item in wrapped <code>ORIGINAL_VERSION</code>, derived as <code><em>item.lifecycle_state</em></code>; coded by openEHR vocabulary 'version lifecycle state'.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3561,7 +3575,7 @@ signature.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>versions</strong>: <code>List&lt;OBJECT_REF&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Set of references to Versions causing changes to this EHR. Each contribution contains a list of versions, which may include paths pointing to any number of VERSIONABLE items, i.e. items of type COMPOSITION and FOLDER.</p>
+<p>Set of references to Versions causing changes to this EHR. Each contribution contains a list of versions, which may include paths pointing to any number of versionable items, i.e. items of types such as <code>COMPOSITION</code> and <code>FOLDER</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3589,7 +3603,7 @@ signature.</p>
 <div class="content">
 <img src="../UML/diagrams/RM-common.resource.svg" alt="RM common.resource">
 </div>
-<div class="title">Figure 16. common.resource Package</div>
+<div class="title">Figure 17. common.resource Package</div>
 </div>
 <div class="sect3">
 <h4 id="_natural_languages_and_translation"><a class="anchor" href="#_natural_languages_and_translation"></a>7.1.1. Natural Languages and Translation</h4>

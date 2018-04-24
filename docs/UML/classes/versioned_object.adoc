@@ -43,34 +43,34 @@ h|
 |*has_version_at_time* ( +
 a_ver_id: `OBJECT_VERSION_ID[1]` +
 ): `Boolean`
-a|True if a version for time  'a_time' exists.
+a|True if a version for time  `_a_time_` exists.
 
 h|
 |*has_version_id* ( +
 a_ver_id: `OBJECT_VERSION_ID[1]` +
 ): `Boolean`
-a|True if a version with an_id exists.
+a|True if a version with `_an_id_` exists.
 
 h|
 |*version_with_id* ( +
 a_ver_id: `OBJECT_VERSION_ID[1]` +
 ): `VERSION` +
 *_Pre_*: `has_version_id (a_ver_id)`
-a|Return the version with id =  'a_ver_id'.
+a|Return the version with `_uid_` =  `_a_ver_id_`.
 
 h|
 |*is_original_version* ( +
 a_ver_id: `OBJECT_VERSION_ID[1]` +
 ): `Boolean` +
 *_Pre_*: `has_version_id(a_ver_id)`
-a|True if version with an_id is an ORIGINAL_VERSION.
+a|True if version with `_an_id_` is an `ORIGINAL_VERSION`.
 
 h|
 |*version_at_time* ( +
 a_time: `DV_DATE_TIME[1]` +
 ): `VERSION` +
 *_Pre_*: `has_version_at_time (a_time)`
-a|Return the version for time  'a_time'.
+a|Return the version for time  `_a_time_`.
 
 h|
 |*revision_history* (): `REVISION_HISTORY`
@@ -122,7 +122,7 @@ a_contribution: `OBJECT_REF[1]`, +
 an_audit: `AUDIT_DETAILS[1]`, +
 a_version: `ORIGINAL_VERSION[1]` +
 ): `void`
-a|Add a new imported version. Details of version id etc come from the ORIGINAL_VERSION being committed.
+a|Add a new imported version. Details of version id etc come from the `ORIGINAL_VERSION` being committed.
 
 h|
 |*commit_attestation* ( +
