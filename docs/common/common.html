@@ -1815,7 +1815,7 @@ a_loc: <code>PATHABLE[1]</code><br>
 </ul>
 </div>
 <div class="paragraph">
-<p>The digital signature, if present, is generated using the IETF RFC 4880 (openPGP; <a href="#rfc_2440">[rfc_2440]</a>) standard as, according to the process shown below.</p>
+<p>The digital signature, if present, is generated using the openPGP standard (<a href="#rfc_4880">IETF RFC 4880</a>) as, according to the process shown below.</p>
 </div>
 <div id="attestation_signature_generation" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2653,7 +2653,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <p>At the time of committal of a Version, a digital signature of the object can be made. In this process, a Version object (an <code>ORIGINAL_VERSION</code> or <code>IMPORTED_VERSION</code>) is serialised into canonical form which is then hashed to produce a digest. If public key or equivalent infrastructure is in place so that users are able to sign content, a digital signature can be created from the hash, using the user&#8217;s private key. Either way, the result is then radix-64 encoded to create an ASCII string so as to remove or reduce potential problems with subsequent communication. The openPGP standard ensures that the trasformations and algorithms used to create the signature are indicated within it.</p>
 </div>
 <div class="paragraph">
-<p>The signature can serve two purposes. If only the hashing step is done, the digest acts as a data integrity check, indicating if the data have been tampered with after creation. If the signing step is carried out, it authenticates the user as the author of the content to readers of the content. In a versioned EHR system, it also acts as a non-repudiation measure, since the signature is stored permanently with the data. To circumvent hacking of the data, public notarisation of the signature can be used. The signature, if present, is generated according to the IETF RFC 4880 (openPGP <a href="#rfc_2440">[rfc_2440]</a>) standard, following the process shown below.</p>
+<p>The signature can serve two purposes. If only the hashing step is done, the digest acts as a data integrity check, indicating if the data have been tampered with after creation. If the signing step is carried out, it authenticates the user as the author of the content to readers of the content. In a versioned EHR system, it also acts as a non-repudiation measure, since the signature is stored permanently with the data. To circumvent hacking of the data, public notarisation of the signature can be used. The signature, if present, is generated according to the openPGP standard (<a href="#rfc_4880">IETF RFC 4880</a>), following the process shown below.</p>
 </div>
 <div id="version_signature" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -4308,7 +4308,7 @@ translations.has_key (d.language.code_string)))</code></p>
 <p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
 </li>
 <li>
-<p><a id="rfc_2440"></a>[rfc_2440] <strong>RFC 4880: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc4880" class="bare">http://www.ietf.org/rfc/rfc4880</a> .</p>
+<p><a id="rfc_4880"></a>[rfc_4880] <strong>RFC 4880: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc4880" class="bare">http://www.ietf.org/rfc/rfc4880</a> .</p>
 </li>
 <li>
 <p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
