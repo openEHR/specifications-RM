@@ -6,7 +6,9 @@ h|*Class*
 2+^h|*COMPOSITION*
 
 h|*Description*
-2+a|One version in a VERSIONED_COMPOSITION. A composition is considered the unit of modification of the record, the unit of transmission in record extracts, and the unit of attestation by authorising clinicians. In this latter sense, it may be considered equivalent to a signed document.
+2+a|One version in a `VERSIONED_COMPOSITION`. A Composition is considered the unit of modification of the record, the unit of transmission in record extracts, and the unit of attestation by authorising clinicians. In this latter sense, it may be considered equivalent to a signed document.
+
+NOTE: it is strongly recommended that the inherited attribute `_uid_` be populated in Compositions, using a UUID.
 
 h|*Inherit*
 2+|`LOCATABLE`
@@ -17,7 +19,7 @@ h|*Attributes*
 
 h|*1..1*
 |*language*: `CODE_PHRASE`
-a|Mandatory indicator of the localised language in which this Composition is written. Coded from openEHR Code Set  languages . The language of an Entry if different from the Composition is indicated in ENTRY.language.
+a|Mandatory indicator of the localised language in which this Composition is written. Coded from openEHR Code Set  `languages`. The language of an Entry if different from the Composition is indicated in `ENTRY._language_`.
 
 h|*1..1*
 |*territory*: `CODE_PHRASE`
@@ -33,7 +35,7 @@ a|The clinical session context of this Composition, i.e. the contextual attribut
 
 h|*1..1*
 |*composer*: `PARTY_PROXY`
-a|The person primarily responsible for the content of the Composition (but not necessarily its committal into the EHR system). This is the identifier which should appear on the screen. It may or may not be the person who entered the data. When it is the patient, the special self  instance of PARTY_PROXY will be used.
+a|The person primarily responsible for the content of the Composition (but not necessarily its committal into the EHR system). This is the identifier which should appear on the screen. It may or may not be the person who entered the data. When it is the patient, the special self  instance of `PARTY_PROXY` will be used.
 
 h|*0..1*
 |*content*: `List<CONTENT_ITEM>`

@@ -2462,7 +2462,19 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>One version in a VERSIONED_COMPOSITION. A composition is considered the unit of modification of the record, the unit of transmission in record extracts, and the unit of attestation by authorising clinicians. In this latter sense, it may be considered equivalent to a signed document.</p>
+<p>One version in a <code>VERSIONED_COMPOSITION</code>. A Composition is considered the unit of modification of the record, the unit of transmission in record extracts, and the unit of attestation by authorising clinicians. In this latter sense, it may be considered equivalent to a signed document.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+it is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in Compositions, using a UUID.
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>
@@ -2478,7 +2490,7 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Mandatory indicator of the localised language in which this Composition is written. Coded from openEHR Code Set  languages . The language of an Entry if different from the Composition is indicated in ENTRY.language.</p>
+<p>Mandatory indicator of the localised language in which this Composition is written. Coded from openEHR Code Set  <code>languages</code>. The language of an Entry if different from the Composition is indicated in <code>ENTRY.<em>language</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2506,7 +2518,7 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>composer</strong>: <code>PARTY_PROXY</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The person primarily responsible for the content of the Composition (but not necessarily its committal into the EHR system). This is the identifier which should appear on the screen. It may or may not be the person who entered the data. When it is the patient, the special self  instance of PARTY_PROXY will be used.</p>
+<p>The person primarily responsible for the content of the Composition (but not necessarily its committal into the EHR system). This is the identifier which should appear on the screen. It may or may not be the person who entered the data. When it is the patient, the special self  instance of <code>PARTY_PROXY</code> will be used.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4730,7 +4742,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <p><a id="rfc_2396"></a>[rfc_2396] Berners-Lee T. <strong>Universal Resource Identifiers in WWW</strong>. Available at <a href="http://www.ietf.org/rfc/rfc2396.txt" class="bare">http://www.ietf.org/rfc/rfc2396.txt</a>. This is a World-Wide Web RFC for global identification of resources. In current use on the web, e.g. by Mosaic, Netscape and similar tools. See <a href="http://www.w3.org/Addressing" class="bare">http://www.w3.org/Addressing</a> for a starting point on URIs.</p>
 </li>
 <li>
-<p><a id="rfc_2440"></a>[rfc_2440] <strong>RFC 4880: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc4880" class="bare">http://www.ietf.org/rfc/rfc4880</a> .</p>
+<p><a id="rfc_4880"></a>[rfc_4880] <strong>RFC 4880: OpenPGP Message Format</strong>. See <a href="http://www.ietf.org/rfc/rfc4880" class="bare">http://www.ietf.org/rfc/rfc4880</a> .</p>
 </li>
 <li>
 <p><a id="rfc_3986"></a>[rfc_3986] <strong>RFC 3986: Uniform Resource Identifier (URI): Generic Syntax</strong>. IETF. See <a href="http://www.ietf.org/rfc/rfc3986.txt" class="bare">http://www.ietf.org/rfc/rfc3986.txt</a> .</p>
