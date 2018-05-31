@@ -343,9 +343,15 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-71">SPECRM-71</a>. Make <code>ACTIVITY.<em>timing</em></code> optional.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>31 May 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-59">SPECRM-59</a>. Add identifier recommendations to EHR spec(s).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">B Lah</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Apr 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23 Apr 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1070,10 +1076,16 @@
 <p>Dipak Kalra MD, PhD, Professor Health Informatics, CHIME, UCL, UK</p>
 </li>
 <li>
+<p>Bostjan Lah, Architect, Marand, Slovenia</p>
+</li>
+<li>
 <p>David Lloyd (ret), CHIME, UCL, UK</p>
 </li>
 <li>
 <p>Chunlan Ma PhD, MD, Ocean Informatics, Australia</p>
+</li>
+<li>
+<p>Pablo Pazos Gutierrez, CaboLabs, Uruguay</p>
 </li>
 <li>
 <p>Peter Schloeffel MD, Ocean Informatics, Australia</p>
@@ -3803,7 +3815,8 @@ Not to be used for any clinically significant information.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code>ITEM_STRUCTURE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The data of the Entry; modelled in archetypes.</p>
+<p>Content of the Admin Entry.
+The data of the Entry; modelled in archetypes.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3841,7 +3854,7 @@ Not to be used for any clinically significant information.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>protocol</strong>: <code>ITEM_STRUCTURE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Description of the method (i.e. how) the information in this entry was arrived at. For OBSERVATIONs, this is a description of the method or instrument used. For EVALUATIONs, how the evaluation was arrived at. For INSTRUCTIONs, how to execute the Instruction. This may take the form of references to guidelines, including manually followed and executable; knowledge references such as a paper in Medline; clinical reasons within a larger care process.</p>
+<p>Description of the method (i.e. how) the information in this entry was arrived at. For <code>OBSERVATIONs</code>, this is a description of the method or instrument used. For <code>EVALUATIONs</code>, how the evaluation was arrived at. For <code>INSTRUCTIONs</code>, how to execute the Instruction. This may take the form of references to guidelines, including manually followed and executable; knowledge references such as a paper in Medline; clinical reasons within a larger care process.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4040,10 +4053,10 @@ Not to be used for any clinically significant information.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timing</strong>: <code>DV_PARSABLE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Timing of the activity, in the form of a parsable string, such as an HL7 GTS or ISO8601 string.</p>
+<p>Timing of the activity, in the form of a parsable string, such as an HL7 GTS or ISO8601 string. May be omitted in cases where unavailable, e.g. imported legacy data; in such cases, the <code>INSTRUCTION.<em>narrative</em></code> should carry text that indicates the timing of its <code><em>activities</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4053,7 +4066,7 @@ Not to be used for any clinically significant information.</p>
 <p>Perl-compliant regular expression pattern, enclosed in  '//' delimiters, indicating the valid identifiers of archetypes for Actions corresponding to this Activity specification.</p>
 </div>
 <div class="paragraph">
-<p>Defaults to  /.*/ , meaning any archetype.</p>
+<p>Defaults to  <code>/.*/</code>, meaning any archetype.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4780,7 +4793,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-30 00:03:06 GMT
+Last updated 2018-05-31 09:33:21 BST
 </div>
 </div>
 </body>

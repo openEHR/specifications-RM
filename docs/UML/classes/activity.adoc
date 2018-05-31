@@ -15,15 +15,15 @@ h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|*1..1*
+h|*0..1*
 |*timing*: `DV_PARSABLE`
-a|Timing of the activity, in the form of a parsable string, such as an HL7 GTS or ISO8601 string.
+a|Timing of the activity, in the form of a parsable string, such as an HL7 GTS or ISO8601 string. May be omitted in cases where unavailable, e.g. imported legacy data; in such cases, the `INSTRUCTION._narrative_` should carry text that indicates the timing of its `_activities_`.
 
 h|*0..1*
 |*action_archetype_id*: `String`
 a|Perl-compliant regular expression pattern, enclosed in  '//' delimiters, indicating the valid identifiers of archetypes for Actions corresponding to this Activity specification.
 
-Defaults to  /.*/ , meaning any archetype.
+Defaults to  `/.*/`, meaning any archetype.
 
 h|*1..1*
 |*description*: `ITEM_STRUCTURE`
