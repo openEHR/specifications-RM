@@ -72,7 +72,7 @@ In a typical application situation, one or more of the above changes may be comm
 
 These two changes together constitute a logical _change-set_, and would typically be included in the one Contribution. In general, there might be any combination of the logical change types in a single commit by an application, corresponding to a single real-world business event, such as a GP Encounter, although attestations, deletions and corrections will usually be the only change within a Contribution. In every case, regardless of the combination, a `CONTRIBUTION` object will be created, listing the affected `VERSION` objects, and including its own audit object, whose `_change_type_` attribute captures the aggregate of the changes in the Compositions making up its `_versions_`. This may sometimes be approximate, and is not expected to be used as a computable value. Typical values for `CONTRIBUTION._audit_._change_type_`:
 
-* `666|modification|`: this accommodates cases where there is a mixture of creation, deletion, modification that constitute a change of content;
+* `251|modification|`: this accommodates cases where there is a mixture of creation, deletion, modification that constitute a change of content;
 * `250|amendment|`: corresponds to a mixture of amendments and deletions that logically constitute a correction to the content;
 * `666|attestation|`: used when the only changes are attestation of one or more of the member versions;
 * any code: when all member versions have the same change type, that change type may be used for the Contribution as well.
