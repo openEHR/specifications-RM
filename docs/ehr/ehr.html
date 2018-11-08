@@ -184,10 +184,11 @@
 <li><a href="#_requirements_2">8.2.5.1. Requirements</a></li>
 <li><a href="#_design_principles_2">8.2.5.2. Design Principles</a></li>
 <li><a href="#_model_overview">8.2.5.3. Model Overview</a></li>
-<li><a href="#_the_standard_instruction_state_machine_ism">8.2.5.4. The Standard Instruction State Machine (ISM)</a></li>
-<li><a href="#_instruction_aggregate_state">8.2.5.5. Instruction Aggregate State</a></li>
-<li><a href="#_careflow_process_to_state_machine_mapping">8.2.5.6. Careflow Process to State Machine Mapping</a></li>
-<li><a href="#_relationship_to_archetypes">8.2.5.7. Relationship to Archetypes</a></li>
+<li><a href="#_instruction_activity_timing">8.2.5.4. Instruction Activity Timing</a></li>
+<li><a href="#_the_standard_instruction_state_machine_ism">8.2.5.5. The Standard Instruction State Machine (ISM)</a></li>
+<li><a href="#_instruction_aggregate_state">8.2.5.6. Instruction Aggregate State</a></li>
+<li><a href="#_careflow_process_to_state_machine_mapping">8.2.5.7. Careflow Process to State Machine Mapping</a></li>
+<li><a href="#_relationship_to_archetypes">8.2.5.8. Relationship to Archetypes</a></li>
 </ul>
 </li>
 <li><a href="#_clinical_workflow_definition">8.2.6. Clinical Workflow Definition</a></li>
@@ -348,9 +349,10 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-71">SPECRM-71</a>. Make <code>ACTIVITY.<em>timing</em></code> optional.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-71">SPECRM-71</a>. Make <code>ACTIVITY.<em>timing</em></code> optional.<br>
+ <a href="https://openehr.atlassian.net/browse/SPECRM-68">SPECRM-68</a>. Improve guidance on use of <code>ACTIVITY.<em>timing</em></code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>31 May 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Nov 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -3342,7 +3344,25 @@ and includes the following:</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_the_standard_instruction_state_machine_ism"><a class="anchor" href="#_the_standard_instruction_state_machine_ism"></a>8.2.5.4. The Standard Instruction State Machine (ISM)</h5>
+<h5 id="_instruction_activity_timing"><a class="anchor" href="#_instruction_activity_timing"></a>8.2.5.4. Instruction Activity Timing</h5>
+<div class="paragraph">
+<p>Timing information may be minimal and simplistic, or highly specified. As a consequence, there is no one method of representation that suits all purposes. The simplest expression of timing information is as informal narrative, as found in a prescription for antibiotics, such as "take 3 times a day, for 7 days, with meals". This may be represented using a text value in <code>INSTRUCTION.<em>narrative</em></code>.</p>
+</div>
+<div class="paragraph">
+<p>Formally computable representations can be expressed in two ways. The first is to use the <code>ACTIVITY.<em>timing</em></code> field, of type <code>DV_PARSABLE</code>, which enables the use of syntaxes such as the ISO8601 'R' syntax. For example, 5 repititions of the period '10 days' starting on 01 march 2008 is <code>"R5/2008-03-01T13:00:00Z/P10D"</code>. However timing in clinical situations varies widely, and numerous other ways of expressing times are commonly required, ranging from simple frequencies, to complex patterns of time, association with events such as meals, menstrual period and so on. To accommodate such variant structures, which are generally beyond the capabilities of the ISO8601 syntax, the <code>ACTIVITY.<em>description</em></code> attribute may be used to contain these timing structures.</p>
+</div>
+<div class="paragraph">
+<p>The three approaches are illustrated below.</p>
+</div>
+<div id="activity_timing" class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="diagrams/activity_timing.svg" alt="activity timing" width="80%">
+</div>
+<div class="title">Figure 22. Activity Timing</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_the_standard_instruction_state_machine_ism"><a class="anchor" href="#_the_standard_instruction_state_machine_ism"></a>8.2.5.5. The Standard Instruction State Machine (ISM)</h5>
 <div class="paragraph">
 <p>When an intervention defined by an Activity is unfolding in a clinical context, EHR users want to know things such as the following:</p>
 </div>
@@ -3369,7 +3389,7 @@ and includes the following:</p>
 <div class="content">
 <img src="diagrams/instruction_state_machine.png" alt="instruction state machine">
 </div>
-<div class="title">Figure 22. openEHR standard Instruction State Machine</div>
+<div class="title">Figure 23. openEHR standard Instruction State Machine</div>
 </div>
 <div class="paragraph">
 <p>This state machine is the result of long term experience with clinical workflows and act management systems. The states are as follows (Note: the SCHEDULED state was inspired by <a href="#Van_de_Velde_Degoulet_2003">[Van_de_Velde_Degoulet_2003]</a>, Fig 5.5).</p>
@@ -3472,7 +3492,7 @@ EXPIRED
 </div>
 </div>
 <div class="sect4">
-<h5 id="_instruction_aggregate_state"><a class="anchor" href="#_instruction_aggregate_state"></a>8.2.5.5. Instruction Aggregate State</h5>
+<h5 id="_instruction_aggregate_state"><a class="anchor" href="#_instruction_aggregate_state"></a>8.2.5.6. Instruction Aggregate State</h5>
 <div class="paragraph">
 <p>Each Activity within an Instruction constitutes a clinically identifiable medication or therapy of some kind, while the Instruction usually corresponds to a grouping or combination of therapies designed to treat an overall problem. Accordingly, the Instruction can be seen as having an aggregate state derived from the states of the Activities, as shown in the figure below. The rules for entering each aggregate state are indicated in terms of the states of the constituent Activities.</p>
 </div>
@@ -3480,14 +3500,14 @@ EXPIRED
 <div class="content">
 <img src="diagrams/aggregate_instruction_state.png" alt="aggregate instruction state" width="70%">
 </div>
-<div class="title">Figure 23. Aggregate Instruction state</div>
+<div class="title">Figure 24. Aggregate Instruction state</div>
 </div>
 <div class="paragraph">
 <p>This state machine is not formally modelled or coded in openEHR, although it may be useful to do so within an application.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_careflow_process_to_state_machine_mapping"><a class="anchor" href="#_careflow_process_to_state_machine_mapping"></a>8.2.5.6. Careflow Process to State Machine Mapping</h5>
+<h5 id="_careflow_process_to_state_machine_mapping"><a class="anchor" href="#_careflow_process_to_state_machine_mapping"></a>8.2.5.7. Careflow Process to State Machine Mapping</h5>
 <div class="paragraph">
 <p>From a health professional&#8217;s point of view, a healthcare workflow, or 'careflow', consists of steps and events designed to meet one or more goals. The steps are highly dependent on the particular kind of workflow, and will usually be named in terms familiar to the relevant kinds of clinical professionals, such as "prescribe", "book", "suspend" and so on (note that some of these names may be the same as ISM transitions, but may or may not indicate the same thing). However, the need of users of health information is to know what state the execution of an Instruction is in, regardless of which particular careflow step might have just been executed. This is achieved by defining the mapping between the steps of a particular careflow to the states of the ISM in an Action archetype. When each Action corresponding to a particular Instruction Activity is performed, it will be known both which careflow step it corresponds to and which ISM state the Activity is now in. The following table provides an example of the mapping for a UK GP medication order workflow.</p>
 </div>
@@ -3553,7 +3573,7 @@ EXPIRED
 </div>
 </div>
 <div class="sect4">
-<h5 id="_relationship_to_archetypes"><a class="anchor" href="#_relationship_to_archetypes"></a>8.2.5.7. Relationship to Archetypes</h5>
+<h5 id="_relationship_to_archetypes"><a class="anchor" href="#_relationship_to_archetypes"></a>8.2.5.8. Relationship to Archetypes</h5>
 <div class="paragraph">
 <p>Much of the semantics of particular Instructions and Actions derive from archetypes. Currently, archetypes are used to define two groups of Instruction semantics. The first is the descriptions of activities that are defined in Instructions (<code>ACTIVITY</code>.<code><em>description</em></code>) and executed in Actions (<code>ACTION</code>.<code><em>description</em></code>). These descriptions are always of the same form for any given Instruction, and it is highly desirable to have the same archetype component for both. An example is where the description is of a medication, commonly consisting of a tree or list of ten or more elements describing the drug, its name, form, dose, route and so on. The same information structure is needed in the Instruction, where it defines what is to be administered, and in the Action, where it describes what has been administered. In any particular instance, there may be small differences in what was administered (e.g. dose or route are modified) even though the archetype model will be the same for both.</p>
 </div>
@@ -3564,7 +3584,7 @@ EXPIRED
 <div class="content">
 <img src="diagrams/instruction_and_action_archetypes.png" alt="instruction and action archetypes" width="70%">
 </div>
-<div class="title">Figure 24. Instruction and Action Archetypes</div>
+<div class="title">Figure 25. Instruction and Action Archetypes</div>
 </div>
 <div class="paragraph">
 <p>The second category of archetypable semantics is the correspondence between steps in a healthcare business process and the standard instruction state machine, as described above. This mapping is an archetype of the <code><em>ism_transition</em></code> attribute of an <code>ACTION</code> attribute, and therefore defines part of the <code>ACTION</code> archetype. The figure <a href="#instruction_and_action_archetypes">Instruction and Action Archetypes</a> shows how logical archetype elements in the archetyped editor environment corresponds to the resulting archetypes.</p>
@@ -4058,7 +4078,20 @@ The data of the Entry; modelled in archetypes.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>timing</strong>: <code>DV_PARSABLE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Timing of the activity, in the form of a parsable string, such as an HL7 GTS or ISO8601 string. May be omitted in cases where unavailable, e.g. imported legacy data; in such cases, the <code>INSTRUCTION.<em>narrative</em></code> should carry text that indicates the timing of its <code><em>activities</em></code>.</p>
+<p>Timing of the activity, in the form of a parsable string. If used, the preferred syntax is ISO8601 'R' format, but other formats may be used including HL7 GTS.</p>
+</div>
+<div class="paragraph">
+<p>May be omitted if:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>timing is represented structurally in the <code><em>description</em></code> attribute (e.g. via archetyped elements), or</p>
+</li>
+<li>
+<p>unavailable, e.g. imported legacy data; in such cases, the <code>INSTRUCTION.<em>narrative</em></code> should carry text that indicates the timing of its <code><em>activities</em></code>.</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -4309,7 +4342,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="content">
 <img src="diagrams/periodic_series.png" alt="periodic series" width="80%">
 </div>
-<div class="title">Figure 25. Periodic series instance structure</div>
+<div class="title">Figure 26. Periodic series instance structure</div>
 </div>
 </div>
 <div class="sect4">
@@ -4321,7 +4354,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="content">
 <img src="diagrams/BP_measurement.png" alt="BP measurement" width="70%">
 </div>
-<div class="title">Figure 26. Blood Pressure Measurement Observation</div>
+<div class="title">Figure 27. Blood Pressure Measurement Observation</div>
 </div>
 </div>
 <div class="sect4">
@@ -4355,7 +4388,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="content">
 <img src="diagrams/OGTT_structure.png" alt="OGTT structure" width="80%">
 </div>
-<div class="title">Figure 27. OGTT instance structure</div>
+<div class="title">Figure 28. OGTT instance structure</div>
 </div>
 </div>
 </div>
@@ -4370,7 +4403,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="content">
 <img src="diagrams/partial_asthma_plan.png" alt="partial asthma plan" width="80%">
 </div>
-<div class="title">Figure 28. Partial Asthma Management Plan</div>
+<div class="title">Figure 29. Partial Asthma Management Plan</div>
 </div>
 </div>
 </div>
@@ -4395,7 +4428,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="content">
 <img src="diagrams/chained_medication_order.png" alt="chained medication order" width="80%">
 </div>
-<div class="title">Figure 29. Chained medication order</div>
+<div class="title">Figure 30. Chained medication order</div>
 </div>
 </div>
 <div class="sect4">
@@ -4423,7 +4456,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="content">
 <img src="diagrams/multi_drug_therapy_instruction.png" alt="multi drug therapy instruction" width="80%">
 </div>
-<div class="title">Figure 30. Multi-drug therapy Instruction</div>
+<div class="title">Figure 31. Multi-drug therapy Instruction</div>
 </div>
 </div>
 </div>
