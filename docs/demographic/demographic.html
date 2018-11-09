@@ -42,17 +42,18 @@
 <li><a href="#_class_definitions">2.2. Class Definitions</a>
 <ul class="sectlevel3">
 <li><a href="#_party_class">2.2.1. PARTY Class</a></li>
-<li><a href="#_role_class">2.2.2. ROLE Class</a></li>
-<li><a href="#_party_relationship_class">2.2.3. PARTY_RELATIONSHIP Class</a></li>
-<li><a href="#_party_identity_class">2.2.4. PARTY_IDENTITY Class</a></li>
-<li><a href="#_contact_class">2.2.5. CONTACT Class</a></li>
-<li><a href="#_address_class">2.2.6. ADDRESS Class</a></li>
-<li><a href="#_capability_class">2.2.7. CAPABILITY Class</a></li>
-<li><a href="#_actor_class">2.2.8. ACTOR Class</a></li>
-<li><a href="#_person_class">2.2.9. PERSON Class</a></li>
-<li><a href="#_organisation_class">2.2.10. ORGANISATION Class</a></li>
-<li><a href="#_group_class">2.2.11. GROUP Class</a></li>
-<li><a href="#_agent_class">2.2.12. AGENT Class</a></li>
+<li><a href="#_versioned_party_class">2.2.2. VERSIONED_PARTY Class</a></li>
+<li><a href="#_role_class">2.2.3. ROLE Class</a></li>
+<li><a href="#_party_relationship_class">2.2.4. PARTY_RELATIONSHIP Class</a></li>
+<li><a href="#_party_identity_class">2.2.5. PARTY_IDENTITY Class</a></li>
+<li><a href="#_contact_class">2.2.6. CONTACT Class</a></li>
+<li><a href="#_address_class">2.2.7. ADDRESS Class</a></li>
+<li><a href="#_capability_class">2.2.8. CAPABILITY Class</a></li>
+<li><a href="#_actor_class">2.2.9. ACTOR Class</a></li>
+<li><a href="#_person_class">2.2.10. PERSON Class</a></li>
+<li><a href="#_organisation_class">2.2.11. ORGANISATION Class</a></li>
+<li><a href="#_group_class">2.2.12. GROUP Class</a></li>
+<li><a href="#_agent_class">2.2.13. AGENT Class</a></li>
 </ul>
 </li>
 <li><a href="#_instance_examples">2.3. Instance Examples</a>
@@ -193,6 +194,13 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-76">SPECRM-76</a>: Add <code>VERSIONED_PARTY</code> class definition to demographics specs.
+ <a href="https://openehr.atlassian.net/browse/SPECRM-75">SPECRM-75</a>: Fix description of <code>PARTY.<em>relationships</em></code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Nov 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-46">SPECRM-46</a>: Fix RM Release 1.0.3 typos and minor documentary errors: correct type of <code>PARTY.<em>type</em></code> to <code>DV_TEXT</code>. (<a href="https://openehr.atlassian.net/browse/SPECRM-176">SPECPR-176</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>04 Apr 2016</p></td>
@@ -709,7 +717,31 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_role_class"><a class="anchor" href="#_role_class"></a>2.2.2. ROLE Class</h4>
+<h4 id="_versioned_party_class"><a class="anchor" href="#_versioned_party_class"></a>2.2.2. VERSIONED_PARTY Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>VERSIONED_PARTY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>VERSIONED_OBJECT</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_role_class"><a class="anchor" href="#_role_class"></a>2.2.3. ROLE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -767,7 +799,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_party_relationship_class"><a class="anchor" href="#_party_relationship_class"></a>2.2.3. PARTY_RELATIONSHIP Class</h4>
+<h4 id="_party_relationship_class"><a class="anchor" href="#_party_relationship_class"></a>2.2.4. PARTY_RELATIONSHIP Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -856,7 +888,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_party_identity_class"><a class="anchor" href="#_party_identity_class"></a>2.2.4. PARTY_IDENTITY Class</h4>
+<h4 id="_party_identity_class"><a class="anchor" href="#_party_identity_class"></a>2.2.5. PARTY_IDENTITY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -912,7 +944,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_contact_class"><a class="anchor" href="#_contact_class"></a>2.2.5. CONTACT Class</h4>
+<h4 id="_contact_class"><a class="anchor" href="#_contact_class"></a>2.2.6. CONTACT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -975,7 +1007,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_address_class"><a class="anchor" href="#_address_class"></a>2.2.6. ADDRESS Class</h4>
+<h4 id="_address_class"><a class="anchor" href="#_address_class"></a>2.2.7. ADDRESS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1029,7 +1061,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_capability_class"><a class="anchor" href="#_capability_class"></a>2.2.7. CAPABILITY Class</h4>
+<h4 id="_capability_class"><a class="anchor" href="#_capability_class"></a>2.2.8. CAPABILITY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1074,7 +1106,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_actor_class"><a class="anchor" href="#_actor_class"></a>2.2.8. ACTOR Class</h4>
+<h4 id="_actor_class"><a class="anchor" href="#_actor_class"></a>2.2.9. ACTOR Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1119,7 +1151,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_person_class"><a class="anchor" href="#_person_class"></a>2.2.9. PERSON Class</h4>
+<h4 id="_person_class"><a class="anchor" href="#_person_class"></a>2.2.10. PERSON Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1145,7 +1177,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_organisation_class"><a class="anchor" href="#_organisation_class"></a>2.2.10. ORGANISATION Class</h4>
+<h4 id="_organisation_class"><a class="anchor" href="#_organisation_class"></a>2.2.11. ORGANISATION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1171,7 +1203,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_group_class"><a class="anchor" href="#_group_class"></a>2.2.11. GROUP Class</h4>
+<h4 id="_group_class"><a class="anchor" href="#_group_class"></a>2.2.12. GROUP Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1197,7 +1229,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 </table>
 </div>
 <div class="sect3">
-<h4 id="_agent_class"><a class="anchor" href="#_agent_class"></a>2.2.12. AGENT Class</h4>
+<h4 id="_agent_class"><a class="anchor" href="#_agent_class"></a>2.2.13. AGENT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
