@@ -202,7 +202,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.0.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-76">SPECRM-76</a>: Add <code>VERSIONED_PARTY</code> class definition to demographics specs.<br>
  <a href="https://openehr.atlassian.net/browse/SPECRM-75">SPECRM-75</a>: Fix description of <code>PARTY.<em>relationships</em></code> (See <a href="https://openehr.atlassian.net/browse/SPECRM-104">SPECPR-104</a>).
- <a href="https://openehr.atlassian.net/browse/SPECRM-82">SPECRM-82</a>: Fix incorrect redefinition of <code>PARTY.<em>uid</em></code> in UML (from RM 1.0.2 UML conversion?); revert to inherited attribute (Fixes <a href="https://openehr.atlassian.net/browse/SPECPR-282">SPECPR-282</a>).</p></td>
+ <a href="https://openehr.atlassian.net/browse/SPECRM-82">SPECRM-82</a>: Remove redefinition of <code>PARTY.<em>uid</em></code> in UML; make <code>ACTOR.<em>languages</em></code> and <code><em>roles</em></code> 0 to many (fixes <a href="https://openehr.atlassian.net/browse/SPECPR-282">SPECPR-282</a>, <a href="https://openehr.atlassian.net/browse/SPECPR-283">SPECPR-283</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>13 Nov 2018</p></td>
 </tr>
@@ -778,7 +778,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Static type formed by binding <code>VERSIONED_OBJECT&lt;T&gt;</code> to <code>PARTY</code>.</p>
+<p>Static type formed by binding generic parameter of <code>VERSIONED_OBJECT&lt;T&gt;</code> to <code>PARTY</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1184,14 +1184,14 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages</strong>: <code>List&lt;DV_TEXT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Languages which can be used to communicate with this actor, in preferred order of use (if known, else order irrelevant).</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>roles</strong>: <code>List&lt;PARTY_REF&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Identifiers of the Version container for each Role played by this Party.</p>
