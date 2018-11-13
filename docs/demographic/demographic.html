@@ -19,7 +19,13 @@
 <li><a href="#_demographic_information_model">Demographic Information Model</a>
 <ul class="sectlevel1">
 <li><a href="#_amendment_record">Amendment Record</a></li>
-<li><a href="#_acknowledgements">Acknowledgements</a></li>
+<li><a href="#_acknowledgements">Acknowledgements</a>
+<ul class="sectlevel2">
+<li><a href="#_editor">Editor</a></li>
+<li><a href="#_contributors">Contributors</a></li>
+<li><a href="#_support">Support</a></li>
+</ul>
+</li>
 <li><a href="#_preface">1. Preface</a>
 <ul class="sectlevel2">
 <li><a href="#_purpose">1.1. Purpose</a></li>
@@ -195,9 +201,10 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.0.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-76">SPECRM-76</a>: Add <code>VERSIONED_PARTY</code> class definition to demographics specs.<br>
- <a href="https://openehr.atlassian.net/browse/SPECRM-75">SPECRM-75</a>: Fix description of <code>PARTY.<em>relationships</em></code> (See <a href="https://openehr.atlassian.net/browse/SPECRM-104">SPECPR-104</a>).</p></td>
+ <a href="https://openehr.atlassian.net/browse/SPECRM-75">SPECRM-75</a>: Fix description of <code>PARTY.<em>relationships</em></code> (See <a href="https://openehr.atlassian.net/browse/SPECRM-104">SPECPR-104</a>).
+ <a href="https://openehr.atlassian.net/browse/SPECRM-82">SPECRM-82</a>: Fix incorrect redefinition of <code>PARTY.<em>uid</em></code> in UML (from RM 1.0.2 UML conversion?); revert to inherited attribute (Fixes <a href="https://openehr.atlassian.net/browse/SPECPR-282">SPECPR-282</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Nov 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>13 Nov 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -375,6 +382,52 @@
 <div class="sect1">
 <h2 id="_acknowledgements">Acknowledgements</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_editor">Editor</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Thomas Beale, Ars Semantica (UK); openEHR Foundation Management Board.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_contributors">Contributors</h3>
+<div class="paragraph">
+<p>This specification benefited from wide formal and informal input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people for their contributions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Rong Chen MD, PhD, Cambio Healthcare Systems, Sweden</p>
+</li>
+<li>
+<p>Heath Frankel, CTO Ocean Informatics, Australia</p>
+</li>
+<li>
+<p>Sam Heard MD, Ocean Informatics, Australia</p>
+</li>
+<li>
+<p>Sebastian Iancu, Architect, Code24, Netherlands</p>
+</li>
+<li>
+<p>Dipak Kalra MD, PhD, Professor Health Informatics, CHIME, UCL, UK</p>
+</li>
+<li>
+<p>David Lloyd (ret), CHIME, UCL, UK</p>
+</li>
+<li>
+<p>Chunlan Ma PhD, MD, Ocean Informatics, Australia</p>
+</li>
+<li>
+<p>Zar zar Tun, DSTC, Australia</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_support">Support</h3>
 <div class="paragraph">
 <p>The work reported in this paper has been funded in by the following organisations:</p>
 </div>
@@ -393,6 +446,7 @@
 </div>
 <div class="paragraph">
 <p>Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL, who provided a vision and collegial working environment ever since the days of GEHR (1992).</p>
+</div>
 </div>
 </div>
 </div>
@@ -616,7 +670,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Ancestor of all party types, including real world entities and their roles. A party is any entity which can participate in an activity. The name attribute inherited from LOCATABLE is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the identities attribute, not the name attribute).</p>
+<p>Ancestor of all Party types, including real world entities and their roles. A Party is any entity which can participate in an activity. The <code><em>name</em></code> attribute inherited from <code>LOCATABLE</code> is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the <code><em>identities</em></code> attribute, not the <code><em>name</em></code> attribute).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -646,29 +700,21 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>ITEM_STRUCTURE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>All other details for this party.</p>
+<p>All other details for this Party.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>reverse_relationships</strong>: <code>List&lt;LOCATABLE_REF&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Relationships in which this role takes part as target.</p>
+<p>References to relationships in which this Party takes part as target.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relationships</strong>: <code>List&lt;PARTY_RELATIONSHIP&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Relationships in which this role takes part as source.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
-(redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>HIER_OBJECT_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Identifier of this Party.</p>
+<p>Relationships in which this Party takes part as source.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -680,7 +726,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Type of party, such as  PERSON ,  ORGANISATION , etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited name attribute.</p>
+<p>Type of party, such as  <code>PERSON</code>,  <code>ORGANISATION</code>, etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited <code><em>name</em></code> attribute.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -756,7 +802,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Generic description of a role performed by an actor. The role corresponds to a competency of the party. Roles are used to define the responsibilities undertaken by a party for a purpose. Roles should have credentials qualifying the performer to perform the role.</p>
+<p>Generic description of a role performed by an Actor. The role corresponds to a competency of the Party. Roles are used to define the responsibilities undertaken by a Party for a purpose. Roles should have credentials qualifying the performer to perform the role.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -903,7 +949,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>An identity  owned  by a PARTY, such as a person name or company name, and which is used by the party to identify itself. Actual structure is archetyped.</p>
+<p>An identity  owned  by a Party, such as a person name or company name, and which is used by the Party to identify itself. Actual structure is archetyped.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -919,7 +965,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>ITEM_STRUCTURE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The value of the indentity. This will often taken the form of a parsable string or a small structure of strings.</p>
+<p>The value of the identity. This will often taken the form of a parseable string or a small structure of strings.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -931,7 +977,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Purpose of identity, e.g.  legal ,  stagename ,  nickname ,  tribal name ,  trading name . Taken from value of inherited name attribute.</p>
+<p>Purpose of identity, e.g. legal ,  stagename,  nickname,  tribal name,  trading name. Taken from value of inherited <code><em>name</em></code> attribute.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -959,7 +1005,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Description of a means of contact of a party. Actual structure is archetyped.</p>
+<p>Description of a means of contact of a Party. Actual structure is archetyped.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -975,7 +1021,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>addresses</strong>: <code>List&lt;ADDRESS&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>A set of address alternatives for this purpose and time validity.</p>
+<p>A set of address alternatives for this contact purpose and time validity combination.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -994,7 +1040,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Purpose for which this contact is used, e.g.  mail ,  daytime phone , etc. Taken from value of inherited name attribute.</p>
+<p>Purpose for which this contact is used, e.g. mail,  daytime phone, etc. Taken from value of inherited <code><em>name</em></code> attribute.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1037,7 +1083,9 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>ITEM_STRUCTURE</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Archetypable structured address.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1048,7 +1096,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Type of address, e.g.  electronic ,  locality . Taken from value of inherited name attribute.</p>
+<p>Type of address, e.g. electronic,  locality. Taken from value of inherited <code><em>name</em></code> attribute.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1144,7 +1192,7 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>roles</strong>: <code>List&lt;PARTY_REF&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Identifiers of the Version container for each Role played by this party.</p>
+<p>Identifiers of the Version container for each Role played by this Party.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1611,7 +1659,7 @@ associated credentials which document its official nature within the healthcare 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-12 13:45:54 GMT
+Last updated 2018-11-13 11:19:30 GMT
 </div>
 </div>
 </body>

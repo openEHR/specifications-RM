@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*_PARTY (abstract)_*
 
 h|*Description*
-2+a|Ancestor of all party types, including real world entities and their roles. A party is any entity which can participate in an activity. The name attribute inherited from LOCATABLE is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the identities attribute, not the name attribute).
+2+a|Ancestor of all Party types, including real world entities and their roles. A Party is any entity which can participate in an activity. The `_name_` attribute inherited from `LOCATABLE` is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the `_identities_` attribute, not the `_name_` attribute).
 
 h|*Inherit*
 2+|`LOCATABLE`
@@ -25,27 +25,22 @@ a|Contacts for this party.
 
 h|*0..1*
 |*details*: `ITEM_STRUCTURE`
-a|All other details for this party.
+a|All other details for this Party.
 
 h|*0..1*
 |*reverse_relationships*: `List<LOCATABLE_REF>`
-a|Relationships in which this role takes part as target.
+a|References to relationships in which this Party takes part as target.
 
 h|*0..1*
 |*relationships*: `List<PARTY_RELATIONSHIP>`
-a|Relationships in which this role takes part as source.
-
-h|*1..1 +
-(redefined)*
-|*uid*: `HIER_OBJECT_ID`
-a|Identifier of this Party.
+a|Relationships in which this Party takes part as source.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|
 |*type* (): `DV_TEXT`
-a|Type of party, such as  PERSON ,  ORGANISATION , etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited name attribute.
+a|Type of party, such as  `PERSON`,  `ORGANISATION`, etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited `_name_` attribute.
 
 h|*Invariants*
 2+a|*_Type_valid_*: `type = name`
