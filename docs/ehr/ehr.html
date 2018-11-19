@@ -1970,21 +1970,21 @@ is is strongly recommended that a UUID always be used for this field.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contributions</strong>: <code>List&lt;OBJECT_REF&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>List of contributions causing changes to this EHR. Each contribution contains a list of versions, which may include references to any number of VERSION instances, i.e. items of type VERSIONED_COMPOSITION and VERSIONED_FOLDER.</p>
+<p>List of contributions causing changes to this EHR. Each contribution contains a list of versions, which may include references to any number of <code>VERSION</code> instances, i.e. items of type <code>VERSIONED_COMPOSITION</code> and <code>VERSIONED_FOLDER</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ehr_status</strong>: <code>OBJECT_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Reference to EHR_STATUS object for this EHR.</p>
+<p>Reference to <code>EHR_STATUS</code> object for this EHR.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ehr_access</strong>: <code>OBJECT_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Reference to EHR_ACCESS object for this EHR.</p>
+<p>Reference to <code>EHR_ACCESS</code> object for this EHR.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2099,7 +2099,7 @@ is is strongly recommended that a UUID always be used for this field.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>settings</strong>: <code>ACCESS_CONTROL_SETTINGS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Access control settings for the EHR. Instance is a subtype of the type ACCESS_CONTROL_SETTINGS, allowing for the use of different access control schemes.</p>
+<p>Access control settings for the EHR. Instance is a subtype of the type <code>ACCESS_CONTROL_SETTINGS</code>, allowing for the use of different access control schemes.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2187,7 +2187,7 @@ is is strongly recommended that a UUID always be used for this field.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subject</strong>: <code>PARTY_SELF</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The subject of this EHR. The external_ref attribute can be used to contain a direct reference to the subject in a demographic or identity service. Alternatively, the association between patients and their records may be done elsewhere for security reasons.</p>
+<p>The subject of this EHR. The <code><em>external_ref</em></code> attribute can be used to contain a direct reference to the subject in a demographic or identity service. Alternatively, the association between patients and their records may be done elsewhere for security reasons.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2201,14 +2201,14 @@ is is strongly recommended that a UUID always be used for this field.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_modifiable</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this EHR is allowed to be written to. Note that the EHR_STATUS object is special and can always be written to.</p>
+<p>True if this EHR is allowed to be written to. Note that the <code>EHR_STATUS</code> object is special and can always be written to.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>ITEM_STRUCTURE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Any other details of the EHR summary object, in the form of an archetyped Item_structure.</p>
+<p>Any other details of the EHR summary object, in the form of an archetyped <code>ITEM_STRUCTURE</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2236,7 +2236,7 @@ is is strongly recommended that a UUID always be used for this field.
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Version-controlled composition abstraction, defined by inheriting VERSIONED_OBJECT&lt;COMPOSITION&gt;.</p>
+<p>Version-controlled composition abstraction, defined by inheriting <code>VERSIONED_OBJECT&lt;COMPOSITION&gt;</code>.</p>
 </div></div></td>
 </tr>
 <tr>
