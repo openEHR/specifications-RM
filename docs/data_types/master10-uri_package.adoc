@@ -27,12 +27,14 @@ even within the W3C), and can be used to specify the location of any information
 its type, location or storage method, as long as a URI "scheme" exists for that type of information.
 
 There is an additional requirement for a kind of URI that can point at an EHR data item, either inside
-the same EHR containing the link, or in another EHR. This is the basis of implementing the `LINK`
-type.
+the same EHR containing the link, or in another EHR. This is the basis of implementing logical references
+in the EHR and between EHRs.
 
 === Design
 
 A simple design approach is used whereby a URI is represented as a String, and appropriate functions are defined to extract the various parts according to the syntax of URIs defined by Tim Berners-Lee ({rfc3986}[IETF RFC 3986]). An EHR specific subtype is defined, whose scheme is 'ehr', and which contains further attributes enabling the instances of the type to record what kind of object they are referring to.
+
+So-called 'plain-text URIs' that contain RFC-3986 forbidden characters such as spaces etc, are allowed on the basis of human readability, but must be RFC-3986 encoded prior to use in e.g. REST APIs or other contexts relying on machine-level conformance.
 
 == Definitions
 
@@ -50,12 +52,13 @@ include::{uml_export_dir}/classes/dv_ehr_uri.adoc[]
 
 === DV_EHR_URI Syntax
 
-The syntax of a `DV_EHR_URI` is an openEHR path, inside the 'ehr' URI scheme-space, and is of the form:
+The syntax of a `DV_EHR_URI` is an openEHR path, inside the 'ehr' URI scheme-space, and is one of the forms:
 
 ----
 ehr://system_id/ehr_id/top_level_structure_locator/path_inside_top_level_structure
+ehr:/ehr_id
+ehr:/ehr_id/top_level_structure_locator
+ehr:/ehr_id/top_level_structure_locator/path_inside_top_level_structure 
 ----
 
-:overview_ref: http://www.openehr.org/releases/BASE/{base_release}/architecture_overview.html#_ehr_uris
-
-The syntax is described in more detail in the {overview_ref}[openEHR Architecture Overview]. `DV_EHR_URIs` are used as a mechanism for referencing in the EHR, ensuring readability by humans, as well as validity when extracts are transmitted elsewhere: even if the target of a path is not present, the path can be used to locate the missing item on demand.
+The syntax is described in more detail in the {openehr_overview}#_ehr_uris[openEHR Architecture Overview]. `DV_EHR_URIs` are used as a mechanism for referencing in the EHR, ensuring readability by humans, as well as validity when extracts are transmitted elsewhere: even if the target of a path is not present, the path can be used to locate the missing item on demand.
