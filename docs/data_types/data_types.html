@@ -407,6 +407,12 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-72">SPECRM-72</a>: Add guidance on date/time formatting recommending extended ISO8601 format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B Lah</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECPUB-3">SPECPUB-3</a>: Correct UML coversion errors: revert <code>DV_MULTIMEDIA.<em>data</em></code> to <code>Array&lt;Byte&gt;</code>; revert <code><em>integrity_check_algorithm</em></code> multiplicity to <code>[0..1]</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">K Lundberg</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -4212,7 +4218,7 @@ applications or sources. This approach may require a substantial modelling effor
 <div class="paragraph">
 <p>Algorithms for conversion between the Egyptian, Armenian, Khwarizmian, Persian, Ethiopian, Coptic,
 Republican, Macedonian, Syrian, Julian Roman, Gregorian, Islamic A, Islamic B, Baha&#8217;i and
-Saka calendars are described by Richards <a href="#Richards_1998">[Richards_1998]</a> and are based on the work of D. A. Hatcher (1986).</p>
+Saka calendars are described by  <a href="#Richards_1998">Richards</a> and are based on the work of D. A. Hatcher (1986).</p>
 </div>
 </div>
 <div class="sect4">
@@ -4224,9 +4230,21 @@ syntax, and covers not only all four variants of fully-specified date/time descr
 the partial varieties. Using a single string attribute significantly simplifies persistence as well as mapping
 to XML-based formalisms, which use a mostly ISO 8601 compliant date/time representation.
 The ISO 8601 semantics assumed by EHR are defined in classes found in the classes
-<code>ISO8601_DATE</code>, <code>ISO8601_TIME</code>, <code>ISO8601_DATE_TIME</code>, <code>ISO8601_DURATION</code>, from the
-rm.support.assumed_types package. These classes are inherited into the corresponding classes
+<code>Iso8601_date</code>, <code>Iso8601_time</code>, <code>Iso8601_date_time</code>, <code>Iso8601_duration</code>, from the
+<a href="/releases/BASE/latest/foundation_types.html#_time_types"><code>base.foundation_types.time</code> package</a>. These classes are inherited into the corresponding classes
 defined below.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+it is strongly recommended that where possible, the <em>extended</em> form of the ISO 8601 date/time syntax is used, i.e. the use of dashes in dates (e.g. <code>2018-03-14</code> rather than <code>20180314</code>) and colons for times (i.e. <code>14:24:00</code> instead of <code>142400</code>). This greatly aids human readability, and reduces the need for special date/time display rendering.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
