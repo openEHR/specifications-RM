@@ -87,7 +87,7 @@
 <li><a href="#_ehr_creation_semantics">4.4. EHR Creation Semantics</a>
 <ul class="sectlevel3">
 <li><a href="#_ehr_identifier_allocation">4.4.1. EHR Identifier Allocation</a></li>
-<li><a href="#_creation">4.4.2. Creation</a></li>
+<li><a href="#_ehr_creation">4.4.2. EHR Creation</a></li>
 </ul>
 </li>
 <li><a href="#_time_in_the_ehr">4.5. Time in the EHR</a></li>
@@ -353,7 +353,14 @@
  <a href="https://openehr.atlassian.net/browse/SPECRM-68">SPECRM-68</a>. Improve guidance on use of <code>ACTIVITY.<em>timing</em></code> (Fixes <a href="https://openehr.atlassian.net/browse/SPECPR-242">SPECPR-242</a>.<br>
  <a href="https://openehr.atlassian.net/browse/SPECRM-69">SPECRM-69</a>. Add missing ISM transitions and improve documentation of states (Fixes <a href="https://openehr.atlassian.net/browse/SPECPR-203">SPECPR-203</a>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Nov 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>26 Nov 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openehr.atlassian.net/browse/SPECRM-80">SPECRM-80</a>. Improve description of <code><em>system_id</em></code> field in <code>EHR</code>, <code>AUDIT_DETAILS</code> and <code>FEEDER_AUDIT_DETAILS</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1547,6 +1554,9 @@
 <p>The root EHR object records three pieces of information that are immutable after creation: the identifier of the system in which the EHR was created, the identifier of the EHR (distinct from any identifier for the subject of care), and the time of creation of the EHR. Otherwise, it simply acts as an access point for the component parts of the EHR.</p>
 </div>
 <div class="paragraph">
+<p>The <code><em>system_id</em></code> attribute is used to record the identifier of the logical EHR repository to which the data containing the audit are committed. WHat constitutes a 'system' in this context is described in more detail in the <a href="/releases/BASE/latest/architecture_overview.html#_the_ehr_system">Architecture Overview</a>.</p>
+</div>
+<div class="paragraph">
 <p>References rather than containment by value are used for the relationship between the EHR and <code>VERSIONED_XXX</code> objects, reflecting the vast majority of retrieval scenarios in which only selected (usually recent) items are needed. Containment by value would lead to systems which retrieved all <code>VERSIONED_XXX</code> objects every time the EHR object was accessed.</p>
 </div>
 </div>
@@ -1788,25 +1798,41 @@
 <div class="paragraph">
 <p>The following scenarios for creating new <code>COMPOSITION</code> versions have been identified as follows.</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Case 0</dt>
-<dd>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Case-0
+</td>
+<td class="hdlist2">
 <p>information is authored locally, causing the creation of a new <code>VERSION&lt;COMPOSITION&gt;</code>. If this is the first version, a new <code>VERSIONED_COMPOSITION</code> will be created first.</p>
-</dd>
-<dt class="hdlist1">Case 1</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Case-1
+</td>
+<td class="hdlist2">
 <p>information is modified locally, such as for the correction of a wrongly entered datum in a composition. This causes the creation of a new <code>VERSION&lt;COMPOSITION&gt;</code> in an existing <code>VERSIONED_COMPOSITION</code>, in which the <code>AUDIT_DETAILS</code>.<code><em>change_type</em></code> is set to "correction".</p>
-</dd>
-<dt class="hdlist1">Case 2</dt>
-<dd>
-<p>information received from a feeder system, e.g. a test result, which will be converted and used to create a new <code>VERSION&lt;COMPOSITION&gt;</code>. This kind of acquisition could be done automatically. If the receiver system needs to store a copy of the original feeder system audit details, it writes it into the <code>COMPOSITION</code>.<code><em>feeder_audit</em></code>.</p>
-</dd>
-<dt class="hdlist1">Case 3</dt>
-<dd>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Case-2
+</td>
+<td class="hdlist2">
+<p>information received from a feeder system, e.g. a test result, which will be converted and used to create a new <code>VERSION&lt;COMPOSITION&gt;</code>. This kind of acquisition could be done automatically. If the receiver system needs to store a copy of the original feeder system audit details, it writes it into the <code>COMPOSITION.<em>feeder_audit</em></code>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Case-3
+</td>
+<td class="hdlist2">
 <p>a <code>VERSION&lt;COMPOSITION&gt;</code> (such as a family history) received as part of an <code>EHR_EXTRACT</code> from another openEHR system, which will be used by a local author to create a new <code>COMPOSITION</code> that includes some content chosen from the received item. In this case, the new <code>VERSION&lt;COMPOSITION&gt;</code> is considered as a locally authored one, in which some content has been obtained from elsewhere. If it is the first version, a <code>VERSIONED_COMPOSITION</code> is first created. The <code>AUDIT_DETAILS</code> documents the committal of this content, and the clinician may choose to record some details about it in the audit description.</p>
-</dd>
-</dl>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>In summary, the <code>AUDIT_DETAILS</code> is always used to document the addition of information locally, regardless of where it has come from. If there is a need to record original audit details, they become part of the content of the versioned object.</p>
@@ -1828,7 +1854,7 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_creation"><a class="anchor" href="#_creation"></a>4.4.2. Creation</h4>
+<h4 id="_ehr_creation"><a class="anchor" href="#_ehr_creation"></a>4.4.2. EHR Creation</h4>
 <div class="paragraph">
 <p>When an EHR is created, the result should be a root EHR object, an EHR Status object, and an EHR Access object, plus any other house-keeping information the versioning implementation requires. In a normal implementation, the EHR Status and EHR Access objects would be created and committed in a Contribution, just as any Composition would be. The EHR Status object has a special status in the EHR, indicating whether the EHR should be included in querying, whether it is modifiable, and by implication, whether it is active. Flags might be set to indicate that it is test record, or for educational or training purposes. The initial creation operation has to supply sufficient parameters for creation of these two objects, including:</p>
 </div>
@@ -1944,7 +1970,7 @@ is is strongly recommended that a UUID always be used for the <code><em>ehr_id</
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>system_id</strong>: <code>HIER_OBJECT_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The id of the EHR repository on which this EHR was created.</p>
+<p>The identifier of the logical EHR management system in which this EHR was created.</p>
 </div></div></td>
 </tr>
 <tr>
