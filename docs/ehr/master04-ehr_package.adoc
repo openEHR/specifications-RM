@@ -6,7 +6,7 @@ The openEHR EHR is structured according to a relatively simple model. A central 
 
 [.text-center]
 .High-level EHR structure
-image::diagrams/high_level_ehr_structure.png[id=high_level_ehr_structure, align="center", width=70%]
+image::{diagrams_uri}/high_level_ehr_structure.png[id=high_level_ehr_structure, align="center", width=70%]
 
 In this figure, the parts of the EHR are as follows:
 
@@ -21,7 +21,7 @@ The `ehr` package is illustrated in the figure <<rm_ehr>> below. The classes hav
 
 [.text-center]
 .rm.ehr package
-image::{uml_export_dir}/diagrams/RM-ehr.svg[id=rm_ehr, align="center"]
+image::{uml_diagrams_uri}/RM-ehr.svg[id=rm_ehr, align="center"]
 
 == The Parts of the EHR
 
@@ -65,7 +65,7 @@ Events record what happens during healthcare system events with or for the patie
 
 [.text-center]
 .Basic event-oriented EHR
-image::diagrams/basic_event_oriented_ehr.png[id=basic_event_oriented_ehr, align="center", width=80%]
+image::{diagrams_uri}/basic_event_oriented_ehr.png[id=basic_event_oriented_ehr, align="center", width=80%]
 
 An important job of the event Composition is to record not only the data from the healthcare event, such as observations on the patient, but also to record the event context information, i.e. the who, when, where and why of the event. For this reason, a specific class representing clinical context is associated with event compositions in the formal model.
 
@@ -89,7 +89,7 @@ Over time, the number of event Compositions is likely to far outstrip the number
 
 [.text-center]
 .An EHR containing Event and Persistent Compositions
-image::diagrams/event_persistent_ehr.png[id=event_persistent_ehr, align="center", width=80%]
+image::{diagrams_uri}/event_persistent_ehr.png[id=event_persistent_ehr, align="center", width=80%]
 
 In any clinical session, an event composition will be created, and in many cases, persistent compositions will be modified. How this works is described below in the section <<Change Control in the EHR>>.
 
@@ -106,7 +106,7 @@ A simple structure showing Folders referencing Compositions is shown below, in w
 
 [.text-center]
 .Using Folders to Group Compositions
-image::diagrams/folders_for_grouping.png[id=folders_for_grouping, align="center", width=80%]
+image::{diagrams_uri}/folders_for_grouping.png[id=folders_for_grouping, align="center", width=80%]
 
 A justification for these particular categories is based on patterns of access. The persistent category consists of a dozen or so compositions described above, and which are continually required by querying (particularly lifestyle, current problems and medications). The event category consists of clinical data whose relevancy fades fairly quickly, including most measurements made on the patients or in pathology. Compositions in this category are thus potentially very numerous over the patient’s lifetime, but of decreasing relevance to the clinical care of the patient in time; it therefore makes sense to separate them from the persistent compositions.
 
@@ -130,7 +130,7 @@ These requirements are satisfied in openEHR via the use of the change control an
 
 [.text-center]
 .Contributions to the EHR
-image::diagrams/ehr_contributions.png[id=ehr_contributions, align="center", width=80%]
+image::{diagrams_uri}/ehr_contributions.png[id=ehr_contributions, align="center", width=80%]
 
 * The first is due to a patient contact, and causes the creation of a new contact composition; it also causes changes to the problem list, current medications and care plan compositions (once again, in a differently designed record, all this information might have been contained in a single event Composition; likewise, it might be been distributed into even more Compositions).
 * The next Contribution is the acquisition of test results from a pathology laboratory.
@@ -148,7 +148,7 @@ The effect of version control on Compositions is visualised in the figure below.
 
 [.text-center]
 .The versioned Composition
-image::diagrams/versioned_compositions.png[id=versioned_compositions, align="center", width=80%]
+image::{diagrams_uri}/versioned_compositions.png[id=versioned_compositions, align="center", width=80%]
 
 The `VERSIONED_COMPOSITION` can be thought of as a kind of smart repository: how it stores successive versions in time is an implementation concern (there are a number of intelligent algorithms available for this sort of thing), but what is important is that its functional interface enables any version to be retrieved, whether it be the latest, the first, or any in between.
 
@@ -202,7 +202,7 @@ There are numerous times recorded in the EHR, at varying levels of granularity. 
 
 [.text-center]
 .Time in the EHR
-image::diagrams/time_in_the_ehr.png[id=time_in_the_ehr, align="center", width=80%]
+image::{diagrams_uri}/time_in_the_ehr.png[id=time_in_the_ehr, align="center", width=80%]
 
 The top part of the figure shows the relationship of times typical for a physical examination at a GP visit. The lower part of the figure shows different relationships common in radiology and microbiology, where the sample (imaging or specimen collection) time can be quite different from the time of assessment and reporting of the sample. The times shown in the above figure have a close correspondence with the contexts described in <<Context Model of Recording>>; they also have (as shown) concrete attributes in the reference model.
 
