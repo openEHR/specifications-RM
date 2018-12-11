@@ -6,11 +6,9 @@ h|*Class*
 2+^h|*DV_TEXT*
 
 h|*Description*
-2+a|A text item, which may contain any amount of legal characters arranged as e.g. words, sentences etc (i.e. one `DV_TEXT` may be more than one word). Visual formatting and hyperlinks may be included.
+2+a|A text item, which may contain any amount of legal characters arranged as e.g. words, sentences etc (i.e. one `DV_TEXT` may be more than one word). Visual formatting and hyperlinks may be included via markdown.
 
-A `DV_TEXT` can be  coded  by adding mappings to it.
-
-Fragments of text, whether coded or not are used on their own as values, or to make up larger tracts of text which may be marked up in some way, eventually going to make up paragraphs.
+A `DV_TEXT` can be coded by adding mappings to it.
 
 h|*Inherit*
 2+|`DATA_VALUE`
@@ -23,15 +21,27 @@ h|*1..1*
 |*value*: `String`
 a|Displayable rendition of the item, regardless of its underlying structure. For `DV_CODED_TEXT`, this is the rubric of the complete term as provided by the terminology service. No carriage returns, line feeds, or other non-printing characters permitted.
 
+If the `_formatting_` field is set, the this field is affected as follows:
+
+* `_formatting_ = "plain"`: plain text
+* `_formatting_ = "plain_no_newlines"`: plain text with newlines
+* `_formatting_ = "commonmark"`: text formatted according to CommonMark specification.
+
 h|*0..1*
 |*hyperlink*: `DV_URI`
-a|Optional link sitting behind a section of plain text or coded term item.
+a|DEPRECATED: use CommonMark-formatted link/text in the `_value_` attribute, and `"commonmark"` as the value of the `_formatting_` field.
+
+Original usage, prior to RM Release 1.0.4: Optional link sitting behind a section of plain text or coded term item.
 
 h|*0..1*
 |*formatting*: `String`
-a|A format string of the form `"name:value; name:value..."` , e.g. `"font-weight : bold; font-family : Arial; font-size : 12pt;"`.
+a|If set, contains one of the following values:
 
-Values taken from W3C CSS2 properties lists  back-ground and font .
+* `"plain"`: use for plain text (same as Void)
+* `"plain_no_newlines"`: use for text containing newlines, but otherwise unformatted
+* `"commonmark"`: use for text formatted according to CommonMark specification.
+
+DEPRECATED usage: A format string of the form `"name:value; name:value..."` , e.g. `"font-weight : bold; font-family : Arial; font-size : 12pt;"`. Values taken from W3C CSS2 properties lists for background and font .
 
 h|*0..1*
 |*mappings*: `List<TERM_MAPPING>`

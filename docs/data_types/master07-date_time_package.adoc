@@ -1,6 +1,7 @@
 = Date Time Package
 
 == Overview
+
 The `data_types.quantity.date_time` package includes three absolute date/time concepts:
 `DV_DATE`, `DV_TIME`, `DV_DATE_TIME`, and a relative concept: `DV_DURATION`. The representations of
 all of these are ISO8601:2004-compatible date/time strings. They also include the ISO8601 semantics
@@ -13,6 +14,7 @@ image::{uml_diagrams_uri}/RM-data_types.quantity.date_time.svg[id=rm_data_types_
 === Requirements
 
 ==== Standard Date/Times
+
 The basic requirement is for types which represent the following concepts:
 
 * _Date_: a type which records year, month and day in month. Examples include date of birth, date of onset of a problem
@@ -21,6 +23,7 @@ The basic requirement is for types which represent the following concepts:
 * _Duration_: a type which records duration of an event or (in)activity, as days, hours, minutes, and seconds.
 
 ==== Partial Date/Times
+
 Partial or uncertain date/times have to be supported in clinical medicine. It is common for patients to
 be unsure about dates and durations. Requirements for partial date/times include the following.
 
@@ -48,6 +51,7 @@ record the narrative form of the datum provided by the patient as well as the fo
 === Design
 
 ==== General Approach
+
 Date/time values are somewhat special in the realm of data types in that they are expressed in their
 "customary" form, in which the standard structure of `{value, unit}` and metric relationships between
 orders of magnitude do not hold. The customary form is what we are used to using in the social time
@@ -72,6 +76,7 @@ All four concepts are defined in the ISO 8601:2004 standard, which is accordingl
 basis of the openEHR date/time types.
 
 ==== Partial Date/Times
+
 The types defined in this specification support the notion of partially specified dates and times. The
 modelling approach used here takes into account the known needs for representing partial date/time
 data, while balancing that with the need to avoid incomprehensibly complex types whose generality
@@ -87,6 +92,7 @@ missing from the right hand end of the string. This models the reasonable situat
 may be unknown in a date, but a date cannot have month unknown and day known.
 
 ==== Calendars
+
 A comment on calendars is in order. In this specification, all date/time types currently modelled are
 Gregorian calendar based. This is the same assumption made by by ISO 8601, and most technical
 computing systems today in many parts of the world. At first glance this may seem like a culturally
@@ -125,6 +131,7 @@ Republican, Macedonian, Syrian, Julian Roman, Gregorian, Islamic A, Islamic B, B
 Saka calendars are described by  <<Richards_1998,Richards>> and are based on the work of D. A. Hatcher (1986).
 
 ==== Representation
+
 All of the date/time classes described here are defined so as to have an attribute called value of type
 String, in the form of an ISO 8601:2004 string. ISO 8601 is convenient for this purpose, as it is a simple
 syntax, and covers not only all four variants of fully-specified date/time described here, but also
