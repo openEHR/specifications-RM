@@ -1,6 +1,6 @@
 === EHR_ACCESS Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*EHR_ACCESS*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|EHR-wide access contol object. All access decisions to data in the EHR must be made in accordance with the policies and rules in this object.
 
 h|*Inherit*
-2+|LOCATABLE
+2+|`LOCATABLE`
 
 h|*Attributes*
 ^h|*Signature*
@@ -23,12 +23,12 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*scheme*: `String`
+|*scheme* (): `String`
 a|The name of the access control scheme in use; corresponds to the concrete instance of the settings attribute.
 
-h|*Invariant*
-2+a|*_Scheme_valid_*: not scheme.is_empty
+h|*Invariants*
+2+a|*_Scheme_valid_*: `not scheme.is_empty`
 
 h|
-2+a|*_Is_archetype_root_*: is_archetype_root
+2+a|*_Is_archetype_root_*: `is_archetype_root`
 |===

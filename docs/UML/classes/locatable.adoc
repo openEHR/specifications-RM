@@ -1,6 +1,6 @@
 === LOCATABLE Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*_LOCATABLE (abstract)_*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|Root class of all information model classes that can be archetyped. Most classes in the openEHR reference model inherit from the LOCATABLE class, which defines the idea of  locatability in an archetyped structure. LOCATABLE defines a runtime name and an rchetype_node_id.
 
 h|*Inherit*
-2+|PATHABLE
+2+|`PATHABLE`
 
 h|*Attributes*
 ^h|*Signature*
@@ -45,19 +45,19 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*concept*: `DV_TEXT`
+|*concept* (): `DV_TEXT`
 a|Clinical concept of the archetype as a whole (= derived from the archetype_node_id' of the root node)
 
 h|
-|*is_archetype_root*: `Boolean`
+|*is_archetype_root* (): `Boolean`
 a|True if this node is the root of an archetyped structure.
 
-h|*Invariant*
-2+a|*_Links_valid_*: links /= Void implies not links.is_empty
+h|*Invariants*
+2+a|*_Links_valid_*: `links /= Void implies not links.is_empty`
 
 h|
-2+a|*_Archetyped_valid_*: is_archetype_root xor archetype_details = Void
+2+a|*_Archetyped_valid_*: `is_archetype_root xor archetype_details = Void`
 
 h|
-2+a|*_Archetype_node_id_valid_*: not archetype_node_id.is_empty
+2+a|*_Archetype_node_id_valid_*: `not archetype_node_id.is_empty`
 |===

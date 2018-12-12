@@ -6,7 +6,7 @@ The `archetyped` package defines the core types `PATHABLE`, `LOCATABLE`, `ARCHET
 
 [.text-center]
 .common.archetyped Package
-image::{uml_export_dir}/diagrams/RM-common.archetyped.svg[id=archetyped_package, align="center"]
+image::{uml_diagrams_uri}/RM-common.archetyped.svg[id=archetyped_package, align="center"]
 
 === The PATHABLE Class
 The `PATHABLE` class defines the pathing capabilities used by nearly all classes in the openEHR reference model, mostly via inheritance of `LOCATABLE`. The defining characteristics of `PATHABLE` objects are that they can locate child objects using paths, and they know their parent object in a compositional hierarchy. The `_parent_` feature is defined as abstract in the model, and may be implemented in any way convenient.
@@ -67,7 +67,7 @@ FIGURE <<feeder_chain>> illustrates these elements, shown as a "feeder chain", a
 
 [.text-center]
 .Abstract Model of Feeder Chain
-image::diagrams/feeder_chain.png[id=feeder_chain, align="center", width=80%]
+image::{diagrams_uri}/feeder_chain.png[id=feeder_chain, align="center", width=80%]
 
 The idea underlying the openEHR Feeder audit model is that there are two groups of meta-data which should be recorded about an imported information item. The first is medico-legal meta-data about its creation: the system of origin, who created it and when it was created. The second is identifying meta-data for the item from the originating and feeder system, and potentially other intermediate systems in the feeder chain, where necessary to support duplicate detection, version detection and so on.
 

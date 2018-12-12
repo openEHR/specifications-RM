@@ -13,27 +13,32 @@
 :keywords: reference model, openehr
 :description: openEHR Reference Model
 :sectanchors:
-:rm_release: latest
-:jira-roadmap: https://openehr.atlassian.net/projects/SPECRM?selectedItem=com.atlassian.jira.jira-projects-plugin%3Arelease-page&status=unreleased
-:jira-hist-issues: https://openehr.atlassian.net/projects/SPEC?selectedItem=com.atlassian.jira.jira-projects-plugin:release-page&status=all
 
-image::http://www.openehr.org/releases/BASE/latest/resources/images/openehr_logo_large.png["openEHR logo",align="center"]
+include::{ref_dir}/docs/boilerplate/global_vars.adoc[]
+
+//
+// ============================================ Asciidoc PREAMBLE =============================================
+//
+
+image::{openehr_logo}["openEHR logo",align="center"]
+
+image::openehr_block_diagram.svg["openEHR components",align="center",width="60%"]
 
 = Reference Model (RM) - {rm_release}
 
 // Use the following version for 'latest'
 ifeval::["{rm_release}" == "latest"]
-:jira-issues: https://openehr.atlassian.net/issues/?filter=10722
 [.title-para]
-{jira-roadmap}[Roadmap] | {jira-issues}[Current Issues] | {jira-hist-issues}[Change History]
+{component_prs}[Open Issues^] | {component_roadmap}[Roadmap^] | {component_history}[Previous Releases^] 
 endif::[]
 
 // Use the following version for a named release
 ifeval::["{rm_release}" != "latest"]
-:jira-pr-release: https://openehr.atlassian.net/projects/SPECPR/versions/10060
-:jira-cr-release: https://openehr.atlassian.net/projects/SPECRM/versions/10860
+:rm_prs_fixed: {component_prs_fixed}{rm_release}/issues
+:rm_crs_done: {component_crs_done}{rm_release}/changes
 [.title-para]
-{jira-pr-release}[Problems Fixed] | {jira-cr-release}[Changes Implemented] | {jira-roadmap}[Roadmap] | {jira-hist-issues}[Change History]
+{rm_prs_fixed}[Issues Fixed^] | {rm_crs_done}[Changes Implemented^] | {component_roadmap}[Roadmap^] | {component_history}[Change History^]
+
 endif::[]
 
 == Specifications
@@ -42,28 +47,28 @@ endif::[]
 |===
 h|Specification h|Description
 
-|http://www.openehr.org/releases/RM/{rm_release}/ehr.html[EHR IM]
+|link:/releases/RM/{rm_release}/ehr.html[EHR IM]
 |The information model of the openEHR EHR.
 
-|http://www.openehr.org/releases/RM/{rm_release}/demographic.html[Demographic IM]
+|link:/releases/RM/{rm_release}/demographic.html[Demographic IM]
 |The openEHR demographics information model.
 
-|http://www.openehr.org/releases/RM/{rm_release}/common.html[Common IM]
-|Information model containing common concepts, including the archetype-enabling LOCATABLE class, party references, audits and attestations, change control, and authored resources.
+|link:/releases/RM/{rm_release}/common.html[Common IM]
+|Information model containing common concepts, including the archetype-enabling `LOCATABLE` class, party references, audits and attestations, change control, and authored resources.
 
-|http://www.openehr.org/releases/RM/{rm_release}/data_structures.html[Data Structures IM]
+|link:/releases/RM/{rm_release}/data_structures.html[Data Structures IM]
 |Information model of data structures, incuding a powerful model of time-series data.
 
-|http://www.openehr.org/releases/RM/{rm_release}/data_types.html[Data Types IM]
+|link:/releases/RM/{rm_release}/data_types.html[Data Types IM]
 |Information model of data types, including quantities, date/times, plain and coded text, time specification, multimedia and URIs.
 
-|http://www.openehr.org/releases/RM/{rm_release}/support.html[Support IM]
+|link:/releases/RM/{rm_release}/support.html[Support IM]
 |Support model defining identifiers, assumed types, and terminology interface specification used in the rest of the IMs.
 
-|http://www.openehr.org/releases/RM/{rm_release}/integration.html[Integration IM]
+|link:/releases/RM/{rm_release}/integration.html[Integration IM]
 |Information model for representing legacy data is a free-form Entry type for implementing integration solutions.
 
-|http://www.openehr.org/releases/RM/{rm_release}/ehr_extract.html[EHR Extract IM]
+|link:/releases/RM/{rm_release}/ehr_extract.html[EHR Extract IM]
 |The information model of the EHR Extract, which is a serilialisation of content from an EHR.
 
 |===
@@ -74,11 +79,15 @@ h|Specification h|Description
 |===
 |Resource |Description
 
-|http://www.openehr.org/releases/RM/{rm_release}/UML/openEHR_UML-RM.mdzip[source files / XMI]
-|UML file for MagicDraw 18.1. Contains UML 2.5 standard XMI file.
+|link:/releases/RM/{rm_release}/UML/openEHR_UML-RM.mdzip[openEHR_UML-RM.mdzip]
+|UML file for MagicDraw 19 for RM model. Contains UML 2.5 standard XMI file.
+
+|link:/releases/BASE/{base_release}/UML/openEHR_UML-Base.mdzip[openEHR_UML-Base.mdzip]
+|UML file for MagicDraw 19 for BASE model (included by RM). Contains UML 2.5 standard XMI file.
 
 |===
 
-
 == Class Index
+
 include::UML/class_index.adoc[leveloffset=+1]
+

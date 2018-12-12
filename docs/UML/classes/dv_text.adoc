@@ -1,6 +1,6 @@
 === DV_TEXT Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*DV_TEXT*
@@ -13,7 +13,7 @@ A DV_TEXT can be  coded  by adding mappings to it.
 Fragments of text, whether coded or not are used on their own as values, or to make up larger tracts of text which may be marked up in some way, eventually going to make up paragraphs.
 
 h|*Inherit*
-2+|DATA_VALUE
+2+|`DATA_VALUE`
 
 h|*Attributes*
 ^h|*Signature*
@@ -45,18 +45,18 @@ h|*0..1*
 |*encoding*: `CODE_PHRASE`
 a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.
 
-h|*Invariant*
-2+a|*_Valid_value_*: not value.is_empty and then not (value.has(CR) or value.has(LF))
+h|*Invariants*
+2+a|*_Valid_value_*: `not value.is_empty and then not (value.has(CR) or value.has(LF))`
 
 h|
-2+a|*_Language_valid_*: language /= Void implies code_set (Code_set_id_languages).has_code (language)
+2+a|*_Language_valid_*: `language /= Void implies code_set (Code_set_id_languages).has_code (language)`
 
 h|
-2+a|*_Encoding_valid_*: encoding /= Void implies code_set (Code_set_id_character_sets).has_code (encoding)
+2+a|*_Encoding_valid_*: `encoding /= Void implies code_set (Code_set_id_character_sets).has_code (encoding)`
 
 h|
-2+a|*_Mappings_valid_*: mappings /= void implies not mappings.is_empty
+2+a|*_Mappings_valid_*: `mappings /= void implies not mappings.is_empty`
 
 h|
-2+a|*_Formatting_valid_*: formatting /= void implies not formatting.is_empty
+2+a|*_Formatting_valid_*: `formatting /= void implies not formatting.is_empty`
 |===

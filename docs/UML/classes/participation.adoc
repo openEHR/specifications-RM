@@ -1,6 +1,6 @@
 === PARTICIPATION Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*PARTICIPATION*
@@ -28,10 +28,10 @@ h|*1..1*
 |*performer*: `PARTY_PROXY`
 a|The id and possibly demographic system link of the party participating in the activity.
 
-h|*Invariant*
-2+a|*_Function_valid_*: function.generating_type.is_equal ("DV_CODED_TEXT") implies
-terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)
+h|*Invariants*
+2+a|*_Function_valid_*: `function.generating_type.is_equal ("DV_CODED_TEXT") implies
+terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)`
 
 h|
-2+a|*_Mode_valid_*: mode /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)
+2+a|*_Mode_valid_*: `mode /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)`
 |===

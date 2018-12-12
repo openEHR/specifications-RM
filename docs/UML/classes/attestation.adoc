@@ -1,6 +1,6 @@
 === ATTESTATION Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*ATTESTATION*
@@ -12,7 +12,7 @@ witnessing of content by senior clinical professional;
 indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result.
 
 h|*Inherit*
-2+|AUDIT_DETAILS
+2+|`AUDIT_DETAILS`
 
 h|*Attributes*
 ^h|*Signature*
@@ -38,9 +38,9 @@ h|*1..1*
 |*is_pending*: `Boolean`
 a|True if this attestation is outstanding; False means it has been completed.
 
-h|*Invariant*
-2+a|*_Items_valid_*: items /= Void implies not items.is_empty
+h|*Invariants*
+2+a|*_Items_valid_*: `items /= Void implies not items.is_empty`
 
 h|
-2+a|*_Reason_valid_*: (reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))
+2+a|*_Reason_valid_*: `(reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))`
 |===

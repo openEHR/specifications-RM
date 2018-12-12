@@ -6,7 +6,7 @@ The Composition is the primary ‘data container’ in the openEHR EHR and is th
 
 [.text-center]
 .rm.composition package
-image::{uml_export_dir}/diagrams/RM-composition.svg[id=rm_composition, align="center"]
+image::{uml_diagrams_uri}/RM-composition.svg[id=rm_composition, align="center"]
 
 == Context Model of Recording
 
@@ -16,7 +16,7 @@ The openEHR EHR model takes account of a systematic analysis of "context". Conte
 
 [.text-center]
 .General Model of Recording
-image::diagrams/ehr_recording_model.png[id=ehr_recording_model, align="center", width=70%]
+image::{diagrams_uri}/ehr_recording_model.png[id=ehr_recording_model, align="center", width=70%]
 
 On the right hand side of the figure <<ehr_recording_model>>, the EHR recording environment is represented. The EHR consists of distinct, coarse-grained items known as Compositions added over time and organised by Folders. Each Composition consists of Entries, organised by Sections within the Composition. The audit information for each context is recorded at the corresponding level of the EHR.
 
@@ -56,7 +56,7 @@ For situations requiring an `EVENT_CONTEXT` object to be recorded, it is worth c
 
 [.text-center]
 .Use of Event context
-image::diagrams/event_context.png[id=event_context, align="center", width=80%]
+image::{diagrams_uri}/event_context.png[id=event_context, align="center", width=80%]
 
 In cases where Contributions are made to the record with no event context, the Event context of any Compositions from the original commit will remain intact and visible (unless the correction is to the event context itself of course), and will correctly reflect the fact that no new clinical interaction occurred. This is the case with Contribution D in the figure. 
 
