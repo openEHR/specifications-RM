@@ -1,12 +1,12 @@
 === AUDIT_DETAILS Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*AUDIT_DETAILS*
 
 h|*Description*
-2+a|The set of attributes required to document the committal of an information item to a repository. 
+2+a|The set of attributes required to document the committal of an information item to a repository.
 
 h|*Attributes*
 ^h|*Signature*
@@ -14,11 +14,11 @@ h|*Attributes*
 
 h|*1..1*
 |*system_id*: `String`
-a|Identity of the system where the change was committed. Ideally this is a machine- and human-processable identifier, but it may not be. 
+a|Identity of the system where the change was committed. Ideally this is a machine- and human-processable identifier, but it may not be.
 
 h|*1..1*
 |*time_committed*: `DV_DATE_TIME`
-a|Time of committal of the item. 
+a|Time of committal of the item.
 
 h|*1..1*
 |*change_type*: `DV_CODED_TEXT`
@@ -30,11 +30,11 @@ a|Reason for committal.
 
 h|*1..1*
 |*committer*: `PARTY_PROXY`
-a|Identity and optional reference into identity management service, of user who committed the item. 
+a|Identity and optional reference into identity management service, of user who committed the item.
 
-h|*Invariant*
-2+a|*_System_id_valid_*: not system_id.is_empty
+h|*Invariants*
+2+a|*_System_id_valid_*: `not system_id.is_empty`
 
 h|
-2+a|*_Change_type_valid_*: terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)
+2+a|*_Change_type_valid_*: `terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)`
 |===

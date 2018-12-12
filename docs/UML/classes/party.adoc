@@ -1,6 +1,6 @@
 === PARTY Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*_PARTY (abstract)_*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|Ancestor of all party types, including real world entities and their roles. A party is any entity which can participate in an activity. The name attribute inherited from LOCATABLE is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the identities attribute, not the name attribute).
 
 h|*Inherit*
-2+|LOCATABLE
+2+|`LOCATABLE`
 
 h|*Attributes*
 ^h|*Signature*
@@ -44,21 +44,21 @@ h|*Functions*
 ^h|*Meaning*
 
 h|
-|*type*: `ITEM_STRUCTURE`
+|*type* (): `ITEM_STRUCTURE`
 a|Type of party, such as  PERSON ,  ORGANISATION , etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited name attribute.
 
-h|*Invariant*
-2+a|*_Type_valid_*: type = name
+h|*Invariants*
+2+a|*_Type_valid_*: `type = name`
 
 h|
-2+a|*_Contacts_valid_*: contacts /= Void implies not contacts.is_empty
+2+a|*_Contacts_valid_*: `contacts /= Void implies not contacts.is_empty`
 
 h|
-2+a|*_Relationships_validity_*: relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r &#124; r.source = self)
+2+a|*_Relationships_validity_*: `relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r &#124; r.source = self)`
 
 h|
-2+a|*_Reverse_relationships_validity_*: reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))
+2+a|*_Reverse_relationships_validity_*: `reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))`
 
 h|
-2+a|*_Is_archetype_root_*: is_archetype_root
+2+a|*_Is_archetype_root_*: `is_archetype_root`
 |===

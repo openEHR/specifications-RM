@@ -8,13 +8,13 @@ The figure <<change_control_package>> illustrates the openEHR model of a Version
 
 [.text-center]
 .common.change_control Package
-image::{uml_export_dir}/diagrams/RM-common.change_control.svg[id=change_control_package, align="center"]
+image::{uml_diagrams_uri}/RM-common.change_control.svg[id=change_control_package, align="center"]
 
 The figure <<version_control_structures>> illustrates a single `VERSIONED_OBJECT` containing a number of `VERSIONs`. Although the figure implies physical containment of Versions by a Versioned object, this is only one possible implementation. Other implementations (e.g. using orthodox relational structures) might use references, separate compressed copies, or any other mechanism.
 
 [.text-center]
 .Version control structures
-image::diagrams/version_control_structures.png[id=version_control_structures, align="center", width=80%]
+image::{diagrams_uri}/version_control_structures.png[id=version_control_structures, align="center", width=80%]
 
 == Basic Semantics
 
@@ -40,7 +40,7 @@ The second subtype is `IMPORTED_VERSION<T>`, and acts as a wrapper of an `ORIGIN
 
 [.text-center]
 .Instance view of versioned data
-image::diagrams/instance_view_of_versioned_data.png[id=instance_view_of_versioned_data, align="center", width=80%]
+image::{diagrams_uri}/instance_view_of_versioned_data.png[id=instance_view_of_versioned_data, align="center", width=80%]
 
 === The "Virtual Version Tree"
 
@@ -93,7 +93,7 @@ The signature can serve two purposes. If only the hashing step is done, the dige
 
 [.text-center]
 .Version signature (using openPGP)
-image::diagrams/version_signature.png[id=version_signature, align="center", width=80%]
+image::{diagrams_uri}/version_signature.png[id=version_signature, align="center", width=80%]
 
 The serialisation process works by the simple rule of serialising the entire Version object (note that the signature attribute will be Void at this point) into an agreed XML, ODIN or other text format, then applying the subsequent transformations to the serialised data, then writing the digest result back into the signature attribute. If the object to be serialised is an `IMPORTED_VERSION`, the process is the same - all attributes of the object are serialised and then used to generate a signature. The result will be that the `IMPORTED_VERSION` instance will carry its own signature which signifies the act of importing and making available locally an `ORIGINAL_VERSION` from another system.
 
@@ -147,7 +147,7 @@ The version identification scheme described here is adapted from the work of Hn√
 
 [.text-center]
 .Version identification system
-image::diagrams/version_identification_system.png[id=version_identification_system, align="center", width=80%]
+image::{diagrams_uri}/version_identification_system.png[id=version_identification_system, align="center", width=80%]
 
 ==== Local Versioning
 The `_version_tree_id_` attribute of `VERSION`.`_uid_` identifies a version of an item with respect to other versions in the same tree. The requirements of the identifier are the same as for typical versioning systems in use in software configuration management, and are as follows:
@@ -198,7 +198,7 @@ These copying scenarios are illustrated in the figure below. On the left hand-si
 
 [.text-center]
 .Distributed versioning
-image::diagrams/distributed_versioning.png[id=distributed_versioning, align="center", width=70%]
+image::{diagrams_uri}/distributed_versioning.png[id=distributed_versioning, align="center", width=70%]
 
 When the first `ORIGINAL_VERSION` is copied (copy #1) to system B, it is committed as an `IMPORTED_VERSION` to a `VERSIONED_OBJECT` which is a clone of the original. Subsequent copies (copy #2 and copy #3) can be made of later versions from system A to system B, with the effect that the version tree can be recreated inside system B (if required; there is of course no obligation to do anything with the received information). Users in system B an also make modifications to the received Version copies; these modifications are shown in grey, as branched versions with `_uid_`.`_creating_system_id_` = "sysB". Independently, users in system B will of course be creating other content locally, e.g. as shown on the right-hand side, where a Versioned object with `_uid_`= "2" has been created. Two places are indicated on the diagram where identification clashes could have occurred, but are prevented due to the use of the 3-part unique Version identifier scheme.
 
@@ -217,7 +217,7 @@ The usual need when the first system receives changes made to the data by the se
 
 [.text-center]
 .Version merging
-image::diagrams/version_merging.png[id=version_merging, align="center", width=60%]
+image::{diagrams_uri}/version_merging.png[id=version_merging, align="center", width=60%]
 
 In this figure, versions 1 and 2 of the content (e.g. a medication list) from Versioned object with `_uid_`=1 are copied from system A (e.g. a GP) to system B (e.g. a hospital). In system B, changes are made to version 2, creating a branch (as an instance of `IMPORTED_VERSION<T>`) as required by the rules described above. These changes (modified medication list) are then imported back into system A. The system A user performs a merge operation to create a new trunk version 3, using the sysB::2.1.2 and sysA::2 content; most likely, he simply reviews the two input versions and uses the sysB::2.1.2 content unchanged (the result is that system A now has an up-to-date medication list for the patient, including medications orginally recorded at system A, as well as additions recorded at system B). The new Version is an instance of `ORIGINAL_VERSION<T>`, with its other_input_version_ids attribute set to include the `OBJECT_VERSION_ID` representing sysB::2.1.2 (it does not need to include sysA::2, since this is already known in the `_preceding_version_uid_`).
 
@@ -229,7 +229,7 @@ An unintended but not uncommon situation is when distinct Version containers are
 
 [.text-center]
 .Disjoint merging
-image::diagrams/disjoint_merging.png[id=disjoint_merging, align="center", width=80%]
+image::{diagrams_uri}/disjoint_merging.png[id=disjoint_merging, align="center", width=80%]
 
 The merge procedure is as follows:
 
@@ -256,7 +256,7 @@ When the move is effected, the identifier of the system in which the `VERSIONED_
 
 [.text-center]
 .Moving a version container
-image::diagrams/moving_version_container.png[id=moving_version_container, align="center", width=50%]
+image::{diagrams_uri}/moving_version_container.png[id=moving_version_container, align="center", width=50%]
 
 == Class Descriptions
 

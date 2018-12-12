@@ -1,6 +1,6 @@
 === EXTRACT_UPDATE_SPEC Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*EXTRACT_UPDATE_SPEC*
@@ -26,19 +26,19 @@ h|*0..1*
 |*trigger_events*: `List<DV_CODED_TEXT>`
 a|Set of Event names that will cause sending of update Extracts. Event types include:   &#124;any_change&#124; - any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.
 
-  &#124;correction&#124; - match error corrections only, including deletions.
-  &#124;update&#124; - match updates (i.e. new versions) of included content items.
+&#124;correction&#124; - match error corrections only, including deletions.
+&#124;update&#124; - match updates (i.e. new versions) of included content items.
 
 h|*1..1*
 |*update_method*: `CODE_PHRASE`
 a|Indicate mode of update. Can be: send only items that are changed (including logical deletions) or new since last send. For persist_in_server Requests only.
 
-h|*Invariant*
-2+a|*_Overall_validity_*: repeat_period /= Void or trigger_events /= Void
+h|*Invariants*
+2+a|*_Overall_validity_*: `repeat_period /= Void or trigger_events /= Void`
 
 h|
-2+a|*_Trigger_events_validity_*: trigger_events /= Void implies not trigger_events.is_empty
+2+a|*_Trigger_events_validity_*: `trigger_events /= Void implies not trigger_events.is_empty`
 
 h|
-2+a|*_Send_changes_only_validity_*: send_changes_only implies persist_in_server
+2+a|*_Send_changes_only_validity_*: `send_changes_only implies persist_in_server`
 |===

@@ -1,6 +1,6 @@
 === EXTRACT_VERSION_SPEC Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*EXTRACT_VERSION_SPEC*
@@ -28,6 +28,6 @@ h|*1..1*
 |*include_data*: `Boolean`
 a|True if the data of items matched by the content spec should be included. This is the default. If False, only revision history is included in serialised versions. Turning this option on in openEHR systems causes X_VERSIONED_OBJECTs to have revision_history set, but versions Void. Useful for interrogating a server without having to look at any content data. In other systems it may or may not have a sensible meaning.
 
-h|*Invariant*
-2+a|*_Includes_revision_history_valid_*: not include_data implies include_revision_history
+h|*Invariants*
+2+a|*_Includes_revision_history_valid_*: `not include_data implies include_revision_history`
 |===

@@ -1,6 +1,6 @@
 === FOLDER Class
 
-[cols="^1,2,3"]
+[cols="^1,3,5"]
 |===
 h|*Class*
 2+^h|*FOLDER*
@@ -9,7 +9,7 @@ h|*Description*
 2+a|The concept of a named folder.
 
 h|*Inherit*
-2+|LOCATABLE
+2+|`LOCATABLE`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,12 +17,12 @@ h|*Attributes*
 
 h|*0..1*
 |*items*: `List<OBJECT_REF>`
-a|The list of references to other (usually) versioned objects logically in this folder. 
+a|The list of references to other (usually) versioned objects logically in this folder.
 
 h|*0..1*
 |*folders*: `List<FOLDER>`
-a|Sub-folders of this FOLDER. 
+a|Sub-folders of this FOLDER.
 
-h|*Invariant*
-2+a|*_Folders_valid_*: not folders.is_empty
+h|*Invariants*
+2+a|*_Folders_valid_*: `not folders.is_empty`
 |===

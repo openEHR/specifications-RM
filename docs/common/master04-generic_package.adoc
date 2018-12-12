@@ -6,7 +6,7 @@ The classes presented in this section are abstractions of concepts which are gen
 
 [.text-center]
 .common.generic Package
-image::{uml_export_dir}/diagrams/RM-common.generic.svg[id=generic_package, align="center"]
+image::{uml_diagrams_uri}/RM-common.generic.svg[id=generic_package, align="center"]
 
 == Design Principles
 
@@ -63,7 +63,7 @@ The digital signature, if present, is generated using the IETF RFC 2440 (openPGP
 
 [.text-center]
 .Attestation signature generation (using openPGP)
-image::diagrams/attestation_signature_generation.png[id=attestation_signature_generation, align="center", width=80%]
+image::{diagrams_uri}/attestation_signature_generation.png[id=attestation_signature_generation, align="center", width=80%]
 
 In this process, the attestation object is serialised into a canonical text form, and then hashed to create a digest. A digital signature is created from the hash, using the user’s private key. The result is then radix-64 encoded to create an ASCII string so as to remove or reduce potential problems with subsequent communication. The openPGP standard ensures that the transformations and algorithms used to create the signature are indicated within it (i.e. the signature is self-describing).
 
