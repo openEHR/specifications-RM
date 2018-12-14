@@ -18,7 +18,7 @@ The openEHR EHR model takes account of a systematic analysis of "context". Conte
 .General Model of Recording
 image::{diagrams_uri}/ehr_recording_model.png[id=ehr_recording_model, align="center", width=70%]
 
-On the right hand side of the figure <<ehr_recording_model>>, the EHR recording environment is represented. The EHR consists of distinct, coarse-grained items known as Compositions added over time and organised by Folders. Each Composition consists of Entries, organised by Sections within the Composition. The audit information for each context is recorded at the corresponding level of the EHR.
+On the right-hand side of <<ehr_recording_model>>, the EHR recording environment is represented. The EHR consists of distinct, coarse-grained items known as Compositions added over time and organised by Folders. Each Composition consists of Entries, organised by Sections within the Composition. The audit information for each context is recorded at the corresponding level of the EHR.
 
 === Composer
 
@@ -52,7 +52,7 @@ Ultimately, the use of Event context will be controlled by Composition-level arc
 
 ==== Occurrence in Data
 
-For situations requiring an `EVENT_CONTEXT` object to be recorded, it is worth clarifying which Compositions carry such objects. Consider the example shown in in the figure <<event_context>>. In this example, a Contribution is made to the EHR, consisting of one or more Compositions that were each created or modified due to some clinical activity. Within such a set, there will usually be one Composition relating directly to the event, such as the patient contact - this is the Composition containing the doctor's observations, nurses' activities etc, during the visit, and is therefore the one which contains the `EVENT_CONTEXT` instance. Other Compositions changed during the same event (e.g. updates to medication list, family history and so on) do not require an Event context, since they are part of the same Contribution, and the event context of the primary Composition can always be retrieved if desired. Contributions A, B and C in the figure illustrate this case.
+For situations requiring an `EVENT_CONTEXT` object to be recorded, it is worth clarifying which Compositions carry such objects. Consider the example shown in <<event_context>>. In this example, a Contribution is made to the EHR, consisting of one or more Compositions that were each created or modified due to some clinical activity. Within such a set, there will usually be one Composition relating directly to the event, such as the patient contact - this is the Composition containing the doctor's observations, nurses' activities etc, during the visit, and is therefore the one which contains the `EVENT_CONTEXT` instance. Other Compositions changed during the same event (e.g. updates to medication list, family history and so on) do not require an Event context, since they are part of the same Contribution, and the event context of the primary Composition can always be retrieved if desired. Contributions A, B and C in the figure illustrate this case.
 
 [.text-center]
 .Use of Event context

@@ -9,7 +9,7 @@
 <meta name="keywords" content="EHR, EMR, reference model, openehr">
 <title>EHR Information Model</title>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
-<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-murphy.css">
+<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -277,12 +277,12 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="https://www.openehr.org/programs/specification/">openEHR Specification Program</a></th>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="https://www.openehr.org/programs/specification" target="_blank" rel="noopener">openEHR Specification Program</a></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: latest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: RM latest</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
 </tr>
 <tr>
@@ -311,7 +311,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="/" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open standards-based implementations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
@@ -320,7 +320,7 @@
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://specifications.openehr.org/components/RM/open_issues" target="_blank" rel="noopener">Problem Reports</a><br>
- Web: <a href="/" target="_blank" rel="noopener">www.openehr.org</a></p></td>
+ Web: <a href="https://specifications.openehr.org" target="_blank" rel="noopener">specifications.openEHR.org</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1547,7 +1547,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>ehr</code> package is illustrated in the figure <a href="#rm_ehr">rm.ehr package</a> below. The classes have a more or less one-to-one correspondence with the objects shown in figure <a href="#high_level_ehr_structure">High-level EHR structure</a>. Each versioned object of type <code>XXX</code> is defined by a class <code>VERSIONED_XXX</code>, which is a binding of the type <code>XXX</code> to the generic type paremeter <code>T</code> in the generic type <code>VERSIONED_COMPOSITION</code> (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).</p>
+<p>The <code>ehr</code> package is illustrated in <a href="#rm_ehr">Figure 4</a> below. The classes have a more or less one-to-one correspondence with the objects shown in <a href="#high_level_ehr_structure">Figure 3</a>. Each versioned object of type <code>XXX</code> is defined by a class <code>VERSIONED_XXX</code>, which is a binding of the type <code>XXX</code> to the generic type paremeter <code>T</code> in the generic type <code>VERSIONED_COMPOSITION</code> (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).</p>
 </div>
 <div id="rm_ehr" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -1685,7 +1685,7 @@
 <div class="title">Figure 6. An EHR containing Event and Persistent Compositions</div>
 </div>
 <div class="paragraph">
-<p>In any clinical session, an event composition will be created, and in many cases, persistent compositions will be modified. How this works is described below in the section <a href="#_change_control_in_the_ehr">Change Control in the EHR</a>.</p>
+<p>In any clinical session, an event composition will be created, and in many cases, persistent compositions will be modified. How this works is described below in the section <a href="#_change_control_in_the_ehr">Section 4.3</a>.</p>
 </div>
 </div>
 </div>
@@ -1935,7 +1935,7 @@ is is strongly recommended that a UUID always be used for the <code><em>ehr_id</
 <div class="title">Figure 10. Time in the EHR</div>
 </div>
 <div class="paragraph">
-<p>The top part of the figure shows the relationship of times typical for a physical examination at a GP visit. The lower part of the figure shows different relationships common in radiology and microbiology, where the sample (imaging or specimen collection) time can be quite different from the time of assessment and reporting of the sample. The times shown in the above figure have a close correspondence with the contexts described in <a href="#_context_model_of_recording">Context Model of Recording</a>; they also have (as shown) concrete attributes in the reference model.</p>
+<p>The top part of the figure shows the relationship of times typical for a physical examination at a GP visit. The lower part of the figure shows different relationships common in radiology and microbiology, where the sample (imaging or specimen collection) time can be quite different from the time of assessment and reporting of the sample. The times shown in the above figure have a close correspondence with the contexts described in <a href="#_context_model_of_recording">Section 5.2</a>; they also have (as shown) concrete attributes in the reference model.</p>
 </div>
 <div class="paragraph">
 <p>Other times to do with diagnoses (time of onset, time of resolution, time of last episode) and medication management (time started taking medication, time stopped, time suspended, etc) are specific to the particular type of information (e.g. diagnosis versus prognosis versus recommendation) and are generally represented as archetyped date/time values within Evaluation objects. Basic timing information is modelled concretely in the Instruction and Action Entry types, while archetyping is used to express timing information that is specific to particular content.</p>
@@ -2338,7 +2338,7 @@ is is strongly recommended that a UUID always be used for this field.
 <div class="title">Figure 12. General Model of Recording</div>
 </div>
 <div class="paragraph">
-<p>On the right hand side of the figure <a href="#ehr_recording_model">General Model of Recording</a>, the EHR recording environment is represented. The EHR consists of distinct, coarse-grained items known as Compositions added over time and organised by Folders. Each Composition consists of Entries, organised by Sections within the Composition. The audit information for each context is recorded at the corresponding level of the EHR.</p>
+<p>On the right-hand side of <a href="#ehr_recording_model">Figure 12</a>, the EHR recording environment is represented. The EHR consists of distinct, coarse-grained items known as Compositions added over time and organised by Folders. Each Composition consists of Entries, organised by Sections within the Composition. The audit information for each context is recorded at the corresponding level of the EHR.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2403,7 +2403,7 @@ is is strongly recommended that a UUID always be used for this field.
 <div class="sect4">
 <h5 id="_occurrence_in_data"><a class="anchor" href="#_occurrence_in_data"></a>5.2.3.2. Occurrence in Data</h5>
 <div class="paragraph">
-<p>For situations requiring an <code>EVENT_CONTEXT</code> object to be recorded, it is worth clarifying which Compositions carry such objects. Consider the example shown in in the figure <a href="#event_context">Use of Event context</a>. In this example, a Contribution is made to the EHR, consisting of one or more Compositions that were each created or modified due to some clinical activity. Within such a set, there will usually be one Composition relating directly to the event, such as the patient contact - this is the Composition containing the doctor&#8217;s observations, nurses' activities etc, during the visit, and is therefore the one which contains the <code>EVENT_CONTEXT</code> instance. Other Compositions changed during the same event (e.g. updates to medication list, family history and so on) do not require an Event context, since they are part of the same Contribution, and the event context of the primary Composition can always be retrieved if desired. Contributions A, B and C in the figure illustrate this case.</p>
+<p>For situations requiring an <code>EVENT_CONTEXT</code> object to be recorded, it is worth clarifying which Compositions carry such objects. Consider the example shown in <a href="#event_context">Figure 13</a>. In this example, a Contribution is made to the EHR, consisting of one or more Compositions that were each created or modified due to some clinical activity. Within such a set, there will usually be one Composition relating directly to the event, such as the patient contact - this is the Composition containing the doctor&#8217;s observations, nurses' activities etc, during the visit, and is therefore the one which contains the <code>EVENT_CONTEXT</code> instance. Other Compositions changed during the same event (e.g. updates to medication list, family history and so on) do not require an Event context, since they are part of the same Contribution, and the event context of the primary Composition can always be retrieved if desired. Contributions A, B and C in the figure illustrate this case.</p>
 </div>
 <div id="event_context" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2773,7 +2773,7 @@ it is strongly recommended that the inherited attribute <code><em>uid</em></code
 <div class="sect2">
 <h3 id="_overview_7"><a class="anchor" href="#_overview_7"></a>7.1. Overview</h3>
 <div class="paragraph">
-<p>The <code>navigation</code> Package defines a hierachical heading structure, in which all individual headings are considered to belong to a "tree of headings". Each heading is an instance of the class <code>SECTION</code>, visible in the lower left side of the figure <a href="#rm_composition">rm.composition package</a>.</p>
+<p>The <code>navigation</code> Package defines a hierachical heading structure, in which all individual headings are considered to belong to a "tree of headings". Each heading is an instance of the class <code>SECTION</code>, visible in the lower left side of <a href="#rm_composition">Figure 11</a>.</p>
 </div>
 <div class="paragraph">
 <p>Sections provide both a logical structure for the author to arrange Entries, and a navigational structure for readers of the record, whether they be human or machine. Sections are archetyped in trees with each tree containing a root Section, one or more sub-sections, and any number of Entries at each node. Section trees that are separately archetyped, such as the SOAP headings, or the heading structure for a physical examination, can be combined at runtime by type to form one large heading structure, as shown in the figure below.</p>
@@ -2785,7 +2785,7 @@ it is strongly recommended that the inherited attribute <code><em>uid</em></code
 <div class="title">Figure 14. Section View of a General Practice Contact Composition</div>
 </div>
 <div class="paragraph">
-<p>In terms of understanding of clinical data, Section structures are not essential in a Composition - they can always be removed or ignored (typically in machine processing such as querying) without losing the meaning of the Entries in the Composition. While Sections are often used to group Entries according to status, e.g. "family history", "problems", "observations", it is the Entries themselves that indicate the definitive category of information contained therein. This principle is explained in more detail in the section <a href="#_entry_and_its_subtypes">Entry and its Subtypes</a>.</p>
+<p>In terms of understanding of clinical data, Section structures are not essential in a Composition - they can always be removed or ignored (typically in machine processing such as querying) without losing the meaning of the Entries in the Composition. While Sections are often used to group Entries according to status, e.g. "family history", "problems", "observations", it is the Entries themselves that indicate the definitive category of information contained therein. This principle is explained in more detail in <a href="#_entry_and_its_subtypes">Section 8.2</a>.</p>
 </div>
 <div class="paragraph">
 <p>Despite the above, Section structures do not have to be regarded as ad hoc or unreliable structures. On the contrary, as they are archetyped, their structures can be relied upon in the same way as any other structure in the record can be relied on to conform to its archetype. Accordingly, solid assumptions can be made about Sections, based on their archetypes, for the purposes of querying. In fact, the main benefit of Sections is that they may provide significant performance benefits to querying, whether by interactive application or by automated systems.</p>
@@ -2891,7 +2891,7 @@ it is strongly recommended that the inherited attribute <code><em>uid</em></code
 <p>This figure shows the cycle of information created by an iterative, problem solving process undertaken by a "clinical investigator system", which consists of health carers, and may include the patient (at points in time when the patient performs observational or therapeutic activities). Starting from the patient (right hand side of figure) observations are made, which lead to opinions on the part of the investigator, including assessment of the current situation, goals for a future situation, and plans for achieving the goals. Personal and published evidence and knowledge almost always play an important part in this process. The latter lead to instructions designed to help the patient achieve the goals. A complex or chronic problem may take numerous iterations - possibly a whole lifetime&#8217;s worth - with each step being quite small, and future steps depending heavily on past progress. The role of the investigator (and associated agents) is normally filled by health care professionals, but may also be filled by the patient, or a guardian or associate of the patient. Indeed, this is what happens every time a person goes home from the pharmacy with prescribed medication to take at home.</p>
 </div>
 <div class="paragraph">
-<p>The process illustrated in the figure <a href="#clinical_investigator_recording_process">Clinical Investigator Recording Process</a> is a synthesis of the "problem-oriented" approach of Weed (<a href="#Weed_1969">[Weed_1969]</a>) and the "hypothetico-deductive model" of clinical reasoning described by Elstein <em>et al</em> <a href="#Elstein_1987">[Elstein_1987]</a>. However, as pointed out in <a href="#Elstein_Schwarz_2002">[Elstein_Schwarz_2002]</a>, hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion. As such, the openEHR information model does not impose any process model, only the types of information used.</p>
+<p>The process illustrated in <a href="#clinical_investigator_recording_process">Figure 16</a> is a synthesis of the "problem-oriented" approach of Weed (<a href="#Weed_1969">[Weed_1969]</a>) and the "hypothetico-deductive model" of clinical reasoning described by Elstein <em>et al</em> <a href="#Elstein_1987">[Elstein_1987]</a>. However, as pointed out in <a href="#Elstein_Schwarz_2002">[Elstein_Schwarz_2002]</a>, hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion. As such, the openEHR information model does not impose any process model, only the types of information used.</p>
 </div>
 <div class="paragraph">
 <p>On the basis of this process, a Clinical Investigator Recording ontology is developed <a href="#Beale_Heard_2007">[Beale_Heard_2007]</a>, as shown below. From this ontology, the openEHR class model for Entries is derivde. The openEHR Entry class names are annotated next to their originating ontological categories.</p>
@@ -2906,7 +2906,7 @@ it is strongly recommended that the inherited attribute <code><em>uid</em></code
 <p>The key top-level categories in the ontology are 'care information' and 'administrative information'. The former encompasses all statements that might be recorded at any point during the care process, and consists of the major subcategories 'history', 'opinion' and 'instruction', which themselves correspond to the past, present and future in time (ISO TC215 uses the terms 'retrospective', 'current' and 'prospective'). The administrative information category covers information which is not generated by the care process proper, but relates to organising it, such as appointments and admissions. This information is not about care, but about the logistics of care being delivered. Categories that relate to the patient system as observed and understood are shown as white bubbles, while categories that relate to intervention into the patient system are shown as shaded. The opinion category has features of both passive analysis and active intervention.</p>
 </div>
 <div class="paragraph">
-<p>There are two key justifications for using the ontology in figure <a href="#CIR_ontology">The Clinical Investigator Recording (CIR) ontology</a> as a basis for class design. Firstly, although for all categories in the ontology there is a meaning for 'contextual' attributes of time, place, identity, reason and so on, each category has a different structure for these attributes. For example, time in the Observation category has a linear historical structure, whereas in Instruction it has a branching, potentially cyclic structure. The separation of types allows these contextual attributes to be modelled according to the type. Secondly, the separation of types provides a systematic solution to the so-called problem of "status" or "meaning modification" of clinical statement values, as described below.</p>
+<p>There are two key justifications for using the ontology in <a href="#CIR_ontology">Figure 17</a> as a basis for class design. Firstly, although for all categories in the ontology there is a meaning for 'contextual' attributes of time, place, identity, reason and so on, each category has a different structure for these attributes. For example, time in the Observation category has a linear historical structure, whereas in Instruction it has a branching, potentially cyclic structure. The separation of types allows these contextual attributes to be modelled according to the type. Secondly, the separation of types provides a systematic solution to the so-called problem of "status" or "meaning modification" of clinical statement values, as described below.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3067,7 +3067,7 @@ and includes the following:</p>
 <div class="sect2">
 <h3 id="_entry_and_its_subtypes"><a class="anchor" href="#_entry_and_its_subtypes"></a>8.2. Entry and its Subtypes</h3>
 <div class="paragraph">
-<p>The Entry model is defined by the <code>composition.content.entry package</code>, shown in the UML diagram below. The choice of subtypes of <code>ENTRY</code> is based on the ontology shown in figure <a href="#CIR_ontology">The Clinical Investigator Recording (CIR) ontology</a> and its associated model. The names do not coincide exactly however, for a number of reasons. Firstly, the category names in the hierarchy were chosen based on a philosophical/scientific model of investigation, and reflecting linguistic norms for the meanings of the terms, whereas the class names used here reflect common health computing and clinical usage of these terms (i.e. names which will make sense to software developers in the health arena). Names in these two cultures do not always coincide. Additionally, for categories such as Opinion and Instruction, the subcategories shown in the ontology (e.g. Assessment, Goal and Plan) are too variable to safely be subtyped in software, and are distinguished only at the archetype level. Only a single class for each of these ontological groups is used in the formal model. The use of different names and a slightly simplified mapping has not however prevented the faithful implementation of the semantics of the model. The model classes are described in the following subsections.</p>
+<p>The Entry model is defined by the <code>composition.content.entry package</code>, shown in the UML diagram below. The choice of subtypes of <code>ENTRY</code> is based on the ontology shown in <a href="#CIR_ontology">Figure 17</a> and its associated model. The names do not coincide exactly however, for a number of reasons. Firstly, the category names in the hierarchy were chosen based on a philosophical/scientific model of investigation, and reflecting linguistic norms for the meanings of the terms, whereas the class names used here reflect common health computing and clinical usage of these terms (i.e. names which will make sense to software developers in the health arena). Names in these two cultures do not always coincide. Additionally, for categories such as Opinion and Instruction, the subcategories shown in the ontology (e.g. Assessment, Goal and Plan) are too variable to safely be subtyped in software, and are distinguished only at the archetype level. Only a single class for each of these ontological groups is used in the formal model. The use of different names and a slightly simplified mapping has not however prevented the faithful implementation of the semantics of the model. The model classes are described in the following subsections.</p>
 </div>
 <div id="rm_entry" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -3284,7 +3284,7 @@ and includes the following:</p>
 <p>Instructions in openEHR specify actions to be performed in the future. They differ from information in the Proposal sub-category of Opinion in the ontology (i.e. instances of Evaluation in the class model) in that they are specified in sufficient detail to be directly enacted without further clinical decision-making related to the design of the Instruction, e.g they can be performed by the patient or a nurse. Any decisions that could be made during the performance of an Instruction are either constrained by the Instruction itself (e.g. dose range; suspend if adverse reaction) or else are assumed knowledge of the expected performer. For example, an Evaluation may say that "oral cortico-steroids are indicated at a peak flow of 200 l/m". A corresponding Instruction would indicate the actual drug, route, dose, frequency, and so on. The informed patient might be reasonably expected to be able to vary the dosage on his or her own within a dosage guideline explained by his/her GP.</p>
 </div>
 <div class="paragraph">
-<p>In the ontology shown in figure <a href="#CIR_ontology">The Clinical Investigator Recording (CIR) ontology</a>, Instructions are further categorised as Investigation and Intervention. However, as for Evaluation, only a single key class, <code>INSTRUCTION</code>, is used to model all types of the Instruction category, with archetypes defining the details of the Instruction. A second Entry subtype, <code>ACTION</code>, is used to model the information recorded due to the execution of an Instruction by some agent.</p>
+<p>In the ontology shown in <a href="#CIR_ontology">Figure 17</a>, Instructions are further categorised as Investigation and Intervention. However, as for Evaluation, only a single key class, <code>INSTRUCTION</code>, is used to model all types of the Instruction category, with archetypes defining the details of the Instruction. A second Entry subtype, <code>ACTION</code>, is used to model the information recorded due to the execution of an Instruction by some agent.</p>
 </div>
 <div class="paragraph">
 <p>The following subsections describe Instruction and Action in some detail.</p>
@@ -3624,7 +3624,7 @@ EXPIRED
 <div class="title">Figure 25. Instruction and Action Archetypes</div>
 </div>
 <div class="paragraph">
-<p>The second category of archetypable semantics is the correspondence between steps in a healthcare business process and the standard instruction state machine, as described above. This mapping is an archetype of the <code><em>ism_transition</em></code> attribute of an <code>ACTION</code> attribute, and therefore defines part of the <code>ACTION</code> archetype. The figure <a href="#instruction_and_action_archetypes">Instruction and Action Archetypes</a> shows how logical archetype elements in the archetyped editor environment corresponds to the resulting archetypes.</p>
+<p>The second category of archetypable semantics is the correspondence between steps in a healthcare business process and the standard instruction state machine, as described above. This mapping is an archetype of the <code><em>ism_transition</em></code> attribute of an <code>ACTION</code> attribute, and therefore defines part of the <code>ACTION</code> archetype. <a href="#instruction_and_action_archetypes">Figure 25</a> shows how logical archetype elements in the archetyped editor environment corresponds to the resulting archetypes.</p>
 </div>
 <div class="paragraph">
 <p>Consequently, the set of archetypes defining the clinical semantics of a specific kind of intervention will normally consists of archetypes of <code>INSTRUCTION</code>, <code>ACTION</code> and potentially component archetypes of the <code>ITEM_STRUCTURE</code> classes.</p>
@@ -4836,7 +4836,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-10 17:11:14 GMT
+Last updated 2018-12-14 09:58:29 GMT
 </div>
 </div>
 </body>

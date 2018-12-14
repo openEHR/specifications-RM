@@ -21,7 +21,7 @@ how to read the value. A small domain termlist containing values such as "unknow
 "undetermined", etc, as described in the Flavours of Null vocabulary in the openEHR
 Support Information Model.
 
-The openEHR class model for spatial structures is illustrated on the right-hand side of the figure <<data_structures_package>>. It
+The openEHR class model for spatial structures is illustrated on the right-hand side of <<data_structures_package>>. It
 should be noted that these classes (`ITEM_LIST` etc) are not equivalents of similarly named classes
 (such as `List<T>`) in most data structure libraries - they also include per-node `_name_`,
 `_archetype_node_id_` and leaf node value and null flavour, and path capabilities.
@@ -29,13 +29,16 @@ should be noted that these classes (`ITEM_LIST` etc) are not equivalents of simi
 == CEN EN13606 Encoding Rules
 
 === ITEM_SINGLE
+
 An `ITEM_SINGLE` object is encoded in EN13606 as a single `ELEMENT` object.
 
 === ITEM_LIST
+
 An `ITEM_LIST` object is encoded in EN13606 as a `CLUSTER` object containing the set of `ELEMENTs`
 from the openEHR list.
 
 === ITEM_TABLE
+
 The `ITEM_TABLE` encoding rules are as follows:
 
 * Each row is encoded as a Cluster containing a number of `ELEMENTs`, each corresponding to the value of a column in that row.
@@ -44,6 +47,7 @@ The `ITEM_TABLE` encoding rules are as follows:
 * The names of the containing `CLUSTER` of each row is the stringified number of the row in the overall table.
 
 === ITEM_TREE
+
 Data of an `ITEM_TREE` instance are simply replicated as is to produce the correct EN13606 hierarchical form.
 
 == Class Descriptions

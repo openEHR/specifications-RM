@@ -17,7 +17,7 @@ In this figure, the parts of the EHR are as follows:
 * _Compositions (versioned)_: the containers of all clinical and administrative content of the record;
 * _Contributions_: the change-set records for every change made to the health record; each Contribution references a set of one or more Versions of any of the versioned items in the record that were committed or attested together by a user to an EHR system.
 
-The `ehr` package is illustrated in the figure <<rm_ehr>> below. The classes have a more or less one-to-one correspondence with the objects shown in figure <<high_level_ehr_structure>>. Each versioned object of type `XXX` is defined by a class `VERSIONED_XXX`, which is a binding of the type `XXX` to the generic type paremeter `T` in the generic type `VERSIONED_COMPOSITION` (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).
+The `ehr` package is illustrated in <<rm_ehr>> below. The classes have a more or less one-to-one correspondence with the objects shown in <<high_level_ehr_structure>>. Each versioned object of type `XXX` is defined by a class `VERSIONED_XXX`, which is a binding of the type `XXX` to the generic type paremeter `T` in the generic type `VERSIONED_COMPOSITION` (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).
 
 [.text-center]
 .rm.ehr package
