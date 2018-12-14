@@ -2269,10 +2269,10 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <div class="ulist">
 <ul>
 <li>
-<p><code><em>formatting</em> = "plain"</code>: plain text</p>
+<p><code><em>formatting</em> = "plain"</code>: plain text, may contain newlines;</p>
 </li>
 <li>
-<p><code><em>formatting</em> = "plain_no_newlines"</code>: plain text with no newlines</p>
+<p><code><em>formatting</em> = "plain_no_newlines"</code>: plain text with no newlines;</p>
 </li>
 <li>
 <p><code><em>formatting</em> = "commonmark"</code>: text formatted according to CommonMark specification.</p>
@@ -2299,10 +2299,10 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <div class="ulist">
 <ul>
 <li>
-<p><code>"plain"</code>: use for plain text (same as Void)</p>
+<p><code>"plain"</code>: use for plain text, possibly containing newlines, but otherwise unformatted (same as Void);</p>
 </li>
 <li>
-<p><code>"plain_no_newlines"</code>: use for text containing newlines, but otherwise unformatted</p>
+<p><code>"plain_no_newlines"</code>: use for text containing no newlines or other formatting;</p>
 </li>
 <li>
 <p><code>"commonmark"</code>: use for text formatted according to CommonMark specification.</p>
@@ -2310,7 +2310,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </ul>
 </div>
 <div class="paragraph">
-<p>DEPRECATED usage: A format string of the form <code>"name:value; name:value&#8230;&#8203;"</code> , e.g. <code>"font-weight : bold; font-family : Arial; font-size : 12pt;"</code>. Values taken from W3C CSS2 properties lists for background and font .</p>
+<p>DEPRECATED usage: contains a string of the form <code>"name:value; name:value&#8230;&#8203;"</code> , e.g. <code>"font-weight : bold; font-family : Arial; font-size : 12pt;"</code>. Values taken from W3C CSS2 properties lists for background and font .</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2602,7 +2602,7 @@ c: <code>char[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>DEPRECATED: use markdown formatted DV_TEXT instead.</p>
+<p>DEPRECATED: use markdown formatted <code>DV_TEXT</code> instead.</p>
 </div>
 <div class="paragraph">
 <p>Original definition:</p>
