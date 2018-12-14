@@ -91,7 +91,7 @@ Over time, the number of event Compositions is likely to far outstrip the number
 .An EHR containing Event and Persistent Compositions
 image::{diagrams_uri}/event_persistent_ehr.png[id=event_persistent_ehr, align="center", width=80%]
 
-In any clinical session, an event composition will be created, and in many cases, persistent compositions will be modified. How this works is described below in the section <<Change Control in the EHR>>.
+In any clinical session, an event composition will be created, and in many cases, persistent compositions will be modified. How this works is described below in <<Change Control in the EHR>>.
 
 === Directory
 
@@ -144,7 +144,7 @@ The list of Contributions made to a record is recorded along with changes to the
 
 Versioning of Compositions is achieved with the `VERSIONED_OBJECT<T>` type from the change_control package (Common IM), which in the composition package is explicitly bound to the `COMPOSITION` class, via the class `VERSIONED_COMPOSITION` which inherits from the type `VERSIONED<COMPOSITION>`.
 
-The effect of version control on Compositions is visualised in the figure below. The versions (each "version" being a `COMPOSITION`) shown here in a `VERSIONED_COMPOSITION` are the same versions shown along each vertical line in FIGURE 8, this time shown with their associated audit items. The set of versions should be understood as a set of successive modifications of the same data in time.
+The effect of version control on Compositions is visualised in the figure below. The versions (each "version" being a `COMPOSITION`) shown here in a `VERSIONED_COMPOSITION` are the same versions shown along each vertical line in <<ehr_contributions>>, this time shown with their associated audit items. The set of versions should be understood as a set of successive modifications of the same data in time.
 
 [.text-center]
 .The versioned Composition
