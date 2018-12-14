@@ -7,7 +7,7 @@ As described in the Architecture Overview document, formal version control and c
 <<change_control_package>> illustrates the openEHR model of a Versioned object, and its constituent Versions. In this model, an instance of the class `VERSIONED_OBJECT<T>` provides the versioning facilities for one versioned item and is often referred to as a 'version container'. Although any kind of data can be versioned according to the model presented here, the use of versioning in openEHR is limited to 'toplevel structures', such as EHR Compositions and Party objects in a demographic system.
 
 [.text-center]
-.common.change_control Package
+.`common.change_control` Package
 image::{uml_diagrams_uri}/RM-common.change_control.svg[id=change_control_package, align="center"]
 
 <<version_control_structures>> illustrates a single `VERSIONED_OBJECT` containing a number of `VERSIONs`. Although the figure implies physical containment of Versions by a Versioned object, this is only one possible implementation. Other implementations (e.g. using orthodox relational structures) might use references, separate compressed copies, or any other mechanism.
