@@ -2255,6 +2255,22 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <p>A text item, which may contain any amount of legal characters arranged as e.g. words, sentences etc (i.e. one <code>DV_TEXT</code> may be more than one word). Visual formatting and hyperlinks may be included via markdown.</p>
 </div>
 <div class="paragraph">
+<p>If the <code><em>formatting</em></code> field is set, the <code><em>value</em></code> field is affected as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><em>formatting</em> = "plain"</code>: plain text, may contain newlines;</p>
+</li>
+<li>
+<p><code><em>formatting</em> = "plain_no_newlines"</code>: plain text with no newlines;</p>
+</li>
+<li>
+<p><code><em>formatting</em> = "markdown"</code>: text in markdown format; use of CommonMark strongly recommended.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p>A <code>DV_TEXT</code> can be coded by adding mappings to it.</p>
 </div></div></td>
 </tr>
@@ -2271,30 +2287,14 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Displayable rendition of the item, regardless of its underlying structure. For <code>DV_CODED_TEXT</code>, this is the rubric of the complete term as provided by the terminology service. No carriage returns, line feeds, or other non-printing characters permitted.</p>
-</div>
-<div class="paragraph">
-<p>If the <code><em>formatting</em></code> field is set, the this field is affected as follows:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code><em>formatting</em> = "plain"</code>: plain text, may contain newlines;</p>
-</li>
-<li>
-<p><code><em>formatting</em> = "plain_no_newlines"</code>: plain text with no newlines;</p>
-</li>
-<li>
-<p><code><em>formatting</em> = "commonmark"</code>: text formatted according to CommonMark specification.</p>
-</li>
-</ul>
+<p>Displayable rendition of the item, regardless of its underlying structure. For <code>DV_CODED_TEXT</code>, this is the rubric of the complete term as provided by the terminology service.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>hyperlink</strong>: <code>DV_URI</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>DEPRECATED: use CommonMark-formatted link/text in the <code><em>value</em></code> attribute, and <code>"commonmark"</code> as the value of the <code><em>formatting</em></code> field.</p>
+<p>DEPRECATED: this field is deprecated; use markdown link/text in the <code><em>value</em></code> attribute, and <code>"markdown"</code> as the value of the <code><em>formatting</em></code> field.</p>
 </div>
 <div class="paragraph">
 <p>Original usage, prior to RM Release 1.0.4: Optional link sitting behind a section of plain text or coded term item.</p>

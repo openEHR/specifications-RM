@@ -8,6 +8,12 @@ h|*Class*
 h|*Description*
 2+a|A text item, which may contain any amount of legal characters arranged as e.g. words, sentences etc (i.e. one `DV_TEXT` may be more than one word). Visual formatting and hyperlinks may be included via markdown.
 
+If the `_formatting_` field is set, the `_value_` field is affected as follows:
+
+* `_formatting_ = "plain"`: plain text, may contain newlines;
+* `_formatting_ = "plain_no_newlines"`: plain text with no newlines;
+* `_formatting_ = "markdown"`: text in markdown format; use of CommonMark strongly recommended.
+
 A `DV_TEXT` can be coded by adding mappings to it.
 
 h|*Inherit*
@@ -19,17 +25,11 @@ h|*Attributes*
 
 h|*1..1*
 |*value*: `String`
-a|Displayable rendition of the item, regardless of its underlying structure. For `DV_CODED_TEXT`, this is the rubric of the complete term as provided by the terminology service. No carriage returns, line feeds, or other non-printing characters permitted.
-
-If the `_formatting_` field is set, the this field is affected as follows:
-
-* `_formatting_ = "plain"`: plain text, may contain newlines;
-* `_formatting_ = "plain_no_newlines"`: plain text with no newlines;
-* `_formatting_ = "commonmark"`: text formatted according to CommonMark specification.
+a|Displayable rendition of the item, regardless of its underlying structure. For `DV_CODED_TEXT`, this is the rubric of the complete term as provided by the terminology service.
 
 h|*0..1*
 |*hyperlink*: `DV_URI`
-a|DEPRECATED: use CommonMark-formatted link/text in the `_value_` attribute, and `"commonmark"` as the value of the `_formatting_` field.
+a|DEPRECATED: this field is deprecated; use markdown link/text in the `_value_` attribute, and `"markdown"` as the value of the `_formatting_` field.
 
 Original usage, prior to RM Release 1.0.4: Optional link sitting behind a section of plain text or coded term item.
 
