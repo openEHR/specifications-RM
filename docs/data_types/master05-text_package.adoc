@@ -329,7 +329,7 @@ The current trend (emerging mainly for documentation in software) is to use 'mar
 The `_formatting_` attribute may contain one of the following values, with the associated meaning.
 
 * `Void`:  if no value is supplied, no formatting marks are assumed to exist in the text, other than newlines, and it may safely be passed in a 'straight-through' fashion to a display device with no further processing, if desired;
-* `"commonmark"`: the text is assumed to be formatted using the {commonmark_spec}[CommonMark] form of markdown, and should preferably be rendered via conversion to HTML, but _may_ be passed straight through to display if unavoidable, since markdown is acceptably human-readable;
+* `"markdown"`: the text is assumed to be markdown format, strongly recommended use of the {commonmark_spec}[CommonMark] form of markdown, and should preferably be rendered via conversion to HTML in the usual way, but _may_ be passed straight through to display if unavoidable, since markdown is acceptably human-readable;
 * `"plain"`: the text is treated as in the unformatted (`Void`) case above (newlines are allowed); this option is used to enable archetype-based modelling tools to clearly require a text object to be unformatted;
 * `"plain_no_newlines"`: as for the plain case, but newlines are not allowed - the text is a simple 'atom';
 * (legacy - deprecated): for legacy purposes, it remains legal to use a string of the form `"name:value; name:value…"` , e.g. `"font-weight : bold; font-family : Arial; font-size : 12pt;"`.
@@ -337,13 +337,13 @@ The `_formatting_` attribute may contain one of the following values, with the a
 Related to the question of formatting, a second optional attribute, `DV_TEXT._hyperlink_` of type `DV_URI`, exists to specify a web link associated with the whole text represented by the `DV_TEXT` instance. Similarly to the case of formatting, the more modern markdown approach to using the `_value_` field is also more flexible with regards to links, since multiple instances of the latter may be used within a single text.
 
 [.deprecated]
-*Deprecated*: Starting at RM Release 1.0.4, the use of the `_hyperlink_` field is deprecated in favour of inline link(s) in the `_value_` field, represented using CommonMark markup, whose most basic form is `[text](uri)`.
+*Deprecated*: Starting at RM Release 1.0.4, the use of the `_hyperlink_` field is deprecated in favour of inline link(s) in the `_value_` field, represented using markdown; in CommonMark, the basic form of a link is `[text](uri)`.
 
-[.tbd]
-TBD: what subset if any do we allow of CommonMark? Do we want to allow HTML blocks or raw HTML, which are both possible in CommonMark? What about images?
+Not all CommonMark features are allowed in the `_value_` field, if it contains markdown. The following should not be used:
 
-[.tbd]
-TBD: do we state a minimum version of CommonMark?
+* HTML 'blocks';
+* raw HTML;
+* images - these may be included in openEHR content via the `DV_MULTIMEDIA` types.
 
 ==== Usage in DV_TEXT Instances
 
@@ -362,7 +362,7 @@ In a concrete instance of `DV_TEXT`, the following are the likely usages of the 
 |Plain text 'atom' with a hyperlink +
  (no formatting, no newlines)
 |text string of form `[text](uri)` or other CommonMark link variant
-|`"commonmark"`
+|`"markdown"`
 |`_value_` = plain text; `_hyperlink_` = URI/URL
 
 |Plain text paragraphs, +
@@ -373,7 +373,7 @@ In a concrete instance of `DV_TEXT`, the following are the likely usages of the 
 
 |Formatted text with paragraphs, bolding, italics, bullet lists, links etc
 |CommonMark text string
-|`"commonmark"`
+|`"markdown"`
 |`DV_PARAGRAPH` instance(s) containing legacy form `DV_TEXTs` with CSS formatting and/or values in `_hyperlink_`
 
 |===
@@ -393,7 +393,7 @@ In a concrete instance of `DV_CODED_TEXT`, the following are the likely usages o
 
 |Plain text of coded term with a hyperlink
 |text string of form `[text](uri)` or other CommonMark link variant
-|`"commonmark"`
+|`"markdown"`
 |`_value_` = plain text; `_hyperlink_` = URI/URL
 
 |Plain text of coded term or other text, containing newlines
