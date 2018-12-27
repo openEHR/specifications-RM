@@ -77,23 +77,23 @@ The following examples show how to use the classes to represent some common enca
                                              `_formalism_ = "json"`
  
 |JSON document          |`DV_MULTIMEDIA`    |`_uri_` = URI at which document is located +
-                                             `_media_type_ = "application/json"` +
+                                             `_media_type_ = "IANA::application/json"` +
                                              `_size_` = Integer indicating number of bytes of target.
 
 |inline JPG             |`DV_MULTIMEDIA`    |`_data_` = byte array carrying JPG +
-                                             `_media_type_ = "image/jpeg"` +
+                                             `_media_type_ = "IANA::image/jpeg"` +
                                              `_size_` = Integer indicating number of bytes of `_data_`.
 
 |inline JPG, Base64 +
  encoded                |`DV_MULTIMEDIA`    |`_data_` = byte array carrying Base64 string of JPG +
-                                             `_media_type_ = "image/jpeg;base64"` +
+                                             `_media_type_ = "IANA::image/jpeg;base64"` +
                                              `_size_` = Integer indicating number of bytes of `_data_`.
 
 |inline JPG with +
  SHA-2 hash             |`DV_MULTIMEDIA`    |`_data_` = byte array carrying JPG +
-                                             `_media_type_ = "image/jpeg"` +
+                                             `_media_type_ = "IANA::image/jpeg"` +
                                              `_integrity_check_` = byte array containing SHA-2 hash +
-                                             `_integrity_check_algorithm_ = "SHA-2"` +
+                                             `_integrity_check_algorithm_ = "openehr::SHA-2"` +
                                              `_size_` = Integer indicating number of bytes of `_data_`.                                             
 
 |===
