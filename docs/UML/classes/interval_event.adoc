@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*1..1*
 |*width*: `DV_DURATION`
-a|Length of the interval during which the state was true. Void if an instantaneous event.
+a|Duration of the time interval during which the values recorded under `data` are true and, if set, the values recorded under `state` are true. Void if an instantaneous event.
 
 h|*0..1*
 |*sample_count*: `Integer`
@@ -25,7 +25,7 @@ a|Optional count of original samples to which this event corresponds.
 
 h|*1..1*
 |*math_function*: `DV_CODED_TEXT`
-a|Mathematical function of the data of this event, e.g.  maximum, mean etc. Coded using openEHR Terminology group `event math function`.
+a|Mathematical function of the data of this event, e.g.  maximum, mean etc. Coded using https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml[openEHR vocabulary `event math function`]. Default value `640&#124;actual&#124;`, meaning 'actual value'.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*

@@ -37,10 +37,9 @@
 </li>
 <li><a href="#_overview">3. Overview</a>
 <ul class="sectlevel2">
-<li><a href="#_instance_structures">3.1. Instance Structures</a></li>
-<li><a href="#_class_descriptions">3.2. Class Descriptions</a>
+<li><a href="#_class_descriptions">3.1. Class Descriptions</a>
 <ul class="sectlevel3">
-<li><a href="#_data_structure_class">3.2.1. DATA_STRUCTURE Class</a></li>
+<li><a href="#_data_structure_class">3.1.1. DATA_STRUCTURE Class</a></li>
 </ul>
 </li>
 </ul>
@@ -65,7 +64,7 @@
 <li><a href="#_item_tree_class">4.3.5. ITEM_TREE Class</a></li>
 </ul>
 </li>
-<li><a href="#_instance_structures_2">4.4. Instance Structures</a>
+<li><a href="#_instance_structures">4.4. Instance Structures</a>
 <ul class="sectlevel3">
 <li><a href="#_item_single_instance_structure">4.4.1. ITEM_SINGLE Instance Structure</a></li>
 <li><a href="#_item_list_instance_structure">4.4.2. ITEM_LIST Instance Structure</a></li>
@@ -211,14 +210,24 @@
 </thead>
 <tbody>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.4</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.7.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-42" target="_blank" rel="noopener">SPECRM-42</a>. Clarify definition of <code>HISTORY.<em>summary</em></code> (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-81" target="_blank" rel="noopener">SPECPR-81</a>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">I McNichol,<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-83" target="_blank" rel="noopener">SPECRM-83</a>. Improve documentation of <code>INTERVAL_EVENT</code> and <code>POINT_EVENT</code> (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-197" target="_blank" rel="noopener">SPECPR-197</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Dec 2018</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.3</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-42" target="_blank" rel="noopener">SPECRM-42</a>. Clarify definition of <code>HISTORY.<em>summary</em></code> (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-81" target="_blank" rel="noopener">SPECPR-81</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll,<br>
  G Grieve</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Nov 2015</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Nov 2015</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>R E L E A S E&#160;&#160;&#160;&#160;&#160;1.0.2</strong></p></th>
@@ -598,8 +607,7 @@ lists, tables, trees, and history.</p>
 <div class="sect2">
 <h3 id="_requirements"><a class="anchor" href="#_requirements"></a>2.1. Requirements</h3>
 <div class="paragraph">
-<p>The requirements for structured data in the EHR and other systems are essentially that low-level data
-can be expressed in standard structures. The structures which are commonly required are as follows:</p>
+<p>The requirements for structured data in the EHR and other systems are essentially that low-level data can be expressed in standard structures. The structures which are commonly required are as follows:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -624,48 +632,26 @@ can be expressed in standard structures. The structures which are commonly requi
 <div class="sect2">
 <h3 id="_design_principles"><a class="anchor" href="#_design_principles"></a>2.2. Design Principles</h3>
 <div class="paragraph">
-<p>The design principle which particularly applies to the data structure models described here is the need
-to provide explicit specifications for logical structures using the same generic representation, such as
-hierarchy. The logical structures include tables, lists, trees, and the concept of history.</p>
+<p>The design principle which particularly applies to the data structure models described here is the need to provide explicit specifications for logical structures using the same generic representation, such as hierarchy. The logical structures include tables, lists, trees, and the concept of history.</p>
 </div>
 <div class="paragraph">
-<p>Regardless of whether such structures are treated as pure presentation or as having semantic significance,
-there are at various reasons for explicitly including the semantics of logical structures which
-are represented in a generic way such as hierarchy, including:</p>
+<p>Regardless of whether such structures are treated as pure presentation or as having semantic significance, there are at various reasons for explicitly including the semantics of logical structures which are represented in a generic way such as hierarchy, including:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>it is essential for interoperability that a structure such as a logical table, list or linear history
-be encoded into the generic representation in the same way by all senders and receivers of
-information, otherwise there is no guarantee that any communicating party&#8217;s software processes
-the structures in the intended fashion;</p>
+<p>it is essential for interoperability that a structure such as a logical table, list or linear history be encoded into the generic representation in the same way by all senders and receivers of information, otherwise there is no guarantee that any communicating party&#8217;s software processes the structures in the intended fashion;</p>
 </li>
 <li>
-<p>software implementors can develop software which explicitly captures the logical structures
-as functional interfaces which are used as the only way of building such structures. Such
-interfaces (assuming they are bug-free) guarantee that all application software always creates
-correct structures - there is no need to rely on caller software each time making low
-level calls to create a table or list out of hierarchy elements;</p>
+<p>software implementors can develop software which explicitly captures the logical structures as functional interfaces which are used as the only way of building such structures. Such interfaces (assuming they are bug-free) guarantee that all application software always creates correct structures - there is no need to rely on caller software each time making low level calls to create a table or list out of hierarchy elements;</p>
 </li>
 <li>
-<p>the use of a functional interface for such types means that application software at the
-receiver&#8217;s end can always process incoming information in its intended form, enabling correct
-presentation of data on the screen.</p>
+<p>the use of a functional interface for such types means that application software at the receiver&#8217;s end can always process incoming information in its intended form, enabling correct presentation of data on the screen.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>One of the motivations for defining logical data structures explicitly is to remove the ambiguity in
-recording structure and time in previous EHR specifications and standards, such as CEN 13606,
-GEHR, GEHR Australia, and HL7v3 CDA specifications. The alternative in the past was to simply
-use generic hierarchical structures; there was no agreement in the standard about how a table might be
-represented, similarly, time had no standard representation. Where single values were recorded, an
-attribute meaning 'time of recording' was set appropriately; if a time series was required, there was
-no clear guideline as to how to model it. One way would have been to build a double list which is logically
-a two column table, whose first column was time-point data, but many other approaches are
-possible. The standardised approach removes all such ambiguity, and improves the quality of data and
-software.</p>
+<p>One of the motivations for defining logical data structures explicitly is to remove the ambiguity in recording structure and time in previous EHR specifications and standards, including GEHR, CEN 13606, HL7v3 CDA and HL7 FHIR specifications. The approach in these standards to representing time and structure is to use undifferentiated hierarchical structures - there is no specification about how a table or a time series might be represented. Where single values are recorded, an attribute meaning 'time of recording' is usually set; if a time series was required, there is no clear guideline as to how to model it. The standardised approach used here removes all such ambiguity, and improves the quality of data and software.</p>
 </div>
 </div>
 </div>
@@ -694,33 +680,9 @@ is compatible with the less semantically rich standard, and is guaranteed (in th
 to other systems which support CEN EN13606 as an interoperability standard.</p>
 </div>
 <div class="sect2">
-<h3 id="_instance_structures"><a class="anchor" href="#_instance_structures"></a>3.1. Instance Structures</h3>
-<div class="paragraph">
-<p>Diagrams of typical instances of the structures are included throughout this document. Each instance
-of shown in both physical and logical form. The physical form shows the instances which will occur
-in data if the structure is implemented using the representation package. The logical form shows
-the same instance in a logical form only - i.e. hiding the physical implementation. Only the latter form
-is used in other openEHR documents. In all instance diagrams, the following shorthand is used for
-well-known attribute names:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>"m = xxxx" - means "meaning = xxxx", i.e. the meaning of the <code><em>archetype_node_id</em></code> attribute inherited from the <code>LOCATABLE</code> class.</p>
-</li>
-<li>
-<p>"n = xxxx" - means "name = xxxx", i.e. the value of the <code><em>name</em></code> attribute inherited from the <code>LOCATABLE</code> class.</p>
-</li>
-<li>
-<p>"v = xxxx" - means "value = xxxx", i.e. the value of the <code><em>value</em></code> attribute from the <code>ELEMENT</code> class.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>3.2. Class Descriptions</h3>
+<h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>3.1. Class Descriptions</h3>
 <div class="sect3">
-<h4 id="_data_structure_class"><a class="anchor" href="#_data_structure_class"></a>3.2.1. DATA_STRUCTURE Class</h4>
+<h4 id="_data_structure_class"><a class="anchor" href="#_data_structure_class"></a>3.1.1. DATA_STRUCTURE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -781,16 +743,10 @@ these types is guaranteed to create data which represents the logical structures
 identically.</p>
 </div>
 <div class="paragraph">
-<p>Data values are connected to spatial structures via the <code><em>value</em></code> attribute of the <code>ELEMENT</code> class of the
-<code>representation</code> cluster. This class also carries an important attribute <code><em>null_flavour</em></code>, whose value indicates
-how to read the value. A small domain termlist containing values such as "unknown", "not disclosed",
-"undetermined", etc, as described in the Flavours of Null vocabulary in the openEHR
-Support Information Model.</p>
+<p>Data values are connected to spatial structures via the <code><em>value</em></code> attribute of the <code>ELEMENT</code> class of the <code>representation</code> cluster. This class also carries the attribute <code><em>null_flavour</em></code>, whose value indicates how to read the contents of the <code><em>value</em></code> attribute. Values from the openEHR <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml"><code>null flavours</code> vocabulary</a>, including <code>253|unknown|</code>, <code>271|no information|</code>, and <code>273|not applicable|</code> are used to populate it.</p>
 </div>
 <div class="paragraph">
-<p>The openEHR class model for spatial structures is illustrated on the right-hand side of <a href="#data_structures_package">Figure 1</a>. It
-should be noted that these classes (<code>ITEM_LIST</code> etc) are not equivalents of similarly named classes
-(such as <code>List&lt;T&gt;</code>) in most data structure libraries - they also include per-node <code><em>name</em></code>,
+<p>The openEHR class model for spatial structures is illustrated on the right-hand side of <a href="#data_structures_package">Figure 1</a>. It should be noted that these classes (<code>ITEM_LIST</code> etc) are not equivalents of similarly named classes (such as <code>List&lt;T&gt;</code>) in most data structure libraries - they also include per-node <code><em>name</em></code>,
 <code><em>archetype_node_id</em></code> and leaf node value and null flavour, and path capabilities.</p>
 </div>
 </div>
@@ -908,7 +864,7 @@ from the openEHR list.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>ELEMENT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Generate a CEN EN13606-compatible hierarchy consisting of a single ELEMENT.</p>
+<p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>ELEMENT</code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -972,13 +928,6 @@ from the openEHR list.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_item</strong> (<br>
 a_name: <code>String[1]</code><br>
@@ -994,6 +943,13 @@ i: <code>Integer[1]</code><br>
 ): <code>ELEMENT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Retrieve the i-th item with name.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>CLUSTER</code> containing the <code>ELEMENTs</code> of this list.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1046,20 +1002,13 @@ i: <code>Integer[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rows</strong>: <code>List&lt;CLUSTER&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Physical representation of the table as a list of CLUSTERs, each containing the data of one row of the table.</p>
+<p>Physical representation of the table as a list of <code>CLUSTERs</code>, each containing the data of one row of the table.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>CLUSTER</code> containing the <code>CLUSTERs</code> representing the columns of this table.</p>
-</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
@@ -1154,6 +1103,13 @@ j: <code>Integer[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>CLUSTER</code> containing the <code>CLUSTERs</code> representing the columns of this table.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Valid_structure</em></strong>: <code>rows.for_all (items.for_all (instance_of ("ELEMENT")))</code></p>
@@ -1194,7 +1150,7 @@ j: <code>Integer[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;ITEM&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The items comprising the ITEM_TREE. Can include 0 or more CLUSTERs and/or 0 or more individual ELEMENTs.</p>
+<p>The items comprising the <code>ITEM_TREE</code>. Can include 0 or more <code>CLUSTERs</code> and/or 0 or more individual <code>ELEMENTs</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1232,7 +1188,7 @@ a_path: <code>String[1]</code><br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_instance_structures_2"><a class="anchor" href="#_instance_structures_2"></a>4.4. Instance Structures</h3>
+<h3 id="_instance_structures"><a class="anchor" href="#_instance_structures"></a>4.4. Instance Structures</h3>
 <div class="sect3">
 <h4 id="_item_single_instance_structure"><a class="anchor" href="#_item_single_instance_structure"></a>4.4.1. ITEM_SINGLE Instance Structure</h4>
 <div class="paragraph">
@@ -1240,7 +1196,7 @@ a_path: <code>String[1]</code><br>
 </div>
 <div id="instance_item_single" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="data_structures/diagrams/instance_item_single.png" alt="instance item single" width="60%">
+<img src="data_structures/diagrams/instance_item_single.svg" alt="instance item single" width="50%">
 </div>
 <div class="title">Figure 2. Instance Structure of <code>ITEM_SINGLE</code></div>
 </div>
@@ -1252,7 +1208,7 @@ a_path: <code>String[1]</code><br>
 </div>
 <div id="instance_item_list" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="data_structures/diagrams/instance_item_list.png" alt="instance item list" width="75%">
+<img src="data_structures/diagrams/instance_item_list.svg" alt="instance item list" width="75%">
 </div>
 <div class="title">Figure 3. Instance Structure of <code>ITEM_LIST</code></div>
 </div>
@@ -1264,7 +1220,7 @@ a_path: <code>String[1]</code><br>
 </div>
 <div id="instance_item_table" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="data_structures/diagrams/instance_item_table.png" alt="instance item table" width="70%">
+<img src="data_structures/diagrams/instance_item_table.svg" alt="instance item table">
 </div>
 <div class="title">Figure 4. Instance Structure of <code>ITEM_TABLE</code></div>
 </div>
@@ -1272,12 +1228,11 @@ a_path: <code>String[1]</code><br>
 <div class="sect3">
 <h4 id="_item_tree_instance_structure"><a class="anchor" href="#_item_tree_instance_structure"></a>4.4.4. ITEM_TREE Instance Structure</h4>
 <div class="paragraph">
-<p>The following figure illustrates te logical and physical form of an example <code>ITEM_TREE</code> instance, representing a
-biochemistry result.</p>
+<p>The following figure illustrates te logical and physical form of an example <code>ITEM_TREE</code> instance, representing a biochemistry result.</p>
 </div>
 <div id="instance_item_tree" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="data_structures/diagrams/instance_item_tree.png" alt="instance item tree" width="70%">
+<img src="data_structures/diagrams/instance_item_tree.svg" alt="instance item tree">
 </div>
 <div class="title">Figure 5. Instance Structure of <code>ITEM_TREE</code></div>
 </div>
@@ -1291,7 +1246,7 @@ biochemistry result.</p>
 <div class="sect2">
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>5.1. Overview</h3>
 <div class="paragraph">
-<p>This package contains classes for a simple hierarchical representation of any data structure, as shown on the lower right side of <a href="#data_structures_package">Figure 1</a>. These classes are compatible with the CEN EN13606 classes of the same names, and instances can be losslessly generated to and from EN13606 instances structures.</p>
+<p>This package contains classes for a simple hierarchical representation of any data structure, as shown on the lower right side of <a href="#data_structures_package">Figure 1</a>. These classes are compatible with the ISO 13606-1 classes of the same names, and instances can be losslessly generated to and from EN13606 instances structures.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1354,7 +1309,7 @@ biochemistry result.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;ITEM&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Ordered list of items - CLUSTER or ELEMENT objects - under this CLUSTER.</p>
+<p>Ordered list of items - <code>CLUSTER</code> or <code>ELEMENT</code> objects - under this <code>CLUSTER</code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1399,7 +1354,7 @@ biochemistry result.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>DATA_VALUE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Property representing leaf value object of ELEMENT. In real data, any concrete subtype of DATA_VALUE can be used.</p>
+<p>Property representing leaf value object of <code>ELEMENT</code>. In real data, any concrete subtype of <code>DATA_VALUE</code> can be used.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1444,74 +1399,46 @@ biochemistry result.</p>
 <div class="sect2">
 <h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>The <code>history</code> package defines classes which formalise the concept of past, linear time, via which historical
-data of any structural complexity can be recorded. It supports both instantaneous and interval
-event samples within periodic and aperiodic series. Data recorded in interval events are tagged with a
-mathematical function, including 'point-in-time', 'mean', 'delta' and so on, as defined by the
-openEHR <code>event_math_function</code> vocabulary. It also supports the inclusion of "summary" data, i.e. a
-textual or image item which summarises in some way the entire history.</p>
+<p>The <code>history</code> package defines classes which formalise the concept of past, linear time, via which historical data of any structural complexity can be recorded. It supports both instantaneous and interval event samples within periodic and aperiodic series.</p>
 </div>
 <div class="paragraph">
-<p>Regardless of whether the actual data consist of a single sample or many, they are represented in the
-same way: as a history of events, i.e. as a time series, allowing all software to access data in a uniform
-way, whether it is a single measurement of weight, a long series of three- or four-dimensional images,
-or even a series of encapsulated multimedia items.</p>
+<p>Regardless of whether the actual data consist of a single sample or many, they are represented in the same way: as a history of events, i.e. as a time series, allowing all software to access data in a uniform way, whether it be a single measurement of weight, a long series of three- or four-dimensional images, or a series of encapsulated multimedia items. The type of data contained in a History structure may be any openEHR data, including text, coded, quantitative, time, or multimedia. In the case of quantitative and date/time data (<a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_quantity_package">openEHR Data Types, <code>rm.data_types.quantity</code> package</a>), the data are formally quantitative, but for the vast majority of cases of other types of data (text, coded etc), there is an obvious quantitative interpretation associated with the values. An example is samples whose data values are coded terms such as 'low', 'normal', 'high', 'critical high', representing blood pressure measurements over time.</p>
 </div>
 <div class="paragraph">
-<p>The model defines the constrained generic (otherwise known as 'template' or 'parameterised') types
-<code>HISTORY&lt;T&gt;</code>, <code>EVENT&lt;T&gt;</code>, <code>POINT_EVENT&lt;T&gt;</code>, and <code>INTERVAL_EVENT&lt;T&gt;</code> where the <code><em>type</em></code> parameter
-is constrained to the <code>ITEM_STRUCTURE</code> type, and defines the type of the data recorded in an instance
-of <code>HISTORY</code>. The effect is that repeated instances of spatially complex data can recur in time, corresponding
-to the way data are actually measured. An aperiodic series of <code>POINT_EVENT</code> instances
-would typically be used to represent manual measurements repeated in time. Periodic histories of
-<code>INTERVAL_EVENT</code> instances would typically be used to represent vital signs monitor output (which is
-usually delivered in averaged form potentially with additional minimum and maximum values).</p>
+<p>Instantaneous events are representing using the type <code>POINT_EVENT</code>, for which the value (<code><em>data</em></code> attribute) always represents an actual instantaneous value of a datum at a point in time. However, time series data may also be represented using the <code>INTERVAL_EVENT</code> type, enabling values other than 'actual' to be recorded for intervals of time. Events recorded in this form are accordingly tagged with a mathematical function, such as 'actual', 'mean', 'change' and so on, as defined by the openEHR <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml"><code>event math function</code> vocabulary</a>.</p>
 </div>
 <div class="paragraph">
-<p>As with all other parts of the openEHR reference model, the <code>history</code> package is designed for archetyping;
-archetypes define the domain semantics of <code>HISTORY</code> instances. The <code>history</code> package is
-shown on the left of <a href="#data_structures_package">Figure 1</a>.</p>
+<p>The model also supports the inclusion of 'summary' data, i.e. a textual or image item which summarises in some way the entire history.</p>
+</div>
+<div class="paragraph">
+<p>In formal terms, the model defines the constrained generic (otherwise known as 'template' or 'parameterised') types <code>HISTORY&lt;T&#8594;ITEM_STRUCTURE&gt;</code>, <code>EVENT&lt;T&#8594;ITEM_STRUCTURE&gt;</code>, <code>POINT_EVENT&lt;T&gt;</code>, and <code>INTERVAL_EVENT&lt;T&gt;</code> where the <code><em>type</em></code> parameter is constrained to the <code>ITEM_STRUCTURE</code> type, and defines the type of the data recorded in an instance of <code>HISTORY</code>. The effect is that repeated instances of spatially complex data can recur in time, corresponding to the way data are actually measured. An aperiodic series of <code>POINT_EVENT</code> instances would typically be used to represent manual measurements repeated in time. Periodic histories of <code>INTERVAL_EVENT</code> instances would typically be used to represent vital signs monitor output (which is usually delivered in averaged form potentially with additional minimum and maximum values).</p>
+</div>
+<div class="paragraph">
+<p>As with all other parts of the openEHR reference model, the <code>history</code> package is designed so that archetypes define the domain semantics of <code>HISTORY</code> instances. The <code>history</code> package is shown on the left of <a href="#data_structures_package">Figure 1</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_basic_semantics"><a class="anchor" href="#_basic_semantics"></a>6.1.1. Basic Semantics</h4>
 <div class="paragraph">
-<p>The intention of the History model is to represent time-based data for which every sample in the
-series is a measurement of the same phenomenon (e.g. patient heartrate) and is obtained using the
-same measurement method (e.g. pulse oximeter). Samples taken in this way can be reliably treated as
-representing changes in a phenomenon over time, and accordingly can be safely used for time-based
-computation, such as graphing, statistical analysis and so on. A History can contain any mixture of
-<code>POINT_EVENT</code> and <code>INTERVAL_EVENT</code> instances. Clearly it is impossible for the model to guarantee
-completely correct usage on its own, however there two major safeguards.</p>
+<p>The intention of the History model is to represent time-based data for which every sample in the series is a measurement of the same phenomenon (e.g. patient heart rate) and is obtained using the same measurement method (e.g. pulse oximeter). Samples taken in this way can be reliably treated as comparable, i.e. representing changes in the same phenomenon over time, and accordingly can be safely used for time-based computation, such as graphing, statistical analysis and so on. A History can contain any mixture of <code>POINT_EVENT</code> and <code>INTERVAL_EVENT</code> instances. Clearly it is impossible for the model to guarantee completely correct usage on its own, however there two major safeguards.</p>
 </div>
 <div class="paragraph">
-<p>Firstly, the use of generic types forces the type of the data in each Event to be the same. A History of
-type <code>HISTORY&lt;ITEM_LIST&gt;</code> therefore constrains the type of the data at each Event (<code>EVENT</code>.<code><em>item</em></code>) to
-be of type <code>ITEM_LIST</code> and nothing else.</p>
+<p>Firstly, the use of generic types forces the type of the data in each Event to be the same. A History of type <code>HISTORY&lt;ITEM_LIST&gt;</code> therefore constrains the type of the data at each Event (<code>EVENT.<em>item</em></code>) to be of type <code>ITEM_LIST</code> and nothing else.</p>
 </div>
 <div class="paragraph">
-<p>Secondly, the use of archetyping (typically within openEHR Observation archetypes) ensures the
-actual structure of the <code>ITEM_STRUCTURE</code> subtype is defined in the same way for every sample - e.g. a
-two-item list representing systolic and diastolic blood pressure.</p>
+<p>Secondly, the use of archetyping (typically within openEHR Observation archetypes) ensures the actual structure of the <code>ITEM_STRUCTURE</code> subtype is defined in the same way for every sample - e.g. a two-item list representing systolic and diastolic blood pressure.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_timing"><a class="anchor" href="#_timing"></a>6.1.2. Timing</h4>
 <div class="paragraph">
-<p>An instance of the <code>HISTORY</code> class contains the <code><em>origin</em></code>: <code>DV_DATE_TIME</code> attribute, indicating what is
-considered the '0-point' of the time series, and a series of instances of the <code>EVENT</code> subtype, each containing
-a <code><em>time</em></code>: <code>DV_DATE_TIME</code> attribute representing the absolute time of the event. The relative offset
-of any Event is computed as the difference between the <code>EVENT</code>.time and <code>HISTORY</code>.<code><em>origin</em></code> by the
-<code>EVENT</code>.offset function. For Interval events (i.e. instances of <code>INTERVAL_EVENT</code>), the <code><em>time</em></code> attribute
-always refers to the end time of the event, since this is the time at which the data (e.g. average) are
-true.</p>
+<p>An instance of the <code>HISTORY</code> class contains the <code><em>origin</em>: DV_DATE_TIME</code> attribute, indicating what is considered the '0-point' of the time series, and a series of instances of the <code>EVENT</code> subtype, each containing a <code><em>time</em>: DV_DATE_TIME</code> attribute representing the absolute time of the event. The relative offset
+of any Event is computed as the difference between the <code>EVENT.<em>time</em></code> and <code>HISTORY.<em>origin</em></code> by the <code>EVENT.<em>offset</em></code> function. For Interval events (i.e. instances of <code>INTERVAL_EVENT</code>), the <code><em>time</em></code> attribute always refers to the end time of the event, since this is the time at which the data (e.g. average) are true.</p>
 </div>
 <div class="paragraph">
-<p>The origin time of a History does not have to be the time of the first sample - it might be the time of
-an event such as child-birth with respect to which the samples are recorded, e.g. Apgar scores (Apgar is a 0-10 score indicating the health of a newborn based on breathing, heartrate, colour, muscletone
-and reflexes) at 1 and 3 minute offsets. Periodicity and aperiodicity are expressed via the <code><em>is_periodic</em></code> and <code><em>period</em></code>
-attributes. For a periodic time-series, <code><em>period</em></code> is set to the period duration value and <code><em>is_periodic</em></code> returns
-True. The total duration of the History is given by the <code>HISTORY</code>.duration function. The following figure illustrates
-a number of variations in History periodicity and Event type.</p>
+<p>The origin time of a History does not have to be the time of the first sample - it might be the time of an event such as child-birth with respect to which the samples are recorded, e.g. Apgar scores (Apgar is a 0-10 score indicating the health of a newborn based on breathing, heartrate, colour, muscletone and reflexes) at 1 and 3 minute offsets.</p>
+</div>
+<div class="paragraph">
+<p>Periodicity and aperiodicity are expressed via the <code><em>is_periodic</em></code> and <code><em>period</em></code> attributes. For a periodic time-series, <code><em>period</em></code> is set to the period duration value and <code><em>is_periodic</em></code> returns <code>True</code>. The total duration of the History is given by the <code>HISTORY.<em>duration</em></code> function. The following figure illustrates a number of variations in History periodicity and Event type.</p>
 </div>
 <div id="history_period" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -1523,19 +1450,11 @@ a number of variations in History periodicity and Event type.</p>
 <div class="sect3">
 <h4 id="_point_events"><a class="anchor" href="#_point_events"></a>6.1.3. Point Events</h4>
 <div class="paragraph">
-<p>The simplest kind of Event in a History is a "point" event, expressed by instances of the class
-<code>POINT_EVENT</code>, representing an instantaneous value. A <code>HISTORY</code> instance may be composed solely of
-Point events, as would be the case with a number of blood pressure values measured over time as the
-patient changes position. An Apgar result is a typical example of aperiodic point data, typically consisting
-of 2 or 3 events, each containing 5 values and a 6th value repersenting the Apgar score for that
-time point. Point data may also be available from monitoring devices. For fine-granularity (e.g. 1 second)
-data, the number of samples may be too voluminous for the health record, and more efficient
-recording in the form of summary Interval events (see below) might be desired. The diagram below illustrates
-the structure of a <code>HISTORY</code> containing <code>POINT_EVENTs</code>.</p>
+<p>The simplest kind of Event in a History is a 'point' event, expressed by instances of the class <code>POINT_EVENT</code>, representing an instantaneous value. A <code>HISTORY</code> instance may be composed solely of Point events, as would be the case with a number of blood pressure values measured over time as the patient changes position. An Apgar result is a typical example of aperiodic point data, typically consisting of 2 or 3 events, each containing 5 values and a 6th value repersenting the Apgar score for that time point. Point data may also be available from monitoring devices. For fine-granularity (e.g. 1 second) data, the number of samples may be too voluminous for the health record, and more efficient recording in the form of summary Interval events (see below) might be desired. The diagram below  illustrates the structure of a <code>HISTORY</code> containing <code>POINT_EVENTs</code>.</p>
 </div>
 <div id="history_bp" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="data_structures/diagrams/history_bp.png" alt="history bp" width="70%">
+<img src="data_structures/diagrams/history_bp.svg" alt="history bp">
 </div>
 <div class="title">Figure 7. Structure of <code>HISTORY&lt;T&gt;</code> of <code>POINT_EVENTs</code></div>
 </div>
@@ -1543,35 +1462,22 @@ the structure of a <code>HISTORY</code> containing <code>POINT_EVENTs</code>.</p
 <div class="sect3">
 <h4 id="_interval_events"><a class="anchor" href="#_interval_events"></a>6.1.4. Interval Events</h4>
 <div class="paragraph">
-<p>Instances of the <code>INTERVAL_EVENT</code> class are used to express values corresponding to an interval in
-time. The <code>INTERVAL_EVENT</code>.width attribute defines the duration of the interval; and the inherited
-time value corresponds to the trailing edge of the event.</p>
+<p>Instances of the <code>INTERVAL_EVENT</code> class are used to express values corresponding to an interval in time. The <code>INTERVAL_EVENT.<em>width</em></code> attribute defines the duration of the interval; and the inherited <code><em>time</em></code> value corresponds to the <em>trailing edge</em> of the event.</p>
 </div>
 <div class="paragraph">
-<p>The meaning of an Interval event in this model is that the values effectively summarise actual instantaneous
-values of a datum that have occurred during the period of the event interval. The mathematical
-meaning of the data of any particular interval event is given by the math_function attribute. This is
-coded by the openEHR Terminology group "event math function", and takes values such as "minimum",
-"maximum", "average", "delta" and so on. The particular math functions used in each Interval
-event in a History may vary throughout the History; for example, one 4-hour Interval event might
-contain data representing average values, while a following event might contain data representing
-maximum values. Such data can be conveniently used for generating sophisticated graphs of the
-underlying datum over time. The next figure illustrates a History containing 2 pairs of 4-hour blood pressure
-Interval events, with each pair containing maximum and mean blood pressure value structures
-for +4h and +8h timepoints (each of which consist of a systolic and diastolic value).</p>
+<p>The semantics of the Interval event type in this model are that the values effectively summarise actual instantaneous values of a datum that have occurred during the period of the event interval. The mathematical meaning of the data value of any particular interval event is given by the <code><em>math_function</em></code> attribute. This is coded by the <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml">openEHR vocabulary <code>event math function</code></a>, and takes values such as <code>145|minimum|</code>, <code>144|maximum|</code>, <code>146|mean|</code>, <code>147|change|</code> and so on. The math function value on a particular event applies to all the data points attached to the event <code><em>data</em></code> attribute.</p>
+</div>
+<div class="paragraph">
+<p>The particular math functions used in each Interval event in a History may vary throughout the History; for example, one 4-hour Interval event might contain data representing average values, while a following event might contain data representing maximum values for the same or a later time point. Such data can be conveniently used for generating sophisticated graphs of the underlying datum over time. The next figure illustrates a History containing 2 pairs of 4-hour blood pressure Interval events, with each pair containing maximum and mean blood pressure value structures for <code>+4h</code> and <code>+8h</code> timepoints (each of which consist of a systolic and diastolic value).</p>
 </div>
 <div id="history_bp_math" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="data_structures/diagrams/history_bp_math.png" alt="history bp math" width="60%">
+<img src="data_structures/diagrams/history_bp_math.svg" alt="history bp math">
 </div>
 <div class="title">Figure 8. Structure of <code>HISTORY&lt;T&gt;</code> of <code>INTERVAL_EVENTs</code></div>
 </div>
 <div class="paragraph">
-<p>Interval events can overlap other interval or point events within the same History. A common situation
-where this occurs is with measurement of different periods of vital signs, such as 4-hourly blood
-pressure events, overlapped by a 24-hour event which contains the values over a period of 6 x 4 hour
-periods. In general a long Interval event can overlap any combination of Point or Interval events, as
-shown in the following figure.</p>
+<p>Interval events can overlap other interval or point events within the same History. A situation where this may occur is with measurement of different periods of vital signs, such as 4-hourly blood pressure events, overlapped by a 24-hour event which contains the values over a period of 6 x 4 hour periods. In general a long Interval event can overlap any combination of Point or Interval events, as shown in the following figure.</p>
 </div>
 <div id="history_event_overlapping" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -1583,23 +1489,18 @@ shown in the following figure.</p>
 <div class="sect3">
 <h4 id="_change_data"><a class="anchor" href="#_change_data"></a>6.1.5. Change Data</h4>
 <div class="paragraph">
-<p>One subcategory of interval data that deserves mention is change data. There are three event math
-function terms used for indicating changes in data values as follows:</p>
+<p>One sub-category of interval data that deserves mention is change data. There are three event math function terms used for indicating changes in data values as follows:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>"change": this means that the value recorded is the difference between the value now and
-the value some time previously. It can be positive or negative;</p>
+<p><code>147|change|</code>: this means that the value recorded is the difference between the value now and the value some time previously. It can be positive or negative;</p>
 </li>
 <li>
-<p>"increase": the value recorded for the change is positive. The name (i.e. <code>ELEMENT</code>.name)
-chosen for the item in an archetype carries the semantic of positivity e.g. "increase of &#8230;&#8203;.;
-rise of&#8230;&#8203;.; &#8230;&#8203;.gain" etc;</p>
+<p><code>522|increase|</code>: the value recorded for the change is positive. The name (i.e. <code>ELEMENT.<em>name</em></code>) chosen for the item in an archetype carries the semantic of positivity e.g. 'increase of &#8230;&#8203;.; rise of&#8230;&#8203;.; &#8230;&#8203;.gain' etc;</p>
 </li>
 <li>
-<p>"decrease": the value recorded for the change is positive. But the name chosen for the item
-carries the semantic of negativity e.g. "decrease of &#8230;&#8203;.; fall of &#8230;&#8203;.; &#8230;&#8203;. loss".</p>
+<p><code>521|decrease|</code>: the value recorded for the change is positive. But the name chosen for the item carries the semantic of negativity e.g. 'decrease of &#8230;&#8203;.; fall of &#8230;&#8203;.; &#8230;&#8203;. loss'.</p>
 </li>
 </ul>
 </div>
@@ -1615,10 +1516,10 @@ carries the semantic of negativity e.g. "decrease of &#8230;&#8203;.; fall of &#
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
@@ -1632,22 +1533,22 @@ stored</th>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"weight change"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'weight change'</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">+ 2kg</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DV_QUANTITY</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"change"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openehr::147|change|</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"weight loss"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'weight loss'</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(+)2kg</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DV_QUANTITY</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"decrease"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openehr::521|decrease|</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"weight loss"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'weight loss'</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">True</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"decrease"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openehr::521|decrease|</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1660,10 +1561,10 @@ stored</th>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
@@ -1677,22 +1578,22 @@ stored</th>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"weight change"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'weight change'</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(+)3kg</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DV_QUANTITY</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"change"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openehr::147|change|</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"weight increase"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'weight increase'</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(+)3kg</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DV_QUANTITY</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"increase"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openehr::522|increase|</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"weight gain"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'weight gain'</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">True</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"increase"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openehr::522|increase|</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1710,8 +1611,7 @@ event which accompanies more detailed historical data. Examples where this arise
 <div class="ulist">
 <ul>
 <li>
-<p>a series of exams with a single radiologist report for all of them (the report might include
-one or more key images);</p>
+<p>a series of exams with a single radiologist report for all of them (the report might include one or more key images);</p>
 </li>
 <li>
 <p>graphical summary of a dynamic challenge test such as Glucose tolerance test;</p>
@@ -1722,7 +1622,7 @@ one or more key images);</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Such data are accommodated within the model via the optional <code>HISTORY</code>.<code><em>summary</em></code> attribute, which is
+<p>Such data are accommodated within the model via the optional <code>HISTORY.<em>summary</em></code> attribute, which is
 itself a structure, archetypable separately from the structure of the main data. In the first example
 above, the summary data might consist of an <code>ITEM_SINGLE</code> object containing a textual report; in the
 second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_MULTIMEDIA</code> instance.</p>
@@ -1731,25 +1631,11 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <div class="sect3">
 <h4 id="_efficient_representation_of_fine_grained_device_data"><a class="anchor" href="#_efficient_representation_of_fine_grained_device_data"></a>6.1.7. Efficient Representation of Fine-grained Device Data</h4>
 <div class="paragraph">
-<p>A useful practical consequence of the of Interval Events is that it allows long periods of relatively stable
-data to be represented with a single Interval event, while interesting perturbations will be represented
-with a number of fine-grained Interval or Point Events. In the example in the next figure, Event
-instances are used represent 4 hours of data consisting to 14,400 x 1 second samples from a blood
-pressure monitor. The optional <code>INTERVAL_EVENT</code>.sample_count attribute can be used to record the
-number of original samples summarised in the event. In the illustration, the math_function is shown
-as mean; clearly in the first long period, the monitored datum was not absolutely flat. The implication
-is that the recording software was configured to regard variations in a small band (e.g. 5mm Hg) as
-insignificant, and only to create new Event objects when the underlying values moved outside the
-band. Another approach woould have been to create two Interval Event objects for each long period,
-one giving minimum value, the other maxium value, still based on the principle of generating one
-such pair for periods when the underlying data remained within specified limits. Regardless of the
-details, this general approach provides a way to include hours of fine-grained data from devices like
-vital signs monitors in very little space; the data simply need to be transfomed into equivalent
-openEHR History form first.</p>
+<p>A useful practical consequence of the Interval Event is that it allows long periods of stable data to be represented with a single Interval event, while interesting perturbations will be represented with a number of fine-grained Interval or Point Events. In the example in the next figure, Event instances are used represent 4 hours of data consisting to 14,400 x 1 second samples from a blood pressure monitor. The optional <code>INTERVAL_EVENT.<em>sample_count</em></code> attribute can be used to record the number of original samples summarised in the event. In the illustration, the <code><em>math_function</em></code> is shown as <code>146|mean|</code>; clearly in the first long period, the monitored datum was not absolutely flat. The implication is that the recording software was configured to regard variations in a small band (e.g. 5mm Hg) as insignificant, and only to create new Event objects when the underlying values moved outside the band. Another approach woould have been to create two Interval Event objects for each long period, one giving minimum value, the other maxium value, still based on the principle of generating one such pair for periods when the underlying data remained within specified limits. Regardless of the details, this general approach provides a way to include hours of fine-grained data from devices like vital signs monitors in very little space; the data simply need to be transfomed into equivalent openEHR History form first.</p>
 </div>
 <div id="history_data_compression" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="data_structures/diagrams/history_data_compression.png" alt="history data compression" width="70%">
+<img src="data_structures/diagrams/history_data_compression.svg" alt="history data compression">
 </div>
 <div class="title">Figure 10. Data compression effect of History with Interval Events</div>
 </div>
@@ -1757,30 +1643,21 @@ openEHR History form first.</p>
 <div class="sect3">
 <h4 id="_state"><a class="anchor" href="#_state"></a>6.1.8. State</h4>
 <div class="paragraph">
-<p>A feature particular to a model of recording historical data for scientific and clinical use is the ability
-to record 'state'. In openEHR, 'state' is understood as information pertinent to the correct interpretation
-of the primary data. A simple example is where the primary datum is heartrate; useful state data
-would be the level of exertion of the subject (resting, after 3 minutes cycling etc). In clinical recording
-situations, the state data is often crucial to the safe use of the primary data, since the latter might
-be normal or abnormal depending on the patient state. In openEHR there are two ways of recording
-state. One is via the use of a separate <code>HISTORY</code> structure within the <code>OBSERVATION</code> class (see
-<code>ehr.composition.content.entry</code> package). The other is via the use of the state attribute of
-type <code>ITEM_STRUCTURE</code> defined in the class <code>EVENT</code> itself. Experience with openEHR archetypes and
-systems has shown that the latter method corresponds to the most common clinical need, which is to
-be able to record the state at the time of the event (the other method allows for the recording of independent
-state events). A simple example is the recording of 3 glucose levels during a glucose tolerance
-test. The state information for each event is, respectively (in a typical test):</p>
+<p>A feature particular to a model of recording historical data for scientific and clinical use is the ability to record 'state'. In openEHR, 'state' is understood as time-based information about the whole entity from which the values recorded in the <code><em>data</em></code> attribute are recorded. The <code><em>state</em></code> attribute thus records data necessary for the correct interpretation of the primary values recorded in the <code><em>data</em></code> attribute. An example is where the primary datum is heart rate (values representing rate of the heart beating). Useful state data may include anything else from the owning entity (a human being) that affects the heart rate, such as the level of exertion of the subject (resting, after 3 minutes hard cycling etc). In clinical situations, the state data are often crucial to the safe use of the primary data, since the latter might be normal or abnormal depending on the patient state.</p>
+</div>
+<div class="paragraph">
+<p>In openEHR there are two ways of recording state. One is via the use of a separate <code>HISTORY</code> structure within the <code>OBSERVATION</code> class (see <code>ehr.composition.content.entry</code> package). The other is via the use of the state attribute of type <code>ITEM_STRUCTURE</code> defined in the class <code>EVENT</code> itself. Experience with openEHR archetypes and systems has shown that the latter method corresponds to the most common clinical need, which is to be able to record the state at the time of the event (the other method allows for the recording of independent state events). A simple example is the recording of 3 glucose levels during a glucose tolerance test. The state information for each event is, respectively (in a typical test):</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>0-minute sample: "post 8-hour fast";</p>
+<p>0-minute sample: 'post 8-hour fast;</p>
 </li>
 <li>
-<p>1-hour sample: "post 75g oral glucose challenge";</p>
+<p>1-hour sample: 'post 75g oral glucose challenge';</p>
 </li>
 <li>
-<p>2-hour sample: "post 75g oral glucose challenge".</p>
+<p>2-hour sample: 'post 75g oral glucose challenge'.</p>
 </li>
 </ul>
 </div>
@@ -1789,7 +1666,7 @@ test. The state information for each event is, respectively (in a typical test):
 </div>
 <div id="history_ogtt" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="data_structures/diagrams/history_ogtt.png" alt="history ogtt" width="65%">
+<img src="data_structures/diagrams/history_ogtt.svg" alt="history ogtt">
 </div>
 <div class="title">Figure 11. State in <code>HISTORY</code></div>
 </div>
@@ -1813,7 +1690,7 @@ test. The state information for each event is, respectively (in a typical test):
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Root object of a linear history, i.e. time series structure. For a periodic series of events, period will be set, and the time of each Event in the History must correspond; i.e. the <code>EVENT.&#124;_offset_</code> must be a multiple of period for each Event. Missing events in a period History are however allowed.</p>
+<p>Root object of a linear history, i.e. time series structure. For a periodic series of events, period will be set, and the time of each Event in the History must correspond; i.e. the <code>EVENT.<em>offset</em></code> must be a multiple of period for each Event. Missing events in a period History are however allowed.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2022,7 +1899,7 @@ test. The state information for each event is, respectively (in a typical test):
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>width</strong>: <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Length of the interval during which the state was true. Void if an instantaneous event.</p>
+<p>Duration of the time interval during which the values recorded under <code>data</code> are true and, if set, the values recorded under <code>state</code> are true. Void if an instantaneous event.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2036,7 +1913,7 @@ test. The state information for each event is, respectively (in a typical test):
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>math_function</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Mathematical function of the data of this event, e.g.  maximum, mean etc. Coded using openEHR Terminology group <code>event math function</code>.</p>
+<p>Mathematical function of the data of this event, e.g.  maximum, mean etc. Coded using <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml">openEHR Terminology group <code>event math function</code></a>. Default value 640&#124;actual&#124;, meaning 'actual value'.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2077,7 +1954,7 @@ which in this case is simply the time of measurement (the origin).</p>
 </div>
 <div id="history_single_sample" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="data_structures/diagrams/history_single_sample.png" alt="history single sample" width="70%">
+<img src="data_structures/diagrams/history_single_sample.svg" alt="history single sample" width="60%">
 </div>
 <div class="title">Figure 12. Single sample Instance Structure</div>
 </div>
@@ -2090,7 +1967,7 @@ which in this case is simply the time of measurement (the origin).</p>
 </div>
 <div id="history_bp_series_instances" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="data_structures/diagrams/history_bp_series_instances.png" alt="history bp series instances" width="70%">
+<img src="data_structures/diagrams/history_bp_series_instances.svg" alt="history bp series instances" width="70%">
 </div>
 <div class="title">Figure 13. Blood Pressure Series History Instance Structure</div>
 </div>

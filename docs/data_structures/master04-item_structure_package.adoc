@@ -15,15 +15,9 @@ a CEN EN13606-compliant hierarchical representation of its data. Any system impl
 these types is guaranteed to create data which represents the logical structures of lists, tables and trees
 identically.
 
-Data values are connected to spatial structures via the `_value_` attribute of the `ELEMENT` class of the
-`representation` cluster. This class also carries an important attribute `_null_flavour_`, whose value indicates
-how to read the value. A small domain termlist containing values such as "unknown", "not disclosed",
-"undetermined", etc, as described in the Flavours of Null vocabulary in the openEHR
-Support Information Model.
+Data values are connected to spatial structures via the `_value_` attribute of the `ELEMENT` class of the `representation` cluster. This class also carries the attribute `_null_flavour_`, whose value indicates how to read the contents of the `_value_` attribute. Values from the openEHR {openehr_terminology_xml}[`null flavours` vocabulary], including `253|unknown|`, `271|no information|`, and `273|not applicable|` are used to populate it.
 
-The openEHR class model for spatial structures is illustrated on the right-hand side of <<data_structures_package>>. It
-should be noted that these classes (`ITEM_LIST` etc) are not equivalents of similarly named classes
-(such as `List<T>`) in most data structure libraries - they also include per-node `_name_`,
+The openEHR class model for spatial structures is illustrated on the right-hand side of <<data_structures_package>>. It should be noted that these classes (`ITEM_LIST` etc) are not equivalents of similarly named classes (such as `List<T>`) in most data structure libraries - they also include per-node `_name_`,
 `_archetype_node_id_` and leaf node value and null flavour, and path capabilities.
 
 == CEN EN13606 Encoding Rules
@@ -70,7 +64,7 @@ The figure below illustrates a `ITEM_SINGLE` instance, in both physical and logi
 
 [.text-center]
 .Instance Structure of `ITEM_SINGLE`
-image::{diagrams_uri}/instance_item_single.png[id=instance_item_single, align="center", width=60%]
+image::{diagrams_uri}/instance_item_single.svg[id=instance_item_single, align="center", width=50%]
 
 === ITEM_LIST Instance Structure
 
@@ -78,7 +72,7 @@ The following figure illustrates a typical `ITEM_LIST` structure, in this case f
 
 [.text-center]
 .Instance Structure of `ITEM_LIST`
-image::{diagrams_uri}/instance_item_list.png[id=instance_item_list, align="center", width=75%]
+image::{diagrams_uri}/instance_item_list.svg[id=instance_item_list, align="center", width=75%]
 
 === ITEM_TABLE Instance Structure
 
@@ -86,13 +80,13 @@ The next figure illustrates a table of visual acuity test results.
 
 [.text-center]
 .Instance Structure of `ITEM_TABLE`
-image::{diagrams_uri}/instance_item_table.png[id=instance_item_table, align="center", width=70%]
+image::{diagrams_uri}/instance_item_table.svg[id=instance_item_table, align="center"]
 
 === ITEM_TREE Instance Structure
-The following figure illustrates te logical and physical form of an example `ITEM_TREE` instance, representing a
-biochemistry result.
+
+The following figure illustrates te logical and physical form of an example `ITEM_TREE` instance, representing a biochemistry result.
 
 [.text-center]
 .Instance Structure of `ITEM_TREE`
-image::{diagrams_uri}/instance_item_tree.png[id=instance_item_tree, align="center", width=70%]
+image::{diagrams_uri}/instance_item_tree.svg[id=instance_item_tree, align="center"]
 
