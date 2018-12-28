@@ -91,16 +91,17 @@
 <li><a href="#_ehr_creation">4.4.2. EHR Creation</a></li>
 </ul>
 </li>
-<li><a href="#_time_in_the_ehr">4.5. Time in the EHR</a></li>
-<li><a href="#_historical_views_of_the_record">4.6. Historical Views of the Record</a></li>
-<li><a href="#_class_descriptions">4.7. Class Descriptions</a>
+<li><a href="#_ehr_active_status">4.5. EHR Active Status</a></li>
+<li><a href="#_time_in_the_ehr">4.6. Time in the EHR</a></li>
+<li><a href="#_historical_views_of_the_record">4.7. Historical Views of the Record</a></li>
+<li><a href="#_class_descriptions">4.8. Class Descriptions</a>
 <ul class="sectlevel3">
-<li><a href="#_ehr_class">4.7.1. EHR Class</a></li>
-<li><a href="#_versioned_ehr_access_class">4.7.2. VERSIONED_EHR_ACCESS Class</a></li>
-<li><a href="#_ehr_access_class">4.7.3. EHR_ACCESS Class</a></li>
-<li><a href="#_versioned_ehr_status_class">4.7.4. VERSIONED_EHR_STATUS Class</a></li>
-<li><a href="#_ehr_status_class">4.7.5. EHR_STATUS Class</a></li>
-<li><a href="#_versioned_composition_class">4.7.6. VERSIONED_COMPOSITION Class</a></li>
+<li><a href="#_ehr_class">4.8.1. EHR Class</a></li>
+<li><a href="#_versioned_ehr_access_class">4.8.2. VERSIONED_EHR_ACCESS Class</a></li>
+<li><a href="#_ehr_access_class">4.8.3. EHR_ACCESS Class</a></li>
+<li><a href="#_versioned_ehr_status_class">4.8.4. VERSIONED_EHR_STATUS Class</a></li>
+<li><a href="#_ehr_status_class">4.8.5. EHR_STATUS Class</a></li>
+<li><a href="#_versioned_composition_class">4.8.6. VERSIONED_COMPOSITION Class</a></li>
 </ul>
 </li>
 </ul>
@@ -350,11 +351,20 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-84" target="_blank" rel="noopener">SPECRM-84</a>. Improve documentation of <code>EHR_STATUS.<em>is_modifiable</em></code> and EHR active status (see <a href="https://specifications.openehr.org/tickets/SPECPR-284" target="_blank" rel="noopener">SPECPR-284</a>).<br>
+ Added new sub-section "EHR Active Status" in section 4.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M Asgari,<br>
+ I McNicoll,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>28 Dec 2018</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-71" target="_blank" rel="noopener">SPECRM-71</a>. Make <code>ACTIVITY.<em>timing</em></code> optional.<br>
  <a href="https://specifications.openehr.org/tickets/SPECRM-68" target="_blank" rel="noopener">SPECRM-68</a>. Improve guidance on use of <code>ACTIVITY.<em>timing</em></code> (Fixes <a href="https://specifications.openehr.org/tickets/SPECPR-242" target="_blank" rel="noopener">SPECPR-242</a>.<br>
  <a href="https://specifications.openehr.org/tickets/SPECRM-69" target="_blank" rel="noopener">SPECRM-69</a>. Add missing ISM transitions and improve documentation of states (Fixes <a href="https://specifications.openehr.org/tickets/SPECPR-203" target="_blank" rel="noopener">SPECPR-203</a>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>26 Nov 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26 Nov 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1591,7 +1601,7 @@
 <div class="sect3">
 <h4 id="_compositions"><a class="anchor" href="#_compositions"></a>4.2.4. Compositions</h4>
 <div class="paragraph">
-<p>The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the Transaction concept of the GEHR project (<a href="#GEHR_del_4">[GEHR_del_4]</a>, <a href="#GEHR_del_7">[GEHR_del_7]</a>, <a href="#GEHR_del_8">[GEHR_del_8]</a>, <a href="#GEHR_del_19_20_24">[GEHR_del_19_20_24]</a>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the wellknown ACID characteristics of transactions <a href="#Gray_reuter_1993">[Gray_reuter_1993]</a>):</p>
+<p>The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the Transaction concept of the GEHR project (<a href="#GEHR_del_4">[GEHR_del_4]</a>, <a href="#GEHR_del_7">[GEHR_del_7]</a>, <a href="#GEHR_del_8">[GEHR_del_8]</a>, <a href="#GEHR_del_19_20_24">[GEHR_del_19_20_24]</a>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the well-known ACID characteristics of transactions <a href="#Gray_reuter_1993">[Gray_reuter_1993]</a>):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1619,7 +1629,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>The Transaction concept was later been renamed to "Composition", which is the name of the equivalent concept in the current CEN EN13606, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.</p>
+<p>The Transaction concept was later been renamed to "Composition", which is the name of the equivalent concept in the current ISO 13606-1, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.</p>
 </div>
 <div class="sect4">
 <h5 id="_event_compositions"><a class="anchor" href="#_event_compositions"></a>4.2.4.1. Event Compositions</h5>
@@ -1883,7 +1893,7 @@ Case-3
 <p><code><em>is_queryable</em></code> flag;</p>
 </li>
 <li>
-<p><code><em>is_modifiable</em></code> flag - indicates whether the EHR is allowed to be modified (excepting the <code>EHR_STATUS</code> object which is always modifiable);</p>
+<p><code><em>is_modifiable</em></code> flag - indicates whether the content of the EHR is allowed to be modified (the <code>EHR_STATUS</code> object itself is always modifiable);</p>
 </li>
 <li>
 <p>any other flags required by the EHR Status object in the local implementation.</p>
@@ -1924,7 +1934,32 @@ is is strongly recommended that a UUID always be used for the <code><em>ehr_id</
 </div>
 </div>
 <div class="sect2">
-<h3 id="_time_in_the_ehr"><a class="anchor" href="#_time_in_the_ehr"></a>4.5. Time in the EHR</h3>
+<h3 id="_ehr_active_status"><a class="anchor" href="#_ehr_active_status"></a>4.5. EHR Active Status</h3>
+<div class="paragraph">
+<p>The <code>EHR_STATUS.<em>is_modifiable</em></code> attribute is used to indicate whether <em>the content of an EHR</em> is modifiable, and is set to <code>True</code> if the EHR is considered <em>active</em>. An EHR&#8217;s 'content' consists of the data within its Compositions (i.e. <code><em>compositions</em></code> attribute) and Directory (i.e. <code><em>directory</em></code> attribute). An active EHR is used within a given EHR system as the primary patient record for a subject. An EHR may be deactivated in the following circumstances:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the patient has died, and no further updates (typically relating to the death) are required;</p>
+</li>
+<li>
+<p>the EHR is discovered to be a duplicate or additional record for a patient already having a primary EHR;</p>
+</li>
+<li>
+<p>the patient formally opts out of further data recording and/or sharing, with the effect that no further additions can be made by healthcare providers to this EHR;</p>
+</li>
+<li>
+<p>the EHR is to be moved to another system (usually due to patient move), but the original copy will not or cannot be deleted for legal or other administrative reasons.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In any of these situations, the EHR may be deactivated by setting <code><em>is_modifiable</em></code> to <code>False</code>. An inactive EHR is still visible in the system, and will remain queryable, unless the <code><em>is_queryable</em></code> attribute is also set to <code>False</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_time_in_the_ehr"><a class="anchor" href="#_time_in_the_ehr"></a>4.6. Time in the EHR</h3>
 <div class="paragraph">
 <p>There are numerous times recorded in the EHR, at varying levels of granularity. Certain times are a guaranteed by-product of the scientific investigation process, including time of sampling or collection; time of measurement, time of a healthcare business event, time of data committal. The following figure indicates these times with respect to Observation recordings (generally the most numerous) in the EHR.</p>
 </div>
@@ -1942,7 +1977,7 @@ is is strongly recommended that a UUID always be used for the <code><em>ehr_id</
 </div>
 </div>
 <div class="sect2">
-<h3 id="_historical_views_of_the_record"><a class="anchor" href="#_historical_views_of_the_record"></a>4.6. Historical Views of the Record</h3>
+<h3 id="_historical_views_of_the_record"><a class="anchor" href="#_historical_views_of_the_record"></a>4.7. Historical Views of the Record</h3>
 <div class="paragraph">
 <p>It is important to understand that the <code>COMPOSITION</code> versions at a previous point in time represent a previously available <em>informational state</em> of the EHR, at a particular EHR node. Such previous state include only those Compositions from other sources as have been acquired by that point in time, <em>regardless of whether the acquired information pertains to clinical information recorded earlier</em>. A previous historical state of the EHR thus corresponds to what users of a system could see at a particular moment of time. It is important to differentiate this from previous clinical states of the patient: previous informational states of the EHR might include acquired information which is significantly older than the point in time when merging occurred. A previous clinical state of the patient would be a derivable view of the EHRs in all locations for the patient - what is sometimes called the virtual EHR - at a given point in time, minus acquired Compositions, since these constitute (usually out-ofdate) copies of Compositions primarily available elsewhere.</p>
 </div>
@@ -1951,9 +1986,9 @@ is is strongly recommended that a UUID always be used for the <code><em>ehr_id</
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>4.7. Class Descriptions</h3>
+<h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>4.8. Class Descriptions</h3>
 <div class="sect3">
-<h4 id="_ehr_class"><a class="anchor" href="#_ehr_class"></a>4.7.1. EHR Class</h4>
+<h4 id="_ehr_class"><a class="anchor" href="#_ehr_class"></a>4.8.1. EHR Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2078,7 +2113,7 @@ is is strongly recommended that a UUID always be used for this field.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_versioned_ehr_access_class"><a class="anchor" href="#_versioned_ehr_access_class"></a>4.7.2. VERSIONED_EHR_ACCESS Class</h4>
+<h4 id="_versioned_ehr_access_class"><a class="anchor" href="#_versioned_ehr_access_class"></a>4.8.2. VERSIONED_EHR_ACCESS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2104,7 +2139,7 @@ is is strongly recommended that a UUID always be used for this field.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_ehr_access_class"><a class="anchor" href="#_ehr_access_class"></a>4.7.3. EHR_ACCESS Class</h4>
+<h4 id="_ehr_access_class"><a class="anchor" href="#_ehr_access_class"></a>4.8.3. EHR_ACCESS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2166,7 +2201,7 @@ is is strongly recommended that a UUID always be used for this field.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_versioned_ehr_status_class"><a class="anchor" href="#_versioned_ehr_status_class"></a>4.7.4. VERSIONED_EHR_STATUS Class</h4>
+<h4 id="_versioned_ehr_status_class"><a class="anchor" href="#_versioned_ehr_status_class"></a>4.8.4. VERSIONED_EHR_STATUS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2192,7 +2227,7 @@ is is strongly recommended that a UUID always be used for this field.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_ehr_status_class"><a class="anchor" href="#_ehr_status_class"></a>4.7.5. EHR_STATUS Class</h4>
+<h4 id="_ehr_status_class"><a class="anchor" href="#_ehr_status_class"></a>4.8.5. EHR_STATUS Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2237,7 +2272,7 @@ is is strongly recommended that a UUID always be used for this field.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_modifiable</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if this EHR is allowed to be written to. Note that the <code>EHR_STATUS</code> object is special and can always be written to.</p>
+<p>True if the content of the EHR (<code><em>compositions</em></code> and <code><em>directory</em></code>) is allowed to be written to. The <code>EHR_STATUS</code> object itself can always be written to.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2257,7 +2292,7 @@ is is strongly recommended that a UUID always be used for this field.
 </table>
 </div>
 <div class="sect3">
-<h4 id="_versioned_composition_class"><a class="anchor" href="#_versioned_composition_class"></a>4.7.6. VERSIONED_COMPOSITION Class</h4>
+<h4 id="_versioned_composition_class"><a class="anchor" href="#_versioned_composition_class"></a>4.8.6. VERSIONED_COMPOSITION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">

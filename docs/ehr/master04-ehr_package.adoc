@@ -47,7 +47,7 @@ Other EHR-wide meta-data may be recorded in the archetyped part of this object, 
 
 === Compositions
 
-The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the Transaction concept of the GEHR project (<<GEHR_del_4>>, <<GEHR_del_7>>, <<GEHR_del_8>>, <<GEHR_del_19_20_24>>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the wellknown ACID characteristics of transactions <<Gray_reuter_1993>>):
+The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the Transaction concept of the GEHR project (<<GEHR_del_4>>, <<GEHR_del_7>>, <<GEHR_del_8>>, <<GEHR_del_19_20_24>>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the well-known ACID characteristics of transactions <<Gray_reuter_1993>>):
 
 * _durability_: the need for a persistent unit of information committal in the record;
 * _atomicity_: the need for a minimal unit of integrity for clinical information, corresponding to a minimal unit for committal, transmission and security;
@@ -57,7 +57,7 @@ The main data of the EHR is found in its Compositions. The Composition concept i
 * _modification_: the need for users to be able to modify EHR contents, in order to correct errors or update previously recorded information (e.g. current medications, family history); and
 * _traceability_: the need to record adequate auditing information at committal, in order to provide clinical and legal traceability.
 
-The Transaction concept was later been renamed to "Composition", which is the name of the equivalent concept in the current CEN EN13606, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.
+The Transaction concept was later been renamed to "Composition", which is the name of the equivalent concept in the current ISO 13606-1, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.
 
 ==== Event Compositions
 
@@ -182,7 +182,7 @@ When an EHR is created, the result should be a root EHR object, an EHR Status ob
 * `_ehr_id_` - the unique identifier of this EHR;
 * `_subject_id_` - optional; the use of `PARTY_SELF` allows completely anonymous EHRs;
 * `_is_queryable_` flag;
-* `_is_modifiable_` flag - indicates whether the EHR is allowed to be modified (excepting the `EHR_STATUS` object which is always modifiable);
+* `_is_modifiable_` flag - indicates whether the content of the EHR is allowed to be modified (the `EHR_STATUS` object itself is always modifiable);
 * any other flags required by the EHR Status object in the local implementation.
 
 NOTE: is is strongly recommended that a UUID always be used for the `_ehr_id_` field. This is common practice among implementers.
@@ -195,6 +195,17 @@ The main consequences in a distributed environment are as follows:
 * one EHR id everywhere for the patient indicates a seamlessly integrated distributed environment, most likely with a global identification service.
 
 Note that the first situation is not a problem, and is not the same as the situation in which two EHRs are identified as being for different patients (i.e. subject id rather than EHR id is different) when in fact they are for the same person.
+
+== EHR Active Status
+
+The `EHR_STATUS._is_modifiable_` attribute is used to indicate whether _the content of an EHR_ is modifiable, and is set to `True` if the EHR is considered _active_. An EHR's 'content' consists of the data within its Compositions (i.e. `_compositions_` attribute) and Directory (i.e. `_directory_` attribute). An active EHR is used within a given EHR system as the primary patient record for a subject. An EHR may be deactivated in the following circumstances:
+
+* the patient has died, and no further updates (typically relating to the death) are required;
+* the EHR is discovered to be a duplicate or additional record for a patient already having a primary EHR;
+* the patient formally opts out of further data recording and/or sharing, with the effect that no further additions can be made by healthcare providers to this EHR;
+* the EHR is to be moved to another system (usually due to patient move), but the original copy will not or cannot be deleted for legal or other administrative reasons.
+
+In any of these situations, the EHR may be deactivated by setting `_is_modifiable_` to `False`. An inactive EHR is still visible in the system, and will remain queryable, unless the `_is_queryable_` attribute is also set to `False`.
 
 == Time in the EHR
 
