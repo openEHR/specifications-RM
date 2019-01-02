@@ -365,7 +365,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2018 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2019 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -427,6 +427,12 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-3" target="_blank" rel="noopener">SPECPUB-3</a>: Correct UML conversion error: <code>DV_MULTIMEDIA.<em>integrity_check</em></code> corrected to multiple bytes. (fixes <a href="https://specifications.openehr.org/tickets/SPECPR-295" target="_blank" rel="noopener">SPECPR-295</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Bos</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-3" target="_blank" rel="noopener">SPECPUB-3</a>: Correct UML coversion errors: revert <code>DV_MULTIMEDIA.<em>data</em></code> to <code>Array&lt;Byte&gt;</code>; revert <code><em>integrity_check_algorithm</em></code> multiplicity to <code>[0..1]</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">K Lundberg</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -464,8 +470,14 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-23" target="_blank" rel="noopener">SPECRM-23</a>: Make some <code>DV_IDENTIFIER</code> features optional. (<a href="https://specifications.openehr.org/tickets/SPECPR-64" target="_blank" rel="noopener">SPECPR-33</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-23" target="_blank" rel="noopener">SPECRM-23</a>: Make some <code>DV_IDENTIFIER</code> features optional. (<a href="https://specifications.openehr.org/tickets/SPECPR-33" target="_blank" rel="noopener">SPECPR-33</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-44" target="_blank" rel="noopener">SPECRM-44</a>: Remove <code>DV_ENCAPSULATED.<em>size</em></code> abstract property. (<a href="https://specifications.openehr.org/tickets/SPECPR-98" target="_blank" rel="noopener">SPECPR-98</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -990,6 +1002,9 @@
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>Pieter Bos, Senior Software Engineer, Nedap, Netherlands</p>
+</li>
 <li>
 <p>Rong Chen MD, PhD, Cambio Healthcare Systems, Sweden</p>
 </li>
@@ -5584,7 +5599,7 @@ ED type from the HL7v3 data types specification.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>integrity_check</strong>: <code>Byte</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>integrity_check</strong>: <code>List&lt;Byte&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Binary cryptographic integrity checksum.</p>
 </div></div></td>
@@ -6767,7 +6782,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-14 09:57:35 GMT
+Last updated 2019-01-02 11:13:59 GMT
 </div>
 </div>
 </body>
