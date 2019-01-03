@@ -546,10 +546,7 @@
 <div class="sect2">
 <h3 id="_overview"><a class="anchor" href="#_overview"></a>2.1. Overview</h3>
 <div class="paragraph">
-<p>The demographic model illustrated in the UML diagram below is a generalised model of the facts one might expect
-to see in a demographic server. The purpose of the model is as a specification of a demographic service,
-either standalone, or a "wrapper" service for an existing system such as a patient master index
-(PMI). In the latter situation, it is used to add the required openEHR semantics, particularly versioning,
+<p>The demographic model illustrated in the UML diagram below is a generalised model of the facts one might expect to see in a demographic server. The purpose of the model is as a specification of a demographic service, either standalone, or a "wrapper" service for an existing system such as a patient master index (PMI). In the latter situation, it is used to add the required openEHR semantics, particularly versioning,
 to an existing service.</p>
 </div>
 <div id="rm_demographic" class="imageblock text-center" style="text-align: center">
@@ -559,68 +556,39 @@ to an existing service.</p>
 <div class="title">Figure 1. rm.demographic package</div>
 </div>
 <div class="paragraph">
-<p>The general design is based on the scheme of party and accountability described by Fowler <a href="#Fowler_1997">[Fowler_1997]</a>, and
-is influenced by clinical adaptations including work done in Australia and the HL7v3 RIM <a href="#HL7v3_ballot2">[HL7v3_ballot2]</a>
-(itself influenced by the Fowler models).</p>
+<p>The general design is based on the scheme of party and accountability described by Fowler <a href="#Fowler_1997">[Fowler_1997]</a>, and is influenced by clinical adaptations including work done in Australia and the HL7v3 RIM <a href="#HL7v3_ballot2">[HL7v3_ballot2]</a> (itself influenced by the Fowler models).</p>
 </div>
 <div class="paragraph">
-<p>One of the main design criteria of the model is that it expresses attributes and relationships of demographic
-entities which exist regardless of particular clinical involvements or participations in particular
-events. Participations are meaningful only within the context of the health record or other relevant
-model where they record context-specific relationships between demographic entities and events in
-the real world.</p>
+<p>One of the main design criteria of the model is that it expresses attributes and relationships of demographic entities which exist regardless of particular clinical involvements or participations in particular events. Participations are meaningful only within the context of the health record or other relevant model where they record context-specific relationships between demographic entities and events in the real world.</p>
 </div>
 <div class="paragraph">
-<p>Another criterion is that instances of the classes in the model must be serialisable into an EHR Extract
-in an unambgiuous way. This requires that each PARTY be a self-contained hierarchy of data, in the
-same way as distinct <code>COMPOSITIONs</code> in the EHR model are distinct hierarchies in an Extract. In
-order to ensure this condition, <code>PARTY_RELATIONSHIPs</code> must be implemented correctly, so as to prevent
-endless traversal of all <code>PARTY</code> objects through their relationships, when serialising. See Party
-Relationships below for details.</p>
+<p>Another criterion is that instances of the classes in the model must be serialisable into an EHR Extract in an unambgiuous way. This requires that each <code>PARTY</code> be a self-contained hierarchy of data, in the same way as distinct <code>COMPOSITIONs</code> in the EHR model are distinct hierarchies in an Extract. In order to ensure this condition, <code>PARTY_RELATIONSHIPs</code> must be implemented correctly, so as to prevent endless traversal of all <code>PARTY</code> objects through their relationships, when serialising. See <a href="#_party_relationships">Section 2.1.4</a> below for details.</p>
 </div>
 <div class="sect3">
 <h4 id="_archetyping"><a class="anchor" href="#_archetyping"></a>2.1.1. Archetyping</h4>
 <div class="paragraph">
-<p>The model is designed to be used with archetypes, hence the generic nature of all entities. Every class
-containing an attribute of the form <code><em>details</em></code>:`STRUCTURE` is a completely archetypable structure. As a
-result, archetypes can be defined for concepts such as particular kinds of <code>PERSON</code>, <code>ORGANISATION</code>;
-for actual <code>ROLEs</code> such as "health care practitioner", and for party identities and addresses.</p>
+<p>The model is designed to be used with archetypes, hence the generic nature of all entities. Every class containing an attribute of the form <code><em>details</em>:STRUCTURE</code> is a completely archetypable structure. As a result, archetypes can be defined for concepts such as particular kinds of <code>PERSON</code>, <code>ORGANISATION</code>; for actual <code>ROLEs</code> such as "health care practitioner", and for party identities and addresses.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_names_and_addresses"><a class="anchor" href="#_names_and_addresses"></a>2.1.2. Names and Addresses</h4>
 <div class="paragraph">
-<p>Classes have been included for <code>PARTY_IDENTITY</code> and <code>ADDRESS</code>, even though they contain only a
-link to details, in the form of the generic <code>STRUCTURE</code> class. This is not strictly necessary - it could
-have been done simply using appropriately named attributes in the classes <code>PARTY</code> and <code>CONTACT</code> - but
-is done to provide a place to add specific semantics in future releases of the model. It is also expected
-to make software development easier, since it provides explicit classes to which behaviour and other
-implementation attributes can be added. Lastly, it allows the notions of <code>PARTY_IDENTITY</code> and
-<code>ADDRESS</code> to be explicitly used in archetype-authoring tools.</p>
+<p>Classes have been included for <code>PARTY_IDENTITY</code> and <code>ADDRESS</code>, even though they contain only a link to details, in the form of the generic <code>STRUCTURE</code> class. This is not strictly necessary - it could have been done simply using appropriately named attributes in the classes <code>PARTY</code> and <code>CONTACT</code> - but is done to provide a place to add specific semantics in future releases of the model. It is also expected to make software development easier, since it provides explicit classes to which behaviour and other implementation attributes can be added. Lastly, it allows the notions of <code>PARTY_IDENTITY</code> and <code>ADDRESS</code> to be explicitly used in archetype-authoring tools.</p>
 </div>
 <div class="paragraph">
-<p>Instances of <code>PARTY_IDENTITY</code>, linked to <code>PARTY</code> by the attribute <code><em>identities</em></code> are intended to express the
-names of people, organisations, and other actors - that is names which are "owned" by the party, e.g.
-self-declared (in the case of institutions and companies) or by virtue of social relations (names given
-by parents, tribes etc). Identifiers of Parties given by other organisations, or the state are not represented
-in this way, and should be recorded in the <code>PARTY</code>.<code><em>details</em></code> structure instead (see below).</p>
+<p>Instances of <code>PARTY_IDENTITY</code>, linked to <code>PARTY</code> by the attribute <code><em>identities</em></code> are intended to express the names of people, organisations, and other actors - that is names which are "owned" by the party, e.g.  self-declared (in the case of institutions and companies) or by virtue of social relations (names given by parents, tribes etc). Identifiers of Parties given by other organisations, or the state are not represented in this way, and should be recorded in the <code>PARTY.<em>details</em></code> structure instead (see below).</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_party_identification"><a class="anchor" href="#_party_identification"></a>2.1.3. Party Identification</h4>
 <div class="paragraph">
-<p>Identifiers of Parties given by organisations or the state are treated as any other attribute of a Party,
-i.e. recorded as part of the data in the <code>PARTY</code>.<code><em>details</em></code> structure. Identifiers of Party instances in the system
-are provided in the same way as identifiers of Compositions in the EHR: via the <code><em>uid</em></code> attribute
-(type <code>OBJECT_VERSION_ID</code>) of the containing <code>VERSION</code>. These identifiers are used in all cross-references
-between Parties, and between Parties and Party_relationships.</p>
+<p>Identifiers of Parties given by organisations or the state are treated as any other attribute of a Party, i.e. recorded as part of the data in the <code>PARTY.<em>details</em></code> structure. Identifiers of Party instances in the system are provided in the same way as identifiers of Compositions in the EHR: via the <code><em>uid</em></code> attribute (type <code>OBJECT_VERSION_ID</code>) of the containing <code>VERSION</code>. These identifiers are used in all cross-references between Parties, and between Parties and Party_relationships.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_party_relationships"><a class="anchor" href="#_party_relationships"></a>2.1.4. Party Relationships</h4>
 <div class="paragraph">
-<p>Relationships between parties in the real world may be expressed using <code>PARTY_RELATIONSHIP</code>
-objects, as illustrated below.</p>
+<p>Relationships between parties in the real world may be expressed using <code>PARTY_RELATIONSHIP</code> objects, as illustrated below.</p>
 </div>
 <div id="general_model" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -629,34 +597,19 @@ objects, as illustrated below.</p>
 <div class="title">Figure 2. General Relationship Model</div>
 </div>
 <div class="paragraph">
-<p>Relationships are considered directional, hence the use of the attribute names source and target, however,
-these names are otherwise neutral, and give no indication as to the meaning of the relationships,
-such as which party is responsible and which accountable (for comparison, see the demographic models
-of Fowler <a href="#Fowler_1997">[Fowler_1997]</a>). Accordingly, each Party involved in a relationship includes it in its relationships
-list, if it is at the source end, or in the <code><em>reverse_relationships</em></code> list, if at the target end.</p>
+<p>Relationships are considered directional, hence the use of the attribute names source and target, however, these names are otherwise neutral, and give no indication as to the meaning of the relationships, such as which party is responsible and which accountable (for comparison, see the demographic models of Fowler <a href="#Fowler_1997">[Fowler_1997]</a>). Accordingly, each Party involved in a relationship includes it in its relationships list, if it is at the source end, or in the <code><em>reverse_relationships</em></code> list, if at the target end.</p>
 </div>
 <div class="paragraph">
-<p>The usual way to determine the directionality of a relationship between two Parties is usually by
-which Party’s actions caused the relationship to come into being. For example, a relationship representing
-the concept "patient", between a health consumer and a health care organisation would have
-the consumer as source and the organisation as target.</p>
+<p>The usual way to determine the directionality of a relationship between two Parties is usually by which Party’s actions caused the relationship to come into being. For example, a relationship representing the concept "patient", between a health consumer and a health care organisation would have the consumer as source and the organisation as target.</p>
 </div>
 <div class="paragraph">
-<p><code>PARTY_RELATIONSHIPs</code> are stored as part of the data of the <code>PARTY</code> designated as the source. This
-means that the relationships attribute is by value, while reverse_relationships is by references, as are
-<code>PARTY_RELATIONSHIP</code>.<code><em>source</em></code> and target. The actual kind of reference is via the use of
-<code>OBJECT_REFs</code> containing <code>HIER_OBJECT_IDs</code> to denote the Version container of a Party, rather than
-<code>OBJECT_VERSION_IDs</code>, which would denote particular versions. Logically this implements the
-semantic that such relationships in the real world are between <em>continuants</em>, i.e. the real Parties, not
-just one of their version instances in a demographic system.</p>
+<p><code>PARTY_RELATIONSHIPs</code> are stored as part of the data of the <code>PARTY</code> designated as the source. This means that the relationships attribute is by value, while reverse_relationships is by references, as are <code>PARTY_RELATIONSHIP.<em>source</em></code> and target. The actual kind of reference is via the use of <code>OBJECT_REFs</code> containing <code>HIER_OBJECT_IDs</code> to denote the Version container of a Party, rather than <code>OBJECT_VERSION_IDs</code>, which would denote particular versions. Logically this implements the semantic that such relationships in the real world are between <em>continuants</em>, i.e. the real Parties, not just one of their version instances in a demographic system.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_versioning_semantics"><a class="anchor" href="#_versioning_semantics"></a>2.1.5. Versioning Semantics</h4>
 <div class="paragraph">
-<p>The class <code>PARTY</code> and its descendants <code>ACTOR</code> and <code>ROLE</code> are all potentially versioned in a demographic
-system. A Version of a <code>PARTY</code> includes all the compositional parts, such as identities, contacts, Party
-relatoinships of which it is the source. Every Party is stored in its own Version container.</p>
+<p>The class <code>PARTY</code> and its descendants <code>ACTOR</code> and <code>ROLE</code> are all potentially versioned in a demographic system. A Version of a <code>PARTY</code> includes all the compositional parts, such as identities, contacts, Party relationships of which it is the source. Every Party is stored in its own Version container.</p>
 </div>
 </div>
 </div>
@@ -1322,19 +1275,14 @@ relatoinships of which it is the source. Every Party is stored in its own Versio
 <div class="sect2">
 <h3 id="_instance_examples"><a class="anchor" href="#_instance_examples"></a>2.3. Instance Examples</h3>
 <div class="paragraph">
-<p>In the following instance examples, the values of the attributes uid, source, target, and
-reverse_relationships are not meant to be taken as literally valid <code>OBJECT_IDs</code> - for the purposes of
-clarity, simple integers have been used.</p>
+<p>In the following instance examples, the values of the attributes uid, source, target, and reverse_relationships are not meant to be taken as literally valid <code>OBJECT_IDs</code> - for the purposes of clarity, simple integers have been used.</p>
 </div>
 <div class="sect3">
 <h4 id="_parties"><a class="anchor" href="#_parties"></a>2.3.1. Parties</h4>
 <div class="sect4">
 <h5 id="_person"><a class="anchor" href="#_person"></a>2.3.1.1. Person</h5>
 <div class="paragraph">
-<p>The diagram below illustrates a possible set of instances for a <code>PERSON</code>, with home and work contact information.
-There are separate archetypes for the <code>PERSON</code>, each <code>ADDRESS</code>, and each <code>PARTY_IDENTITY</code>. In
-the following figure, "meaning" is the meaning from the value of the archetype_node_id attribute,
-functionally derived from the archetype local ontology.</p>
+<p>The diagram below illustrates a possible set of instances for a <code>PERSON</code>, with home and work contact information.  There are separate archetypes for the <code>PERSON</code>, each <code>ADDRESS</code>, and each <code>PARTY_IDENTITY</code>. In the following figure, "meaning" is the meaning from the value of the archetype_node_id attribute, functionally derived from the archetype local ontology.</p>
 </div>
 <div id="person_demographics" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -1358,10 +1306,7 @@ functionally derived from the archetype local ontology.</p>
 <div class="sect4">
 <h5 id="_group"><a class="anchor" href="#_group"></a>2.3.1.5. Group</h5>
 <div class="paragraph">
-<p>The figure below illustrates the demographic information for a cadiac surgery team in a hospital. The group
-includes a head surgeon, anaesthetist, assistant surgeon, and presumably others (not shown). Each of
-these members of the team have an employment relationship with the hospital (shown only for one
-surgeon, in the interests of clarity).</p>
+<p>The figure below illustrates the demographic information for a cadiac surgery team in a hospital. The group includes a head surgeon, anaesthetist, assistant surgeon, and presumably others (not shown). Each of these members of the team have an employment relationship with the hospital (shown only for one surgeon, in the interests of clarity).</p>
 </div>
 <div id="group_demographics" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -1394,9 +1339,7 @@ care organisation.</p>
 <div class="title">Figure 5. Simple Patient Relationship</div>
 </div>
 <div class="paragraph">
-<p>The following diagram shows the same logical relationship, but with both Parties acting through Roles, representing
-their status as healthcare consumer and healthcare provider respectively. Each of these Roles has
-associated credentials which document its official nature within the healthcare system.</p>
+<p>The following diagram shows the same logical relationship, but with both Parties acting through Roles, representing their status as healthcare consumer and healthcare provider respectively. Each of these Roles has associated credentials which document its official nature within the healthcare system.</p>
 </div>
 <div id="roles_and_credentials" class="imageblock text-center" style="text-align: center">
 <div class="content">
