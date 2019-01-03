@@ -1936,7 +1936,7 @@ is is strongly recommended that a UUID always be used for the <code><em>ehr_id</
 <div class="sect2">
 <h3 id="_ehr_active_status"><a class="anchor" href="#_ehr_active_status"></a>4.5. EHR Active Status</h3>
 <div class="paragraph">
-<p>The <code>EHR_STATUS.<em>is_modifiable</em></code> attribute is used to indicate whether <em>the contents of an EHR</em> are modifiable, and is set to <code>True</code> if the EHR is considered <em>active</em>. An EHR&#8217;s 'contents' consist of everything other than the <code>EHR_STATUS</code> object, i.e. its Compositions (Versioned objects referred to by the <code><em>compositions</em></code> attribute), its Directory (Versioned objects referred to by the <code><em>directory</em></code> attribute) and any other content that may be added in later releases of this specification. An active EHR is used within a given EHR system as the primary patient record for a subject. An EHR may be deactivated in the following circumstances:</p>
+<p>The <code>EHR_STATUS.<em>is_modifiable</em></code> attribute is used to indicate whether <em>the contents of an EHR</em> are modifiable, and is set to <code>True</code> if the EHR is considered <em>active</em>. An EHR&#8217;s 'contents' consist of everything other than the <code>EHR_STATUS</code> object, i.e. its Compositions (Versioned objects referred to by the <code><em>compositions</em></code> attribute), its Directory (Versioned objects referred to by the <code><em>directory</em></code> attribute) and any other content that may be added in later releases of this specification. An active EHR is used within a given EHR system as the primary patient record for a subject. An EHR may be deactivated in circumstances such as the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1955,7 +1955,7 @@ is is strongly recommended that a UUID always be used for the <code><em>ehr_id</
 </ul>
 </div>
 <div class="paragraph">
-<p>In any of these situations, the EHR may be deactivated by setting <code><em>is_modifiable</em></code> to <code>False</code>. An inactive EHR is still visible in the system, and will remain queryable, unless the <code><em>is_queryable</em></code> attribute is also set to <code>False</code>.</p>
+<p>In any of these situations, the EHR can be deactivated by setting <code><em>is_modifiable</em></code> to <code>False</code>. An inactive EHR is still visible in the system, and will remain queryable, unless the <code><em>is_queryable</em></code> attribute is also set to <code>False</code>.</p>
 </div>
 </div>
 <div class="sect2">

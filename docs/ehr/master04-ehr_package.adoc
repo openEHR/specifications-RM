@@ -198,14 +198,14 @@ Note that the first situation is not a problem, and is not the same as the situa
 
 == EHR Active Status
 
-The `EHR_STATUS._is_modifiable_` attribute is used to indicate whether _the contents of an EHR_ are modifiable, and is set to `True` if the EHR is considered _active_. An EHR's 'contents' consist of everything other than the `EHR_STATUS` object, i.e. its Compositions (Versioned objects referred to by the `_compositions_` attribute), its Directory (Versioned objects referred to by the `_directory_` attribute) and any other content that may be added in later releases of this specification. An active EHR is used within a given EHR system as the primary patient record for a subject. An EHR may be deactivated in the following circumstances:
+The `EHR_STATUS._is_modifiable_` attribute is used to indicate whether _the contents of an EHR_ are modifiable, and is set to `True` if the EHR is considered _active_. An EHR's 'contents' consist of everything other than the `EHR_STATUS` object, i.e. its Compositions (Versioned objects referred to by the `_compositions_` attribute), its Directory (Versioned objects referred to by the `_directory_` attribute) and any other content that may be added in later releases of this specification. An active EHR is used within a given EHR system as the primary patient record for a subject. An EHR may be deactivated in circumstances such as the following:
 
 * the patient has died, and no further updates (typically relating to the death) are required;
 * the EHR is discovered to be a duplicate or additional record for a patient already having a primary EHR;
 * the patient formally opts out of further data recording and/or sharing, with the effect that no further additions can be made by healthcare providers to this EHR;
 * the EHR is to be moved to another system (usually due to patient move), but the original copy will not or cannot be deleted for legal or other administrative reasons.
 
-In any of these situations, the EHR may be deactivated by setting `_is_modifiable_` to `False`. An inactive EHR is still visible in the system, and will remain queryable, unless the `_is_queryable_` attribute is also set to `False`.
+In any of these situations, the EHR can be deactivated by setting `_is_modifiable_` to `False`. An inactive EHR is still visible in the system, and will remain queryable, unless the `_is_queryable_` attribute is also set to `False`.
 
 == Time in the EHR
 
