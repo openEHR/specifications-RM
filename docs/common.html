@@ -235,7 +235,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="https://www.openehr.org/programs/specification/">openEHR Specification Program</a></th>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="https://www.openehr.org/programs/specification" target="_blank" rel="noopener">openEHR Specification Program</a></th>
 </tr>
 </thead>
 <tbody>
@@ -264,12 +264,12 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2018 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2019 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="/" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open-source, standards-based implementations.</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open standards-based implementations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
@@ -278,7 +278,7 @@
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://specifications.openehr.org/components/RM/open_issues" target="_blank" rel="noopener">Problem Reports</a><br>
- Web: <a href="/" target="_blank" rel="noopener">www.openehr.org</a></p></td>
+ Web: <a href="https://specifications.openehr.org" target="_blank" rel="noopener">specifications.openEHR.org</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -953,7 +953,7 @@
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
 <div class="paragraph">
-<p>The <code>archetyped</code> package defines the core types <code>PATHABLE</code>, <code>LOCATABLE</code>, <code>ARCHETYPED</code>, and <code>LINK</code>. It is illustrated in <a href="#archetyped_package">common.archetyped Package</a>.</p>
+<p>The <code>archetyped</code> package defines the core types <code>PATHABLE</code>, <code>LOCATABLE</code>, <code>ARCHETYPED</code>, and <code>LINK</code>. It is illustrated in <a href="#archetyped_package">Figure 1</a>.</p>
 </div>
 <div id="archetyped_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -1072,7 +1072,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 </ul>
 </div>
 <div class="paragraph">
-<p>FIGURE <a href="#feeder_chain">Abstract Model of Feeder Chain</a> illustrates these elements, shown as a "feeder chain", along with typical meta-data available in messages from each system. In general, not much can be assumed about systems in the feeder chain. The originating system may or may not correspond to the place of the clinical activity - it is not uncommon for a pathology company to have a centralised report issuing location while having numerous physical laboratories. There is often limited consistency in the way identifiers are assigned, timestamps are created, and information is structured and coded. In general, information from a feeder system is in response to a request, often a pathology order, although the request/response pattern probably cannot be assumed in all cases.</p>
+<p>FIGURE <a href="#feeder_chain">Figure 2</a> illustrates these elements, shown as a "feeder chain", along with typical meta-data available in messages from each system. In general, not much can be assumed about systems in the feeder chain. The originating system may or may not correspond to the place of the clinical activity - it is not uncommon for a pathology company to have a centralised report issuing location while having numerous physical laboratories. There is often limited consistency in the way identifiers are assigned, timestamps are created, and information is structured and coded. In general, information from a feeder system is in response to a request, often a pathology order, although the request/response pattern probably cannot be assumed in all cases.</p>
 </div>
 <div id="feeder_chain" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2438,7 +2438,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <p>As described in the Architecture Overview document, formal version control and change management are used in openEHR to support the construction of EHR and other repositories requiring the properties of consistency, indelibility, traceability and distributed sharing. The <code>change_control</code> package supplies the formal specification of these features in openEHR.</p>
 </div>
 <div class="paragraph">
-<p>The figure <a href="#change_control_package">common.change_control Package</a> illustrates the openEHR model of a Versioned object, and its constituent Versions. In this model, an instance of the class <code>VERSIONED_OBJECT&lt;T&gt;</code> provides the versioning facilities for one versioned item and is often referred to as a 'version container'. Although any kind of data can be versioned according to the model presented here, the use of versioning in openEHR is limited to 'toplevel structures', such as EHR Compositions and Party objects in a demographic system.</p>
+<p>The figure <a href="#change_control_package">Figure 6</a> illustrates the openEHR model of a Versioned object, and its constituent Versions. In this model, an instance of the class <code>VERSIONED_OBJECT&lt;T&gt;</code> provides the versioning facilities for one versioned item and is often referred to as a 'version container'. Although any kind of data can be versioned according to the model presented here, the use of versioning in openEHR is limited to 'toplevel structures', such as EHR Compositions and Party objects in a demographic system.</p>
 </div>
 <div id="change_control_package" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2447,7 +2447,7 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <div class="title">Figure 6. common.change_control Package</div>
 </div>
 <div class="paragraph">
-<p>The figure <a href="#version_control_structures">Version control structures</a> illustrates a single <code>VERSIONED_OBJECT</code> containing a number of <code>VERSIONs</code>. Although the figure implies physical containment of Versions by a Versioned object, this is only one possible implementation. Other implementations (e.g. using orthodox relational structures) might use references, separate compressed copies, or any other mechanism.</p>
+<p>The figure <a href="#version_control_structures">Figure 7</a> illustrates a single <code>VERSIONED_OBJECT</code> containing a number of <code>VERSIONs</code>. Although the figure implies physical containment of Versions by a Versioned object, this is only one possible implementation. Other implementations (e.g. using orthodox relational structures) might use references, separate compressed copies, or any other mechanism.</p>
 </div>
 <div id="version_control_structures" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2482,10 +2482,10 @@ indicating acknowledgement of content by intended recipient, e.g. GP who ordered
 <p>All Versions in a given version container have a <code><em>uid</em></code> that includes the <code><em>uid</em></code> of the container; in other words, the <code><em>uid</em></code> of a Version is its container&#8217;s <code><em>uid</em></code> plus further version identification for that particular version with respect to others in the same container. The <code>VERSION</code>.<code><em>owner_id</em></code> function extracts the <code><em>uid</em></code> field of the owning <code>VERSIONED_OBJECT</code> from the <code><em>uid</em></code> of the <code>VERSION</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>VERSION</code> class has two subtypes. The first, <code>ORIGINAL_VERSION&lt;T&gt;</code>, represents a Version created with original content (stored form of data property) at the time of creation (including from nonopenEHR local feeder systems), and potentially attested (signed). It includes as attributes the current version (<code><em>uid</em></code>) and the preceding version (<code><em>preceding_version_uid</em></code>). It also knows the lifecycle state of its content. If it was the result of a merge (see <a href="#_version_merging">Version Merging</a>) of versions other than the preceding version, the identifiers of these versions will be recorded in the attribute <code><em>other_input_version_uids</em></code>. All instances of <code>VERSION&lt;T&gt;</code> in non-distributed openEHR systems will be instances of <code>ORIGINAL_VERSION&lt;T&gt;</code>. The <code>ORIGINAL_VERSION</code> is also the unit of copying in a distributed environment.</p>
+<p>The <code>VERSION</code> class has two subtypes. The first, <code>ORIGINAL_VERSION&lt;T&gt;</code>, represents a Version created with original content (stored form of data property) at the time of creation (including from nonopenEHR local feeder systems), and potentially attested (signed). It includes as attributes the current version (<code><em>uid</em></code>) and the preceding version (<code><em>preceding_version_uid</em></code>). It also knows the lifecycle state of its content. If it was the result of a merge (see <a href="#_version_merging">Section 6.4.2</a>) of versions other than the preceding version, the identifiers of these versions will be recorded in the attribute <code><em>other_input_version_uids</em></code>. All instances of <code>VERSION&lt;T&gt;</code> in non-distributed openEHR systems will be instances of <code>ORIGINAL_VERSION&lt;T&gt;</code>. The <code>ORIGINAL_VERSION</code> is also the unit of copying in a distributed environment.</p>
 </div>
 <div class="paragraph">
-<p>The second subtype is <code>IMPORTED_VERSION&lt;T&gt;</code>, and acts as a wrapper of an <code>ORIGINAL_VERSION&lt;T&gt;</code>. It has its own contribution and commit_audit (inherited from <code>VERSION&lt;T&gt;</code>), and contains the original version being imported in its item attribute. Its uid and preceding_version are defined as functions, returning the corresponding attribute values from the wrapped <code>ORIGINAL_VERSION</code> object (in other words, an <code>IMPORTED_VERSION</code> does not have its own version identifier distinct from the version it is wrapping). The semantics of importing are described below in section <a href="#_copying">Copying</a>. Figure <a href="#instance_view_of_versioned_data">Instance view of versioned data</a> illustrates typical arrangements of <code>ORIGINAL_VERSION</code> and <code>IMPORTED_VERSION</code> objects within <code>VERSIONED_OBJECTs</code>, in turn within an EHR (if this is an EHR system), ultimately within an identified system. The two <code>VERSIONED_OBJECTs</code> are shown representing "medications" and "problem list", to give some idea of correspondence of versioning structures to logical data. Star icons represent digital signatures.</p>
+<p>The second subtype is <code>IMPORTED_VERSION&lt;T&gt;</code>, and acts as a wrapper of an <code>ORIGINAL_VERSION&lt;T&gt;</code>. It has its own contribution and commit_audit (inherited from <code>VERSION&lt;T&gt;</code>), and contains the original version being imported in its item attribute. Its uid and preceding_version are defined as functions, returning the corresponding attribute values from the wrapped <code>ORIGINAL_VERSION</code> object (in other words, an <code>IMPORTED_VERSION</code> does not have its own version identifier distinct from the version it is wrapping). The semantics of importing are described below in section <a href="#_copying">Section 6.4.1</a>. Figure <a href="#instance_view_of_versioned_data">Figure 8</a> illustrates typical arrangements of <code>ORIGINAL_VERSION</code> and <code>IMPORTED_VERSION</code> objects within <code>VERSIONED_OBJECTs</code>, in turn within an EHR (if this is an EHR system), ultimately within an identified system. The two <code>VERSIONED_OBJECTs</code> are shown representing "medications" and "problem list", to give some idea of correspondence of versioning structures to logical data. Star icons represent digital signatures.</p>
 </div>
 <div id="instance_view_of_versioned_data" class="imageblock text-center" style="text-align: center">
 <div class="content">
