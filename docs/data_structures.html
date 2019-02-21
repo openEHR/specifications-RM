@@ -146,7 +146,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: RM Release-1.0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: RM latest</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
 </tr>
 <tr>
@@ -210,14 +210,21 @@
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.7.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-3" target="_blank" rel="noopener">SPECPUB-3</a>. Correct UML conversion error in <code>EVENT.<em>data</em></code>, which is of generic parameter type <code>T</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Arikan,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>21 Feb 2019</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.0.4</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.7.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-83" target="_blank" rel="noopener">SPECRM-83</a>. Improve documentation of <code>INTERVAL_EVENT</code> and <code>POINT_EVENT</code> (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-197" target="_blank" rel="noopener">SPECPR-197</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
  T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Dec 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">27 Dec 2018</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.0.3</strong></p></th>
@@ -572,7 +579,7 @@ lists, tables, trees, and history.</p>
 <div class="sect2">
 <h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
 <div class="paragraph">
-<p>This specification is in the STABLE state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/RM/Release-1.0.4/data_structures.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/RM/Release-1.0.4/data_structures.html</a>.</p>
+<p>This specification is in the STABLE state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/RM/latest/data_structures.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/RM/latest/data_structures.html</a>.</p>
 </div>
 <div class="paragraph">
 <p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
@@ -1402,7 +1409,7 @@ a_path: <code>String[1]</code><br>
 <p>The <code>history</code> package defines classes which formalise the concept of past, linear time, via which historical data of any structural complexity can be recorded. It supports both instantaneous and interval event samples within periodic and aperiodic series.</p>
 </div>
 <div class="paragraph">
-<p>Regardless of whether the actual data consist of a single sample or many, they are represented in the same way: as a history of events, i.e. as a time series, allowing all software to access data in a uniform way, whether it be a single measurement of weight, a long series of three- or four-dimensional images, or a series of encapsulated multimedia items. The type of data contained in a History structure may be any openEHR data, including text, coded, quantitative, time, or multimedia. In the case of quantitative and date/time data (<a href="https://specifications.openehr.org/releases/RM/Release-1.0.4/data_types.html#_quantity_package">openEHR Data Types, <code>rm.data_types.quantity</code> package</a>), the data are formally quantitative, but for the vast majority of cases of other types of data (text, coded etc), there is an obvious quantitative interpretation associated with the values. An example is samples whose data values are coded terms such as 'low', 'normal', 'high', 'critical high', representing blood pressure measurements over time.</p>
+<p>Regardless of whether the actual data consist of a single sample or many, they are represented in the same way: as a history of events, i.e. as a time series, allowing all software to access data in a uniform way, whether it be a single measurement of weight, a long series of three- or four-dimensional images, or a series of encapsulated multimedia items. The type of data contained in a History structure may be any openEHR data, including text, coded, quantitative, time, or multimedia. In the case of quantitative and date/time data (<a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_quantity_package">openEHR Data Types, <code>rm.data_types.quantity</code> package</a>), the data are formally quantitative, but for the vast majority of cases of other types of data (text, coded etc), there is an obvious quantitative interpretation associated with the values. An example is samples whose data values are coded terms such as 'low', 'normal', 'high', 'critical high', representing blood pressure measurements over time.</p>
 </div>
 <div class="paragraph">
 <p>Instantaneous events are representing using the type <code>POINT_EVENT</code>, for which the value (<code><em>data</em></code> attribute) always represents an actual instantaneous value of a datum at a point in time. However, time series data may also be represented using the <code>INTERVAL_EVENT</code> type, enabling values other than 'actual' to be recorded for intervals of time. Events recorded in this form are accordingly tagged with a mathematical function, such as 'actual', 'mean', 'change' and so on, as defined by the openEHR <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml"><code>event math function</code> vocabulary</a>.</p>
@@ -1814,10 +1821,8 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code>ITEM_STRUCTURE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>The data of this event.</p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code>T</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>

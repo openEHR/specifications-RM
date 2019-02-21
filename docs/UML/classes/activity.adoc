@@ -24,7 +24,7 @@ May be omitted if:
 * timing is represented structurally in the `_description_` attribute (e.g. via archetyped elements), or
 * unavailable, e.g. imported legacy data; in such cases, the `INSTRUCTION._narrative_` should carry text that indicates the timing of its `_activities_`.
 
-h|*0..1*
+h|*1..1*
 |*action_archetype_id*: `String`
 a|Perl-compliant regular expression pattern, enclosed in  '//' delimiters, indicating the valid identifiers of archetypes for Actions corresponding to this Activity specification.
 
@@ -35,5 +35,5 @@ h|*1..1*
 a|Description of the activity, in the form of an archetyped structure.
 
 h|*Invariants*
-2+a|*_Action_archetype_id_valid_*: `not action_archetype_ids.is_empty`
+2+a|*_Action_archetype_id_valid_*: `not action_archetype_id.is_empty`
 |===
