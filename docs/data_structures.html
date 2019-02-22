@@ -103,10 +103,10 @@
 </li>
 <li><a href="#_class_descriptions_4">6.2. Class Descriptions</a>
 <ul class="sectlevel3">
-<li><a href="#_history_class">6.2.1. HISTORY Class</a></li>
-<li><a href="#_event_class">6.2.2. EVENT Class</a></li>
-<li><a href="#_point_event_class">6.2.3. POINT_EVENT Class</a></li>
-<li><a href="#_interval_event_class">6.2.4. INTERVAL_EVENT Class</a></li>
+<li><a href="#_history_t_class">6.2.1. HISTORY&lt;T&gt; Class</a></li>
+<li><a href="#_event_t_class">6.2.2. EVENT&lt;T&gt; Class</a></li>
+<li><a href="#_point_event_t_class">6.2.3. POINT_EVENT&lt;T&gt; Class</a></li>
+<li><a href="#_interval_event_t_class">6.2.4. INTERVAL_EVENT&lt;T&gt; Class</a></li>
 </ul>
 </li>
 <li><a href="#_history_instance_structures">6.3. History Instance Structures</a>
@@ -1768,7 +1768,7 @@ test. The state information for each event is, respectively (in a typical test):
 <div class="sect2">
 <h3 id="_class_descriptions_4"><a class="anchor" href="#_class_descriptions_4"></a>6.2. Class Descriptions</h3>
 <div class="sect3">
-<h4 id="_history_class"><a class="anchor" href="#_history_class"></a>6.2.1. HISTORY Class</h4>
+<h4 id="_history_t_class"><a class="anchor" href="#_history_t_class"></a>6.2.1. HISTORY&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1778,7 +1778,7 @@ test. The state information for each event is, respectively (in a typical test):
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>HISTORY</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>HISTORY&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1864,7 +1864,7 @@ test. The state information for each event is, respectively (in a typical test):
 </table>
 </div>
 <div class="sect3">
-<h4 id="_event_class"><a class="anchor" href="#_event_class"></a>6.2.2. EVENT Class</h4>
+<h4 id="_event_t_class"><a class="anchor" href="#_event_t_class"></a>6.2.2. EVENT&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1874,7 +1874,7 @@ test. The state information for each event is, respectively (in a typical test):
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EVENT (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>EVENT&lt;T&gt; (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1935,7 +1935,7 @@ test. The state information for each event is, respectively (in a typical test):
 </table>
 </div>
 <div class="sect3">
-<h4 id="_point_event_class"><a class="anchor" href="#_point_event_class"></a>6.2.3. POINT_EVENT Class</h4>
+<h4 id="_point_event_t_class"><a class="anchor" href="#_point_event_t_class"></a>6.2.3. POINT_EVENT&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1945,7 +1945,7 @@ test. The state information for each event is, respectively (in a typical test):
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>POINT_EVENT</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>POINT_EVENT&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -1961,7 +1961,7 @@ test. The state information for each event is, respectively (in a typical test):
 </table>
 </div>
 <div class="sect3">
-<h4 id="_interval_event_class"><a class="anchor" href="#_interval_event_class"></a>6.2.4. INTERVAL_EVENT Class</h4>
+<h4 id="_interval_event_t_class"><a class="anchor" href="#_interval_event_t_class"></a>6.2.4. INTERVAL_EVENT&lt;T&gt; Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1971,7 +1971,7 @@ test. The state information for each event is, respectively (in a typical test):
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>INTERVAL_EVENT</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>INTERVAL_EVENT&lt;T&gt;</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -2071,7 +2071,7 @@ which in this case is simply the time of measurement (the origin).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-12 21:03:30 GMT
+Last updated 2019-02-22 16:53:12 GMT
 </div>
 </div>
 </body>
