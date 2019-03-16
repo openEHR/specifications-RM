@@ -126,7 +126,7 @@
 <div class="sectionbody">
 <div class="imageblock" style="text-align: center">
 <div class="content">
-<img src="https://specifications.openehr.org/images/openehr_logo_large.png" alt="openEHR logo">
+<img src="https://specifications.openehr.org/images/openEHR_logo_RGB.svg" alt="openEHR logo">
 </div>
 </div>
 </div>
@@ -146,7 +146,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: RM Release-1.0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: RM latest</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
 </tr>
 <tr>
@@ -1409,7 +1409,7 @@ a_path: <code>String[1]</code><br>
 <p>The <code>history</code> package defines classes which formalise the concept of past, linear time, via which historical data of any structural complexity can be recorded. It supports both instantaneous and interval event samples within periodic and aperiodic series.</p>
 </div>
 <div class="paragraph">
-<p>Regardless of whether the actual data consist of a single sample or many, they are represented in the same way: as a history of events, i.e. as a time series, allowing all software to access data in a uniform way, whether it be a single measurement of weight, a long series of three- or four-dimensional images, or a series of encapsulated multimedia items. The type of data contained in a History structure may be any openEHR data, including text, coded, quantitative, time, or multimedia. In the case of quantitative and date/time data (<a href="https://specifications.openehr.org/releases/RM/Release-1.0.4/data_types.html#_quantity_package">openEHR Data Types, <code>rm.data_types.quantity</code> package</a>), the data are formally quantitative, but for the vast majority of cases of other types of data (text, coded etc), there is an obvious quantitative interpretation associated with the values. An example is samples whose data values are coded terms such as 'low', 'normal', 'high', 'critical high', representing blood pressure measurements over time.</p>
+<p>Regardless of whether the actual data consist of a single sample or many, they are represented in the same way: as a history of events, i.e. as a time series, allowing all software to access data in a uniform way, whether it be a single measurement of weight, a long series of three- or four-dimensional images, or a series of encapsulated multimedia items. The type of data contained in a History structure may be any openEHR data, including text, coded, quantitative, time, or multimedia. In the case of quantitative and date/time data (<a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_quantity_package">openEHR Data Types, <code>rm.data_types.quantity</code> package</a>), the data are formally quantitative, but for the vast majority of cases of other types of data (text, coded etc), there is an obvious quantitative interpretation associated with the values. An example is samples whose data values are coded terms such as 'low', 'normal', 'high', 'critical high', representing blood pressure measurements over time.</p>
 </div>
 <div class="paragraph">
 <p>Instantaneous events are representing using the type <code>POINT_EVENT</code>, for which the value (<code><em>data</em></code> attribute) always represents an actual instantaneous value of a datum at a point in time. However, time series data may also be represented using the <code>INTERVAL_EVENT</code> type, enabling values other than 'actual' to be recorded for intervals of time. Events recorded in this form are accordingly tagged with a mathematical function, such as 'actual', 'mean', 'change' and so on, as defined by the openEHR <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml"><code>event math function</code> vocabulary</a>.</p>
