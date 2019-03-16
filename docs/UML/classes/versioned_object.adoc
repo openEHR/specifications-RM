@@ -41,29 +41,29 @@ a|Return a list of all versions in this object.
 
 h|
 |*has_version_at_time* ( +
-a_ver_id: `OBJECT_VERSION_ID[1]` +
+a_time: `DV_DATE_TIME[1]` +
 ): `Boolean`
 a|True if a version for time  `_a_time_` exists.
 
 h|
 |*has_version_id* ( +
-a_ver_id: `OBJECT_VERSION_ID[1]` +
+a_version_uid: `OBJECT_VERSION_ID[1]` +
 ): `Boolean`
-a|True if a version with `_an_id_` exists.
+a|True if a version with `_a_version_uid_` exists.
 
 h|
 |*version_with_id* ( +
-a_ver_id: `OBJECT_VERSION_ID[1]` +
+a_version_uid: `OBJECT_VERSION_ID[1]` +
 ): `VERSION` +
 *_Pre_*: `has_version_id (a_ver_id)`
-a|Return the version with `_uid_` =  `_a_ver_id_`.
+a|Return the version with `_uid_` =  `_a_version_uid_`.
 
 h|
 |*is_original_version* ( +
-a_ver_id: `OBJECT_VERSION_ID[1]` +
+a_version_uid: `OBJECT_VERSION_ID[1]` +
 ): `Boolean` +
 *_Pre_*: `has_version_id(a_ver_id)`
-a|True if version with `_an_id_` is an `ORIGINAL_VERSION`.
+a|True if version with `_a_version_uid_` is an `ORIGINAL_VERSION`.
 
 h|
 |*version_at_time* ( +
