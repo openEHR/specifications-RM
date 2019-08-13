@@ -20,7 +20,7 @@ Terminology Ids are likely to be of various types.
 . Terminology Id = `"local"`: this constant value means that the origin of allowable values is described within the archetype. This is coded to allow translation. The local archetype then only needs the set of codes and the local translation. The archetype may contain a translation table if required.
 . Terminology Id = `"[authority]"`. This might be `"openehr"`, `"centc251"`, `"hl7"`, etc;
 . The variant Terminology Id = `"[authority]:[Domain value set]"` could also be supported, although it should not generally be necessary, since all codes should be unique within a given issuing authority. Examples might be `"openehr:event math function"`, `"hl7:gender"`;
-. Terminology Id = `"SNOMED-CT"`, `"ICD10AM"`, etc. Idemtifiers of this kind must be unique values in an accepted set of terminologies from an authoritative source. These MUST be universally known. In openEHR, names from the US Natoinal Library of Medicine's UMLS terminology name list are used. See the {openehr_rm_support}#_terminology_package[`terminology` package in the for details^].
+. Terminology Id = `"SNOMED-CT"`, `"ICD10AM"`, etc. Idemtifiers of this kind must be unique values in an accepted set of terminologies from an authoritative source. These MUST be universally known. In openEHR, names from the US National Library of Medicine's UMLS terminology name list are used. See the {openehr_rm_support}#_terminology_package[`terminology` package in the for details^].
 
 ==== Narrative Text
 
@@ -77,7 +77,7 @@ valid relationships defined therein.
 
 The class `DV_CODED_TEXT` described here captures the association of two things:
 
-* the code phrase of a code phrase provided by the terminology service, recorded in the `_defining_code_` attribute.
+* the code phrase provided by the terminology service, recorded in the `_defining_code_` attribute.
 * the text rubric of the code phrase, recorded in the `_value_` attribute (inherited from `DV_TEXT`);
 
 The class `CODE_PHRASE._code_string_` records a key, in the form of arguments to some retrieval function
@@ -181,7 +181,7 @@ sophisticated.
 Negations are more complex than might first be apparent and are best handled by good archetype
 design. Terminologies might provide a term such as "No known allergies" which is helpful. But if
 someone has an allergy of some sort, the medicolegal requirement might be to record that the person
-has no known allergies to penicillin or another class of medication that is being prescribed. The oftenproposed
+has no known allergies to penicillin or another class of medication that is being prescribed. The often proposed
 approach of using a generic negation 'modifier' to deal with such issues results in further
 problems. Consider the use of negation with liver - "no liver", "no palpable liver", "no liver disease",
 "no history of liver disease", "no liver function", "no liver function tests". The meaning of negated
@@ -305,7 +305,7 @@ This expresses the reality that no text was ever recorded in the legacy system; 
 === Language Translations
 
 In most cases the natural language of a text object is known from the enclosing Entry (i.e. Observation)
-or other enclosing context. Where it is different (e.g. a german sentence within an English language
+or other enclosing context. Where it is different (e.g. a German sentence within an English language
 diagnosis), or there is no enclosing context, the `DV_TEXT._language_` attribute can be set to
 indicate the language of the text item.
 

@@ -94,7 +94,7 @@ may be unknown in a date, but a date cannot have month unknown and day known.
 ==== Calendars
 
 A comment on calendars is in order. In this specification, all date/time types currently modelled are
-Gregorian calendar based. This is the same assumption made by by ISO 8601, and most technical
+Gregorian calendar based. This is the same assumption made by ISO 8601, and most technical
 computing systems today in many parts of the world. At first glance this may seem like a culturally
 insensitive approach, but in fact it makes sense in computational terms, for both users of the Gregorian and other calendars, e.g. Julian, Islamic, Baha'i, etc. Arguments against trying to use the
 date/time classes defined here to represent date/times from any calendar include the following:
@@ -121,7 +121,7 @@ not necessarily function correctly simply by adding a calendar field.
 
 For users requiring non-Gregorian dates in EHR and other health systems there are two approaches.
 One is to treat non-Gregorian dates as a localisation issue, to be handled inside the application and
-GUI evnvironment. The other is to actually add further sibling packages to the openEHR date/time
+GUI environment. The other is to actually add further sibling packages to the openEHR date/time
 package, for each new calendar or calendar group required. Conversion algorithms would most likely
 be needed in and out of the Gregorian types to enable interoperability of information drawn from different
 applications or sources. This approach may require a substantial modelling effort.

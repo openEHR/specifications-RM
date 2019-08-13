@@ -175,7 +175,7 @@ different in the subtypes in a way that does not easily lend itself to a common 
 included in the subtypes.
 
 The `DV_QUANTIFIED` class has two subtypes: `DV_AMOUNT` and `DV_ABSOLUTE_QUANTITY`. The
-former corresponds to relative 'amounts' of something, either a physical property(such as mass) or
+former corresponds to relative 'amounts' of something, either a physical property (such as mass) or
 items (e.g. cigarettes). Mathematically, the '+' and '-' operators (as well as '*' and '/') are defined in
 the same way as for the real numbers (or any other mathematical 'field'), with the semantics that adding
 two relative quantities measuring the same thing (i.e. with the same units) produces another relative
@@ -202,7 +202,7 @@ objects representing values like {magnitude = 5.85, units = '/ week'}
 `DV_QUANTITY` is used to represent amounts of measurable things, and has a real number magnitude,
 precision, units and accuracy. The units attribute contains the scientific unit in a parsable form
 defined by the {ucum}[Unified Code for Units of Measure (UCUM)]. A valid units string always implies a
-measured property, such as "force" or "pressure". The property of a Quantity can conveniently constrained in archetypes, e.g. to "pressure", which would allow any pressure unit. Unit strings can be
+measured property, such as "force" or "pressure". The property of a Quantity can conveniently be constrained in archetypes, e.g. to "pressure", which would allow any pressure unit. Unit strings can be
 compared to determine if they measure the same property (e.g. "bar" and "kPa" are both units corresponding
 to the property "pressure"), which enables the is_strictly_comparable_to function defined
 on `DV_ORDERED` to be properly specified on `DV_QUANTITY`.
