@@ -60,7 +60,7 @@ image::{diagrams_uri}/event_context.png[id=event_context, align="center", width=
 
 In cases where Contributions are made to the record with no event context, the Event context of any Compositions from the original commit will remain intact and visible (unless the correction is to the event context itself of course), and will correctly reflect the fact that no new clinical interaction occurred. This is the case with Contribution D in the figure. 
 
-NOTE: Persistent Compositions may optionally have an Event context. In openEHR releases up to 1.0.3, Persistent Compositions had no Event context. This was releaxed in subsequent releases, to allow the inclusion of context information (e.g. encounter data) for changes to Persistent Compositions where no Event Composition was created.
+NOTE: Persistent Compositions may optionally have an Event context. In openEHR releases up to 1.0.3, Persistent Compositions had no Event context. This was relaxed in subsequent releases, to allow the inclusion of context information (e.g. encounter data) for changes to Persistent Compositions where no Event Composition was created.
 
 ==== Time
 The times recorded in the Event context represent the time of an encounter or other activity undertaken by a health provider to/for/on behalf of the patient. The time is represented as a mandatory start time and optional end time. It is assumed that where there is a clinical session (i.e. an `EVENT_CONTEXT` object does exist), the start time is known or can be reasonably approximated. It is quite common that the end time of a consultation or encounter is not recorded, but rather inferred from e.g. average consult times, or the start time of the next consult for the same physician. 

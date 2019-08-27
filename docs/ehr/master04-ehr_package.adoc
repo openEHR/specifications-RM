@@ -35,7 +35,7 @@ References rather than containment by value are used for the relationship betwee
 
 === EHR Access
 
-Access control settings for the whole EHR are specified in the `EHR_ACCESS` object. This includes default privacy policy, lists of identified accessors (individuals and groups) and exceptions to the default policies, each one identifying a particular Composition in the EHR. All changes to the EHR Access object are versioned via the normal mechanism, ensuring that the visible view of the EHR atany previous point in time is reconstructable.
+Access control settings for the whole EHR are specified in the `EHR_ACCESS` object. This includes default privacy policy, lists of identified accessors (individuals and groups) and exceptions to the default policies, each one identifying a particular Composition in the EHR. All changes to the EHR Access object are versioned via the normal mechanism, ensuring that the visible view of the EHR at any previous point in time is reconstructable.
 
 Because security models for health information are still in their infancy, the openEHR model adopts a completely flexible approach. Only two hard-wired attributes are defined in the `EHR_ACCESS` class. The first is the name of the security scheme currently in use, while the second (settings attribute) is an object containing the access settings for the EHR according to that particular scheme. Each scheme is defined by an instance of a subclass of the abstract class `ACCESS_CONTROL_SETTINGS`, defined in the Security Information Model.
 
