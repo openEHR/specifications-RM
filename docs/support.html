@@ -80,7 +80,7 @@
 <li><a href="#_service_interface_2">6.2. Service Interface</a></li>
 <li><a href="#_class_definitions_3">6.3. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_terminology_service_class_2">6.3.1. TERMINOLOGY_SERVICE Class</a></li>
+<li><a href="#_measurement_service_class">6.3.1. MEASUREMENT_SERVICE Class</a></li>
 </ul>
 </li>
 </ul>
@@ -156,7 +156,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open standards-based implementations.</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit foundation, facilitating the sharing of health records by consumers and clinicians via open specifications, clinical models and open platform implementations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
@@ -190,6 +190,15 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-85" target="_blank" rel="noopener">SPECRM-85</a>: Correct typographical errors: correct repeated inclusion of <code>TERMINOLOGY_SERVICE</code> class to <code>MEASUREMENT_SERVICE</code> (error reported in <a href="https://specifications.openehr.org/tickets/SPECPR-344" target="_blank" rel="noopener">SPECPR-344</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">J Mewes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>29 Sep 2019</p></td>
+</tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.0.4</strong></p></th>
 </tr>
@@ -1939,7 +1948,7 @@ only the minimum functions required by the openEHR Reference Model.</p>
 <div class="sect2">
 <h3 id="_class_definitions_3"><a class="anchor" href="#_class_definitions_3"></a>6.3. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_terminology_service_class_2"><a class="anchor" href="#_terminology_service_class_2"></a>6.3.1. TERMINOLOGY_SERVICE Class</h4>
+<h4 id="_measurement_service_class"><a class="anchor" href="#_measurement_service_class"></a>6.3.1. MEASUREMENT_SERVICE Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1949,17 +1958,13 @@ only the minimum functions required by the openEHR Reference Model.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>TERMINOLOGY_SERVICE</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>MEASUREMENT_SERVICE</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Defines an object providing proxy access to a terminology service.</p>
+<p>Defines an object providing proxy access to a measurement information service.</p>
 </div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</code>, <code>OPENEHR_CODE_SET_IDENTIFIERS</code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1968,96 +1973,21 @@ only the minimum functions required by the openEHR Reference Model.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (<br>
-name: <code>String[1]</code><br>
-): <code>TERMINOLOGY_ACCESS</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Return an interface to the terminology named name. Allowable names include:-</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>openehr,</p>
-</li>
-<li>
-<p>centc251,</p>
-</li>
-<li>
-<p>any name from are taken from the US NLM UMLS meta-data list at <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (<br>
-name: <code>String[1]</code><br>
-): <code>CODE_SET_ACCESS</code><br>
-<strong><em>Pre</em></strong>: <code>has_code_set (name)</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Return an interface to the code_set identified by the external identifier name (e.g.  ISO_639-1).</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (<br>
-id: <code>String[1]</code><br>
-): <code>CODE_SET_ACCESS</code><br>
-<strong><em>Pre</em></strong>: <code>valid_code_set_id (id)</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Return an interface to the code_set identified internally in openEHR by id.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (<br>
-name: <code>String[1]</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_valid_units_string</strong> (<br>
+units: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if terminology named name known by this service. Allowable names include:-</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>openehr</p>
-</li>
-<li>
-<p>centc251</p>
-</li>
-<li>
-<p>any name from are taken from the US NLM UMLS meta-data list at       <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
-</li>
-</ul>
+<p>True if the units string  units' is a valid string according to the HL7 UCUM specification.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (<br>
-name: <code>String[1]</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units_equivalent</strong> (<br>
+units1: <code>String[1]</code>,<br>
+units2: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if code_set linked to internal name (e.g. languages ) is available.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong> (): <code>List&lt;String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Set of all terminology identifiers known in the terminology service. Values from the US NLM UMLS meta-data list at:- <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openehr_code_sets</strong> (): <code>Hash&lt;String, String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Set of all code set identifiers known in the terminology service.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong> (): <code>List&lt;String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Set of all code sets identifiers for which there is an internal openEHR name; returned as a Map of ids keyed by internal name.</p>
+<p>True if two units strings correspond to the same measured property.</p>
 </div></div></td>
 </tr>
 </tbody>
