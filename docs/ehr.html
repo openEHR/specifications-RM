@@ -347,10 +347,21 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0 (unreleased)</strong></p></th>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-88" target="_blank" rel="noopener">SPECRM-88</a>. Improve documentation relating to use of <code><em>uid</em></code> in versioning and <code>LOCATABLE</code> descendants in <code>change_control</code> package; improve advice on setting <code><em>uid</em></code> in <code>COMPOSITION</code>, <code>EHR_STATUS</code> and <code>EHR_ACCESS</code>. (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-322" target="_blank" rel="noopener">SPECPR-322</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
+ M Polajnar,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>29 Sep 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-85" target="_blank" rel="noopener">SPECRM-85</a>. Correct typographical errors: 'planned_step' should be 'plan_step' in section 8.2.5.7. Careflow Process to State Machine Mapping (see <a href="https://specifications.openehr.org/tickets/SPECPR-204" target="_blank" rel="noopener">SPECPR-204</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>22 May 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22 May 2019</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.0.4</strong></p></th>
@@ -1120,6 +1131,9 @@
 <p>Pablo Pazos Gutierrez, CaboLabs, Uruguay</p>
 </li>
 <li>
+<p>Matija Polajnar PhD, Senior developer, Marand, Slovenia</p>
+</li>
+<li>
 <p>Peter Schloeffel MD, Ocean Informatics, Australia</p>
 </li>
 <li>
@@ -1134,7 +1148,7 @@
 <div class="sect2">
 <h3 id="_support">Support</h3>
 <div class="paragraph">
-<p>The work reported in this paper has been funded in by the following organisations:</p>
+<p>The work reported in this paper has been funded in part by the following organisations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2160,7 +2174,20 @@ is is strongly recommended that a UUID always be used for this field.
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>EHR-wide access contol object. All access decisions to data in the EHR must be made in accordance with the policies and rules in this object.</p>
+<p>EHR-wide access control object. All access decisions to data in the EHR must be made in accordance with the policies and rules in this object.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in <code>EHR_ACCESS</code> objects, using a Guid, copied from the <code><em>object_id()</em></code> (first section) of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
+For example, if the <code>ORIGINAL_VERSION.uid</code> is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>, the Guid <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B</code> would be copied to the contained <code><em>uid</em></code> field of the <code>EHR_ACCESS</code> object.
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>
@@ -2249,6 +2276,19 @@ is is strongly recommended that a UUID always be used for this field.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p>Single object per EHR containing various EHR-wide status flags and settings, including whether this EHR can be queried, modified etc. This object is always modifiable, in order to change the status of the EHR as a whole.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in <code>EHR_STATUS</code> objects, using a Guid, copied from the <code><em>object_id()</em></code> (first section) of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
+For example, if the <code>ORIGINAL_VERSION.uid</code> is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>, the Guid <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B</code> would be copied to the contained <code><em>uid</em></code> field of the <code>EHR_STATUS</code> object.
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>
@@ -2556,7 +2596,7 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>One version in a <code>VERSIONED_COMPOSITION</code>. A Composition is considered the unit of modification of the record, the unit of transmission in record extracts, and the unit of attestation by authorising clinicians. In this latter sense, it may be considered equivalent to a signed document.</p>
+<p>Content of one version in a <code>VERSIONED_COMPOSITION</code>. A Composition is considered the unit of modification of the record, the unit of transmission in record Extracts, and the unit of attestation by authorising clinicians. In this latter sense, it may be considered equivalent to a signed document.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2565,7 +2605,8 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <div class="title">Note</div>
 </td>
 <td class="content">
-it is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in Compositions, using a UUID.
+It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in Compositions, using a Guid, copied from the <code><em>object_id()</em></code> (first section) of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
+For example, if the <code>ORIGINAL_VERSION.uid</code> is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>, the Guid <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B</code> would be copied to the contained <code><em>uid</em></code> field of the Composition.
 </td>
 </tr>
 </table>
@@ -4877,7 +4918,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-14 09:58:29 GMT
+Last updated 2019-09-29 01:57:52 BST
 </div>
 </div>
 </body>

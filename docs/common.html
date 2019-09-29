@@ -272,7 +272,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open standards-based implementations.</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit foundation, facilitating the sharing of health records by consumers and clinicians via open specifications, clinical models and open platform implementations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
@@ -311,10 +311,28 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-88" target="_blank" rel="noopener">SPECRM-88</a>. Improve documentation relating to use of <code><em>uid</em></code> in versioning and <code>LOCATABLE</code> descendants in <code>change_control</code> package (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-322" target="_blank" rel="noopener">SPECPR-322</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
+ M Polajnar,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>29 Sep 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-56" target="_blank" rel="noopener">SPECRM-56</a>. Add archetypable details meta-data to <code>FOLDER</code> (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-85" target="_blank" rel="noopener">SPECPR-85</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B Naess,<br>
+ S Iancu,<br>
+ P Pazos,<br>
+ I McNicoll,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16 Mar 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-85" target="_blank" rel="noopener">SPECRM-85</a>. Correct typographical errors in Version classes; correct param in <code>VERSIONED_OBJECT.<em>has_version_at_time()</em></code> back to <code><em>a_time</em>: DV_DATE_TIME</code> (fixes <a href="https://specifications.openehr.org/tickets/SPECPR-311" target="_blank" rel="noopener">SPECPR-311</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
  T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>16 Mar 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16 Mar 2019</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.0.4</strong></p></th>
@@ -927,6 +945,9 @@
 <p>Pablo Pazos Gutierrez, CaboLabs, Uruguay</p>
 </li>
 <li>
+<p>Matija Polajnar PhD, Senior developer, Marand, Slovenia</p>
+</li>
+<li>
 <p>Erik Sundvall PhD, Linkoping University, Sweden</p>
 </li>
 <li>
@@ -941,7 +962,7 @@
 <div class="sect2">
 <h3 id="_support">Support</h3>
 <div class="paragraph">
-<p>The work reported in this paper has been funded in by the following organisations:</p>
+<p>The work reported in this paper has been funded in part by the following organisations:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1147,10 +1168,10 @@
 <p><code>LOCATABLE</code> descendants may have a <code><em>uid</em></code>, containing a GUID. In the current openEHR architecture, GUIDs are not needed to identify data nodes, since paths are used to reference all nodes inside top-level structures (i.e. <code>COMPOSITIONs</code> etc). Accordingly all references between parts of an EHR are represented in terms of <code>LOCATABLE_REFs</code> or <code>DV_EHR_URIs</code> (the former is a reference to an <code>OBJECT_VERSION_ID</code> with a path appended; the latter is the stringified URI form). This would allow for example, one Entry to reference the serum sodium value in another Entry in version 2 of a Versioned Composition for a laboratory test on 12/Apr/2004. The <code><em>uid</em></code> attribute will usually be empty in most EHR data in most openEHR EHR systems.</p>
 </div>
 <div class="paragraph">
-<p>The exception is the top-level types such as <code>COMPOSITION</code>, <code>EHR_STATUS</code>, <code>PARTY</code> etc for which it is recommended to set the <code><em>uid</em></code> value to a copy of the <code><em>uid</em></code> attribute of the owning <code>VERSION</code> object. This enables easy identification of standalone top-level objects in a serialised form.</p>
+<p>The exception is the top-level types such as <code>COMPOSITION</code>, <code>EHR_STATUS</code>, <code>PARTY</code> etc for which it is recommended to set the <code><em>uid</em></code> value to a copy of the <code><em>uid.object_id()</em></code> value of the owning <code>VERSION</code> object (usually an <code>ORIGINAL_VERSION</code>), i.e. the leading Uid, which is normally a Guid. This enables easy identification of standalone top-level objects in a serialised form. For example, if the <code>ORIGINAL_VERSION.uid</code> is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>, the Guid <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B</code> would be copied to the contained <code>COMPOSITION.uid</code> field.</p>
 </div>
 <div class="paragraph">
-<p>Another use for <code>LOCATABLE</code>.<code><em>uid</em></code> is in EHR Extracts, which contain serialised expressions of EHR content. In an Extract, the <code><em>uid</em></code> could be set on some or all nodes to a value generated by concatenating the <code><em>uid</em></code> of the enclosing Version object (i.e. <code>VERSION</code>.<code><em>uid</em></code>) and the unique runtime path to the particular node. This may be useful to the receiver system for the purpose of referencing particular data nodes when communicating to the sender, or another system. This use of uids is not however mandatory, since for each node in an Extract item, the uid can be generated at any time (including at the receiver system).</p>
+<p>Another use for <code>LOCATABLE.<em>uid</em></code> is in EHR Extracts, which contain serialised expressions of EHR content. In an Extract, <code><em>uid</em></code> could be set on some or all nodes to a value generated by concatenating the <code><em>uid</em></code> value of the enclosing Version object (i.e. <code>VERSION.<em>uid</em></code>) and the unique runtime path to the particular node. This may be useful to the receiver system for the purpose of referencing particular data nodes when communicating to the sender, or another system. This use of <code><em>uid</em></code> is not however mandatory, since for each node in an Extract item, the <code><em>uid</em></code> value can be generated at any time (including at the receiver system).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1159,7 +1180,7 @@
 <div class="title">Note</div>
 </td>
 <td class="content">
-some classes in the openEHR architecture that do not inherit from <code>LOCATABLE</code> but require a uid, such as <code>VERSIONED_OBJECT</code>, <code>VERSION</code> etc, explicitly define their own <code><em>uid</em></code> attribute.
+some classes in the openEHR architecture that do not inherit from <code>LOCATABLE</code> but require a UID, such as <code>VERSIONED_OBJECT</code>, <code>VERSION</code> etc, explicitly define their own <code><em>uid</em></code> attributes.
 </td>
 </tr>
 </table>
@@ -2503,7 +2524,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="sect3">
 <h4 id="_paths"><a class="anchor" href="#_paths"></a>5.1.1. Paths</h4>
 <div class="paragraph">
-<p>Directory paths are built using the name attribute values inherited from <code>LOCATABLE</code> into each <code>FOLDER</code> object. In real data, these will usually be derived from the value of the <code><em>archetype_node_id</em></code> attribute, plus a uniqueness modifier if required. Example paths (e.g. within the EHR):</p>
+<p>Directory paths are built using the <code><em>name</em></code> attribute values inherited from <code>LOCATABLE</code> into each <code>FOLDER</code> object. In real data, these will usually be derived from the value of the <code><em>archetype_node_id</em></code> attribute, plus a uniqueness modifier if required. Example paths (e.g. within the EHR):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2597,7 +2618,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code>ITEM_STRUCTURE</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Archetypable extra meta-data for <code>FOLDER</code>.</p>
+<p>Archetypable meta-data for <code>FOLDER</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2659,7 +2680,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="sect3">
 <h4 id="_version_and_its_subtypes"><a class="anchor" href="#_version_and_its_subtypes"></a>6.2.3. Version and its Subtypes</h4>
 <div class="paragraph">
-<p>Within a Versioned object, each version is an instance of a subtype of the class <code>VERSION&lt;T&gt;</code>. The abstract <code>VERSION</code> class defines the generic notion of a version containing some data, that has been committed to the repository as a member of a Contribution. Accordingly, it records the Contribution in the <code><em>contribution</em></code> attribute and the audit in <code><em>commit_audit</em></code>. A Version also knows its position in the version tree within the container. It has a version identifier, <code><em>uid</em></code>, and knows on which version in the tree it was based (i.e. what version was checked out to create the current version), <code><em>preceding_version_uid</em></code> (Void if it is the first version). Both of these identifiers are globally unique (see <code>support.identification</code> package). These properties are abstract in the <code>VERSION</code> class, since they are defined as being stored or computed respectively in its subtypes.</p>
+<p>Within a Versioned object, each version is an instance of a subtype of the class <code>VERSION&lt;T&gt;</code>. The abstract <code>VERSION</code> class defines the generic notion of a version containing some data, that has been committed to the repository as a member of a Contribution. Accordingly, it records the Contribution in the <code><em>contribution</em></code> attribute and the audit in <code><em>commit_audit</em></code>. A Version also knows its position in the version tree within the container. It has a version identifier, <code><em>uid</em></code>, and knows on which version in the tree it was based (i.e. what version was checked out to create the current version), <code><em>preceding_version_uid</em></code> (Void if it is the first version). Both of these identifiers are globally unique (see <a href="https://specifications.openehr.org/releases/BASE/latest/base_types.html#_identification_package"><code>base_types.identification</code> package</a> in the BASE component). These properties are abstract in the <code>VERSION</code> class, since they are defined as being stored or computed respectively in its subtypes.</p>
 </div>
 <div class="paragraph">
 <p>All Versions in a given version container have a <code><em>uid</em></code> that includes the <code><em>uid</em></code> of the container; in other words, the <code><em>uid</em></code> of a Version is its container&#8217;s <code><em>uid</em></code> plus further version identification for that particular version with respect to others in the same container. The <code>VERSION</code>.<code><em>owner_id</em></code> function extracts the <code><em>uid</em></code> field of the owning <code>VERSIONED_OBJECT</code> from the <code><em>uid</em></code> of the <code>VERSION</code>.</p>
@@ -2894,10 +2915,10 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="sect3">
 <h4 id="_version_identification"><a class="anchor" href="#_version_identification"></a>6.3.3. Version Identification</h4>
 <div class="paragraph">
-<p>The version identification scheme described here is adapted from the work of Hnìtynka and Plášil <a href="#Hnìtynka_2004">[Hnìtynka_2004]</a>. <code>VERSION</code> objects are identified by a <code><em>uid</em></code> attribute, which is a three-part identifier consisting of the attributes <code><em>object_id</em></code>, <code><em>creating_system_id</em></code> and <code><em>version_tree_id</em></code> (see   <a href="https://specifications.openehr.org/releases/RM/latest/support.html#_identification_package"><code>support.identification</code> package in the Support IM</a>), in which the <code><em>object_id</em></code> part is a copy of the <code><em>uid</em></code> of the owning <code>VERSIONED_OBJECT</code> version container.</p>
+<p>The version identification scheme described here is adapted from the work of Hnìtynka and Plášil <a href="#Hnìtynka_2004">[Hnìtynka_2004]</a>. <code>VERSION</code> objects are identified by a <code><em>uid</em></code> attribute of type <code>OBJECT_VERSION_ID</code>, which is a three-part String identifier consisting of the sub-parts extractable via the accessors <code><em>object_id()</em></code>, <code><em>creating_system_id()</em></code> and <code><em>version_tree_id()</em></code> (see the <a href="https://specifications.openehr.org/releases/BASE/latest/base_types.html#_identification_package"><code>base_types.identification</code> package</a> in the BASE component), in which the <code><em>object_id()</em></code> part is a copy of the <code><em>uid</em></code> of the owning <code>VERSIONED_OBJECT</code> version container.</p>
 </div>
 <div class="paragraph">
-<p>The following figure illustrates the scheme. The <code>VERSIONED_OBJECT</code> <code><em>uid</em></code> value - here, "1234" - is used as the <code><em>object_id()</em></code> part of the <code><em>uid</em></code> of every contained <code>VERSION</code> (note that an <code>OBJECT_VERSION_ID&#8217;s</code> <code><em>value</em></code> is a <code>String</code>, with various accessor functions like <code><em>object_id()</em></code> used to extract the logical pieces). Accordingly, each of those versions will have a <code><em>uid</em></code> following the pattern <code>"1234:system_id:version_tree_id"</code>. The use of the <code><em>version_tree_id</em></code> and <code><em>system_id</em></code> parts of the identifier are explained in the sections below. The function <code>VERSION.<em>owner_id()</em></code> is provided to enable a caller to easily obtain the 'owning version container' identifier.</p>
+<p>The following figure illustrates the scheme. The <code>VERSIONED_OBJECT.<em>uid</em></code> value - here, <code>"1234"</code> - is used as the <code><em>object_id()</em></code> part of the <code><em>uid</em></code> of every contained <code>VERSION</code>. Accordingly, each of those versions will have a <code><em>uid</em></code> following the pattern <code>"1234:system_id:version_tree_id"</code>. The use of the <code><em>version_tree_id</em></code> and <code><em>system_id</em></code> parts of the identifier are explained in the sections below. The function <code>VERSION.<em>owner_id()</em></code> is provided to enable a caller to easily obtain the 'owning version container' identifier.</p>
 </div>
 <div id="version_identification_system" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2958,10 +2979,10 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <p>To satisfy these needs, two modifications are made to the identification scheme. The first is the addition of the <code><em>creating_system_id</em></code> attribute of <code>VERSION.<em>uid</em></code>, representing the system where the version was created. This is a machine processable identifier, such as a reverse internet address or GUID.</p>
 </div>
 <div class="paragraph">
-<p>Whenever a new <code>ORIGINAL_VERSION</code> in a particular <code>VERSIONED_OBJECT</code> (with a particular uid) is created locally, the <code>VERSION.<em>uid</em>.<em>creating_system_id</em></code> is set to the identifier of the local system; if the version was imported, <code><em>creating_system_id</em></code> will already have been set to the identifier of the system of original creation.</p>
+<p>Whenever a new <code>ORIGINAL_VERSION</code> in a particular <code>VERSIONED_OBJECT</code> (with a particular UID) is created locally, the <code>VERSION.<em>uid</em>.<em>creating_system_id</em></code> is set to the identifier of the local system; if the version was imported, <code><em>creating_system_id</em></code> will already have been set to the identifier of the system of original creation.</p>
 </div>
 <div class="paragraph">
-<p>The second modification is to require branching version identifiers to be used when local modifications are made to versions copied from elsewhere; this ensures that the modifications now being made in the target system are considered in a global sense as logical branches or variants rather than trunk versions which are made in the originating system. It also allows later trunk versions from the originating system to be copied at some future time to the target system without version identifier clashes. In summary, this scheme uses the tuple {<code><em>object_id</em></code>, <code><em>version_tree_id</em></code>, <code><em>creating_system_id</em></code>} to globally uniquely identify any openEHR <code>VERSION</code> object.</p>
+<p>The second modification is to require branching version identifiers to be used when local modifications are made to versions copied from elsewhere; this ensures that the modifications now being made in the target system are considered in a global sense as logical branches or variants rather than trunk versions which are made in the originating system. It also allows later trunk versions from the originating system to be copied at some future time to the target system without version identifier clashes. In summary, the scheme uses the tuple {<code><em>object_id</em></code>, <code><em>creating_system_id</em></code>, <code><em>version_tree_id</em></code>} to globally uniquely identify any openEHR <code>VERSION</code> object.</p>
 </div>
 </div>
 </div>
@@ -2995,7 +3016,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <p>In the first situation, there is not even an EHR (i.e. repository of Versioned objects for the patient in question) in the target system. A new one has to be created. As mentioned in the <a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_ehr_creation_semantics">EHR IM specification</a>, the newly created EHR should re-use the EHR identifier from the source system. This establishes the new EHR as an intentional clone of the source EHR (or more correctly, part of the family of EHRs making up the virtual EHR for that patient).</p>
 </div>
 <div class="paragraph">
-<p>If it is the first time any version of the item logically identified by its <code>ORIGINAL_VERSION.<em>uid</em>.<em>object_id</em></code> (i.e. the <code><em>uid</em></code> of its original <code>VERSIONED_OBJECT</code>, common to all Versions in the same container) was received from the originating system, a new <code>VERSIONED_OBJECT&lt;T&gt;</code> (e.g. <code>VERSIONED_OBJECT&lt;COMPOSITION&gt;</code>) is created, with its uid set to the same value as the received <code>VERSION.<em>uid</em>.<em>object_id</em></code>. This establishes the newly created <code>VERSIONED_OBJECT</code> as being a logical clone of the one from which the received <code>ORIGINAL_VERSION</code> was copied. If some version of the item had already been received, this step will have already occurred, and the requisite <code>VERSIONED_OBJECT</code> would already exist.</p>
+<p>If it is the first time any version of the item logically identified by its <code>ORIGINAL_VERSION.<em>uid</em>.<em>object_id()</em></code> (i.e. the <code><em>uid</em></code> of its original <code>VERSIONED_OBJECT</code>, common to all Versions in the same container) was received from the originating system, a new <code>VERSIONED_OBJECT&lt;T&gt;</code> (e.g. <code>VERSIONED_OBJECT&lt;COMPOSITION&gt;</code>) is created, with its uid set to the same value as the received <code>VERSION.<em>uid</em>.<em>object_id()</em></code>. This establishes the newly created <code>VERSIONED_OBJECT</code> as being a logical clone of the one from which the received <code>ORIGINAL_VERSION</code> was copied. If some version of the item had already been received, this step will have already occurred, and the requisite <code>VERSIONED_OBJECT</code> would already exist.</p>
 </div>
 <div class="paragraph">
 <p>An <code>IMPORTED_VERSION</code> instance is then created, its item set to the received <code>ORIGINAL_VERSION</code>, and it is committed in the normal way (i.e. as part of a Contribution). The <code>IMPORTED_VERSION</code> commit_audit and contribution attributes record the local act of committal. In this operation, the <code>ORIGINAL_VERSION</code> instance is never modified - it remains a faithful copy of its original, no matter how many systems it may be copied through.</p>
@@ -3004,7 +3025,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <div class="sect4">
 <h5 id="_subsequent_local_modifications"><a class="anchor" href="#_subsequent_local_modifications"></a>6.4.1.2. Subsequent Local Modifications</h5>
 <div class="paragraph">
-<p>In most cases, the received information will remain as is for the duration. However, in some cases, users at the receiver system might want to make modifications as well. This is likely to happen in the case of information items representing things like medication lists and allergies. When new versions are added locally to a copied object, the local system id is recorded in the <code><em>uid</em>.<em>creating_system_id</em></code> attribute, while branching numbering is used in the <code><em>uid</em>.<em>version_tree_id</em></code>.</p>
+<p>In most cases, the received information will remain as is for the duration. However, in some cases, users at the receiver system might want to make modifications as well. This is likely to happen in the case of information items representing things like medication lists and allergies. When new versions are added locally to a copied object, the local system id is recorded in the <code><em>uid</em>.<em>creating_system_id()</em></code> attribute, while branching numbering is used in the <code><em>uid</em>.<em>version_tree_id()</em></code>.</p>
 </div>
 <div class="paragraph">
 <p>These copying scenarios are illustrated in the figure below. On the left hand-side of the figure, a version container (i.e. an instance of <code>VERSIONED_OBJECT</code>) with <code><em>uid</em></code> = "1" is shown; the first Version has <code><em>uid</em>.<em>creating_system_id</em></code> = "sysA"; <code><em>uid</em>.<em>version_tree_id</em></code> = "1". Further local trunk and branch versions are also shown.</p>
@@ -4469,7 +4490,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-14 10:43:05 GMT
+Last updated 2019-09-29 01:57:41 BST
 </div>
 </div>
 </body>
