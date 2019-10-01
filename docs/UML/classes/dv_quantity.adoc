@@ -6,9 +6,9 @@ h|*Class*
 2+^h|*DV_QUANTITY*
 
 h|*Description*
-2+a|Quantitified type representing  scientific  quantities, i.e. quantities expressed as a magnitude and units. Units were inspired by the http://unitsofmeasure.org/ucum.html[Unified Code for Units of Measure (UCUM)], developed by Gunther Schadow and Clement J. McDonald of The Regenstrief Institute.
+2+a|Quantitified type representing  scientific  quantities, i.e. quantities expressed as a magnitude and units. Units are expressed in HL7 UCUM syntax (http://unitsofmeasure.org/ucum.html[Unified Code for Units of Measure (UCUM)], by Gunther Schadow and Clement J. McDonald of The Regenstrief Institute) by default, or another system if `_units_system_` is set.
 
-Can also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years.
+Can also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years (in the latter case, `DV_DURATION` may be used).
 
 h|*Inherit*
 2+|`DV_AMOUNT`
@@ -28,7 +28,25 @@ The value -1 implies no limit, i.e. any number of decimal places.
 
 h|*1..1*
 |*units*: `String`
-a|Stringified units, expressed in UCUM unit syntax, e.g. "kg/m2", “mm[Hg]", "ms-1", "km/h". Implemented accordingly in subtypes.
+a|Quantity units, expressed as a code or syntax string from either HL7 UCUM (the default) or the units system specified in `_units_system_`, when set.
+
+In either case, the value is the code or syntax - normally formed of standard ASCII - which is in principal not the same as the display string, although in simple cases such as 'm' (for meters) it will be.
+
+If the `_units_display_name_` field is set, this may be used for display. If not, the implementations must effect the resolution of the `_units_` value to a display form locally, e.g. by lookup of reference tables, request to a terminology service etc.
+
+Example values from UCUM: "kg/m^2", “mm[Hg]", "ms-1", "km/h".
+
+h|*0..1*
+|*units_system*: `String`
+a|Optional field used to specify a units system from which codes in `_units_` are defined. Value is a URI identifying a terminology containing units concepts from the  (https://www.hl7.org/fhir/terminologies-systems.html[HL7 FHIR terminologies list]).
+
+If not set, the HL7 UCUM standard is assumed as the units system.
+
+h|*0..1*
+|*units_display_name*: `String`
+a|Optional field containing the displayable form of the `_units_` field, e.g. `'°C'`.
+
+If not set, the application environment needs to determine the displayable form.
 
 h|*0..1 +
 (redefined)*

@@ -405,13 +405,28 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0 (unreleased)</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-65" target="_blank" rel="noopener">SPECRM-65</a>: Add <code><em>units_system</em></code> and <code><em>units_display_name</em></code> attributes to <code>DV_QUANTITY</code>. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-251" target="_blank" rel="noopener">SPECPR-251</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
+ I McNicoll,<br>
+ S Ljosland Bakke,<br>
+ S Garde,<br>
+ D Bosca,<br>
+ B Lah,<br>
+ B Naess</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>01 Oct 2019</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.0.4</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-39" target="_blank" rel="noopener">SPECRM-39</a>: Support newlines and formatting in <code>DV_TEXT</code>. Addresses (<a href="https://specifications.openehr.org/tickets/SPECPR-117" target="_blank" rel="noopener">SPECPR-117</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-39" target="_blank" rel="noopener">SPECRM-39</a>: Support newlines and formatting in <code>DV_TEXT</code>. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-117" target="_blank" rel="noopener">SPECPR-117</a>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>21 Dec 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21 Dec 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1003,6 +1018,9 @@
 <div class="ulist">
 <ul>
 <li>
+<p>Silje Ljosland Bakke, RN, Nasjonal IKT HF, Norway</p>
+</li>
+<li>
 <p>Pieter Bos, Senior Software Engineer, Nedap, Netherlands</p>
 </li>
 <li>
@@ -1043,6 +1061,9 @@
 </li>
 <li>
 <p>Chunlan Ma PhD, MD, Ocean Informatics, Australia</p>
+</li>
+<li>
+<p>Bjørn Næss, DIPS, Norway</p>
 </li>
 <li>
 <p>Pablo Pazos Gutierrez, CaboLabs, Uruguay</p>
@@ -2667,8 +2688,7 @@ c: <code>char[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>The <code>data_types.quantity</code> package is illustrated below. Dates and Times are found in the
-next section.</p>
+<p>The <code>data_types.quantity</code> package is illustrated below. Dates and Times are found in the next section.</p>
 </div>
 <div id="rm_data_types_quantity" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -2681,15 +2701,7 @@ next section.</p>
 <div class="sect4">
 <h5 id="_ordinal_values"><a class="anchor" href="#_ordinal_values"></a>6.1.1.1. Ordinal Values</h5>
 <div class="paragraph">
-<p>Medicine is one domain in which symbols representing relative magnitudes are commonly used,
-without exact values being known. The main purpose is usually to classify patients into groups for
-which different decisions might be made. Thus, while approximate ranges (technically speaking -
-"fuzzy intervals") might be stated (such as for a urinalysis), concrete values are not of interest, only
-categories are. Take for example the characterisation of pain as being "mild", "medium", "severe", or
-the reflex response to tendon percussion as "-", "+/-", "+", "++", "+++", "++++". There may be no
-way to scientifically precisely quantify such values because they reflect a subjective experience of the
-patient or informal judgement by clinician. However, they are understood as being ordered, e.g. "++"
-is 'greater than' "+".</p>
+<p>Medicine is one domain in which symbols representing relative magnitudes are commonly used, without exact values being known. The main purpose is usually to classify patients into groups for which different decisions might be made. Thus, while approximate ranges (technically speaking - "fuzzy intervals") might be stated (such as for a urinalysis), concrete values are not of interest, only categories are. Take for example the characterisation of pain as being "mild", "medium", "severe", or the reflex response to tendon percussion as "-", "+/-", "+", "++", "+++", "++++". There may be no way to scientifically precisely quantify such values because they reflect a subjective experience of the patient or informal judgement by clinician. However, they are understood as being ordered, e.g. pass: ["++"] is 'greater than' "+".</p>
 </div>
 <div class="paragraph">
 <p>Similarly, even though the symbolic values for haemolysed blood in a urinalysis have approximate
@@ -2712,10 +2724,7 @@ ranges stated for them, as shown below, these 'values' are not usable in the sam
 </ul>
 </div>
 <div class="paragraph">
-<p>A second requirement for ordinal values is that in many cases there is a need to associate integer values
-with the symbols, in order to facilitate ordered comparison, and also to enable longitudinal comparison
-across results of the same kind (e.g. pain, protein). Integer values may be negative, 0 and
-positive, typically to allow the 0 value to correspond to a neutral value in a range.</p>
+<p>A second requirement for ordinal values is that in many cases there is a need to associate integer values with the symbols, in order to facilitate ordered comparison, and also to enable longitudinal comparison across results of the same kind (e.g. pain, protein). Integer values may be negative, 0 and positive, typically to allow the 0 value to correspond to a neutral value in a range.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2724,15 +2733,7 @@ positive, typically to allow the 0 value to correspond to a neutral value in a r
 <div class="title">Note</div>
 </td>
 <td class="content">
-an argument sometimes put forward for recording all ordinals in a more precise way is that
-comparisons might want to be made between the values quoted by two laboratories for the same symbol
-(e.g. "moderate"). There are a number of counter-arguments. Firstly, such comparisons are a poor
-attempt at normalisation, an activity which is the business of pathologists, not EHR users. Secondly,
-the symbolic values are often arrived at by the tester making a judgement of colour on a strip, which
-while an adequate (and cost-effective) approach for classifying, is not a valid means of quantifying a
-value. Lastly, in most cases, if a quantified point value or range is desired, or available, then it will be
-used - meaning that the appropriate quantitative data type can be used, rather than an the ordinal
-type.
+an argument sometimes put forward for recording all ordinals in a more precise way is that comparisons might want to be made between the values quoted by two laboratories for the same symbol (e.g. "moderate"). There are a number of counter-arguments. Firstly, such comparisons are a poor attempt at normalisation, an activity which is the business of pathologists, not EHR users. Secondly, the symbolic values are often arrived at by the tester making a judgement of colour on a strip, which while an adequate (and cost-effective) approach for classifying, is not a valid means of quantifying a value. Lastly, in most cases, if a quantified point value or range is desired, or available, then it will be used - meaning that the appropriate quantitative data type can be used, rather than an the ordinal type.
 </td>
 </tr>
 </table>
@@ -2741,14 +2742,10 @@ type.
 <div class="sect4">
 <h5 id="_countable_things"><a class="anchor" href="#_countable_things"></a>6.1.1.2. Countable Things</h5>
 <div class="paragraph">
-<p>An common kind of data value in medicine is the dimensionless countable quantity, e.g. "number of
-doses: 2", "number of previous pregnancies: 1", "number of tablets: 3". Values of this type are always
-integral. Countable values need to be convertible to real numbers for statistical purposes, for example
-for a study of average number of pregnancies per couple.</p>
+<p>An common kind of data value in medicine is the dimensionless countable quantity, e.g. "number of doses: 2", "number of previous pregnancies: 1", "number of tablets: 3". Values of this type are always integral. Countable values need to be convertible to real numbers for statistical purposes, for example for a study of average number of pregnancies per couple.</p>
 </div>
 <div class="paragraph">
-<p>Some countable entities such as tablets are divisible into major fractions, typically halves and occasionally
-quarters.</p>
+<p>Some countable entities such as tablets are divisible into major fractions, typically halves and occasionally quarters.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2815,15 +2812,13 @@ quarters.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In general ratios have real number values, even if many examples appear to be integer ratios. Proportions
-with unitary denominator and % (denominator = 100) are common.</p>
+<p>In general ratios have real number values, even if many examples appear to be integer ratios. Proportions with unitary denominator and % (denominator = 100) are common.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_formulations"><a class="anchor" href="#_formulations"></a>6.1.1.5. Formulations</h5>
 <div class="paragraph">
-<p>A concept superficially similar to proportions and ratios is formulations of materials, such as a solid
-in a liquid e.g.:</p>
+<p>A concept superficially similar to proportions and ratios is formulations of materials, such as a solid in a liquid e.g.:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2833,11 +2828,7 @@ in a liquid e.g.:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Although a single solute/single solvent formulation appears to have the same form as a ratio, the general
-form is for any number of substances to be mixed together, usually according to a particular procedure.
-Formulations are therefore not candidates for direct modelling as fine-grained quantities, but
-instead are constructed by archetyping a higher-level structure, each leaf element of which contains
-the required kind of Quantity.</p>
+<p>Although a single solute/single solvent formulation appears to have the same form as a ratio, the general form is for any number of substances to be mixed together, usually according to a particular procedure. Formulations are therefore not candidates for direct modelling as fine-grained quantities, but instead are constructed by archetyping a higher-level structure, each leaf element of which contains the required kind of Quantity.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2870,16 +2861,12 @@ the 'normal' range for a measured value. Examples of reference ranges:</p>
 <p>normal range for serum Na is 135 - 145 mmol/L.</p>
 </li>
 <li>
-<p>desirable total cholesterol: &lt; 5.5 mmol/L (strictly this probably should be 2.0 - 5.5 mmol/L,
-but is not usually quoted this way as low cholesterol is not considered a problem.)</p>
+<p>desirable total cholesterol: &lt; 5.5 mmol/L (strictly this probably should be 2.0 - 5.5 mmol/L, but is not usually quoted this way as low cholesterol is not considered a problem.)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Ranges can also be quoted for drug administrations, in which case they are usually thought of as the
-'therapeutic' range. For example, the anticonvulsant drug Carbamazepine has a therapeutic range of
-20 - 40 &#956;Mol/L. In some cases, there are multiple ranges associated with a drug, for example, Salicylate
-has a therapeutic range of 1.0 - 2.5 mmol/L and a toxic range &gt; 3.6 mmol/L</p>
+<p>Ranges can also be quoted for drug administrations, in which case they are usually thought of as the 'therapeutic' range. For example, the anticonvulsant drug Carbamazepine has a therapeutic range of 20 - 40 &#956;Mol/L. In some cases, there are multiple ranges associated with a drug, for example, Salicylate has a therapeutic range of 1.0 - 2.5 mmol/L and a toxic range &gt; 3.6 mmol/L</p>
 </div>
 <div class="paragraph">
 <p>Various examples occur in which multiple ranges may be stated, including the following.</p>
@@ -2893,37 +2880,18 @@ has a therapeutic range of 1.0 - 2.5 mmol/L and a toxic range &gt; 3.6 mmol/L</p
 <p>Normal ranges for blood IgG, IgA, IgM which vary significantly with the age in months from birth.</p>
 </li>
 <li>
-<p>Progesterone and pituitary hormones have ranges which are different for different phases of
-the menstrual cycle and for menopause. This may result in 4 or 5 ranges given for one result.
-Only one will apply to any particular patient - but the exact phase of the cycle may be
-unknown - so the ranges may need to be associated with the value with no 'normal' range.</p>
+<p>Progesterone and pituitary hormones have ranges which are different for different phases of the menstrual cycle and for menopause. This may result in 4 or 5 ranges given for one result. Only one will apply to any particular patient - but the exact phase of the cycle may be unknown - so the ranges may need to be associated with the value with no 'normal' range.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Where there are multiple ranges, the important question is: <em>which range information is relevant to the
-actual data being recorded for the patient?</em> In theory, only the range corresponding to the particular
-patient situation should be used, i.e. the range which applies after taking into account sex, age, smoking
-status, "professional athlete", organ transplanted, etc. In most cases, this is a single "normal"
-range, or a pair of ranges, typically "therapeutic" and "critical". However, practical factors complicate
-things. Firstly, data is sometimes supplied from pathology labs along with some or all of the
-applicable reference ranges, even though only some could possibly apply. This is particularly the case
-if the laboratory has no other data on the patient, and cannot evaluate which range applies. The
-requirement for faithfulness of recording might be extended to reference data supplied by laboratories,
-regardless of how irrelevant or arbitrarily chosen the reference data is, meaning that such data
-has to be stored in the record anyway. Secondly, there may be circumstances in which physicians
-want a number of reference ranges, even while knowing that only one range is applicable to the
-datum. Ranges above and below the relevant one might be useful to a physician wishing to determine
-how far out of range the datum is.</p>
+<p>Where there are multiple ranges, the important question is: <em>which range information is relevant to the actual data being recorded for the patient?</em> In theory, only the range corresponding to the particular patient situation should be used, i.e. the range which applies after taking into account sex, age, smoking status, "professional athlete", organ transplanted, etc. In most cases, this is a single "normal" range, or a pair of ranges, typically "therapeutic" and "critical". However, practical factors complicate things. Firstly, data is sometimes supplied from pathology labs along with some or all of the applicable reference ranges, even though only some could possibly apply. This is particularly the case if the laboratory has no other data on the patient, and cannot evaluate which range applies. The requirement for faithfulness of recording might be extended to reference data supplied by laboratories, regardless of how irrelevant or arbitrarily chosen the reference data is, meaning that such data has to be stored in the record anyway. Secondly, there may be circumstances in which physicians want a number of reference ranges, even while knowing that only one range is applicable to the datum. Ranges above and below the relevant one might be useful to a physician wishing to determine how far out of range the datum is.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_normal_range_and_status_in_laboratory_data"><a class="anchor" href="#_normal_range_and_status_in_laboratory_data"></a>6.1.1.8. Normal Range and Status in Laboratory data</h5>
 <div class="paragraph">
-<p>It is quite common for laboratories to include a normal range with each measured value, and/or a normal
-'status', which indicates where the value lies with respect to the normal range. The latter will
-commonly take the form of markers like "HHH" (critically high), HH (abnormally high), H (borderline
-high), L, LL, LLL in HL7v2 messaging, although other schemes are undoubtedly used.</p>
+<p>It is quite common for laboratories to include a normal range with each measured value, and/or a normal 'status', which indicates where the value lies with respect to the normal range. The latter will commonly take the form of markers like "HHH" (critically high), HH (abnormally high), H (borderline high), L, LL, LLL in HL7v2 messaging, although other schemes are undoubtedly used.</p>
 </div>
 </div>
 </div>
@@ -2932,41 +2900,30 @@ high), L, LL, LLL in HL7v2 messaging, although other schemes are undoubtedly use
 <div class="sect4">
 <h5 id="_basic_semantics"><a class="anchor" href="#_basic_semantics"></a>6.1.2.1. Basic Semantics</h5>
 <div class="paragraph">
-<p>In order to make sense of the requirements in a systematic way, a proper typology for quantities is
-needed. The most basic characteristic of all values typically called 'quantities' is that they are
-ordered, meaning that the operator "&lt;" (less-than) is defined between any two values in the domain.
-An ancestor class for all quantities called <code>DV_ORDERED</code> is accordingly defined. This type is subtyped
-into ordinals and true quantities, represented by the classes <code>DV_ORDINAL</code> and <code>DV_QUANTIFIED</code>
-respectively. <code>DV_ORDINAL</code> represents data values whose exact numeric values are not known, and
-which use symbolic renderings instead, such as "+", "++", "+++", or "mild", "medium", "severe".
-Each symbol can be assigned any integer value, providing a basis for computable comparison. In contrast,
-instances of <code>DV_QUANTIFIED</code> and all its subtypes have precise numeric magnitudes.</p>
+<p>In order to make sense of the requirements in a systematic way, a proper typology for quantities is needed. The most basic characteristic of all values typically called 'quantities' is that they are ordered, meaning that the operator "&lt;" (less-than) is defined between any two values in the domain. An ancestor class for all quantities called <code>DV_ORDERED</code> is accordingly defined. This type is subtyped into ordinals and true quantities, represented by the classes <code>DV_ORDINAL</code> and <code>DV_QUANTIFIED</code> respectively. <code>DV_ORDINAL</code> represents data values whose exact numeric values are not known, and which use symbolic renderings instead, such as "+", "++", "+++", or "mild", "medium", "severe". Each symbol can be assigned any integer value, providing a basis for computable comparison. In contrast, instances of <code>DV_QUANTIFIED</code> and all its subtypes have precise numeric magnitudes.</p>
 </div>
 <div class="paragraph">
-<p><code>DV_QUANTIFIED</code> itself introduces the concepts of magnitude and magnitude_status. The magnitude
-attribute is guaranteed to be available on any <code>DV_QUANTIFIED</code>, carrying the effective value, regardless
-of the particular subtype. The optional magnitude_status attribute can be used to provide a nonquantified
-indication of accuracy, and takes the following values:</p>
+<p><code>DV_QUANTIFIED</code> itself introduces the concepts of magnitude and magnitude_status. The magnitude attribute is guaranteed to be available on any <code>DV_QUANTIFIED</code>, carrying the effective value, regardless of the particular subtype. The optional magnitude_status attribute can be used to provide a nonquantified indication of accuracy, and takes the following values:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>"=" : magnitude is a point value</p>
+<p><code>"="</code> : magnitude is a point value</p>
 </li>
 <li>
-<p>"&lt;" : value is &lt; magnitude</p>
+<p><code>"&lt;"</code> : value is &lt; magnitude</p>
 </li>
 <li>
-<p>"&gt;" : value is &gt; magnitude</p>
+<p><code>"&gt;"</code> : value is &gt; magnitude</p>
 </li>
 <li>
-<p>"&lt;=" : value is &lt;= magnitude</p>
+<p><code>"&lt;="</code> : value is &lt;= magnitude</p>
 </li>
 <li>
-<p>"&gt;=" : value is &gt;= magnitude</p>
+<p><code>"&gt;="</code> : value is &gt;= magnitude</p>
 </li>
 <li>
-<p>"~" : value is approximately magnitude</p>
+<p><code>"~"</code> : value is approximately magnitude</p>
 </li>
 </ul>
 </div>
@@ -2974,46 +2931,20 @@ indication of accuracy, and takes the following values:</p>
 <p>If not present, meaning is "=".</p>
 </div>
 <div class="paragraph">
-<p>Logically, an accuracy attribute should also be included in <code>DV_QUANTIFIED</code>, but as its modelling is
-different in the subtypes in a way that does not easily lend itself to a common ancestor, it is only
-included in the subtypes.</p>
+<p>Logically, an accuracy attribute should also be included in <code>DV_QUANTIFIED</code>, but as its modelling is different in the subtypes in a way that does not easily lend itself to a common ancestor, it is only included in the subtypes.</p>
 </div>
 <div class="paragraph">
-<p>The <code>DV_QUANTIFIED</code> class has two subtypes: <code>DV_AMOUNT</code> and <code>DV_ABSOLUTE_QUANTITY</code>. The
-former corresponds to relative 'amounts' of something, either a physical property(such as mass) or
-items (e.g. cigarettes). Mathematically, the '+' and '-' operators (as well as '*' and '/') are defined in
-the same way as for the real numbers (or any other mathematical 'field'), with the semantics that adding
-two relative quantities measuring the same thing (i.e. with the same units) produces another relative
-quantity of the same kind; while the semantics of subtraction are that one relative quantity
-subtracted from another generates a third.</p>
+<p>The <code>DV_QUANTIFIED</code> class has two subtypes: <code>DV_AMOUNT</code> and <code>DV_ABSOLUTE_QUANTITY</code>. The former corresponds to relative 'amounts' of something, either a physical property(such as mass) or items (e.g. cigarettes). Mathematically, the '+' and '-' operators (as well as '*' and '/') are defined in the same way as for the real numbers (or any other mathematical 'field'), with the semantics that adding two relative quantities measuring the same thing (i.e. with the same units) produces another relative quantity of the same kind; while the semantics of subtraction are that one relative quantity subtracted from another generates a third.</p>
 </div>
 <div class="paragraph">
-<p>The second subtype of <code>DV_QUANTIFIED</code>, <code>DV_ABSOLUTE_QUANTITY</code>, models quantities whose values
-are absolute along a line having a defined origin. The main example of absolute quantities are the
-temporal concepts date, time and date/time. These are distinguished from relative quantities in that
-the normal addition and subtraction operations don&#8217;t apply. Instead, the semantics of such operators
-are based on the idea of the difference between absolute values being a relative amount. For example,
-two dates can be subtracted, but the result is a duration, not another date. For this reason, the operations
-<code><em>add</em></code>, <code><em>subtract</em></code> and <code><em>diff</em></code> are defined rather than '+' or '-'. Date/time types, as well as the relative
-concept duration, are defined in <a href="#_date_time_package">Section 7</a>.</p>
+<p>The second subtype of <code>DV_QUANTIFIED</code>, <code>DV_ABSOLUTE_QUANTITY</code>, models quantities whose values are absolute along a line having a defined origin. The main example of absolute quantities are the temporal concepts date, time and date/time. These are distinguished from relative quantities in that the normal addition and subtraction operations don&#8217;t apply. Instead, the semantics of such operators are based on the idea of the difference between absolute values being a relative amount. For example, two dates can be subtracted, but the result is a duration, not another date. For this reason, the operations <code><em>add</em></code>, <code><em>subtract</em></code> and <code><em>diff</em></code> are defined rather than '+' or '-'. Date/time types, as well as the relative concept duration, are defined in <a href="#_date_time_package">Section 7</a>.</p>
 </div>
 <div class="paragraph">
-<p>Subtypes of <code>DV_AMOUNT</code> are <code>DV_PROPORTION</code>, <code>DV_QUANTITY</code>, <code>DV_COUNT</code>, and <code>DV_DURATION</code> (see
-date_time package). The type <code>DV_COUNT</code> has an integer magnitude and is used to record naturally
-countable things such as number of previous pregnancies, number of steps taken by a recovering
-stroke victim and so on. There are no units or precision in a <code>DV_COUNT</code>. Countable quantities can be
-used to create instances of <code>DV_QUANTITY</code>, such as during a statistical study which average tobacco
-consumption over a time period. Such a computation might cause the creation of <code>DV_QUANTITY</code>
-objects representing values like {magnitude = 5.85, units = '/ week'}</p>
+<p>Subtypes of <code>DV_AMOUNT</code> are <code>DV_PROPORTION</code>, <code>DV_QUANTITY</code>, <code>DV_COUNT</code>, and <code>DV_DURATION</code> (see date_time package). The type <code>DV_COUNT</code> has an integer magnitude and is used to record naturally countable things such as number of previous pregnancies, number of steps taken by a recovering stroke victim and so on. There are no units or precision in a <code>DV_COUNT</code>. Countable quantities can be used to create instances of <code>DV_QUANTITY</code>, such as during a statistical study which average tobacco
+consumption over a time period. Such a computation might cause the creation of <code>DV_QUANTITY</code> objects representing values like {magnitude = 5.85, units = '/ week'}</p>
 </div>
 <div class="paragraph">
-<p><code>DV_QUANTITY</code> is used to represent amounts of measurable things, and has a real number magnitude,
-precision, units and accuracy. The units attribute contains the scientific unit in a parsable form
-defined by the <a href="http://unitsofmeasure.org/ucum.html">Unified Code for Units of Measure (UCUM)</a>. A valid units string always implies a
-measured property, such as "force" or "pressure". The property of a Quantity can conveniently constrained in archetypes, e.g. to "pressure", which would allow any pressure unit. Unit strings can be
-compared to determine if they measure the same property (e.g. "bar" and "kPa" are both units corresponding
-to the property "pressure"), which enables the is_strictly_comparable_to function defined
-on <code>DV_ORDERED</code> to be properly specified on <code>DV_QUANTITY</code>.</p>
+<p><code>DV_QUANTITY</code> is used to represent amounts of measurable things, and has a real number magnitude, precision, units and accuracy. The <code><em>units</em></code> attribute contains the scientific unit in a parsable form defined by default by the <a href="http://unitsofmeasure.org/ucum.html">Unified Code for Units of Measure (UCUM)</a>, or by another system or terminology specified in the <code><em>units_system</em></code> attribute. A valid units string always implies a measured property, such as 'force' or 'pressure'. If unit strings are compared in the application environment to determine if they measure the same property (e.g. <code>"bar"</code> and <code>"kPa"</code> are both units of 'pressure'), which enables the <code><em>is_strictly_comparable_to()</em></code> function defined on <code>DV_ORDERED</code> to be properly specified on <code>DV_QUANTITY</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3022,12 +2953,7 @@ on <code>DV_ORDERED</code> to be properly specified on <code>DV_QUANTITY</code>.
 <div class="title">Note</div>
 </td>
 <td class="content">
-while these semantics will allow comparison of e.g. two pressures
-recorded in mbar and mmHg, or even two accelerations whose units are "m.s^-2" and "m/s^2", they
-provide no guarantee that this is a sensible thing to do in terms of domain semantics: comparing a
-blood pressure to an atmospheric pressure for example may or may not make any sense. It is not
-within the scope of the quantity package to express such semantics: this is up to application software
-which uses Quantities found in specific places in the data.
+while these semantics will allow comparison of e.g. two pressures recorded in <code>mbar and mmHg, or even two accelerations whose units are `"m.s^-2"</code> and <code>"m/s^2"</code>, they provide no guarantee that this is a sensible thing to do in terms of domain semantics: comparing a blood pressure to an atmospheric pressure for example may or may not make any sense. It is not within the scope of the quantity package to express such semantics - this is up to application software which uses Quantities found in specific places in the data.
 </td>
 </tr>
 </table>
@@ -3036,35 +2962,17 @@ which uses Quantities found in specific places in the data.
 <div class="sect4">
 <h5 id="_accuracy_and_uncertainty"><a class="anchor" href="#_accuracy_and_uncertainty"></a>6.1.2.2. Accuracy and Uncertainty</h5>
 <div class="paragraph">
-<p>Theoretically it might be argued that 'accuracy' should not be included in a model for quantified values,
-because it is an artifact of a measuring process and/or device, not of a quantity itself. For example,
-a weight of "82 kg &#177;5%" can be represented in two parts. The "82 kg" is represented as a <code>DV_QUANTITY</code>, while the "&#177;5%" could be included in the protocol description of the weighing
-instrument, since this is where the error comes from. For practical purposes however, (in)accuracy in
-a measured quantity corresponds to a range of possible values. In realistic computing in health, it is
-quite likely that the accuracy will be required in computations on quantities, especially for statistical
-population queries in which measurement error must be disambiguated from true correlation.</p>
+<p>Theoretically it might be argued that accuracy should not be included in a model for quantified values, because it is an artifact of a measuring process and/or device, not of a quantity itself. For example, a weight of "82 kg &#177;5%" can be represented in two parts. The "82 kg" is represented as a <code>DV_QUANTITY</code>, while the "&#177;5%" could be included in the protocol description of the weighing instrument, since this is where the error comes from. For practical purposes however, (in)accuracy in a measured quantity corresponds to a range of possible values. In realistic computing in health, it is quite likely that the accuracy will be required in computations on quantities, especially for statistical population queries in which measurement error must be disambiguated from true correlation.</p>
 </div>
 <div class="paragraph">
-<p>Accuracy is therefore introduced as the abstract feature accuracy of the <code>DV_QUANTIFIED</code> class. It is
-defined concretely in the two descendants, <code>DV_AMOUNT</code>, where it is of type Real, and
-<code>DV_ABSOLUTE_QUANTITY</code>, where it is of a differential type defined by subtypes. A value of 0 in
-either case indicates 100% accuracy, i.e. no error in measurement. Where accuracy is not recorded in
-a quantity, it is represented by a special value. In <code>DV_AMOUNT</code>, a value of -1 for the accuracy attribute
-is used for this purpose, and the constant unknown_accuracy_value = -1 is provided within the class
-to give a symbolic name for the special value. In the <code>DV_ABSOLUTE_QUANTITY</code> class,
-<code><em>accuracy_unknown</em></code> is represented by a Void (i.e. null) value for the accuracy attribute. An abstract
-Boolean feature <code><em>accuracy_unknown</em></code> is defined in the parent class <code>DV_QUANTIFIED</code> to provide a logical
-test of accuracy being absent, and is implemented in the respective descendants by concrete functions
-that check for the special values.</p>
+<p>Accuracy is therefore introduced as the abstract feature accuracy of the <code>DV_QUANTIFIED</code> class. It is defined concretely in the two descendants, <code>DV_AMOUNT</code>, where it is of type Real, and <code>DV_ABSOLUTE_QUANTITY</code>, where it is of a differential type defined by subtypes. A value of 0 in either case indicates 100% accuracy, i.e. no error in measurement. Where accuracy is not recorded in a quantity, it is represented by a special value. In <code>DV_AMOUNT</code>, a value of -1 for the accuracy attribute
+is used for this purpose, and the constant unknown_accuracy_value = -1 is provided within the class to give a symbolic name for the special value. In the <code>DV_ABSOLUTE_QUANTITY</code> class, <code><em>accuracy_unknown</em></code> is represented by a Void (i.e. null) value for the accuracy attribute. An abstract Boolean feature <code><em>accuracy_unknown</em></code> is defined in the parent class <code>DV_QUANTIFIED</code> to provide a logical test of accuracy being absent, and is implemented in the respective  descendants by concrete functions that check for the special values.</p>
 </div>
 <div class="paragraph">
-<p>In addition, the class <code>DV_AMOUNT</code>, provides a feature accuracy_is_percent: Boolean to indicate if
-accuracy value is to be understood as a percentage, or an absolute value.</p>
+<p>In addition, the class <code>DV_AMOUNT</code>, provides a feature <code><em>accuracy_is_percent</em>: Boolean</code> to indicate if accuracy value is to be understood as a percentage, or an absolute value.</p>
 </div>
 <div class="paragraph">
-<p>When two compatible quantities are added or subtracted using the + or - operators (<code>DV_AMOUNT</code>
-descendants) or add and substract (<code>DV_ABSOLUTE_QUANTITY</code> class), accuracy behaves in the following
-way:</p>
+<p>When two compatible quantities are added or subtracted using the + or - operators (<code>DV_AMOUNT</code> descendants) or add and substract (<code>DV_ABSOLUTE_QUANTITY</code> class), accuracy behaves in the following way:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3080,30 +2988,19 @@ way:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The related notion of 'uncertainty' is understood as a subjective judgement made by the clinician,
-indicating that he/she is not certain of a particular statement. It is not the same as accuracy: uncertainty
-may apply to non-quantified values, such as subjective statements, and it is not an aspect of
-objective measurement processes, but of human confidence. Where the uncertainty is due to subjective
-memory e.g. "I think my grandfather was 56 when he died", the uncertainty is simply recorded as
-another value, along with the main data item being recorded. Uncertainty is therefore not directly
-modelled in the openEHR data types, but appears instead in particular archetypes.</p>
+<p>The related notion of 'uncertainty' is understood as a subjective judgement made by the clinician, indicating that he/she is not certain of a particular statement. It is not the same as accuracy: uncertainty may apply to non-quantified values, such as subjective statements, and it is not an aspect of objective measurement processes, but of human confidence. Where the uncertainty is due to subjective memory e.g. "I think my grandfather was 56 when he died", the uncertainty is simply recorded as another value, along with the main data item being recorded. Uncertainty is therefore not directly modelled in the openEHR data types, but appears instead in particular archetypes.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_quantity_ranges_2"><a class="anchor" href="#_quantity_ranges_2"></a>6.1.2.3. Quantity Ranges</h5>
 <div class="paragraph">
-<p>Ranges are modelled by the generic type <code>DV_INTERVAL&lt;T:DV_ORDERED&gt;</code> which enables a range of
-any of the other quantity types (except ratio) to be constructed. This allows any subtype of
-<code>DV_ORDERED</code> to occur as a range as well.</p>
+<p>Ranges are modelled by the generic type <code>DV_INTERVAL&lt;T:DV_ORDERED&gt;</code> which enables a range of any of the other quantity types (except ratio) to be constructed. This allows any subtype of <code>DV_ORDERED</code> to occur as a range as well.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_proportions"><a class="anchor" href="#_proportions"></a>6.1.2.4. Proportions</h5>
 <div class="paragraph">
-<p>The <code>DV_PROPORTION</code> type is provided for representing true ratios, i.e. relative values, and consists
-of numerator and denominator Real values, and a magnitude function which is computed as the result
-of the numerator/denominator division. The type attribute is used to indicate the logical type of the
-proportion. Supported types include:</p>
+<p>The <code>DV_PROPORTION</code> type is provided for representing true ratios, i.e. relative values, and consists of numerator and denominator Real values, and a magnitude function which is computed as the result of the numerator/denominator division. The type attribute is used to indicate the logical type of the proportion. Supported types include:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3125,34 +3022,22 @@ proportion. Supported types include:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Lastly, the <code><em>is_integral</em></code> function indicates that the numerator and denominator are both integer values;
-this is used for fractions (the fraction and integer_fraction types above) and other commonly occurring
-ratios where both parts are always integer values.</p>
+<p>Lastly, the <code><em>is_integral</em></code> function indicates that the numerator and denominator are both integer values; this is used for fractions (the fraction and integer_fraction types above) and other commonly occurring ratios where both parts are always integer values.</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_normal_and_reference_ranges"><a class="anchor" href="#_normal_and_reference_ranges"></a>6.1.2.5. Normal and Reference Ranges</h5>
 <div class="paragraph">
-<p>Normal range for any of the quantity types (i.e. any instance of a subtype of <code>DV_ORDERED</code>) can be
-included via the attribute <code>DV_ORDERED</code>.<code><em>normal_range</em></code>, of type <code>REFERENCE_RANGE</code>. Other reference
-ranges (e.g. sub-critical, critical etc) can be included via the attribute
-<code>DV_ORDERED</code>.<code><em>other_reference_ranges</em></code>. The separation of normal and other reference range attributes
-is used because the former constitute the vast majority of ranges quoted for quantitative data.</p>
+<p>Normal range for any of the quantity types (i.e. any instance of a subtype of <code>DV_ORDERED</code>) can be included via the attribute <code>DV_ORDERED</code>.<code><em>normal_range</em></code>, of type <code>REFERENCE_RANGE</code>. Other reference ranges (e.g. sub-critical, critical etc) can be included via the attribute <code>DV_ORDERED</code>.<code><em>other_reference_ranges</em></code>. The separation of normal and other reference range attributes is used because the former constitute the vast majority of ranges quoted for quantitative data.</p>
 </div>
 <div class="paragraph">
-<p>Normal status can be included via the attribute <code>DV_ORDERED</code>.<code><em>normal_status</em></code>, which takes the form of
-a <code>DV_ORDINAL</code>, whose symbol attribute is coded according to the openEHR terminology group "normal
-status", and takes values "HHH" (critically high), "HH" (abnormally high), "H" (borderline
-high)", "N" (normal), "L" &#8230;&#8203; "LLL".</p>
+<p>Normal status can be included via the attribute <code>DV_ORDERED</code>.<code><em>normal_status</em></code>, which takes the form of a <code>DV_ORDINAL</code>, whose symbol attribute is coded according to the openEHR terminology group "normal status", and takes values "HHH" (critically high), "HH" (abnormally high), "H" (borderline high)", "N" (normal), "L" &#8230;&#8203; "LLL".</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_recording_time"><a class="anchor" href="#_recording_time"></a>6.1.2.6. Recording Time</h5>
 <div class="paragraph">
-<p>Time can be recorded in two ways. Absolute times in the social time domain, such as dates and time
-of day are recorded using the types in the date_time package. Fine-grained 'time', which is a duration
-rather than a time, is recorded using a <code>DV_QUANTITY</code> with units = 's' or another temporal unit
-('h', 'ms', 'ns' etc).</p>
+<p>Time can be recorded in two ways. Absolute times in the social time domain, such as dates and time of day are recorded using the types in the date_time package. Fine-grained 'time', which is a duration rather than a time, is recorded using a <code>DV_QUANTITY</code> with units = 's' or another temporal unit ('h', 'ms', 'ns' etc).</p>
 </div>
 </div>
 </div>
@@ -3735,10 +3620,10 @@ other: <code>DV_AMOUNT[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Quantitified type representing  scientific  quantities, i.e. quantities expressed as a magnitude and units. Units were inspired by the <a href="http://unitsofmeasure.org/ucum.html">Unified Code for Units of Measure (UCUM)</a>, developed by Gunther Schadow and Clement J. McDonald of The Regenstrief Institute.</p>
+<p>Quantitified type representing  scientific  quantities, i.e. quantities expressed as a magnitude and units. Units are expressed in HL7 UCUM syntax (<a href="http://unitsofmeasure.org/ucum.html">Unified Code for Units of Measure (UCUM)</a>, by Gunther Schadow and Clement J. McDonald of The Regenstrief Institute) by default, or another system if <code><em>units_system</em></code> is set.</p>
 </div>
 <div class="paragraph">
-<p>Can also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years.</p>
+<p>Can also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years (in the latter case, <code>DV_DURATION</code> may be used).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3769,7 +3654,36 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Stringified units, expressed in UCUM unit syntax, e.g. "kg/m2", “mm[Hg]", "ms-1", "km/h". Implemented accordingly in subtypes.</p>
+<p>Quantity units, expressed as a code or syntax string from either HL7 UCUM (the default) or the units system specified in <code><em>units_system</em></code>, when set.</p>
+</div>
+<div class="paragraph">
+<p>In either case, the value is the code or syntax - normally formed of standard ASCII - which is in principal not the same as the display string, although in simple cases such as 'm' (for meters) it will be.</p>
+</div>
+<div class="paragraph">
+<p>If the <code><em>units_display_name</em></code> field is set, this may be used for display. If not, the implementations must effect the resolution of the <code><em>units</em></code> value to a display form locally, e.g. by lookup of reference tables, request to a terminology service etc.</p>
+</div>
+<div class="paragraph">
+<p>Example values from UCUM: "kg/m^2", “mm[Hg]", "ms-1", "km/h".</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units_system</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional field used to specify a units system from which codes in <code><em>units</em></code> are defined. Value is a URI identifying a terminology containing units concepts from the  (<a href="https://www.hl7.org/fhir/terminologies-systems.html">HL7 FHIR terminologies list</a>).</p>
+</div>
+<div class="paragraph">
+<p>If not set, the HL7 UCUM standard is assumed as the units system.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units_display_name</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional field containing the displayable form of the <code><em>units</em></code> field, e.g. <code>'°C'</code>.</p>
+</div>
+<div class="paragraph">
+<p>If not set, the application environment needs to determine the displayable form.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4219,11 +4133,7 @@ a_diif: <code>DV_AMOUNT[1]</code><br>
 </div>
 </div>
 <div class="paragraph">
-<p>This proposal is comprehensive, covering all useful unit systems, including SI, various imperial, customary
-mesaures, and some obscure measures, as well as clinically specific additions. Metric prefixes,
-meaning-changing textual suffixes (e.g. "[Hg]" in "mm[Hg]") and non-meaning-changing
-annotations (e.g. "kg {total}") are recognised. With this syntax, units can be simply expressed in
-strings such as:</p>
+<p>This proposal is comprehensive, covering all useful unit systems, including SI, various imperial, customary mesaures, and some obscure measures, as well as clinically specific additions. Metric prefixes, meaning-changing textual suffixes (e.g. "[Hg]" in "mm[Hg]") and non-meaning-changing annotations (e.g. "kg {total}") are recognised. With this syntax, units can be simply expressed in strings such as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6782,7 +6692,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-29 01:58:24 BST
+Last updated 2019-10-01 08:47:09 BST
 </div>
 </div>
 </body>
