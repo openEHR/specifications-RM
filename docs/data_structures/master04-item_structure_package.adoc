@@ -15,7 +15,7 @@ a CEN EN13606-compliant hierarchical representation of its data. Any system impl
 these types is guaranteed to create data which represents the logical structures of lists, tables and trees
 identically.
 
-Data values are connected to spatial structures via the `_value_` attribute of the `ELEMENT` class of the `representation` cluster. This class also carries the attribute `_null_flavour_`, whose value indicates how to read the contents of the `_value_` attribute. Values from the openEHR {openehr_terminology_xml}[`null flavours` vocabulary], including `253|unknown|`, `271|no information|`, and `273|not applicable|` are used to populate it.
+Data values are connected to spatial structures via the `_value_` attribute of the `ELEMENT` class of the `representation` cluster. This class also carries the attribute `_null_flavour_`, whose value indicates how to read the contents of the `_value_` attribute. Values from the openEHR {openehr_terminology_xml}[`null flavours` vocabulary], including `253|unknown|`, `271|no information|`, and `273|not applicable|` are used to populate it. The optional `_null_reason_` field may be used to record a specific reason.
 
 The openEHR class model for spatial structures is illustrated on the right-hand side of <<data_structures_package>>. It should be noted that these classes (`ITEM_LIST` etc) are not equivalents of similarly named classes (such as `List<T>`) in most data structure libraries - they also include per-node `_name_`,
 `_archetype_node_id_` and leaf node value and null flavour, and path capabilities.

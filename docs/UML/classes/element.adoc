@@ -22,6 +22,10 @@ a|Flavour of null value, e.g. indeterminate, not asked etc.
 h|*0..1*
 |*value*: `DATA_VALUE`
 a|Property representing leaf value object of `ELEMENT`. In real data, any concrete subtype of `DATA_VALUE` can be used.
+
+h|*0..1*
+|*null_reason*: `DV_TEXT`
+a|Optional specific reason for null value; if set, `_null_flavour_` must be set.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -31,11 +35,14 @@ h|
 a|True if value logically not known, e.g. if indeterminate, not asked etc.
 
 h|*Invariants*
-2+a|*_Is_null_valid_*: `is_null = (value = Void)`
+2+a|*_Inv_is_null_valid_*: `is_null() = (value = Void)`
 
 h|
-2+a|*_Null_flavour_indicated_*: `is_null xor null_flavour = Void`
+2+a|*_Inv_null_flavour_indicated_*: `is_null() xor null_flavour = Void`
 
 h|
-2+a|*_Null_flavour_valid_*: `is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)`
+2+a|*_Inv_null_flavour_valid_*: `is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)`
+
+h|
+2+a|*_Inv_null_reason_valid_*: `null_reason /= Void implies is_null()`
 |===
