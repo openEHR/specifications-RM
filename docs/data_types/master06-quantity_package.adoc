@@ -9,25 +9,33 @@ image::{uml_diagrams_uri}/RM-data_types.quantity.svg[id=rm_data_types_quantity, 
 
 === Requirements
 
-==== Ordinal Values
+==== Scores and Scales
 
-Medicine is one domain in which symbols representing relative magnitudes are commonly used, without exact values being known. The main purpose is usually to classify patients into groups for which different decisions might be made. Thus, while approximate ranges (technically speaking - "fuzzy intervals") might be stated (such as for a urinalysis), concrete values are not of interest, only categories are. Take for example the characterisation of pain as being "mild", "medium", "severe", or the reflex response to tendon percussion as pass:["-", "+/-", "+", "++", "+++", "++++"]. There may be no way to scientifically precisely quantify such values because they reflect a subjective experience of the patient or informal judgement by clinician. However, they are understood as being ordered, e.g. pass: ["++"] is 'greater than' pass:["+"].
+Medicine is a domain in which symbols representing relative magnitudes are commonly used, without exact values being used. The main purpose is usually to classify patients into groups for which different decisions might be made. Such classifications are typically known as _scores_ or _scales_. For example the characterisation of pain as 'mild', 'medium', 'severe', or the reflex response to tendon percussion as pass:["-", "+/-", "+", "++", "+++", "++++"]. Many scores such as the Apgar Score, Glasgow Coma Scale (GCS), and Barthel Index are globally known and used.
+
+In some cases, there may be no way (or need) to precisely quantify such values because they reflect a subjective experience of the patient or informal judgment by the clinician. However, they are understood as being ordered, e.g. pass: [`++`] is arithmetically greater than pass:[`+`].
 
 Similarly, even though the symbolic values for haemolysed blood in a urinalysis have approximate
 ranges stated for them, as shown below, these 'values' are not usable in the same way as true quantities.
 
-* "neg", "trace" (10 cells/&#956;l)
-* "small" (<25 cells/&#956;l)
-* "moderate" (<80 cells/&#956;l)
-* "large" (>200 cells/&#956;l)
+* `"neg"`, `"trace"` (10 cells/&#956;l)
+* `"small"` (<25 cells/&#956;l)
+* `"moderate"` (<80 cells/&#956;l)
+* `"large"` (>200 cells/&#956;l)
 
-A second requirement for ordinal values is that in many cases there is a need to associate integer values with the symbols, in order to facilitate ordered comparison, and also to enable longitudinal comparison across results of the same kind (e.g. pain, protein). Integer values may be negative, 0 and positive, typically to allow the 0 value to correspond to a neutral value in a range.
+A second requirement for score and scale values is that in many cases there is a need to associate numeric values values with the symbols, in order to facilitate ordered comparison, and also to enable longitudinal comparison across results of the same kind (e.g. pain, protein). The majority of scores and scales are limited to Integer values, but some use Real numbers interspersed with Integers e.g. the https://www.researchgate.net/publication/228089364_Proposing_a_standardized_method_for_evaluating_patient_report_of_the_intensity_of_dyspnea_during_exercise_testing_in_COPD[Borg CR 10 scale] for perceived exertion. In both cases, values may be negative, zero or positive.
 
-NOTE: an argument sometimes put forward for recording all ordinals in a more precise way is that comparisons might want to be made between the values quoted by two laboratories for the same symbol (e.g. "moderate"). There are a number of counter-arguments. Firstly, such comparisons are a poor attempt at normalisation, an activity which is the business of pathologists, not EHR users. Secondly, the symbolic values are often arrived at by the tester making a judgement of colour on a strip, which while an adequate (and cost-effective) approach for classifying, is not a valid means of quantifying a value. Lastly, in most cases, if a quantified point value or range is desired, or available, then it will be used - meaning that the appropriate quantitative data type can be used, rather than an the ordinal type.
+NOTE: an argument sometimes put forward for recording all ordinals in a more precise way is that comparisons might want to be made between the values quoted by two laboratories for the same symbol (e.g. 'moderate'). There are a number of counter-arguments. Firstly, such comparisons are a poor attempt at normalisation, an activity which is the business of pathologists, not EHR users. Secondly, the symbolic values are often arrived at by the tester making a judgement of colour on a strip, which while an adequate (and cost-effective) approach for classifying, is not a valid means of quantifying a value. Lastly, in most cases, if a quantified point value or range is desired, or available, then it will be used - meaning that the appropriate quantitative data type can be used, rather than an the ordinal type.
 
 ==== Countable Things
 
-An common kind of data value in medicine is the dimensionless countable quantity, e.g. "number of doses: 2", "number of previous pregnancies: 1", "number of tablets: 3". Values of this type are always integral. Countable values need to be convertible to real numbers for statistical purposes, for example for a study of average number of pregnancies per couple.
+An common kind of data value in medicine is the dimensionless countable quantity, e.g.
+
+* number of doses: 2;
+* number of previous pregnancies: 1;
+* number of tablets: 3.
+
+Values of this type are always integral. Countable values need to be convertible to real numbers for statistical purposes, for example for a study of average number of pregnancies per couple.
 
 Some countable entities such as tablets are divisible into major fractions, typically halves and occasionally quarters.
 
@@ -102,7 +110,9 @@ It is quite common for laboratories to include a normal range with each measured
 
 ==== Basic Semantics
 
-In order to make sense of the requirements in a systematic way, a proper typology for quantities is needed. The most basic characteristic of all values typically called 'quantities' is that they are ordered, meaning that the operator "<" (less-than) is defined between any two values in the domain. An ancestor class for all quantities called `DV_ORDERED` is accordingly defined. This type is subtyped into ordinals and true quantities, represented by the classes `DV_ORDINAL` and `DV_QUANTIFIED` respectively. `DV_ORDINAL` represents data values whose exact numeric values are not known, and which use symbolic renderings instead, such as pass:["+", "++", "+++"], or "mild", "medium", "severe". Each symbol can be assigned any integer value, providing a basis for computable comparison. In contrast, instances of `DV_QUANTIFIED` and all its subtypes have precise numeric magnitudes.
+In order to make sense of the requirements in a systematic way, a proper typology for quantities is needed. The most basic characteristic of all values typically called 'quantities' is that they are ordered, meaning that the operator "<" (less-than) is defined between any two values in the domain. An ancestor class for all quantities called `DV_ORDERED` is accordingly defined. This type is subtyped into ordinals, scales and true quantities, represented by the classes `DV_ORDINAL`, `DV_SCALE` and `DV_QUANTIFIED` respectively.
+
+`DV_ORDINAL` represents data values whose values are Integers, and which use symbolic renderings instead, such as pass:["+", "++", "+++"], or `"mild"`, `"medium"`, `"severe"`. Each symbol can be assigned any Integer value, providing a basis for computable comparison. Typical uses for `DV_ORDINAL` include Apgar and Glasgow Coma Scales. `DV_SCALE` is similar to `DV_ORDINAL`, but allows Real values. In contrast, instances of `DV_QUANTIFIED` and all its subtypes have precise numeric magnitudes.
 
 `DV_QUANTIFIED` itself introduces the concepts of magnitude and magnitude_status. The magnitude attribute is guaranteed to be available on any `DV_QUANTIFIED`, carrying the effective value, regardless of the particular subtype. The optional magnitude_status attribute can be used to provide a nonquantified indication of accuracy, and takes the following values:
 
@@ -180,6 +190,8 @@ include::{uml_export_dir}/classes/dv_interval.adoc[]
 include::{uml_export_dir}/classes/reference_range.adoc[]
 
 include::{uml_export_dir}/classes/dv_ordinal.adoc[]
+
+include::{uml_export_dir}/classes/dv_scale.adoc[]
 
 include::{uml_export_dir}/classes/dv_quantified.adoc[]
 

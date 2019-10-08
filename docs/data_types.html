@@ -128,7 +128,7 @@
 <ul class="sectlevel3">
 <li><a href="#_requirements_3">6.1.1. Requirements</a>
 <ul class="sectlevel4">
-<li><a href="#_ordinal_values">6.1.1.1. Ordinal Values</a></li>
+<li><a href="#_scores_and_scales">6.1.1.1. Scores and Scales</a></li>
 <li><a href="#_countable_things">6.1.1.2. Countable Things</a></li>
 <li><a href="#_dimensioned_quantities">6.1.1.3. Dimensioned Quantities</a></li>
 <li><a href="#_ratios_and_proportions">6.1.1.4. Ratios and Proportions</a></li>
@@ -156,13 +156,14 @@
 <li><a href="#_dv_interval_t_class">6.2.2. DV_INTERVAL&lt;T&gt; Class</a></li>
 <li><a href="#_reference_range_t_class">6.2.3. REFERENCE_RANGE&lt;T&gt; Class</a></li>
 <li><a href="#_dv_ordinal_class">6.2.4. DV_ORDINAL Class</a></li>
-<li><a href="#_dv_quantified_class">6.2.5. DV_QUANTIFIED Class</a></li>
-<li><a href="#_dv_amount_class">6.2.6. DV_AMOUNT Class</a></li>
-<li><a href="#_dv_quantity_class">6.2.7. DV_QUANTITY Class</a></li>
-<li><a href="#_dv_count_class">6.2.8. DV_COUNT Class</a></li>
-<li><a href="#_dv_proportion_class">6.2.9. DV_PROPORTION Class</a></li>
-<li><a href="#_proportion_kind_class">6.2.10. PROPORTION_KIND Class</a></li>
-<li><a href="#_dv_absolute_quantity_class">6.2.11. DV_ABSOLUTE_QUANTITY Class</a></li>
+<li><a href="#_dv_scale_class">6.2.5. DV_SCALE Class</a></li>
+<li><a href="#_dv_quantified_class">6.2.6. DV_QUANTIFIED Class</a></li>
+<li><a href="#_dv_amount_class">6.2.7. DV_AMOUNT Class</a></li>
+<li><a href="#_dv_quantity_class">6.2.8. DV_QUANTITY Class</a></li>
+<li><a href="#_dv_count_class">6.2.9. DV_COUNT Class</a></li>
+<li><a href="#_dv_proportion_class">6.2.10. DV_PROPORTION Class</a></li>
+<li><a href="#_proportion_kind_class">6.2.11. PROPORTION_KIND Class</a></li>
+<li><a href="#_dv_absolute_quantity_class">6.2.12. DV_ABSOLUTE_QUANTITY Class</a></li>
 </ul>
 </li>
 <li><a href="#_syntaxes">6.3. Syntaxes</a>
@@ -408,7 +409,14 @@
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0 (unreleased)</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-19" target="_blank" rel="noopener">SPECRM-19</a>: Add support for Real 'ordinal' values with <code>DV_SCALE</code> data type. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-44" target="_blank" rel="noopener">SPECPR-44</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll,<br>
+ SEC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Oct 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-65" target="_blank" rel="noopener">SPECRM-65</a>: Add <code><em>units_system</em></code> and <code><em>units_display_name</em></code> attributes to <code>DV_QUANTITY</code>. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-251" target="_blank" rel="noopener">SPECPR-251</a>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
  I McNicoll,<br>
@@ -417,7 +425,7 @@
  D Bosca,<br>
  B Lah,<br>
  B Naess</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>01 Oct 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01 Oct 2019</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.0.4</strong></p></th>
@@ -2699,9 +2707,12 @@ c: <code>char[1]</code><br>
 <div class="sect3">
 <h4 id="_requirements_3"><a class="anchor" href="#_requirements_3"></a>6.1.1. Requirements</h4>
 <div class="sect4">
-<h5 id="_ordinal_values"><a class="anchor" href="#_ordinal_values"></a>6.1.1.1. Ordinal Values</h5>
+<h5 id="_scores_and_scales"><a class="anchor" href="#_scores_and_scales"></a>6.1.1.1. Scores and Scales</h5>
 <div class="paragraph">
-<p>Medicine is one domain in which symbols representing relative magnitudes are commonly used, without exact values being known. The main purpose is usually to classify patients into groups for which different decisions might be made. Thus, while approximate ranges (technically speaking - "fuzzy intervals") might be stated (such as for a urinalysis), concrete values are not of interest, only categories are. Take for example the characterisation of pain as being "mild", "medium", "severe", or the reflex response to tendon percussion as "-", "+/-", "+", "++", "+++", "++++". There may be no way to scientifically precisely quantify such values because they reflect a subjective experience of the patient or informal judgement by clinician. However, they are understood as being ordered, e.g. pass: ["++"] is 'greater than' "+".</p>
+<p>Medicine is a domain in which symbols representing relative magnitudes are commonly used, without exact values being used. The main purpose is usually to classify patients into groups for which different decisions might be made. Such classifications are typically known as <em>scores</em> or <em>scales</em>. For example the characterisation of pain as 'mild', 'medium', 'severe', or the reflex response to tendon percussion as "-", "+/-", "+", "++", "+++", "++++". Many scores such as the Apgar Score, Glasgow Coma Scale (GCS), and Barthel Index are globally known and used.</p>
+</div>
+<div class="paragraph">
+<p>In some cases, there may be no way (or need) to precisely quantify such values because they reflect a subjective experience of the patient or informal judgment by the clinician. However, they are understood as being ordered, e.g. pass: [<code>++</code>] is arithmetically greater than `+`.</p>
 </div>
 <div class="paragraph">
 <p>Similarly, even though the symbolic values for haemolysed blood in a urinalysis have approximate
@@ -2710,21 +2721,21 @@ ranges stated for them, as shown below, these 'values' are not usable in the sam
 <div class="ulist">
 <ul>
 <li>
-<p>"neg", "trace" (10 cells/&#956;l)</p>
+<p><code>"neg"</code>, <code>"trace"</code> (10 cells/&#956;l)</p>
 </li>
 <li>
-<p>"small" (&lt;25 cells/&#956;l)</p>
+<p><code>"small"</code> (&lt;25 cells/&#956;l)</p>
 </li>
 <li>
-<p>"moderate" (&lt;80 cells/&#956;l)</p>
+<p><code>"moderate"</code> (&lt;80 cells/&#956;l)</p>
 </li>
 <li>
-<p>"large" (&gt;200 cells/&#956;l)</p>
+<p><code>"large"</code> (&gt;200 cells/&#956;l)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>A second requirement for ordinal values is that in many cases there is a need to associate integer values with the symbols, in order to facilitate ordered comparison, and also to enable longitudinal comparison across results of the same kind (e.g. pain, protein). Integer values may be negative, 0 and positive, typically to allow the 0 value to correspond to a neutral value in a range.</p>
+<p>A second requirement for score and scale values is that in many cases there is a need to associate numeric values values with the symbols, in order to facilitate ordered comparison, and also to enable longitudinal comparison across results of the same kind (e.g. pain, protein). The majority of scores and scales are limited to Integer values, but some use Real numbers interspersed with Integers e.g. the <a href="https://www.researchgate.net/publication/228089364_Proposing_a_standardized_method_for_evaluating_patient_report_of_the_intensity_of_dyspnea_during_exercise_testing_in_COPD">Borg CR 10 scale</a> for perceived exertion. In both cases, values may be negative, zero or positive.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2733,7 +2744,7 @@ ranges stated for them, as shown below, these 'values' are not usable in the sam
 <div class="title">Note</div>
 </td>
 <td class="content">
-an argument sometimes put forward for recording all ordinals in a more precise way is that comparisons might want to be made between the values quoted by two laboratories for the same symbol (e.g. "moderate"). There are a number of counter-arguments. Firstly, such comparisons are a poor attempt at normalisation, an activity which is the business of pathologists, not EHR users. Secondly, the symbolic values are often arrived at by the tester making a judgement of colour on a strip, which while an adequate (and cost-effective) approach for classifying, is not a valid means of quantifying a value. Lastly, in most cases, if a quantified point value or range is desired, or available, then it will be used - meaning that the appropriate quantitative data type can be used, rather than an the ordinal type.
+an argument sometimes put forward for recording all ordinals in a more precise way is that comparisons might want to be made between the values quoted by two laboratories for the same symbol (e.g. 'moderate'). There are a number of counter-arguments. Firstly, such comparisons are a poor attempt at normalisation, an activity which is the business of pathologists, not EHR users. Secondly, the symbolic values are often arrived at by the tester making a judgement of colour on a strip, which while an adequate (and cost-effective) approach for classifying, is not a valid means of quantifying a value. Lastly, in most cases, if a quantified point value or range is desired, or available, then it will be used - meaning that the appropriate quantitative data type can be used, rather than an the ordinal type.
 </td>
 </tr>
 </table>
@@ -2742,7 +2753,23 @@ an argument sometimes put forward for recording all ordinals in a more precise w
 <div class="sect4">
 <h5 id="_countable_things"><a class="anchor" href="#_countable_things"></a>6.1.1.2. Countable Things</h5>
 <div class="paragraph">
-<p>An common kind of data value in medicine is the dimensionless countable quantity, e.g. "number of doses: 2", "number of previous pregnancies: 1", "number of tablets: 3". Values of this type are always integral. Countable values need to be convertible to real numbers for statistical purposes, for example for a study of average number of pregnancies per couple.</p>
+<p>An common kind of data value in medicine is the dimensionless countable quantity, e.g.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>number of doses: 2;</p>
+</li>
+<li>
+<p>number of previous pregnancies: 1;</p>
+</li>
+<li>
+<p>number of tablets: 3.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Values of this type are always integral. Countable values need to be convertible to real numbers for statistical purposes, for example for a study of average number of pregnancies per couple.</p>
 </div>
 <div class="paragraph">
 <p>Some countable entities such as tablets are divisible into major fractions, typically halves and occasionally quarters.</p>
@@ -2900,7 +2927,10 @@ the 'normal' range for a measured value. Examples of reference ranges:</p>
 <div class="sect4">
 <h5 id="_basic_semantics"><a class="anchor" href="#_basic_semantics"></a>6.1.2.1. Basic Semantics</h5>
 <div class="paragraph">
-<p>In order to make sense of the requirements in a systematic way, a proper typology for quantities is needed. The most basic characteristic of all values typically called 'quantities' is that they are ordered, meaning that the operator "&lt;" (less-than) is defined between any two values in the domain. An ancestor class for all quantities called <code>DV_ORDERED</code> is accordingly defined. This type is subtyped into ordinals and true quantities, represented by the classes <code>DV_ORDINAL</code> and <code>DV_QUANTIFIED</code> respectively. <code>DV_ORDINAL</code> represents data values whose exact numeric values are not known, and which use symbolic renderings instead, such as "+", "++", "+++", or "mild", "medium", "severe". Each symbol can be assigned any integer value, providing a basis for computable comparison. In contrast, instances of <code>DV_QUANTIFIED</code> and all its subtypes have precise numeric magnitudes.</p>
+<p>In order to make sense of the requirements in a systematic way, a proper typology for quantities is needed. The most basic characteristic of all values typically called 'quantities' is that they are ordered, meaning that the operator "&lt;" (less-than) is defined between any two values in the domain. An ancestor class for all quantities called <code>DV_ORDERED</code> is accordingly defined. This type is subtyped into ordinals, scales and true quantities, represented by the classes <code>DV_ORDINAL</code>, <code>DV_SCALE</code> and <code>DV_QUANTIFIED</code> respectively.</p>
+</div>
+<div class="paragraph">
+<p><code>DV_ORDINAL</code> represents data values whose values are Integers, and which use symbolic renderings instead, such as "+", "++", "+++", or <code>"mild"</code>, <code>"medium"</code>, <code>"severe"</code>. Each symbol can be assigned any Integer value, providing a basis for computable comparison. Typical uses for <code>DV_ORDINAL</code> include Apgar and Glasgow Coma Scales. <code>DV_SCALE</code> is similar to <code>DV_ORDINAL</code>, but allows Real values. In contrast, instances of <code>DV_QUANTIFIED</code> and all its subtypes have precise numeric magnitudes.</p>
 </div>
 <div class="paragraph">
 <p><code>DV_QUANTIFIED</code> itself introduces the concepts of magnitude and magnitude_status. The magnitude attribute is guaranteed to be available on any <code>DV_QUANTIFIED</code>, carrying the effective value, regardless of the particular subtype. The optional magnitude_status attribute can be used to provide a nonquantified indication of accuracy, and takes the following values:</p>
@@ -3276,15 +3306,16 @@ v: <code>DV_ORDERED[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Models rankings and scores, e.g. pain, Apgar values, etc, where there is</p>
+<p>A data type that represents integral score values, e.g. pain, Apgar values, etc, where there is:</p>
 </div>
 <div class="paragraph">
 <p>a) implied ordering,
 b) no implication that the distance between each value is constant, and
-c) the total number of values is finite.</p>
+c) the total number of values is finite;
+d) integer values only.</p>
 </div>
 <div class="paragraph">
-<p>Note that although the term  ordinal' in mathematics means natural numbers only, here any integer is allowed, since negative and zero values are often used by medical professionals for values around a neutral point. Examples of sets of ordinal values:</p>
+<p>Note that although the term 'ordinal' in mathematics means natural numbers only, here any integer is allowed, since negative and zero values are often used by medical professionals for values around a neutral point. Examples of sets of ordinal values:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3298,6 +3329,9 @@ c) the total number of values is finite.</p>
 </div>
 <div class="paragraph">
 <p>This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. <code>{neg, trace, , , }</code> are used for leucocytes, protein, nitrites etc; for non-haemolysed blood <code>{neg, trace, moderate}</code>; for haemolysed blood <code>{small, moderate, large}</code>.</p>
+</div>
+<div class="paragraph">
+<p>For scores or scales that include Real numbers (or might in the future, i.e. not fixed for all time, such as Apgar), use <code>DV_SCALE</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3313,7 +3347,7 @@ c) the total number of values is finite.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbol</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  mild ,  moderate ,  severe , or even the same number series as the values, e.g.  1 ,  2 ,  3 . Codes come from archetype.</p>
+<p>Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  <code>mild</code>, <code>moderate</code>, <code>severe</code>, or even the same number series as the values, e.g.  1 ,  2 ,  3 . Codes come from archetypes.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3330,7 +3364,7 @@ c) the total number of values is finite.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>limits</strong> (): <code>DV_ORDINAL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>limits</strong> (): <code>REFERENCE_RANGE&lt;DV_ORDINAL&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Limits of the ordinal enumeration, to allow comparison of an ordinal
 value to its limits.</p>
@@ -3347,7 +3381,7 @@ other: <code>DV_ORDERED[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>&lt;</strong> (<br>
-other: <code>Ordered[1]</code><br>
+other: <code>DV_ORDINAL[1]</code><br>
 ): <code>Boolean</code><br>
 <strong><em>Post</em></strong>: <code>Result = value &lt; other.value</code></p></td>
 <td class="tableblock halign-left valign-top"><div></div></td>
@@ -3368,7 +3402,91 @@ other: <code>Ordered[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_dv_quantified_class"><a class="anchor" href="#_dv_quantified_class"></a>6.2.5. DV_QUANTIFIED Class</h4>
+<h4 id="_dv_scale_class"><a class="anchor" href="#_dv_scale_class"></a>6.2.5. DV_SCALE Class</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>DV_SCALE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<p>A data type that represents scale values, where there is:</p>
+</div>
+<div class="paragraph">
+<p>a) implied ordering,
+b) no implication that the distance between each value is constant, and
+c) the total number of values is finite;
+d) non-integer values are allowed.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Borg CR 10 Scale
+
+0    No Breathlessness at all
+0.5 Very Very Slight (Just Noticeable)
+1    Very Slight
+2    Slight Breathlessness
+3    Moderate
+... etc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For scores that include only Integers, use <code>DV_ORDINAL</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>DV_ORDERED</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbol</strong>: <code>DV_CODED_TEXT</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Coded textual representation of this value in the scale range, which may be strings made from symbols or other enumerations of terms such as  <code>no breathlessness</code>, <code>very very slight</code>, <code>slight breathlessness</code>. Codes come from archetypes.</p>
+</div>
+<div class="paragraph">
+<p>In some cases, a scale may include values that have no code/symbol. In this case, the symbol will be a <code>DV-CODED_TEXT</code> including the <code><em>terminology_id</em></code> and a blank String value for <code><em>code_string</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>Real</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Real number value of Scale item.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (<br>
+other: <code>DV_SCALE[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_dv_quantified_class"><a class="anchor" href="#_dv_quantified_class"></a>6.2.6. DV_QUANTIFIED Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3469,7 +3587,7 @@ other: <code>Ordered[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_dv_amount_class"><a class="anchor" href="#_dv_amount_class"></a>6.2.6. DV_AMOUNT Class</h4>
+<h4 id="_dv_amount_class"><a class="anchor" href="#_dv_amount_class"></a>6.2.7. DV_AMOUNT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3605,7 +3723,7 @@ other: <code>DV_AMOUNT[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_dv_quantity_class"><a class="anchor" href="#_dv_quantity_class"></a>6.2.7. DV_QUANTITY Class</h4>
+<h4 id="_dv_quantity_class"><a class="anchor" href="#_dv_quantity_class"></a>6.2.8. DV_QUANTITY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3718,7 +3836,7 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_dv_count_class"><a class="anchor" href="#_dv_count_class"></a>6.2.8. DV_COUNT Class</h4>
+<h4 id="_dv_count_class"><a class="anchor" href="#_dv_count_class"></a>6.2.9. DV_COUNT Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3773,7 +3891,7 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_dv_proportion_class"><a class="anchor" href="#_dv_proportion_class"></a>6.2.9. DV_PROPORTION Class</h4>
+<h4 id="_dv_proportion_class"><a class="anchor" href="#_dv_proportion_class"></a>6.2.10. DV_PROPORTION Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -3924,7 +4042,7 @@ source: <code>DV_PROPORTION[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_proportion_kind_class"><a class="anchor" href="#_proportion_kind_class"></a>6.2.10. PROPORTION_KIND Class</h4>
+<h4 id="_proportion_kind_class"><a class="anchor" href="#_proportion_kind_class"></a>6.2.11. PROPORTION_KIND Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -4000,7 +4118,7 @@ nq: <code>Integer[1]</code><br>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_dv_absolute_quantity_class"><a class="anchor" href="#_dv_absolute_quantity_class"></a>6.2.11. DV_ABSOLUTE_QUANTITY Class</h4>
+<h4 id="_dv_absolute_quantity_class"><a class="anchor" href="#_dv_absolute_quantity_class"></a>6.2.12. DV_ABSOLUTE_QUANTITY Class</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -4085,7 +4203,7 @@ a_diff: <code>DV_AMOUNT[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
-a_diif: <code>DV_AMOUNT[1]</code><br>
+a_diff: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Result of subtracting a differential amount from this quantity.</p>
