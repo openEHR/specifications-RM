@@ -95,7 +95,7 @@ In any clinical session, an event composition will be created, and in many cases
 
 === Directory
 
-As Compositions accumulate over time in the EHR, they form a long-term patient history. An optional directory structure can be used in the EHR to organise Compositions using a hierarchy of Folders in much the same way files in a file system are visualised by the directory Explorer tool on Windows and other platforms. In the openEHR model, Folders do not contain Compositions by value but by reference. More than one Folder can refer to the same Composition. Folders might be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped.
+As Compositions accumulate over time in the EHR, they form a long-term patient history. An optional directory structure can be used in the EHR to organise Compositions using a hierarchy of Folders in much the same way files in a file system are visualised by the directory Explorer tool on Windows and other platforms. In the openEHR model, Folders do not contain Compositions by value but by reference. More than one Folder can refer to the same Composition. Folders might be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped, and within Folder archetypes, the `_details_` attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).
 
 A simple structure showing Folders referencing Compositions is shown below, in which the following folders are used:
 

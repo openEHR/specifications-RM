@@ -351,11 +351,21 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-56" target="_blank" rel="noopener">SPECRM-56</a>. Add archetypable details meta-data to <code>FOLDER</code>. (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-85" target="_blank" rel="noopener">SPECPR-85</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B Naess,<br>
+ S Iancu,<br>
+ P Pazos,<br>
+ I McNicoll,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Oct 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-88" target="_blank" rel="noopener">SPECRM-88</a>. Improve documentation relating to use of <code><em>uid</em></code> in versioning and <code>LOCATABLE</code> descendants in <code>change_control</code> package; improve advice on setting <code><em>uid</em></code> in <code>COMPOSITION</code>, <code>EHR_STATUS</code> and <code>EHR_ACCESS</code>. (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-322" target="_blank" rel="noopener">SPECPR-322</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
  M Polajnar,<br>
  T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>29 Sep 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29 Sep 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1722,7 +1732,7 @@
 <div class="sect3">
 <h4 id="_directory"><a class="anchor" href="#_directory"></a>4.2.5. Directory</h4>
 <div class="paragraph">
-<p>As Compositions accumulate over time in the EHR, they form a long-term patient history. An optional directory structure can be used in the EHR to organise Compositions using a hierarchy of Folders in much the same way files in a file system are visualised by the directory Explorer tool on Windows and other platforms. In the openEHR model, Folders do not contain Compositions by value but by reference. More than one Folder can refer to the same Composition. Folders might be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped.</p>
+<p>As Compositions accumulate over time in the EHR, they form a long-term patient history. An optional directory structure can be used in the EHR to organise Compositions using a hierarchy of Folders in much the same way files in a file system are visualised by the directory Explorer tool on Windows and other platforms. In the openEHR model, Folders do not contain Compositions by value but by reference. More than one Folder can refer to the same Composition. Folders might be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped, and within Folder archetypes, the <code><em>details</em></code> attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).</p>
 </div>
 <div class="paragraph">
 <p>A simple structure showing Folders referencing Compositions is shown below, in which the following folders are used:</p>
