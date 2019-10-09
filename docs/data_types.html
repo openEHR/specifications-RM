@@ -80,7 +80,8 @@
 <ul class="sectlevel4">
 <li><a href="#_narrative_text">5.1.1.1. Narrative Text</a></li>
 <li><a href="#_terminological_entities">5.1.1.2. Terminological Entities</a></li>
-<li><a href="#_text_formatting">5.1.1.3. Text Formatting</a></li>
+<li><a href="#_integration_scenarios">5.1.1.3. Integration Scenarios</a></li>
+<li><a href="#_text_formatting">5.1.1.4. Text Formatting</a></li>
 </ul>
 </li>
 <li><a href="#_design_2">5.1.2. Design</a></li>
@@ -410,10 +411,18 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-64" target="_blank" rel="noopener">SPECRM-64</a>: Add CODE_PHRASE.term optional field to carry rubric (preferred term) text. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-132" target="_blank" rel="noopener">SPECPR-132</a>, <a href="https://specifications.openehr.org/tickets/SPECPR-165" target="_blank" rel="noopener">SPECPR-165</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
+ I McNicoll,<br>
+ SEC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Oct 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-19" target="_blank" rel="noopener">SPECRM-19</a>: Add support for Real 'ordinal' values with <code>DV_SCALE</code> data type. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-44" target="_blank" rel="noopener">SPECPR-44</a>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll,<br>
  SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Oct 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">08 Oct 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1768,7 +1777,7 @@ general terms in the terminology).</p>
 <p>This specification assumes the existence of a terminology service which is responsible for interrogating
 actual terminologies and performing <em>validated coordination</em> of terms, i.e. creating combinations
 deemed valid by the underlying source terminology, potentially without even assigning a new code to
-the result. All validated coordination is carried out inside the terminology service, and any "term"
+the result. All validated coordination is carried out inside the terminology service, and any 'term'
 made available by the service is already 'coordinated'. The difference between 'pre-coordinated' and
 'post-coordinated' terms is that the former have a single code, whereas the latter have a code phrase,
 or expression that is interpretable by the terminology. For example, the coordination "foot, left" (a
@@ -1778,26 +1787,9 @@ SNOMED CT. Any such coordination must be valid within the source terminology, i.
 valid relationships defined therein.</p>
 </div>
 <div class="paragraph">
-<p>The class <code>DV_CODED_TEXT</code> described here captures the association of two things:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>the code phrase of a code phrase provided by the terminology service, recorded in the <code><em>defining_code</em></code> attribute.</p>
-</li>
-<li>
-<p>the text rubric of the code phrase, recorded in the <code><em>value</em></code> attribute (inherited from <code>DV_TEXT</code>);</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The class <code>CODE_PHRASE.<em>code_string</em></code> records a key, in the form of arguments to some retrieval function
-in the terminology service interface.</p>
-</div>
-<div class="paragraph">
-<p>The semantics attached to coordinations of terms may differ. Two categories of coordination
+<p>The semantics attached to post-coordinations of terms may differ. Two categories of coordination
 described in the literature are 'qualification' and 'modification'. A common definition of the first is
-that "qualification narrows meaning" - i.e. creates a new term whose possible real world instances are
+that qualification 'narrows meaning' - i.e. creates a new term whose possible real world instances are
 within the set denoted by the original root term. Modification on the other hand changes the meaning
 of a root term. Various cases are described below under Meaning Modification. Both coordination
 types are assumed to be managed by the terminology service.</p>
@@ -1808,7 +1800,16 @@ equivalents, classifiers, or something in between. The section below on Mappings
 </div>
 </div>
 <div class="sect4">
-<h5 id="_text_formatting"><a class="anchor" href="#_text_formatting"></a>5.1.1.3. Text Formatting</h5>
+<h5 id="_integration_scenarios"><a class="anchor" href="#_integration_scenarios"></a>5.1.1.3. Integration Scenarios</h5>
+<div class="paragraph">
+<p>In cases where openEHR data is used to represent data originally represented in other formats, one common requirement is to be able to represent both the term chosen by the user at data capture time, and also the corresponding preferred term, where the two are different. This allows both the user&#8217;s specific choice and the 'standard term' to be captured.</p>
+</div>
+<div class="paragraph">
+<p>Secondly, where term mappings are represented it is useful to be able to capture not just the code or code-phrase of the mapped term, but the preferred term or expression text, in order to make the mapped term self-standing in the data.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_text_formatting"><a class="anchor" href="#_text_formatting"></a>5.1.1.4. Text Formatting</h5>
 <div class="paragraph">
 <p>In modern information systems in all industries, the ability to visually format text exists. EHR systems are no different, and authors of narrative text parts of the health record expect to be able to create longer tracts of text that include paragraphs, bolding, bullet lists and other typical structures, as well as simple atoms of text. Generally speaking, the text associated with a coded term is a simple string, devoid of formatting or newlines, and if the text is a direct copy of the rubric (i.e. term) from a terminology, this will almost always be the case. However there is no guarantee that this will not change in the future, with perhaps newlines and e.g. bolding being used in 'rich text' rubrics.</p>
 </div>
@@ -1820,14 +1821,23 @@ equivalents, classifiers, or something in between. The section below on Mappings
 <div class="sect3">
 <h4 id="_design_2"><a class="anchor" href="#_design_2"></a>5.1.2. Design</h4>
 <div class="paragraph">
-<p>All atomic text items are either instances of the type <code>DV_TEXT</code> or of <code>DV_CODED_TEXT</code>. The former allows the expression of text with optional formatting and hyperlinking. The latter additionally connects
-the text value to a key in the terminology service, with the implication that the key refers to a terminological entity lexically and semantically identical to the text value. Formatting and hyperlinking are <a href="#_formatting_and_hyperlinking">discussed in detail below</a>.</p>
+<p>All atomic text items are either instances of the type <code>DV_TEXT</code> or of <code>DV_CODED_TEXT</code>. The type <code>DV_TEXT</code> should be used wherever a coded or non-coded text item is allowed, while the type <code>DV_CODED_TEXT</code> should be used wherever a text item must be coded. The former allows the representation of text (<code><em>value</em></code> attribute) with optional formatting and hyperlinking (see <a href="#_formatting_and_hyperlinking">Section 5.1.7</a> below). The latter class <code>DV_CODED_TEXT</code> captures the association of two things:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the code of a term known in the terminology service, recorded in the <code><em>defining_code</em></code> attribute of type <code>CODE_PHRASE</code>;</p>
+</li>
+<li>
+<p>the text rubric of the term, recorded in the <code><em>value</em></code> attribute (inherited from <code>DV_TEXT</code>).</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The model of <code>DV_CODED_TEXT</code> is designed to capture the actual coded term chosen by the user or software at runtime; it is implicitly assumed that this includes whichever synonym (term of equivalent meaning from the same terminology) was chosen, for terminologies supporting synonyms, and any coordination of underlying distinct terms. A <code>DV_CODED_TEXT</code> instance can only be used if the final textual value chosen by the user is lexically identical to the rubric returned by the terminology service for the key; if the user makes even the slightest change, the identity of rubric / key is lost, and a mapping (see <a href="#_mappings">Section 5.1.5</a>) should be used instead.</p>
+<p>The attribute <code>CODE_PHRASE.<em>code_string</em></code> records a term code or code expression which may be used as an argument to a retrieval function in the terminology service interface to obtain the definition of the term or expression.</p>
 </div>
 <div class="paragraph">
-<p>The type <code>DV_TEXT</code> should be used wherever a coded or non-coded text item is allowed, while the type <code>DV_CODED_TEXT</code> should be used wherever a text item must be coded.</p>
+<p>The model of <code>DV_CODED_TEXT</code> is designed to capture the <em>actual</em> term chosen by the user or software at runtime, i.e. preferred term or synonym (for terminologies supporting synonyms), or a post-coordination of underlying distinct terms if an expression was chosen as the term (such as an expression supported by SNOMED CT). A <code>DV_CODED_TEXT</code> instance is used if the final textual value chosen by the user is the exact term text (preferred or other) returned by the terminology service for the key (i.e. <code><em>code_string</em></code> value). If the user makes even the slightest modification during data entry, a mapping (see <a href="#_mappings">Section 5.1.5</a>) to a <code>DV_TEXT</code> should be used instead.</p>
 </div>
 <div class="paragraph deprecated">
 <p><strong>Deprecated</strong>: The type <code>DV_PARAGRAPH</code> was used to represent larger tracts of text built from lists of <code>DV_TEXT</code> instances, i.e. instances of <code>DV_TEXT</code> and <code>DV_CODED_TEXT</code>. Such text is now represented as plain text with new lines or markdown text, <a href="#_formatting_and_hyperlinking">as described below</a>.</p>
@@ -1839,14 +1849,14 @@ the text value to a key in the terminology service, with the implication that th
 <p>Qualification is the process of making a term more specific through the post-coordination of additional
 terms. It occurs when a terminology defines relationships between a primary term and other
 terms that qualify the primary. For example a coordination using the term "bronchitis" which creates
-a qualified term might be "acute bronchitis"; all real world instances of the latter are also instances of
+a qualified term might be 'acute bronchitis'; all real world instances of the latter are also instances of
 the former.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_meaning_modification"><a class="anchor" href="#_meaning_modification"></a>5.1.4. Meaning Modification</h4>
 <div class="paragraph">
-<p>Terms that change the meaning of other terms are often known as "modifiers". The difference
+<p>Terms that change the meaning of other terms are often known as 'modifiers'. The difference
 between modification and qualification is that modifiers change the meaning so that the modifed term
 as a whole does <em>not</em> refer to instances of the unmodified term. We describe below the particular types
 of modifiers and how they are represented using the text data types.</p>
@@ -1854,12 +1864,12 @@ of modifiers and how they are represented using the text data types.</p>
 <div class="sect4">
 <h5 id="_mode_changing_terms"><a class="anchor" href="#_mode_changing_terms"></a>5.1.4.1. Mode-changing Terms</h5>
 <div class="paragraph">
-<p>One class of modifers is exemplified by the addition of words like "risk of", "fear of", "history of"
-and so on. These are sometimes called <em>mode-changing</em> terms, since they change the "mode" of the
-root term from the present to the past ("history of"), a potential future ("risk of") or some other alternate
+<p>One class of modifers is exemplified by the addition of words like 'risk of', 'fear of', 'history of'
+and so on. These are sometimes called <em>mode-changing</em> terms, since they change the 'mode' of the
+root term from the present to the past ('history of'), a potential future ('risk of') or some other possible
 reality. Terms which are modified in this way should never be matched in queries searching for
-the root term; for example, a query for "coronary diease" (of the patient) should not match "family
-history of coronary disease".</p>
+the root term; for example, a query for 'coronary diease' (of the patient) should not match 'family
+history of coronary disease'.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1877,10 +1887,10 @@ within a certain kind of note or test result. Consider the following:</p>
 <p>a systolic blood pressure in the pulmonary artery has a different meaning than a systemic arterial blood pressure;</p>
 </li>
 <li>
-<p>"total hip replacement" in the context of a "planned procedure";</p>
+<p>'total hip replacement' in the context of a 'planned procedure';</p>
 </li>
 <li>
-<p>"meningitis" in the context of a "differential diagnosis".</p>
+<p>'meningitis' in the context of a 'differential diagnosis'.</p>
 </li>
 </ul>
 </div>
@@ -1889,7 +1899,7 @@ within a certain kind of note or test result. Consider the following:</p>
 <h5 id="_negation"><a class="anchor" href="#_negation"></a>5.1.4.3. Negation</h5>
 <div class="paragraph">
 <p>Negation is a special kind of mode change and has been a serious design challenge in the past,
-because modifiers like "not" or "no" only make sense when attached to some terms, and create nonsensical
+because modifiers like 'not' or 'no' only make sense when attached to some terms, and create nonsensical
 values or ambiguities by arbitrarily association with other terms.</p>
 </div>
 </div>
@@ -2582,6 +2592,13 @@ c: <code>char[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preferred_term</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Optional attribute to carry preferred term corresponding to the code or expression in <code><em>code_string</em></code>. Typical use in integration situations which create mappings, and representing data for which both a (non-preferred) actual term and a preferred term are both required.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p><strong><em>Code_string_valid</em></strong>: <code>not code_string.is_empty</code></p>
@@ -3090,10 +3107,10 @@ is used for this purpose, and the constant unknown_accuracy_value = -1 is provid
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  <code>&lt;</code> and is_strictly_comparable_to, the latter of which must evaluate to <code>True</code> for instances being compared with the  <code>&lt;</code> function, or used as limits in the <code>DV_INTERVAL&lt;T&gt;</code> class.</p>
+<p>Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  <code>&lt;</code> and <code><em>is_strictly_comparable_to()</em></code>, the latter of which must evaluate to <code>True</code> for instances being compared with the  <code>&lt;</code> function, or used as limits in the <code>DV_INTERVAL&lt;T&gt;</code> class.</p>
 </div>
 <div class="paragraph">
-<p>Data value types which are to be used as limits in the <code>DV_INTERVAL&lt;T&gt;</code> class must inherit from this class, and implement the function <code><em>is_strictly_comparable_to</em></code> to ensure that instances compare meaningfully. For example, instances of <code>DV_QUANTITY</code> can only be compared if they measure the same kind of physical quantity.</p>
+<p>Data value types which are to be used as limits in the <code>DV_INTERVAL&lt;T&gt;</code> class must inherit from this class, and implement the function <code><em>is_strictly_comparable_to()</em></code> to ensure that instances compare meaningfully. For example, instances of <code>DV_QUANTITY</code> can only be compared if they measure the same kind of physical quantity.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3347,7 +3364,7 @@ d) integer values only.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>symbol</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  <code>mild</code>, <code>moderate</code>, <code>severe</code>, or even the same number series as the values, e.g.  1 ,  2 ,  3 . Codes come from archetypes.</p>
+<p>Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  <code>mild</code>, <code>moderate</code>, <code>severe</code>, or even the same number series as the values, e.g. 1, 2, 3.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3433,7 +3450,7 @@ d) non-integer values are allowed.</p>
 <pre>Borg CR 10 Scale
 
 0    No Breathlessness at all
-0.5 Very Very Slight (Just Noticeable)
+0.5  Very Very Slight (Just Noticeable)
 1    Very Slight
 2    Slight Breathlessness
 3    Moderate

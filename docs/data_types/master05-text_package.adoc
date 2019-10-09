@@ -66,7 +66,7 @@ general terms in the terminology).
 This specification assumes the existence of a terminology service which is responsible for interrogating
 actual terminologies and performing _validated coordination_ of terms, i.e. creating combinations
 deemed valid by the underlying source terminology, potentially without even assigning a new code to
-the result. All validated coordination is carried out inside the terminology service, and any "term"
+the result. All validated coordination is carried out inside the terminology service, and any 'term'
 made available by the service is already 'coordinated'. The difference between 'pre-coordinated' and
 'post-coordinated' terms is that the former have a single code, whereas the latter have a code phrase,
 or expression that is interpretable by the terminology. For example, the coordination "foot, left" (a
@@ -75,23 +75,21 @@ service from the source terms "foot", "left" and "has-laterality" from a termino
 SNOMED CT. Any such coordination must be valid within the source terminology, i.e. correspond to
 valid relationships defined therein.
 
-The class `DV_CODED_TEXT` described here captures the association of two things:
-
-* the code phrase of a code phrase provided by the terminology service, recorded in the `_defining_code_` attribute.
-* the text rubric of the code phrase, recorded in the `_value_` attribute (inherited from `DV_TEXT`);
-
-The class `CODE_PHRASE._code_string_` records a key, in the form of arguments to some retrieval function
-in the terminology service interface.
-
-The semantics attached to coordinations of terms may differ. Two categories of coordination
+The semantics attached to post-coordinations of terms may differ. Two categories of coordination
 described in the literature are 'qualification' and 'modification'. A common definition of the first is
-that "qualification narrows meaning" - i.e. creates a new term whose possible real world instances are
+that qualification 'narrows meaning' - i.e. creates a new term whose possible real world instances are
 within the set denoted by the original root term. Modification on the other hand changes the meaning
 of a root term. Various cases are described below under Meaning Modification. Both coordination
 types are assumed to be managed by the terminology service.
 
 Coded terms may also be mapped to terms from other terminologies, which may be intended as
 equivalents, classifiers, or something in between. The section below on Mappings deals with these.
+
+==== Integration Scenarios
+
+In cases where openEHR data is used to represent data originally represented in other formats, one common requirement is to be able to represent both the term chosen by the user at data capture time, and also the corresponding preferred term, where the two are different. This allows both the user's specific choice and the 'standard term' to be captured.
+
+Secondly, where term mappings are represented it is useful to be able to capture not just the code or code-phrase of the mapped term, but the preferred term or expression text, in order to make the mapped term self-standing in the data.
 
 ==== Text Formatting
 
@@ -101,12 +99,14 @@ Clinicians need the freedom to maximise clarity of any text they write, and ther
 
 === Design
 
-All atomic text items are either instances of the type `DV_TEXT` or of `DV_CODED_TEXT`. The former allows the expression of text with optional formatting and hyperlinking. The latter additionally connects
-the text value to a key in the terminology service, with the implication that the key refers to a terminological entity lexically and semantically identical to the text value. Formatting and hyperlinking are <<_formatting_and_hyperlinking,discussed in detail below>>.
+All atomic text items are either instances of the type `DV_TEXT` or of `DV_CODED_TEXT`. The type `DV_TEXT` should be used wherever a coded or non-coded text item is allowed, while the type `DV_CODED_TEXT` should be used wherever a text item must be coded. The former allows the representation of text (`_value_` attribute) with optional formatting and hyperlinking (see <<_formatting_and_hyperlinking>> below). The latter class `DV_CODED_TEXT` captures the association of two things:
 
-The model of `DV_CODED_TEXT` is designed to capture the actual coded term chosen by the user or software at runtime; it is implicitly assumed that this includes whichever synonym (term of equivalent meaning from the same terminology) was chosen, for terminologies supporting synonyms, and any coordination of underlying distinct terms. A `DV_CODED_TEXT` instance can only be used if the final textual value chosen by the user is lexically identical to the rubric returned by the terminology service for the key; if the user makes even the slightest change, the identity of rubric / key is lost, and a mapping (see <<Mappings>>) should be used instead.
+* the code of a term known in the terminology service, recorded in the `_defining_code_` attribute of type `CODE_PHRASE`;
+* the text rubric of the term, recorded in the `_value_` attribute (inherited from `DV_TEXT`).
 
-The type `DV_TEXT` should be used wherever a coded or non-coded text item is allowed, while the type `DV_CODED_TEXT` should be used wherever a text item must be coded.
+The attribute `CODE_PHRASE._code_string_` records a term code or code expression which may be used as an argument to a retrieval function in the terminology service interface to obtain the definition of the term or expression.
+
+The model of `DV_CODED_TEXT` is designed to capture the _actual_ term chosen by the user or software at runtime, i.e. preferred term or synonym (for terminologies supporting synonyms), or a post-coordination of underlying distinct terms if an expression was chosen as the term (such as an expression supported by SNOMED CT). A `DV_CODED_TEXT` instance is used if the final textual value chosen by the user is the exact term text (preferred or other) returned by the terminology service for the key (i.e. `_code_string_` value). If the user makes even the slightest modification during data entry, a mapping (see <<Mappings>>) to a `DV_TEXT` should be used instead.
 
 [.deprecated]
 *Deprecated*: The type `DV_PARAGRAPH` was used to represent larger tracts of text built from lists of `DV_TEXT` instances, i.e. instances of `DV_TEXT` and `DV_CODED_TEXT`. Such text is now represented as plain text with new lines or markdown text, <<_formatting_and_hyperlinking,as described below>>.
@@ -116,24 +116,24 @@ The type `DV_TEXT` should be used wherever a coded or non-coded text item is all
 Qualification is the process of making a term more specific through the post-coordination of additional
 terms. It occurs when a terminology defines relationships between a primary term and other
 terms that qualify the primary. For example a coordination using the term "bronchitis" which creates
-a qualified term might be "acute bronchitis"; all real world instances of the latter are also instances of
+a qualified term might be 'acute bronchitis'; all real world instances of the latter are also instances of
 the former.
 
 === Meaning Modification
 
-Terms that change the meaning of other terms are often known as "modifiers". The difference
+Terms that change the meaning of other terms are often known as 'modifiers'. The difference
 between modification and qualification is that modifiers change the meaning so that the modifed term
 as a whole does _not_ refer to instances of the unmodified term. We describe below the particular types
 of modifiers and how they are represented using the text data types.
 
 ==== Mode-changing Terms
 
-One class of modifers is exemplified by the addition of words like "risk of", "fear of", "history of"
-and so on. These are sometimes called _mode-changing_ terms, since they change the "mode" of the
-root term from the present to the past ("history of"), a potential future ("risk of") or some other alternate
+One class of modifers is exemplified by the addition of words like 'risk of', 'fear of', 'history of'
+and so on. These are sometimes called _mode-changing_ terms, since they change the 'mode' of the
+root term from the present to the past ('history of'), a potential future ('risk of') or some other possible
 reality. Terms which are modified in this way should never be matched in queries searching for
-the root term; for example, a query for "coronary diease" (of the patient) should not match "family
-history of coronary disease".
+the root term; for example, a query for 'coronary diease' (of the patient) should not match 'family
+history of coronary disease'.
 
 ==== Context Sensitivity
 
@@ -142,13 +142,13 @@ within a certain kind of note or test result. Consider the following:
 
 * a blood sugar level after a 75gm oral loading has a different meaning than a fasting blood sugar;
 * a systolic blood pressure in the pulmonary artery has a different meaning than a systemic arterial blood pressure;
-* "total hip replacement" in the context of a "planned procedure";
-* "meningitis" in the context of a "differential diagnosis".
+* 'total hip replacement' in the context of a 'planned procedure';
+* 'meningitis' in the context of a 'differential diagnosis'.
 
 ==== Negation
 
 Negation is a special kind of mode change and has been a serious design challenge in the past,
-because modifiers like "not" or "no" only make sense when attached to some terms, and create nonsensical
+because modifiers like 'not' or 'no' only make sense when attached to some terms, and create nonsensical
 values or ambiguities by arbitrarily association with other terms.
 
 ==== Representation of Meaning-Modifying Terms
