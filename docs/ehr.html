@@ -364,6 +364,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-88" target="_blank" rel="noopener">SPECRM-88</a>. Improve documentation relating to use of <code><em>uid</em></code> in versioning and <code>LOCATABLE</code> descendants in <code>change_control</code> package; improve advice on setting <code><em>uid</em></code> in <code>COMPOSITION</code>, <code>EHR_STATUS</code> and <code>EHR_ACCESS</code>. (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-322" target="_blank" rel="noopener">SPECPR-322</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
  M Polajnar,<br>
+ S Arikan,<br>
  T Beale</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">29 Sep 2019</p></td>
 </tr>
@@ -2193,8 +2194,8 @@ is is strongly recommended that a UUID always be used for this field.
 <div class="title">Note</div>
 </td>
 <td class="content">
-It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in <code>EHR_ACCESS</code> objects, using a Guid, copied from the <code><em>object_id()</em></code> (first section) of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
-For example, if the <code>ORIGINAL_VERSION.uid</code> is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>, the Guid <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B</code> would be copied to the contained <code><em>uid</em></code> field of the <code>EHR_ACCESS</code> object.
+It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in <code>EHR_ACCESS</code> objects, using the UID copied from the <code><em>object_id()</em></code> of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
+For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code> would be copied to the <code><em>uid</em></code> field of the <code>EHR_ACCESS</code> object.
 </td>
 </tr>
 </table>
@@ -2294,8 +2295,8 @@ For example, if the <code>ORIGINAL_VERSION.uid</code> is <code>87284370-2D4B-4e3
 <div class="title">Note</div>
 </td>
 <td class="content">
-It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in <code>EHR_STATUS</code> objects, using a Guid, copied from the <code><em>object_id()</em></code> (first section) of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
-For example, if the <code>ORIGINAL_VERSION.uid</code> is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>, the Guid <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B</code> would be copied to the contained <code><em>uid</em></code> field of the <code>EHR_STATUS</code> object.
+It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in <code>EHR_STATUS</code> objects, using the UID copied from the <code><em>object_id()</em></code> of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
+For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>  would be copied to the <code><em>uid</em></code> field of the <code>EHR_STATUS</code> object.
 </td>
 </tr>
 </table>
@@ -2615,8 +2616,8 @@ Persistent Compositions may optionally have an Event context. In openEHR release
 <div class="title">Note</div>
 </td>
 <td class="content">
-It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in Compositions, using a Guid, copied from the <code><em>object_id()</em></code> (first section) of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
-For example, if the <code>ORIGINAL_VERSION.uid</code> is <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>, the Guid <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B</code> would be copied to the contained <code><em>uid</em></code> field of the Composition.
+It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in Compositions, using the UID copied from the <code><em>object_id()</em></code> of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
+For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code> would be copied to the <code><em>uid</em></code> field of the Composition.
 </td>
 </tr>
 </table>
