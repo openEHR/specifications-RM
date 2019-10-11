@@ -134,7 +134,9 @@ The second subtype of `DV_QUANTIFIED`, `DV_ABSOLUTE_QUANTITY`, models quantities
 Subtypes of `DV_AMOUNT` are `DV_PROPORTION`, `DV_QUANTITY`, `DV_COUNT`, and `DV_DURATION` (see date_time package). The type `DV_COUNT` has an integer magnitude and is used to record naturally countable things such as number of previous pregnancies, number of steps taken by a recovering stroke victim and so on. There are no units or precision in a `DV_COUNT`. Countable quantities can be used to create instances of `DV_QUANTITY`, such as during a statistical study which average tobacco
 consumption over a time period. Such a computation might cause the creation of `DV_QUANTITY` objects representing values like {magnitude = 5.85, units = '/ week'}
 
-`DV_QUANTITY` is used to represent amounts of measurable things, and has a real number magnitude, precision, units and accuracy. The `_units_` attribute contains the scientific unit in a parsable form defined by default by the {ucum}[Unified Code for Units of Measure (UCUM)], or by another system or terminology specified in the `_units_system_` attribute. A valid units string always implies a measured property, such as 'force' or 'pressure'. If unit strings are compared in the application environment to determine if they measure the same property (e.g. `"bar"` and `"kPa"` are both units of 'pressure'), which enables the `_is_strictly_comparable_to()_` function defined on `DV_ORDERED` to be properly specified on `DV_QUANTITY`.
+`DV_QUANTITY` is used to represent amounts of measurable things, and has a real number magnitude, precision, units and accuracy. The `_units_` attribute contains the scientific unit in a parsable form defined by default by the {ucum}[Unified Code for Units of Measure (UCUM)] (case-sensitive form), or by another system or terminology specified in the `_units_system_` attribute. In some cases, such as metric units, the UCUM code and the display form are the same, e.g. 'kg'. However this is not the general case, and many common units have different display and code forms, e.g. degrees Celcius:  '°C' and 'Cel'. In general the unit display name should be looked up if it is not known in context that the code is directly displayable. The `_units_display_name_` attribute may be used if the displayable form of the units is required in the data, and/or terminology lookup is not available or desirable. Unit names may be language dependent, particularly older units.
+
+A valid units string always implies a measured _property_, such as force or pressure. If unit strings are compared in the application environment to determine if they measure the same property (e.g. `"bar"` and `"kPa"` are both units of 'pressure'), which enables the `_is_strictly_comparable_to()_` function defined on `DV_ORDERED` to be properly specified on `DV_QUANTITY`.
 
 NOTE: while these semantics will allow comparison of e.g. two pressures recorded in `mbar and mmHg, or even two accelerations whose units are `"m.s^-2"` and `"m/s^2"`, they provide no guarantee that this is a sensible thing to do in terms of domain semantics: comparing a blood pressure to an atmospheric pressure for example may or may not make any sense. It is not within the scope of the quantity package to express such semantics - this is up to application software which uses Quantities found in specific places in the data.
 
@@ -211,7 +213,7 @@ include::{uml_export_dir}/classes/dv_absolute_quantity.adoc[]
 
 === Units Syntax
 
-The BNF syntax specification of the units string, adapted from {ucum}[UCUM] is as follows:  
+The BNF syntax specification of the units string, adapted from {ucum}[UCUM] (case-sensitive form) is as follows:  
 
 [source, ebnf]
 --------

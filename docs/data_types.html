@@ -411,7 +411,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-64" target="_blank" rel="noopener">SPECRM-64</a>: Add CODE_PHRASE.term optional field to carry rubric (preferred term) text. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-132" target="_blank" rel="noopener">SPECPR-132</a>, <a href="https://specifications.openehr.org/tickets/SPECPR-165" target="_blank" rel="noopener">SPECPR-165</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-64" target="_blank" rel="noopener">SPECRM-64</a>: Add <code>CODE_PHRASE.<em>term</em></code> optional field to carry rubric (preferred term) text. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-132" target="_blank" rel="noopener">SPECPR-132</a>, <a href="https://specifications.openehr.org/tickets/SPECPR-165" target="_blank" rel="noopener">SPECPR-165</a>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
  I McNicoll,<br>
  SEC</p></td>
@@ -2991,7 +2991,10 @@ the 'normal' range for a measured value. Examples of reference ranges:</p>
 consumption over a time period. Such a computation might cause the creation of <code>DV_QUANTITY</code> objects representing values like {magnitude = 5.85, units = '/ week'}</p>
 </div>
 <div class="paragraph">
-<p><code>DV_QUANTITY</code> is used to represent amounts of measurable things, and has a real number magnitude, precision, units and accuracy. The <code><em>units</em></code> attribute contains the scientific unit in a parsable form defined by default by the <a href="http://unitsofmeasure.org/ucum.html">Unified Code for Units of Measure (UCUM)</a>, or by another system or terminology specified in the <code><em>units_system</em></code> attribute. A valid units string always implies a measured property, such as 'force' or 'pressure'. If unit strings are compared in the application environment to determine if they measure the same property (e.g. <code>"bar"</code> and <code>"kPa"</code> are both units of 'pressure'), which enables the <code><em>is_strictly_comparable_to()</em></code> function defined on <code>DV_ORDERED</code> to be properly specified on <code>DV_QUANTITY</code>.</p>
+<p><code>DV_QUANTITY</code> is used to represent amounts of measurable things, and has a real number magnitude, precision, units and accuracy. The <code><em>units</em></code> attribute contains the scientific unit in a parsable form defined by default by the <a href="http://unitsofmeasure.org/ucum.html">Unified Code for Units of Measure (UCUM)</a> (case-sensitive form), or by another system or terminology specified in the <code><em>units_system</em></code> attribute. In some cases, such a metric units, the UCUM code and the display form are the same, e.g. 'kg'. However this is not the general case, and many common units have different display and code forms, e.g. degrees Celcius:  '°C' and 'Cel'. In general the unit display nam should be looked up if it is not known in context that the code is directly displayable. The <code><em>units_display_name</em></code> attribute may be used if the displayable form of the units is required in the data, and/or terminology lookup is not available or desirable. Unit names may be language dependent, particularly older units.</p>
+</div>
+<div class="paragraph">
+<p>A valid units string always implies a measured <em>property</em>, such as force or pressure. If unit strings are compared in the application environment to determine if they measure the same property (e.g. <code>"bar"</code> and <code>"kPa"</code> are both units of 'pressure'), which enables the <code><em>is_strictly_comparable_to()</em></code> function defined on <code>DV_ORDERED</code> to be properly specified on <code>DV_QUANTITY</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3755,7 +3758,7 @@ other: <code>DV_AMOUNT[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p>Quantitified type representing  scientific  quantities, i.e. quantities expressed as a magnitude and units. Units are expressed in HL7 UCUM syntax (<a href="http://unitsofmeasure.org/ucum.html">Unified Code for Units of Measure (UCUM)</a>, by Gunther Schadow and Clement J. McDonald of The Regenstrief Institute) by default, or another system if <code><em>units_system</em></code> is set.</p>
+<p>Quantitified type representing  scientific  quantities, i.e. quantities expressed as a magnitude and units. Units are expressed in the UCUM syntax (<a href="http://unitsofmeasure.org/ucum.html">Unified Code for Units of Measure (UCUM)</a>, by Gunther Schadow and Clement J. McDonald of The Regenstrief Institute)  (case-sensitive form) by default, or another system if <code><em>units_system</em></code> is set.</p>
 </div>
 <div class="paragraph">
 <p>Can also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years (in the latter case, <code>DV_DURATION</code> may be used).</p>
@@ -3789,7 +3792,7 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Quantity units, expressed as a code or syntax string from either HL7 UCUM (the default) or the units system specified in <code><em>units_system</em></code>, when set.</p>
+<p>Quantity units, expressed as a code or syntax string from either UCUM (the default) or the units system specified in <code><em>units_system</em></code>, when set.</p>
 </div>
 <div class="paragraph">
 <p>In either case, the value is the code or syntax - normally formed of standard ASCII - which is in principal not the same as the display string, although in simple cases such as 'm' (for meters) it will be.</p>
@@ -3808,7 +3811,7 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 <p>Optional field used to specify a units system from which codes in <code><em>units</em></code> are defined. Value is a URI identifying a terminology containing units concepts from the  (<a href="https://www.hl7.org/fhir/terminologies-systems.html">HL7 FHIR terminologies list</a>).</p>
 </div>
 <div class="paragraph">
-<p>If not set, the HL7 UCUM standard is assumed as the units system.</p>
+<p>If not set, the UCUM standard (case-sensitive codes) is assumed as the units system.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3819,6 +3822,18 @@ The value -1 implies no limit, i.e. any number of decimal places.</p>
 </div>
 <div class="paragraph">
 <p>If not set, the application environment needs to determine the displayable form.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+the display name may be language-dependent for various older and non-systematic units.
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>
@@ -4248,7 +4263,7 @@ a_diff: <code>DV_AMOUNT[1]</code><br>
 <div class="sect3">
 <h4 id="_units_syntax"><a class="anchor" href="#_units_syntax"></a>6.3.1. Units Syntax</h4>
 <div class="paragraph">
-<p>The BNF syntax specification of the units string, adapted from <a href="http://unitsofmeasure.org/ucum.html">UCUM</a> is as follows:</p>
+<p>The BNF syntax specification of the units string, adapted from <a href="http://unitsofmeasure.org/ucum.html">UCUM</a> (case-sensitive form) is as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
