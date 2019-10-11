@@ -216,9 +216,11 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.7.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-77" target="_blank" rel="noopener">SPECPUB-77</a>. Add <code>ELEMENT.<em>null_reason</em></code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll,<br>
+ H Leslie,<br>
+ S Ljosland Bakke,<br>
  T Schuler,<br>
  T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>01 Oct 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>10 Oct 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -260,7 +262,7 @@
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPEC-257" target="_blank" rel="noopener">SPEC-257</a>: Correct minor typos and clarify text.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C Ma,<br>
- R Chen,
+ R Chen,<br>
  T Cook</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -761,7 +763,10 @@ these types is guaranteed to create data which represents the logical structures
 identically.</p>
 </div>
 <div class="paragraph">
-<p>Data values are connected to spatial structures via the <code><em>value</em></code> attribute of the <code>ELEMENT</code> class of the <code>representation</code> cluster. This class also carries the attribute <code><em>null_flavour</em></code>, whose value indicates how to read the contents of the <code><em>value</em></code> attribute. Values from the openEHR <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml"><code>null flavours</code> vocabulary</a>, including <code>253|unknown|</code>, <code>271|no information|</code>, and <code>273|not applicable|</code> are used to populate it. The optional <code><em>null_reason</em></code> field may be used to record a specific reason.</p>
+<p>Data values are connected to spatial structures via the <code><em>value</em></code> attribute of the <code>ELEMENT</code> class of the <code>representation</code> cluster. This class also carries the attribute <code><em>null_flavour</em></code>, whose value indicates how to read the contents of the <code><em>value</em></code> attribute. Values from the openEHR <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml"><code>null flavours</code> vocabulary</a>, including <code>253|unknown|</code>, <code>271|no information|</code>, and <code>273|not applicable|</code> are used to populate it. Only a small number of generic codes are defined, in order to avoid complex processing for most data instances, for which this simple classification of null is sufficient.</p>
+</div>
+<div class="paragraph">
+<p>In some circumstances however, additional detail is required in addition to the null flavour code. Examples include reporting and where specific reasons for lack of data have medico-legal ramifications, e.g. 'patient was unconscious', 'patient refused to tell me', 'no reason provided'. For these situations, the optional <code><em>null_reason</em></code> field may be used to record a specific reason.</p>
 </div>
 <div class="paragraph">
 <p>The openEHR class model for spatial structures is illustrated on the right-hand side of <a href="#data_structures_package">Figure 1</a>. It should be noted that these classes (<code>ITEM_LIST</code> etc) are not equivalents of similarly named classes (such as <code>List&lt;T&gt;</code>) in most data structure libraries - they also include per-node <code><em>name</em></code>,
@@ -1368,7 +1373,7 @@ a_path: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>null_flavour</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Flavour of null value, e.g. indeterminate, not asked etc.</p>
+<p>Flavour of null value, e.g. <code>253&#124;unknown&#124;</code>, <code>271&#124;no information&#124;</code>, and <code>273&#124;not applicable&#124;</code>.</p>
 </div></div></td>
 </tr>
 <tr>
