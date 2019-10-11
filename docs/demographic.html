@@ -197,15 +197,27 @@
 </thead>
 <tbody>
 <tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0 (unreleased)</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-88" target="_blank" rel="noopener">SPECRM-88</a>. Improve documentation relating to use of <code><em>uid</em></code> in versioning and <code>LOCATABLE</code> descendants in <code>change_control</code> package (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-322" target="_blank" rel="noopener">SPECPR-322</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
+ M Polajnar,<br>
+ S Iancu,<br>
+ T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2019</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.0.4</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-76" target="_blank" rel="noopener">SPECRM-76</a>: Add <code>VERSIONED_PARTY</code> class definition to demographics specs.<br>
  <a href="https://specifications.openehr.org/tickets/SPECRM-75" target="_blank" rel="noopener">SPECRM-75</a>: Fix description of <code>PARTY.<em>relationships</em></code> (See <a href="https://specifications.openehr.org/tickets/SPECRM-104" target="_blank" rel="noopener">SPECPR-104</a>).
  <a href="https://specifications.openehr.org/tickets/SPECRM-82" target="_blank" rel="noopener">SPECRM-82</a>: Remove redefinition of <code>PARTY.<em>uid</em></code> in UML; make <code>ACTOR.<em>languages</em></code> and <code><em>roles</em></code> 0 to many (fixes <a href="https://specifications.openehr.org/tickets/SPECPR-282" target="_blank" rel="noopener">SPECPR-282</a>, <a href="https://specifications.openehr.org/tickets/SPECPR-283" target="_blank" rel="noopener">SPECPR-283</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>13 Nov 2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13 Nov 2018</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -632,6 +644,19 @@ to an existing service.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
 <p>Ancestor of all Party types, including real world entities and their roles. A Party is any entity which can participate in an activity. The <code><em>name</em></code> attribute inherited from <code>LOCATABLE</code> is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the <code><em>identities</em></code> attribute, not the <code><em>name</em></code> attribute).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in <code>PARTY</code> objects, using the UID copied from the <code><em>object_id()</em></code> of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
+For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>  would be copied to the <code><em>uid</em></code> field of the <code>PARTY</code> object.
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>
