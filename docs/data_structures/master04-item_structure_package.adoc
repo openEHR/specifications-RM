@@ -5,7 +5,7 @@
 The `item_structure` package classes presented here are a formalisation of the need for generic, archetypable
 data structures, and are used by all openEHR reference models.
 
-The subtypes of the `ITEM_STRUCTURE` class explicitly model the logical data structure types which
+The subtypes of the `ITEM_STRUCTURE` class explicitly model the logical data structure types which 
 typically occur in health record data, and include `ITEM_SINGLE` (for single values such as a patient
 weight), `ITEM_LIST` (for lists such as parts of an address), `ITEM_TREE` (for hierarchically structured
 data such as a microbiology report) and `ITEM_TABLE` (for tabular data such as visual acuity or reflex
@@ -15,7 +15,7 @@ a CEN EN13606-compliant hierarchical representation of its data. Any system impl
 these types is guaranteed to create data which represents the logical structures of lists, tables and trees
 identically.
 
-Data values are connected to spatial structures via the `_value_` attribute of the `ELEMENT` class of the `representation` cluster. This class also carries the attribute `_null_flavour_`, whose value indicates how to read the contents of the `_value_` attribute. Values from the openEHR {openehr_terminology_xml}[`null flavours` vocabulary], including `253|unknown|`, `271|no information|`, and `273|not applicable|` are used to populate it. Only a small number of generic codes are defined, in order to avoid complex processing for most data instances, for which this simple classification of null is sufficient.
+Data values are connected to spatial structures via the `_value_` attribute of the `ELEMENT` class of the `representation` cluster. This class also carries the attribute `_null_flavour_`, whose value indicates how to read the contents of the `_value_` attribute. Values from the openEHR {openehr_terminology_xml}[`null flavours` vocabulary], including `253|unknown|`, `271|no information|`, `272|masked|`, and `273|not applicable|` are used to populate it. Only a small number of generic codes are defined, in order to avoid complex processing for most data instances, for which this simple classification of null is sufficient.
 
 In some circumstances however, additional detail is required in addition to the null flavour code. Examples include reporting and where specific reasons for lack of data have medico-legal ramifications, e.g. 'patient was unconscious', 'patient refused to tell me', 'no reason provided'. For these situations, the optional `_null_reason_` field may be used to record a specific reason.
 

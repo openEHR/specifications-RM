@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*0..1*
 |*null_flavour*: `DV_CODED_TEXT`
-a|Flavour of null value, e.g. `253&#124;unknown&#124;`, `271&#124;no information&#124;`, and `273&#124;not applicable&#124;`.
+a|Flavour of null value, e.g. `253&#124;unknown&#124;`, `271&#124;no information&#124;`, `272&#124;masked&#124;`, and `273&#124;not applicable&#124;`.
 
 h|*0..1*
 |*value*: `DATA_VALUE`
@@ -25,7 +25,7 @@ a|Property representing leaf value object of `ELEMENT`. In real data, any concre
 
 h|*0..1*
 |*null_reason*: `DV_TEXT`
-a|Optional specific reason for null value; if set, `_null_flavour_` must be set.
+a|Optional specific reason for null value; if set, `_null_flavour_` must be set. Null reason may apply only to a minority of clinical data, commonly needed in reporting contexts.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
