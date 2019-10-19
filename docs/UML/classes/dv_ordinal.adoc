@@ -20,7 +20,7 @@ Note that although the term 'ordinal' in mathematics means natural numbers only,
 
 This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. `{neg, trace, +, ++, +++}` are used for leucocytes, protein, nitrites etc; for non-haemolysed blood `{neg, trace, moderate}`; for haemolysed blood `{small, moderate, large}`.
 
-For scores or scales that include Real numbers (or might in the future, i.e. not fixed for all time, such as Apgar), use `DV_SCALE`.
+For scores or scales that include Real numbers (or might in the future, i.e. not fixed for all time, such as Apgar), use `DV_SCALE`. `DV_SCALE` may also be used in future for representing purely Integer-based scales, however, the `DV_ORDINAL` type should continue to be supported in software implementations in order to accommodate existing data that are instances of this type.
 
 h|*Inherit*
 2+|`DV_ORDERED`

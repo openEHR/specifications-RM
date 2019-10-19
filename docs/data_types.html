@@ -423,7 +423,7 @@
  Remove <code><em>limits()</em></code> function in passing.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll,<br>
  SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">08 Oct 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19 Oct 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -2948,10 +2948,10 @@ the 'normal' range for a measured value. Examples of reference ranges:</p>
 <p>In order to make sense of the requirements in a systematic way, a proper typology for quantities is needed. The most basic characteristic of all values typically called 'quantities' is that they are ordered, meaning that the operator "&lt;" (less-than) is defined between any two values in the domain. An ancestor class for all quantities called <code>DV_ORDERED</code> is accordingly defined. This type is subtyped into ordinals, scales and true quantities, represented by the classes <code>DV_ORDINAL</code>, <code>DV_SCALE</code> and <code>DV_QUANTIFIED</code> respectively.</p>
 </div>
 <div class="paragraph">
-<p><code>DV_ORDINAL</code> represents data values whose values are Integers, and which use symbolic renderings instead, such as "+", "++", "+++", or <code>"mild"</code>, <code>"medium"</code>, <code>"severe"</code>. Each symbol can be assigned any Integer value, providing a basis for computable comparison. Typical uses for <code>DV_ORDINAL</code> include Apgar and Glasgow Coma Scales. <code>DV_SCALE</code> is similar to <code>DV_ORDINAL</code>, but allows Real values. In contrast, instances of <code>DV_QUANTIFIED</code> and all its subtypes have precise numeric magnitudes.</p>
+<p><code>DV_ORDINAL</code> and <code>DV_SCALE</code> are used for scores and scales as described in the requirements above. <code>DV_ORDINAL</code> represents data values whose values are Integers, and which have symbolic or text names instead, such as "+", "++", "+++", or <code>"mild"</code>, <code>"medium"</code>, <code>"severe"</code>. Each symbol can be assigned any Integer value, providing a basis for computable comparison. Typical uses for <code>DV_ORDINAL</code> include representing values from the Apgar and Glasgow Coma Scales, e.g. <code>0｜heart rate absent｜</code>, <code>4｜withdraws from pain｜</code>. <code>DV_SCALE</code> is similar to <code>DV_ORDINAL</code>, and was introduced to support scales / scores containing Real values as well as Integers.</p>
 </div>
 <div class="paragraph">
-<p><code>DV_QUANTIFIED</code> itself introduces the concepts of magnitude and magnitude_status. The magnitude attribute is guaranteed to be available on any <code>DV_QUANTIFIED</code>, carrying the effective value, regardless of the particular subtype. The optional magnitude_status attribute can be used to provide a nonquantified indication of accuracy, and takes the following values:</p>
+<p>In contrast to <code>DV_ORDINAL</code> and <code>DV_SCALE</code>, instances of <code>DV_QUANTIFIED</code> and all its subtypes have precise numeric magnitudes. Accordingly, <code>DV_QUANTIFIED</code> introduces the properties <code><em>magnitude</em></code> and <code><em>magnitude_status</em></code>. The <code><em>magnitude</em></code> attribute is guaranteed to be available on any <code>DV_QUANTIFIED</code>, carrying the effective value, regardless of the particular subtype. The optional <code><em>magnitude_status</em></code> attribute can be used to provide a non-quantified indication of accuracy, and takes the following values:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2976,16 +2976,16 @@ the 'normal' range for a measured value. Examples of reference ranges:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>If not present, meaning is "=".</p>
+<p>If not present, the meaning is <code>"="</code>.</p>
 </div>
 <div class="paragraph">
 <p>Logically, an accuracy attribute should also be included in <code>DV_QUANTIFIED</code>, but as its modelling is different in the subtypes in a way that does not easily lend itself to a common ancestor, it is only included in the subtypes.</p>
 </div>
 <div class="paragraph">
-<p>The <code>DV_QUANTIFIED</code> class has two subtypes: <code>DV_AMOUNT</code> and <code>DV_ABSOLUTE_QUANTITY</code>. The former corresponds to relative 'amounts' of something, either a physical property(such as mass) or items (e.g. cigarettes). Mathematically, the '+' and '-' operators (as well as '*' and '/') are defined in the same way as for the real numbers (or any other mathematical 'field'), with the semantics that adding two relative quantities measuring the same thing (i.e. with the same units) produces another relative quantity of the same kind; while the semantics of subtraction are that one relative quantity subtracted from another generates a third.</p>
+<p>The <code>DV_QUANTIFIED</code> class has two subtypes: <code>DV_AMOUNT</code> and <code>DV_ABSOLUTE_QUANTITY</code>. The former corresponds to relative 'amounts' of something, either a physical property(such as mass) or items (e.g. cigarettes). Mathematically, the <code>+</code> and <code>-</code> operators (as well as <code>*</code> and <code>/</code>) are defined in the same way as for the real numbers (or any other mathematical 'field'), with the semantics that adding two relative quantities measuring the same thing (i.e. with the same units) produces another relative quantity of the same kind; while the semantics of subtraction are that one relative quantity subtracted from another generates a third.</p>
 </div>
 <div class="paragraph">
-<p>The second subtype of <code>DV_QUANTIFIED</code>, <code>DV_ABSOLUTE_QUANTITY</code>, models quantities whose values are absolute along a line having a defined origin. The main example of absolute quantities are the temporal concepts date, time and date/time. These are distinguished from relative quantities in that the normal addition and subtraction operations don&#8217;t apply. Instead, the semantics of such operators are based on the idea of the difference between absolute values being a relative amount. For example, two dates can be subtracted, but the result is a duration, not another date. For this reason, the operations <code><em>add</em></code>, <code><em>subtract</em></code> and <code><em>diff</em></code> are defined rather than '+' or '-'. Date/time types, as well as the relative concept duration, are defined in <a href="#_date_time_package">Section 7</a>.</p>
+<p>The second subtype of <code>DV_QUANTIFIED</code>, <code>DV_ABSOLUTE_QUANTITY</code>, models quantities whose values are absolute along a line having a defined origin. The main example of absolute quantities are the temporal concepts date, time and date/time. These are distinguished from relative quantities in that the normal addition and subtraction operations don&#8217;t apply. Instead, the semantics of such operators are based on the idea of the difference between absolute values being a relative amount. For example, two dates can be subtracted, but the result is a duration, not another date. For this reason, the operations <code><em>add</em></code>, <code><em>subtract</em></code> and <code><em>diff</em></code> are defined rather than <code>+</code> or <code>-</code>. Date/time types, as well as the relative concept duration, are defined in <a href="#_date_time_package">Section 7</a>.</p>
 </div>
 <div class="paragraph">
 <p>Subtypes of <code>DV_AMOUNT</code> are <code>DV_PROPORTION</code>, <code>DV_QUANTITY</code>, <code>DV_COUNT</code>, and <code>DV_DURATION</code> (see date_time package). The type <code>DV_COUNT</code> has an integer magnitude and is used to record naturally countable things such as number of previous pregnancies, number of steps taken by a recovering stroke victim and so on. There are no units or precision in a <code>DV_COUNT</code>. Countable quantities can be used to create instances of <code>DV_QUANTITY</code>, such as during a statistical study which average tobacco
@@ -3352,7 +3352,7 @@ d) integer values only.</p>
 <p>This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. <code>{neg, trace, , , }</code> are used for leucocytes, protein, nitrites etc; for non-haemolysed blood <code>{neg, trace, moderate}</code>; for haemolysed blood <code>{small, moderate, large}</code>.</p>
 </div>
 <div class="paragraph">
-<p>For scores or scales that include Real numbers (or might in the future, i.e. not fixed for all time, such as Apgar), use <code>DV_SCALE</code>.</p>
+<p>For scores or scales that include Real numbers (or might in the future, i.e. not fixed for all time, such as Apgar), use <code>DV_SCALE</code>. <code>DV_SCALE</code> may also be used in future for representing purely Integer-based scales, however, the <code>DV_ORDINAL</code> type should continue to be supported in software implementations in order to accommodate existing data that are instances of this type.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3454,7 +3454,7 @@ d) non-integer values are allowed.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For scores that include only Integers, use <code>DV_ORDINAL</code>.</p>
+<p>For scores that include only Integers, <code>DV_SCALE</code> may also be used, but <code>DV_ORDINAL</code> should be supported to accommodate existing data instances of that type.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -6835,7 +6835,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-01 08:47:09 BST
+Last updated 2019-10-01 04:47:09 -03
 </div>
 </div>
 </body>
