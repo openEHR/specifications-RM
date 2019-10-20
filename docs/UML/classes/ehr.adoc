@@ -46,18 +46,22 @@ h|*1..1*
 |*time_created*: `DV_DATE_TIME`
 a|Time of creation of the EHR.
 
+h|*0..1*
+|*folders*: `List<OBJECT_REF>`
+a|Optional addition Folder structures for this EHR.
+
 h|*Invariants*
-2+a|*_Contributions_valid_*: `contributions.for_all (c &#124; c.type.is_equal(“CONTRIBUTION”))`
+2+a|*_Contributions_valid_*: `contributions.for_all (c &#124; c.type.is_equal("CONTRIBUTION"))`
 
 h|
-2+a|*_Ehr_access_valid_*: `ehr_access.type.is_equal (“VERSIONED_EHR_ACCESS”)`
+2+a|*_Ehr_access_valid_*: `ehr_access.type.is_equal ("VERSIONED_EHR_ACCESS")`
 
 h|
-2+a|*_Ehr_status_valid_*: `ehr_status.type.is_equal(“VERSIONED_EHR_STATUS”)`
+2+a|*_Ehr_status_valid_*: `ehr_status.type.is_equal("VERSIONED_EHR_STATUS")`
 
 h|
-2+a|*_Compositions_valid_*: `compositions.for_all (c &#124; c.type.is_equal (“VERSIONED_COMPOSITION”))`
+2+a|*_Compositions_valid_*: `compositions.for_all (c &#124; c.type.is_equal ("VERSIONED_COMPOSITION"))`
 
 h|
-2+a|*_Directory_valid_*: `directory /= Void implies directory.type.is_equal (“VERSIONED_FOLDER”)`
+2+a|*_Directory_valid_*: `directory /= Void implies directory.type.is_equal ("VERSIONED_FOLDER")`
 |===
