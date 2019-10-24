@@ -8,9 +8,9 @@ Sections provide both a logical structure for the author to arrange Entries, and
 
 [.text-center]
 .Section View of a General Practice Contact Composition
-image::{diagrams_uri}/ehr_with_sections.png[id=ehr_with_sections, align="center", width=70%]
+image::{diagrams_uri}/ehr_with_sections.svg[id=ehr_with_sections, align="center", width=50%]
 
-In terms of understanding of clinical data, Section structures are not essential in a Composition - they can always be removed or ignored (typically in machine processing such as querying) without losing the meaning of the Entries in the Composition. While Sections are often used to group Entries according to status, e.g. "family history", "problems", "observations", it is the Entries themselves that indicate the definitive category of information contained therein. This principle is explained in more detail in <<Entry and its Subtypes>>.
+In terms of understanding of clinical data, Section structures are not essential in a Composition - they can always be removed or ignored (typically in machine processing such as querying) without losing the meaning of the Entries in the Composition. While Sections are often used to group Entries according to status, e.g. 'family history', 'problems', 'observations', it is the Entries themselves that indicate the definitive category of information contained therein. This principle is explained in more detail in <<Entry and its Subtypes>>.
 
 Despite the above, Section structures do not have to be regarded as ad hoc or unreliable structures. On the contrary, as they are archetyped, their structures can be relied upon in the same way as any other structure in the record can be relied on to conform to its archetype. Accordingly, solid assumptions can be made about Sections, based on their archetypes, for the purposes of querying. In fact, the main benefit of Sections is that they may provide significant performance benefits to querying, whether by interactive application or by automated systems.
 
@@ -28,4 +28,4 @@ An example of an section tree representing the problem/SOAP heading structure is
 
 [.text-center]
 ."problem/SOAP" Section Structure
-image::{diagrams_uri}/SOAP_section_structure.png[id=SOAP_section_structure, align="center", width=80%]
+image::{uml_diagrams_uri}/RM-SOAP_section_structure.svg[id=SOAP_section_structure, align="center"]

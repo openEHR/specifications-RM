@@ -1642,7 +1642,7 @@
 <div class="sect3">
 <h4 id="_compositions"><a class="anchor" href="#_compositions"></a>4.2.4. Compositions</h4>
 <div class="paragraph">
-<p>The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the Transaction concept of the GEHR project (<a href="#GEHR_del_4">[GEHR_del_4]</a>, <a href="#GEHR_del_7">[GEHR_del_7]</a>, <a href="#GEHR_del_8">[GEHR_del_8]</a>, <a href="#GEHR_del_19_20_24">[GEHR_del_19_20_24]</a>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the well-known ACID characteristics of transactions <a href="#Gray_reuter_1993">[Gray_reuter_1993]</a>):</p>
+<p>The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the 'Transaction' concept of the GEHR project (<a href="#GEHR_del_4">[GEHR_del_4]</a>, <a href="#GEHR_del_7">[GEHR_del_7]</a>, <a href="#GEHR_del_8">[GEHR_del_8]</a>, <a href="#GEHR_del_19_20_24">[GEHR_del_19_20_24]</a>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the well-known ACID characteristics of transactions <a href="#Gray_reuter_1993">[Gray_reuter_1993]</a>):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1670,7 +1670,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>The Transaction concept was later been renamed to "Composition", which is the name of the equivalent concept in the current ISO 13606-1, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.</p>
+<p>The Transaction concept was later been renamed to 'Composition', which is the name of the equivalent concept in ISO 13606-1, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.</p>
 </div>
 <div class="sect4">
 <h5 id="_event_compositions"><a class="anchor" href="#_event_compositions"></a>4.2.4.1. Event Compositions</h5>
@@ -1679,7 +1679,7 @@
 </div>
 <div id="basic_event_oriented_ehr" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="ehr/diagrams/basic_event_oriented_ehr.png" alt="basic event oriented ehr" width="80%">
+<img src="ehr/diagrams/basic_event_oriented_ehr.svg" alt="basic event oriented ehr" width="65%">
 </div>
 <div class="title">Figure 5. Basic event-oriented EHR</div>
 </div>
@@ -1724,14 +1724,14 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. For example, the meaning of the "medication list" Composition is always: this is the list of medications currently being taken by patient X. Similarly for the other persistent Composition types given above. In scientific philosophy, the kind of information recorded in a persistent Composition is known as a <em>continuant</em> (see e.g. the KR ontology in <a href="#Sowa_2000">[Sowa_2000]</a>). This is in contrast with event Compositions, which do not generally record continuants, but instead record <em>occurrents</em>, i.e. things that were true or did happen but have no longevity.</p>
+<p>Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. For example, the meaning of the 'medication list' Composition is always: this is the list of medications currently being taken by patient X, i.e. medications that are active or suspended. Similarly for the other persistent Composition types given above. From a scientific realist ontological point of view, the kind of information recorded in a persistent Composition is a <em>continuant</em> (see e.g. the KR ontology in <a href="#Sowa_2000">[Sowa_2000]</a>). This is in contrast with event Compositions, which do not generally record continuants, but instead record <em>occurrents</em>, i.e. events or states that occurred or were true at some moment in time.</p>
 </div>
 <div class="paragraph">
 <p>Over time, the number of event Compositions is likely to far outstrip the number of persistent Compositions. The figure below illustrates an EHR containing persistent information as well as event information.</p>
 </div>
 <div id="event_persistent_ehr" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="ehr/diagrams/event_persistent_ehr.png" alt="event persistent ehr" width="80%">
+<img src="ehr/diagrams/event_persistent_ehr.svg" alt="event persistent ehr">
 </div>
 <div class="title">Figure 6. An EHR containing Event and Persistent Compositions</div>
 </div>
@@ -1752,7 +1752,7 @@
 <p>Structurally the Folder hierarchy in <code><em>directory</em></code> is identical to each hierarchy in <code><em>folders</em></code> in its general form, i.e. each is a logical tree of named <code>FOLDER</code> objects each potentially containing references to <code>COMPOSITIONs</code>. Practically, since the <code><em>directory</em></code> hierarchy is a singleton per EHR, it must be considered as a shared object for all users (human and software) of the EHR over its lifetime, whereas each Folder hierarchy in <code><em>folders</em></code> may be created, maintained and used by different users, e.g. different hospital departments, or different parts of the health system.</p>
 </div>
 <div class="paragraph">
-<p>In the case of the <code><em>directory</em></code> hierarchy, Folders may be added contemporaneously or after the fact of recording of referenced Compositions. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. In the case of the multiple Folder hierarchies in <code><em>folders</em></code>, entirely new hierarchies may be added at any time, including much later than the creation of the data to which they refer.</p>
+<p>In the case of the <code><em>directory</em></code> hierarchy, Folders may be added c  ontemporaneously or after the fact of recording of referenced Compositions. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. In the case of the multiple Folder hierarchies in <code><em>folders</em></code>, entirely new hierarchies may be added at any time, including much later than the creation of the data to which they refer.</p>
 </div>
 <div class="paragraph">
 <p>Semantically, Folders may be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped, and within Folder archetypes, the <code><em>details</em></code> attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).</p>
@@ -1829,7 +1829,7 @@
 </div>
 <div id="ehr_contributions" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="ehr/diagrams/ehr_contributions.png" alt="ehr contributions" width="80%">
+<img src="ehr/diagrams/ehr_contributions.svg" alt="ehr contributions">
 </div>
 <div class="title">Figure 8. Contributions to the EHR</div>
 </div>
@@ -1858,19 +1858,19 @@
 <div class="sect3">
 <h4 id="_versioning_of_compositions"><a class="anchor" href="#_versioning_of_compositions"></a>4.3.1. Versioning of Compositions</h4>
 <div class="paragraph">
-<p>Versioning of Compositions is achieved with the <code>VERSIONED_OBJECT&lt;T&gt;</code> type from the change_control package (Common IM), which in the composition package is explicitly bound to the <code>COMPOSITION</code> class, via the class <code>VERSIONED_COMPOSITION</code> which inherits from the type <code>VERSIONED&lt;COMPOSITION&gt;</code>.</p>
+<p>Versioning of Compositions is achieved with the <code>VERSIONED_OBJECT&lt;T&gt;</code> type from the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_change_control_package">Common IM <code>change_control package</code></a>, which in the <code>composition</code> package is explicitly bound to the <code>COMPOSITION</code> class, via the class <code>VERSIONED_COMPOSITION</code> which inherits from the type <code>VERSIONED&lt;COMPOSITION&gt;</code>.</p>
 </div>
 <div class="paragraph">
-<p>The effect of version control on Compositions is visualised in the figure below. The versions (each "version" being a <code>COMPOSITION</code>) shown here in a <code>VERSIONED_COMPOSITION</code> are the same versions shown along each vertical line in <a href="#ehr_contributions">Figure 8</a>, this time shown with their associated audit items. The set of versions should be understood as a set of successive modifications of the same data in time.</p>
+<p>The effect of version control on Compositions is visualised in the figure below. The versions (each version being an <code>ORIGINAL_VERSION&lt;COMPOSITION&gt;</code>) shown here in a <code>VERSIONED_COMPOSITION</code> are the same versions shown along each vertical line in <a href="#ehr_contributions">Figure 8</a>, this time shown with their associated audit items. The set of versions are understood as a set of successive modifications of the same data in time.</p>
 </div>
 <div id="versioned_compositions" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="ehr/diagrams/versioned_compositions.png" alt="versioned compositions" width="80%">
+<img src="ehr/diagrams/versioned_compositions.svg" alt="versioned compositions" width="80%">
 </div>
-<div class="title">Figure 9. The versioned Composition</div>
+<div class="title">Figure 9. Versioned Compositions</div>
 </div>
 <div class="paragraph">
-<p>The <code>VERSIONED_COMPOSITION</code> can be thought of as a kind of smart repository: how it stores successive versions in time is an implementation concern (there are a number of intelligent algorithms available for this sort of thing), but what is important is that its functional interface enables any version to be retrieved, whether it be the latest, the first, or any in between.</p>
+<p>The <code>VERSIONED_COMPOSITION</code> can be thought of as a smart repository: how it stores successive versions in time is an implementation concern (there are a number of intelligent algorithms available for this), but what is important is that its functional interface enables any version to be retrieved, whether it be the latest, the first, or any in between.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1882,40 +1882,40 @@
 <table>
 <tr>
 <td class="hdlist1">
-Case-0
+Case 0
 </td>
 <td class="hdlist2">
-<p>information is authored locally, causing the creation of a new <code>VERSION&lt;COMPOSITION&gt;</code>. If this is the first version, a new <code>VERSIONED_COMPOSITION</code> will be created first.</p>
+<p>information is authored locally, causing the creation of a new <code>ORIGINAL_VERSION&lt;COMPOSITION&gt;</code>. If this is the first version, a new <code>VERSIONED_COMPOSITION</code> will be created first.</p>
 </td>
 </tr>
 <tr>
 <td class="hdlist1">
-Case-1
+Case 1
 </td>
 <td class="hdlist2">
-<p>information is modified locally, such as for the correction of a wrongly entered datum in a composition. This causes the creation of a new <code>VERSION&lt;COMPOSITION&gt;</code> in an existing <code>VERSIONED_COMPOSITION</code>, in which the <code>AUDIT_DETAILS</code>.<code><em>change_type</em></code> is set to "correction".</p>
+<p>information is modified locally, such as for the correction of a wrongly entered datum in a composition. This causes the creation of a new <code>ORIGINAL_VERSION&lt;COMPOSITION&gt;</code> in an existing <code>VERSIONED_COMPOSITION</code>, in which the <code>AUDIT_DETAILS.<em>change_type</em></code> is set to <code>"correction"</code>.</p>
 </td>
 </tr>
 <tr>
 <td class="hdlist1">
-Case-2
+Case 2
 </td>
 <td class="hdlist2">
-<p>information received from a feeder system, e.g. a test result, which will be converted and used to create a new <code>VERSION&lt;COMPOSITION&gt;</code>. This kind of acquisition could be done automatically. If the receiver system needs to store a copy of the original feeder system audit details, it writes it into the <code>COMPOSITION.<em>feeder_audit</em></code>.</p>
+<p>information received from a feeder system, e.g. a test result, which will be converted and used to create a new <code>IMPORTED_VERSION&lt;COMPOSITION&gt;</code> and <code>ORIGINAL_VERSION&lt;COMPOSITION&gt;</code> pair. This kind of acquisition could be done automatically. If the receiver system needs to store a copy of the original feeder system audit details, it writes it into the <code>COMPOSITION.<em>feeder_audit</em></code>.</p>
 </td>
 </tr>
 <tr>
 <td class="hdlist1">
-Case-3
+Case 3
 </td>
 <td class="hdlist2">
-<p>a <code>VERSION&lt;COMPOSITION&gt;</code> (such as a family history) received as part of an <code>EHR_EXTRACT</code> from another openEHR system, which will be used by a local author to create a new <code>COMPOSITION</code> that includes some content chosen from the received item. In this case, the new <code>VERSION&lt;COMPOSITION&gt;</code> is considered as a locally authored one, in which some content has been obtained from elsewhere. If it is the first version, a <code>VERSIONED_COMPOSITION</code> is first created. The <code>AUDIT_DETAILS</code> documents the committal of this content, and the clinician may choose to record some details about it in the audit description.</p>
+<p>an <code>ORIGINAL_VERSION&lt;COMPOSITION&gt;</code> (such as a family history) received as part of an <code>EHR_EXTRACT</code> from another openEHR system, which will be used by a local author to manually create a new <code>COMPOSITION</code> that includes <em>some content chosen from the received item</em>. Consequently, the new version is a locally authored one (i.e. an <code>ORIGINAL_VERSION&lt;COMPOSITION&gt;</code>). If it is the first version, a <code>VERSIONED_COMPOSITION</code> is first created. The <code>AUDIT_DETAILS</code> documents the committal of this content, and the clinician may choose to record some details about it in the audit <code><em>description</em></code>.</p>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>In summary, the <code>AUDIT_DETAILS</code> is always used to document the addition of information locally, regardless of where it has come from. If there is a need to record original audit details, they become part of the content of the versioned object.</p>
+<p>In summary, the <code>AUDIT_DETAILS</code> is always used to document the addition of information locally, regardless of where it has come from. If there is a need to record original audit details (via the <code>COMPOSITION.<em>feeder_audit</em></code>), they become part of the content of the versioned object.</p>
 </div>
 </div>
 </div>
@@ -2909,12 +2909,12 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 </div>
 <div id="ehr_with_sections" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="ehr/diagrams/ehr_with_sections.png" alt="ehr with sections" width="70%">
+<img src="ehr/diagrams/ehr_with_sections.svg" alt="ehr with sections" width="50%">
 </div>
 <div class="title">Figure 14. Section View of a General Practice Contact Composition</div>
 </div>
 <div class="paragraph">
-<p>In terms of understanding of clinical data, Section structures are not essential in a Composition - they can always be removed or ignored (typically in machine processing such as querying) without losing the meaning of the Entries in the Composition. While Sections are often used to group Entries according to status, e.g. "family history", "problems", "observations", it is the Entries themselves that indicate the definitive category of information contained therein. This principle is explained in more detail in <a href="#_entry_and_its_subtypes">Section 8.2</a>.</p>
+<p>In terms of understanding of clinical data, Section structures are not essential in a Composition - they can always be removed or ignored (typically in machine processing such as querying) without losing the meaning of the Entries in the Composition. While Sections are often used to group Entries according to status, e.g. 'family history', 'problems', 'observations', it is the Entries themselves that indicate the definitive category of information contained therein. This principle is explained in more detail in <a href="#_entry_and_its_subtypes">Section 8.2</a>.</p>
 </div>
 <div class="paragraph">
 <p>Despite the above, Section structures do not have to be regarded as ad hoc or unreliable structures. On the contrary, as they are archetyped, their structures can be relied upon in the same way as any other structure in the record can be relied on to conform to its archetype. Accordingly, solid assumptions can be made about Sections, based on their archetypes, for the purposes of querying. In fact, the main benefit of Sections is that they may provide significant performance benefits to querying, whether by interactive application or by automated systems.</p>
@@ -2962,10 +2962,10 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="ulist">
 <ul>
 <li>
-<p>more SECTIONs</p>
+<p>more <code>SECTIONs</code>;</p>
 </li>
 <li>
-<p>ENTRYs</p>
+<p><code>ENTRYs</code>.</p>
 </li>
 </ul>
 </div></div></td>
@@ -2989,7 +2989,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 </div>
 <div id="SOAP_section_structure" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="ehr/diagrams/SOAP_section_structure.png" alt="SOAP section structure" width="80%">
+<img src="UML/diagrams/RM-SOAP_section_structure.svg" alt="RM SOAP section structure">
 </div>
 <div class="title">Figure 15. "problem/SOAP" Section Structure</div>
 </div>
@@ -3012,7 +3012,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 </div>
 <div id="clinical_investigator_recording_process" class="imageblock text-center" style="text-align: center">
 <div class="content">
-<img src="ehr/diagrams/clinical_investigator_recording_process.png" alt="clinical investigator recording process" width="80%">
+<img src="ehr/diagrams/clinical_investigator_recording_process.svg" alt="clinical investigator recording process" width="80%">
 </div>
 <div class="title">Figure 16. Clinical Investigator Recording Process</div>
 </div>

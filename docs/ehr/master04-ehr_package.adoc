@@ -48,7 +48,7 @@ Other EHR-wide meta-data may be recorded in the archetyped part of this object, 
 
 === Compositions
 
-The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the Transaction concept of the GEHR project (<<GEHR_del_4>>, <<GEHR_del_7>>, <<GEHR_del_8>>, <<GEHR_del_19_20_24>>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the well-known ACID characteristics of transactions <<Gray_reuter_1993>>):
+The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the 'Transaction' concept of the GEHR project (<<GEHR_del_4>>, <<GEHR_del_7>>, <<GEHR_del_8>>, <<GEHR_del_19_20_24>>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the well-known ACID characteristics of transactions <<Gray_reuter_1993>>):
 
 * _durability_: the need for a persistent unit of information committal in the record;
 * _atomicity_: the need for a minimal unit of integrity for clinical information, corresponding to a minimal unit for committal, transmission and security;
@@ -58,7 +58,7 @@ The main data of the EHR is found in its Compositions. The Composition concept i
 * _modification_: the need for users to be able to modify EHR contents, in order to correct errors or update previously recorded information (e.g. current medications, family history); and
 * _traceability_: the need to record adequate auditing information at committal, in order to provide clinical and legal traceability.
 
-The Transaction concept was later been renamed to "Composition", which is the name of the equivalent concept in the current ISO 13606-1, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.
+The Transaction concept was later been renamed to 'Composition', which is the name of the equivalent concept in ISO 13606-1, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.
 
 ==== Event Compositions
 
@@ -66,7 +66,7 @@ Events record what happens during healthcare system events with or for the patie
 
 [.text-center]
 .Basic event-oriented EHR
-image::{diagrams_uri}/basic_event_oriented_ehr.png[id=basic_event_oriented_ehr, align="center", width=80%]
+image::{diagrams_uri}/basic_event_oriented_ehr.svg[id=basic_event_oriented_ehr, align="center", width=65%]
 
 An important job of the event Composition is to record not only the data from the healthcare event, such as observations on the patient, but also to record the event context information, i.e. the who, when, where and why of the event. For this reason, a specific class representing clinical context is associated with event compositions in the formal model.
 
@@ -84,13 +84,13 @@ In a more sophisticated EHR, there is also a need to record items of long-term i
 * Social history
 * Care plan
 
-Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. For example, the meaning of the "medication list" Composition is always: this is the list of medications currently being taken by patient X. Similarly for the other persistent Composition types given above. In scientific philosophy, the kind of information recorded in a persistent Composition is known as a _continuant_ (see e.g. the KR ontology in <<Sowa_2000>>). This is in contrast with event Compositions, which do not generally record continuants, but instead record _occurrents_, i.e. things that were true or did happen but have no longevity.
+Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. For example, the meaning of the 'medication list' Composition is always: this is the list of medications currently being taken by patient X, i.e. medications that are active or suspended. Similarly for the other persistent Composition types given above. From a scientific realist ontological point of view, the kind of information recorded in a persistent Composition is a _continuant_ (see e.g. the KR ontology in <<Sowa_2000>>). This is in contrast with event Compositions, which do not generally record continuants, but instead record _occurrents_, i.e. events or states that occurred or were true at some moment in time.
 
 Over time, the number of event Compositions is likely to far outstrip the number of persistent Compositions. The figure below illustrates an EHR containing persistent information as well as event information.
 
 [.text-center]
 .An EHR containing Event and Persistent Compositions
-image::{diagrams_uri}/event_persistent_ehr.png[id=event_persistent_ehr, align="center", width=80%]
+image::{diagrams_uri}/event_persistent_ehr.svg[id=event_persistent_ehr, align="center"]
 
 In any clinical session, an event composition will be created, and in many cases, persistent compositions will be modified. How this works is described below in <<Change Control in the EHR>>.
 
@@ -102,7 +102,7 @@ The `_directory_` was part of the initial design of the openEHR EHR in which a s
 
 Structurally the Folder hierarchy in `_directory_` is identical to each hierarchy in `_folders_` in its general form, i.e. each is a logical tree of named `FOLDER` objects each potentially containing references to `COMPOSITIONs`. Practically, since the `_directory_` hierarchy is a singleton per EHR, it must be considered as a shared object for all users (human and software) of the EHR over its lifetime, whereas each Folder hierarchy in `_folders_` may be created, maintained and used by different users, e.g. different hospital departments, or different parts of the health system.
 
-In the case of the `_directory_` hierarchy, Folders may be added contemporaneously or after the fact of recording of referenced Compositions. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. In the case of the multiple Folder hierarchies in `_folders_`, entirely new hierarchies may be added at any time, including much later than the creation of the data to which they refer.
+In the case of the `_directory_` hierarchy, Folders may be added c  ontemporaneously or after the fact of recording of referenced Compositions. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. In the case of the multiple Folder hierarchies in `_folders_`, entirely new hierarchies may be added at any time, including much later than the creation of the data to which they refer.
 
 Semantically, Folders may be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped, and within Folder archetypes, the `_details_` attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).
 
@@ -139,7 +139,7 @@ These requirements are satisfied in openEHR via the use of the change control an
 
 [.text-center]
 .Contributions to the EHR
-image::{diagrams_uri}/ehr_contributions.png[id=ehr_contributions, align="center", width=80%]
+image::{diagrams_uri}/ehr_contributions.svg[id=ehr_contributions, align="center"]
 
 * The first is due to a patient contact, and causes the creation of a new contact composition; it also causes changes to the problem list, current medications and care plan compositions (once again, in a differently designed record, all this information might have been contained in a single event Composition; likewise, it might be been distributed into even more Compositions).
 * The next Contribution is the acquisition of test results from a pathology laboratory.
@@ -151,27 +151,27 @@ The list of Contributions made to a record is recorded along with changes to the
 
 === Versioning of Compositions
 
-Versioning of Compositions is achieved with the `VERSIONED_OBJECT<T>` type from the change_control package (Common IM), which in the composition package is explicitly bound to the `COMPOSITION` class, via the class `VERSIONED_COMPOSITION` which inherits from the type `VERSIONED<COMPOSITION>`.
+Versioning of Compositions is achieved with the `VERSIONED_OBJECT<T>` type from the {openehr_rm_common}#_change_control_package[Common IM `change_control package`], which in the `composition` package is explicitly bound to the `COMPOSITION` class, via the class `VERSIONED_COMPOSITION` which inherits from the type `VERSIONED<COMPOSITION>`.
 
-The effect of version control on Compositions is visualised in the figure below. The versions (each "version" being a `COMPOSITION`) shown here in a `VERSIONED_COMPOSITION` are the same versions shown along each vertical line in <<ehr_contributions>>, this time shown with their associated audit items. The set of versions should be understood as a set of successive modifications of the same data in time.
+The effect of version control on Compositions is visualised in the figure below. The versions (each version being an `ORIGINAL_VERSION<COMPOSITION>`) shown here in a `VERSIONED_COMPOSITION` are the same versions shown along each vertical line in <<ehr_contributions>>, this time shown with their associated audit items. The set of versions are understood as a set of successive modifications of the same data in time.
 
 [.text-center]
-.The versioned Composition
-image::{diagrams_uri}/versioned_compositions.png[id=versioned_compositions, align="center", width=80%]
+.Versioned Compositions
+image::{diagrams_uri}/versioned_compositions.svg[id=versioned_compositions, align="center", width=80%]
 
-The `VERSIONED_COMPOSITION` can be thought of as a kind of smart repository: how it stores successive versions in time is an implementation concern (there are a number of intelligent algorithms available for this sort of thing), but what is important is that its functional interface enables any version to be retrieved, whether it be the latest, the first, or any in between.
+The `VERSIONED_COMPOSITION` can be thought of as a smart repository: how it stores successive versions in time is an implementation concern (there are a number of intelligent algorithms available for this), but what is important is that its functional interface enables any version to be retrieved, whether it be the latest, the first, or any in between.
 
 === Versioning Scenarios
 
 The following scenarios for creating new `COMPOSITION` versions have been identified as follows.
 
 [horizontal]
-Case-0:: information is authored locally, causing the creation of a new `VERSION<COMPOSITION>`. If this is the first version, a new `VERSIONED_COMPOSITION` will be created first.
-Case-1:: information is modified locally, such as for the correction of a wrongly entered datum in a composition. This causes the creation of a new `VERSION<COMPOSITION>` in an existing `VERSIONED_COMPOSITION`, in which the `AUDIT_DETAILS`.`_change_type_` is set to "correction".
-Case-2:: information received from a feeder system, e.g. a test result, which will be converted and used to create a new `VERSION<COMPOSITION>`. This kind of acquisition could be done automatically. If the receiver system needs to store a copy of the original feeder system audit details, it writes it into the `COMPOSITION._feeder_audit_`.
-Case-3:: a `VERSION<COMPOSITION>` (such as a family history) received as part of an `EHR_EXTRACT` from another openEHR system, which will be used by a local author to create a new `COMPOSITION` that includes some content chosen from the received item. In this case, the new `VERSION<COMPOSITION>` is considered as a locally authored one, in which some content has been obtained from elsewhere. If it is the first version, a `VERSIONED_COMPOSITION` is first created. The `AUDIT_DETAILS` documents the committal of this content, and the clinician may choose to record some details about it in the audit description.
+Case 0:: information is authored locally, causing the creation of a new `ORIGINAL_VERSION<COMPOSITION>`. If this is the first version, a new `VERSIONED_COMPOSITION` will be created first.
+Case 1:: information is modified locally, such as for the correction of a wrongly entered datum in a composition. This causes the creation of a new `ORIGINAL_VERSION<COMPOSITION>` in an existing `VERSIONED_COMPOSITION`, in which the `AUDIT_DETAILS._change_type_` is set to `"correction"`.
+Case 2:: information received from a feeder system, e.g. a test result, which will be converted and used to create a new `IMPORTED_VERSION<COMPOSITION>` and `ORIGINAL_VERSION<COMPOSITION>` pair. This kind of acquisition could be done automatically. If the receiver system needs to store a copy of the original feeder system audit details, it writes it into the `COMPOSITION._feeder_audit_`.
+Case 3:: an `ORIGINAL_VERSION<COMPOSITION>` (such as a family history) received as part of an `EHR_EXTRACT` from another openEHR system, which will be used by a local author to manually create a new `COMPOSITION` that includes _some content chosen from the received item_. Consequently, the new version is a locally authored one (i.e. an `ORIGINAL_VERSION<COMPOSITION>`). If it is the first version, a `VERSIONED_COMPOSITION` is first created. The `AUDIT_DETAILS` documents the committal of this content, and the clinician may choose to record some details about it in the audit `_description_`.
 
-In summary, the `AUDIT_DETAILS` is always used to document the addition of information locally, regardless of where it has come from. If there is a need to record original audit details, they become part of the content of the versioned object.
+In summary, the `AUDIT_DETAILS` is always used to document the addition of information locally, regardless of where it has come from. If there is a need to record original audit details (via the `COMPOSITION._feeder_audit_`), they become part of the content of the versioned object.
 
 == EHR Creation Semantics
 
