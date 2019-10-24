@@ -3175,15 +3175,17 @@ other: <code>DV_ORDERED[1]</code><br>
 <strong><em>Post_range</em></strong>: <code>normal_range /= Void implies Result = normal_range.has (self)</code><br>
 <strong><em>Post_status</em></strong>: <code>normal_status /= Void implies normal_status.code_string.is_equal (“N”)</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Value is in the normal range, determined by comparison of the value to the normal_range if present, or by the normal_status marker if present.</p>
+<p>Value is in the normal range, determined by comparison of the value to <code><em>normal_range</em></code> if present, or by the <code><em>normal_status</em></code> marker if present.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (<br>
-other: <code>Ordered[1]</code><br>
+other: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Arithmetic comparison.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -3631,7 +3633,7 @@ other: <code>DV_SCALE[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accuracy_is_percent</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>If <code>True</code>, indicates that when this object was created, accuracy was recorded as a percent value; if <code>False</code>, as an absolute quantity value.</p>
+<p>If <code>True</code>, indicates that when this object was created, <code><em>accuracy</em></code> was recorded as a percent value; if <code>False</code>, as an absolute quantity value.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3694,10 +3696,7 @@ other: <code>DV_AMOUNT[1]</code><br>
 other: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_AMOUNT</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Negated version of current object, such as used for representing a difference, e.g. a weight loss.</p>
-</div>
-<div class="paragraph">
-<p>The value of accuracy in the result is either:</p>
+<p>Subtraction operator. The value of <code><em>accuracy</em></code> in the result is either:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3710,7 +3709,7 @@ other: <code>DV_AMOUNT[1]</code><br>
 </ul>
 </div>
 <div class="paragraph">
-<p>If the accuracy value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.</p>
+<p>If the <code><em>accuracy</em></code> value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3854,7 +3853,7 @@ The display name may be language-dependent for various older and non-systematic 
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integral</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if precision = 0, meaning that the magnitude is a whole number.</p>
+<p>True if <code><em>precision</em></code> = 0, meaning that the <code><em>magnitude</em></code> is a whole number.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3974,7 +3973,7 @@ The display name may be language-dependent for various older and non-systematic 
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>precision</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places.</p>
+<p>Precision  to  which  the  <code><em>numerator</em></code> and <code><em>denominator</em></code> values of  the  proportion are expressed, in terms of number  of decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4009,7 +4008,7 @@ The display name may be language-dependent for various older and non-systematic 
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integral</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>True if the numerator and denominator values are integers, i.e. if the precision is 0.</p>
+<p>True if the <code><em>numerator</em></code> and <code><em>denominator</em></code> values are integers, i.e. if <code><em>precision</em></code> is 0.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4018,7 +4017,7 @@ The display name may be language-dependent for various older and non-systematic 
 source: <code>DV_PROPORTION[1]</code><br>
 ): <code>DV_PROPORTION</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Assignment operator</p>
+<p>Assignment operator.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4234,7 +4233,7 @@ a_diff: <code>DV_AMOUNT[1]</code><br>
 <p>Result of subtracting a differential amount from this quantity.</p>
 </div>
 <div class="paragraph">
-<p>The value of accuracy in the result is either:</p>
+<p>The value of <code><em>accuracy</em></code> in the result is either:</p>
 </div>
 <div class="ulist">
 <ul>

@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*0..1*
 |*accuracy_is_percent*: `Boolean`
-a|If `True`, indicates that when this object was created, accuracy was recorded as a percent value; if `False`, as an absolute quantity value.
+a|If `True`, indicates that when this object was created, `_accuracy_` was recorded as a percent value; if `False`, as an absolute quantity value.
 
 h|*0..1 +
 (redefined)*
@@ -56,14 +56,12 @@ h|
 |*infix -* ( +
 other: `DV_AMOUNT[1]` +
 ): `DV_AMOUNT`
-a|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
-
-The value of accuracy in the result is either:
+a|Subtraction operator. The value of `_accuracy_` in the result is either:
 
 * the sum of the accuracies of the operands, if both present, or;
 * unknown, if either or both operand accuracies are unknown.
 
-If the accuracy value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.
+If the `_accuracy_` value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.
 
 h|
 |*prefix -* (): `DV_AMOUNT`

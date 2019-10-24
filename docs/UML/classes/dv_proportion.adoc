@@ -33,7 +33,7 @@ a|Indicates semantic type of proportion, including percent, unitary etc.
 
 h|*0..1*
 |*precision*: `Integer`
-a|Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places.
+a|Precision  to  which  the  `_numerator_` and `_denominator_` values of  the  proportion are expressed, in terms of number  of decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places.
 
 h|*0..1 +
 (redefined)*
@@ -54,13 +54,13 @@ a|Effective magnitude represented by ratio.
 
 h|
 |*is_integral* (): `Boolean`
-a|True if the numerator and denominator values are integers, i.e. if the precision is 0.
+a|True if the `_numerator_` and `_denominator_` values are integers, i.e. if `_precision_` is 0.
 
 h|(redefined)
 |*infix =* ( +
 source: `DV_PROPORTION[1]` +
 ): `DV_PROPORTION`
-a|Assignment operator
+a|Assignment operator.
 
 h|*Invariants*
 2+a|*_Type_validity_*: `valid_proportion_kind (type)`
