@@ -218,13 +218,31 @@ In any of these situations, the EHR can be deactivated by setting `_is_modifiabl
 
 == Time in the EHR
 
-There are numerous times recorded in the EHR, at varying levels of granularity. Certain times are a guaranteed by-product of the scientific investigation process, including time of sampling or collection; time of measurement, time of a healthcare business event, time of data committal. The following figure indicates these times with respect to Observation recordings (generally the most numerous) in the EHR.
+There are numerous times recorded in the EHR, at varying levels of granularity. Certain times are a guaranteed by-product of the scientific investigation process, including time of sampling or collection; time of measurement, time of a healthcare business event, time of data committal. The following figures illustrate the relationship between points on the timeline of real-world clinical activity, and the corresponding data elements in the openEHR EHR.
+
+The first figure shows the relationships for a physical examination at a GP visit.
 
 [.text-center]
-.Time in the EHR
-image::{diagrams_uri}/time_in_the_ehr.png[id=time_in_the_ehr, align="center", width=80%]
+.Time in the EHR - GP encounter
+image::{diagrams_uri}/time_in_the_ehr.svg[id=time_in_the_ehr, align="center", width=70%]
 
-The top part of the figure shows the relationship of times typical for a physical examination at a GP visit. The lower part of the figure shows different relationships common in radiology and microbiology, where the sample (imaging or specimen collection) time can be quite different from the time of assessment and reporting of the sample. The times shown in the above figure have a close correspondence with the contexts described in <<Context Model of Recording>>; they also have (as shown) concrete attributes in the reference model.
+In this scenario, an observation (say, of blood pressure) is instantaneous for all practical purposes. This may be contrasted with lab testing, shown below, where the sample time (moment of specimen collection) is usually different from the time of analysis and reporting of the sample. The time lag may be as long as the specimen is biochemically stable such that the analysis will still accurately reflect the clinical situation in the patient at the time of specimen-taking. 
+
+[.text-center]
+.Time in the EHR - Lab test
+image::{diagrams_uri}/time_in_the_ehr-lab.svg[id=time_in_the_ehr_lab, align="center", width=70%]
+
+The following figure shows the relationships between real world time points and openEHR data for radiology.
+
+[.text-center]
+.Time in the EHR - Radiology
+image::{diagrams_uri}/time_in_the_ehr-radiology.svg[id=time_in_the_ehr_radiology, align="center", width=60%]
+
+The last example shown below shows the relationship of time and EHR data for in-patient nursing observations, where the notion of 'encounter' is somewhat artificial.
+
+[.text-center]
+.Time in the EHR - Nursing observations
+image::{diagrams_uri}/time_in_the_ehr-nursing_obs.svg[id=time_in_the_ehr_nursing_obs, align="center"]
 
 Other times to do with diagnoses (time of onset, time of resolution, time of last episode) and medication management (time started taking medication, time stopped, time suspended, etc) are specific to the particular type of information (e.g. diagnosis versus prognosis versus recommendation) and are generally represented as archetyped date/time values within Evaluation objects. Basic timing information is modelled concretely in the Instruction and Action Entry types, while archetyping is used to express timing information that is specific to particular content.
 
