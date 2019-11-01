@@ -28,7 +28,13 @@ a|Name of territory in which this Composition was written. Coded from openEHR  c
 
 h|*1..1*
 |*category*: `DV_CODED_TEXT`
-a|Indicates what broad category this Composition is belogs to, e.g. persistent  - of longitudinal validity,  event ,  process  etc.
+a|Temporal category of this Composition, i.e.
+
+* `431&#124;persistent&#124;` - of potential life-time validity;
+* `435&#124;episodic&#124;` - valid over the life of a care episode;
+* `433&#124;event&#124;` - valid at the time of recording (long-term validity requires subsequent clinical assessment).
+
+or any other code defined in the openEHR terminology group 'category'.
 
 h|*0..1*
 |*context*: `EVENT_CONTEXT`
@@ -47,7 +53,7 @@ h|*Functions*
 
 h|
 |*is_persistent* (): `Boolean`
-a|True if category is a  persistent  type, False otherwise. Useful for finding Compositions in an EHR which are guaranteed to be of interest to most users.
+a|True if category is `431&#124;persistent&#124;`, False otherwise. Useful for finding Compositions in an EHR which are guaranteed to be of interest to most users.
 
 h|*Invariants*
 2+a|*_Category_validity_*: `terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_composition_category, category.defining_code)`

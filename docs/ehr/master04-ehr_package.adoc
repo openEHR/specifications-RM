@@ -48,7 +48,7 @@ Other EHR-wide meta-data may be recorded in the archetyped part of this object, 
 
 === Compositions
 
-The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the 'Transaction' concept of the GEHR project (<<GEHR_del_4>>, <<GEHR_del_7>>, <<GEHR_del_8>>, <<GEHR_del_19_20_24>>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the well-known ACID characteristics of transactions <<Gray_reuter_1993>>):
+The main data of the EHR is found in its Compositions, i.e. instances of the `COMPOSITION` class in the RM. Composition is based on the notion of a unit of information resulting from the interaction of a healthcare agent (subject or healthcare professional) with the EHR. It is designed to satisfy the following needs, which include the well-known ACID characteristics of transactions <<Gray_reuter_1993>>:
 
 * _durability_: the need for a persistent unit of information committal in the record;
 * _atomicity_: the need for a minimal unit of integrity for clinical information, corresponding to a minimal unit for committal, transmission and security;
@@ -58,41 +58,45 @@ The main data of the EHR is found in its Compositions. The Composition concept i
 * _modification_: the need for users to be able to modify EHR contents, in order to correct errors or update previously recorded information (e.g. current medications, family history); and
 * _traceability_: the need to record adequate auditing information at committal, in order to provide clinical and legal traceability.
 
-The Transaction concept was later been renamed to 'Composition', which is the name of the equivalent concept in ISO 13606-1, and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the openEHR Common Information Model); how this applies to the EHR and compositions is described below. Secondly, the informational purpose of a Composition is no longer just to contain data from a passing clinical event such as a patient contact, but also to capture particular categories of clinical data which have long-lived significance, such as problem and medication lists.Experience with health information systems, including the GEHR (Australia) project, SynEx, Synapses, and inspection of common commercial systems, has shown that there are two general categories of information at the coarse level which are found in an EHR: event items, and longitudinal, or persistent items, of which there are various kinds.
+The Composition concept originated from the 'Transaction' concept of the GEHR project (<<GEHR_del_4>>, <<GEHR_del_7>>, <<GEHR_del_8>>, <<GEHR_del_19_20_24>>). In openEHR, it was renamed to 'Composition' (the name of the equivalent concept in ISO 13606-1), and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the {openehr_rm_common}[openEHR Common Information Model]); how this applies to the EHR and Compositions is described below.
 
-==== Event Compositions
-
-Events record what happens during healthcare system events with or for the patient, such as patient contacts, but also sessions in which the patient is not a participant (e.g. surgery) or not present (e.g. pathology testing). The figure below illustrates a simple EHR comprising an accumulation of event Compositions.
+Secondly, the informational purpose of a Composition is not just to capture data from a passing clinical event such as a patient contact, but also to track longitudinal significant patient state, such as problems, allergies and medications. Accordingly, openEHR Compositions are temporally classified using a small number of broad categories recorded in the `COMPOSITION._category_` attribute. Categories include _event_, _episodic_ and _persistent_. From a scientific realist ontological point of view, the kind of information recorded in a persistent Composition approximates a description of some _continuant_ aspect of the patient (see e.g. the KR ontology in <<Sowa_2000>>). This is in contrast with event Compositions, which record _occurrents_, i.e. events or states that occurred or were true at some moment in time. The episodic category corresponds to information that is relevant for the period of time of a care episode.
 
 [.text-center]
-.Basic event-oriented EHR
-image::{diagrams_uri}/basic_event_oriented_ehr.svg[id=basic_event_oriented_ehr, align="center", width=65%]
-
-An important job of the event Composition is to record not only the data from the healthcare event, such as observations on the patient, but also to record the event context information, i.e. the who, when, where and why of the event. For this reason, a specific class representing clinical context is associated with event compositions in the formal model.
+.An EHR containing Persistent, Episodic and Event Compositions
+image::{diagrams_uri}/event_persistent_ehr.svg[id=event_persistent_ehr, align="center"]
 
 ==== Persistent Compositions
 
-In a more sophisticated EHR, there is also a need to record items of long-term interest in the record. These are often separated by clinicians into well-known categories, such as:
+In an EHR, there is a need to record items that summarise the key aspects of patient state, which are of ongoing relevance in the record. These are often separated by clinicians into well-known categories, such as:
 
-* Problem list
-* Current medications
-* Therapeutic precautions
-* Vaccination history
-* Patient preferences
-* Lifestyle
-* Family history
-* Social history
-* Care plan
+* Problem list - list of current problems, issues or concerns;
+* Current medications - list of patient medications that are _active_ or _suspended_;
+* Therapeutic precautions - list of allergies and interactions relevant to care;
+* Vaccination history - list of vaccinations; acts as a proxy for patient immunity state;
+* Patient preferences - list of proscribed and/or preferred types of treatment;
+* Lifestyle - e.g. substance use, profession-related information;
+* Family history - major problems in biological relatives; acts as a proxy for patient risk;
+* Social situation - picture of patient living situation relevant to care provision;
+* Care plan - Plan(s) produced by clinicians describing planned management of chronic problems.
 
-Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. For example, the meaning of the 'medication list' Composition is always: this is the list of medications currently being taken by patient X, i.e. medications that are active or suspended. Similarly for the other persistent Composition types given above. From a scientific realist ontological point of view, the kind of information recorded in a persistent Composition is a _continuant_ (see e.g. the KR ontology in <<Sowa_2000>>). This is in contrast with event Compositions, which do not generally record continuants, but instead record _occurrents_, i.e. events or states that occurred or were true at some moment in time.
+Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. The total number of persistent Composition is normally small for any given patient, and almost always less than 20, even with the possibility of more than one instance of some, e.g. multiple problem lists. However the number of versions due to updating over time may be significant.
 
-Over time, the number of event Compositions is likely to far outstrip the number of persistent Compositions. The figure below illustrates an EHR containing persistent information as well as event information.
+==== Event Compositions
 
-[.text-center]
-.An EHR containing Event and Persistent Compositions
-image::{diagrams_uri}/event_persistent_ehr.svg[id=event_persistent_ehr, align="center"]
+Event Compositions record what happens during healthcare system activities performed with and/or for the patient, such as:
 
-In any clinical session, an event composition will be created, and in many cases, persistent compositions will be modified. How this works is described below in <<Change Control in the EHR>>.
+* observations, assessments, orders and actions performed during a patient contact; 
+* actions performed during an activity in which the patient is not a participant e.g. surgery;
+* actions performed during an activity in which the patient is not present e.g. pathology testing.
+
+An important job of the event Composition is to record not only the data from the healthcare event, such as observations on the patient, but also to record the event context information, i.e. the who, when, where and why of the event. For this reason, a specific class `EVENT_CONTEXT` representing clinical context is associated with event Compositions in the formal model.
+
+Over time, the number of event Compositions is likely to far outstrip the number of persistent Compositions in a typical EHR, while the average number of versions per Composition (normally only due to corrections) will be far lower.
+
+==== Episodic Compositions
+
+Compositions may be classified as _episodic_ if they contain information relevant to an ongoing care situation spanning sigificant time, such as pregnancy and birth, major surgery and recovery etc. During a specific episode of care, event Compositions will still be used to record normal clinical events, particularly routine observations. However, assessments, summaries and care plans specific to the condition being treated may be committed in Compositions with `_category_` set to `episodic` in order to enable them to be queried more easily later on.
 
 === Directory and Folders
 
@@ -157,7 +161,7 @@ The effect of version control on Compositions is visualised in the figure below.
 
 [.text-center]
 .Versioned Compositions
-image::{diagrams_uri}/versioned_compositions.svg[id=versioned_compositions, align="center", width=80%]
+image::{diagrams_uri}/versioned_compositions.svg[id=versioned_compositions, align="center"]
 
 The `VERSIONED_COMPOSITION` can be thought of as a smart repository: how it stores successive versions in time is an implementation concern (there are a number of intelligent algorithms available for this), but what is important is that its functional interface enables any version to be retrieved, whether it be the latest, the first, or any in between.
 
