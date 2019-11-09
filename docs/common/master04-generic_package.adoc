@@ -66,7 +66,7 @@ Here it is modelled as a subtype of `AUDIT_DETAILS`, meaning that it is logicall
 * the date and time of the action of attestation (`AUDIT_DETAILS._time_committed_`);
 * references to items in the record being attested to (`ATTESTATION._items_`); if this list is empty, the attestation is for the entire object (usually the content of an `ORIGINAL_VERSION`) to which the attestation is attached, otherwise the list must contain a set of paths to items within the item to which the attestation is attached;
 * an optionally coded reason for attestation (`ATTESTATION._reason_`);
-* an optional literal view of the the content attested, e.g. a binary screen image;
+* an optional literal view of the content attested, e.g. a binary screen image;
 * a proof of attestation in the form of a digital signature by the attesting party.
 
 The digital signature, if present, is generated using the openPGP standard ({rfc4880}[IETF RFC 4880]) as, according to the process shown below.

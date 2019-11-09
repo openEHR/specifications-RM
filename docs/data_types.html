@@ -411,11 +411,17 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-92" target="_blank" rel="noopener">SPECRM-92</a>. Correct numerous minor typographical and formatting errors.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">J Mewes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Nov 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-64" target="_blank" rel="noopener">SPECRM-64</a>: Add <code>CODE_PHRASE.<em>term</em></code> optional field to carry rubric (preferred term) text. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-132" target="_blank" rel="noopener">SPECPR-132</a>, <a href="https://specifications.openehr.org/tickets/SPECPR-165" target="_blank" rel="noopener">SPECPR-165</a>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">H Frankel,<br>
  I McNicoll,<br>
  SEC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>08 Oct 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">08 Oct 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1081,6 +1087,9 @@
 <p>Chunlan Ma PhD, MD, Ocean Informatics, Australia</p>
 </li>
 <li>
+<p>Jan Mewes, KS-plus.org, India/Germany</p>
+</li>
+<li>
 <p>Bjørn Næss, DIPS, Norway</p>
 </li>
 <li>
@@ -1268,7 +1277,7 @@ reliably be reasoned about in an object-oriented way.</p>
 </div>
 <div class="paragraph">
 <p>To simplify implementation in all object-oriented formalisms, including IDL, programming languages
-and XML-schema, multiple inheritance has generally been avoided (where it is used, only onr
+and XML-schema, multiple inheritance has generally been avoided (where it is used, only one
 branch corresponds to substitutability). Generic classes have been used, since they significantly clarify
 the model. Type genericity is available in Java, C#, Eiffel, C++, and some other languages. For
 languages not having it, there is a well-known transformation from models containing generic classes
@@ -1449,7 +1458,7 @@ such as names or addresses.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In addition, a type of item being identified can also be recorded, such as "driver&#8217;s licence" or "Medicare card". All fields are text fields, rather than coded, as no definitive vocabularies are available. However, some useful sources of terms exists, such as <a href="https://www.hl7.org/fhir/v2/0203/index.html">HL7v2 Table 203</a> for the <code>type</code> field. If using the latter, it is recommended to use the 'description' not the code.</p>
+<p>In addition, a type of item being identified can also be recorded, such as 'driver&#8217;s licence' or 'Medicare card'. All fields are text fields, rather than coded, as no definitive vocabularies are available. However, some useful sources of terms exists, such as <a href="https://www.hl7.org/fhir/v2/0203/index.html">HL7v2 Table 203</a> for the <code>type</code> field. If using the latter, it is recommended to use the 'description', not the code.</p>
 </div>
 <div class="paragraph">
 <p>Only the <code>identifier</code> field is mandatory to allow for use cases in which the other fields cannot be populated. However it is strongly recommended to populate the <code>type</code> and <code>issuer</code> fields where possible. In many cases the <code>issuer</code> and <code>assigner</code> have the same value, however two fields allow for the situation in which a central issuer provides blocks of identifiers (typically on some kind of form or other paperwork) to other organisations who then assign them to individuals, as is often done with prescription identifiers.</p>
@@ -1695,7 +1704,7 @@ Serves as a common ancestor of all data value types in openEHR models.</p>
 <p>The variant Terminology Id = <code>"[authority]:[Domain value set]"</code> could also be supported, although it should not generally be necessary, since all codes should be unique within a given issuing authority. Examples might be <code>"openehr:event math function"</code>, <code>"hl7:gender"</code>;</p>
 </li>
 <li>
-<p>Terminology Id = <code>"SNOMED-CT"</code>, <code>"ICD10AM"</code>, etc. Idemtifiers of this kind must be unique values in an accepted set of terminologies from an authoritative source. These MUST be universally known. In openEHR, names from the US Natoinal Library of Medicine&#8217;s UMLS terminology name list are used. See the <a href="https://specifications.openehr.org/releases/RM/latest/support.html#_terminology_package" target="_blank" rel="noopener"><code>terminology</code> package in the for details</a>.</p>
+<p>Terminology Id = <code>"SNOMED-CT"</code>, <code>"ICD10AM"</code>, etc. Idemtifiers of this kind must be unique values in an accepted set of terminologies from an authoritative source. These MUST be universally known. In openEHR, names from the US National Library of Medicine&#8217;s UMLS terminology name list are used. See the <a href="https://specifications.openehr.org/releases/RM/latest/support.html#_terminology_package" target="_blank" rel="noopener"><code>terminology</code> package in the for details</a>.</p>
 </li>
 </ol>
 </div>
@@ -1938,8 +1947,8 @@ sophisticated.</p>
 <p>Negations are more complex than might first be apparent and are best handled by good archetype
 design. Terminologies might provide a term such as "No known allergies" which is helpful. But if
 someone has an allergy of some sort, the medicolegal requirement might be to record that the person
-has no known allergies to penicillin or another class of medication that is being prescribed. The oftenproposed
-approach of using a generic negation 'modifier' to deal with such issues results in further
+has no known allergies to penicillin or another class of medication that is being prescribed. The often
+proposed approach of using a generic negation 'modifier' to deal with such issues results in further
 problems. Consider the use of negation with liver - "no liver", "no palpable liver", "no liver disease",
 "no history of liver disease", "no liver function", "no liver function tests". The meaning of negated
 terms may be non-sensical and difficult to interpret.</p>
@@ -2104,7 +2113,7 @@ e.g. ICD or ICPC codes, the following approach is recommended:</p>
 <h4 id="_language_translations"><a class="anchor" href="#_language_translations"></a>5.1.6. Language Translations</h4>
 <div class="paragraph">
 <p>In most cases the natural language of a text object is known from the enclosing Entry (i.e. Observation)
-or other enclosing context. Where it is different (e.g. a german sentence within an English language
+or other enclosing context. Where it is different (e.g. a German sentence within an English language
 diagnosis), or there is no enclosing context, the <code>DV_TEXT.<em>language</em></code> attribute can be set to
 indicate the language of the text item.</p>
 </div>
@@ -2771,7 +2780,7 @@ an argument sometimes put forward for recording all ordinals in a more precise w
 <div class="sect4">
 <h5 id="_countable_things"><a class="anchor" href="#_countable_things"></a>6.1.1.2. Countable Things</h5>
 <div class="paragraph">
-<p>An common kind of data value in medicine is the dimensionless countable quantity, e.g.</p>
+<p>A common kind of data value in medicine is the dimensionless countable quantity, e.g.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2982,7 +2991,7 @@ the 'normal' range for a measured value. Examples of reference ranges:</p>
 <p>Logically, an accuracy attribute should also be included in <code>DV_QUANTIFIED</code>, but as its modelling is different in the subtypes in a way that does not easily lend itself to a common ancestor, it is only included in the subtypes.</p>
 </div>
 <div class="paragraph">
-<p>The <code>DV_QUANTIFIED</code> class has two subtypes: <code>DV_AMOUNT</code> and <code>DV_ABSOLUTE_QUANTITY</code>. The former corresponds to relative 'amounts' of something, either a physical property(such as mass) or items (e.g. cigarettes). Mathematically, the <code>+</code> and <code>-</code> operators (as well as <code>*</code> and <code>/</code>) are defined in the same way as for the real numbers (or any other mathematical 'field'), with the semantics that adding two relative quantities measuring the same thing (i.e. with the same units) produces another relative quantity of the same kind; while the semantics of subtraction are that one relative quantity subtracted from another generates a third.</p>
+<p>The <code>DV_QUANTIFIED</code> class has two subtypes: <code>DV_AMOUNT</code> and <code>DV_ABSOLUTE_QUANTITY</code>. The former corresponds to relative 'amounts' of something, either a physical property (such as mass) or items (e.g. cigarettes). Mathematically, the <code>+</code> and <code>-</code> operators (as well as <code>*</code> and <code>/</code>) are defined in the same way as for the real numbers (or any other mathematical 'field'), with the semantics that adding two relative quantities measuring the same thing (i.e. with the same units) produces another relative quantity of the same kind; while the semantics of subtraction are that one relative quantity subtracted from another generates a third.</p>
 </div>
 <div class="paragraph">
 <p>The second subtype of <code>DV_QUANTIFIED</code>, <code>DV_ABSOLUTE_QUANTITY</code>, models quantities whose values are absolute along a line having a defined origin. The main example of absolute quantities are the temporal concepts date, time and date/time. These are distinguished from relative quantities in that the normal addition and subtraction operations don&#8217;t apply. Instead, the semantics of such operators are based on the idea of the difference between absolute values being a relative amount. For example, two dates can be subtracted, but the result is a duration, not another date. For this reason, the operations <code><em>add</em></code>, <code><em>subtract</em></code> and <code><em>diff</em></code> are defined rather than <code>+</code> or <code>-</code>. Date/time types, as well as the relative concept duration, are defined in <a href="#_date_time_package">Section 7</a>.</p>
@@ -4451,7 +4460,7 @@ may be unknown in a date, but a date cannot have month unknown and day known.</p
 <h5 id="_calendars"><a class="anchor" href="#_calendars"></a>7.1.2.3. Calendars</h5>
 <div class="paragraph">
 <p>A comment on calendars is in order. In this specification, all date/time types currently modelled are
-Gregorian calendar based. This is the same assumption made by by ISO 8601, and most technical
+Gregorian calendar based. This is the same assumption made by ISO 8601, and most technical
 computing systems today in many parts of the world. At first glance this may seem like a culturally
 insensitive approach, but in fact it makes sense in computational terms, for both users of the Gregorian and other calendars, e.g. Julian, Islamic, Baha&#8217;i, etc. Arguments against trying to use the
 date/time classes defined here to represent date/times from any calendar include the following:</p>
@@ -4490,7 +4499,7 @@ not necessarily function correctly simply by adding a calendar field.</p>
 <div class="paragraph">
 <p>For users requiring non-Gregorian dates in EHR and other health systems there are two approaches.
 One is to treat non-Gregorian dates as a localisation issue, to be handled inside the application and
-GUI evnvironment. The other is to actually add further sibling packages to the openEHR date/time
+GUI environment. The other is to actually add further sibling packages to the openEHR date/time
 package, for each new calendar or calendar group required. Conversion algorithms would most likely
 be needed in and out of the Gregorian types to enable interoperability of information drawn from different
 applications or sources. This approach may require a substantial modelling effort.</p>
@@ -4996,7 +5005,7 @@ same names, and is illustrated below.</p>
 <div class="paragraph">
 <p>One of the difficulties with time is expressing future times, since potential occurrences, durations,
 repetitions cannot be expressed in the same way as actual time. Complicating the problem is the fact
-that humans tend to use very customary (i.e. calandar-anchored) ways of specifying time, such as
+that humans tend to use very customary (i.e. calendar-anchored) ways of specifying time, such as
 "every second Tuesday", or "the first Sunday of the month". In clinical medicine, future time is most
 commonly used to express when medications or other therapies are intended to take place. They are
 often anchored to the calendar, and can easily include repetitions.</p>
@@ -6059,7 +6068,7 @@ as follows:</p>
 "ordered" (having the function '&lt;') and "numeric" (having the functions '+', '-', '*', '/') but in practice
 it does not matter much. For type systems with no convenient supertype of the numeric concrete
 types <code>Real</code>, <code>Integer</code>, <code>Double</code>, the <code><em>magnitude</em></code> property can safely be left out of <code>DV_QUANTIFIED</code>;
-the only drawback is that code cannot call <code>DV_QUANTIFIED</code>.<code><em>magnitude</em></code> polymmorphically, e.g. in a
+the only drawback is that code cannot call <code>DV_QUANTIFIED</code>.<code><em>magnitude</em></code> polymorphically, e.g. in a
 statistical application processing <code>DV_QUANTITY</code> and <code>DV_COUNT</code> objects.</p>
 </div>
 </div>
@@ -6535,8 +6544,8 @@ minor problems, including:</p>
 <li>
 <p>the <code>PIVL</code>.<code><em>phase</em></code> attribute is used to represent an interval during which a activity occurs,
 example given is "2 minutes every 8 hours". However, the "2 mins" is almost always part of
-a therapeutic prescription of some kind, not part of the timing specification as such. Thera
-peutic prescriptions have the form "do X every Y time", where the X describes what to do,
+a therapeutic prescription of some kind, not part of the timing specification as such. Therapeutic
+prescriptions have the form "do X every Y time", where the X describes what to do,
 and how long to do it for (e.g. 40 mins massage, administer a drug slowly over 10 mins). In
 fact, what we are really interested in with a timing specification is the specification of the
 starting points in time of some activity, not a time-based graph of on/off points, whch is
@@ -6834,7 +6843,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-01 04:47:09 -03
+Last updated 2019-11-09 11:13:19 -03
 </div>
 </div>
 </body>

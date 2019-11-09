@@ -352,11 +352,16 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-92" target="_blank" rel="noopener">SPECRM-92</a>. Correct numerous minor typographical and formatting errors.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">J Mewes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>09 Nov 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-89" target="_blank" rel="noopener">SPECRM-89</a>. Add 'episodic' type to <code>COMPOSITION.<em>category</em></code>. Update text and diagrams in sections 4.2.4, 4.3.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
- P Pazos,<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
  I McNicoll</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>01 Nov 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01 Nov 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1155,6 +1160,9 @@
 <p>Chunlan Ma PhD, MD, Ocean Informatics, Australia</p>
 </li>
 <li>
+<p>Jan Mewes, KS-plus.org, India/Germany</p>
+</li>
+<li>
 <p>Pablo Pazos Gutierrez, CaboLabs, Uruguay</p>
 </li>
 <li>
@@ -1506,7 +1514,7 @@
 <div class="sect3">
 <h4 id="_omg_hdtf"><a class="anchor" href="#_omg_hdtf"></a>2.2.3. OMG HDTF</h4>
 <div class="paragraph">
-<p>In general, the openEHR information models represent a more recent analysis of the required semantics of EHR and related information than can be found in the information viewpoint of the OMG HDTF specifications (particularly PIDS and COAS). However, the computational viewpoint (i.e. functional service interface definitions) is one of the inputs to the openEHR srevice model develpment activity.</p>
+<p>In general, the openEHR information models represent a more recent analysis of the required semantics of EHR and related information than can be found in the information viewpoint of the OMG HDTF specifications (particularly PIDS and COAS). However, the computational viewpoint (i.e. functional service interface definitions) is one of the inputs to the openEHR service model development activity.</p>
 </div>
 </div>
 </div>
@@ -1633,7 +1641,7 @@
 <div class="sect3">
 <h4 id="_ehr_access"><a class="anchor" href="#_ehr_access"></a>4.2.2. EHR Access</h4>
 <div class="paragraph">
-<p>Access control settings for the whole EHR are specified in the <code>EHR_ACCESS</code> object. This includes default privacy policy, lists of identified accessors (individuals and groups) and exceptions to the default policies, each one identifying a particular Composition in the EHR. All changes to the EHR Access object are versioned via the normal mechanism, ensuring that the visible view of the EHR atany previous point in time is reconstructable.</p>
+<p>Access control settings for the whole EHR are specified in the <code>EHR_ACCESS</code> object. This includes default privacy policy, lists of identified accessors (individuals and groups) and exceptions to the default policies, each one identifying a particular Composition in the EHR. All changes to the EHR Access object are versioned via the normal mechanism, ensuring that the visible view of the EHR at any previous point in time is reconstructable.</p>
 </div>
 <div class="paragraph">
 <p>Because security models for health information are still in their infancy, the openEHR model adopts a completely flexible approach. Only two hard-wired attributes are defined in the <code>EHR_ACCESS</code> class. The first is the name of the security scheme currently in use, while the second (settings attribute) is an object containing the access settings for the EHR according to that particular scheme. Each scheme is defined by an instance of a subclass of the abstract class <code>ACCESS_CONTROL_SETTINGS</code>, defined in the Security Information Model.</p>
@@ -2598,7 +2606,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="title">Note</div>
 </td>
 <td class="content">
-Persistent Compositions may optionally have an Event context. In openEHR releases up to 1.0.3, Persistent Compositions had no Event context. This was releaxed in subsequent releases, to allow the inclusion of context information (e.g. encounter data) for changes to Persistent Compositions where no Event Composition was created.
+Persistent Compositions may optionally have an Event context. In openEHR releases up to 1.0.3, Persistent Compositions had no Event context. This was relaxed in subsequent releases, to allow the inclusion of context information (e.g. encounter data) for changes to Persistent Compositions where no Event Composition was created.
 </td>
 </tr>
 </table>
@@ -3088,7 +3096,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <p>The process illustrated in <a href="#clinical_investigator_recording_process">Figure 18</a> is a synthesis of the "problem-oriented" approach of Weed (<a href="#Weed_1969">[Weed_1969]</a>) and the "hypothetico-deductive model" of clinical reasoning described by Elstein <em>et al</em> <a href="#Elstein_1987">[Elstein_1987]</a>. However, as pointed out in <a href="#Elstein_Schwarz_2002">[Elstein_Schwarz_2002]</a>, hypothesis-making and testing is not the only successful process used by clinical professionals - evidence shows that many (particularly those older and more experienced) rely on pattern recognition and direct retrieval of plans used previously with similar patients or prototype models. The investigator process is compatible with both cognitive approaches, since it does not say how opinions are formed, nor imply any specific number or size of iterations to bring the process to a conclusion. As such, the openEHR information model does not impose any process model, only the types of information used.</p>
 </div>
 <div class="paragraph">
-<p>On the basis of this process, a Clinical Investigator Recording ontology is developed <a href="#Beale_Heard_2007">[Beale_Heard_2007]</a>, as shown below. From this ontology, the openEHR class model for Entries is derivde. The openEHR Entry class names are annotated next to their originating ontological categories.</p>
+<p>On the basis of this process, a Clinical Investigator Recording ontology is developed <a href="#Beale_Heard_2007">[Beale_Heard_2007]</a>, as shown below. From this ontology, the openEHR class model for Entries is derived. The openEHR Entry class names are annotated next to their originating ontological categories.</p>
 </div>
 <div id="CIR_ontology" class="imageblock text-center" style="text-align: center">
 <div class="content">
@@ -3165,7 +3173,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="sect3">
 <h4 id="_standard_clinical_types_of_data"><a class="anchor" href="#_standard_clinical_types_of_data"></a>8.1.3. Standard Clinical Types of Data</h4>
 <div class="paragraph">
-<p>Commonly used types of clinical information are directly representable using the openEHR Entry types. As described in the openEHR EHR IM, two kinds of Composition are identified: persistent and event. The persistent kind corresponds to information that characterises the patient in the long term, and is maintained by clinicians - it can be thought of as a proxy "model of the patient". Most of the the following are examples of Entry level data belonging inside persistent Compositions:</p>
+<p>Commonly used types of clinical information are directly representable using the openEHR Entry types. As described in <a href="#_compositions">Section 4.2.4</a>, two kinds of Composition are identified: persistent and event. The persistent kind corresponds to information that characterises the patient in the long term, and is maintained by clinicians - it can be thought of as a proxy "model of the patient". Most of the following are examples of Entry level data belonging inside persistent Compositions:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3210,7 +3218,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <p><em>Vaccination record</em>: vaccinations are a kind of Instruction; vaccinations that have actually been given are available as Actions in the record.</p>
 </li>
 <li>
-<p><em>Care plan</em>: combinations of goals, targets (Evaluations), monitoring, education (Instructions), etc orgnanised in a care plan Section hierarchy.</p>
+<p><em>Care plan</em>: combinations of goals, targets (Evaluations), monitoring, education (Instructions), etc organised in a care plan Section hierarchy.</p>
 </li>
 </ul>
 </div>
@@ -3249,7 +3257,7 @@ and includes the following:</p>
 <p>clinically-relevant patient information, such as age, sex, height, weight, eye-colour, ethnicity or 'race', occupation;</p>
 </li>
 <li>
-<p>identifiers and/or names of health care provider individuals and organisations may be stored directly in the EHR, regardless of whether there is also more detalied information about such entities in the demographic system.</p>
+<p>identifiers and/or names of health care provider individuals and organisations may be stored directly in the EHR, regardless of whether there is also more detailed information about such entities in the demographic system.</p>
 </li>
 </ul>
 </div>
@@ -3369,7 +3377,7 @@ and includes the following:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code><em>protocol</em></code>: details of how the observation was carried out, which might include a particular clinical protocol (e.g. Bruce protocol for treadmill exercise ECG) and/or information about instruments other other observational methods. This information can always be safely omitted from the user interface, i.e. has no bearing on the interpretation of the data.</p>
+<p><code><em>protocol</em></code>: details of how the observation was carried out, which might include a particular clinical protocol (e.g. Bruce protocol for treadmill exercise ECG) and/or information about instruments other observational methods. This information can always be safely omitted from the user interface, i.e. has no bearing on the interpretation of the data.</p>
 </li>
 </ul>
 </div>
@@ -4051,8 +4059,10 @@ EXPIRED
 <p>Entry subtype for administrative information, i.e. information about setting up the clinical process, but not itself clinically relevant. Archetypes will define contained information.</p>
 </div>
 <div class="paragraph">
-<p>Used for admistrative details of admission, episode, ward location, discharge, appointment (if not stored in a practice management or appointments system).
-Not to be used for any clinically significant information.</p>
+<p>Used for administrative details of admission, episode, ward location, discharge, appointment (if not stored in a practice management or appointments system).</p>
+</div>
+<div class="paragraph">
+<p>Not to be used for any clinically significant information.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4397,7 +4407,7 @@ The data of the Entry; modelled in archetypes.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>instruction_details</strong>: <code>INSTRUCTION_DETAILS</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Details to of the Instruction that caused this Action to be performed, if there was one.</p>
+<p>Details of the Instruction that caused this Action to be performed, if there was one.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5030,7 +5040,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-28 21:57:52 -03
+Last updated 2019-11-09 11:14:03 -03
 </div>
 </div>
 </body>
