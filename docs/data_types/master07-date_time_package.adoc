@@ -4,7 +4,7 @@
 
 The `data_types.quantity.date_time` package includes three absolute date/time concepts:
 `DV_DATE`, `DV_TIME`, `DV_DATE_TIME`, and a relative concept: `DV_DURATION`. The representations of
-all of these are ISO8601:2004-compatible date/time strings. They also include the ISO8601 semantics
+all of these are {iso_8601}[ISO 8601:2004] compatible date/time strings. They also include the ISO 8601 semantics
 for partial dates and times. The `quantity.date_time` package is illustrated below.
 
 [.text-center]
@@ -87,7 +87,7 @@ date/times is as follows.
 * For imprecise durations, an interval should be used, i.e. `DV_INTERVAL<DV_DURATION>`. In this way durations like "2 - 3 hrs" can be represented, and still be computable.
 
 Based on the above considerations, the requirements for partial types are satisfied by the semantics of
-ISO8601:2004 for "reduced accuracy" date/times, in which parts of a date, time or date/time can be
+ISO 8601:2004 for "reduced accuracy" date/times, in which parts of a date, time or date/time can be
 missing from the right hand end of the string. This models the reasonable situation where e.g. day
 may be unknown in a date, but a date cannot have month unknown and day known.
 
@@ -128,7 +128,7 @@ applications or sources. This approach may require a substantial modelling effor
 
 Algorithms for conversion between the Egyptian, Armenian, Khwarizmian, Persian, Ethiopian, Coptic,
 Republican, Macedonian, Syrian, Julian Roman, Gregorian, Islamic A, Islamic B, Baha'i and
-Saka calendars are described by  <<Richards_1998,Richards>> and are based on the work of D. A. Hatcher (1986).
+Saka calendars are described by cite:[Richards1998] and are based on the work of D. A. Hatcher (1986).
 
 ==== Representation
 

@@ -11,7 +11,7 @@ weight), `ITEM_LIST` (for lists such as parts of an address), `ITEM_TREE` (for h
 data such as a microbiology report) and `ITEM_TABLE` (for tabular data such as visual acuity or reflex
 test results). Each of these classes defines a functional interface, has an optimal physical representation
 using the basic types `CLUSTER` and `ELEMENT` from the `representation` package, and can generate
-a CEN EN13606-compliant hierarchical representation of its data. Any system implementing
+a {iso_13606}[ISO 13606^] compliant hierarchical representation of its data. Any system implementing
 these types is guaranteed to create data which represents the logical structures of lists, tables and trees
 identically.
 
@@ -22,15 +22,15 @@ In some circumstances however, additional detail is required in addition to the 
 The openEHR class model for spatial structures is illustrated on the right-hand side of <<data_structures_package>>. It should be noted that these classes (`ITEM_LIST` etc) are not equivalents of similarly named classes (such as `List<T>`) in most data structure libraries - they also include per-node `_name_`,
 `_archetype_node_id_` and leaf node value and null flavour, and path capabilities.
 
-== CEN EN13606 Encoding Rules
+== ISO 13606 Encoding Rules
 
 === ITEM_SINGLE
 
-An `ITEM_SINGLE` object is encoded in EN13606 as a single `ELEMENT` object.
+An `ITEM_SINGLE` object is encoded in ISO 13606 as a single `ELEMENT` object.
 
 === ITEM_LIST
 
-An `ITEM_LIST` object is encoded in EN13606 as a `CLUSTER` object containing the set of `ELEMENTs`
+An `ITEM_LIST` object is encoded in ISO 13606 as a `CLUSTER` object containing the set of `ELEMENTs`
 from the openEHR list.
 
 === ITEM_TABLE
@@ -44,7 +44,7 @@ The `ITEM_TABLE` encoding rules are as follows:
 
 === ITEM_TREE
 
-Data of an `ITEM_TREE` instance are simply replicated as is to produce the correct EN13606 hierarchical form.
+Data of an `ITEM_TREE` instance are simply replicated as is to produce the correct ISO 13606 hierarchical form.
 
 == Class Descriptions
 

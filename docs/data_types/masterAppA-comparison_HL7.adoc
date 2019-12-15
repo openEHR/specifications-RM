@@ -89,8 +89,8 @@ identifier (assumed to be a timestamp).
 The openEHR data types are defined on the assumption of archetype-based systems. While they will
 work perfectly well in systems which know nothing about archetyping, some types are not defined
 because archetypable structures built from more basic entities are assumed instead, rather than concretely
-modelled data types. These include "types" for address and person name which are found in
-HL7v3 and CEN 13606.
+modelled data types. These include 'types' for Address and PersonName which are found in
+HL7v3 and ISO 13606.
 
 === Treatment of Inbuilt Types
 The HL7v3 data types do not make any assumptions about the existence of types typically built-in to
@@ -182,7 +182,7 @@ invariant of the HL7 `IVL<T>` class could be:
 When an instance of this class is created, this condition should be satisfied, and remain satisfied for
 the life of the instance. To do otherwise is to create instances of data which other software can make
 no assumptions about, and is forced to check every single field, and then determine what to do in an
-ad hoc way. (See <<Meyer_OOSC2>> p366, <<Booch_1994>> p43, <<Kilov_1994>> p29 for detailed explanations of the invariant concept).
+ad hoc way. (See cite:[Meyer_OOSC2] p366, cite:[Booch1994] p43, cite:[Kilov1994] p29 for detailed explanations of the invariant concept).
 Possible consequences of the built-in Null marker design approach include:
 
 * since even HL7's basic types `ST`, `INT`, `REAL`, `LIST<>`, `SET<>` include null markers, processing

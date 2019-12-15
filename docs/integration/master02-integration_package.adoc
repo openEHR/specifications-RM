@@ -19,9 +19,9 @@ data and terminology usage. Technically speaking, there is not much difference b
 and non-standardised legacy models; only the reusability of the solution differs.
 
 Another important category of externally sourced data addressed by the Integration package
-described here is data expressed in a form of a CEN EN13606 Extract. Part 1 of EN13606 defines a
+described here is data expressed in a form of a {iso_13606}[ISO 13606 Extract^]. Part 1 of ISO 13606 defines a
 information model which is nearly identical to that of openEHR at the `COMPOSITION` and `SECTION`
-levels. The CEN EN13606 `Entry` class is a generic structure with a minimum of contextual metadata,
+levels. The ISO 13606 `Entry` class is a generic structure with a minimum of contextual metadata,
 and can easily be mapped to the openEHR Entry type described in this specification.
 
 The primary need with respect to legacy data is to be able to convert data from multiple mutually
@@ -105,15 +105,15 @@ The `GENERIC_ENTRY` class provides a way to represent data from non-openEHR syst
 the openEHR Extract specification in order to either communicate with openEHR systems, or to
 communicate with other systems also implementing the openEHR Extract specification.
 
-=== Integration with CEN EN13606
+=== Integration with ISO 13606
 
-The `GENERIC_ENTRY` class provides a convenient basis for making openEHR systems EN13606-
+The `GENERIC_ENTRY` class provides a convenient basis for making openEHR systems ISO 13606-
 compliant, which in turn gives openEHR a gateway capability in heterogeneous environments where
-EN13606 is being used to communicate data. A CEN EN13606 EHR Extract can be converted to a
+ISO 13606 is being used to communicate data. A ISO 13606 EHR Extract can be converted to a
 series of `COMPOSITIONs` containing `GENERIC_ENTRY` objects which obey appropriate integration
 archetypes; this data can then be semantically converted into orthodox openEHR objects for integration
 into a coherent EHR. Similarly, openEHR data can be converted into the `GENERIC_ENTRY`-based
-intermediate form for further conversion into EN13606 EHR Extracts.
+intermediate form for further conversion into ISO 13606 EHR Extracts.
 
 == Data Conversion Architecture
 

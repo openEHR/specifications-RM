@@ -1,6 +1,7 @@
 = Background
 
 == Scope
+
 The data type specification presented here defines the clinical/scientific data types which are used in
 other openEHR models. Harmonisation of data types between information models used by related
 services in a health information infrastructure is essential to reducing the conversion work and potential
@@ -8,10 +9,11 @@ for errors between these services. Accordingly, the openEHR data type specificat
 work not only for the EHR, but also for other models defined by openEHR, such as the openEHR
 demographic and terminological models.
 
-The types described here have been derived from data types used in the GEHR <<GeHR_Aus_req>>, Synapses and
-SynEx <<EHCR_supA_35>>, CEN 13606 <<ISO_13606-1>>, <<ISO_13606-3>> and the HL7v3 <<HL7v3_data_types>> reference models.
+The types described here have been derived from data types used in Good Electronic Health Record cite:[GeHR_Aus2001], the Synapses project 
+cite:[Synapses_Req_A], and various standards {iso_13606-1}[ISO 13606-1^], {iso_13606-3}[ISO 13606-3^] and {hl7v3_data_types}[HL7v3 Data Types^].
 
 == Design Criteria
+
 Over and above the need to satisfy the functional requirements of clinical data, three concerns have
 driven the design of the openEHR data types:
 
@@ -56,14 +58,14 @@ simplifies things.
 == Prior Work
 
 Four other type systems for clinical data, namely the GEHR data types, the HL7 v3 data types, the
-CEN 13606 data item types, and the Corbamed data types were carefully scrutinised in order to
+{iso_13606-1}[ISO 13606-1^] data item types, and the {omg_corbamed}[OMG Corbamed^] data types were carefully scrutinised in order to
 ensure a) that all needed types were covered in the openEHR specification, and b) that data conversion
 will be possible. Concepts from all three are cross-referenced throughout this specification where
 possible.
 
-Because the HL7v3 data type specification is a widely available and comprehensive specification for
+Because the {hl7v3_data_types}[HL7v3 data type specification^] is a widely available and comprehensive specification for
 clinican data types, particular attention has been paid to incorporating its semantics, as well as fixing
 errors or shortcomings. While there are differences both in design approach and in detail, a significant
 debt must be recognised to the authors of this work, from which many ideas in the present specification
-were drawn. A detailed discussion is found under <<Comparison with HL7v3 Types>>.
+were drawn. A detailed discussion is found in <<Comparison with HL7v3 Types>>.
 
