@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="description" content="openEHR Data Structures Information Model specification">
 <meta name="keywords" content="EHR, data structures, openehr">
 <title>Data Structures Information Model</title>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
-<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -47,7 +46,7 @@
 <li><a href="#_item_structure_package">4. Item Structure Package</a>
 <ul class="sectlevel2">
 <li><a href="#_overview_2">4.1. Overview</a></li>
-<li><a href="#_cen_en13606_encoding_rules">4.2. CEN EN13606 Encoding Rules</a>
+<li><a href="#_iso_13606_encoding_rules">4.2. ISO 13606 Encoding Rules</a>
 <ul class="sectlevel3">
 <li><a href="#_item_single">4.2.1. ITEM_SINGLE</a></li>
 <li><a href="#_item_list">4.2.2. ITEM_LIST</a></li>
@@ -102,10 +101,10 @@
 </li>
 <li><a href="#_class_descriptions_4">6.2. Class Descriptions</a>
 <ul class="sectlevel3">
-<li><a href="#_history_t_class">6.2.1. HISTORY&lt;T&gt; Class</a></li>
-<li><a href="#_event_t_class">6.2.2. EVENT&lt;T&gt; Class</a></li>
-<li><a href="#_point_event_t_class">6.2.3. POINT_EVENT&lt;T&gt; Class</a></li>
-<li><a href="#_interval_event_t_class">6.2.4. INTERVAL_EVENT&lt;T&gt; Class</a></li>
+<li><a href="#_historyt_class">6.2.1. HISTORY&lt;T&gt; Class</a></li>
+<li><a href="#_eventt_class">6.2.2. EVENT&lt;T&gt; Class</a></li>
+<li><a href="#_point_eventt_class">6.2.3. POINT_EVENT&lt;T&gt; Class</a></li>
+<li><a href="#_interval_eventt_class">6.2.4. INTERVAL_EVENT&lt;T&gt; Class</a></li>
 </ul>
 </li>
 <li><a href="#_history_instance_structures">6.3. History Instance Structures</a>
@@ -116,6 +115,7 @@
 </li>
 </ul>
 </li>
+<li><a href="#_references">References</a></li>
 </ul>
 </li>
 </ul>
@@ -124,7 +124,7 @@
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="https://specifications.openehr.org/images/openEHR_logo_RGB.svg" alt="openEHR logo">
 </div>
@@ -134,10 +134,10 @@
 <h1 id="_data_structures_information_model" class="sect0">Data Structures Information Model</h1>
 <div class="openblock partintro">
 <div class="content">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all fit-content spread">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col>
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -158,12 +158,12 @@
 </tr>
 </tbody>
 </table>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <object type="image/svg+xml" data="openehr_block_diagram.svg" width="60%"><span class="alt">openEHR components</span></object>
 </div>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -193,7 +193,7 @@
 <div class="sect1">
 <h2 id="_amendment_record">Amendment Record</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 54.5454%;">
@@ -214,13 +214,19 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>1.7.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-7" target="_blank" rel="noopener">SPECPUB-7</a>: Convert citations to bibtex form.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Dec 2019</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-77" target="_blank" rel="noopener">SPECRM-77</a>. Add <code>ELEMENT.<em>null_reason</em></code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll,<br>
  H Leslie,<br>
  S Ljosland Bakke,<br>
  T Schuler,<br>
  T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Oct 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Oct 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -671,7 +677,7 @@ lists, tables, trees, and history.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>One of the motivations for defining logical data structures explicitly is to remove the ambiguity in recording structure and time in previous EHR specifications and standards, including GEHR, CEN 13606, HL7v3 CDA and HL7 FHIR specifications. The approach in these standards to representing time and structure is to use undifferentiated hierarchical structures - there is no specification about how a table or a time series might be represented. Where single values are recorded, an attribute meaning 'time of recording' is usually set; if a time series was required, there is no clear guideline as to how to model it. The standardised approach used here removes all such ambiguity, and improves the quality of data and software.</p>
+<p>One of the motivations for defining logical data structures explicitly is to remove the ambiguity in recording structure and time in previous EHR specifications and standards, including <a href="https://www.openehr.org/resources/related_projects#gehr" target="_blank" rel="noopener">The Good European Health Record</a>, <a href="https://www.iso.org/standard/40784.html" target="_blank" rel="noopener">ISO 13606</a>, <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=7" target="_blank" rel="noopener">HL7 CDA</a> and <a href="https://www.hl7.org/fhir/" target="_blank" rel="noopener">HL7 FHIR</a> specifications. The approach in these standards to representing time and structure is to use undifferentiated hierarchical structures - there is no specification about how a table or a time series might be represented. Where single values are recorded, an attribute meaning 'time of recording' is usually set; if a time series was required, there is no clear guideline as to how to model it. The standardised approach used here removes all such ambiguity, and improves the quality of data and software.</p>
 </div>
 </div>
 </div>
@@ -685,7 +691,7 @@ the <code>history</code> package. The first describes generic, path-addressable 
 describes a generic notion of linear history, for recording events in past time. The
 <code>data_structures package</code> is illustrated in the UML diagram below.</p>
 </div>
-<div id="data_structures_package" class="imageblock text-center" style="text-align: center">
+<div id="data_structures_package" class="imageblock text-center text-center">
 <div class="content">
 <img src="UML/diagrams/RM-data_structures.svg" alt="RM data structures">
 </div>
@@ -695,15 +701,15 @@ describes a generic notion of linear history, for recording events in past time.
 <p>The <code>data_structures package</code> itself contains a single class, <code>DATA_STRUCTURE</code>, which is the
 ancestor of all openEHR data structures. Its only feature is the function as_hierarchy, which is implemented
 by each subtype of <code>DATA_STRUCTURE</code>, in order to generate a physical representation of the
-structure in CEN EN13606 form. The 13606 form is usually less optimal than the openEHR form, but
+structure in ISO 13606 form. The ISO 13606 form is usually less optimal than the openEHR form, but
 is compatible with the less semantically rich standard, and is guaranteed (in theory) to be comprehensible
-to other systems which support CEN EN13606 as an interoperability standard.</p>
+to other systems which support ISO 13606 as an interoperability standard.</p>
 </div>
 <div class="sect2">
 <h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>3.1. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_data_structure_class"><a class="anchor" href="#_data_structure_class"></a>3.1.1. DATA_STRUCTURE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -716,7 +722,7 @@ to other systems which support CEN EN13606 as an interoperability standard.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Abstract parent class of all data structure types. Includes the <code><em>as_hierarchy</em></code> function which can generate the equivalent CEN EN13606 single hierarchy for each subtype&#8217;s physical representation. For example, the physical representation of an <code>ITEM_LIST</code> is <code>List&lt;ELEMENT&gt;</code>; its implementation of <code><em>as_hierarchy</em></code> will generate a <code>CLUSTER</code> containing the set of <code>ELEMENT</code> nodes from the list.</p>
 </div></div></td>
 </tr>
@@ -732,7 +738,7 @@ to other systems which support CEN EN13606 as an interoperability standard.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>ITEM</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Hierarchical equivalent of the physical representation of each subtype, compatible with CEN EN 13606 structures.</p>
 </div></div></td>
 </tr>
@@ -758,7 +764,7 @@ weight), <code>ITEM_LIST</code> (for lists such as parts of an address), <code>I
 data such as a microbiology report) and <code>ITEM_TABLE</code> (for tabular data such as visual acuity or reflex
 test results). Each of these classes defines a functional interface, has an optimal physical representation
 using the basic types <code>CLUSTER</code> and <code>ELEMENT</code> from the <code>representation</code> package, and can generate
-a CEN EN13606-compliant hierarchical representation of its data. Any system implementing
+a <a href="https://www.iso.org/standard/40784.html" target="_blank" rel="noopener">ISO 13606</a> compliant hierarchical representation of its data. Any system implementing
 these types is guaranteed to create data which represents the logical structures of lists, tables and trees
 identically.</p>
 </div>
@@ -774,17 +780,17 @@ identically.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cen_en13606_encoding_rules"><a class="anchor" href="#_cen_en13606_encoding_rules"></a>4.2. CEN EN13606 Encoding Rules</h3>
+<h3 id="_iso_13606_encoding_rules"><a class="anchor" href="#_iso_13606_encoding_rules"></a>4.2. ISO 13606 Encoding Rules</h3>
 <div class="sect3">
 <h4 id="_item_single"><a class="anchor" href="#_item_single"></a>4.2.1. ITEM_SINGLE</h4>
 <div class="paragraph">
-<p>An <code>ITEM_SINGLE</code> object is encoded in EN13606 as a single <code>ELEMENT</code> object.</p>
+<p>An <code>ITEM_SINGLE</code> object is encoded in ISO 13606 as a single <code>ELEMENT</code> object.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_item_list"><a class="anchor" href="#_item_list"></a>4.2.2. ITEM_LIST</h4>
 <div class="paragraph">
-<p>An <code>ITEM_LIST</code> object is encoded in EN13606 as a <code>CLUSTER</code> object containing the set of <code>ELEMENTs</code>
+<p>An <code>ITEM_LIST</code> object is encoded in ISO 13606 as a <code>CLUSTER</code> object containing the set of <code>ELEMENTs</code>
 from the openEHR list.</p>
 </div>
 </div>
@@ -813,7 +819,7 @@ from the openEHR list.</p>
 <div class="sect3">
 <h4 id="_item_tree"><a class="anchor" href="#_item_tree"></a>4.2.4. ITEM_TREE</h4>
 <div class="paragraph">
-<p>Data of an <code>ITEM_TREE</code> instance are simply replicated as is to produce the correct EN13606 hierarchical form.</p>
+<p>Data of an <code>ITEM_TREE</code> instance are simply replicated as is to produce the correct ISO 13606 hierarchical form.</p>
 </div>
 </div>
 </div>
@@ -821,7 +827,7 @@ from the openEHR list.</p>
 <h3 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>4.3. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_item_structure_class"><a class="anchor" href="#_item_structure_class"></a>4.3.1. ITEM_STRUCTURE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -834,7 +840,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Abstract parent class of all spatial data types.</p>
 </div></div></td>
 </tr>
@@ -847,7 +853,7 @@ from the openEHR list.</p>
 </div>
 <div class="sect3">
 <h4 id="_item_single_class"><a class="anchor" href="#_item_single_class"></a>4.3.2. ITEM_SINGLE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -860,7 +866,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Logical single value data structure. Used to represent any data which is logically a single value, such as a person&#8217;s height or weight.</p>
 </div></div></td>
 </tr>
@@ -876,7 +882,7 @@ from the openEHR list.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -886,7 +892,7 @@ from the openEHR list.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>ELEMENT</code>.</p>
 </div></div></td>
 </tr>
@@ -895,7 +901,7 @@ from the openEHR list.</p>
 </div>
 <div class="sect3">
 <h4 id="_item_list_class"><a class="anchor" href="#_item_list_class"></a>4.3.3. ITEM_LIST Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -908,7 +914,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Logical list data structure, where each item has a value and can be referred to by a name and a positional index in the list. The list may be empty.</p>
 </div>
 <div class="paragraph">
@@ -930,7 +936,7 @@ from the openEHR list.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;ELEMENT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Physical representation of the list.</p>
 </div></div></td>
 </tr>
@@ -942,14 +948,14 @@ from the openEHR list.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_count</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Count of all items.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the names of all items.</p>
 </div></div></td>
 </tr>
@@ -958,7 +964,7 @@ from the openEHR list.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_item</strong> (<br>
 a_name: <code>String[1]</code><br>
 ): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the item with name ‘a_name’.</p>
 </div></div></td>
 </tr>
@@ -967,20 +973,20 @@ a_name: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_item</strong> (<br>
 i: <code>Integer[1]</code><br>
 ): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the i-th item with name.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>CLUSTER</code> containing the <code>ELEMENTs</code> of this list.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Valid_structure</em></strong>: ` items.forall (i:ITEM &#124; i.type = "ELEMENT")`</p>
 </div></div></td>
 </tr>
@@ -989,7 +995,7 @@ i: <code>Integer[1]</code><br>
 </div>
 <div class="sect3">
 <h4 id="_item_table_class"><a class="anchor" href="#_item_table_class"></a>4.3.4. ITEM_TABLE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1002,7 +1008,7 @@ i: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Logical relational database style table data structure, in which columns are named and ordered with respect to each other. Implemented using Cluster-per-row encoding. Each row Cluster must have an identical number of Elements, each of which in turn must have identical names and value types in the corresponding positions in each row.</p>
 </div>
 <div class="paragraph">
@@ -1027,7 +1033,7 @@ i: <code>Integer[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rows</strong>: <code>List&lt;CLUSTER&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Physical representation of the table as a list of <code>CLUSTERs</code>, each containing the data of one row of the table.</p>
 </div></div></td>
 </tr>
@@ -1039,28 +1045,28 @@ i: <code>Integer[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_count</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Number of rows in the table.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_count</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return number of columns in the table.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return set of row names.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return set of column names.</p>
 </div></div></td>
 </tr>
@@ -1069,7 +1075,7 @@ i: <code>Integer[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_row</strong> (<br>
 i: <code>Integer[1]</code><br>
 ): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return i-th row.</p>
 </div></div></td>
 </tr>
@@ -1078,7 +1084,7 @@ i: <code>Integer[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_name</strong> (<br>
 a_key: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return <code>True</code> if there is a column with name = <code><em>a_key</em></code>.</p>
 </div></div></td>
 </tr>
@@ -1087,7 +1093,7 @@ a_key: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_column_with_name</strong> (<br>
 a_key: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return <code>True</code> if there is a column with name = <code><em>a_key</em></code>.</p>
 </div></div></td>
 </tr>
@@ -1096,7 +1102,7 @@ a_key: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_row</strong> (<br>
 a_key: <code>String[1]</code><br>
 ): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return row with name = <code><em>a_key</em></code>.</p>
 </div></div></td>
 </tr>
@@ -1105,7 +1111,7 @@ a_key: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_key</strong> (<br>
 keys: <code>List&lt;String&gt;[0..1]</code><br>
 ): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return <code>True</code> if there is a row with key <code><em>keys</em></code>.</p>
 </div></div></td>
 </tr>
@@ -1114,7 +1120,7 @@ keys: <code>List&lt;String&gt;[0..1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_with_key</strong> (<br>
 keys: <code>List&lt;String&gt;[0..1]</code><br>
 ): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return rows with particular keys.</p>
 </div></div></td>
 </tr>
@@ -1124,20 +1130,20 @@ keys: <code>List&lt;String&gt;[0..1]</code><br>
 i,<br>
 j: <code>Integer[1]</code><br>
 ): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return cell at a particular location.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>CLUSTER</code> containing the <code>CLUSTERs</code> representing the columns of this table.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Valid_structure</em></strong>: <code>rows.for_all (items.for_all (instance_of ("ELEMENT")))</code></p>
 </div></div></td>
 </tr>
@@ -1146,7 +1152,7 @@ j: <code>Integer[1]</code><br>
 </div>
 <div class="sect3">
 <h4 id="_item_tree_class"><a class="anchor" href="#_item_tree_class"></a>4.3.5. ITEM_TREE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1159,7 +1165,7 @@ j: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Logical tree data structure. The tree may be empty. Used for representing data which are logically a tree such as audiology results, microbiology results, biochemistry results.</p>
 </div></div></td>
 </tr>
@@ -1175,7 +1181,7 @@ j: <code>Integer[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;ITEM&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The items comprising the <code>ITEM_TREE</code>. Can include 0 or more <code>CLUSTERs</code> and/or 0 or more individual <code>ELEMENTs</code>.</p>
 </div></div></td>
 </tr>
@@ -1189,7 +1195,7 @@ j: <code>Integer[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_element_path</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if path  a_path' is a valid leaf path.</p>
 </div></div></td>
 </tr>
@@ -1198,14 +1204,14 @@ a_path: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>element_at_path</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the leaf element at the path  a_path'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy, which is the same as the tree&#8217;s physical representation.</p>
 </div></div></td>
 </tr>
@@ -1220,7 +1226,7 @@ a_path: <code>String[1]</code><br>
 <div class="paragraph">
 <p>The figure below illustrates a <code>ITEM_SINGLE</code> instance, in both physical and logical forms.</p>
 </div>
-<div id="instance_item_single" class="imageblock text-center" style="text-align: center">
+<div id="instance_item_single" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/instance_item_single.svg" alt="instance item single" width="50%">
 </div>
@@ -1232,7 +1238,7 @@ a_path: <code>String[1]</code><br>
 <div class="paragraph">
 <p>The following figure illustrates a typical <code>ITEM_LIST</code> structure, in this case for a BP protocol.</p>
 </div>
-<div id="instance_item_list" class="imageblock text-center" style="text-align: center">
+<div id="instance_item_list" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/instance_item_list.svg" alt="instance item list" width="75%">
 </div>
@@ -1244,7 +1250,7 @@ a_path: <code>String[1]</code><br>
 <div class="paragraph">
 <p>The next figure illustrates a table of visual acuity test results.</p>
 </div>
-<div id="instance_item_table" class="imageblock text-center" style="text-align: center">
+<div id="instance_item_table" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/instance_item_table.svg" alt="instance item table">
 </div>
@@ -1256,7 +1262,7 @@ a_path: <code>String[1]</code><br>
 <div class="paragraph">
 <p>The following figure illustrates the logical and concrete forms of an example <code>ITEM_TREE</code> instance, representing a biochemistry result.</p>
 </div>
-<div id="instance_item_tree" class="imageblock text-center" style="text-align: center">
+<div id="instance_item_tree" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/instance_item_tree.svg" alt="instance item tree">
 </div>
@@ -1272,14 +1278,14 @@ a_path: <code>String[1]</code><br>
 <div class="sect2">
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>5.1. Overview</h3>
 <div class="paragraph">
-<p>This package contains classes for a simple hierarchical representation of any data structure, as shown on the lower right side of <a href="#data_structures_package">Figure 1</a>. These classes are compatible with the ISO 13606-1 classes of the same names, and instances can be losslessly generated to and from ISO 13606 instance structures.</p>
+<p>This package contains classes for a simple hierarchical representation of any data structure, as shown on the lower right side of <a href="#data_structures_package">Figure 1</a>. These classes are compatible with the <a href="https://www.iso.org/standard/40784.html" target="_blank" rel="noopener">ISO 13606-1</a> classes of the same names, and instances can be losslessly generated to and from ISO 13606 instance structures.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>5.2. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_item_class"><a class="anchor" href="#_item_class"></a>5.2.1. ITEM Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1292,7 +1298,7 @@ a_path: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>The abstract parent of <code>CLUSTER</code> and <code>ELEMENT</code> representation classes.</p>
 </div></div></td>
 </tr>
@@ -1305,7 +1311,7 @@ a_path: <code>String[1]</code><br>
 </div>
 <div class="sect3">
 <h4 id="_cluster_class"><a class="anchor" href="#_cluster_class"></a>5.2.2. CLUSTER Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1318,7 +1324,7 @@ a_path: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>The grouping variant of <code>ITEM</code>, which may contain further instances of <code>ITEM</code>, in an ordered list.</p>
 </div></div></td>
 </tr>
@@ -1334,7 +1340,7 @@ a_path: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;ITEM&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Ordered list of items - <code>CLUSTER</code> or <code>ELEMENT</code> objects - under this <code>CLUSTER</code>.</p>
 </div></div></td>
 </tr>
@@ -1343,7 +1349,7 @@ a_path: <code>String[1]</code><br>
 </div>
 <div class="sect3">
 <h4 id="_element_class"><a class="anchor" href="#_element_class"></a>5.2.3. ELEMENT Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1356,7 +1362,7 @@ a_path: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>The leaf variant of <code>ITEM</code>, to which a <code>DATA_VALUE</code> instance is attached.</p>
 </div></div></td>
 </tr>
@@ -1372,21 +1378,21 @@ a_path: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>null_flavour</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Flavour of null value, e.g. <code>253&#124;unknown&#124;</code>, <code>271&#124;no information&#124;</code>, <code>272&#124;masked&#124;</code>, and <code>273&#124;not applicable&#124;</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>DATA_VALUE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Property representing leaf value object of <code>ELEMENT</code>. In real data, any concrete subtype of <code>DATA_VALUE</code> can be used.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>null_reason</strong>: <code>DV_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional specific reason for null value; if set, <code><em>null_flavour</em></code> must be set. Null reason may apply only to a minority of clinical data, commonly needed in reporting contexts.</p>
 </div></div></td>
 </tr>
@@ -1398,31 +1404,31 @@ a_path: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_null</strong> (): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if value logically not known, e.g. if indeterminate, not asked etc.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Inv_is_null_valid</em></strong>: <code>is_null() = (value = Void)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Inv_null_flavour_indicated</em></strong>: <code>is_null() xor null_flavour = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Inv_null_flavour_valid</em></strong>: <code>is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Inv_null_reason_valid</em></strong>: <code>null_reason /= Void implies is_null()</code></p>
 </div></div></td>
 </tr>
@@ -1441,10 +1447,10 @@ a_path: <code>String[1]</code><br>
 <p>The <code>history</code> package defines classes which formalise the concept of past, linear time, via which historical data of any structural complexity can be recorded. It supports both instantaneous and interval event samples within periodic and aperiodic series.</p>
 </div>
 <div class="paragraph">
-<p>Regardless of whether the actual data consist of a single sample or many, they are represented in the same way: as a history of events, i.e. as a time series, allowing all software to access data in a uniform way, whether it be a single measurement of weight, a long series of three- or four-dimensional images, or a series of encapsulated multimedia items. The type of data contained in a History structure may be any openEHR data, including text, coded, quantitative, time, or multimedia. In the case of quantitative and date/time data (<a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_quantity_package">openEHR Data Types, <code>rm.data_types.quantity</code> package</a>), the data are formally quantitative, but for the vast majority of cases of other types of data (text, coded etc), there is an obvious quantitative interpretation associated with the values. An example is samples whose data values are coded terms such as 'low', 'normal', 'high', 'critical high', representing blood pressure measurements over time.</p>
+<p>Regardless of whether the actual data consist of a single sample or many, they are represented in the same way: as a history of events, i.e. as a time series, allowing all software to access data in a uniform way, whether it be a single measurement of weight, a long series of three- or four-dimensional images, or a series of encapsulated multimedia items. The type of data contained in a History structure may be any openEHR data, including text, coded, quantitative, time, or multimedia. In the case of quantitative and date/time data (<code>rm.data_types.quantity</code> package in <a href="https://specifications.openehr.org/releases/RM/latest/data_types.html#_quantity_package" target="_blank" rel="noopener">openEHR Data Types</a>), the data are formally quantitative, but for the vast majority of cases of other types of data (text, coded etc), there is an obvious quantitative interpretation associated with the values. An example is samples whose data values are coded terms such as 'low', 'normal', 'high', 'critical high', representing blood pressure measurements over time.</p>
 </div>
 <div class="paragraph">
-<p>Instantaneous events are representing using the type <code>POINT_EVENT</code>, for which the value (<code><em>data</em></code> attribute) always represents an actual instantaneous value of a datum at a point in time. However, time series data may also be represented using the <code>INTERVAL_EVENT</code> type, enabling values other than 'actual' to be recorded for intervals of time. Events recorded in this form are accordingly tagged with a mathematical function, such as 'actual', 'mean', 'change' and so on, as defined by the openEHR <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml"><code>event math function</code> vocabulary</a>.</p>
+<p>Instantaneous events are representing using the type <code>POINT_EVENT</code>, for which the value (<code><em>data</em></code> attribute) always represents an actual instantaneous value of a datum at a point in time. However, time series data may also be represented using the <code>INTERVAL_EVENT</code> type, enabling values other than 'actual' to be recorded for intervals of time. Events recorded in this form are accordingly tagged with a mathematical function, such as 'actual', 'mean', 'change' and so on, as defined by the openEHR <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml" target="_blank" rel="noopener"><code>event math function</code> vocabulary</a>.</p>
 </div>
 <div class="paragraph">
 <p>The model also supports the inclusion of 'summary' data, i.e. a textual or image item which summarises in some way the entire history.</p>
@@ -1479,7 +1485,7 @@ of any Event is computed as the difference between the <code>EVENT.<em>time</em>
 <div class="paragraph">
 <p>Periodicity and aperiodicity are expressed via the <code><em>is_periodic</em></code> and <code><em>period</em></code> attributes. For a periodic time-series, <code><em>period</em></code> is set to the period duration value and <code><em>is_periodic</em></code> returns <code>True</code>. The total duration of the History is given by the <code>HISTORY.<em>duration</em></code> function. The following figure illustrates a number of variations in History periodicity and Event type.</p>
 </div>
-<div id="history_period" class="imageblock text-center" style="text-align: center">
+<div id="history_period" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_period.svg" alt="history period" width="70%">
 </div>
@@ -1491,7 +1497,7 @@ of any Event is computed as the difference between the <code>EVENT.<em>time</em>
 <div class="paragraph">
 <p>The simplest kind of Event in a History is a 'point' event, expressed by instances of the class <code>POINT_EVENT</code>, representing an instantaneous value. A <code>HISTORY</code> instance may be composed solely of Point events, as would be the case with a number of blood pressure values measured over time as the patient changes position. An Apgar result is a typical example of aperiodic point data, typically consisting of 2 or 3 events, each containing 5 values and a 6th value repersenting the Apgar score for that time point. Point data may also be available from monitoring devices. For fine-granularity (e.g. 1 second) data, the number of samples may be too voluminous for the health record, and more efficient recording in the form of summary Interval events (see below) might be desired. The diagram below  illustrates the structure of a <code>HISTORY</code> containing <code>POINT_EVENTs</code>.</p>
 </div>
-<div id="history_bp" class="imageblock text-center" style="text-align: center">
+<div id="history_bp" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_bp.svg" alt="history bp">
 </div>
@@ -1509,7 +1515,7 @@ of any Event is computed as the difference between the <code>EVENT.<em>time</em>
 <div class="paragraph">
 <p>The particular math functions used in each Interval event in a History may vary throughout the History; for example, one 4-hour Interval event might contain data representing average values, while a following event might contain data representing maximum values for the same or a later time point. Such data can be conveniently used for generating sophisticated graphs of the underlying datum over time. The next figure illustrates a History containing 2 pairs of 4-hour blood pressure Interval events, with each pair containing maximum and mean blood pressure value structures for <code>+4h</code> and <code>+8h</code> timepoints (each of which consist of a systolic and diastolic value).</p>
 </div>
-<div id="history_bp_math" class="imageblock text-center" style="text-align: center">
+<div id="history_bp_math" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_bp_math.svg" alt="history bp math">
 </div>
@@ -1518,7 +1524,7 @@ of any Event is computed as the difference between the <code>EVENT.<em>time</em>
 <div class="paragraph">
 <p>Interval events can overlap other interval or point events within the same History. A situation where this may occur is with measurement of different periods of vital signs, such as 4-hourly blood pressure events, overlapped by a 24-hour event which contains the values over a period of 6 x 4 hour periods. In general a long Interval event can overlap any combination of Point or Interval events, as shown in the following figure.</p>
 </div>
-<div id="history_event_overlapping" class="imageblock text-center" style="text-align: center">
+<div id="history_event_overlapping" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_event_overlapping.png" alt="history event overlapping" width="60%">
 </div>
@@ -1553,7 +1559,7 @@ of any Event is computed as the difference between the <code>EVENT.<em>time</em>
 </li>
 </ul>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1598,7 +1604,7 @@ stored</th>
 </li>
 </ul>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1672,7 +1678,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <div class="paragraph">
 <p>A useful practical consequence of the Interval Event is that it allows long periods of stable data to be represented with a single Interval event, while interesting perturbations will be represented with a number of fine-grained Interval or Point Events. In the example in the next figure, Event instances are used represent 4 hours of data consisting to 14,400 x 1 second samples from a blood pressure monitor. The optional <code>INTERVAL_EVENT.<em>sample_count</em></code> attribute can be used to record the number of original samples summarised in the event. In the illustration, the <code><em>math_function</em></code> is shown as <code>146|mean|</code>; clearly in the first long period, the monitored datum was not absolutely flat. The implication is that the recording software was configured to regard variations in a small band (e.g. 5mm Hg) as insignificant, and only to create new Event objects when the underlying values moved outside the band. Another approach woould have been to create two Interval Event objects for each long period, one giving minimum value, the other maxium value, still based on the principle of generating one such pair for periods when the underlying data remained within specified limits. Regardless of the details, this general approach provides a way to include hours of fine-grained data from devices like vital signs monitors in very little space; the data simply need to be transfomed into equivalent openEHR History form first.</p>
 </div>
-<div id="history_data_compression" class="imageblock text-center" style="text-align: center">
+<div id="history_data_compression" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_data_compression.svg" alt="history data compression">
 </div>
@@ -1703,7 +1709,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <div class="paragraph">
 <p>The History structure for this example is illustrated in the following figure.</p>
 </div>
-<div id="history_ogtt" class="imageblock text-center" style="text-align: center">
+<div id="history_ogtt" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_ogtt.svg" alt="history ogtt">
 </div>
@@ -1714,8 +1720,8 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <div class="sect2">
 <h3 id="_class_descriptions_4"><a class="anchor" href="#_class_descriptions_4"></a>6.2. Class Descriptions</h3>
 <div class="sect3">
-<h4 id="_history_t_class"><a class="anchor" href="#_history_t_class"></a>6.2.1. HISTORY&lt;T&gt; Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<h4 id="_historyt_class"><a class="anchor" href="#_historyt_class"></a>6.2.1. HISTORY&lt;T&gt; Class</h4>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1728,7 +1734,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Root object of a linear history, i.e. time series structure. This is a generic class whose type parameter must be a descendant of <code>ITEM_STRUCTURE</code>, ensuring that each Event in the <code><em>events</em></code> of a given instance is of the same structural type, i.e. <code>ITEM_TREE</code>, <code>ITEM_LIST</code> etc.</p>
 </div>
 <div class="paragraph">
@@ -1747,35 +1753,35 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>origin</strong>: <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time origin of this event history. The first event is not necessarily at the origin point.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>period</strong>: <code>DV_DURATION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Period between samples in this segment if periodic.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>duration</strong>: <code>DV_DURATION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Duration of the entire History; either corresponds to the duration of all the events, and/or the duration represented by the summary, if it exists.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>summary</strong>: <code>ITEM_STRUCTURE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional summary data that aggregates, organizes, reduces and transforms the event series. This may be a text or image that presents a graphical presentation, or some data that assists with the interpretation of the data.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>events</strong>: <code>List&lt;EVENT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The events in the series. This attribute is of a generic type whose parameter must be a descendant of <code>ITEM_SUTRUCTURE</code>.</p>
 </div></div></td>
 </tr>
@@ -1787,25 +1793,25 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_periodic</strong> (): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Indicates whether history is periodic.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Events_valid</em></strong>: <code>(events /= Void and then not events.is_empty) or summary /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Periodic_validity</em></strong>: <code>is_periodic xor period = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Period_consistency</em></strong>: <code>is_periodic implies events.for_all (e: EVENT &#124; e.offset. to_seconds.mod(period.to_seconds) = 0)</code></p>
 </div></div></td>
 </tr>
@@ -1813,8 +1819,8 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 </table>
 </div>
 <div class="sect3">
-<h4 id="_event_t_class"><a class="anchor" href="#_event_t_class"></a>6.2.2. EVENT&lt;T&gt; Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<h4 id="_eventt_class"><a class="anchor" href="#_eventt_class"></a>6.2.2. EVENT&lt;T&gt; Class</h4>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1827,7 +1833,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Defines the abstract notion of a single event in a series. This class is generic, allowing types to be generated which are locked to particular spatial types, such as <code>EVENT&lt;ITEM_LIST&gt;</code>. Subtypes express point or intveral data.</p>
 </div></div></td>
 </tr>
@@ -1843,21 +1849,21 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time of this event. If the width is non-zero, it is the time point of the trailing edge of the event.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>state</strong>: <code>ITEM_STRUCTURE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional state data for this event.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code>T</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The data of this event.</p>
 </div></div></td>
 </tr>
@@ -1870,13 +1876,13 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>offset</strong> (): <code>DV_DURATION</code><br>
 <strong><em>Post_condition</em></strong>: <code>Result = time.diff(parent.origin)</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Offset of this event from origin, computed as time.diff(parent.origin).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Offset_validity1</em></strong>: <code>offset /= Void and then offset = time.diff (parent.origin)</code></p>
 </div></div></td>
 </tr>
@@ -1884,8 +1890,8 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 </table>
 </div>
 <div class="sect3">
-<h4 id="_point_event_t_class"><a class="anchor" href="#_point_event_t_class"></a>6.2.3. POINT_EVENT&lt;T&gt; Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<h4 id="_point_eventt_class"><a class="anchor" href="#_point_eventt_class"></a>6.2.3. POINT_EVENT&lt;T&gt; Class</h4>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1898,7 +1904,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Defines a single point event in a series.</p>
 </div></div></td>
 </tr>
@@ -1910,8 +1916,8 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 </table>
 </div>
 <div class="sect3">
-<h4 id="_interval_event_t_class"><a class="anchor" href="#_interval_event_t_class"></a>6.2.4. INTERVAL_EVENT&lt;T&gt; Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<h4 id="_interval_eventt_class"><a class="anchor" href="#_interval_eventt_class"></a>6.2.4. INTERVAL_EVENT&lt;T&gt; Class</h4>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1924,7 +1930,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Defines a single interval event in a series.</p>
 </div></div></td>
 </tr>
@@ -1940,21 +1946,21 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>width</strong>: <code>DV_DURATION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Duration of the time interval during which the values recorded under <code>data</code> are true and, if set, the values recorded under <code>state</code> are true. Void if an instantaneous event.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sample_count</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional count of original samples to which this event corresponds.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>math_function</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Mathematical function of the data of this event, e.g.  maximum, mean etc. Coded using <a href="https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml">openEHR vocabulary <code>event math function</code></a>. Default value <code>640&#124;actual&#124;</code>, meaning 'actual value'.</p>
 </div></div></td>
 </tr>
@@ -1966,19 +1972,19 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval_start_time</strong> (): <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Start time of the interval of this event.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Math_function_validity</em></strong>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_event_math_function, math_function.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Interval_start_time_valid</em></strong>: <code>interval_start_time = time - width</code></p>
 </div></div></td>
 </tr>
@@ -1994,7 +2000,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <p>The following diagram illustrates a single weight measurement. The Event objects contain the timing information,
 which in this case is simply the time of measurement (the origin).</p>
 </div>
-<div id="history_single_sample" class="imageblock text-center" style="text-align: center">
+<div id="history_single_sample" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_single_sample.svg" alt="history single sample" width="50%">
 </div>
@@ -2007,7 +2013,7 @@ which in this case is simply the time of measurement (the origin).</p>
 <p>The next figure illustrates two Interval events representing 5 minute blood pressure averages, the first at
 5 minutes' offset from an initial event and lasting 5 minutes, the second 5 minutes later.</p>
 </div>
-<div id="history_bp_series_instances" class="imageblock text-center" style="text-align: center">
+<div id="history_bp_series_instances" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_bp_series_instances.svg" alt="history bp series instances" width="60%">
 </div>
@@ -2017,10 +2023,16 @@ which in this case is simply the time of measurement (the origin).</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
+<div class="sectionbody">
+
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-12-14 06:56:59 -03
+Last updated 2019-12-15 23:33:12 UTC
 </div>
 </div>
 </body>

@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="description" content="openEHR Integration Information Model specification">
 <meta name="keywords" content="EHR, integration, openehr">
 <title>Integration Information Model</title>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
-<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -37,7 +36,7 @@
 <li><a href="#_overview">2.2.1. Overview</a></li>
 <li><a href="#_semantics_of_generic_entry">2.2.2. Semantics of GENERIC_ENTRY</a></li>
 <li><a href="#_use_with_openehr_extracts">2.2.3. Use with openEHR Extracts</a></li>
-<li><a href="#_integration_with_cen_en13606">2.2.4. Integration with CEN EN13606</a></li>
+<li><a href="#_integration_with_iso_13606">2.2.4. Integration with ISO 13606</a></li>
 </ul>
 </li>
 <li><a href="#_data_conversion_architecture">2.3. Data Conversion Architecture</a></li>
@@ -56,7 +55,7 @@
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="https://specifications.openehr.org/images/openEHR_logo_RGB.svg" alt="openEHR logo">
 </div>
@@ -66,10 +65,10 @@
 <h1 id="_integration_information_model" class="sect0">Integration Information Model</h1>
 <div class="openblock partintro">
 <div class="content">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all fit-content spread">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col>
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -90,12 +89,12 @@
 </tr>
 </tbody>
 </table>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <object type="image/svg+xml" data="openehr_block_diagram.svg" width="60%"><span class="alt">openEHR components</span></object>
 </div>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -125,7 +124,7 @@
 <div class="sect1">
 <h2 id="_amendment_record">Amendment Record</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 54.5454%;">
@@ -291,9 +290,9 @@ and non-standardised legacy models; only the reusability of the solution differs
 </div>
 <div class="paragraph">
 <p>Another important category of externally sourced data addressed by the Integration package
-described here is data expressed in a form of a CEN EN13606 Extract. Part 1 of EN13606 defines a
+described here is data expressed in a form of a <a href="https://www.iso.org/standard/40784.html" target="_blank" rel="noopener">ISO 13606 Extract</a>. Part 1 of ISO 13606 defines a
 information model which is nearly identical to that of openEHR at the <code>COMPOSITION</code> and <code>SECTION</code>
-levels. The CEN EN13606 <code>Entry</code> class is a generic structure with a minimum of contextual metadata,
+levels. The ISO 13606 <code>Entry</code> class is a generic structure with a minimum of contextual metadata,
 and can easily be mapped to the openEHR Entry type described in this specification.</p>
 </div>
 <div class="paragraph">
@@ -350,7 +349,7 @@ model, and b) obey 'designed' clinical archetypes.</p>
 no hard-wired attributes at all, only one generic attribute, <code><em>data</em></code>. No assumptions at all are made about
 the actual shape of such data.</p>
 </div>
-<div id="integration_package" class="imageblock text-center" style="text-align: center">
+<div id="integration_package" class="imageblock text-center text-center">
 <div class="content">
 <img src="UML/diagrams/RM-integration.svg" alt="RM integration">
 </div>
@@ -401,15 +400,15 @@ communicate with other systems also implementing the openEHR Extract specificati
 </div>
 </div>
 <div class="sect3">
-<h4 id="_integration_with_cen_en13606"><a class="anchor" href="#_integration_with_cen_en13606"></a>2.2.4. Integration with CEN EN13606</h4>
+<h4 id="_integration_with_iso_13606"><a class="anchor" href="#_integration_with_iso_13606"></a>2.2.4. Integration with ISO 13606</h4>
 <div class="paragraph">
-<p>The <code>GENERIC_ENTRY</code> class provides a convenient basis for making openEHR systems EN13606-
+<p>The <code>GENERIC_ENTRY</code> class provides a convenient basis for making openEHR systems ISO 13606-
 compliant, which in turn gives openEHR a gateway capability in heterogeneous environments where
-EN13606 is being used to communicate data. A CEN EN13606 EHR Extract can be converted to a
+ISO 13606 is being used to communicate data. A ISO 13606 EHR Extract can be converted to a
 series of <code>COMPOSITIONs</code> containing <code>GENERIC_ENTRY</code> objects which obey appropriate integration
 archetypes; this data can then be semantically converted into orthodox openEHR objects for integration
 into a coherent EHR. Similarly, openEHR data can be converted into the <code>GENERIC_ENTRY</code>-based
-intermediate form for further conversion into EN13606 EHR Extracts.</p>
+intermediate form for further conversion into ISO 13606 EHR Extracts.</p>
 </div>
 </div>
 </div>
@@ -418,7 +417,7 @@ intermediate form for further conversion into EN13606 EHR Extracts.</p>
 <div class="paragraph">
 <p>The integration archetype-based strategy for importing data into an openEHR system, shown in the following figure, consists of two steps.</p>
 </div>
-<div id="integration_environment" class="imageblock text-center" style="text-align: center">
+<div id="integration_environment" class="imageblock text-center text-center">
 <div class="content">
 <img src="integration/diagrams/integration_environment.png" alt="integration environment" width="80%">
 </div>
@@ -445,7 +444,7 @@ some of these are dealt with in the Common IM document sections on Feeder system
 <h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>2.4. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_generic_entry_class"><a class="anchor" href="#_generic_entry_class"></a>2.4.1. GENERIC_ENTRY Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -458,7 +457,7 @@ some of these are dealt with in the Common IM document sections on Feeder system
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>This class is used to create intermediate representations of data from sources not otherwise conforming to openEHR classes, such as HL7 messages, relational databases and so on.</p>
 </div></div></td>
 </tr>
@@ -474,7 +473,7 @@ some of these are dealt with in the Common IM document sections on Feeder system
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code>ITEM_TREE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The ‘data’ from the source message or record.</p>
 </div></div></td>
 </tr>
@@ -487,7 +486,7 @@ some of these are dealt with in the Common IM document sections on Feeder system
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-09-29 01:58:59 BST
+Last updated 2019-12-15 23:33:12 UTC
 </div>
 </div>
 </body>
