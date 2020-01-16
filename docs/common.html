@@ -249,7 +249,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2019 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2020 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -2576,19 +2576,6 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>A version-controlled hierarchy of <code>FOLDERs</code> giving the effect of a directory.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in top-level (i.e. tree-root) <code>FOLDER</code> objects, using the UID copied from the <code><em>object_id()</em></code> of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
-For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>  would be copied to the <code><em>uid</em></code> field of the top <code>FOLDER</code> object.
-</td>
-</tr>
-</table>
 </div></div></td>
 </tr>
 <tr>
@@ -2615,6 +2602,19 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>The concept of a named folder.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+It is strongly recommended that the inherited attribute <code><em>uid</em></code> be populated in <em>top-level</em> (i.e. tree-root) <code>FOLDER</code> objects, using the UID copied from the <code><em>object_id()</em></code> of the <code><em>uid</em></code> field of the enclosing <code>VERSION</code> object.<br>
+For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2</code>  would be copied to the <code><em>uid</em></code> field of the top <code>FOLDER</code> object.
+</td>
+</tr>
+</table>
 </div></div></td>
 </tr>
 <tr>
