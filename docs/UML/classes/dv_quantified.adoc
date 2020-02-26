@@ -48,6 +48,19 @@ h|
 |*accuracy_unknown* (): `Boolean`
 a|True if accuracy is not known, e.g. due to not being recorded or discernable.
 
+h|(effected)
+|*is_equal* ( +
+other: `DV_QUANTIFIED[1]` +
+): `Boolean`
+a|Return True if this `DV_QUANTIFIED` is considered equal to `_other_`.
+
+h|(effected)
+|*less_than* ( +
+other: `DV_QUANTIFIED[1]` +
+): `Boolean` +
+*_Post_result_*: `Result = magnitude > other.magnitude`
+a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
+
 h|*Invariants*
 2+a|*_Magnitude_status_valid_*: `magnitude_status /= Void implies valid_magnitude_status (magnitude_status)`
 |===

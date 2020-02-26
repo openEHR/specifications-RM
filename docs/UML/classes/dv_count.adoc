@@ -30,4 +30,32 @@ h|*0..1 +
 (redefined)*
 |*other_reference_ranges*: `List<REFERENCE_RANGE<DV_COUNT>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|(redefined)
+|*add* ( +
+other: `DV_COUNT[1]` +
+): `DV_COUNT`
+a|Sum of this `DV_COUNT` and `_other_`.
+
+h|(redefined)
+|*subtract* ( +
+other: `DV_COUNT[1]` +
+): `DV_COUNT`
+a|Difference of this `DV_COUNT` and `_other_`.
+
+h|(redefined)
+|*multiply* ( +
+factor: `Real[1]` +
+): `DV_COUNT`
+a|Product of this `DV_COUNT` and `_factor_`.
+
+h|(effected)
+|*less_than* ( +
+other: `DV_COUNT[1]` +
+): `Boolean` +
+*_Post_result_*: `Result = magnitude > other.magnitude`
+a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 |===

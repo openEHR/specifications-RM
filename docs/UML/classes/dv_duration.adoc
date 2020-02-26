@@ -29,11 +29,36 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
+h|(redefined)
+|*add* ( +
+other: `DV_DURATION[1]` +
+): `DV_DURATION`
+a|Sum of this Duration and `_other_`.
+
+h|(redefined)
+|*subtract* ( +
+other: `DV_DURATION[1]` +
+): `DV_DURATION`
+a|Difference of this Duration and `_other_`.
+
+h|(redefined)
+|*multiply* ( +
+factor: `Real[1]` +
+): `DV_DURATION`
+a|Product of this Duration and `_factor_`.
+
+h|(effected)
+|*less_than* ( +
+other: `DV_DURATION[1]` +
+): `Boolean` +
+*_Post_result_*: `Result = magnitude > other.magnitude`
+a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
+
 h|(effected)
 |*is_strictly_comparable_to* ( +
-other: `DV_ORDERED[1]` +
+other: `DV_DURATION[1]` +
 ): `Boolean`
-a|
+a|True, for any two Durations.
 
 h|*Invariants*
 2+a|*_Value_valid_*: `valid_iso8601_duration (value)`

@@ -30,38 +30,35 @@ h|(effected)
 a|Numeric value of the date/time as seconds since the calendar origin date/time `0001-01-01T00:00:00Z`.
 
 h|(effected)
-|*is_strictly_comparable_to* ( +
-other: `DV_ORDERED[1]` +
-): `Boolean`
-a|Test if two instances are strictly comparable.
-
-h|(effected)
 |*add* ( +
-a_diff: `DV_AMOUNT[1]` +
-): `DV_ABSOLUTE_QUANTITY`
-a|Add a time period to this date_time.
+a_diff: `DV_DURATION[1]` +
+): `DV_DATE_TIME`
+a|Addition of a Duration to this Date/time.
 
 h|(effected)
 |*subtract* ( +
-a_diif: `DV_AMOUNT[1]` +
-): `DV_ABSOLUTE_QUANTITY`
-a|Subtract a time period from this date_time.
+a_diff: `DV_DURATION[1]` +
+): `DV_DATE_TIME`
+a|Subtract a Duration from this Date/time.
 
 h|(effected)
 |*diff* ( +
-other: `DV_ABSOLUTE_QUANTITY[1]` +
-): `DV_AMOUNT`
-a|Difference of two quantities.
+other: `DV_DATE_TIME[1]` +
+): `DV_DURATION`
+a|Difference between this Date/time and `_other_`.
 
-h|
-|*operator=* ( +
-source: `DV_DATE_TIME[1]` +
-): `DV_DATE_TIME`
-a|
+h|(effected)
+|*less_than* ( +
+other: `DV_DATE_TIME[1]` +
+): `Boolean` +
+*_Post_result_*: `Result = magnitude > other.magnitude`
+a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 
-h|(redefined)
-|*as_string* (): `String`
-a|
+h|(effected)
+|*is_strictly_comparable_to* ( +
+other: `DV_DATE_TIME[1]` +
+): `Boolean`
+a|True, for any two Date/times.
 
 h|*Invariants*
 2+a|*_Value_valid_*: `valid_iso8601_date_time (value)`

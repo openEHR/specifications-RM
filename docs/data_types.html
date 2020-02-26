@@ -393,9 +393,15 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-94" target="_blank" rel="noopener">SPECRM-94</a>: Correct arithmetic and comparison functions in Data Types.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>26 Feb 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-7" target="_blank" rel="noopener">SPECPUB-7</a>: Convert citations to bibtex form.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Dec 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Dec 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1184,7 +1190,7 @@
 <div class="sect2">
 <h3 id="_feedback"><a class="anchor" href="#_feedback"></a>1.4. Feedback</h3>
 <div class="paragraph">
-<p>Feedback may be provided on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org" target="_blank" rel="noopener">technical mailing list</a>.</p>
+<p>Feedback may be provided on the <a href="https://forums.openehr.org/c/specifications" target="_blank" rel="noopener">technical mailing list</a>.</p>
 </div>
 <div class="paragraph">
 <p>Issues may be raised on the <a href="https://specifications.openehr.org/components/RM/open_issues" target="_blank" rel="noopener">specifications Problem Report tracker</a>.</p>
@@ -3177,11 +3183,12 @@ other: <code>DV_ORDERED[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
 other: <code>DV_ORDERED[1]</code><br>
-): <code>Boolean</code></p></td>
+): <code>Boolean</code><br>
+<strong><em>Pre_comparable</em></strong>: <code>is_strictly_comparable (other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Arithmetic comparison.</p>
+<p>True if this Ordered data value is less than <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3384,19 +3391,22 @@ d) integer values only.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
-other: <code>DV_ORDERED[1]</code><br>
-): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: <code>symbol.is_comparable (other.symbol) implies Result</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>&lt;</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
 other: <code>DV_ORDINAL[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: <code>Result = value &lt; other.value</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<strong><em>Pre_comparable</em></strong>: <code>is_strictly_comparable (other)</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if this Ordinal value is less than <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
+other: <code>DV_ORDINAL[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Test if this Ordinal is strictly comparable to <code><em>other</em></code>.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -3489,10 +3499,22 @@ d) non-integer values are allowed.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_SCALE[1]</code><br>
 ): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Test if this Scale value is strictly comparable to <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>DV_SCALE[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Pre_comparable</em></strong>: <code>is_strictly_comparable (other)</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if this Scale value is less than <code><em>other</em></code>.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -3590,6 +3612,25 @@ other: <code>DV_SCALE[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
+other: <code>DV_QUANTIFIED[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return True if this <code>DV_QUANTIFIED</code> is considered equal to <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>DV_QUANTIFIED[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><strong><em>Magnitude_status_valid</em></strong>: <code>magnitude_status /= Void implies valid_magnitude_status (magnitude_status)</code></p>
@@ -3659,19 +3700,13 @@ number: <code>Ordered_Numeric[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (<br>
-source: <code>DV_AMOUNT[1]</code><br>
-): <code>DV_AMOUNT</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix +</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
 other: <code>DV_AMOUNT[1]</code><br>
-): <code>DV_AMOUNT</code></p></td>
+): <code>DV_AMOUNT</code><br>
+<strong><em>Pre_comparable</em></strong>: <code>is_strictly_comparable (other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Sum of this quantity and another whose formal type must be the difference type of this quantity. The value of accuracy in the result is either:</p>
+<p>Sum of this amount and another. The value of accuracy in the result is either:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3689,11 +3724,12 @@ other: <code>DV_AMOUNT[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix -</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
 other: <code>DV_AMOUNT[1]</code><br>
-): <code>DV_AMOUNT</code></p></td>
+): <code>DV_AMOUNT</code><br>
+<strong><em>Pre_comparable</em></strong>: <code>is_strictly_comparable (other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Subtraction operator. The value of <code><em>accuracy</em></code> in the result is either:</p>
+<p>Difference of this amount and another. The value of <code><em>accuracy</em></code> in the result is either:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3710,10 +3746,38 @@ other: <code>DV_AMOUNT[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
+other: <code>DV_AMOUNT[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return True if this <code>DV_AMOUNT</code> is considered equal to <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>prefix -</strong> (): <code>DV_AMOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+factor: <code>Real[1]</code><br>
+): <code>DV_AMOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Product of this Amount and <code><em>factor</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negative</strong> (): <code>DV_AMOUNT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Negated version of current object, such as used for representing a difference, e.g. a weight loss.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>DV_AMOUNT[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3853,6 +3917,43 @@ The display name may be language-dependent for various older and non-systematic 
 <p>True if <code><em>precision</em></code> = 0, meaning that the <code><em>magnitude</em></code> is a whole number.</p>
 </div></div></td>
 </tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+other: <code>DV_QUANTITY[1]</code><br>
+): <code>DV_QUANTITY</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Sum of this <code>DV_QUANTITY</code> and <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+other: <code>DV_QUANTITY[1]</code><br>
+): <code>DV_QUANTITY</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Difference of this <code>DV_QUANTITY</code> and <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+factor: <code>Real[1]</code><br>
+): <code>DV_QUANTITY</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Product of this <code>DV_QUANTITY</code> and <code><em>factor</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>DV_QUANTITY[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3906,6 +4007,48 @@ The display name may be language-dependent for various older and non-systematic 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_reference_ranges</strong>: <code>List&lt;REFERENCE_RANGE&lt;DV_COUNT&gt;&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional tagged other reference ranges for this value in its particular measurement context.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+other: <code>DV_COUNT[1]</code><br>
+): <code>DV_COUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Sum of this <code>DV_COUNT</code> and <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+other: <code>DV_COUNT[1]</code><br>
+): <code>DV_COUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Difference of this <code>DV_COUNT</code> and <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+factor: <code>Real[1]</code><br>
+): <code>DV_COUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Product of this <code>DV_COUNT</code> and <code><em>factor</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>DV_COUNT[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4010,11 +4153,48 @@ The display name may be language-dependent for various older and non-systematic 
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix =</strong> (<br>
-source: <code>DV_PROPORTION[1]</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+other: <code>DV_PROPORTION[1]</code><br>
 ): <code>DV_PROPORTION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Assignment operator.</p>
+<p>Sum of two strictly comparable proportions.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+other: <code>DV_PROPORTION[1]</code><br>
+): <code>DV_PROPORTION</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Difference between two strictly comparable proportions.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
+other: <code>DV_PROPORTION[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return True if this <code>DV_AMOUNT</code> is considered equal to <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+factor: <code>Real[1]</code><br>
+): <code>DV_PROPORTION</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Product of this Proportion and <code><em>factor</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>DV_PROPORTION[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>other</em></code> is less than this Proportion.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4179,28 +4359,6 @@ nq: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
-other: <code>DV_ABSOLUTE_QUANTITY[1]</code><br>
-): <code>DV_AMOUNT</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Difference of two quantities.</p>
-</div>
-<div class="paragraph">
-<p>The value of accuracy in the result is either:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>the sum of the accuracies of the operands, if both present, or;</p>
-</li>
-<li>
-<p>unknown, if either or both operand accuracies are unknown.</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
 a_diff: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
@@ -4231,6 +4389,28 @@ a_diff: <code>DV_AMOUNT[1]</code><br>
 </div>
 <div class="paragraph">
 <p>The value of <code><em>accuracy</em></code> in the result is either:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the sum of the accuracies of the operands, if both present, or;</p>
+</li>
+<li>
+<p>unknown, if either or both operand accuracies are unknown.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+other: <code>DV_ABSOLUTE_QUANTITY[1]</code><br>
+): <code>DV_AMOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Difference of two quantities.</p>
+</div>
+<div class="paragraph">
+<p>The value of accuracy in the result is either:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4571,11 +4751,29 @@ it is strongly recommended that where possible, the <em>extended</em> form of th
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+a_diff: <code>DV_DURATION[1]</code><br>
+): <code>DV_TEMPORAL</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Addition of a Duration to this temporal entity.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+a_diff: <code>DV_DURATION[1]</code><br>
+): <code>DV_TEMPORAL</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Subtract a Duration from this temporal entity.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
 other: <code>DV_TEMPORAL[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Difference of two quantities.</p>
+<p>Difference between this temporal entity and <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4631,38 +4829,29 @@ other: <code>DV_TEMPORAL[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
-other: <code>DV_ORDERED[1]</code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
+other: <code>DV_QUANTIFIED[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Test if two instances are strictly comparable.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>infix &lt;</strong> (<br>
-other_quantity: <code>DV_ORDERED[1]</code><br>
-): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Tests if this date is earlier than the cited date.</p>
+<p>Return True if this <code>DV_QUANTIFIED</code> is considered equal to <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
-a_diff: <code>DV_AMOUNT[1]</code><br>
-): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
+a_diff: <code>DV_DURATION[1]</code><br>
+): <code>DV_DATE</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Add a time period to this date.</p>
+<p>Addition of a Duration to this Date.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
-a_diif: <code>DV_AMOUNT[1]</code><br>
-): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
+a_diff: <code>DV_DURATION[1]</code><br>
+): <code>DV_DATE</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Subtract a time period from this date.</p>
+<p>Subtract a Duration from this Date.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4671,7 +4860,26 @@ a_diif: <code>DV_AMOUNT[1]</code><br>
 other: <code>DV_DATE[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Difference of two quantities.</p>
+<p>Difference between this Date and <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>DV_DATE[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
+other: <code>DV_DATE[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True, for any two Dates.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4736,37 +4944,21 @@ other: <code>DV_DATE[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
-other: <code>DV_ORDERED[1]</code><br>
-): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Test if two instances are strictly comparable.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
-a_diff: <code>DV_AMOUNT[1]</code><br>
-): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
+a_diff: <code>DV_DURATION[1]</code><br>
+): <code>DV_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Add a time period to this time.</p>
+<p>Addition of a Duration to this Time.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
-a_diif: <code>DV_AMOUNT[1]</code><br>
-): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Subtract a duration from this time.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator=</strong> (<br>
-source: <code>DV_TIME[1]</code><br>
+a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Subtract a Duration from this Time.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
@@ -4774,7 +4966,26 @@ source: <code>DV_TIME[1]</code><br>
 other: <code>DV_TIME[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Difference of two quantities.</p>
+<p>Difference between this Time and <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>DV_TIME[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
+other: <code>DV_TIME[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True, for any two Times.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4839,51 +5050,49 @@ other: <code>DV_TIME[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
-other: <code>DV_ORDERED[1]</code><br>
-): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Test if two instances are strictly comparable.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
-a_diff: <code>DV_AMOUNT[1]</code><br>
-): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
+a_diff: <code>DV_DURATION[1]</code><br>
+): <code>DV_DATE_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Add a time period to this date_time.</p>
+<p>Addition of a Duration to this Date/time.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
-a_diif: <code>DV_AMOUNT[1]</code><br>
-): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
+a_diff: <code>DV_DURATION[1]</code><br>
+): <code>DV_DATE_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Subtract a time period from this date_time.</p>
+<p>Subtract a Duration from this Date/time.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
-other: <code>DV_ABSOLUTE_QUANTITY[1]</code><br>
-): <code>DV_AMOUNT</code></p></td>
+other: <code>DV_DATE_TIME[1]</code><br>
+): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Difference of two quantities.</p>
+<p>Difference between this Date/time and <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>operator=</strong> (<br>
-source: <code>DV_DATE_TIME[1]</code><br>
-): <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>DV_DATE_TIME[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
+</div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_string</strong> (): <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
+other: <code>DV_DATE_TIME[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True, for any two Date/times.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -4954,11 +5163,50 @@ a deviation from ISO8601 is supported, allowing the  W' designator to be mixed w
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+other: <code>DV_DURATION[1]</code><br>
+): <code>DV_DURATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Sum of this Duration and <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+other: <code>DV_DURATION[1]</code><br>
+): <code>DV_DURATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Difference of this Duration and <code><em>other</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+factor: <code>Real[1]</code><br>
+): <code>DV_DURATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Product of this Duration and <code><em>factor</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+other: <code>DV_DURATION[1]</code><br>
+): <code>Boolean</code><br>
+<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
-other: <code>DV_ORDERED[1]</code><br>
+other: <code>DV_DURATION[1]</code><br>
 ): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True, for any two Durations.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -6591,7 +6839,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-15 23:33:12 UTC
+Last updated 2020-02-08 17:54:29 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-murphy.css">

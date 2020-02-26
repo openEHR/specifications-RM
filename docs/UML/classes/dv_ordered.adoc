@@ -50,10 +50,11 @@ h|
 a|Value is in the normal range, determined by comparison of the value to `_normal_range_` if present, or by the `_normal_status_` marker if present.
 
 h|(effected)
-|*infix <* ( +
+|*less_than* ( +
 other: `DV_ORDERED[1]` +
-): `Boolean`
-a|Arithmetic comparison.
+): `Boolean` +
+*_Pre_comparable_*: `is_strictly_comparable (other)`
+a|True if this Ordered data value is less than `_other_`.
 
 h|*Invariants*
 2+a|*_Other_reference_ranges_validity_*: `other_reference_ranges /= Void implies not other_reference_ranges.is_empty`

@@ -57,10 +57,35 @@ h|
 a|True if the `_numerator_` and `_denominator_` values are integers, i.e. if `_precision_` is 0.
 
 h|(redefined)
-|*infix =* ( +
-source: `DV_PROPORTION[1]` +
+|*add* ( +
+other: `DV_PROPORTION[1]` +
 ): `DV_PROPORTION`
-a|Assignment operator.
+a|Sum of two strictly comparable proportions.
+
+h|(redefined)
+|*subtract* ( +
+other: `DV_PROPORTION[1]` +
+): `DV_PROPORTION`
+a|Difference between two strictly comparable proportions.
+
+h|(effected)
+|*is_equal* ( +
+other: `DV_PROPORTION[1]` +
+): `Boolean`
+a|Return True if this `DV_AMOUNT` is considered equal to `_other_`.
+
+h|(redefined)
+|*multiply* ( +
+factor: `Real[1]` +
+): `DV_PROPORTION`
+a|Product of this Proportion and `_factor_`.
+
+h|(effected)
+|*less_than* ( +
+other: `DV_PROPORTION[1]` +
+): `Boolean` +
+*_Post_result_*: `Result = magnitude > other.magnitude`
+a|True if `_other_` is less than this Proportion.
 
 h|*Invariants*
 2+a|*_Type_validity_*: `valid_proportion_kind (type)`

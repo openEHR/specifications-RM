@@ -28,34 +28,41 @@ h|(effected)
 a|Numeric value of the date as days since the calendar origin date `0001-01-01`.
 
 h|(effected)
-|*is_strictly_comparable_to* ( +
-other: `DV_ORDERED[1]` +
+|*is_equal* ( +
+other: `DV_QUANTIFIED[1]` +
 ): `Boolean`
-a|Test if two instances are strictly comparable.
-
-h|(effected)
-|*infix <* ( +
-other_quantity: `DV_ORDERED[1]` +
-): `Boolean`
-a|Tests if this date is earlier than the cited date.
+a|Return True if this `DV_QUANTIFIED` is considered equal to `_other_`.
 
 h|(effected)
 |*add* ( +
-a_diff: `DV_AMOUNT[1]` +
-): `DV_ABSOLUTE_QUANTITY`
-a|Add a time period to this date.
+a_diff: `DV_DURATION[1]` +
+): `DV_DATE`
+a|Addition of a Duration to this Date.
 
 h|(effected)
 |*subtract* ( +
-a_diif: `DV_AMOUNT[1]` +
-): `DV_ABSOLUTE_QUANTITY`
-a|Subtract a time period from this date.
+a_diff: `DV_DURATION[1]` +
+): `DV_DATE`
+a|Subtract a Duration from this Date.
 
 h|(effected)
 |*diff* ( +
 other: `DV_DATE[1]` +
 ): `DV_DURATION`
-a|Difference of two quantities.
+a|Difference between this Date and `_other_`.
+
+h|(effected)
+|*less_than* ( +
+other: `DV_DATE[1]` +
+): `Boolean` +
+*_Post_result_*: `Result = magnitude > other.magnitude`
+a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
+
+h|(effected)
+|*is_strictly_comparable_to* ( +
+other: `DV_DATE[1]` +
+): `Boolean`
+a|True, for any two Dates.
 
 h|*Invariants*
 2+a|*_Value_valid_*: `valid_iso8601_date(value)`

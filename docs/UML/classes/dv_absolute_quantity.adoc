@@ -24,17 +24,6 @@ h|*Functions*
 ^h|*Meaning*
 
 h|(abstract)
-|*diff* ( +
-other: `DV_ABSOLUTE_QUANTITY[1]` +
-): `DV_AMOUNT`
-a|Difference of two quantities.
-
-The value of accuracy in the result is either:
-
-* the sum of the accuracies of the operands, if both present, or;
-* unknown, if either or both operand accuracies are unknown.
-
-h|(abstract)
 |*add* ( +
 a_diff: `DV_AMOUNT[1]` +
 ): `DV_ABSOLUTE_QUANTITY`
@@ -52,6 +41,17 @@ a_diff: `DV_AMOUNT[1]` +
 a|Result of subtracting a differential amount from this quantity.
 
 The value of `_accuracy_` in the result is either:
+
+* the sum of the accuracies of the operands, if both present, or;
+* unknown, if either or both operand accuracies are unknown.
+
+h|(abstract)
+|*diff* ( +
+other: `DV_ABSOLUTE_QUANTITY[1]` +
+): `DV_AMOUNT`
+a|Difference of two quantities.
+
+The value of accuracy in the result is either:
 
 * the sum of the accuracies of the operands, if both present, or;
 * unknown, if either or both operand accuracies are unknown.

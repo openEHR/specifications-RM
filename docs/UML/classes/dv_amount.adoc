@@ -35,17 +35,12 @@ number: `Ordered_Numeric[1]` +
 ): `Boolean`
 a|Test whether a number is a valid percentage, i.e. between 0 and 100.
 
-h|(redefined)
-|*infix =* ( +
-source: `DV_AMOUNT[1]` +
-): `DV_AMOUNT`
-a|
-
 h|
-|*infix +* ( +
+|*add* ( +
 other: `DV_AMOUNT[1]` +
-): `DV_AMOUNT`
-a|Sum of this quantity and another whose formal type must be the difference type of this quantity. The value of accuracy in the result is either:
+): `DV_AMOUNT` +
+*_Pre_comparable_*: `is_strictly_comparable (other)`
+a|Sum of this amount and another. The value of accuracy in the result is either:
 
 * the sum of the accuracies of the operands, if both present, or;
 * both operand accuracies are unknown_accuracy_value.
@@ -53,19 +48,39 @@ a|Sum of this quantity and another whose formal type must be the difference type
 If the accuracy value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.
 
 h|
-|*infix -* ( +
+|*subtract* ( +
 other: `DV_AMOUNT[1]` +
-): `DV_AMOUNT`
-a|Subtraction operator. The value of `_accuracy_` in the result is either:
+): `DV_AMOUNT` +
+*_Pre_comparable_*: `is_strictly_comparable (other)`
+a|Difference of this amount and another. The value of `_accuracy_` in the result is either:
 
 * the sum of the accuracies of the operands, if both present, or;
 * unknown, if either or both operand accuracies are unknown.
 
 If the `_accuracy_` value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.
 
+h|(effected)
+|*is_equal* ( +
+other: `DV_AMOUNT[1]` +
+): `Boolean`
+a|Return True if this `DV_AMOUNT` is considered equal to `_other_`.
+
 h|
-|*prefix -* (): `DV_AMOUNT`
+|*multiply* ( +
+factor: `Real[1]` +
+): `DV_AMOUNT`
+a|Product of this Amount and `_factor_`.
+
+h|
+|*negative* (): `DV_AMOUNT`
 a|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
+
+h|(effected)
+|*less_than* ( +
+other: `DV_AMOUNT[1]` +
+): `Boolean` +
+*_Post_result_*: `Result = magnitude > other.magnitude`
+a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 
 h|*Invariants*
 2+a|*_Accuracy_is_percent_validity_*: `accuracy = 0 implies not accuracy_is_percent`
