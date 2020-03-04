@@ -310,7 +310,7 @@
 </div>
 </div>
 </div>
-<h1 id="_data_types_information_model" class="sect0">Data Types Information Model</h1>
+<h1 id="_data_types_information_model" class="sect0"><a class="anchor" href="#_data_types_information_model"></a>Data Types Information Model</h1>
 <div class="openblock partintro">
 <div class="content">
 <table class="tableblock frame-all grid-all fit-content spread">
@@ -370,7 +370,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_amendment_record">Amendment Record</h2>
+<h2 id="_amendment_record"><a class="anchor" href="#_amendment_record"></a>Amendment Record</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1016,10 +1016,10 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_acknowledgements">Acknowledgements</h2>
+<h2 id="_acknowledgements"><a class="anchor" href="#_acknowledgements"></a>Acknowledgements</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_editor">Editor</h3>
+<h3 id="_editor"><a class="anchor" href="#_editor"></a>Editor</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1029,7 +1029,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_contributors">Contributors</h3>
+<h3 id="_contributors"><a class="anchor" href="#_contributors"></a>Contributors</h3>
 <div class="paragraph">
 <p>This specification benefited from wide formal and informal input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people for their contributions.</p>
 </div>
@@ -1102,7 +1102,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_support">Support</h3>
+<h3 id="_support"><a class="anchor" href="#_support"></a>Support</h3>
 <div class="paragraph">
 <p>The work reported in this paper has been funded in part by the following organisations:</p>
 </div>
@@ -3594,7 +3594,7 @@ other: <code>DV_SCALE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_magnitude_status</strong> (): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: <code>Result = s.is_equal (“=”) or s.is_equal (“&lt;”) or s.is_equal (“&gt;”) or s.is_equal (“&lt;=”) or s.is_equal (“&gt;=”) or s.is_equal (“~”)</code></p></td>
+<strong><em>Post</em></strong>: <code>Result = s in {"=", "&lt;", "&gt;", "&lt;=", "&gt;=", "~"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Test whether a string value is one of the valid values for the magnitude_status attribute.</p>
 </div></div></td>
@@ -4837,7 +4837,7 @@ other: <code>DV_QUANTIFIED[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE</code></p></td>
@@ -4846,7 +4846,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE</code></p></td>
@@ -4855,7 +4855,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
 other: <code>DV_DATE[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
@@ -4943,7 +4943,7 @@ other: <code>DV_DATE[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TIME</code></p></td>
@@ -4952,7 +4952,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TIME</code></p></td>
@@ -4961,7 +4961,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
 other: <code>DV_TIME[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
@@ -5049,7 +5049,7 @@ other: <code>DV_TIME[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE_TIME</code></p></td>
@@ -5058,7 +5058,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE_TIME</code></p></td>
@@ -5067,7 +5067,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
 other: <code>DV_DATE_TIME[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
@@ -6839,7 +6839,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-02-08 17:54:29 UTC
+Last updated 2020-03-04 21:29:47 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-murphy.css">

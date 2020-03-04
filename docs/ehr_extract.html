@@ -223,7 +223,7 @@
 </div>
 </div>
 </div>
-<h1 id="_ehr_extract_information_model" class="sect0">EHR Extract Information Model</h1>
+<h1 id="_ehr_extract_information_model" class="sect0"><a class="anchor" href="#_ehr_extract_information_model"></a>EHR Extract Information Model</h1>
 <div class="openblock partintro">
 <div class="content">
 <table class="tableblock frame-all grid-all fit-content spread">
@@ -283,7 +283,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_amendment_record">Amendment Record</h2>
+<h2 id="_amendment_record"><a class="anchor" href="#_amendment_record"></a>Amendment Record</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -461,7 +461,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_acknowledgements">Acknowledgements</h2>
+<h2 id="_acknowledgements"><a class="anchor" href="#_acknowledgements"></a>Acknowledgements</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The work reported in this paper has been funded in part by the following organisations:</p>
@@ -546,7 +546,7 @@
 <div class="sect2">
 <h3 id="_feedback"><a class="anchor" href="#_feedback"></a>1.4. Feedback</h3>
 <div class="paragraph">
-<p>Feedback may be provided on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org" target="_blank" rel="noopener">technical mailing list</a>.</p>
+<p>Feedback may be provided on the <a href="https://forums.openehr.org/c/specifications" target="_blank" rel="noopener">technical mailing list</a>.</p>
 </div>
 <div class="paragraph">
 <p>Issues may be raised on the <a href="https://specifications.openehr.org/components/RM/open_issues" target="_blank" rel="noopener">specifications Problem Report tracker</a>.</p>
@@ -1663,14 +1663,14 @@ the EHR and generic Extract sections below.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>request_id</strong>: <code>OBJECT_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Identifier of previous EXTRACT_REQUEST.</p>
+<p>Identifier of previous <code>EXTRACT_REQUEST</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>action</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Requested action: cancel &#124; resend &#124; send new. Coded by openEHR Terminology group "extract action type".</p>
+<p>Requested action: <code>cancel &#124; resend &#124; send new</code>. Coded by openEHR Terminology group <code>'extract action type'</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1732,28 +1732,28 @@ the EHR and generic Extract sections below.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>openehr-ehr</p>
+<p><code>&#124;openehr-ehr&#124;</code></p>
 </li>
 <li>
-<p>openehr-demographic</p>
+<p><code>&#124;openehr-demographic&#124;</code></p>
 </li>
 <li>
-<p>generic-emr</p>
+<p><code>&#124;generic-emr&#124;</code></p>
 </li>
 <li>
-<p>other</p>
+<p><code>&#124;other&#124;</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Coded by openEHR Terminology group "extract content type".</p>
+<p>Coded by openEHR Terminology group <code>'extract content type'</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_multimedia</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Indicates whether inline instances of DV_MULTIMEDIA in the source data are included or not.</p>
+<p>Indicates whether in-line instances of <code>DV_MULTIMEDIA</code> in the source data are included or not.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1773,12 +1773,26 @@ the EHR and generic Extract sections below.</p>
 <p>Degree of links to follow emanating from content items specified for inclusion. The kind of links to follow is dependent on the type of Extract.</p>
 </div>
 <div class="paragraph">
-<p>All items at the target end of followed links at the given depth are also included in the extract; EXTRACT_CONTENT_ITEM.is_primary is used to differentiate.
-- 0 = don&#8217;t follow;
-- 1 = follow first degree links;
-- 2 = follow 2nd degree links;
-- &#8230;&#8203;.
-- n = follow nth degree links</p>
+<p>All items at the target end of followed links at the given depth are also included in the extract; <code>EXTRACT_CONTENT_ITEM.<em>is_primary</em></code> is used to differentiate.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>0 = don&#8217;t follow;</p>
+</li>
+<li>
+<p>1 = follow first degree links;</p>
+</li>
+<li>
+<p>2 = follow 2nd degree links;</p>
+</li>
+<li>
+<p>&#8230;&#8203;.</p>
+</li>
+<li>
+<p>n = follow nth degree links</p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -1891,7 +1905,7 @@ the EHR and generic Extract sections below.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_list</strong>: <code>List&lt;OBJECT_REF&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>List of uids of items to be included in the Extract, in cases where individual items are being requested by id. More typically, this attribute is not used, and the EXTRACT_SPEC.criteria query defines the Extract contents. If set, for openEHR data, these are uids identifying the version containers.</p>
+<p>List of Uids of items to be included in the Extract, in cases where individual items are being requested by id. More typically, this attribute is not used, and the <code>EXTRACT_SPEC.<em>criteria query</em></code> defines the Extract contents. If set, for openEHR data, these are Uids identifying the version containers.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1913,7 +1927,7 @@ the EHR and generic Extract sections below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Specification of what versions should be included in an Extract. By default, only latest versions are included in the Extract, in which case this part of the Extract specification is not needed at all. The attributes include_all_versions and commit_time_interval are used to modify this; the former forces all versions to be included; the latter limits the versions to be those latest versions committed in the time interval, or if include_all_versions is True, all versions committed in the time interval.</p>
+<p>Specification of what versions should be included in an Extract. By default, only latest versions are included in the Extract, in which case this part of the Extract specification is not needed at all. The attributes <code><em>include_all_versions</em></code> and <code><em>commit_time_interval</em></code> are used to modify this; the former forces all versions to be included; the latter limits the versions to be those latest versions committed in the time interval, or if <code><em>include_all_versions</em></code> is <code>True</code>, all versions committed in the time interval.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1946,7 +1960,7 @@ the EHR and generic Extract sections below.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_data</strong>: <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if the data of items matched by the content spec should be included. This is the default. If False, only revision history is included in serialised versions. Turning this option on in openEHR systems causes X_VERSIONED_OBJECTs to have revision_history set, but versions Void. Useful for interrogating a server without having to look at any content data. In other systems it may or may not have a sensible meaning.</p>
+<p><code>True</code> if the data of items matched by the content spec should be included. This is the default. If <code>False</code>, only revision history is included in serialised versions. Turning this option on in openEHR systems causes <code>X_VERSIONED_OBJECTs</code> to have <code><em>revision_history</em></code> set, but versions Void. Useful for interrogating a server without having to look at any content data. In other systems it may or may not have a sensible meaning.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1977,7 +1991,7 @@ the EHR and generic Extract sections below.</p>
 <p>Specification of the how the request should be processed by server. The request can be persisted in the server, meaning that a) it can be re-activated by the requesting system simply by indicating Request id, and b) that a changes-only pattern of Extract updates can be set up. To achieve this, the server has to remember what was sent in the previous response.</p>
 </div>
 <div class="paragraph">
-<p>The update mode may be event-driven and periodic update or a mixture of both. The candidate items to be sent each time are the result of re-evaluating the content and versioning parts of the specification; what is actually sent is determined by the send_changes_only flag.</p>
+<p>The update mode may be event-driven and periodic update or a mixture of both. The candidate items to be sent each time are the result of re-evaluating the content and versioning parts of the specification; what is actually sent is determined by the <code><em>send_changes_only</em></code> flag.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2008,25 +2022,25 @@ the EHR and generic Extract sections below.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>any_change - any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.</p>
+<p><code>&#124;any_change&#124;</code> - any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.</p>
 </li>
 <li>
-<p>correction - match error corrections only, including deletions.</p>
+<p><code>&#124;correction&#124;</code> - match error corrections only, including deletions.</p>
 </li>
 <li>
-<p>update - match updates (i.e. new versions) of included content items.</p>
+<p><code>&#124;update&#124;</code> - match updates (i.e. new versions) of included content items.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Coded by openEHR Terminology group "extract update trigger event type".</p>
+<p>Coded by openEHR Terminology group 'extract update trigger event type'.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>update_method</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Indicate mode of update. Can be: send only items that are changed (including logical deletions) or new since last send. For persist_in_server Requests only.</p>
+<p>Indicate mode of update. Can be: send only items that are changed (including logical deletions) or new since last send. For <code><em>persist_in_server</em></code> Requests only.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2117,7 +2131,7 @@ the EHR and generic Extract sections below.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sequence_nr</strong>: <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Number of this Extract response in sequence of responses to Extract request identified by request_id. If this is the sole response, or there was no request, value is 1.</p>
+<p>Number of this Extract response in sequence of responses to Extract request identified by <code><em>request_id</em></code>. If this is the sole response, or there was no request, value is 1.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2564,7 +2578,7 @@ rewritten to refer to the uid (<code>11111111</code>) of the first <code>OPENEHR
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner_id</strong>: <code>OBJECT_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Owner_id from original VERSIONED_OBJECT, which identifies source EHR.</p>
+<p>Owner_id from original <code>VERSIONED_OBJECT</code>, which identifies source EHR.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2900,7 +2914,7 @@ variant may be required for the future.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>author</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Reference to a demographic entity elsewhere in this Extract representing the author of the item version. The reference should be a UID corresponding to the UID of a GENERIC_CONTENT_ITEM containing the demographic information.</p>
+<p>Reference to a demographic entity elsewhere in this Extract representing the author of the item version. The reference should be a UID corresponding to the UID of a <code>GENERIC_CONTENT_ITEM</code> containing the demographic information.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2914,7 +2928,7 @@ variant may be required for the future.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>authoriser</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Reference to a demographic entity elsewhere in this Extract representing an authoriser of the item version, if relevant. The reference should be a UID corresponding to the UID of a GENERIC_CONTENT_ITEM containing the demographic information.</p>
+<p>Reference to a demographic entity elsewhere in this Extract representing an authoriser of the item version, if relevant. The reference should be a UID corresponding to the UID of a <code>GENERIC_CONTENT_ITEM</code> containing the demographic information.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3521,7 +3535,7 @@ set <code><em>is_primary</em></code> = False, write the path and write the targe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-12-15 23:33:12 UTC
+Last updated 2020-03-04 21:28:56 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-murphy.css">
