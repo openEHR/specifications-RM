@@ -42,7 +42,7 @@ The second subtype is `IMPORTED_VERSION<T>`, and acts as a wrapper of an `ORIGIN
 .Instance view of versioned data
 image::{diagrams_uri}/instance_view_of_versioned_data.png[id=instance_view_of_versioned_data, align="center", width=80%]
 
-=== The "Virtual Version Tree"
+=== The 'Virtual Version Tree'
 
 An underlying design concept of the versioning model defined here is known as the 'virtual version tree'. The idea is simple in the abstract. Information is committed to a repository (such as an EHR) in lumps, each lump being the 'data' of one Version. Each Version has its place within a version tree, which in turn is maintained inside a Versioned object. The virtual version tree concept means that any given Versioned object may have numerous copies in various systems, and that the creation of versions in each is done in such a way that all versions so created are in fact compatible with the 'virtual' version tree resulting from the superimposition of the version trees of all copies. This is achieved using simple rules for version identification, described below, and is done to facilitate data sharing. Two very common scenarios are served by the virtual version tree concept:
 
@@ -188,7 +188,7 @@ However, in a distributed environment where copying and subsequent modification 
 
 To satisfy these needs, two modifications are made to the identification scheme. The first is the addition of the `_creating_system_id_` attribute of `VERSION._uid_`, representing the system where the version was created. This is a machine processable identifier, such as a reverse internet address or GUID.
 
-Whenever a new `ORIGINAL_VERSION` in a particular `VERSIONED_OBJECT` (with a particular UID) is created locally, the `VERSION._uid_._creating_system_id_` is set to the identifier of the local system; if the version was imported, `_creating_system_id_` will already have been set to the identifier of the system of original creation.
+Whenever a new `ORIGINAL_VERSION` in a particular `VERSIONED_OBJECT` (with a particular UID) is created locally, the `VERSION._uid.creating_system_id_` is set to the identifier of the local system; if the version was imported, `_creating_system_id_` will already have been set to the identifier of the system of original creation.
 
 The second modification is to require branching version identifiers to be used when local modifications are made to versions copied from elsewhere; this ensures that the modifications now being made in the target system are considered in a global sense as logical branches or variants rather than trunk versions which are made in the originating system. It also allows later trunk versions from the originating system to be copied at some future time to the target system without version identifier clashes. In summary, the scheme uses the tuple {`_object_id_`, `_creating_system_id_`, `_version_tree_id_`} to globally uniquely identify any openEHR `VERSION` object.
 
@@ -207,21 +207,21 @@ In openEHR, the smallest unit of copying of content between systems that satisfi
 
 In the first situation, there is not even an EHR (i.e. repository of Versioned objects for the patient in question) in the target system. A new one has to be created. As mentioned in the {openehr_rm_ehr}#_ehr_creation_semantics[EHR IM specification], the newly created EHR should re-use the EHR identifier from the source system. This establishes the new EHR as an intentional clone of the source EHR (or more correctly, part of the family of EHRs making up the virtual EHR for that patient).
 
-If it is the first time any version of the item logically identified by its `ORIGINAL_VERSION._uid_._object_id()_` (i.e. the `_uid_` of its original `VERSIONED_OBJECT`, common to all Versions in the same container) was received from the originating system, a new `VERSIONED_OBJECT<T>` (e.g. `VERSIONED_OBJECT<COMPOSITION>`) is created, with its uid set to the same value as the received `VERSION._uid_._object_id()_`. This establishes the newly created `VERSIONED_OBJECT` as being a logical clone of the one from which the received `ORIGINAL_VERSION` was copied. If some version of the item had already been received, this step will have already occurred, and the requisite `VERSIONED_OBJECT` would already exist.
+If it is the first time any version of the item logically identified by its `ORIGINAL_VERSION._uid.object_id()_` (i.e. the `_uid_` of its original `VERSIONED_OBJECT`, common to all Versions in the same container) was received from the originating system, a new `VERSIONED_OBJECT<T>` (e.g. `VERSIONED_OBJECT<COMPOSITION>`) is created, with its uid set to the same value as the received `VERSION._uid.object_id()_`. This establishes the newly created `VERSIONED_OBJECT` as being a logical clone of the one from which the received `ORIGINAL_VERSION` was copied. If some version of the item had already been received, this step will have already occurred, and the requisite `VERSIONED_OBJECT` would already exist.
 
 An `IMPORTED_VERSION` instance is then created, its item set to the received `ORIGINAL_VERSION`, and it is committed in the normal way (i.e. as part of a Contribution). The `IMPORTED_VERSION` commit_audit and contribution attributes record the local act of committal. In this operation, the `ORIGINAL_VERSION` instance is never modified - it remains a faithful copy of its original, no matter how many systems it may be copied through.
 
 ==== Subsequent Local Modifications
 
-In most cases, the received information will remain as is for the duration. However, in some cases, users at the receiver system might want to make modifications as well. This is likely to happen in the case of information items representing things like medication lists and allergies. When new versions are added locally to a copied object, the local system id is recorded in the `_uid_._creating_system_id()_` attribute, while branching numbering is used in the `_uid_._version_tree_id()_`.
+In most cases, the received information will remain as is for the duration. However, in some cases, users at the receiver system might want to make modifications as well. This is likely to happen in the case of information items representing things like medication lists and allergies. When new versions are added locally to a copied object, the local system id is recorded in the `_uid.creating_system_id()_` attribute, while branching numbering is used in the `_uid.version_tree_id()_`.
 
-These copying scenarios are illustrated in the figure below. On the left hand-side of the figure, a version container (i.e. an instance of `VERSIONED_OBJECT`) with `_uid_` = "1" is shown; the first Version has `_uid_._creating_system_id_` = "sysA"; `_uid_._version_tree_id_` = "1". Further local trunk and branch versions are also shown.
+These copying scenarios are illustrated in the figure below. On the left hand-side of the figure, a version container (i.e. an instance of `VERSIONED_OBJECT`) with `_uid_` = `"1"` is shown; the first Version has `_uid.creating_system_id_` = `"sysA"`; `_uid.version_tree_id_` = `"1"`. Further local trunk and branch versions are also shown.
 
 [.text-center]
 .Distributed versioning
 image::{diagrams_uri}/distributed_versioning.png[id=distributed_versioning, align="center", width=70%]
 
-When the first `ORIGINAL_VERSION` is copied (copy #1) to system B, it is committed as an `IMPORTED_VERSION` to a `VERSIONED_OBJECT` which is a clone of the original. Subsequent copies (copy #2 and copy #3) can be made of later versions from system A to system B, with the effect that the version tree can be recreated inside system B (if required; there is of course no obligation to do anything with the received information). Users in system B an also make modifications to the received Version copies; these modifications are shown in grey, as branched versions with `_uid_._creating_system_id_` = "sysB". Independently, users in system B will of course be creating other content locally, e.g. as shown on the right-hand side, where a Versioned object with `_uid_`= "2" has been created. Two places are indicated on the diagram where identification clashes could have occurred, but are prevented due to the use of the 3-part unique Version identifier scheme.
+When the first `ORIGINAL_VERSION` is copied (copy #1) to system B, it is committed as an `IMPORTED_VERSION` to a `VERSIONED_OBJECT` which is a clone of the original. Subsequent copies (copy #2 and copy #3) can be made of later versions from system A to system B, with the effect that the version tree can be recreated inside system B (if required; there is of course no obligation to do anything with the received information). Users in system B an also make modifications to the received Version copies; these modifications are shown in grey, as branched versions with `_uid.creating_system_id_` = `"sysB"`. Independently, users in system B will of course be creating other content locally, e.g. as shown on the right-hand side, where a Versioned object with `_uid_`= `"2"` has been created. Two places are indicated on the diagram where identification clashes could have occurred, but are prevented due to the use of the 3-part unique Version identifier scheme.
 
 Two rules are required to make this system work, as follows:
 
@@ -232,7 +232,7 @@ An important consequence of the way `IMPORTED_VERSION` is modelled is that in th
 
 === Version Merging
 
-One of the most common operations in distributed versioned environments, particularly in healthcare, is that content created in one system is imported into another system, modifications are created locally there which are then sent back the first system. This information pathway corresponds to scenarios such as the patient being referred from primary care into a hospital, and later being discharged into primary (or other care).
+One of the most common operations in distributed versioned environments, particularly in healthcare, is that content created in one system is imported into another system, and modifications are created locally there which are then sent back the first system. This information pathway corresponds to scenarios such as the patient being referred from primary care into a hospital, and later being discharged into primary (or other care).
 
 The usual need when the first system receives changes made to the data by the second system is to merge them back into the trunk of the version tree. Logically a 'merge' is the operation of using two versions of the same content to create a third version. How the source versions are used will vary based on the semantics of the information; it could be that the either is simply taken in its totality and the other discarded, or some mixture might be created of the two in a process of editing by the user. In many cases in health, such as where the content is a medication or problem list, the user in the original system will review the received content and create a new trunk version locally using that content, since it will be deemed to be the most accurate available in the clinical computing environment. This scenario is illustrated below.
 
@@ -240,9 +240,15 @@ The usual need when the first system receives changes made to the data by the se
 .Version merging
 image::{diagrams_uri}/version_merging.png[id=version_merging, align="center", width=60%]
 
-In this figure, versions 1 and 2 of the content (e.g. a medication list) from Versioned object with `_uid_`=1 are copied from system A (e.g. a GP) to system B (e.g. a hospital). In system B, changes are made to version 2, creating a branch (as an instance of `IMPORTED_VERSION<T>`) as required by the rules described above. These changes (modified medication list) are then imported back into system A. The system A user performs a merge operation to create a new trunk version 3, using the sysB::2.1.2 and sysA::2 content; most likely, he simply reviews the two input versions and uses the sysB::2.1.2 content unchanged (the result is that system A now has an up-to-date medication list for the patient, including medications orginally recorded at system A, as well as additions recorded at system B). The new Version is an instance of `ORIGINAL_VERSION<T>`, with its other_input_version_ids attribute set to include the `OBJECT_VERSION_ID` representing sysB::2.1.2 (it does not need to include sysA::2, since this is already known in the `_preceding_version_uid_`).
+In this figure, versions 1 and 2 of the content (e.g. a medication list) from Versioned object with `_uid_`= `1` are copied from system A (e.g. a GP) to system B (e.g. a hospital). In system B, changes are made to version 2, creating a branch (as an instance of `IMPORTED_VERSION<T>`) as required by the rules described above. These changes (modified medication list) are then imported back into system A. The system A user performs a merge operation to create a new trunk version 3, using the `sysB::2.1.2` and `sysA::2` content as input, in which he may do any of the following:
 
-If in system A a modification had been done to the sysA::2 version, creating sysA::3, in parallel with the system B changes, then a conflict situation is likely when the merge attempt is made. This may need to be resolved by a human user, for whom an automated merge attempt could be presented on the screen as a starting point, much as current source code control tools do today.
+* use the `sysB::2.1.2` (most recent) content unchanged;
+* retain the `sysA::2` content as being more correct, despite the more recent information in the `sysB::2.1.2` version (which might be clinically incorrect, or out of date, despite being entered more recently);
+* reconcile the information from the two versions in a synthesised form that now best represents the known reality for the patient.
+
+In all cases, the result is that system A now has an up-to-date medication list for the patient, as judged by the merging clinician. The new Version is an instance of `ORIGINAL_VERSION<T>`, and the `_other_input_version_ids_` attribute is updated to include the `OBJECT_VERSION_ID` representing `sysB::2.1.2`. This should be done even if its content was not used in the merge, since it indicates which source versions were considered in the merge operation. It does not need to include `sysA::2`, since this is already known in the `_preceding_version_uid_`.
+
+If in system A a modification had been done to the `sysA::2` version, creating `sysA::3`, in parallel with the system B changes, then a conflict situation is likely when the merge attempt is made. This may need to be resolved by a human user, for whom an automated merge attempt could be presented on the screen as a starting point, much as current source code control tools do today.
 
 === Disjoint Merging
 
@@ -254,7 +260,7 @@ image::{diagrams_uri}/disjoint_merging.png[id=disjoint_merging, align="center", 
 
 The merge procedure is as follows:
 
-* decide which record is to remain active (for merging purposes, this will be the "target", the other the "source");
+* decide which record is to remain active (for merging purposes, this will be the 'target', the other the 'source');
 * for all Version containers in the source record...
 ** if there is a logical equivalent in the target record (for EHRs, there will typically only be equivalents for persistent and possibly administrative Compositions), perform a disjoint merge in the target Version container by:
 *** creating a new trunk version in the target Version container;
@@ -273,7 +279,7 @@ As for copying and merging, an important consequence of this procedure is that t
 
 It will not be uncommon that whole `VERSIONED_OBJECTS` need to be moved to another system, e.g. due to a move of a complete patient record (due to the patient moving), or re-organisation of EHR data centres. The semantics of a move are different from those of copying: with a move, there is no longer a source instance after the operation; the destination instance becomes the primary instance.
 
-When the move is effected, the identifier of the system in which the `VERSIONED_OBJECT` now exists will usually be different from what it was before. As a consequence, subsequent versions of the content created in a moved version container will now have the `_uid_`.`_creating_system_id_` set to the id of the new system. This creates another variation on the version lineage, one in which the `_uid_`.`_creating_system_id_` value can change in the trunk line, as shown in below.
+When the move is effected, the identifier of the system in which the `VERSIONED_OBJECT` now exists will usually be different from what it was before. As a consequence, subsequent versions of the content created in a moved version container will now have the `_uid.creating_system_id_` set to the id of the new system. This creates another variation on the version lineage, one in which the `_uid.creating_system_id_` value can change in the trunk line, as shown in below.
 
 [.text-center]
 .Moving a version container

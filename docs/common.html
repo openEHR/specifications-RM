@@ -132,7 +132,7 @@
 <li><a href="#_typing">6.2.1. Typing</a></li>
 <li><a href="#_versioned_objects">6.2.2. Versioned Objects</a></li>
 <li><a href="#_version_and_its_subtypes">6.2.3. Version and its Subtypes</a></li>
-<li><a href="#_the_virtual_version_tree">6.2.4. The "Virtual Version Tree"</a></li>
+<li><a href="#_the_virtual_version_tree">6.2.4. The 'Virtual Version Tree'</a></li>
 <li><a href="#_contributions">6.2.5. Contributions</a></li>
 <li><a href="#_committal_and_audits">6.2.6. Committal and Audits</a></li>
 <li><a href="#_digital_signature">6.2.7. Digital Signature</a></li>
@@ -293,9 +293,15 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-93" target="_blank" rel="noopener">SPECRM-93</a>: Adjust advice on merging persistent compositions in section 6.4.2. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-271" target="_blank" rel="noopener">SPECPR-355</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>12 Mar 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-7" target="_blank" rel="noopener">SPECPUB-7</a>: Convert citations to bibtex form.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Dec 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Dec 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -305,7 +311,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-74" target="_blank" rel="noopener">SPECRM-74</a>. Add other_details meta-data field to <code>FEEDER_AUDIT_DETAILS</code> (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-271" target="_blank" rel="noopener">SPECPR-271</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-74" target="_blank" rel="noopener">SPECRM-74</a>. Add <code><em>other_details</em></code> meta-data field to <code>FEEDER_AUDIT_DETAILS</code> (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-271" target="_blank" rel="noopener">SPECPR-271</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">B Haarbrandt</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">10 Oct 2019</p></td>
 </tr>
@@ -2725,7 +2731,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_virtual_version_tree"><a class="anchor" href="#_the_virtual_version_tree"></a>6.2.4. The "Virtual Version Tree"</h4>
+<h4 id="_the_virtual_version_tree"><a class="anchor" href="#_the_virtual_version_tree"></a>6.2.4. The 'Virtual Version Tree'</h4>
 <div class="paragraph">
 <p>An underlying design concept of the versioning model defined here is known as the 'virtual version tree'. The idea is simple in the abstract. Information is committed to a repository (such as an EHR) in lumps, each lump being the 'data' of one Version. Each Version has its place within a version tree, which in turn is maintained inside a Versioned object. The virtual version tree concept means that any given Versioned object may have numerous copies in various systems, and that the creation of versions in each is done in such a way that all versions so created are in fact compatible with the 'virtual' version tree resulting from the superimposition of the version trees of all copies. This is achieved using simple rules for version identification, described below, and is done to facilitate data sharing. Two very common scenarios are served by the virtual version tree concept:</p>
 </div>
@@ -3005,7 +3011,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <p>To satisfy these needs, two modifications are made to the identification scheme. The first is the addition of the <code><em>creating_system_id</em></code> attribute of <code>VERSION.<em>uid</em></code>, representing the system where the version was created. This is a machine processable identifier, such as a reverse internet address or GUID.</p>
 </div>
 <div class="paragraph">
-<p>Whenever a new <code>ORIGINAL_VERSION</code> in a particular <code>VERSIONED_OBJECT</code> (with a particular UID) is created locally, the <code>VERSION.<em>uid</em>.<em>creating_system_id</em></code> is set to the identifier of the local system; if the version was imported, <code><em>creating_system_id</em></code> will already have been set to the identifier of the system of original creation.</p>
+<p>Whenever a new <code>ORIGINAL_VERSION</code> in a particular <code>VERSIONED_OBJECT</code> (with a particular UID) is created locally, the <code>VERSION.<em>uid.creating_system_id</em></code> is set to the identifier of the local system; if the version was imported, <code><em>creating_system_id</em></code> will already have been set to the identifier of the system of original creation.</p>
 </div>
 <div class="paragraph">
 <p>The second modification is to require branching version identifiers to be used when local modifications are made to versions copied from elsewhere; this ensures that the modifications now being made in the target system are considered in a global sense as logical branches or variants rather than trunk versions which are made in the originating system. It also allows later trunk versions from the originating system to be copied at some future time to the target system without version identifier clashes. In summary, the scheme uses the tuple {<code><em>object_id</em></code>, <code><em>creating_system_id</em></code>, <code><em>version_tree_id</em></code>} to globally uniquely identify any openEHR <code>VERSION</code> object.</p>
@@ -3042,7 +3048,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <p>In the first situation, there is not even an EHR (i.e. repository of Versioned objects for the patient in question) in the target system. A new one has to be created. As mentioned in the <a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_ehr_creation_semantics">EHR IM specification</a>, the newly created EHR should re-use the EHR identifier from the source system. This establishes the new EHR as an intentional clone of the source EHR (or more correctly, part of the family of EHRs making up the virtual EHR for that patient).</p>
 </div>
 <div class="paragraph">
-<p>If it is the first time any version of the item logically identified by its <code>ORIGINAL_VERSION.<em>uid</em>.<em>object_id()</em></code> (i.e. the <code><em>uid</em></code> of its original <code>VERSIONED_OBJECT</code>, common to all Versions in the same container) was received from the originating system, a new <code>VERSIONED_OBJECT&lt;T&gt;</code> (e.g. <code>VERSIONED_OBJECT&lt;COMPOSITION&gt;</code>) is created, with its uid set to the same value as the received <code>VERSION.<em>uid</em>.<em>object_id()</em></code>. This establishes the newly created <code>VERSIONED_OBJECT</code> as being a logical clone of the one from which the received <code>ORIGINAL_VERSION</code> was copied. If some version of the item had already been received, this step will have already occurred, and the requisite <code>VERSIONED_OBJECT</code> would already exist.</p>
+<p>If it is the first time any version of the item logically identified by its <code>ORIGINAL_VERSION.<em>uid.object_id()</em></code> (i.e. the <code><em>uid</em></code> of its original <code>VERSIONED_OBJECT</code>, common to all Versions in the same container) was received from the originating system, a new <code>VERSIONED_OBJECT&lt;T&gt;</code> (e.g. <code>VERSIONED_OBJECT&lt;COMPOSITION&gt;</code>) is created, with its uid set to the same value as the received <code>VERSION.<em>uid.object_id()</em></code>. This establishes the newly created <code>VERSIONED_OBJECT</code> as being a logical clone of the one from which the received <code>ORIGINAL_VERSION</code> was copied. If some version of the item had already been received, this step will have already occurred, and the requisite <code>VERSIONED_OBJECT</code> would already exist.</p>
 </div>
 <div class="paragraph">
 <p>An <code>IMPORTED_VERSION</code> instance is then created, its item set to the received <code>ORIGINAL_VERSION</code>, and it is committed in the normal way (i.e. as part of a Contribution). The <code>IMPORTED_VERSION</code> commit_audit and contribution attributes record the local act of committal. In this operation, the <code>ORIGINAL_VERSION</code> instance is never modified - it remains a faithful copy of its original, no matter how many systems it may be copied through.</p>
@@ -3051,10 +3057,10 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="sect4">
 <h5 id="_subsequent_local_modifications"><a class="anchor" href="#_subsequent_local_modifications"></a>6.4.1.2. Subsequent Local Modifications</h5>
 <div class="paragraph">
-<p>In most cases, the received information will remain as is for the duration. However, in some cases, users at the receiver system might want to make modifications as well. This is likely to happen in the case of information items representing things like medication lists and allergies. When new versions are added locally to a copied object, the local system id is recorded in the <code><em>uid</em>.<em>creating_system_id()</em></code> attribute, while branching numbering is used in the <code><em>uid</em>.<em>version_tree_id()</em></code>.</p>
+<p>In most cases, the received information will remain as is for the duration. However, in some cases, users at the receiver system might want to make modifications as well. This is likely to happen in the case of information items representing things like medication lists and allergies. When new versions are added locally to a copied object, the local system id is recorded in the <code><em>uid.creating_system_id()</em></code> attribute, while branching numbering is used in the <code><em>uid.version_tree_id()</em></code>.</p>
 </div>
 <div class="paragraph">
-<p>These copying scenarios are illustrated in the figure below. On the left hand-side of the figure, a version container (i.e. an instance of <code>VERSIONED_OBJECT</code>) with <code><em>uid</em></code> = "1" is shown; the first Version has <code><em>uid</em>.<em>creating_system_id</em></code> = "sysA"; <code><em>uid</em>.<em>version_tree_id</em></code> = "1". Further local trunk and branch versions are also shown.</p>
+<p>These copying scenarios are illustrated in the figure below. On the left hand-side of the figure, a version container (i.e. an instance of <code>VERSIONED_OBJECT</code>) with <code><em>uid</em></code> = <code>"1"</code> is shown; the first Version has <code><em>uid.creating_system_id</em></code> = <code>"sysA"</code>; <code><em>uid.version_tree_id</em></code> = <code>"1"</code>. Further local trunk and branch versions are also shown.</p>
 </div>
 <div id="distributed_versioning" class="imageblock text-center text-center">
 <div class="content">
@@ -3063,7 +3069,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="title">Figure 13. Distributed versioning</div>
 </div>
 <div class="paragraph">
-<p>When the first <code>ORIGINAL_VERSION</code> is copied (copy #1) to system B, it is committed as an <code>IMPORTED_VERSION</code> to a <code>VERSIONED_OBJECT</code> which is a clone of the original. Subsequent copies (copy #2 and copy #3) can be made of later versions from system A to system B, with the effect that the version tree can be recreated inside system B (if required; there is of course no obligation to do anything with the received information). Users in system B an also make modifications to the received Version copies; these modifications are shown in grey, as branched versions with <code><em>uid</em>.<em>creating_system_id</em></code> = "sysB". Independently, users in system B will of course be creating other content locally, e.g. as shown on the right-hand side, where a Versioned object with <code><em>uid</em></code>= "2" has been created. Two places are indicated on the diagram where identification clashes could have occurred, but are prevented due to the use of the 3-part unique Version identifier scheme.</p>
+<p>When the first <code>ORIGINAL_VERSION</code> is copied (copy #1) to system B, it is committed as an <code>IMPORTED_VERSION</code> to a <code>VERSIONED_OBJECT</code> which is a clone of the original. Subsequent copies (copy #2 and copy #3) can be made of later versions from system A to system B, with the effect that the version tree can be recreated inside system B (if required; there is of course no obligation to do anything with the received information). Users in system B an also make modifications to the received Version copies; these modifications are shown in grey, as branched versions with <code><em>uid.creating_system_id</em></code> = <code>"sysB"</code>. Independently, users in system B will of course be creating other content locally, e.g. as shown on the right-hand side, where a Versioned object with <code><em>uid</em></code>= <code>"2"</code> has been created. Two places are indicated on the diagram where identification clashes could have occurred, but are prevented due to the use of the 3-part unique Version identifier scheme.</p>
 </div>
 <div class="paragraph">
 <p>Two rules are required to make this system work, as follows:</p>
@@ -3086,7 +3092,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="sect3">
 <h4 id="_version_merging"><a class="anchor" href="#_version_merging"></a>6.4.2. Version Merging</h4>
 <div class="paragraph">
-<p>One of the most common operations in distributed versioned environments, particularly in healthcare, is that content created in one system is imported into another system, modifications are created locally there which are then sent back the first system. This information pathway corresponds to scenarios such as the patient being referred from primary care into a hospital, and later being discharged into primary (or other care).</p>
+<p>One of the most common operations in distributed versioned environments, particularly in healthcare, is that content created in one system is imported into another system, and modifications are created locally there which are then sent back the first system. This information pathway corresponds to scenarios such as the patient being referred from primary care into a hospital, and later being discharged into primary (or other care).</p>
 </div>
 <div class="paragraph">
 <p>The usual need when the first system receives changes made to the data by the second system is to merge them back into the trunk of the version tree. Logically a 'merge' is the operation of using two versions of the same content to create a third version. How the source versions are used will vary based on the semantics of the information; it could be that the either is simply taken in its totality and the other discarded, or some mixture might be created of the two in a process of editing by the user. In many cases in health, such as where the content is a medication or problem list, the user in the original system will review the received content and create a new trunk version locally using that content, since it will be deemed to be the most accurate available in the clinical computing environment. This scenario is illustrated below.</p>
@@ -3098,10 +3104,26 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="title">Figure 14. Version merging</div>
 </div>
 <div class="paragraph">
-<p>In this figure, versions 1 and 2 of the content (e.g. a medication list) from Versioned object with <code><em>uid</em></code>=1 are copied from system A (e.g. a GP) to system B (e.g. a hospital). In system B, changes are made to version 2, creating a branch (as an instance of <code>IMPORTED_VERSION&lt;T&gt;</code>) as required by the rules described above. These changes (modified medication list) are then imported back into system A. The system A user performs a merge operation to create a new trunk version 3, using the sysB::2.1.2 and sysA::2 content; most likely, he simply reviews the two input versions and uses the sysB::2.1.2 content unchanged (the result is that system A now has an up-to-date medication list for the patient, including medications orginally recorded at system A, as well as additions recorded at system B). The new Version is an instance of <code>ORIGINAL_VERSION&lt;T&gt;</code>, with its other_input_version_ids attribute set to include the <code>OBJECT_VERSION_ID</code> representing sysB::2.1.2 (it does not need to include sysA::2, since this is already known in the <code><em>preceding_version_uid</em></code>).</p>
+<p>In this figure, versions 1 and 2 of the content (e.g. a medication list) from Versioned object with <code><em>uid</em></code>= <code>1</code> are copied from system A (e.g. a GP) to system B (e.g. a hospital). In system B, changes are made to version 2, creating a branch (as an instance of <code>IMPORTED_VERSION&lt;T&gt;</code>) as required by the rules described above. These changes (modified medication list) are then imported back into system A. The system A user performs a merge operation to create a new trunk version 3, using the <code>sysB::2.1.2</code> and <code>sysA::2</code> content as input, in which he may do any of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>use the <code>sysB::2.1.2</code> (most recent) content unchanged;</p>
+</li>
+<li>
+<p>retain the <code>sysA::2</code> content as being more correct, despite the more recent information in the <code>sysB::2.1.2</code> version (which might be clinically incorrect, or out of date, despite being entered more recently);</p>
+</li>
+<li>
+<p>reconcile the information from the two versions in a synthesised form that now best represents the known reality for the patient.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>If in system A a modification had been done to the sysA::2 version, creating sysA::3, in parallel with the system B changes, then a conflict situation is likely when the merge attempt is made. This may need to be resolved by a human user, for whom an automated merge attempt could be presented on the screen as a starting point, much as current source code control tools do today.</p>
+<p>In all cases, the result is that system A now has an up-to-date medication list for the patient, as judged by the merging clinician. The new Version is an instance of <code>ORIGINAL_VERSION&lt;T&gt;</code>, and the <code><em>other_input_version_ids</em></code> attribute is updated to include the <code>OBJECT_VERSION_ID</code> representing <code>sysB::2.1.2</code>. This should be done even if its content was not used in the merge, since it indicates which source versions were considered in the merge operation. It does not need to include <code>sysA::2</code>, since this is already known in the <code><em>preceding_version_uid</em></code>.</p>
+</div>
+<div class="paragraph">
+<p>If in system A a modification had been done to the <code>sysA::2</code> version, creating <code>sysA::3</code>, in parallel with the system B changes, then a conflict situation is likely when the merge attempt is made. This may need to be resolved by a human user, for whom an automated merge attempt could be presented on the screen as a starting point, much as current source code control tools do today.</p>
 </div>
 </div>
 <div class="sect3">
@@ -3121,7 +3143,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="ulist">
 <ul>
 <li>
-<p>decide which record is to remain active (for merging purposes, this will be the "target", the other the "source");</p>
+<p>decide which record is to remain active (for merging purposes, this will be the 'target', the other the 'source');</p>
 </li>
 <li>
 <p>for all Version containers in the source record&#8230;&#8203;</p>
@@ -3184,7 +3206,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <p>It will not be uncommon that whole <code>VERSIONED_OBJECTS</code> need to be moved to another system, e.g. due to a move of a complete patient record (due to the patient moving), or re-organisation of EHR data centres. The semantics of a move are different from those of copying: with a move, there is no longer a source instance after the operation; the destination instance becomes the primary instance.</p>
 </div>
 <div class="paragraph">
-<p>When the move is effected, the identifier of the system in which the <code>VERSIONED_OBJECT</code> now exists will usually be different from what it was before. As a consequence, subsequent versions of the content created in a moved version container will now have the <code><em>uid</em></code>.<code><em>creating_system_id</em></code> set to the id of the new system. This creates another variation on the version lineage, one in which the <code><em>uid</em></code>.<code><em>creating_system_id</em></code> value can change in the trunk line, as shown in below.</p>
+<p>When the move is effected, the identifier of the system in which the <code>VERSIONED_OBJECT</code> now exists will usually be different from what it was before. As a consequence, subsequent versions of the content created in a moved version container will now have the <code><em>uid.creating_system_id</em></code> set to the id of the new system. This creates another variation on the version lineage, one in which the <code><em>uid.creating_system_id</em></code> value can change in the trunk line, as shown in below.</p>
 </div>
 <div id="moving_version_container" class="imageblock text-center text-center">
 <div class="content">
@@ -4254,7 +4276,7 @@ translations.has_key (d.language.code_string)))</code></p>
 <h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a id="Beale2000"></a>Beale, T. (2000). Archetypes: Constraint-based Domain Models for Future-proof Information Systems. Retrieved from <a href="https://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf" class="bare">https://www.openehr.org/files/resources/publications/archetypes/archetypes_beale_web_2000.pdf</a></p>
+<p><a id="Beale2000"></a>Beale, T. (2000). Archetypes: Constraint-based Domain Models for Future-proof Information Systems. Retrieved from <a href="https://www.openehr.org/publications/archetypes/archetypes_beale_web_2000.pdf" class="bare">https://www.openehr.org/publications/archetypes/archetypes_beale_web_2000.pdf</a></p>
 </div>
 <div class="paragraph">
 <p><a id="GEHR1995"></a>Beale, T., Lloyd, D., Heard, S., Kalra, D., &amp; Ingram, D. (1995). <em>Deliverable 19,20,24: GEHR Architecture</em>. Brussels: European Commission AIM. Retrieved from <a href="https://www.openehr.org/resources/related_projects/gehr_deliverable-19_20_24.pdf" class="bare">https://www.openehr.org/resources/related_projects/gehr_deliverable-19_20_24.pdf</a></p>
