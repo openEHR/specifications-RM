@@ -295,7 +295,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-93" target="_blank" rel="noopener">SPECRM-93</a>: Adjust advice on merging persistent compositions in section 6.4.2. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-271" target="_blank" rel="noopener">SPECPR-355</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>12 Mar 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Mar 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -3092,7 +3092,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="sect3">
 <h4 id="_version_merging"><a class="anchor" href="#_version_merging"></a>6.4.2. Version Merging</h4>
 <div class="paragraph">
-<p>One of the most common operations in distributed versioned environments, particularly in healthcare, is that content created in one system is imported into another system, and modifications are created locally there which are then sent back the first system. This information pathway corresponds to scenarios such as the patient being referred from primary care into a hospital, and later being discharged into primary (or other care).</p>
+<p>One of the most common operations in distributed versioned environments, particularly in healthcare, is that content created in one system is imported into another system, modified in the receiving system and subsequently sent back to the first system. This information pathway corresponds to scenarios such as the patient being referred from primary care into a hospital, and later being discharged into primary (or other care).</p>
 </div>
 <div class="paragraph">
 <p>The usual need when the first system receives changes made to the data by the second system is to merge them back into the trunk of the version tree. Logically a 'merge' is the operation of using two versions of the same content to create a third version. How the source versions are used will vary based on the semantics of the information; it could be that the either is simply taken in its totality and the other discarded, or some mixture might be created of the two in a process of editing by the user. In many cases in health, such as where the content is a medication or problem list, the user in the original system will review the received content and create a new trunk version locally using that content, since it will be deemed to be the most accurate available in the clinical computing environment. This scenario is illustrated below.</p>
@@ -3120,7 +3120,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 </ul>
 </div>
 <div class="paragraph">
-<p>In all cases, the result is that system A now has an up-to-date medication list for the patient, as judged by the merging clinician. The new Version is an instance of <code>ORIGINAL_VERSION&lt;T&gt;</code>, and the <code><em>other_input_version_ids</em></code> attribute is updated to include the <code>OBJECT_VERSION_ID</code> representing <code>sysB::2.1.2</code>. This should be done even if its content was not used in the merge, since it indicates which source versions were considered in the merge operation. It does not need to include <code>sysA::2</code>, since this is already known in the <code><em>preceding_version_uid</em></code>.</p>
+<p>In all cases, the result is that system A now has an up-to-date medication list for the patient, as judged by the merging clinician. The new Version is an instance of <code>ORIGINAL_VERSION&lt;T&gt;</code>, and the <code><em>other_input_version_uids</em></code> attribute is updated to include the <code>OBJECT_VERSION_ID</code> representing <code>sysB::2.1.2</code>. This should be done even if its content was not used in the merge, since it indicates which source versions were considered in the merge operation. It does not need to include <code>sysA::2</code>, since this is already known in the <code><em>preceding_version_uid</em></code>.</p>
 </div>
 <div class="paragraph">
 <p>If in system A a modification had been done to the <code>sysA::2</code> version, creating <code>sysA::3</code>, in parallel with the system B changes, then a conflict situation is likely when the merge attempt is made. This may need to be resolved by a human user, for whom an automated merge attempt could be presented on the screen as a starting point, much as current source code control tools do today.</p>
