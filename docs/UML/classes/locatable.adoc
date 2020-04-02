@@ -21,9 +21,9 @@ a|Runtime name of this fragment, used to build runtime paths. This is the term p
 
 h|*1..1*
 |*archetype_node_id*: `String`
-a|Design-time archetype id of this node taken from its generating archetype; used to build archetype paths. Always in the form of an  at  code, e.g.  at0005 . This value enables a "standardised" name for this node to be generated, by referring to the generating archetype local ontology.
+a|Design-time archetype identifier of this node taken from its generating archetype; used to build archetype paths. Always in the form of an at-code, e.g.  `at0005`. This value enables a 'standardised' name for this node to be generated, by referring to the generating archetype local terminology.
 
-At an archetype root point, the value of this attribute is always the stringified form of the archetype_id found in the archetype_details object.
+At an archetype root point, the value of this attribute is always the stringified form of the `_archetype_id_` found in the `_archetype_details_` object.
 
 h|*0..1*
 |*uid*: `UID_BASED_ID`
@@ -31,7 +31,7 @@ a|Optional globally unique object identifier for root points of archetyped struc
 
 h|*0..1*
 |*links*: `List<LINK>`
-a|Links to other archetyped structures (data whose root object inherits from ARCHETYPED, such as ENTRY, SECTION and so on). Links may be to structures in other compositions.
+a|Links to other archetyped structures (data whose root object inherits from `ARCHETYPED`, such as `ENTRY`, `SECTION` and so on). Links may be to structures in other compositions.
 
 h|*0..1*
 |*archetype_details*: `ARCHETYPED`

@@ -1518,10 +1518,10 @@ a_loc: <code>PATHABLE[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>archetype_node_id</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Design-time archetype id of this node taken from its generating archetype; used to build archetype paths. Always in the form of an  at  code, e.g.  at0005 . This value enables a "standardised" name for this node to be generated, by referring to the generating archetype local ontology.</p>
+<p>Design-time archetype identifier of this node taken from its generating archetype; used to build archetype paths. Always in the form of an at-code, e.g.  <code>at0005</code>. This value enables a 'standardised' name for this node to be generated, by referring to the generating archetype local terminology.</p>
 </div>
 <div class="paragraph">
-<p>At an archetype root point, the value of this attribute is always the stringified form of the archetype_id found in the archetype_details object.</p>
+<p>At an archetype root point, the value of this attribute is always the stringified form of the <code><em>archetype_id</em></code> found in the <code><em>archetype_details</em></code> object.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1535,7 +1535,7 @@ a_loc: <code>PATHABLE[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>links</strong>: <code>List&lt;LINK&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Links to other archetyped structures (data whose root object inherits from ARCHETYPED, such as ENTRY, SECTION and so on). Links may be to structures in other compositions.</p>
+<p>Links to other archetyped structures (data whose root object inherits from <code>ARCHETYPED</code>, such as <code>ENTRY</code>, <code>SECTION</code> and so on). Links may be to structures in other compositions.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1608,10 +1608,10 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Archetypes act as the configuration basis for the particular structures of instances defined by the reference model. To enable archetypes to be used to create valid data, key classes in the reference model act as  root  points for archetyping; accordingly, these classes have the archetype_details attribute set.</p>
+<p>Archetypes act as the configuration basis for the particular structures of instances defined by the reference model. To enable archetypes to be used to create valid data, key classes in the reference model act as  root  points for archetyping; accordingly, these classes have the <code><em>archetype_details</em></code> attribute set.</p>
 </div>
 <div class="paragraph">
-<p>An instance of the class ARCHETYPED contains the relevant archetype identification information, allowing generating archetypes to be matched up with data instances.</p>
+<p>An instance of the class <code>ARCHETYPED</code> contains the relevant archetype identification information, allowing generating archetypes to be matched up with data instances.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2495,7 +2495,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>An entry in a revision history, corresponding to a version from a versioned container. Consists of AUDIT_DETAILS instances with revision identifier of the revision to which the AUDIT_DETAILS intance belongs.</p>
+<p>An entry in a revision history, corresponding to a version from a versioned container. Consists of <code>AUDIT_DETAILS</code> instances with revision identifier of the revision to which the <code>AUDIT_DETAILS</code> instance belongs.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2514,7 +2514,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audits</strong>: <code>List&lt;AUDIT_DETAILS&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The audits for this revision; there will always be at least one commit audit (which may itself be an ATTESTATION), there may also be further attestations.</p>
+<p>The audits for this revision; there will always be at least one commit audit (which may itself be an <code>ATTESTATION</code>), there may also be further attestations.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2643,7 +2643,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>folders</strong>: <code>List&lt;FOLDER&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Sub-folders of this FOLDER.</p>
+<p>Sub-folders of this <code>FOLDER</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3532,7 +3532,7 @@ Original content of this Version.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Lifecycle state of this version; coded by openEHR vocabulary 'version lifecycle state'.</p>
+<p>Lifecycle state of this version; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3627,7 +3627,7 @@ signature.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Lifecycle state of the content item in this version; coded by openEHR vocabulary 'version lifecycle state'.</p>
+<p>Lifecycle state of the content item in this version; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3709,7 +3709,7 @@ signature.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>ORIGINAL_VERSION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The ORIGINAL_VERSION object that was imported.</p>
+<p>The <code>ORIGINAL_VERSION</code> object that was imported.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3737,7 +3737,7 @@ signature.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Lifecycle state of the content item in wrapped <code>ORIGINAL_VERSION</code>, derived as <code><em>item.lifecycle_state</em></code>; coded by openEHR vocabulary 'version lifecycle state'.</p>
+<p>Lifecycle state of the content item in wrapped <code>ORIGINAL_VERSION</code>, derived as <code><em>item.lifecycle_state</em></code>; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3912,7 +3912,7 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>translations</strong>: <code>Hash&lt;String,TRANSLATION_DETAILS&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>List of details for each natural translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The original_language does not appear in this list.</p>
+<p>List of details for each natural-language translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The <code><em>original_language</em></code> does not appear in this list.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3926,7 +3926,7 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code>REVISION_HISTORY</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The revision history of the resource. Only required if is_controlled = True (avoids large revision histories for informal or private editing situations).</p>
+<p>The revision history of the resource. Only required if <code><em>is_controlled</em> = True</code> (avoids large revision histories for informal or private editing situations).</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3939,14 +3939,14 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong> (): <code>String</code><br>
 <strong><em>Post</em></strong>: <code>Result = revision_history.most_recent_version</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Most recent revision in revision_history if is_controlled else  (uncontrolled) .</p>
+<p>Most recent revision in <code><em>revision_history</em></code> if <code><em>is_controlled</em></code> else  (uncontrolled) .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages_available</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Total list of languages available in this resource, derived from original_language and translations.</p>
+<p>Total list of languages available in this resource, derived from <code><em>original_language</em></code> and <code><em>translations</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4085,14 +4085,14 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_contributors</strong>: <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Other contributors to the resource, probably listed in  name &lt;email&gt;  form.</p>
+<p>Other contributors to the resource, probably listed in  <code>'name &lt;email&gt;'</code>  form.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Lifecycle state of the resource, typically including states such as: initial, submitted, experimental, awaiting_approval, approved, superseded, obsolete.</p>
+<p>Lifecycle state of the resource, typically including states such as: <code>initial &#124; submitted &#124; experimental &#124; awaiting_approval &#124; approved &#124; superseded &#124; obsolete</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4184,7 +4184,7 @@ translations.has_key (d.language.code_string)))</code></p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The localised language in which the items in this description item are written. Coded from openEHR Code Set  languages .</p>
+<p>The localised language in which the items in this description item are written. Coded from openEHR code set <code>languages</code>.</p>
 </div></div></td>
 </tr>
 <tr>
