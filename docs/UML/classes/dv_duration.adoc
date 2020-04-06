@@ -30,28 +30,29 @@ h|*Functions*
 ^h|*Meaning*
 
 h|(redefined)
-|*add* ( +
+|*add* _alias_ "+" ( +
 other: `DV_DURATION[1]` +
 ): `DV_DURATION`
 a|Sum of this Duration and `_other_`.
 
 h|(redefined)
-|*subtract* ( +
+|*subtract* _alias_ "-" ( +
 other: `DV_DURATION[1]` +
 ): `DV_DURATION`
 a|Difference of this Duration and `_other_`.
 
 h|(redefined)
-|*multiply* ( +
+|*multiply* _alias_ "&#42;" ( +
 factor: `Real[1]` +
 ): `DV_DURATION`
 a|Product of this Duration and `_factor_`.
 
 h|(effected)
-|*less_than* ( +
+|*less_than* _alias_ "<" ( +
 other: `DV_DURATION[1]` +
 ): `Boolean` +
-*_Post_result_*: `Result = magnitude > other.magnitude`
+ +
+_Post_result_: `Result = magnitude > other.magnitude`
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 
 h|(effected)
@@ -61,5 +62,5 @@ other: `DV_DURATION[1]` +
 a|True, for any two Durations.
 
 h|*Invariants*
-2+a|*_Value_valid_*: `valid_iso8601_duration (value)`
+2+a|_Value_valid_: `valid_iso8601_duration (value)`
 |===

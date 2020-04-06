@@ -41,10 +41,11 @@ h|*Functions*
 ^h|*Meaning*
 
 h|(effected)
-|*less_than* ( +
+|*less_than* _alias_ "<" ( +
 other: `DV_ORDINAL[1]` +
 ): `Boolean` +
-*_Pre_comparable_*: `is_strictly_comparable (other)`
+ +
+_Pre_comparable_: `is_strictly_comparable (other)`
 a|True if this Ordinal value is less than `_other_`.
 
 h|(effected)
@@ -54,8 +55,8 @@ other: `DV_ORDINAL[1]` +
 a|Test if this Ordinal is strictly comparable to `_other_`.
 
 h|*Invariants*
-2+a|*_Limits_valid_*: `limits.meaning.is_equal (“limits”)`
+2+a|_Limits_valid_: `limits.meaning.is_equal (“limits”)`
 
 h|
-2+a|*_Reference_range_valid_*: `other_reference_ranges.has (limits)`
+2+a|_Reference_range_valid_: `other_reference_ranges.has (limits)`
 |===

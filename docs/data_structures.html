@@ -987,7 +987,7 @@ i: <code>Integer[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Valid_structure</em></strong>: ` items.forall (i:ITEM &#124; i.type = "ELEMENT")`</p>
+<p><em>Valid_structure</em>: ` items.forall (i:ITEM &#124; i.type = "ELEMENT")`</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1144,7 +1144,7 @@ j: <code>Integer[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Valid_structure</em></strong>: <code>rows.for_all (items.for_all (instance_of ("ELEMENT")))</code></p>
+<p><em>Valid_structure</em>: <code>rows.for_all (items.for_all (instance_of ("ELEMENT")))</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1411,25 +1411,25 @@ a_path: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Inv_is_null_valid</em></strong>: <code>is_null() = (value = Void)</code></p>
+<p><em>Inv_is_null_valid</em>: <code>is_null() = (value = Void)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Inv_null_flavour_indicated</em></strong>: <code>is_null() xor null_flavour = Void</code></p>
+<p><em>Inv_null_flavour_indicated</em>: <code>is_null() xor null_flavour = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Inv_null_flavour_valid</em></strong>: <code>is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)</code></p>
+<p><em>Inv_null_flavour_valid</em>: <code>is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Inv_null_reason_valid</em></strong>: <code>null_reason /= Void implies is_null()</code></p>
+<p><em>Inv_null_reason_valid</em>: <code>null_reason /= Void implies is_null()</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1800,19 +1800,19 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Events_valid</em></strong>: <code>(events /= Void and then not events.is_empty) or summary /= Void</code></p>
+<p><em>Events_valid</em>: <code>(events /= Void and then not events.is_empty) or summary /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Periodic_validity</em></strong>: <code>is_periodic xor period = Void</code></p>
+<p><em>Periodic_validity</em>: <code>is_periodic xor period = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Period_consistency</em></strong>: <code>is_periodic implies events.for_all (e: EVENT &#124; e.offset. to_seconds.mod(period.to_seconds) = 0)</code></p>
+<p><em>Period_consistency</em>: <code>is_periodic implies events.for_all (e: EVENT &#124; e.offset. to_seconds.mod(period.to_seconds) = 0)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1875,7 +1875,8 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>offset</strong> (): <code>DV_DURATION</code><br>
-<strong><em>Post_condition</em></strong>: <code>Result = time.diff(parent.origin)</code></p></td>
+<br>
+<em>Post_condition</em>: <code>Result = time.diff(parent.origin)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Offset of this event from origin, computed as time.diff(parent.origin).</p>
 </div></div></td>
@@ -1883,7 +1884,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Offset_validity1</em></strong>: <code>offset /= Void and then offset = time.diff (parent.origin)</code></p>
+<p><em>Offset_validity1</em>: <code>offset /= Void and then offset = time.diff (parent.origin)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1979,13 +1980,13 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Math_function_validity</em></strong>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_event_math_function, math_function.defining_code)</code></p>
+<p><em>Math_function_validity</em>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_event_math_function, math_function.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Interval_start_time_valid</em></strong>: <code>interval_start_time = time - width</code></p>
+<p><em>Interval_start_time_valid</em>: <code>interval_start_time = time - width</code></p>
 </div></div></td>
 </tr>
 </tbody>

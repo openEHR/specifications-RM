@@ -40,8 +40,8 @@ h|*1..1*
 a|True if this attestation is outstanding; False means it has been completed.
 
 h|*Invariants*
-2+a|*_Items_valid_*: `items /= Void implies not items.is_empty`
+2+a|_Items_valid_: `items /= Void implies not items.is_empty`
 
 h|
-2+a|*_Reason_valid_*: `(reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))`
+2+a|_Reason_valid_: `(reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))`
 |===

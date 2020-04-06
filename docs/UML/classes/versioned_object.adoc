@@ -55,21 +55,24 @@ h|
 |*version_with_id* ( +
 a_version_uid: `OBJECT_VERSION_ID[1]` +
 ): `VERSION` +
-*_Pre_*: `has_version_id (a_ver_id)`
+ +
+_Pre_: `has_version_id (a_ver_id)`
 a|Return the version with `_uid_` =  `_a_version_uid_`.
 
 h|
 |*is_original_version* ( +
 a_version_uid: `OBJECT_VERSION_ID[1]` +
 ): `Boolean` +
-*_Pre_*: `has_version_id(a_ver_id)`
+ +
+_Pre_: `has_version_id(a_ver_id)`
 a|True if version with `_a_version_uid_` is an `ORIGINAL_VERSION`.
 
 h|
 |*version_at_time* ( +
 a_time: `DV_DATE_TIME[1]` +
 ): `VERSION` +
-*_Pre_*: `has_version_at_time (a_time)`
+ +
+_Pre_: `has_version_at_time (a_time)`
 a|Return the version for time  `_a_time_`.
 
 h|
@@ -86,7 +89,8 @@ a|Return the most recently added trunk version.
 
 h|
 |*trunk_lifecycle_state* (): `DV_CODED_TEXT` +
-*_Post_*: `Result = latest_trunk_version.lifecycle_state`
+ +
+_Post_: `Result = latest_trunk_version.lifecycle_state`
 a|Return the lifecycle state from the latest trunk version. Useful for determining if the version container is logically deleted.
 
 h|
@@ -99,7 +103,8 @@ a_lifecycle_state: `DV_CODED_TEXT[1]`, +
 a_data: `T[1]`, +
 signing_key: `String[1]` +
 ): `void` +
-*_Pre_*: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0`
+ +
+_Pre_: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0`
 a|Add a new original version.
 
 h|
@@ -113,7 +118,8 @@ a_data: `T[1]`, +
 an_other_input_uids: `List<OBJECT_VERSION_ID>[1]`, +
 signing_key: `String[1]` +
 ): `void` +
-*_Pre_*: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0`
+ +
+_Pre_: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0`
 a|Add a new original merged version. This commit function adds a parameter containing the ids of other versions merged into the current one.
 
 h|
@@ -130,22 +136,23 @@ an_attestation: `ATTESTATION[1]`, +
 a_ver_id: `OBJECT_VERSION_ID[1]`, +
 signing_key: `String[1]` +
 ): `void` +
-*_Pre_*: `has_version_id(a_ver_id)
+ +
+_Pre_: `has_version_id(a_ver_id)
 and is_original_version(a_ver_id)`
 a|Add a new attestation to a specified original version. Attestations can only be added to Original versions.
 
 h|*Invariants*
-2+a|*_Version_count_valid_*: `version_count >= 0`
+2+a|_Version_count_valid_: `version_count >= 0`
 
 h|
-2+a|*_All_version_ids_valid_*: `all_version_ids.count = version_count`
+2+a|_All_version_ids_valid_: `all_version_ids.count = version_count`
 
 h|
-2+a|*_All_versions_valid_*: `all_versions.count = version_count`
+2+a|_All_versions_valid_: `all_versions.count = version_count`
 
 h|
-2+a|*_Latest_version_valid_*: `version_count > 0 implies latest_version /= Void`
+2+a|_Latest_version_valid_: `version_count > 0 implies latest_version /= Void`
 
 h|
-2+a|*_Uid_validity_*: `extension.is_empty`
+2+a|_Uid_validity_: `extension.is_empty`
 |===

@@ -46,20 +46,20 @@ h|
 a|Type of party, such as  `PERSON`,  `ORGANISATION`, etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited `_name_` attribute.
 
 h|*Invariants*
-2+a|*_Type_valid_*: `type = name`
+2+a|_Type_valid_: `type = name`
 
 h|
-2+a|*_Contacts_valid_*: `contacts /= Void implies not contacts.is_empty`
+2+a|_Contacts_valid_: `contacts /= Void implies not contacts.is_empty`
 
 h|
-2+a|*_Relationships_validity_*: `relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r &#124; r.source = self)`
+2+a|_Relationships_validity_: `relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r &#124; r.source = self)`
 
 h|
-2+a|*_Reverse_relationships_validity_*: `reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))`
+2+a|_Reverse_relationships_validity_: `reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))`
 
 h|
-2+a|*_Is_archetype_root_*: `is_archetype_root`
+2+a|_Is_archetype_root_: `is_archetype_root`
 
 h|
-2+a|*_Uid_mandatory_*: `uid /= Void`
+2+a|_Uid_mandatory_: `uid /= Void`
 |===

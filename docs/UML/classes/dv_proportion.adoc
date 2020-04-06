@@ -57,13 +57,13 @@ h|
 a|True if the `_numerator_` and `_denominator_` values are integers, i.e. if `_precision_` is 0.
 
 h|(redefined)
-|*add* ( +
+|*add* _alias_ "+" ( +
 other: `DV_PROPORTION[1]` +
 ): `DV_PROPORTION`
 a|Sum of two strictly comparable proportions.
 
 h|(redefined)
-|*subtract* ( +
+|*subtract* _alias_ "-" ( +
 other: `DV_PROPORTION[1]` +
 ): `DV_PROPORTION`
 a|Difference between two strictly comparable proportions.
@@ -75,36 +75,37 @@ other: `DV_PROPORTION[1]` +
 a|Return True if this `DV_AMOUNT` is considered equal to `_other_`.
 
 h|(redefined)
-|*multiply* ( +
+|*multiply* _alias_ "&#42;" ( +
 factor: `Real[1]` +
 ): `DV_PROPORTION`
 a|Product of this Proportion and `_factor_`.
 
 h|(effected)
-|*less_than* ( +
+|*less_than* _alias_ "<" ( +
 other: `DV_PROPORTION[1]` +
 ): `Boolean` +
-*_Post_result_*: `Result = magnitude > other.magnitude`
+ +
+_Post_result_: `Result = magnitude > other.magnitude`
 a|True if `_other_` is less than this Proportion.
 
 h|*Invariants*
-2+a|*_Type_validity_*: `valid_proportion_kind (type)`
+2+a|_Type_validity_: `valid_proportion_kind (type)`
 
 h|
-2+a|*_Precision_validity_*: `precision = 0 implies is_integral`
+2+a|_Precision_validity_: `precision = 0 implies is_integral`
 
 h|
-2+a|*_Is_integral_validity_*: `is_integral implies (numerator.floor = numerator and denominator.floor = denominator)`
+2+a|_Is_integral_validity_: `is_integral implies (numerator.floor = numerator and denominator.floor = denominator)`
 
 h|
-2+a|*_Fraction_validity_*: `(type = pk_fraction or type = pk_integer_fraction) implies is_integral`
+2+a|_Fraction_validity_: `(type = pk_fraction or type = pk_integer_fraction) implies is_integral`
 
 h|
-2+a|*_Unitary_validity_*: `type = pk_unitary implies denominator = 1`
+2+a|_Unitary_validity_: `type = pk_unitary implies denominator = 1`
 
 h|
-2+a|*_Percent_validity_*: `type = pk_percent implies denominator = 100`
+2+a|_Percent_validity_: `type = pk_percent implies denominator = 100`
 
 h|
-2+a|*_Valid_denominator_*: `denominator /= 0.0`
+2+a|_Valid_denominator_: `denominator /= 0.0`
 |===

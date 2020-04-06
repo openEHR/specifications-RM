@@ -38,12 +38,14 @@ h|*Functions*
 
 h|
 |*narrower* (): `Boolean` +
-*_Post_*: `match = ‘<’ implies Result`
+ +
+_Post_: `match = ‘<’ implies Result`
 a|The mapping is to a narrower term.
 
 h|
 |*broader* (): `Boolean` +
-*_Post_*: `match = ‘>’ implies Result`
+ +
+_Post_: `match = ‘>’ implies Result`
 a|The mapping is to a broader term.
 
 h|
@@ -52,19 +54,21 @@ a|The mapping is to an equivalent term.
 
 h|
 |*unknown* (): `Boolean` +
-*_Post_*: `match = ‘?’ implies Result`
+ +
+_Post_: `match = ‘?’ implies Result`
 a|The kind of mapping is unknown.
 
 h|
 |*is_valid_match_code* ( +
 c: `char[1]` +
 ): `Boolean` +
-*_Post_*: `Result := c = ‘>’ or c = ‘=’ or c = ‘<’ or c = ‘?’`
+ +
+_Post_: `Result := c = ‘>’ or c = ‘=’ or c = ‘<’ or c = ‘?’`
 a|True if match valid.
 
 h|*Invariants*
-2+a|*_Purpose_valid_*: `purpose /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)`
+2+a|_Purpose_valid_: `purpose /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)`
 
 h|
-2+a|*_Match_valid_*: `is_valid_match_code (match)`
+2+a|_Match_valid_: `is_valid_match_code (match)`
 |===

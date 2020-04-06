@@ -31,9 +31,9 @@ h|*0..1*
 a|The time interval during which the participation took place, if it is used in an observational context (i.e. recording facts about the past); or the intended time interval of the participation when used in future contexts, such as EHR Instructions.
 
 h|*Invariants*
-2+a|*_Function_valid_*: `function.generating_type.is_equal ("DV_CODED_TEXT") implies
+2+a|_Function_valid_: `function.generating_type.is_equal ("DV_CODED_TEXT") implies
 terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)`
 
 h|
-2+a|*_Mode_valid_*: `mode /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)`
+2+a|_Mode_valid_: `mode /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)`
 |===

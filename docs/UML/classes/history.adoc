@@ -45,11 +45,11 @@ h|
 a|Indicates whether history is periodic.
 
 h|*Invariants*
-2+a|*_Events_valid_*: `(events /= Void and then not events.is_empty) or summary /= Void`
+2+a|_Events_valid_: `(events /= Void and then not events.is_empty) or summary /= Void`
 
 h|
-2+a|*_Periodic_validity_*: `is_periodic xor period = Void`
+2+a|_Periodic_validity_: `is_periodic xor period = Void`
 
 h|
-2+a|*_Period_consistency_*: `is_periodic implies events.for_all (e: EVENT &#124; e.offset. to_seconds.mod(period.to_seconds) = 0)`
+2+a|_Period_consistency_: `is_periodic implies events.for_all (e: EVENT &#124; e.offset. to_seconds.mod(period.to_seconds) = 0)`
 |===

@@ -1433,7 +1433,8 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_at_path</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>Any</code><br>
-<strong><em>Pre</em></strong>: <code>path_unique (a_path)</code></p></td>
+<br>
+<em>Pre</em>: <code>path_unique (a_path)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item.</p>
 </div></div></td>
@@ -1452,7 +1453,8 @@ a_path: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_exists</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Pre</em></strong>: <code>not a_path.is_empty</code></p></td>
+<br>
+<em>Pre</em>: <code>not a_path.is_empty</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the path exists in the data with respect to the current item.</p>
 </div></div></td>
@@ -1462,7 +1464,8 @@ a_path: <code>String[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_unique</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Pre</em></strong>: <code>path_exists (a_path)</code></p></td>
+<br>
+<em>Pre</em>: <code>path_exists (a_path)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the path corresponds to a single item in the data.</p>
 </div></div></td>
@@ -1574,19 +1577,19 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Links_valid</em></strong>: <code>links /= Void implies not links.is_empty</code></p>
+<p><em>Links_valid</em>: <code>links /= Void implies not links.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Archetyped_valid</em></strong>: <code>is_archetype_root xor archetype_details = Void</code></p>
+<p><em>Archetyped_valid</em>: <code>is_archetype_root xor archetype_details = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Archetype_node_id_valid</em></strong>: <code>not archetype_node_id.is_empty</code></p>
+<p><em>Archetype_node_id_valid</em>: <code>not archetype_node_id.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1643,7 +1646,7 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Rm_version_valid</em></strong>: <code>not rm_version.is_empty</code></p>
+<p><em>Rm_version_valid</em>: <code>not rm_version.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1841,7 +1844,7 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>System_id_valid</em></strong>: <code>not system_id.is_empty</code></p>
+<p><em>System_id_valid</em>: <code>not system_id.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2126,19 +2129,19 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Basic_validity</em></strong>: <code>name /= Void or identifiers /= Void or external_ref /= Void</code></p>
+<p><em>Basic_validity</em>: <code>name /= Void or identifiers /= Void or external_ref /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Name_valid</em></strong>: <code>name /= Void implies not name.is_empty</code></p>
+<p><em>Name_valid</em>: <code>name /= Void implies not name.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Identifiers_valid</em></strong>: <code>identifiers /= Void implies not identifiers.is_empty</code></p>
+<p><em>Identifiers_valid</em>: <code>identifiers /= Void implies not identifiers.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2182,7 +2185,7 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Relationship_valid</em></strong>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_subject_relationship, relationship.defining_code)</code></p>
+<p><em>Relationship_valid</em>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_subject_relationship, relationship.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2246,14 +2249,14 @@ a_loc: <code>PATHABLE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Function_valid</em></strong>: <code>function.generating_type.is_equal ("DV_CODED_TEXT") implies
+<p><em>Function_valid</em>: <code>function.generating_type.is_equal ("DV_CODED_TEXT") implies
 terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Mode_valid</em></strong>: <code>mode /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)</code></p>
+<p><em>Mode_valid</em>: <code>mode /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2321,13 +2324,13 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>System_id_valid</em></strong>: <code>not system_id.is_empty</code></p>
+<p><em>System_id_valid</em>: <code>not system_id.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Change_type_valid</em></strong>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)</code></p>
+<p><em>Change_type_valid</em>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2412,13 +2415,13 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Items_valid</em></strong>: <code>items /= Void implies not items.is_empty</code></p>
+<p><em>Items_valid</em>: <code>items /= Void implies not items.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Reason_valid</em></strong>: <code>(reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))</code></p>
+<p><em>Reason_valid</em>: <code>(reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2463,7 +2466,8 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version</strong> (): <code>String</code><br>
-<strong><em>Post</em></strong>: <code>Result.is_equal (items.last.version_id.value)</code></p></td>
+<br>
+<em>Post</em>: <code>Result.is_equal (items.last.version_id.value)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The version id of the most recent item, as a String.</p>
 </div></div></td>
@@ -2471,7 +2475,8 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version_time_committed</strong> (): <code>String</code><br>
-<strong><em>Post</em></strong>: <code>Result.is_equal (items.last.audits.first. time_committed.value)</code></p></td>
+<br>
+<em>Post</em>: <code>Result.is_equal (items.last.audits.first. time_committed.value)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The commit date/time of the most recent item, as a String.</p>
 </div></div></td>
@@ -2656,7 +2661,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Folders_valid</em></strong>: <code>not folders.is_empty</code></p>
+<p><em>Folders_valid</em>: <code>not folders.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3312,7 +3317,8 @@ a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_with_id</strong> (<br>
 a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 ): <code>VERSION</code><br>
-<strong><em>Pre</em></strong>: <code>has_version_id (a_ver_id)</code></p></td>
+<br>
+<em>Pre</em>: <code>has_version_id (a_ver_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the version with <code><em>uid</em></code> =  <code><em>a_version_uid</em></code>.</p>
 </div></div></td>
@@ -3322,7 +3328,8 @@ a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_original_version</strong> (<br>
 a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Pre</em></strong>: <code>has_version_id(a_ver_id)</code></p></td>
+<br>
+<em>Pre</em>: <code>has_version_id(a_ver_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if version with <code><em>a_version_uid</em></code> is an <code>ORIGINAL_VERSION</code>.</p>
 </div></div></td>
@@ -3332,7 +3339,8 @@ a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_at_time</strong> (<br>
 a_time: <code>DV_DATE_TIME[1]</code><br>
 ): <code>VERSION</code><br>
-<strong><em>Pre</em></strong>: <code>has_version_at_time (a_time)</code></p></td>
+<br>
+<em>Pre</em>: <code>has_version_at_time (a_time)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the version for time  <code><em>a_time</em></code>.</p>
 </div></div></td>
@@ -3361,7 +3369,8 @@ a_time: <code>DV_DATE_TIME[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong> (): <code>DV_CODED_TEXT</code><br>
-<strong><em>Post</em></strong>: <code>Result = latest_trunk_version.lifecycle_state</code></p></td>
+<br>
+<em>Post</em>: <code>Result = latest_trunk_version.lifecycle_state</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the lifecycle state from the latest trunk version. Useful for determining if the version container is logically deleted.</p>
 </div></div></td>
@@ -3377,7 +3386,8 @@ a_lifecycle_state: <code>DV_CODED_TEXT[1]</code>,<br>
 a_data: <code>T[1]</code>,<br>
 signing_key: <code>String[1]</code><br>
 ): <code>void</code><br>
-<strong><em>Pre</em></strong>: <code>all_version_ids.has (a_preceding_version_uid) or else version_count = 0</code></p></td>
+<br>
+<em>Pre</em>: <code>all_version_ids.has (a_preceding_version_uid) or else version_count = 0</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Add a new original version.</p>
 </div></div></td>
@@ -3394,7 +3404,8 @@ a_data: <code>T[1]</code>,<br>
 an_other_input_uids: <code>List&lt;OBJECT_VERSION_ID&gt;[1]</code>,<br>
 signing_key: <code>String[1]</code><br>
 ): <code>void</code><br>
-<strong><em>Pre</em></strong>: <code>all_version_ids.has (a_preceding_version_uid) or else version_count = 0</code></p></td>
+<br>
+<em>Pre</em>: <code>all_version_ids.has (a_preceding_version_uid) or else version_count = 0</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Add a new original merged version. This commit function adds a parameter containing the ids of other versions merged into the current one.</p>
 </div></div></td>
@@ -3417,7 +3428,8 @@ an_attestation: <code>ATTESTATION[1]</code>,<br>
 a_ver_id: <code>OBJECT_VERSION_ID[1]</code>,<br>
 signing_key: <code>String[1]</code><br>
 ): <code>void</code><br>
-<strong><em>Pre</em></strong>: <code>has_version_id(a_ver_id)
+<br>
+<em>Pre</em>: <code>has_version_id(a_ver_id)
 and is_original_version(a_ver_id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Add a new attestation to a specified original version. Attestations can only be added to Original versions.</p>
@@ -3426,31 +3438,31 @@ and is_original_version(a_ver_id)</code></p></td>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Version_count_valid</em></strong>: <code>version_count &gt;= 0</code></p>
+<p><em>Version_count_valid</em>: <code>version_count &gt;= 0</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>All_version_ids_valid</em></strong>: <code>all_version_ids.count = version_count</code></p>
+<p><em>All_version_ids_valid</em>: <code>all_version_ids.count = version_count</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>All_versions_valid</em></strong>: <code>all_versions.count = version_count</code></p>
+<p><em>All_versions_valid</em>: <code>all_versions.count = version_count</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Latest_version_valid</em></strong>: <code>version_count &gt; 0 implies latest_version /= Void</code></p>
+<p><em>Latest_version_valid</em>: <code>version_count &gt; 0 implies latest_version /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Uid_validity</em></strong>: <code>extension.is_empty</code></p>
+<p><em>Uid_validity</em>: <code>extension.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3547,7 +3559,8 @@ signature.</p>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner_id</strong> (): <code>HIER_OBJECT_ID</code><br>
-<strong><em>Post</em></strong>: <code>Result.value.is_equal (uid.object_id.value)</code></p></td>
+<br>
+<em>Post</em>: <code>Result.value.is_equal (uid.object_id.value)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Copy of the owning <code>VERSIONED_OBJECT.<em>uid</em></code> value; extracted from the local <code><em>uid</em></code> property&#8217;s <code><em>object_id</em></code>.</p>
 </div></div></td>
@@ -3562,13 +3575,13 @@ signature.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Preceding_version_uid_validity</em></strong>: <code>uid.version_tree_id.is_first xor preceding_version_uid /= Void</code></p>
+<p><em>Preceding_version_uid_validity</em>: <code>uid.version_tree_id.is_first xor preceding_version_uid /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Lifecycle_state</em> valid_</strong>: <code>lifecycle_state /= Void and then terminology (Term_id_openehr).has_code_for_group_id (Group_id_version_lifecycle_state, lifecycle_state.defining_code)</code></p>
+<p><em>Lifecycle_state</em> valid_: <code>lifecycle_state /= Void and then terminology (Term_id_openehr).has_code_for_group_id (Group_id_version_lifecycle_state, lifecycle_state.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3659,19 +3672,19 @@ signature.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Attestations_valid</em></strong>: <code>attestations /= Void implies not attestations.is_empty</code></p>
+<p><em>Attestations_valid</em>: <code>attestations /= Void implies not attestations.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Is_merged_validity</em></strong>: <code>other_input_version_ids = Void xor is_merged</code></p>
+<p><em>Is_merged_validity</em>: <code>other_input_version_ids = Void xor is_merged</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Other_input_version_uids_valid</em></strong>: <code>other_input_version_uids /= Void implies not other_input_version_uids.is_empty</code></p>
+<p><em>Other_input_version_uids_valid</em>: <code>other_input_version_uids /= Void implies not other_input_version_uids.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3720,7 +3733,8 @@ signature.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong> (): <code>OBJECT_VERSION_ID</code><br>
-<strong><em>Post</em></strong>: <code>Result = item.uid</code></p></td>
+<br>
+<em>Post</em>: <code>Result = item.uid</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Computed version of inheritance precursor, derived as <code><em>item.uid</em></code>.</p>
 </div></div></td>
@@ -3728,7 +3742,8 @@ signature.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preceding_version_uid</strong> (): <code>OBJECT_VERSION_ID</code><br>
-<strong><em>Post</em></strong>: <code>Result = item.preceding_version_uid</code></p></td>
+<br>
+<em>Post</em>: <code>Result = item.preceding_version_uid</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Computed version of inheritance precursor, derived as <code><em>item.preceding_version_uid</em></code>.</p>
 </div></div></td>
@@ -3937,7 +3952,8 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong> (): <code>String</code><br>
-<strong><em>Post</em></strong>: <code>Result = revision_history.most_recent_version</code></p></td>
+<br>
+<em>Post</em>: <code>Result = revision_history.most_recent_version</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Most recent revision in <code><em>revision_history</em></code> if <code><em>is_controlled</em></code> else  (uncontrolled) .</p>
 </div></div></td>
@@ -3952,37 +3968,37 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Original_language_valid</em></strong>: <code>code_set (Code_set_id_languages).has_code (original_language.as_string)</code></p>
+<p><em>Original_language_valid</em>: <code>code_set (Code_set_id_languages).has_code (original_language.as_string)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Languages_available_valid</em></strong>: <code>languages_available.has (original_language)</code></p>
+<p><em>Languages_available_valid</em>: <code>languages_available.has (original_language)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Revision_history_valid</em></strong>: <code>is_controlled xor revision_history = Void</code></p>
+<p><em>Revision_history_valid</em>: <code>is_controlled xor revision_history = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Current_revision_valid</em></strong>: <code>(current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)</code></p>
+<p><em>Current_revision_valid</em>: <code>(current_revision /= Void and not is_controlled) implies current_revision.is_equal (“(uncontrolled)”)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Translations_valid</em></strong>: <code>translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</code></p>
+<p><em>Translations_valid</em>: <code>translations /= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Description_valid</em></strong>: <code>translations /= Void implies (description.details.for_all (d &#124;
+<p><em>Description_valid</em>: <code>translations /= Void implies (description.details.for_all (d &#124;
 translations.has_key (d.language.code_string)))</code></p>
 </div></div></td>
 </tr>
@@ -4044,7 +4060,7 @@ translations.has_key (d.language.code_string)))</code></p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: <code>code_set (Code_set_id_languages).has_code (language)</code></p>
+<p><em>Language_valid</em>: <code>code_set (Code_set_id_languages).has_code (language)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4111,7 +4127,8 @@ translations.has_key (d.language.code_string)))</code></p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code>AUTHORED_RESOURCE&#160;=&#160;0..1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent_resource</strong>: <code>AUTHORED_RESOURCE<br>
+{default&#160;=&#160;0..1}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference to owning resource.</p>
 </div></div></td>
@@ -4126,31 +4143,31 @@ translations.has_key (d.language.code_string)))</code></p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Original_author_valid</em></strong>: <code>not original_author.is_empty</code></p>
+<p><em>Original_author_valid</em>: <code>not original_author.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Lifecycle_state_valid</em></strong>: <code>not lifecycle_state.is_empty</code></p>
+<p><em>Lifecycle_state_valid</em>: <code>not lifecycle_state.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Details_valid</em></strong>: <code>not details.is_empty</code></p>
+<p><em>Details_valid</em>: <code>not details.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: <code>parent_resource /= Void implies details.for_all (d &#124; parent_resource.languages_available.has (d.language.code_string))</code></p>
+<p><em>Language_valid</em>: <code>parent_resource /= Void implies details.for_all (d &#124; parent_resource.languages_available.has (d.language.code_string))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Parent_resource_valid</em></strong>: <code>parent_resource /= Void implies parent_resource.description = self</code></p>
+<p><em>Parent_resource_valid</em>: <code>parent_resource /= Void implies parent_resource.description = self</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4239,31 +4256,31 @@ translations.has_key (d.language.code_string)))</code></p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: <code>code_set (Code_set_id_languages).has_code (language)</code></p>
+<p><em>Language_valid</em>: <code>code_set (Code_set_id_languages).has_code (language)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Purpose_valid</em></strong>: <code>not purpose.is_empty</code></p>
+<p><em>Purpose_valid</em>: <code>not purpose.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Use_valid</em></strong>: <code>use /= Void implies not use.is_empty</code></p>
+<p><em>Use_valid</em>: <code>use /= Void implies not use.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>misuse_valid</em></strong>: <code>misuse /= Void implies not misuse.is_empty</code></p>
+<p><em>misuse_valid</em>: <code>misuse /= Void implies not misuse.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>copyright_valid</em></strong>: <code>copyright /= Void implies not copyright.is_empty</code></p>
+<p><em>copyright_valid</em>: <code>copyright /= Void implies not copyright.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>

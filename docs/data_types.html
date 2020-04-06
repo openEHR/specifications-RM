@@ -1645,7 +1645,7 @@ Serves as a common ancestor of all data value types in openEHR models.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Id_valid</em></strong>: <code>not id.is_empty</code></p>
+<p><em>Id_valid</em>: <code>not id.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2405,25 +2405,25 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: <code>language /= Void implies code_set (Code_set_id_languages).has_code (language)</code></p>
+<p><em>Language_valid</em>: <code>language /= Void implies code_set (Code_set_id_languages).has_code (language)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Encoding_valid</em></strong>: <code>encoding /= Void implies code_set (Code_set_id_character_sets).has_code (encoding)</code></p>
+<p><em>Encoding_valid</em>: <code>encoding /= Void implies code_set (Code_set_id_character_sets).has_code (encoding)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Mappings_valid</em></strong>: <code>mappings /= void implies not mappings.is_empty</code></p>
+<p><em>Mappings_valid</em>: <code>mappings /= void implies not mappings.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Formatting_valid</em></strong>: <code>formatting /= void implies not formatting.is_empty</code></p>
+<p><em>Formatting_valid</em>: <code>formatting /= void implies not formatting.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2504,7 +2504,8 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>narrower</strong> (): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: <code>match = ‘&lt;’ implies Result</code></p></td>
+<br>
+<em>Post</em>: <code>match = ‘&lt;’ implies Result</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The mapping is to a narrower term.</p>
 </div></div></td>
@@ -2512,7 +2513,8 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>broader</strong> (): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: <code>match = ‘&gt;’ implies Result</code></p></td>
+<br>
+<em>Post</em>: <code>match = ‘&gt;’ implies Result</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The mapping is to a broader term.</p>
 </div></div></td>
@@ -2527,7 +2529,8 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>unknown</strong> (): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: <code>match = ‘?’ implies Result</code></p></td>
+<br>
+<em>Post</em>: <code>match = ‘?’ implies Result</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The kind of mapping is unknown.</p>
 </div></div></td>
@@ -2537,7 +2540,8 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_valid_match_code</strong> (<br>
 c: <code>char[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: <code>Result := c = ‘&gt;’ or c = ‘=’ or c = ‘&lt;’ or c = ‘?’</code></p></td>
+<br>
+<em>Post</em>: <code>Result := c = ‘&gt;’ or c = ‘=’ or c = ‘&lt;’ or c = ‘?’</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if match valid.</p>
 </div></div></td>
@@ -2545,13 +2549,13 @@ c: <code>char[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Purpose_valid</em></strong>: <code>purpose /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)</code></p>
+<p><em>Purpose_valid</em>: <code>purpose /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Match_valid</em></strong>: <code>is_valid_match_code (match)</code></p>
+<p><em>Match_valid</em>: <code>is_valid_match_code (match)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2605,7 +2609,7 @@ c: <code>char[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Code_string_valid</em></strong>: <code>not code_string.is_empty</code></p>
+<p><em>Code_string_valid</em>: <code>not code_string.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2702,7 +2706,7 @@ c: <code>char[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Items_valid</em></strong>: <code>not items.is_empty</code></p>
+<p><em>Items_valid</em>: <code>not items.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3174,19 +3178,21 @@ other: <code>DV_ORDERED[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_normal</strong> (): <code>Boolean</code><br>
-<strong><em>Pre</em></strong>: <code>normal_range /= Void or normal_status /= Void</code><br>
-<strong><em>Post_range</em></strong>: <code>normal_range /= Void implies Result = normal_range.has (self)</code><br>
-<strong><em>Post_status</em></strong>: <code>normal_status /= Void implies normal_status.code_string.is_equal (“N”)</code></p></td>
+<br>
+<em>Pre</em>: <code>normal_range /= Void or normal_status /= Void</code><br>
+<em>Post_range</em>: <code>normal_range /= Void implies Result = normal_range.has (self)</code><br>
+<em>Post_status</em>: <code>normal_status /= Void implies normal_status.code_string.is_equal (“N”)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Value is in the normal range, determined by comparison of the value to <code><em>normal_range</em></code> if present, or by the <code><em>normal_status</em></code> marker if present.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Pre_comparable</em></strong>: <code>is_strictly_comparable (other)</code></p></td>
+<br>
+<em>Pre_comparable</em>: <code>is_strictly_comparable (other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this Ordered data value is less than <code><em>other</em></code>.</p>
 </div></div></td>
@@ -3194,25 +3200,25 @@ other: <code>DV_ORDERED[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Other_reference_ranges_validity</em></strong>: <code>other_reference_ranges /= Void implies not other_reference_ranges.is_empty</code></p>
+<p><em>Other_reference_ranges_validity</em>: <code>other_reference_ranges /= Void implies not other_reference_ranges.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Is_simple_validity</em></strong>: <code>(normal_range = Void and other_reference_ranges = Void) implies is_simple</code></p>
+<p><em>Is_simple_validity</em>: <code>(normal_range = Void and other_reference_ranges = Void) implies is_simple</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Normal_status_validity</em></strong>: <code>normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)</code></p>
+<p><em>Normal_status_validity</em>: <code>normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Normal_range_and_status_consistency</em></strong>: <code>(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))</code></p>
+<p><em>Normal_range_and_status_consistency</em>: <code>(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3250,7 +3256,7 @@ other: <code>DV_ORDERED[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Limits_consistent</em></strong>: <code>(not upper_unbounded and not lower_unbounded) implies (lower.is_strictly_comparable_to(upper) and lower &lt;= upper)</code></p>
+<p><em>Limits_consistent</em>: <code>(not upper_unbounded and not lower_unbounded) implies (lower.is_strictly_comparable_to(upper) and lower &lt;= upper)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3311,7 +3317,7 @@ v: <code>DV_ORDERED[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Range_is_simple</em></strong>: <code>(range.lower_unbounded or else range.lower.is_simple) and (range.upper_unbounded or else range.upper.is_simple)</code></p>
+<p><em>Range_is_simple</em>: <code>(range.lower_unbounded or else range.lower.is_simple) and (range.upper_unbounded or else range.upper.is_simple)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3391,10 +3397,11 @@ d) integer values only.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_ORDINAL[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Pre_comparable</em></strong>: <code>is_strictly_comparable (other)</code></p></td>
+<br>
+<em>Pre_comparable</em>: <code>is_strictly_comparable (other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this Ordinal value is less than <code><em>other</em></code>.</p>
 </div></div></td>
@@ -3411,13 +3418,13 @@ other: <code>DV_ORDINAL[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Limits_valid</em></strong>: <code>limits.meaning.is_equal (“limits”)</code></p>
+<p><em>Limits_valid</em>: <code>limits.meaning.is_equal (“limits”)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Reference_range_valid</em></strong>: <code>other_reference_ranges.has (limits)</code></p>
+<p><em>Reference_range_valid</em>: <code>other_reference_ranges.has (limits)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3508,10 +3515,11 @@ other: <code>DV_SCALE[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_SCALE[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Pre_comparable</em></strong>: <code>is_strictly_comparable (other)</code></p></td>
+<br>
+<em>Pre_comparable</em>: <code>is_strictly_comparable (other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this Scale value is less than <code><em>other</em></code>.</p>
 </div></div></td>
@@ -3594,7 +3602,8 @@ other: <code>DV_SCALE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_magnitude_status</strong> (): <code>Boolean</code><br>
-<strong><em>Post</em></strong>: <code>Result = s in {"=", "&lt;", "&gt;", "&lt;=", "&gt;=", "~"}</code></p></td>
+<br>
+<em>Post</em>: <code>Result = s in {"=", "&lt;", "&gt;", "&lt;=", "&gt;=", "~"}</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Test whether a string value is one of the valid values for the magnitude_status attribute.</p>
 </div></div></td>
@@ -3622,10 +3631,11 @@ other: <code>DV_QUANTIFIED[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_QUANTIFIED[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<br>
+<em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
@@ -3633,7 +3643,7 @@ other: <code>DV_QUANTIFIED[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Magnitude_status_valid</em></strong>: <code>magnitude_status /= Void implies valid_magnitude_status (magnitude_status)</code></p>
+<p><em>Magnitude_status_valid</em>: <code>magnitude_status /= Void implies valid_magnitude_status (magnitude_status)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3701,10 +3711,11 @@ number: <code>Ordered_Numeric[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_AMOUNT</code><br>
-<strong><em>Pre_comparable</em></strong>: <code>is_strictly_comparable (other)</code></p></td>
+<br>
+<em>Pre_comparable</em>: <code>is_strictly_comparable (other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Sum of this amount and another. The value of accuracy in the result is either:</p>
 </div>
@@ -3724,10 +3735,11 @@ other: <code>DV_AMOUNT[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_AMOUNT</code><br>
-<strong><em>Pre_comparable</em></strong>: <code>is_strictly_comparable (other)</code></p></td>
+<br>
+<em>Pre_comparable</em>: <code>is_strictly_comparable (other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Difference of this amount and another. The value of <code><em>accuracy</em></code> in the result is either:</p>
 </div>
@@ -3756,7 +3768,7 @@ other: <code>DV_AMOUNT[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 factor: <code>Real[1]</code><br>
 ): <code>DV_AMOUNT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3765,17 +3777,18 @@ factor: <code>Real[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negative</strong> (): <code>DV_AMOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negative</strong> <em>alias</em> "-" (): <code>DV_AMOUNT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Negated version of current object, such as used for representing a difference, e.g. a weight loss.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_AMOUNT[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<br>
+<em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
@@ -3783,13 +3796,13 @@ other: <code>DV_AMOUNT[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Accuracy_is_percent_validity</em></strong>: <code>accuracy = 0 implies not accuracy_is_percent</code></p>
+<p><em>Accuracy_is_percent_validity</em>: <code>accuracy = 0 implies not accuracy_is_percent</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Accuracy_validity</em></strong>: <code>accuracy_is_percent implies valid_percentage (accuracy)</code></p>
+<p><em>Accuracy_validity</em>: <code>accuracy_is_percent implies valid_percentage (accuracy)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3919,7 +3932,7 @@ The display name may be language-dependent for various older and non-systematic 
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_QUANTITY[1]</code><br>
 ): <code>DV_QUANTITY</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3928,7 +3941,7 @@ other: <code>DV_QUANTITY[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>DV_QUANTITY[1]</code><br>
 ): <code>DV_QUANTITY</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3937,7 +3950,7 @@ other: <code>DV_QUANTITY[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 factor: <code>Real[1]</code><br>
 ): <code>DV_QUANTITY</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3946,10 +3959,11 @@ factor: <code>Real[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_QUANTITY[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<br>
+<em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
@@ -4016,7 +4030,7 @@ other: <code>DV_QUANTITY[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_COUNT[1]</code><br>
 ): <code>DV_COUNT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4025,7 +4039,7 @@ other: <code>DV_COUNT[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>DV_COUNT[1]</code><br>
 ): <code>DV_COUNT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4034,7 +4048,7 @@ other: <code>DV_COUNT[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 factor: <code>Real[1]</code><br>
 ): <code>DV_COUNT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4043,10 +4057,11 @@ factor: <code>Real[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_COUNT[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<br>
+<em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
@@ -4153,7 +4168,7 @@ other: <code>DV_COUNT[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_PROPORTION[1]</code><br>
 ): <code>DV_PROPORTION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4162,7 +4177,7 @@ other: <code>DV_PROPORTION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>DV_PROPORTION[1]</code><br>
 ): <code>DV_PROPORTION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4180,7 +4195,7 @@ other: <code>DV_PROPORTION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 factor: <code>Real[1]</code><br>
 ): <code>DV_PROPORTION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4189,10 +4204,11 @@ factor: <code>Real[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_PROPORTION[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<br>
+<em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Proportion.</p>
 </div></div></td>
@@ -4200,43 +4216,43 @@ other: <code>DV_PROPORTION[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Type_validity</em></strong>: <code>valid_proportion_kind (type)</code></p>
+<p><em>Type_validity</em>: <code>valid_proportion_kind (type)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Precision_validity</em></strong>: <code>precision = 0 implies is_integral</code></p>
+<p><em>Precision_validity</em>: <code>precision = 0 implies is_integral</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Is_integral_validity</em></strong>: <code>is_integral implies (numerator.floor = numerator and denominator.floor = denominator)</code></p>
+<p><em>Is_integral_validity</em>: <code>is_integral implies (numerator.floor = numerator and denominator.floor = denominator)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Fraction_validity</em></strong>: <code>(type = pk_fraction or type = pk_integer_fraction) implies is_integral</code></p>
+<p><em>Fraction_validity</em>: <code>(type = pk_fraction or type = pk_integer_fraction) implies is_integral</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Unitary_validity</em></strong>: <code>type = pk_unitary implies denominator = 1</code></p>
+<p><em>Unitary_validity</em>: <code>type = pk_unitary implies denominator = 1</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Percent_validity</em></strong>: <code>type = pk_percent implies denominator = 100</code></p>
+<p><em>Percent_validity</em>: <code>type = pk_percent implies denominator = 100</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Valid_denominator</em></strong>: <code>denominator /= 0.0</code></p>
+<p><em>Valid_denominator</em>: <code>denominator /= 0.0</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4359,7 +4375,7 @@ nq: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4381,7 +4397,7 @@ a_diff: <code>DV_AMOUNT[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4403,7 +4419,7 @@ a_diff: <code>DV_AMOUNT[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 other: <code>DV_ABSOLUTE_QUANTITY[1]</code><br>
 ): <code>DV_AMOUNT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4751,7 +4767,7 @@ it is strongly recommended that where possible, the <em>extended</em> form of th
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TEMPORAL</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4760,7 +4776,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TEMPORAL</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4769,7 +4785,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 other: <code>DV_TEMPORAL[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4838,7 +4854,7 @@ other: <code>DV_QUANTIFIED[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4847,7 +4863,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4856,7 +4872,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 other: <code>DV_DATE[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4865,10 +4881,11 @@ other: <code>DV_DATE[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_DATE[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<br>
+<em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
@@ -4885,7 +4902,7 @@ other: <code>DV_DATE[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Value_valid</em></strong>: <code>valid_iso8601_date(value)</code></p>
+<p><em>Value_valid</em>: <code>valid_iso8601_date(value)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4944,7 +4961,7 @@ other: <code>DV_DATE[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4953,7 +4970,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4962,7 +4979,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 other: <code>DV_TIME[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -4971,10 +4988,11 @@ other: <code>DV_TIME[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_TIME[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<br>
+<em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
@@ -4991,7 +5009,7 @@ other: <code>DV_TIME[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Value_valid</em></strong>: <code>valid_iso8601_time (value)</code></p>
+<p><em>Value_valid</em>: <code>valid_iso8601_time (value)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -5050,7 +5068,7 @@ other: <code>DV_TIME[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -5059,7 +5077,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -5068,7 +5086,7 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 other: <code>DV_DATE_TIME[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -5077,10 +5095,11 @@ other: <code>DV_DATE_TIME[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_DATE_TIME[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<br>
+<em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
@@ -5097,7 +5116,7 @@ other: <code>DV_DATE_TIME[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Value_valid</em></strong>: <code>valid_iso8601_date_time (value)</code></p>
+<p><em>Value_valid</em>: <code>valid_iso8601_date_time (value)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -5164,7 +5183,7 @@ a deviation from ISO8601 is supported, allowing the  W' designator to be mixed w
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -5173,7 +5192,7 @@ other: <code>DV_DURATION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -5182,7 +5201,7 @@ other: <code>DV_DURATION[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 factor: <code>Real[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -5191,10 +5210,11 @@ factor: <code>Real[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> (<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_DURATION[1]</code><br>
 ): <code>Boolean</code><br>
-<strong><em>Post_result</em></strong>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<br>
+<em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
@@ -5211,7 +5231,7 @@ other: <code>DV_DURATION[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Value_valid</em></strong>: <code>valid_iso8601_duration (value)</code></p>
+<p><em>Value_valid</em>: <code>valid_iso8601_duration (value)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -5439,7 +5459,7 @@ using a syntax which is equivalet to a series of <code>IVL&lt;TS&gt;</code> (i.e
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Value_valid</em></strong>: <code>value.formalism.is_equal (“HL7:PIVL”) or value.formalism. is_equal (“HL7:EIVL”)</code></p>
+<p><em>Value_valid</em>: <code>value.formalism.is_equal (“HL7:PIVL”) or value.formalism. is_equal (“HL7:EIVL”)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -5819,13 +5839,13 @@ ED type from the HL7v3 data types specification.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Language_valid</em></strong>: <code>language /= Void implies code_set (Code_set_id_languages).has_code (language)</code></p>
+<p><em>Language_valid</em>: <code>language /= Void implies code_set (Code_set_id_languages).has_code (language)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Charset_valid</em></strong>: <code>charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)</code></p>
+<p><em>Charset_valid</em>: <code>charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -5958,37 +5978,37 @@ ED type from the HL7v3 data types specification.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Not_empty</em></strong>: <code>is_inline or is_external</code></p>
+<p><em>Not_empty</em>: <code>is_inline or is_external</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Media_type_valid</em></strong>: <code>media_type /= Void and then code_set (Code_set_id_media_types).has_code (media_type)</code></p>
+<p><em>Media_type_valid</em>: <code>media_type /= Void and then code_set (Code_set_id_media_types).has_code (media_type)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Compression_algorithm_validity</em></strong>: <code>compression_algorithm /= Void implies code_set (Code_set_id_compression_algorithms).has_code (compression_algorithm)</code></p>
+<p><em>Compression_algorithm_validity</em>: <code>compression_algorithm /= Void implies code_set (Code_set_id_compression_algorithms).has_code (compression_algorithm)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Integrity_check_validity</em></strong>: <code>integrity_check /= Void implies integrity_check_algorithm /= Void</code></p>
+<p><em>Integrity_check_validity</em>: <code>integrity_check /= Void implies integrity_check_algorithm /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Integrity_check_algorithm_validity</em></strong>: <code>integrity_check_algorithm /= Void implies code_set (Code_set_id_integrity_check_algorithms).has_code (integrity_check_algorithm)</code></p>
+<p><em>Integrity_check_algorithm_validity</em>: <code>integrity_check_algorithm /= Void implies code_set (Code_set_id_integrity_check_algorithms).has_code (integrity_check_algorithm)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Size_valid</em></strong>: <code>size &gt;= 0</code></p>
+<p><em>Size_valid</em>: <code>size &gt;= 0</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -6051,13 +6071,13 @@ ED type from the HL7v3 data types specification.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Formalism_valid</em></strong>: <code>not formalism.is_empty</code></p>
+<p><em>Formalism_valid</em>: <code>not formalism.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Size_valid</em></strong>: <code>size &gt;= 0</code></p>
+<p><em>Size_valid</em>: <code>size &gt;= 0</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -6202,7 +6222,7 @@ in the EHR and between EHRs.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Value_valid</em></strong>: <code>not value.is_empty</code></p>
+<p><em>Value_valid</em>: <code>not value.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -6237,7 +6257,7 @@ in the EHR and between EHRs.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Scheme_valid</em></strong>: <code>scheme.is_equal (Ehr_scheme)</code></p>
+<p><em>Scheme_valid</em>: <code>scheme.is_equal (Ehr_scheme)</code></p>
 </div></div></td>
 </tr>
 </tbody>

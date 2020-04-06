@@ -56,17 +56,17 @@ h|
 a|True if category is `431&#124;persistent&#124;`, False otherwise. Useful for finding Compositions in an EHR which are guaranteed to be of interest to most users.
 
 h|*Invariants*
-2+a|*_Category_validity_*: `terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_composition_category, category.defining_code)`
+2+a|_Category_validity_: `terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_composition_category, category.defining_code)`
 
 h|
-2+a|*_Territory_valid_*: `code_set(Code_set_id_countries).has_code(territory)`
+2+a|_Territory_valid_: `code_set(Code_set_id_countries).has_code(territory)`
 
 h|
-2+a|*_Language_valid_*: `code_set(Code_set_id_languages).has_code(language)`
+2+a|_Language_valid_: `code_set(Code_set_id_languages).has_code(language)`
 
 h|
-2+a|*_Content_valid_*: `content /= Void implies not content.is_empty`
+2+a|_Content_valid_: `content /= Void implies not content.is_empty`
 
 h|
-2+a|*_Is_archetype_root_*: `is_archetype_root`
+2+a|_Is_archetype_root_: `is_archetype_root`
 |===

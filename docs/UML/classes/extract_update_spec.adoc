@@ -37,11 +37,11 @@ h|*1..1*
 a|Indicate mode of update. Can be: send only items that are changed (including logical deletions) or new since last send. For `_persist_in_server_` Requests only.
 
 h|*Invariants*
-2+a|*_Overall_validity_*: `repeat_period /= Void or trigger_events /= Void`
+2+a|_Overall_validity_: `repeat_period /= Void or trigger_events /= Void`
 
 h|
-2+a|*_Trigger_events_validity_*: `trigger_events /= Void implies not trigger_events.is_empty`
+2+a|_Trigger_events_validity_: `trigger_events /= Void implies not trigger_events.is_empty`
 
 h|
-2+a|*_Send_changes_only_validity_*: `send_changes_only implies persist_in_server`
+2+a|_Send_changes_only_validity_: `send_changes_only implies persist_in_server`
 |===

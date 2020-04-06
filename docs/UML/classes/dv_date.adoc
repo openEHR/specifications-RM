@@ -34,28 +34,29 @@ other: `DV_QUANTIFIED[1]` +
 a|Return True if this `DV_QUANTIFIED` is considered equal to `_other_`.
 
 h|(redefined)
-|*add* ( +
+|*add* _alias_ "+" ( +
 a_diff: `DV_DURATION[1]` +
 ): `DV_DATE`
 a|Addition of a Duration to this Date.
 
 h|(redefined)
-|*subtract* ( +
+|*subtract* _alias_ "-" ( +
 a_diff: `DV_DURATION[1]` +
 ): `DV_DATE`
 a|Subtract a Duration from this Date.
 
 h|(redefined)
-|*diff* ( +
+|*diff* _alias_ "-" ( +
 other: `DV_DATE[1]` +
 ): `DV_DURATION`
 a|Difference between this Date and `_other_`.
 
 h|(effected)
-|*less_than* ( +
+|*less_than* _alias_ "<" ( +
 other: `DV_DATE[1]` +
 ): `Boolean` +
-*_Post_result_*: `Result = magnitude > other.magnitude`
+ +
+_Post_result_: `Result = magnitude > other.magnitude`
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 
 h|(effected)
@@ -65,5 +66,5 @@ other: `DV_DATE[1]` +
 a|True, for any two Dates.
 
 h|*Invariants*
-2+a|*_Value_valid_*: `valid_iso8601_date(value)`
+2+a|_Value_valid_: `valid_iso8601_date(value)`
 |===

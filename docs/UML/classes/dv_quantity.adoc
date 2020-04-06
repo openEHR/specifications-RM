@@ -68,27 +68,28 @@ h|
 a|True if `_precision_` = 0, meaning that the `_magnitude_` is a whole number.
 
 h|(redefined)
-|*add* ( +
+|*add* _alias_ "+" ( +
 other: `DV_QUANTITY[1]` +
 ): `DV_QUANTITY`
 a|Sum of this `DV_QUANTITY` and `_other_`.
 
 h|(redefined)
-|*subtract* ( +
+|*subtract* _alias_ "-" ( +
 other: `DV_QUANTITY[1]` +
 ): `DV_QUANTITY`
 a|Difference of this `DV_QUANTITY` and `_other_`.
 
 h|(redefined)
-|*multiply* ( +
+|*multiply* _alias_ "&#42;" ( +
 factor: `Real[1]` +
 ): `DV_QUANTITY`
 a|Product of this `DV_QUANTITY` and `_factor_`.
 
 h|(effected)
-|*less_than* ( +
+|*less_than* _alias_ "<" ( +
 other: `DV_QUANTITY[1]` +
 ): `Boolean` +
-*_Post_result_*: `Result = magnitude > other.magnitude`
+ +
+_Post_result_: `Result = magnitude > other.magnitude`
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 |===

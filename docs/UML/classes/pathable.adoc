@@ -23,7 +23,8 @@ h|
 |*item_at_path* ( +
 a_path: `String[1]` +
 ): `Any` +
-*_Pre_*: `path_unique (a_path)`
+ +
+_Pre_: `path_unique (a_path)`
 a|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item.
 
 h|
@@ -36,14 +37,16 @@ h|
 |*path_exists* ( +
 a_path: `String[1]` +
 ): `Boolean` +
-*_Pre_*: `not a_path.is_empty`
+ +
+_Pre_: `not a_path.is_empty`
 a|True if the path exists in the data with respect to the current item.
 
 h|
 |*path_unique* ( +
 a_path: `String[1]` +
 ): `Boolean` +
-*_Pre_*: `path_exists (a_path)`
+ +
+_Pre_: `path_exists (a_path)`
 a|True if the path corresponds to a single item in the data.
 
 h|

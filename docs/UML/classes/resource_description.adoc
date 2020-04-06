@@ -33,7 +33,8 @@ h|*0..1*
 a|Additional non language-senstive resource meta-data, as a list of name/value pairs.
 
 h|*1..1*
-|*parent_resource*: `AUTHORED_RESOURCE{nbsp}={nbsp}0..1`
+|*parent_resource*: `AUTHORED_RESOURCE +
+{default{nbsp}={nbsp}0..1}`
 a|Reference to owning resource.
 
 h|*1..1*
@@ -41,17 +42,17 @@ h|*1..1*
 a|Details of all parts of resource description that are natural language-dependent, keyed by language code.
 
 h|*Invariants*
-2+a|*_Original_author_valid_*: `not original_author.is_empty`
+2+a|_Original_author_valid_: `not original_author.is_empty`
 
 h|
-2+a|*_Lifecycle_state_valid_*: `not lifecycle_state.is_empty`
+2+a|_Lifecycle_state_valid_: `not lifecycle_state.is_empty`
 
 h|
-2+a|*_Details_valid_*: `not details.is_empty`
+2+a|_Details_valid_: `not details.is_empty`
 
 h|
-2+a|*_Language_valid_*: `parent_resource /= Void implies details.for_all (d &#124; parent_resource.languages_available.has (d.language.code_string))`
+2+a|_Language_valid_: `parent_resource /= Void implies details.for_all (d &#124; parent_resource.languages_available.has (d.language.code_string))`
 
 h|
-2+a|*_Parent_resource_valid_*: `parent_resource /= Void implies parent_resource.description = self`
+2+a|_Parent_resource_valid_: `parent_resource /= Void implies parent_resource.description = self`
 |===

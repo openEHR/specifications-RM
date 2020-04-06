@@ -1966,7 +1966,7 @@ the EHR and generic Extract sections below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Includes_revision_history_valid</em></strong>: <code>not include_data implies include_revision_history</code></p>
+<p><em>Includes_revision_history_valid</em>: <code>not include_data implies include_revision_history</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2046,19 +2046,19 @@ the EHR and generic Extract sections below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Overall_validity</em></strong>: <code>repeat_period /= Void or trigger_events /= Void</code></p>
+<p><em>Overall_validity</em>: <code>repeat_period /= Void or trigger_events /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Trigger_events_validity</em></strong>: <code>trigger_events /= Void implies not trigger_events.is_empty</code></p>
+<p><em>Trigger_events_validity</em>: <code>trigger_events /= Void implies not trigger_events.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Send_changes_only_validity</em></strong>: <code>send_changes_only implies persist_in_server</code></p>
+<p><em>Send_changes_only_validity</em>: <code>send_changes_only implies persist_in_server</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2144,7 +2144,7 @@ the EHR and generic Extract sections below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Sequence_nr_valid</em></strong>: <code>sequence_nr &gt;= 1</code></p>
+<p><em>Sequence_nr_valid</em>: <code>sequence_nr &gt;= 1</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2349,7 +2349,7 @@ the EHR and generic Extract sections below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Item_validity</em></strong>: <code>is_masked xor item /= Void</code></p>
+<p><em>Item_validity</em>: <code>is_masked xor item /= Void</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2413,13 +2413,13 @@ the EHR and generic Extract sections below.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Function_valid</em></strong>: <code>function /= Void and then function.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)</code></p>
+<p><em>Function_valid</em>: <code>function /= Void and then function.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Mode_valid</em></strong>: <code>mode /= Void and terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)</code></p>
+<p><em>Mode_valid</em>: <code>mode /= Void and terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>

@@ -706,37 +706,37 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Type_valid</em></strong>: <code>type = name</code></p>
+<p><em>Type_valid</em>: <code>type = name</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Contacts_valid</em></strong>: <code>contacts /= Void implies not contacts.is_empty</code></p>
+<p><em>Contacts_valid</em>: <code>contacts /= Void implies not contacts.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Relationships_validity</em></strong>: <code>relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r &#124; r.source = self)</code></p>
+<p><em>Relationships_validity</em>: <code>relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r &#124; r.source = self)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Reverse_relationships_validity</em></strong>: <code>reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))</code></p>
+<p><em>Reverse_relationships_validity</em>: <code>reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Is_archetype_root</em></strong>: <code>is_archetype_root</code></p>
+<p><em>Is_archetype_root</em>: <code>is_archetype_root</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Uid_mandatory</em></strong>: <code>uid /= Void</code></p>
+<p><em>Uid_mandatory</em>: <code>uid /= Void</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -820,7 +820,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Capabilities_valid</em></strong>: <code>capabilities /= Void implies not capabilities.empty</code></p>
+<p><em>Capabilities_valid</em>: <code>capabilities /= Void implies not capabilities.empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -897,19 +897,19 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Source_valid</em></strong>: <code>source /= Void and then source.relationships.has (self)</code></p>
+<p><em>Source_valid</em>: <code>source /= Void and then source.relationships.has (self)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Target_valid</em></strong>: <code>target /= Void and then not target.reverse_relationships.has (self)</code></p>
+<p><em>Target_valid</em>: <code>target /= Void and then not target.reverse_relationships.has (self)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Type_validity</em></strong>: <code>type = name</code></p>
+<p><em>Type_validity</em>: <code>type = name</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -965,7 +965,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Purpose_valid</em></strong>: <code>purpose = name</code></p>
+<p><em>Purpose_valid</em>: <code>purpose = name</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1028,7 +1028,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Purpose_valid</em></strong>: <code>purpose = name</code></p>
+<p><em>Purpose_valid</em>: <code>purpose = name</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1084,7 +1084,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><strong><em>Type_valid</em></strong>: <code>type = name</code></p>
+<p><em>Type_valid</em>: <code>type = name</code></p>
 </div></div></td>
 </tr>
 </tbody>

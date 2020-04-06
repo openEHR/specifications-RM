@@ -37,7 +37,8 @@ h|*Functions*
 
 h|
 |*valid_magnitude_status* (): `Boolean` +
-*_Post_*: `Result = s in {"=", "<", ">", "\<=", ">=", "~"}`
+ +
+_Post_: `Result = s in {"=", "<", ">", "\<=", ">=", "~"}`
 a|Test whether a string value is one of the valid values for the magnitude_status attribute.
 
 h|(abstract)
@@ -55,12 +56,13 @@ other: `DV_QUANTIFIED[1]` +
 a|Return True if this `DV_QUANTIFIED` is considered equal to `_other_`.
 
 h|(effected)
-|*less_than* ( +
+|*less_than* _alias_ "<" ( +
 other: `DV_QUANTIFIED[1]` +
 ): `Boolean` +
-*_Post_result_*: `Result = magnitude > other.magnitude`
+ +
+_Post_result_: `Result = magnitude > other.magnitude`
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 
 h|*Invariants*
-2+a|*_Magnitude_status_valid_*: `magnitude_status /= Void implies valid_magnitude_status (magnitude_status)`
+2+a|_Magnitude_status_valid_: `magnitude_status /= Void implies valid_magnitude_status (magnitude_status)`
 |===

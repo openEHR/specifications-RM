@@ -35,14 +35,14 @@ h|
 a|True if value logically not known, e.g. if indeterminate, not asked etc.
 
 h|*Invariants*
-2+a|*_Inv_is_null_valid_*: `is_null() = (value = Void)`
+2+a|_Inv_is_null_valid_: `is_null() = (value = Void)`
 
 h|
-2+a|*_Inv_null_flavour_indicated_*: `is_null() xor null_flavour = Void`
+2+a|_Inv_null_flavour_indicated_: `is_null() xor null_flavour = Void`
 
 h|
-2+a|*_Inv_null_flavour_valid_*: `is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)`
+2+a|_Inv_null_flavour_valid_: `is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)`
 
 h|
-2+a|*_Inv_null_reason_valid_*: `null_reason /= Void implies is_null()`
+2+a|_Inv_null_reason_valid_: `null_reason /= Void implies is_null()`
 |===
