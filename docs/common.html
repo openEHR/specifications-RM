@@ -175,21 +175,32 @@
 </li>
 </ul>
 </li>
-<li><a href="#_resource_package">7. Resource Package</a>
+<li><a href="#_tags_package">7. Tags Package</a>
 <ul class="sectlevel2">
-<li><a href="#_overview_6">7.1. Overview</a>
+<li><a href="#_overview_6">7.1. Overview</a></li>
+<li><a href="#_semantics">7.2. Semantics</a></li>
+<li><a href="#_class_descriptions_4">7.3. Class Descriptions</a>
 <ul class="sectlevel3">
-<li><a href="#_natural_languages_and_translation">7.1.1. Natural Languages and Translation</a></li>
-<li><a href="#_meta_data_2">7.1.2. Meta-data</a></li>
-<li><a href="#_revision_history_2">7.1.3. Revision History</a></li>
+<li><a href="#_item_tag_class">7.3.1. ITEM_TAG Class</a></li>
 </ul>
 </li>
-<li><a href="#_class_descriptions_4">7.2. Class Descriptions</a>
+</ul>
+</li>
+<li><a href="#_resource_package">8. Resource Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_7">8.1. Overview</a>
 <ul class="sectlevel3">
-<li><a href="#_authored_resource_class">7.2.1. AUTHORED_RESOURCE Class</a></li>
-<li><a href="#_translation_details_class">7.2.2. TRANSLATION_DETAILS Class</a></li>
-<li><a href="#_resource_description_class">7.2.3. RESOURCE_DESCRIPTION Class</a></li>
-<li><a href="#_resource_description_item_class">7.2.4. RESOURCE_DESCRIPTION_ITEM Class</a></li>
+<li><a href="#_natural_languages_and_translation">8.1.1. Natural Languages and Translation</a></li>
+<li><a href="#_meta_data_2">8.1.2. Meta-data</a></li>
+<li><a href="#_revision_history_2">8.1.3. Revision History</a></li>
+</ul>
+</li>
+<li><a href="#_class_descriptions_5">8.2. Class Descriptions</a>
+<ul class="sectlevel3">
+<li><a href="#_authored_resource_class">8.2.1. AUTHORED_RESOURCE Class</a></li>
+<li><a href="#_translation_details_class">8.2.2. TRANSLATION_DETAILS Class</a></li>
+<li><a href="#_resource_description_class">8.2.3. RESOURCE_DESCRIPTION Class</a></li>
+<li><a href="#_resource_description_item_class">8.2.4. RESOURCE_DESCRIPTION_ITEM Class</a></li>
 </ul>
 </li>
 </ul>
@@ -293,9 +304,17 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-93" target="_blank" rel="noopener">SPECRM-93</a>: Adjust advice on merging persistent compositions in section 6.4.2. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-271" target="_blank" rel="noopener">SPECPR-355</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-87" target="_blank" rel="noopener">SPECRM-87</a>: Support tags (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-265" target="_blank" rel="noopener">SPECPR-265</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
+ B Næss,<br>
+ M Polajnar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Apr 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-93" target="_blank" rel="noopener">SPECRM-93</a>: Adjust advice on merging persistent compositions in section 6.4.2. (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-355" target="_blank" rel="noopener">SPECPR-355</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">I McNicoll</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Mar 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23 Mar 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -326,7 +345,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-56" target="_blank" rel="noopener">SPECRM-56</a>. Add archetypable details meta-data to <code>FOLDER</code> (addresses <a href="https://specifications.openehr.org/tickets/SPECPR-85" target="_blank" rel="noopener">SPECPR-85</a>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">B Naess,<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B Næss,<br>
  S Iancu,<br>
  P Pazos,<br>
  I McNicoll,<br>
@@ -2679,7 +2698,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <p>As described in the Architecture Overview document, formal version control and change management are used in openEHR to support the construction of EHR and other repositories requiring the properties of consistency, indelibility, traceability and distributed sharing. The <code>change_control</code> package supplies the formal specification of these features in openEHR.</p>
 </div>
 <div class="paragraph">
-<p><a href="#change_control_package">Figure 6</a> illustrates the openEHR model of a Versioned object, and its constituent Versions. In this model, an instance of the class <code>VERSIONED_OBJECT&lt;T&gt;</code> provides the versioning facilities for one versioned item and is often referred to as a 'version container'. Although any kind of data can be versioned according to the model presented here, the use of versioning in openEHR is limited to 'toplevel structures', such as EHR Compositions and Party objects in a demographic system.</p>
+<p><a href="#change_control_package">Figure 6</a> illustrates the openEHR model of a Versioned object, and its constituent Versions. In this model, an instance of the class <code>VERSIONED_OBJECT&lt;T&gt;</code> provides the versioning facilities for one versioned item and is often referred to as a 'version container'. Although any kind of data can be versioned according to the model presented here, the use of versioning in openEHR is limited to 'top-level structures', such as EHR Compositions and Party objects in a demographic system.</p>
 </div>
 <div id="change_control_package" class="imageblock text-center text-center">
 <div class="content">
@@ -3817,7 +3836,122 @@ signature.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_resource_package"><a class="anchor" href="#_resource_package"></a>7. Resource Package</h2>
+<h2 id="_tags_package"><a class="anchor" href="#_tags_package"></a>7. Tags Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_6"><a class="anchor" href="#_overview_6"></a>7.1. Overview</h3>
+<div class="paragraph">
+<p>The <code>common.tags</code> package defines the structure and semantics of a <em>tag</em> construct that may be used within openEHR, in a similar way to 'tagging' facilities commonly available in web-based email, forum platforms, and other content management systems. The following UML diagram shows the formal model.</p>
+</div>
+<div id="tags_package" class="imageblock text-center text-center">
+<div class="content">
+<img src="UML/diagrams/RM-common.tags.svg" alt="RM common.tags">
+</div>
+<div class="title">Figure 17. common.tags Package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_semantics"><a class="anchor" href="#_semantics"></a>7.2. Semantics</h3>
+<div class="paragraph">
+<p>A <em>tag</em> in openEHR is understood as a lightweight annotation that may be associated with any information item, such that <em>searching</em> or <em>querying</em> for a tag will result in retrieval of the items marked with that tag. Here, 'searching' is understood as a function available on a service interface for the tagged content (e.g. EHR service API), while 'querying' is understood as the use of tags in queries expressed in an openEHR query languages such as {openehr_aql}[AQL^].</p>
+</div>
+<div class="paragraph">
+<p>Tags as defined here are designed such that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>they may be added at any time with respect to the commit time of the content they annotate, including much later;</p>
+</li>
+<li>
+<p>they do not constitute part of the content they annotate;</p>
+</li>
+<li>
+<p>accordingly, where they annotate versioned content, they do not cause re-versioning of the content.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph tbd">
+<p>TBD: more</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_descriptions_4"><a class="anchor" href="#_class_descriptions_4"></a>7.3. Class Descriptions</h3>
+<div class="sect3">
+<h4 id="_item_tag_class"><a class="anchor" href="#_item_tag_class"></a>7.3.1. ITEM_TAG Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ITEM_TAG</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A tag with optional value that is associated with a target information entity identified by a UID.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tag</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The string tag. May not be empty or contain leading or trailing whitespace.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>UID_BASED_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifier of target. May be a <code>VERSIONED_OBJECT&lt;T&gt;</code> or a <code>VERSION&lt;T&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>TODO: could also be a URI.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The value. If set, may not be empty.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner</strong>: <code>OBJECT_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifier of owner object.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Inv_tag_valid</em>: <code>not tag.is_empty and tag.is_justified()</code></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Inv_value_valid</em>: <code>value /= Void implies not value.is_empty()</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resource_package"><a class="anchor" href="#_resource_package"></a>8. Resource Package</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -3832,7 +3966,7 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 </table>
 </div>
 <div class="sect2">
-<h3 id="_overview_6"><a class="anchor" href="#_overview_6"></a>7.1. Overview</h3>
+<h3 id="_overview_7"><a class="anchor" href="#_overview_7"></a>8.1. Overview</h3>
 <div class="paragraph">
 <p>The <code>common.resource</code> package defines the structure and semantics of the general notion of an online resource which has been created by a human author, and consequently for which natural language is a factor. The package is illustrated below.</p>
 </div>
@@ -3840,10 +3974,10 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 <div class="content">
 <img src="UML/diagrams/RM-common.resource.svg" alt="RM common.resource">
 </div>
-<div class="title">Figure 17. common.resource Package</div>
+<div class="title">Figure 18. common.resource Package</div>
 </div>
 <div class="sect3">
-<h4 id="_natural_languages_and_translation"><a class="anchor" href="#_natural_languages_and_translation"></a>7.1.1. Natural Languages and Translation</h4>
+<h4 id="_natural_languages_and_translation"><a class="anchor" href="#_natural_languages_and_translation"></a>8.1.1. Natural Languages and Translation</h4>
 <div class="paragraph">
 <p>Authored resources contain natural language elements, and are therefore created in some original language, recorded in the <code><em>orginal_language</em></code> attribute of the <code>AUTHORED_RESOURCE</code> class. Information about translations is included in the translations attribute, which allows for one or more sets of translation details to be recorded. A resource is translated by doing the following:</p>
 </div>
@@ -3865,7 +3999,7 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 </div>
 </div>
 <div class="sect3">
-<h4 id="_meta_data_2"><a class="anchor" href="#_meta_data_2"></a>7.1.2. Meta-data</h4>
+<h4 id="_meta_data_2"><a class="anchor" href="#_meta_data_2"></a>8.1.2. Meta-data</h4>
 <div class="paragraph">
 <p>What is normally considered the 'meta-data' of a resource, i.e. its author, date of creation, purpose, and other descriptive items, is described by the <code>RESOURCE_DESCRIPTION</code> and <code>RESOURCE_DESCRIPTION_ITEM</code> classes. The parts of this that are in natural language, and therefore may require translated versions, are represented in instances of the <code>RESOURCE_DESCRIPTION_ITEM</code> class. Thus, if a <code>RESOURCE_DESCRIPTION</code> has more than one <code>RESOURCE_DESCRIPTION_ITEM</code>, each of these should carry exactly the same information in a different natural language.</p>
 </div>
@@ -3874,7 +4008,7 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 </div>
 </div>
 <div class="sect3">
-<h4 id="_revision_history_2"><a class="anchor" href="#_revision_history_2"></a>7.1.3. Revision History</h4>
+<h4 id="_revision_history_2"><a class="anchor" href="#_revision_history_2"></a>8.1.3. Revision History</h4>
 <div class="paragraph">
 <p>When the resource is considered to be in a state where changes to it should be controlled, the is_controlled attribute is set to True, and all subsequent changes should have an audit trail recorded. Usually controlled resources would be managed in a versioned repository (e.g. implemented by CVS, Subversion or similar systems), and audit information will be stored somewhere in the repository (e.g. in version control files). The revision_history attribute defined in the <code>AUTHROED_RESOURCE</code> class is intended to act as a documentary copy of the revision history as known inside the repository, for the benefit of users of the resource. Given that resources in different places may well be managed in different kinds of repositories, having a copy of the revision history in a standardised form within the resource enables it to be used interoperably by authoring and other tools.</p>
 </div>
@@ -3884,9 +4018,9 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_descriptions_4"><a class="anchor" href="#_class_descriptions_4"></a>7.2. Class Descriptions</h3>
+<h3 id="_class_descriptions_5"><a class="anchor" href="#_class_descriptions_5"></a>8.2. Class Descriptions</h3>
 <div class="sect3">
-<h4 id="_authored_resource_class"><a class="anchor" href="#_authored_resource_class"></a>7.2.1. AUTHORED_RESOURCE Class</h4>
+<h4 id="_authored_resource_class"><a class="anchor" href="#_authored_resource_class"></a>8.2.1. AUTHORED_RESOURCE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -4006,7 +4140,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_translation_details_class"><a class="anchor" href="#_translation_details_class"></a>7.2.2. TRANSLATION_DETAILS Class</h4>
+<h4 id="_translation_details_class"><a class="anchor" href="#_translation_details_class"></a>8.2.2. TRANSLATION_DETAILS Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -4067,7 +4201,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_resource_description_class"><a class="anchor" href="#_resource_description_class"></a>7.2.3. RESOURCE_DESCRIPTION Class</h4>
+<h4 id="_resource_description_class"><a class="anchor" href="#_resource_description_class"></a>8.2.3. RESOURCE_DESCRIPTION Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -4174,7 +4308,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_resource_description_item_class"><a class="anchor" href="#_resource_description_item_class"></a>7.2.4. RESOURCE_DESCRIPTION_ITEM Class</h4>
+<h4 id="_resource_description_item_class"><a class="anchor" href="#_resource_description_item_class"></a>8.2.4. RESOURCE_DESCRIPTION_ITEM Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -4306,7 +4440,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-04 21:30:35 UTC
+Last updated 2020-04-27 17:55:23 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-murphy.css">

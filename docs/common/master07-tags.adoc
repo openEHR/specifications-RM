@@ -1,0 +1,26 @@
+= Tags Package
+
+== Overview
+
+The `common.tags` package defines the structure and semantics of a _tag_ construct that may be used within openEHR, in a similar way to 'tagging' facilities commonly available in web-based email, forum platforms, and other content management systems. The following UML diagram shows the formal model.
+
+[.text-center]
+.common.tags Package
+image::{uml_diagrams_uri}/RM-common.tags.svg[id=tags_package, align="center"]
+
+== Semantics
+
+A _tag_ in openEHR is understood as a lightweight annotation that may be associated with any information item, such that _searching_ or _querying_ for a tag will result in retrieval of the items marked with that tag. Here, 'searching' is understood as a function available on a service interface for the tagged content (e.g. EHR service API), while 'querying' is understood as the use of tags in queries expressed in an openEHR query languages such as {openehr_aql}[AQL^].
+
+Tags as defined here are designed such that:
+
+* they may be added at any time with respect to the commit time of the content they annotate, including much later;
+* they do not constitute part of the content they annotate;
+* accordingly, where they annotate versioned content, they do not cause re-versioning of the content.
+
+[.tbd]
+TBD: more
+
+== Class Descriptions
+
+include::{uml_export_dir}/classes/item_tag.adoc[]

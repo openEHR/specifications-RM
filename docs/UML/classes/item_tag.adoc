@@ -1,0 +1,38 @@
+=== ITEM_TAG Class
+
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*ITEM_TAG*
+
+h|*Description*
+2+a|A tag with optional value that is associated with a target information entity identified by a UID.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*tag*: `String`
+a|The string tag. May not be empty or contain leading or trailing whitespace.
+
+h|*1..1*
+|*target*: `UID_BASED_ID`
+a|Identifier of target. May be a `VERSIONED_OBJECT<T>` or a `VERSION<T>`.
+
+TODO: could also be a URI.
+
+h|*0..1*
+|*value*: `String`
+a|The value. If set, may not be empty.
+
+h|*1..1*
+|*owner*: `OBJECT_REF`
+a|Identifier of owner object.
+
+h|*Invariants*
+2+a|_Inv_tag_valid_: `not tag.is_empty and tag.is_justified()`
+
+h|
+2+a|_Inv_value_valid_: `value /= Void implies not value.is_empty()`
+|===
