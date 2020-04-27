@@ -334,9 +334,16 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-55" target="_blank" rel="noopener">SPECRM-55</a>. Add <code><em>folders</em>:LIST&lt;OBJECT_REF&gt;</code> on <code>EHR</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B Naess,<br>
+ S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Apr 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-7" target="_blank" rel="noopener">SPECPUB-7</a>: Convert citations to bibtex form.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Dec 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Dec 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -350,13 +357,6 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
  I McNicoll</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">01 Nov 2019</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-55" target="_blank" rel="noopener">SPECRM-55</a>. Add <code><em>folders</em>:LIST&lt;OBJECT_REF&gt;</code> on <code>EHR</code>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">B Naess,<br>
- S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">19 Oct 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1583,10 +1583,10 @@
 <p><em>EHR_status (versioned)</em>: an object containing various status and control information, optionally including the identifier of the subject (i.e. patient) currently associated with the record;</p>
 </li>
 <li>
-<p><em>Directory (versioned)</em>: an optional hierarchical structure of Folders that can be used to logically organise Compositions;</p>
+<p><em>Directory (versioned)</em>: an optional hierarchical structure of Folders that can be used to logically organise Compositions in a glocal directory;</p>
 </li>
 <li>
-<p><em>Folders (versioned)</em>: additional optional hierarchical folder structures that can be used to logically organise Compositions;</p>
+<p><em>Folders (versioned)</em>: additional optional hierarchical folder structures that can be used to logically organise Compositions within purpose-specific directories;</p>
 </li>
 <li>
 <p><em>Compositions (versioned)</em>: the containers of all clinical and administrative content of the record;</p>
@@ -1597,7 +1597,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>ehr</code> package is illustrated in <a href="#rm_ehr">Figure 4</a> below. The classes have a more or less one-to-one correspondence with the objects shown in <a href="#high_level_ehr_structure">Figure 3</a>. Each versioned object of type <code>XXX</code> is defined by a class <code>VERSIONED_XXX</code>, which is a binding of the type <code>XXX</code> to the generic type paremeter <code>T</code> in the generic type <code>VERSIONED_COMPOSITION</code> (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).</p>
+<p>The <code>ehr</code> package is illustrated in <a href="#rm_ehr">Figure 4</a> below. The classes have a more or less one-to-one correspondence with the objects shown in <a href="#high_level_ehr_structure">Figure 3</a>. Each versioned object of type <code>X</code> is defined by a class <code>VERSIONED_X</code>, which is a binding of the type <code>X</code> to the generic type paremeter <code>T</code> in the generic type <code>VERSIONED_COMPOSITION</code> (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).</p>
 </div>
 <div id="rm_ehr" class="imageblock text-center text-center">
 <div class="content">
@@ -1617,7 +1617,7 @@
 <p>The <code><em>system_id</em></code> attribute is used to record the identifier of the logical EHR repository to which the data containing the audit are committed. What constitutes a 'system' in this context is described in more detail in the <a href="https://specifications.openehr.org/releases/BASE/latest/architecture_overview.html#_the_ehr_system">Architecture Overview</a>.</p>
 </div>
 <div class="paragraph">
-<p>References rather than containment by value are used for the relationship between the EHR and <code>VERSIONED_XXX</code> objects, reflecting the vast majority of retrieval scenarios in which only selected (usually recent) items are needed. Containment by value would lead to systems which retrieved all <code>VERSIONED_XXX</code> objects every time the EHR object was accessed.</p>
+<p>References rather than containment by value are used for the relationship between the EHR and <code>VERSIONED_X</code> objects, reflecting the vast majority of retrieval scenarios in which only selected (usually recent) items are needed. Containment by value would lead to systems which retrieved all <code>VERSIONED_X</code> objects every time the EHR object was accessed.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1761,16 +1761,16 @@
 <p>The <code><em>directory</em></code> was part of the initial design of the openEHR EHR in which a single Folder hierarchy per EHR was expected to suffice. With implementation experience, the utility of more than one versioned Folder hierarchy became apparent, and the <code><em>folders</em></code> attribute was added.</p>
 </div>
 <div class="paragraph">
-<p>Structurally the Folder hierarchy in <code><em>directory</em></code> is identical to each hierarchy in <code><em>folders</em></code> in its general form, i.e. each is a logical tree of named <code>FOLDER</code> objects each potentially containing references to <code>COMPOSITIONs</code>. Practically, since the <code><em>directory</em></code> hierarchy is a singleton per EHR, it must be considered as a shared object for all users (human and software) of the EHR over its lifetime, whereas each Folder hierarchy in <code><em>folders</em></code> may be created, maintained and used by different users, e.g. different hospital departments, or different parts of the health system.</p>
+<p>Structurally, the Folder hierarchy in <code><em>directory</em></code> is identical to each hierarchy in <code><em>folders</em></code> in its general form, i.e. each is a logical tree of named <code>FOLDER</code> objects each potentially containing references to <code>COMPOSITIONs</code>. Practically, since the <code><em>directory</em></code> hierarchy is a singleton per EHR, it is considered as a shared object for all users (human and software) of the EHR over its lifetime, whereas each Folder hierarchy in <code><em>folders</em></code> may be created, maintained and used by different users, e.g. different hospital departments, or different parts of the health system.</p>
 </div>
 <div class="paragraph">
-<p>In the case of the <code><em>directory</em></code> hierarchy, Folders may be added c  ontemporaneously or after the fact of recording of referenced Compositions. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. In the case of the multiple Folder hierarchies in <code><em>folders</em></code>, entirely new hierarchies may be added at any time, including much later than the creation of the data to which they refer.</p>
+<p>In the case of the <code><em>directory</em></code> hierarchy, Folders may be added contemporaneously or after the fact of recording of referenced Compositions. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. In the case of the multiple Folder hierarchies in <code><em>folders</em></code>, entirely new hierarchies may be added at any time, including much later than the creation of the data to which they refer.</p>
 </div>
 <div class="paragraph">
 <p>Semantically, Folders may be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped, and within Folder archetypes, the <code><em>details</em></code> attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).</p>
 </div>
 <div class="paragraph">
-<p>A simple structure showing Folders referencing Compositions is shown below, in which the following Folders are used:</p>
+<p>A <code><em>directory</em></code> structure showing Folders referencing Compositions is shown below, in which the following Folders are used:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1802,7 +1802,7 @@
 <div class="content">
 <img src="ehr/diagrams/folders_for_indexing.svg" alt="folders for indexing">
 </div>
-<div class="title">Figure 6. Using Folders to Index Compositions</div>
+<div class="title">Figure 6. Using the EHR directory to index Compositions</div>
 </div>
 <div class="paragraph">
 <p>This structure separates out Compositions on the basis of likely access by applications. Persistent Compositions remain relevant, usually for the patient lifetime,  consequently need to be quickly accessible by numerous applications views. Event Compositions contain information whose relevance may fade quickly (e.g. vital signs measurements) or which are effectively indexed by various persistent compositions (e.g. diagnoses). They are indexed in this example by a Folder structure that makes it easy to find Compositions on the basis of problem type (diabetes etc), and then by type of visit.</p>
@@ -4760,6 +4760,9 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 <div class="sect1">
 <h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><a id="BFO_Arp_Smith_Spear"></a>Arp, R., Smith, B., &amp; Spear, A. D. (2015). <em>Building Ontologies with Basic Formal Ontology</em>. The MIT Press. Retrieved from <a href="https://mitpress.mit.edu/books/building-ontologies-basic-formal-ontology" class="bare">https://mitpress.mit.edu/books/building-ontologies-basic-formal-ontology</a></p>
+</div>
 <div class="paragraph">
 <p><a id="Barretto2005"></a>Barretto, S. (2005). <em>Designing Guideline-based Workflow-Integrated Electronic Health Records</em> (PhD thesis). University of South Australia, Adelaide. Retrieved from <a href="https://wwww.openehr.org/publications/workflow/Barretto_PhD_Thesis_2005.zip" class="bare">https://wwww.openehr.org/publications/workflow/Barretto_PhD_Thesis_2005.zip</a></p>
 </div>

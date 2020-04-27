@@ -13,12 +13,12 @@ In this figure, the parts of the EHR are as follows:
 * _EHR_: the root object, identified by a globally unique EHR identifier;
 * _EHR_access (versioned)_: an object containing access control settings for the record;
 * _EHR_status (versioned)_: an object containing various status and control information, optionally including the identifier of the subject (i.e. patient) currently associated with the record;
-* _Directory (versioned)_: an optional hierarchical structure of Folders that can be used to logically organise Compositions;
-* _Folders (versioned)_: additional optional hierarchical folder structures that can be used to logically organise Compositions;
+* _Directory (versioned)_: an optional hierarchical structure of Folders that can be used to logically organise Compositions in a glocal directory;
+* _Folders (versioned)_: additional optional hierarchical folder structures that can be used to logically organise Compositions within purpose-specific directories;
 * _Compositions (versioned)_: the containers of all clinical and administrative content of the record;
 * _Contributions_: the change-set records for every change made to the health record; each Contribution references a set of one or more Versions of any of the versioned items in the record that were committed or attested together by a user to an EHR system.
 
-The `ehr` package is illustrated in <<rm_ehr>> below. The classes have a more or less one-to-one correspondence with the objects shown in <<high_level_ehr_structure>>. Each versioned object of type `XXX` is defined by a class `VERSIONED_XXX`, which is a binding of the type `XXX` to the generic type paremeter `T` in the generic type `VERSIONED_COMPOSITION` (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).
+The `ehr` package is illustrated in <<rm_ehr>> below. The classes have a more or less one-to-one correspondence with the objects shown in <<high_level_ehr_structure>>. Each versioned object of type `X` is defined by a class `VERSIONED_X`, which is a binding of the type `X` to the generic type paremeter `T` in the generic type `VERSIONED_COMPOSITION` (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).
 
 [.text-center]
 .rm.ehr package
@@ -32,7 +32,7 @@ The root EHR object records three pieces of information that are immutable after
 
 The `_system_id_` attribute is used to record the identifier of the logical EHR repository to which the data containing the audit are committed. What constitutes a 'system' in this context is described in more detail in the {openehr_overview}#_the_ehr_system[Architecture Overview].
 
-References rather than containment by value are used for the relationship between the EHR and `VERSIONED_XXX` objects, reflecting the vast majority of retrieval scenarios in which only selected (usually recent) items are needed. Containment by value would lead to systems which retrieved all `VERSIONED_XXX` objects every time the EHR object was accessed.
+References rather than containment by value are used for the relationship between the EHR and `VERSIONED_X` objects, reflecting the vast majority of retrieval scenarios in which only selected (usually recent) items are needed. Containment by value would lead to systems which retrieved all `VERSIONED_X` objects every time the EHR object was accessed.
 
 === EHR Access
 
@@ -60,7 +60,7 @@ The main data of the EHR is found in its Compositions, i.e. instances of the `CO
 
 The Composition concept originated from the 'Transaction' concept of the GEHR project citenp:[GEHR_Del_4], citenp:[GEHR_Del_7], citenp:[GEHR_Del_8], citenp:[GEHR1995]. In openEHR, it was renamed to 'Composition' (the name of the equivalent concept in {iso_13606-1}[ISO 13606-1^]), and it has been expanded and more formally defined in openEHR in two ways. Firstly, the idea of a unit of committal has been formalised by the openEHR model of change control (see the {openehr_rm_common}[openEHR Common Information Model]); how this applies to the EHR and Compositions is described below.
 
-Secondly, the informational purpose of a Composition is not just to capture data from a passing clinical event such as a patient contact, but also to track longitudinal significant patient state, such as problems, allergies and medications. Accordingly, openEHR Compositions are temporally classified using a small number of broad categories recorded in the `COMPOSITION._category_` attribute. Categories include _event_, _episodic_ and _persistent_. From a scientific realist ontological point of view, the kind of information recorded in a persistent Composition approximates a description of some _continuant_ aspect of the patient (see e.g. the KR ontology in citenp:[Sowa2000]). This is in contrast with event Compositions, which record _occurrents_, i.e. events or states that occurred or were true at some moment in time. The episodic category corresponds to information that is relevant for the period of time of a care episode.
+Secondly, the informational purpose of a Composition is not just to capture data from a passing clinical event such as a patient contact, but also to track longitudinal significant patient state, such as problems, allergies and medications. Accordingly, openEHR Compositions are temporally classified using a small number of broad categories recorded in the `COMPOSITION._category_` attribute. Categories include _event_, _episodic_ and _persistent_. From a scientific realist ontological point of view, the kind of information recorded in a persistent Composition approximates a description of some _continuant_ aspect of the patient (see citenp:[BFO_Arp_Smith_Spear], citenp:[Sowa2000]). This is in contrast with event Compositions, which record _occurrents_, i.e. events or states that occurred or were true at some moment in time. The episodic category corresponds to information that is relevant for the period of time of a care episode.
 
 [.text-center]
 .An EHR containing Persistent, Episodic and Event Compositions
@@ -104,13 +104,13 @@ As Compositions accumulate over time in the EHR, they form a long-term patient h
 
 The `_directory_` was part of the initial design of the openEHR EHR in which a single Folder hierarchy per EHR was expected to suffice. With implementation experience, the utility of more than one versioned Folder hierarchy became apparent, and the `_folders_` attribute was added.
 
-Structurally the Folder hierarchy in `_directory_` is identical to each hierarchy in `_folders_` in its general form, i.e. each is a logical tree of named `FOLDER` objects each potentially containing references to `COMPOSITIONs`. Practically, since the `_directory_` hierarchy is a singleton per EHR, it must be considered as a shared object for all users (human and software) of the EHR over its lifetime, whereas each Folder hierarchy in `_folders_` may be created, maintained and used by different users, e.g. different hospital departments, or different parts of the health system.
+Structurally, the Folder hierarchy in `_directory_` is identical to each hierarchy in `_folders_` in its general form, i.e. each is a logical tree of named `FOLDER` objects each potentially containing references to `COMPOSITIONs`. Practically, since the `_directory_` hierarchy is a singleton per EHR, it is considered as a shared object for all users (human and software) of the EHR over its lifetime, whereas each Folder hierarchy in `_folders_` may be created, maintained and used by different users, e.g. different hospital departments, or different parts of the health system.
 
-In the case of the `_directory_` hierarchy, Folders may be added c  ontemporaneously or after the fact of recording of referenced Compositions. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. In the case of the multiple Folder hierarchies in `_folders_`, entirely new hierarchies may be added at any time, including much later than the creation of the data to which they refer.
+In the case of the `_directory_` hierarchy, Folders may be added contemporaneously or after the fact of recording of referenced Compositions. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. In the case of the multiple Folder hierarchies in `_folders_`, entirely new hierarchies may be added at any time, including much later than the creation of the data to which they refer.
 
 Semantically, Folders may be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped, and within Folder archetypes, the `_details_` attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).
 
-A simple structure showing Folders referencing Compositions is shown below, in which the following Folders are used:
+A `_directory_` structure showing Folders referencing Compositions is shown below, in which the following Folders are used:
 
 * *Persistent compositions*: compositions containing information which is valid in the long term;
 * *Diabetes*: compositions relating to diabetic care, arranged in sub-folders;
@@ -120,7 +120,7 @@ A simple structure showing Folders referencing Compositions is shown below, in w
 * *(other problem)*: Folders indexing Compositions relating to other problems
 
 [.text-center]
-.Using Folders to Index Compositions
+.Using the EHR directory to index Compositions
 image::{diagrams_uri}/folders_for_indexing.svg[id=folders_for_indexing, align="center"]
 
 This structure separates out Compositions on the basis of likely access by applications. Persistent Compositions remain relevant, usually for the patient lifetime,  consequently need to be quickly accessible by numerous applications views. Event Compositions contain information whose relevance may fade quickly (e.g. vital signs measurements) or which are effectively indexed by various persistent compositions (e.g. diagnoses). They are indexed in this example by a Folder structure that makes it easy to find Compositions on the basis of problem type (diabetes etc), and then by type of visit.
