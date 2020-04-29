@@ -395,7 +395,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-94" target="_blank" rel="noopener">SPECRM-94</a>: Correct arithmetic and comparison functions in Data Types.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Mar 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Apr 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -3165,7 +3165,7 @@ is used for this purpose, and the constant unknown_accuracy_value = -1 is provid
 other: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Test if two instances are strictly comparable.</p>
+<p>Test if two instances are strictly comparable. Effected in descendants.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3194,7 +3194,7 @@ other: <code>DV_ORDERED[1]</code><br>
 <br>
 <em>Pre_comparable</em>: <code>is_strictly_comparable (other)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this Ordered data value is less than <code><em>other</em></code>.</p>
+<p>True if this Ordered object is less than <code><em>other</em></code>. Redefined in descendants.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3413,18 +3413,6 @@ other: <code>DV_ORDINAL[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Test if this Ordinal is strictly comparable to <code><em>other</em></code>.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Limits_valid</em>: <code>limits.meaning.is_equal (“limits”)</code></p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Reference_range_valid</em>: <code>other_reference_ranges.has (limits)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -3788,9 +3776,9 @@ factor: <code>Real[1]</code><br>
 other: <code>DV_AMOUNT[1]</code><br>
 ): <code>Boolean</code><br>
 <br>
-<em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
+<em>Post_result</em>: <code>Result = magnitude &lt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
+<p>True if this object is less than <code><em>other</em></code>. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3924,13 +3912,6 @@ The display name may be language-dependent for various older and non-systematic 
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integral</strong> (): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if <code><em>precision</em></code> = 0, meaning that the <code><em>magnitude</em></code> is a whole number.</p>
-</div></div></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_QUANTITY[1]</code><br>
@@ -3966,6 +3947,22 @@ other: <code>DV_QUANTITY[1]</code><br>
 <em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integral</strong> (): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if <code><em>precision</em></code> = 0, meaning that the <code><em>magnitude</em></code> is a whole number.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
+other: <code>DV_ORDERED[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>True if this quantity and <code><em>other</em></code> have the same <code><em>units</em></code> and also <code><em>units_system</em></code> if it exists.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4064,6 +4061,15 @@ other: <code>DV_COUNT[1]</code><br>
 <em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
+other: <code>DV_ORDERED[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return True.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4211,6 +4217,15 @@ other: <code>DV_PROPORTION[1]</code><br>
 <em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>other</em></code> is less than this Proportion.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
+other: <code>DV_ORDERED[1]</code><br>
+): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Return True if the <code><em>type</em></code> of this proportion is the same as the <code><em>type</em></code> of <code><em>other</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>

@@ -36,7 +36,7 @@ h|(abstract)
 |*is_strictly_comparable_to* ( +
 other: `DV_ORDERED[1]` +
 ): `Boolean`
-a|Test if two instances are strictly comparable.
+a|Test if two instances are strictly comparable. Effected in descendants.
 
 h|
 |*is_simple* (): `Boolean`
@@ -56,7 +56,7 @@ other: `DV_ORDERED[1]` +
 ): `Boolean` +
  +
 _Pre_comparable_: `is_strictly_comparable (other)`
-a|True if this Ordered data value is less than `_other_`.
+a|True if this Ordered object is less than `_other_`. Redefined in descendants.
 
 h|*Invariants*
 2+a|_Other_reference_ranges_validity_: `other_reference_ranges /= Void implies not other_reference_ranges.is_empty`
