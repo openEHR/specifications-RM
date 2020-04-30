@@ -393,9 +393,16 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-96" target="_blank" rel="noopener">SPECRM-96</a>: Consistently support negative durations. Improve documentation of negated form of <code>DV_DURATION</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">H Leslie,<br>
+ S Garde</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>30 Apr 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-94" target="_blank" rel="noopener">SPECRM-94</a>: Correct arithmetic and comparison functions in Data Types.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Apr 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">27 Apr 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1070,6 +1077,9 @@
 </li>
 <li>
 <p>Bostjan Lah, Architect, Marand, Slovenia</p>
+</li>
+<li>
+<p>Heather Leslie MD, MD, FRACGP, FACHI, GAICD, Atomica Informatics, Australia</p>
 </li>
 <li>
 <p>David Lloyd (ret), CHIME, UCL, UK</p>
@@ -4519,21 +4529,21 @@ for partial dates and times. The <code>quantity.date_time</code> package is illu
 <div class="sect4">
 <h5 id="_standard_datetimes"><a class="anchor" href="#_standard_datetimes"></a>7.1.1.1. Standard Date/Times</h5>
 <div class="paragraph">
-<p>The basic requirement is for types which represent the following concepts:</p>
+<p>The basic requirement is for types which represent the following concepts.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><em>Date</em>: a type which records year, month and day in month. Examples include date of birth, date of onset of a problem</p>
+<p><em>Date</em>: a type which records year, month and day in month. Examples include date of birth, date of onset of a problem.</p>
 </li>
 <li>
 <p><em>Time</em>: a type which records hour, minute, second, and timezone. Examples include time of meal, time of day when a problem recurs. Timezone is required in a shared EHR repository so that times of clinical events which occurred in different timezones are comparable; this includes specialised pathology tests which might be done in another country.</p>
 </li>
 <li>
-<p><em>Date_time</em>: a type which records year, month, day, hour, minute, second, and timezone. Examples include date &amp; time of death, timestamp of any observation. Timezone required for the same reason as in Time.</p>
+<p><em>Date_time</em>: a type which records year, month, day, hour, minute, second, and timezone. Examples include date &amp; time of death, timestamp of any observation. Timezone is required for the same reason as in Time.</p>
 </li>
 <li>
-<p><em>Duration</em>: a type which records duration of an event or (in)activity, as days, hours, minutes, and seconds.</p>
+<p><em>Duration</em>: a type which records duration of an event or (in)activity, as days, hours, minutes, and seconds. A duration is understood as being relative to an unstated origin point (such as birth), and may take a negative value, indicating prior to the origin.</p>
 </li>
 </ul>
 </div>
@@ -4564,7 +4574,7 @@ rules is someone who claims to be born on "a Monday at the start of May in 1934"
 but not date unknown). Either the clinician determines what date the first Monday in May
 1934 actually was and record that (assuming the patient&#8217;s way of accurately remembering
 just happens to be via day rather than date), or else records a partial date of the form "May
-1934" (in ISO 8601 form, "1934-05") if they determine that the patient really is unsure.</p>
+1934" (in ISO 8601 form, <code>"1934-05"</code>) if they determine that the patient really is unsure.</p>
 </li>
 </ul>
 </div>
@@ -4581,13 +4591,13 @@ or both the hours and minutes are present. Examples:</p>
 <p>recordings by patients who report approximate times of events;</p>
 </li>
 <li>
-<p>recordings by clinicians who use approximate times in administrations, e.g. "take insulin at 8am" really means something like 8am +/- 30 mins.</p>
+<p>recordings by clinicians who use approximate times in administrations, e.g. "take insulin at 8am" really means something like 8 am +/- 30 mins.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Imprecise durations such as "2 - 3 hrs" need to be recordable in a computable form.</p>
+<p>Imprecise durations such as '2 - 3 hrs' need to be recordable in a computable form.</p>
 </li>
 </ul>
 </div>
@@ -4603,7 +4613,7 @@ record the narrative form of the datum provided by the patient as well as the fo
 <h5 id="_general_approach"><a class="anchor" href="#_general_approach"></a>7.1.2.1. General Approach</h5>
 <div class="paragraph">
 <p>Date/time values are somewhat special in the realm of data types in that they are expressed in their
-"customary" form, in which the standard structure of <code>{value, unit}</code> and metric relationships between
+'customary' form, in which the standard structure of <code>{value, unit}</code> and metric relationships between
 orders of magnitude do not hold. The customary form is what we are used to using in the social time
 domain, such as births, deaths, ages, and times and durations of events which we remember. In all
 these cases it is expressed using the familiar year/month/date/hour/minute/second system, in which
@@ -4625,8 +4635,23 @@ time points. The <code>DV_DURATION</code> class is used for expressing durations
 between absolute times.</p>
 </div>
 <div class="paragraph">
-<p>All four concepts are defined in the ISO 8601:2004 standard, which is accordingly used as the definitional
-basis of the openEHR date/time types.</p>
+<p>With two exceptions, all four concepts conform to the <a href="https://www.iso.org/iso-8601-date-and-time-format.html" target="_blank" rel="noopener">ISO 8601:2019 standard</a>, which is accordingly used as the primary definitional basis of the openEHR date/time types. The two exceptions are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a negative sign may be used before a Duration, for example '-P10D', meaning '10 days before [origin]', where the 'origin' is a timepoint understood as the origin for the duration;</p>
+</li>
+<li>
+<p>the  W' designator may be mixed with other designators.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first exception allows the expression of negative durations, indicating an elapsed time prior to an origin point. An example from clinical medicine is the notion of 'adjusted age', whereby the true developmental age of a very premature newborn is computed with respect to the origin point of birth after a nominal gestation period (usually 9 months). A baby born at 6 months would therefore have an adjusted age of '-3 months', or '-P3M' in the format used by the <code>DV_DURATION</code> type. The use of the negative enables correctly computed developmental age comparisons of newborns, regardless of prematurity. Negation for ISO 8601 durations is also supported by <a href="https://www.w3.org/XML/Schema" target="_blank" rel="noopener">W3C XML-schema</a> and various programming languages.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://specifications.openehr.org/releases/BASE/latest/foundation_types.html#_time_types" target="_blank" rel="noopener">Time Types section in the openEHR Foundation Types specification</a> for conformance details.</p>
 </div>
 </div>
 <div class="sect4">
@@ -4644,13 +4669,13 @@ date/times is as follows.</p>
 <p>The modelling problem relates only to date/time quantities that need to be computable. For extremely imprecise date/times, if the clinician feels the need, she can record it as narrative text.</p>
 </li>
 <li>
-<p>For imprecise durations, an interval should be used, i.e. <code>DV_INTERVAL&lt;DV_DURATION&gt;</code>. In this way durations like "2 - 3 hrs" can be represented, and still be computable.</p>
+<p>For imprecise durations, an interval should be used, i.e. <code>DV_INTERVAL&lt;DV_DURATION&gt;</code>. In this way durations like '2 - 3 hrs' can be represented, and still be computable.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Based on the above considerations, the requirements for partial types are satisfied by the semantics of
-ISO 8601:2004 for "reduced accuracy" date/times, in which parts of a date, time or date/time can be
+ISO 8601:2004 for 'reduced accuracy' date/times, in which parts of a date, time or date/time can be
 missing from the right hand end of the string. This models the reasonable situation where e.g. day
 may be unknown in a date, but a date cannot have month unknown and day known.</p>
 </div>
@@ -4713,9 +4738,9 @@ Saka calendars are described by (<a href="#Richards1998">Richards&#44; 1998</a>)
 <h5 id="_representation"><a class="anchor" href="#_representation"></a>7.1.2.4. Representation</h5>
 <div class="paragraph">
 <p>All of the date/time classes described here are defined so as to have an attribute called value of type
-String, in the form of an ISO 8601:2004 string. ISO 8601 is convenient for this purpose, as it is a simple
+String, in the form of an <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601:2019</a> string, with the two above-described deviations allowed. ISO 8601 is convenient for this purpose, as it is a simple
 syntax, and covers not only all four variants of fully-specified date/time described here, but also
-the partial varieties. Using a single string attribute significantly simplifies persistence as well as mapping
+the partial varieties. The deviations support common use cases in healthcare, without compromising the semantics. Using a single string attribute significantly simplifies persistence as well as mapping
 to XML-based formalisms, which use a mostly ISO 8601 compliant date/time representation.
 The ISO 8601 semantics assumed by EHR are defined in classes found in the classes
 <code>Iso8601_date</code>, <code>Iso8601_time</code>, <code>Iso8601_date_time</code>, <code>Iso8601_duration</code>, from the
@@ -5162,7 +5187,7 @@ other: <code>DV_DATE_TIME[1]</code><br>
 <div class="title">Note</div>
 </td>
 <td class="content">
-a deviation from ISO8601 is supported, allowing the  W' designator to be mixed with other designators. See primitive types section in the Foundation Types model.
+two deviations from ISO 8601 are supported, the first, to allow a negative sign, and the second allowing the 'W' designator to be mixed with other designators. See time types section in the Foundation Types model.
 </td>
 </tr>
 </table>
@@ -5241,6 +5266,20 @@ other: <code>DV_DURATION[1]</code><br>
 ): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True, for any two Durations.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negative</strong> <em>alias</em> "-" (): <code>DV_DURATION</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Negated version of current duration, representing a time prior to some origin point, or a negative age (e.g. so-called 'adjusted age' of premature infant).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Double</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Numeric value of the duration as a number of seconds. Computed using the method <code><em>to_seconds()</em></code> inherited from <code>Iso8601_duration</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -6874,7 +6913,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-04 21:29:47 UTC
+Last updated 2020-04-30 11:47:07 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-murphy.css">

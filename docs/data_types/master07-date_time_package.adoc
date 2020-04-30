@@ -15,12 +15,12 @@ image::{uml_diagrams_uri}/RM-data_types.quantity.date_time.svg[id=rm_data_types_
 
 ==== Standard Date/Times
 
-The basic requirement is for types which represent the following concepts:
+The basic requirement is for types which represent the following concepts.
 
-* _Date_: a type which records year, month and day in month. Examples include date of birth, date of onset of a problem
+* _Date_: a type which records year, month and day in month. Examples include date of birth, date of onset of a problem.
 * _Time_: a type which records hour, minute, second, and timezone. Examples include time of meal, time of day when a problem recurs. Timezone is required in a shared EHR repository so that times of clinical events which occurred in different timezones are comparable; this includes specialised pathology tests which might be done in another country.
-* _Date_time_: a type which records year, month, day, hour, minute, second, and timezone. Examples include date & time of death, timestamp of any observation. Timezone required for the same reason as in Time.
-* _Duration_: a type which records duration of an event or (in)activity, as days, hours, minutes, and seconds.
+* _Date_time_: a type which records year, month, day, hour, minute, second, and timezone. Examples include date & time of death, timestamp of any observation. Timezone is required for the same reason as in Time.
+* _Duration_: a type which records duration of an event or (in)activity, as days, hours, minutes, and seconds. A duration is understood as being relative to an unstated origin point (such as birth), and may take a negative value, indicating prior to the origin.
 
 ==== Partial Date/Times
 
@@ -37,13 +37,13 @@ rules is someone who claims to be born on "a Monday at the start of May in 1934"
 but not date unknown). Either the clinician determines what date the first Monday in May
 1934 actually was and record that (assuming the patient's way of accurately remembering
 just happens to be via day rather than date), or else records a partial date of the form "May
-1934" (in ISO 8601 form, "1934-05") if they determine that the patient really is unsure.
+1934" (in ISO 8601 form, `"1934-05"`) if they determine that the patient really is unsure.
 * Sometimes incomplete times are recorded, which follow the same rule that either the hours
 or both the hours and minutes are present. Examples:
 ** recordings by instruments which only generate hh:mm values (i.e. no seconds);
 ** recordings by patients who report approximate times of events;
-** recordings by clinicians who use approximate times in administrations, e.g. "take insulin at 8am" really means something like 8am +/- 30 mins.
-* Imprecise durations such as "2 - 3 hrs" need to be recordable in a computable form.
+** recordings by clinicians who use approximate times in administrations, e.g. "take insulin at 8am" really means something like 8 am +/- 30 mins.
+* Imprecise durations such as '2 - 3 hrs' need to be recordable in a computable form.
 
 To satisfy the faithfulness requirement for health record recording it should always be possible to
 record the narrative form of the datum provided by the patient as well as the formal form.
@@ -53,7 +53,7 @@ record the narrative form of the datum provided by the patient as well as the fo
 ==== General Approach
 
 Date/time values are somewhat special in the realm of data types in that they are expressed in their
-"customary" form, in which the standard structure of `{value, unit}` and metric relationships between
+'customary' form, in which the standard structure of `{value, unit}` and metric relationships between
 orders of magnitude do not hold. The customary form is what we are used to using in the social time
 domain, such as births, deaths, ages, and times and durations of events which we remember. In all
 these cases it is expressed using the familiar year/month/date/hour/minute/second system, in which
@@ -72,8 +72,14 @@ The relative category contains only the Duration concept, which expresses elapse
 time points. The `DV_DURATION` class is used for expressing durations of clinical phenomena and differences
 between absolute times.
 
-All four concepts are defined in the ISO 8601:2004 standard, which is accordingly used as the definitional
-basis of the openEHR date/time types.
+With two exceptions, all four concepts conform to the {iso_8601_official}[ISO 8601:2019 standard^], which is accordingly used as the primary definitional basis of the openEHR date/time types. The two exceptions are as follows:
+
+* a negative sign may be used before a Duration, for example '-P10D', meaning '10 days before [origin]', where the 'origin' is a timepoint understood as the origin for the duration;
+* the  W' designator may be mixed with other designators. 
+
+The first exception allows the expression of negative durations, indicating an elapsed time prior to an origin point. An example from clinical medicine is the notion of 'adjusted age', whereby the true developmental age of a very premature newborn is computed with respect to the origin point of birth after a nominal gestation period (usually 9 months). A baby born at 6 months would therefore have an adjusted age of '-3 months', or '-P3M' in the format used by the `DV_DURATION` type. The use of the negative enables correctly computed developmental age comparisons of newborns, regardless of prematurity. Negation for ISO 8601 durations is also supported by {w3c_xml_schema}[W3C XML-schema^] and various programming languages.
+
+See the {openehr_foundation_types}#_time_types[Time Types section in the openEHR Foundation Types specification^] for conformance details.
 
 ==== Partial Date/Times
 
@@ -84,10 +90,10 @@ would only apply to a tiny percent of difficult cases. Thus, the basis for model
 date/times is as follows.
 
 * The modelling problem relates only to date/time quantities that need to be computable. For extremely imprecise date/times, if the clinician feels the need, she can record it as narrative text.
-* For imprecise durations, an interval should be used, i.e. `DV_INTERVAL<DV_DURATION>`. In this way durations like "2 - 3 hrs" can be represented, and still be computable.
+* For imprecise durations, an interval should be used, i.e. `DV_INTERVAL<DV_DURATION>`. In this way durations like '2 - 3 hrs' can be represented, and still be computable.
 
 Based on the above considerations, the requirements for partial types are satisfied by the semantics of
-ISO 8601:2004 for "reduced accuracy" date/times, in which parts of a date, time or date/time can be
+ISO 8601:2004 for 'reduced accuracy' date/times, in which parts of a date, time or date/time can be
 missing from the right hand end of the string. This models the reasonable situation where e.g. day
 may be unknown in a date, but a date cannot have month unknown and day known.
 
@@ -133,9 +139,9 @@ Saka calendars are described by cite:[Richards1998] and are based on the work of
 ==== Representation
 
 All of the date/time classes described here are defined so as to have an attribute called value of type
-String, in the form of an ISO 8601:2004 string. ISO 8601 is convenient for this purpose, as it is a simple
+String, in the form of an {iso_8601_official}[ISO 8601:2019] string, with the two above-described deviations allowed. ISO 8601 is convenient for this purpose, as it is a simple
 syntax, and covers not only all four variants of fully-specified date/time described here, but also
-the partial varieties. Using a single string attribute significantly simplifies persistence as well as mapping
+the partial varieties. The deviations support common use cases in healthcare, without compromising the semantics. Using a single string attribute significantly simplifies persistence as well as mapping
 to XML-based formalisms, which use a mostly ISO 8601 compliant date/time representation.
 The ISO 8601 semantics assumed by EHR are defined in classes found in the classes
 `Iso8601_date`, `Iso8601_time`, `Iso8601_date_time`, `Iso8601_duration`, from the

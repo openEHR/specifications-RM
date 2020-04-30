@@ -8,7 +8,7 @@ h|*Class*
 h|*Description*
 2+a|Represents a period of time with respect to a notional point in time, which is not specified. A sign may be used to indicate the duration is  backwards  in time rather than forwards.
 
-NOTE: a deviation from ISO8601 is supported, allowing the  W' designator to be mixed with other designators. See primitive types section in the Foundation Types model.
+NOTE: two deviations from ISO 8601 are supported, the first, to allow a negative sign, and the second allowing the 'W' designator to be mixed with other designators. See time types section in the Foundation Types model.
 
 Used for recording the duration of something in the real world, particularly when there is a need a) to represent the duration in customary format, i.e. days, hours, minutes etc, and b) if it will be used in computational operations with date/time quantities, i.e. additions, subtractions etc.
 
@@ -60,6 +60,14 @@ h|(effected)
 other: `DV_DURATION[1]` +
 ): `Boolean`
 a|True, for any two Durations.
+
+h|(redefined)
+|*negative* _alias_ "-" (): `DV_DURATION`
+a|Negated version of current duration, representing a time prior to some origin point, or a negative age (e.g. so-called 'adjusted age' of premature infant).
+
+h|(effected)
+|*magnitude* (): `Double`
+a|Numeric value of the duration as a number of seconds. Computed using the method `_to_seconds()_` inherited from `Iso8601_duration`.
 
 h|*Invariants*
 2+a|_Value_valid_: `valid_iso8601_duration (value)`
