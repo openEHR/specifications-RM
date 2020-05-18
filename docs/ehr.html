@@ -1834,8 +1834,24 @@
 </div>
 <div class="title">Figure 7. Tagging in the EHR</div>
 </div>
-<div class="paragraph tbd">
-<p>TBD: more</p>
+<div class="paragraph">
+<p>Tags are associated with an EHR via the <code>EHR.<em>tags</em></code> attribute, but have no direct association with the objects they annotate. This has the following consequences:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>they may be added at any time with respect to the commit time of the content they annotate, including much later;</p>
+</li>
+<li>
+<p>they do not constitute part of the content they annotate;</p>
+</li>
+<li>
+<p>accordingly, where they annotate versioned content, they do not cause re-versioning of the content.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The primary use of tags post-creation is in querying, and their use is supported directly in the <a href="https://specifications.openehr.org/releases/QUERY/latest/AQL.html" target="_blank" rel="noopener">openEHR AQL query language</a> such that a query mentioning a tag (either by key, or key/value pair if applicable) will return all items of any RM type annotated by the tag in question.</p>
 </div>
 </div>
 </div>

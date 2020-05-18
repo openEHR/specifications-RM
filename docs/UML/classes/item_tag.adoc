@@ -13,26 +13,28 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*tag*: `String`
-a|The string tag. May not be empty or contain leading or trailing whitespace.
+|*target*: `UID_BASED_ID`
+a|Identifier of target, which may be a `VERSIONED_OBJECT<T>` or a `VERSION<T>`.
+
+h|*0..1*
+|*target_path*: `String`
+a|Optional archetype (i.e. AQL) or RM path within `_target_`, in order to tag a fine-grained element.
 
 h|*1..1*
-|*target*: `UID_BASED_ID`
-a|Identifier of target. May be a `VERSIONED_OBJECT<T>` or a `VERSION<T>`.
-
-TODO: could also be a URI.
+|*key*: `String`
+a|The tag key. May not be empty or contain leading or trailing whitespace.
 
 h|*0..1*
 |*value*: `String`
 a|The value. If set, may not be empty.
 
 h|*1..1*
-|*owner*: `OBJECT_REF`
-a|Identifier of owner object.
+|*owner_id*: `OBJECT_REF`
+a|Identifier of owner object, such as EHR.
 
 h|*Invariants*
-2+a|_Inv_tag_valid_: `not tag.is_empty and tag.is_justified()`
+2+a|_Inv_key_valid_: `not key.is_empty and key.is_justified`
 
 h|
-2+a|_Inv_value_valid_: `value /= Void implies not value.is_empty()`
+2+a|_Inv_value_valid_: `value /= Void implies not value.is_empty`
 |===

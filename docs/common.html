@@ -3853,26 +3853,10 @@ signature.</p>
 <div class="sect2">
 <h3 id="_semantics"><a class="anchor" href="#_semantics"></a>7.2. Semantics</h3>
 <div class="paragraph">
-<p>A <em>tag</em> in openEHR is understood as a lightweight annotation that may be associated with any information item, such that <em>searching</em> or <em>querying</em> for a tag will result in retrieval of the items marked with that tag. Here, 'searching' is understood as a function available on a service interface for the tagged content (e.g. EHR service API), while 'querying' is understood as the use of tags in queries expressed in an openEHR query languages such as {openehr_aql}[AQL^].</p>
+<p>A <em>tag</em> in openEHR is a lightweight annotation that may be associated with any information item, such that <em>searching</em> or <em>querying</em> for a tag will result in retrieval of the items marked with that tag. A tag consists of a <em>key</em> and optional <em>value</em>. Here, 'searching' is understood as a function available on a service interface for the tagged content (e.g. EHR service API), while 'querying' is the use of tags in queries expressed in an openEHR query language such as <a href="https://specifications.openehr.org/releases/QUERY/latest/AQL.html" target="_blank" rel="noopener">AQL</a>.</p>
 </div>
 <div class="paragraph">
-<p>Tags as defined here are designed such that:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>they may be added at any time with respect to the commit time of the content they annotate, including much later;</p>
-</li>
-<li>
-<p>they do not constitute part of the content they annotate;</p>
-</li>
-<li>
-<p>accordingly, where they annotate versioned content, they do not cause re-versioning of the content.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph tbd">
-<p>TBD: more</p>
+<p>Tags are normally associated with an 'owner' object, identified by <code><em>owner_id</em></code>, such that deletion or move of the owner results in deletion or move of the associated tags.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3903,19 +3887,23 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>tag</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>UID_BASED_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The string tag. May not be empty or contain leading or trailing whitespace.</p>
+<p>Identifier of target, which may be a <code>VERSIONED_OBJECT&lt;T&gt;</code> or a <code>VERSION&lt;T&gt;</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target_path</strong>: <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Optional archetype (i.e. AQL) or RM path within <code><em>target</em></code>, in order to tag a fine-grained element.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code>UID_BASED_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>key</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Identifier of target. May be a <code>VERSIONED_OBJECT&lt;T&gt;</code> or a <code>VERSION&lt;T&gt;</code>.</p>
-</div>
-<div class="paragraph">
-<p>TODO: could also be a URI.</p>
+<p>The tag key. May not be empty or contain leading or trailing whitespace.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3927,21 +3915,21 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner</strong>: <code>OBJECT_REF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner_id</strong>: <code>OBJECT_REF</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Identifier of owner object.</p>
+<p>Identifier of owner object, such as EHR.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Inv_tag_valid</em>: <code>not tag.is_empty and tag.is_justified()</code></p>
+<p><em>Inv_key_valid</em>: <code>not key.is_empty and key.is_justified</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Inv_value_valid</em>: <code>value /= Void implies not value.is_empty()</code></p>
+<p><em>Inv_value_valid</em>: <code>value /= Void implies not value.is_empty</code></p>
 </div></div></td>
 </tr>
 </tbody>
