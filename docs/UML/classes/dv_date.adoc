@@ -23,35 +23,41 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*magnitude* (): `Integer`
 a|Numeric value of the date as days since the calendar origin date `0001-01-01`.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_equal* ( +
 other: `DV_QUANTIFIED[1]` +
 ): `Boolean`
 a|Return True if this `DV_QUANTIFIED` is considered equal to `_other_`.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*add* _alias_ "+" ( +
 a_diff: `DV_DURATION[1]` +
 ): `DV_DATE`
 a|Addition of a Duration to this Date.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*subtract* _alias_ "-" ( +
 a_diff: `DV_DURATION[1]` +
 ): `DV_DATE`
 a|Subtract a Duration from this Date.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*diff* _alias_ "-" ( +
 other: `DV_DATE[1]` +
 ): `DV_DURATION`
 a|Difference between this Date and `_other_`.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*less_than* _alias_ "<" ( +
 other: `DV_DATE[1]` +
 ): `Boolean` +
@@ -59,7 +65,8 @@ other: `DV_DATE[1]` +
 _Post_result_: `Result = magnitude > other.magnitude`
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_strictly_comparable_to* ( +
 other: `DV_DATE[1]` +
 ): `Boolean`

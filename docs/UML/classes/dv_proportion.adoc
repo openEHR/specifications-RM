@@ -48,39 +48,45 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*magnitude* (): `Real`
 a|Effective magnitude represented by ratio.
 
-h|
+h|*1..1*
 |*is_integral* (): `Boolean`
 a|True if the `_numerator_` and `_denominator_` values are integers, i.e. if `_precision_` is 0.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*add* _alias_ "+" ( +
 other: `DV_PROPORTION[1]` +
 ): `DV_PROPORTION`
 a|Sum of two strictly comparable proportions.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*subtract* _alias_ "-" ( +
 other: `DV_PROPORTION[1]` +
 ): `DV_PROPORTION`
 a|Difference between two strictly comparable proportions.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_equal* ( +
 other: `DV_PROPORTION[1]` +
 ): `Boolean`
 a|Return True if this `DV_AMOUNT` is considered equal to `_other_`.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*multiply* _alias_ "&#42;" ( +
 factor: `Real[1]` +
 ): `DV_PROPORTION`
 a|Product of this Proportion and `_factor_`.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*less_than* _alias_ "<" ( +
 other: `DV_PROPORTION[1]` +
 ): `Boolean` +
@@ -88,7 +94,8 @@ other: `DV_PROPORTION[1]` +
 _Post_result_: `Result = magnitude < other.magnitude`
 a|True if this Proportion is less than  `_other_`. Only valid if `_is_strictly_comparable_to()_` is True.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_strictly_comparable_to* ( +
 other: `DV_ORDERED[1]` +
 ): `Boolean`

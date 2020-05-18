@@ -29,25 +29,29 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*add* _alias_ "+" ( +
 other: `DV_DURATION[1]` +
 ): `DV_DURATION`
 a|Sum of this Duration and `_other_`.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*subtract* _alias_ "-" ( +
 other: `DV_DURATION[1]` +
 ): `DV_DURATION`
 a|Difference of this Duration and `_other_`.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*multiply* _alias_ "&#42;" ( +
 factor: `Real[1]` +
 ): `DV_DURATION`
 a|Product of this Duration and `_factor_`.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*less_than* _alias_ "<" ( +
 other: `DV_DURATION[1]` +
 ): `Boolean` +
@@ -55,17 +59,20 @@ other: `DV_DURATION[1]` +
 _Post_result_: `Result = magnitude < other.magnitude`
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_strictly_comparable_to* ( +
 other: `DV_DURATION[1]` +
 ): `Boolean`
 a|True, for any two Durations.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*negative* _alias_ "-" (): `DV_DURATION`
 a|Negated version of current duration, representing a time prior to some origin point, or a negative age (e.g. so-called 'adjusted age' of premature infant).
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*magnitude* (): `Double`
 a|Numeric value of the duration as a number of seconds. Computed using the method `_to_seconds()_` inherited from `Iso8601_duration`.
 

@@ -1422,14 +1422,14 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parent</strong> (): <code>PATHABLE</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Parent of this node in a compositional hierarchy.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_at_path</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>Any</code><br>
@@ -1440,7 +1440,7 @@ a_path: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items_at_path</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>List&lt;Any&gt;</code></p></td>
@@ -1449,7 +1449,7 @@ a_path: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_exists</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>Boolean</code><br>
@@ -1460,7 +1460,7 @@ a_path: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_unique</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>Boolean</code><br>
@@ -1471,7 +1471,7 @@ a_path: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path_of_item</strong> (<br>
 a_loc: <code>PATHABLE[1]</code><br>
 ): <code>String</code></p></td>
@@ -1561,14 +1561,14 @@ a_loc: <code>PATHABLE[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept</strong> (): <code>DV_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Clinical concept of the archetype as a whole (= derived from the archetype_node_id' of the root node)</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_archetype_root</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this node is the root of an archetyped structure.</p>
@@ -2464,7 +2464,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version</strong> (): <code>String</code><br>
 <br>
 <em>Post</em>: <code>Result.is_equal (items.last.version_id.value)</code></p></td>
@@ -2473,7 +2473,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>most_recent_version_time_committed</strong> (): <code>String</code><br>
 <br>
 <em>Post</em>: <code>Result.is_equal (items.last.audits.first. time_committed.value)</code></p></td>
@@ -3274,28 +3274,28 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_count</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the total number of versions in this object.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_version_ids</strong> (): <code>List&lt;OBJECT_VERSION_ID&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return a list of ids of all versions in this object.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_versions</strong> (): <code>List&lt;VERSION&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return a list of all versions in this object.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_version_at_time</strong> (<br>
 a_time: <code>DV_DATE_TIME[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -3304,7 +3304,7 @@ a_time: <code>DV_DATE_TIME[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_version_id</strong> (<br>
 a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -3313,7 +3313,7 @@ a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_with_id</strong> (<br>
 a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 ): <code>VERSION</code><br>
@@ -3324,7 +3324,7 @@ a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_original_version</strong> (<br>
 a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 ): <code>Boolean</code><br>
@@ -3335,7 +3335,7 @@ a_version_uid: <code>OBJECT_VERSION_ID[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_at_time</strong> (<br>
 a_time: <code>DV_DATE_TIME[1]</code><br>
 ): <code>VERSION</code><br>
@@ -3346,28 +3346,28 @@ a_time: <code>DV_DATE_TIME[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong> (): <code>REVISION_HISTORY</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>History of all audits and attestations in this versioned repository.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_version</strong> (): <code>VERSION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the most recently added version (i.e. on trunk or any branch).</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>latest_trunk_version</strong> (): <code>VERSION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the most recently added trunk version.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong> (): <code>DV_CODED_TEXT</code><br>
 <br>
 <em>Post</em>: <code>Result = latest_trunk_version.lifecycle_state</code></p></td>
@@ -3376,7 +3376,7 @@ a_time: <code>DV_DATE_TIME[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_original_version</strong> (<br>
 a_contribution: <code>OBJECT_REF[1]</code>,<br>
 a_new_version_uid: <code>OBJECT_VERSION_ID[1]</code>,<br>
@@ -3393,7 +3393,7 @@ signing_key: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_original_merged_version</strong> (<br>
 a_contribution: <code>OBJECT_REF[1]</code>,<br>
 a_new_version_uid: <code>OBJECT_VERSION_ID[1]</code>,<br>
@@ -3411,7 +3411,7 @@ signing_key: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_imported_version</strong> (<br>
 a_contribution: <code>OBJECT_REF[1]</code>,<br>
 an_audit: <code>AUDIT_DETAILS[1]</code>,<br>
@@ -3422,7 +3422,7 @@ a_version: <code>ORIGINAL_VERSION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_attestation</strong> (<br>
 an_attestation: <code>ATTESTATION[1]</code>,<br>
 a_ver_id: <code>OBJECT_VERSION_ID[1]</code>,<br>
@@ -3519,21 +3519,24 @@ and is_original_version(a_ver_id)</code></p></td>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong> (): <code>OBJECT_VERSION_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Unique identifier of this <code>VERSION</code>, in the form of an <code>{object_id, a version_tree_id, creating_system_id}</code> triple, where the <code><em>object_id</em></code> has the same value as the containing <code>VERSIONED_OBJECT <em>uid</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preceding_version_uid</strong> (): <code>OBJECT_VERSION_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Unique identifier of the version of which this version is a modification; Void if this is the first version.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong> (): <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The data of this Version.
@@ -3541,14 +3544,15 @@ Original content of this Version.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of this version; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>canonical_form</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A canonical serial form of this Version, suitable for generating reliable hashes and signatures.
@@ -3557,7 +3561,7 @@ signature.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner_id</strong> (): <code>HIER_OBJECT_ID</code><br>
 <br>
 <em>Post</em>: <code>Result.value.is_equal (uid.object_id.value)</code></p></td>
@@ -3566,7 +3570,7 @@ signature.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_branch</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this Version represents a branch. Derived from <code><em>uid</em></code> attribute.</p>
@@ -3663,7 +3667,7 @@ signature.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_merged</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this Version was created from more than just the preceding (checked out) version.</p>
@@ -3731,7 +3735,8 @@ signature.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong> (): <code>OBJECT_VERSION_ID</code><br>
 <br>
 <em>Post</em>: <code>Result = item.uid</code></p></td>
@@ -3740,7 +3745,8 @@ signature.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>preceding_version_uid</strong> (): <code>OBJECT_VERSION_ID</code><br>
 <br>
 <em>Post</em>: <code>Result = item.preceding_version_uid</code></p></td>
@@ -3749,14 +3755,16 @@ signature.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code>DV_CODED_TEXT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of the content item in wrapped <code>ORIGINAL_VERSION</code>, derived as <code><em>item.lifecycle_state</em></code>; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong> (): <code>T</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Original content of this Version.</p>
@@ -3950,7 +3958,7 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>current_revision</strong> (): <code>String</code><br>
 <br>
 <em>Post</em>: <code>Result = revision_history.most_recent_version</code></p></td>
@@ -3959,7 +3967,7 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages_available</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Total list of languages available in this resource, derived from <code><em>original_language</em></code> and <code><em>translations</em></code>.</p>
@@ -4306,9 +4314,9 @@ translations.has_key (d.language.code_string)))</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-03-04 21:30:35 UTC
+Last updated 2020-05-18 20:21:17 +0100
 </div>
 </div>
-<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-murphy.css">
+<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
 </body>
 </html>

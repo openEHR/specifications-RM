@@ -15,7 +15,7 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*terminology* ( +
 name: `String[1]` +
 ): `TERMINOLOGY_ACCESS`
@@ -25,7 +25,7 @@ a|Return an interface to the terminology named name. Allowable names include:-
 * centc251,
 * any name from are taken from the US NLM UMLS meta-data list at http://www.nlm.nih.gov/research/umls/metaa1.html
 
-h|
+h|*1..1*
 |*code_set* ( +
 name: `String[1]` +
 ): `CODE_SET_ACCESS` +
@@ -33,7 +33,7 @@ name: `String[1]` +
 _Pre_: `has_code_set (name)`
 a|Return an interface to the code_set identified by the external identifier name (e.g.  ISO_639-1).
 
-h|
+h|*1..1*
 |*code_set_for_id* ( +
 id: `String[1]` +
 ): `CODE_SET_ACCESS` +
@@ -41,7 +41,7 @@ id: `String[1]` +
 _Pre_: `valid_code_set_id (id)`
 a|Return an interface to the code_set identified internally in openEHR by id.
 
-h|
+h|*1..1*
 |*has_terminology* ( +
 name: `String[1]` +
 ): `Boolean`
@@ -51,21 +51,21 @@ a|True if terminology named name known by this service. Allowable names include:
 * centc251
 * any name from are taken from the US NLM UMLS meta-data list at       http://www.nlm.nih.gov/research/umls/metaa1.html
 
-h|
+h|*1..1*
 |*has_code_set* ( +
 name: `String[1]` +
 ): `Boolean`
 a|True if code_set linked to internal name (e.g. languages ) is available.
 
-h|
+h|*0..1*
 |*terminology_identifiers* (): `List<String>`
 a|Set of all terminology identifiers known in the terminology service. Values from the US NLM UMLS meta-data list at:- http://www.nlm.nih.gov/research/umls/metaa1.html
 
-h|
+h|*1..1*
 |*openehr_code_sets* (): `Hash<String, String>`
 a|Set of all code set identifiers known in the terminology service.
 
-h|
+h|*0..1*
 |*code_set_identifiers* (): `List<String>`
 a|Set of all code sets identifiers for which there is an internal openEHR name; returned as a Map of ids keyed by internal name.
 |===

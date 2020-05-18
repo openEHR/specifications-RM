@@ -2512,7 +2512,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>narrower</strong> (): <code>Boolean</code><br>
 <br>
 <em>Post</em>: <code>match = ‘&lt;’ implies Result</code></p></td>
@@ -2521,7 +2521,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>broader</strong> (): <code>Boolean</code><br>
 <br>
 <em>Post</em>: <code>match = ‘&gt;’ implies Result</code></p></td>
@@ -2530,14 +2530,14 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>equivalent</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The mapping is to an equivalent term.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>unknown</strong> (): <code>Boolean</code><br>
 <br>
 <em>Post</em>: <code>match = ‘?’ implies Result</code></p></td>
@@ -2546,7 +2546,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_valid_match_code</strong> (<br>
 c: <code>char[1]</code><br>
 ): <code>Boolean</code><br>
@@ -3170,7 +3170,8 @@ is used for this purpose, and the constant unknown_accuracy_value = -1 is provid
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -3179,14 +3180,14 @@ other: <code>DV_ORDERED[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_simple</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if this quantity has no reference ranges.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_normal</strong> (): <code>Boolean</code><br>
 <br>
 <em>Pre</em>: <code>normal_range /= Void or normal_status /= Void</code><br>
@@ -3197,7 +3198,8 @@ other: <code>DV_ORDERED[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code><br>
@@ -3316,7 +3318,7 @@ other: <code>DV_ORDERED[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_in_range</strong> (<br>
 v: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -3406,7 +3408,8 @@ d) integer values only.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_ORDINAL[1]</code><br>
 ): <code>Boolean</code><br>
@@ -3417,7 +3420,8 @@ other: <code>DV_ORDINAL[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_ORDINAL[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -3503,7 +3507,8 @@ d) non-integer values are allowed.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_SCALE[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -3512,7 +3517,8 @@ other: <code>DV_SCALE[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_SCALE[1]</code><br>
 ): <code>Boolean</code><br>
@@ -3598,7 +3604,7 @@ other: <code>DV_SCALE[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_magnitude_status</strong> (): <code>Boolean</code><br>
 <br>
 <em>Post</em>: <code>Result = s in {"=", "&lt;", "&gt;", "&lt;=", "&gt;=", "~"}</code></p></td>
@@ -3607,19 +3613,21 @@ other: <code>DV_SCALE[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Ordered_Numeric</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accuracy_unknown</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if accuracy is not known, e.g. due to not being recorded or discernable.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
 other: <code>DV_QUANTIFIED[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -3628,7 +3636,8 @@ other: <code>DV_QUANTIFIED[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_QUANTIFIED[1]</code><br>
 ): <code>Boolean</code><br>
@@ -3699,7 +3708,7 @@ other: <code>DV_QUANTIFIED[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_percentage</strong> (<br>
 number: <code>Ordered_Numeric[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -3708,7 +3717,7 @@ number: <code>Ordered_Numeric[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_AMOUNT</code><br>
@@ -3732,7 +3741,7 @@ other: <code>DV_AMOUNT[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_AMOUNT</code><br>
@@ -3756,7 +3765,8 @@ other: <code>DV_AMOUNT[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
 other: <code>DV_AMOUNT[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -3765,7 +3775,7 @@ other: <code>DV_AMOUNT[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 factor: <code>Real[1]</code><br>
 ): <code>DV_AMOUNT</code></p></td>
@@ -3774,14 +3784,15 @@ factor: <code>Real[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negative</strong> <em>alias</em> "-" (): <code>DV_AMOUNT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Negated version of current object, such as used for representing a difference, e.g. a weight loss.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_AMOUNT[1]</code><br>
 ): <code>Boolean</code><br>
@@ -3922,7 +3933,8 @@ The display name may be language-dependent for various older and non-systematic 
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_QUANTITY[1]</code><br>
 ): <code>DV_QUANTITY</code></p></td>
@@ -3931,7 +3943,8 @@ other: <code>DV_QUANTITY[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>DV_QUANTITY[1]</code><br>
 ): <code>DV_QUANTITY</code></p></td>
@@ -3940,7 +3953,8 @@ other: <code>DV_QUANTITY[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 factor: <code>Real[1]</code><br>
 ): <code>DV_QUANTITY</code></p></td>
@@ -3949,7 +3963,8 @@ factor: <code>Real[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_QUANTITY[1]</code><br>
 ): <code>Boolean</code><br>
@@ -3960,14 +3975,15 @@ other: <code>DV_QUANTITY[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integral</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if <code><em>precision</em></code> = 0, meaning that the <code><em>magnitude</em></code> is a whole number.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -4036,7 +4052,8 @@ other: <code>DV_ORDERED[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_COUNT[1]</code><br>
 ): <code>DV_COUNT</code></p></td>
@@ -4045,7 +4062,8 @@ other: <code>DV_COUNT[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>DV_COUNT[1]</code><br>
 ): <code>DV_COUNT</code></p></td>
@@ -4054,7 +4072,8 @@ other: <code>DV_COUNT[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 factor: <code>Real[1]</code><br>
 ): <code>DV_COUNT</code></p></td>
@@ -4063,7 +4082,8 @@ factor: <code>Real[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_COUNT[1]</code><br>
 ): <code>Boolean</code><br>
@@ -4074,7 +4094,8 @@ other: <code>DV_COUNT[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -4169,21 +4190,23 @@ other: <code>DV_ORDERED[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Effective magnitude represented by ratio.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_integral</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the <code><em>numerator</em></code> and <code><em>denominator</em></code> values are integers, i.e. if <code><em>precision</em></code> is 0.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_PROPORTION[1]</code><br>
 ): <code>DV_PROPORTION</code></p></td>
@@ -4192,7 +4215,8 @@ other: <code>DV_PROPORTION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>DV_PROPORTION[1]</code><br>
 ): <code>DV_PROPORTION</code></p></td>
@@ -4201,7 +4225,8 @@ other: <code>DV_PROPORTION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
 other: <code>DV_PROPORTION[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -4210,7 +4235,8 @@ other: <code>DV_PROPORTION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 factor: <code>Real[1]</code><br>
 ): <code>DV_PROPORTION</code></p></td>
@@ -4219,7 +4245,8 @@ factor: <code>Real[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_PROPORTION[1]</code><br>
 ): <code>Boolean</code><br>
@@ -4230,7 +4257,8 @@ other: <code>DV_PROPORTION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_ORDERED[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -4348,7 +4376,7 @@ other: <code>DV_ORDERED[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_proportion_kind</strong> (<br>
 nq: <code>Integer[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -4399,7 +4427,8 @@ nq: <code>Integer[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
@@ -4421,7 +4450,8 @@ a_diff: <code>DV_AMOUNT[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>DV_AMOUNT[1]</code><br>
 ): <code>DV_ABSOLUTE_QUANTITY</code></p></td>
@@ -4443,7 +4473,8 @@ a_diff: <code>DV_AMOUNT[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 other: <code>DV_ABSOLUTE_QUANTITY[1]</code><br>
 ): <code>DV_AMOUNT</code></p></td>
@@ -4806,7 +4837,8 @@ it is strongly recommended that where possible, the <em>extended</em> form of th
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TEMPORAL</code></p></td>
@@ -4815,7 +4847,8 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TEMPORAL</code></p></td>
@@ -4824,7 +4857,8 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 other: <code>DV_TEMPORAL[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
@@ -4877,14 +4911,16 @@ other: <code>DV_TEMPORAL[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Numeric value of the date as days since the calendar origin date <code>0001-01-01</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_equal</strong> (<br>
 other: <code>DV_QUANTIFIED[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -4893,7 +4929,8 @@ other: <code>DV_QUANTIFIED[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE</code></p></td>
@@ -4902,7 +4939,8 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE</code></p></td>
@@ -4911,7 +4949,8 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 other: <code>DV_DATE[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
@@ -4920,7 +4959,8 @@ other: <code>DV_DATE[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_DATE[1]</code><br>
 ): <code>Boolean</code><br>
@@ -4931,7 +4971,8 @@ other: <code>DV_DATE[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_DATE[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -4993,14 +5034,16 @@ other: <code>DV_DATE[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Real</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Numeric value of the time as seconds since the start of day, i.e. <code>00:00:00</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TIME</code></p></td>
@@ -5009,7 +5052,8 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_TIME</code></p></td>
@@ -5018,7 +5062,8 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 other: <code>DV_TIME[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
@@ -5027,7 +5072,8 @@ other: <code>DV_TIME[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_TIME[1]</code><br>
 ): <code>Boolean</code><br>
@@ -5038,7 +5084,8 @@ other: <code>DV_TIME[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_TIME[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -5100,14 +5147,16 @@ other: <code>DV_TIME[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>double</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Numeric value of the date/time as seconds since the calendar origin date/time <code>0001-01-01T00:00:00Z</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE_TIME</code></p></td>
@@ -5116,7 +5165,8 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 a_diff: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DATE_TIME</code></p></td>
@@ -5125,7 +5175,8 @@ a_diff: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>diff</strong> <em>alias</em> "-" (<br>
 other: <code>DV_DATE_TIME[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
@@ -5134,7 +5185,8 @@ other: <code>DV_DATE_TIME[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_DATE_TIME[1]</code><br>
 ): <code>Boolean</code><br>
@@ -5145,7 +5197,8 @@ other: <code>DV_DATE_TIME[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_DATE_TIME[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -5222,7 +5275,8 @@ two deviations from ISO 8601 are supported, the first, to allow a negative sign,
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>add</strong> <em>alias</em> "+" (<br>
 other: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
@@ -5231,7 +5285,8 @@ other: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subtract</strong> <em>alias</em> "-" (<br>
 other: <code>DV_DURATION[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
@@ -5240,7 +5295,8 @@ other: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>multiply</strong> <em>alias</em> "&#42;" (<br>
 factor: <code>Real[1]</code><br>
 ): <code>DV_DURATION</code></p></td>
@@ -5249,7 +5305,8 @@ factor: <code>Real[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>less_than</strong> <em>alias</em> "&lt;" (<br>
 other: <code>DV_DURATION[1]</code><br>
 ): <code>Boolean</code><br>
@@ -5260,7 +5317,8 @@ other: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_strictly_comparable_to</strong> (<br>
 other: <code>DV_DURATION[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -5269,14 +5327,16 @@ other: <code>DV_DURATION[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negative</strong> <em>alias</em> "-" (): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Negated version of current duration, representing a time prior to some origin point, or a negative age (e.g. so-called 'adjusted age' of premature infant).</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code>Double</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Numeric value of the duration as a number of seconds. Computed using the method <code><em>to_seconds()</em></code> inherited from <code>Iso8601_duration</code>.</p>
@@ -5428,21 +5488,24 @@ using a syntax which is equivalet to a series of <code>IVL&lt;TS&gt;</code> (i.e
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>calendar_alignment</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Indicates what prototypical point in the calendar the specification is aligned to, e.g.  5th of the month . Empty if not aligned. Extracted from the  value' attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>event_alignment</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Indicates what real-world event the specification is aligned to if any. Extracted from the  value' attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(abstract)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(abstract)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>institution_specified</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Indicates if the specification is aligned with institution schedules, e.g. a hospital nursing changeover or meal serving times. Extracted from the  value' attribute.</p>
@@ -5483,28 +5546,31 @@ using a syntax which is equivalet to a series of <code>IVL&lt;TS&gt;</code> (i.e
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>period</strong> (): <code>DV_DURATION</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The period of the repetition, computationally derived from the syntax representation. Extracted from the  value' attribute.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>calendar_alignment</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Calendar alignment extracted from value.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>event_alignment</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Event alignment extracted from value.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>institution_specified</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extracted from value.</p>
@@ -5548,21 +5614,24 @@ using a syntax which is equivalet to a series of <code>IVL&lt;TS&gt;</code> (i.e
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>calendar_alignment</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Calendar alignment extracted from value.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>event_alignment</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Event alignment extracted from value.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(effected)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(effected)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>institution_specified</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Extracted from value.</p>
@@ -6002,28 +6071,28 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_external</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Computed from the value of the <code><em>uri</em></code> attribute: True if  the data is stored externally to the record, as indicated by <code><em>uri</em></code>. A copy may also be stored internally, in which case <code><em>is_expanded</em></code> is also true.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_inline</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Computed from the value of the data attribute. True if  the  data is stored  in  expanded  form, ie within the EHR itself.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_compressed</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Computed from the value of the <code><em>compression_algorithm</em></code> attribute: True if  the  data is stored in compressed form.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_integrity_check</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Computed from the value of the <code><em>integrity_check_algorithm</em></code> attribute: True if an integrity check has been computed.</p>
@@ -6116,7 +6185,7 @@ ED type from the HL7v3 data types specification.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>size</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Size in bytes of value.</p>
@@ -6246,28 +6315,28 @@ in the EHR and between EHRs.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scheme</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A distributed information 'space' in which  information objects  exist. The scheme simultaneously specifies an information space and a mechanism for accessing objects in  that  space.  For  example  if  scheme  = "ftp", it identifies the information space in which  all  ftp-able objects  exist,  and also the application - ftp - which can be used to access them. Values may include: "ftp", "telnet", "mailto", etc. Refer to RFC-3986 for a full list.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>path</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A string whose format is  a  function  of  the  scheme. Identifies   the   location  in  &lt;scheme&gt;-space  of  an information entity. Typical values include hierarchical directory  paths  for  any  machine.  For example, with scheme = "ftp", path might be <code>"/pub/images/image_01"</code>. The strings "." and ".." are reserved for use in the path. Paths may include internet/intranet location identifiers of the form: <code>sub_domain&#8230;&#8203;domain</code>, e.g. <code>"info.cern.ch"</code>.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>fragment_id</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A part of, a  fragment  or  a  sub-function  within  an object. Allows references to sub-parts of objects, such as a certain line and character  position  in  a  text object. The  syntax  and semantics are defined by the application responsible for the object.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>query</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Query string to send to application implied  by  scheme and  path.  Enables  queries  to applications, including databases  to  be  included in  the  URI. Supports any query meaningful to the server, including SQL.</p>
@@ -6913,7 +6982,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-30 11:47:07 +0100
+Last updated 2020-05-18 20:21:17 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">

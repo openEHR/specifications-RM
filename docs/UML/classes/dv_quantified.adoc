@@ -35,27 +35,30 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*valid_magnitude_status* (): `Boolean` +
  +
 _Post_: `Result = s in {"=", "<", ">", "\<=", ">=", "~"}`
 a|Test whether a string value is one of the valid values for the magnitude_status attribute.
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*magnitude* (): `Ordered_Numeric`
 a|
 
-h|
+h|*1..1*
 |*accuracy_unknown* (): `Boolean`
 a|True if accuracy is not known, e.g. due to not being recorded or discernable.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_equal* ( +
 other: `DV_QUANTIFIED[1]` +
 ): `Boolean`
 a|Return True if this `DV_QUANTIFIED` is considered equal to `_other_`.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*less_than* _alias_ "<" ( +
 other: `DV_QUANTIFIED[1]` +
 ): `Boolean` +

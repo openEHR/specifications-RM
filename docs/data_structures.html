@@ -736,7 +736,7 @@ to other systems which support ISO 13606 as an interoperability standard.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>ITEM</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Hierarchical equivalent of the physical representation of each subtype, compatible with CEN EN 13606 structures.</p>
@@ -890,7 +890,8 @@ from the openEHR list.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>ELEMENT</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>ELEMENT</code>.</p>
@@ -946,21 +947,21 @@ from the openEHR list.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_count</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Count of all items.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the names of all items.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_item</strong> (<br>
 a_name: <code>String[1]</code><br>
 ): <code>ELEMENT</code></p></td>
@@ -969,7 +970,7 @@ a_name: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_item</strong> (<br>
 i: <code>Integer[1]</code><br>
 ): <code>ELEMENT</code></p></td>
@@ -978,7 +979,8 @@ i: <code>Integer[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>CLUSTER</code> containing the <code>ELEMENTs</code> of this list.</p>
@@ -1043,35 +1045,35 @@ i: <code>Integer[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_count</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Number of rows in the table.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_count</strong> (): <code>Integer</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return number of columns in the table.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return set of row names.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return set of column names.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_row</strong> (<br>
 i: <code>Integer[1]</code><br>
 ): <code>CLUSTER</code></p></td>
@@ -1080,7 +1082,7 @@ i: <code>Integer[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_name</strong> (<br>
 a_key: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1089,7 +1091,7 @@ a_key: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_column_with_name</strong> (<br>
 a_key: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1098,7 +1100,7 @@ a_key: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_row</strong> (<br>
 a_key: <code>String[1]</code><br>
 ): <code>CLUSTER</code></p></td>
@@ -1107,7 +1109,7 @@ a_key: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_key</strong> (<br>
 keys: <code>List&lt;String&gt;[0..1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1116,7 +1118,7 @@ keys: <code>List&lt;String&gt;[0..1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_with_key</strong> (<br>
 keys: <code>List&lt;String&gt;[0..1]</code><br>
 ): <code>CLUSTER</code></p></td>
@@ -1125,7 +1127,7 @@ keys: <code>List&lt;String&gt;[0..1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>element_at_cell_ij</strong> (<br>
 i,<br>
 j: <code>Integer[1]</code><br>
@@ -1135,7 +1137,8 @@ j: <code>Integer[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single <code>CLUSTER</code> containing the <code>CLUSTERs</code> representing the columns of this table.</p>
@@ -1191,7 +1194,7 @@ j: <code>Integer[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_element_path</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1200,7 +1203,7 @@ a_path: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>element_at_path</strong> (<br>
 a_path: <code>String[1]</code><br>
 ): <code>ELEMENT</code></p></td>
@@ -1209,7 +1212,8 @@ a_path: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy, which is the same as the tree&#8217;s physical representation.</p>
@@ -1402,7 +1406,7 @@ a_path: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_null</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if value logically not known, e.g. if indeterminate, not asked etc.</p>
@@ -1791,7 +1795,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_periodic</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Indicates whether history is periodic.</p>
@@ -1873,7 +1877,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>offset</strong> (): <code>DV_DURATION</code><br>
 <br>
 <em>Post_condition</em>: <code>Result = time.diff(parent.origin)</code></p></td>
@@ -1971,7 +1975,7 @@ second, an <code>ITEM_SINGLE</code> object containing a image within a <code>DV_
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval_start_time</strong> (): <code>DV_DATE_TIME</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Start time of the interval of this event.</p>

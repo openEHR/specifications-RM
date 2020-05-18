@@ -1470,7 +1470,7 @@ list. A definitive list may be found on the <a href="https://www.nlm.nih.gov/res
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (<br>
 name: <code>String[1]</code><br>
 ): <code>TERMINOLOGY_ACCESS</code></p></td>
@@ -1492,7 +1492,7 @@ name: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (<br>
 name: <code>String[1]</code><br>
 ): <code>CODE_SET_ACCESS</code><br>
@@ -1503,7 +1503,7 @@ name: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (<br>
 id: <code>String[1]</code><br>
 ): <code>CODE_SET_ACCESS</code><br>
@@ -1514,7 +1514,7 @@ id: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (<br>
 name: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1536,7 +1536,7 @@ name: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (<br>
 name: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1545,21 +1545,21 @@ name: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Set of all terminology identifiers known in the terminology service. Values from the US NLM UMLS meta-data list at:- <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openehr_code_sets</strong> (): <code>Hash&lt;String, String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Set of all code set identifiers known in the terminology service.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong> (): <code>List&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Set of all code sets identifiers for which there is an internal openEHR name; returned as a Map of ids keyed by internal name.</p>
@@ -1593,21 +1593,21 @@ name: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identification of this Terminology.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code>CODE_PHRASE</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes known in this terminology.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_id</strong> (<br>
 a_group_id: <code>String[1]</code><br>
 ): <code>List&lt;CODE_PHRASE&gt;</code></p></td>
@@ -1616,7 +1616,7 @@ a_group_id: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_name</strong> (<br>
 a_lang: <code>String[1]</code>,<br>
 a_name: <code>String[1]</code><br>
@@ -1626,14 +1626,14 @@ a_name: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_for_group_id</strong> (): <code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if  a_code' is known in group  group_id' in the openEHR terminology.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rubric_for_code</strong> (<br>
 a_code: <code>String[1]</code><br>
 ): <code>String</code></p></td>
@@ -1669,21 +1669,21 @@ a_code: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong> (): <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>External identifier of this code set.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code>List&lt;CODE_PHRASE&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes known in this code set.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_lang</strong> (<br>
 a_lang: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1692,7 +1692,7 @@ a_lang: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code</strong> (<br>
 a_code: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1810,7 +1810,7 @@ a_code: <code>String[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_terminology_group_id</strong> (<br>
 an_id: <code>Boolean[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1886,7 +1886,7 @@ an_id: <code>Boolean[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_code_set_id</strong> (<br>
 an_id: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1969,7 +1969,7 @@ only the minimum functions required by the openEHR Reference Model.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_valid_units_string</strong> (<br>
 units: <code>String[1]</code><br>
 ): <code>Boolean</code></p></td>
@@ -1978,7 +1978,7 @@ units: <code>String[1]</code><br>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units_equivalent</strong> (<br>
 units1: <code>String[1]</code>,<br>
 units2: <code>String[1]</code><br>

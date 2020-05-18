@@ -29,13 +29,13 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*valid_percentage* ( +
 number: `Ordered_Numeric[1]` +
 ): `Boolean`
 a|Test whether a number is a valid percentage, i.e. between 0 and 100.
 
-h|
+h|*1..1*
 |*add* _alias_ "+" ( +
 other: `DV_AMOUNT[1]` +
 ): `DV_AMOUNT` +
@@ -48,7 +48,7 @@ a|Sum of this amount and another. The value of accuracy in the result is either:
 
 If the accuracy value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.
 
-h|
+h|*1..1*
 |*subtract* _alias_ "-" ( +
 other: `DV_AMOUNT[1]` +
 ): `DV_AMOUNT` +
@@ -61,23 +61,25 @@ a|Difference of this amount and another. The value of `_accuracy_` in the result
 
 If the `_accuracy_` value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_equal* ( +
 other: `DV_AMOUNT[1]` +
 ): `Boolean`
 a|Return True if this `DV_AMOUNT` is considered equal to `_other_`.
 
-h|
+h|*1..1*
 |*multiply* _alias_ "&#42;" ( +
 factor: `Real[1]` +
 ): `DV_AMOUNT`
 a|Product of this Amount and `_factor_`.
 
-h|
+h|*1..1*
 |*negative* _alias_ "-" (): `DV_AMOUNT`
 a|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*less_than* _alias_ "<" ( +
 other: `DV_AMOUNT[1]` +
 ): `Boolean` +

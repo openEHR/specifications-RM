@@ -26,27 +26,28 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*item_count* (): `Integer`
 a|Count of all items.
 
-h|
+h|*0..1*
 |*names* (): `List<DV_TEXT>`
 a|Retrieve the names of all items.
 
-h|
+h|*1..1*
 |*named_item* ( +
 a_name: `String[1]` +
 ): `ELEMENT`
 a|Retrieve the item with name ‘a_name’.
 
-h|
+h|*1..1*
 |*ith_item* ( +
 i: `Integer[1]` +
 ): `ELEMENT`
 a|Retrieve the i-th item with name.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*as_hierarchy* (): `CLUSTER`
 a|Generate a CEN EN13606-compatible hierarchy consisting of a single `CLUSTER` containing the `ELEMENTs` of this list.
 

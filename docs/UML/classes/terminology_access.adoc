@@ -12,32 +12,32 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*id* (): `String`
 a|Identification of this Terminology.
 
-h|
+h|*1..1*
 |*all_codes* (): `CODE_PHRASE`
 a|Return all codes known in this terminology.
 
-h|
+h|*0..1*
 |*codes_for_group_id* ( +
 a_group_id: `String[1]` +
 ): `List<CODE_PHRASE>`
 a|Return all codes under grouper 'a_group_id' from this terminology.
 
-h|
+h|*0..1*
 |*codes_for_group_name* ( +
 a_lang: `String[1]`, +
 a_name: `String[1]` +
 ): `List<CODE_PHRASE>`
 a|Return all codes under grouper whose name in 'a_lang' is 'a_name' from this terminology.
 
-h|
+h|*1..1*
 |*has_code_for_group_id* (): `Boolean`
 a|True if  a_code' is known in group  group_id' in the openEHR terminology.
 
-h|
+h|*1..1*
 |*rubric_for_code* ( +
 a_code: `String[1]` +
 ): `String`

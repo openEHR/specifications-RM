@@ -15,11 +15,11 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
+h|*1..1*
 |*parent* (): `PATHABLE`
 a|Parent of this node in a compositional hierarchy.
 
-h|
+h|*1..1*
 |*item_at_path* ( +
 a_path: `String[1]` +
 ): `Any` +
@@ -27,13 +27,13 @@ a_path: `String[1]` +
 _Pre_: `path_unique (a_path)`
 a|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item.
 
-h|
+h|*0..1*
 |*items_at_path* ( +
 a_path: `String[1]` +
 ): `List<Any>`
 a|List of items corresponding to a non-unique path.
 
-h|
+h|*1..1*
 |*path_exists* ( +
 a_path: `String[1]` +
 ): `Boolean` +
@@ -41,7 +41,7 @@ a_path: `String[1]` +
 _Pre_: `not a_path.is_empty`
 a|True if the path exists in the data with respect to the current item.
 
-h|
+h|*1..1*
 |*path_unique* ( +
 a_path: `String[1]` +
 ): `Boolean` +
@@ -49,7 +49,7 @@ a_path: `String[1]` +
 _Pre_: `path_exists (a_path)`
 a|True if the path corresponds to a single item in the data.
 
-h|
+h|*1..1*
 |*path_of_item* ( +
 a_loc: `PATHABLE[1]` +
 ): `String`

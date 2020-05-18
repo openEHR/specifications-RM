@@ -63,25 +63,29 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*add* _alias_ "+" ( +
 other: `DV_QUANTITY[1]` +
 ): `DV_QUANTITY`
 a|Sum of this `DV_QUANTITY` and `_other_`.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*subtract* _alias_ "-" ( +
 other: `DV_QUANTITY[1]` +
 ): `DV_QUANTITY`
 a|Difference of this `DV_QUANTITY` and `_other_`.
 
-h|(redefined)
+h|*1..1 +
+(redefined)*
 |*multiply* _alias_ "&#42;" ( +
 factor: `Real[1]` +
 ): `DV_QUANTITY`
 a|Product of this `DV_QUANTITY` and `_factor_`.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*less_than* _alias_ "<" ( +
 other: `DV_QUANTITY[1]` +
 ): `Boolean` +
@@ -89,11 +93,12 @@ other: `DV_QUANTITY[1]` +
 _Post_result_: `Result = magnitude < other.magnitude`
 a|True if this Quantified object is less than `_other_`. Based on comparison of `_magnitude_`. Only valid if `_is_strictly_comparable_to()_` is True.
 
-h|
+h|*1..1*
 |*is_integral* (): `Boolean`
 a|True if `_precision_` = 0, meaning that the `_magnitude_` is a whole number.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_strictly_comparable_to* ( +
 other: `DV_ORDERED[1]` +
 ): `Boolean`

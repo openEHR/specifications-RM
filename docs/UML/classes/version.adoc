@@ -27,36 +27,40 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*uid* (): `OBJECT_VERSION_ID`
 a|Unique identifier of this `VERSION`, in the form of an `{object_id, a version_tree_id, creating_system_id}` triple, where the `_object_id_` has the same value as the containing `VERSIONED_OBJECT _uid_`.
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*preceding_version_uid* (): `OBJECT_VERSION_ID`
 a|Unique identifier of the version of which this version is a modification; Void if this is the first version.
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*data* (): `T`
 a|The data of this Version.
 Original content of this Version.
 
-h|(abstract)
+h|*1..1 +
+(abstract)*
 |*lifecycle_state* (): `DV_CODED_TEXT`
 a|Lifecycle state of this version; coded by openEHR vocabulary `version lifecycle state`.
 
-h|
+h|*1..1*
 |*canonical_form* (): `String`
 a|A canonical serial form of this Version, suitable for generating reliable hashes and signatures.
 Canonical form of Version object, created by serialising all attributes except
 signature.
 
-h|
+h|*1..1*
 |*owner_id* (): `HIER_OBJECT_ID` +
  +
 _Post_: `Result.value.is_equal (uid.object_id.value)`
 a|Copy of the owning `VERSIONED_OBJECT._uid_` value; extracted from the local `_uid_` property's `_object_id_`.
 
-h|
+h|*1..1*
 |*is_branch* (): `Boolean`
 a|True if this Version represents a branch. Derived from `_uid_` attribute.
 
