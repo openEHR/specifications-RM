@@ -131,13 +131,9 @@ The Folder hierarchy in the `_directory_` attribute, and in each member of the `
 
 === Tagging of EHR Content
 
-Items in the EHR may be tagged using openEHR _tags_, which are lightweight annotations that may be used to thematically classify previously committed data items for convenient subsequent retrieval. They are described in detail in the {openehr_rm_common}#_tags_package[Common IM Tags section^].
+Items in the EHR may be tagged using openEHR _tags_, which are lightweight annotations that may be used to thematically classify previously committed data for convenient subsequent retrieval. They are described in detail in the {openehr_rm_common}#_tags_package[Common IM Tags section^].
 
-[.text-center]
-.Tagging in the EHR
-image::{diagrams_uri}/tags_example.svg[id=tags_example, align="center"]
-
-Tags are associated with an EHR via the `EHR._tags_` attribute, but have no direct association with the objects they annotate. This has the following consequences:
+Tags are associated with an EHR via the `EHR._tags_` attribute, and have no direct association with the objects they annotate. This has the following consequences:
 
 * they may be added at any time with respect to the commit time of the content they annotate, including much later;
 * they do not constitute part of the content they annotate;
