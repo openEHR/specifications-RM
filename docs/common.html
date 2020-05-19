@@ -303,12 +303,20 @@
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0 (unreleased)</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-87" target="_blank" rel="noopener">SPECRM-87</a>: Support tags (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-265" target="_blank" rel="noopener">SPECPR-265</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
  B Næss,<br>
  M Polajnar</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Apr 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>19 May 2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-97" target="_blank" rel="noopener">SPECRM-97</a>: Define data validity rules for Versions with <code><em>lifecycle_state</em> = incomplete</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">M Polajnar,<br>
+ S Iancu,<br>
+ P Bos</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -2925,13 +2933,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="sect3">
 <h4 id="_version_lifecycle"><a class="anchor" href="#_version_lifecycle"></a>6.3.1. Version Lifecycle</h4>
 <div class="paragraph">
-<p>Content in Original versions has a lifecycle state associated with it, modelled using the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are <code>532|complete|</code>, <code>553|incomplete|</code> and <code>523|deleted|</code>. Usually content will be committed in the <code>complete</code> state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as <code>incomplete</code> meaning that it is either incomplete or at least unreviewed. In hospitals this is a common occurrence. Unfinished Compositions cannot be saved locally on the client machine, since this represents a security risk (a small client-side database would be much easier to hack into than a secure server). They must therefore be persisted on the server, either in the actual EHR, or in a 'holding bay' which was recognised as not being part of the EHR proper. Either way, the author would have to explicitly retrieve the Composition(s) and after further work or review, 'promote' them into the EHR as 'active' Compositions; alternatively, they might decide to throw them away.</p>
-</div>
-<div class="paragraph">
-<p>Going from <code>incomplete</code> to <code>complete</code> states almost always corresponds to a change in content, and corresponds to a new <code>VERSION</code> regardless. This modelling approach allows such content to exist on the EHR system, but to be flagged as incomplete when viewed by a user.</p>
-</div>
-<div class="paragraph">
-<p>Systems are responsible for implementing checks to find 'old' Versions in <code>incomplete</code> state, and bring them to the relevant user&#8217;s notice, or automatically deleting them or progressing them to <code>complete</code> as appropriate.</p>
+<p>Content in Original versions has a lifecycle state associated with it, modelled using the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are <code>532|complete|</code>, <code>553|incomplete|</code> and <code>523|deleted|</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following diagram shows the formal state machine of the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute.</p>
@@ -2941,6 +2943,33 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <img src="UML/diagrams/RM-version_lifecycle.svg" alt="RM version lifecycle">
 </div>
 <div class="title">Figure 10. <code>ORIGINAL_VERSION <em>lifecycle_state</em></code> state machine</div>
+</div>
+<div class="paragraph">
+<p>Usually content will be committed in the <code>complete</code> state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as <code>incomplete</code> meaning that it is either partial or perhaps unreviewed. In hospitals this is a common occurrence. Unfinished content items (EHR Compositions, Demographic Parties etc) cannot be saved locally on the client machine, as this represents a security risk (since a client-side app or database is easier to compromise than a secure server). They must therefore be persisted on the server, either in the actual EHR (or other appropriate repository), or in a 'holding bay' which is recognised as not being part of the primary destination repository. Either way, the author normally retrieves the item(s) and after further work or review, promotes them into the final destination (i.e. patient EHR etc), in the <code>complete</code> state. Alternatively, the author might decide to throw them away, achieved by logical deletion, in which case the final commit is in the <code>deleted</code> state.</p>
+</div>
+<div class="paragraph">
+<p>One of the consequences of accepting content that is semantically incomplete (e.g. may contain only partial clinical notes or incomplete demographic details) into the target EHR or other location is that it might also be technically 'incomplete', i.e. it may be missing mandatory data fields with respect to its generating archetypes. If being committed in the <code>complete</code> state, such data would be treated as invalid by the repository and rejected by the API.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+In the <code>incomplete</code> state however, a limited form of invalidity is allowed: mandatory attributes may be absent. Concretely, single-valued attributes may have null values and container attributes may be empty, even though they may have minimum existence and cardinality respectively of one. All other validity requirements must be satisfied. In other words, in an <code>incomplete</code> commit, data may be missing, but it may not be wrong.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>At an implementation level, templated and archetyped data being committed in the <code>incomplete</code> state therefore respects the same template and archetype(s), but with all existence and cardinality lower limits set to zero.</p>
+</div>
+<div class="paragraph">
+<p>Transitioning from <code>incomplete</code> to <code>complete</code> states requires any missing fields to be populated. However, even if the <code>incomplete</code> content was technically valid and no new content is added, the transition to <code>complete</code> will generate a new <code>VERSION</code> regardless.</p>
+</div>
+<div class="paragraph">
+<p>Systems and/or applications are responsible for implementing checks to find 'old' Versions in the <code>incomplete</code> state, and bring them to the relevant user&#8217;s notice, or automatically deleting them or progressing them to <code>complete</code> in a reasonable way.</p>
 </div>
 </div>
 <div class="sect3">

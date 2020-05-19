@@ -128,17 +128,25 @@ When subsequent Versions are added, the existing Attestations can not be assumed
 
 === Version Lifecycle
 
-Content in Original versions has a lifecycle state associated with it, modelled using the `ORIGINAL_VERSION._lifecycle_state_` attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are `532|complete|`, `553|incomplete|` and `523|deleted|`. Usually content will be committed in the `complete` state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as `incomplete` meaning that it is either incomplete or at least unreviewed. In hospitals this is a common occurrence. Unfinished Compositions cannot be saved locally on the client machine, since this represents a security risk (a small client-side database would be much easier to hack into than a secure server). They must therefore be persisted on the server, either in the actual EHR, or in a 'holding bay' which was recognised as not being part of the EHR proper. Either way, the author would have to explicitly retrieve the Composition(s) and after further work or review, 'promote' them into the EHR as 'active' Compositions; alternatively, they might decide to throw them away.
-
-Going from `incomplete` to `complete` states almost always corresponds to a change in content, and corresponds to a new `VERSION` regardless. This modelling approach allows such content to exist on the EHR system, but to be flagged as incomplete when viewed by a user.
-
-Systems are responsible for implementing checks to find 'old' Versions in `incomplete` state, and bring them to the relevant user's notice, or automatically deleting them or progressing them to `complete` as appropriate.
+Content in Original versions has a lifecycle state associated with it, modelled using the `ORIGINAL_VERSION._lifecycle_state_` attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are `532|complete|`, `553|incomplete|` and `523|deleted|`. 
 
 The following diagram shows the formal state machine of the `ORIGINAL_VERSION._lifecycle_state_` attribute.
 
 [.text-center]
 .`ORIGINAL_VERSION _lifecycle_state_` state machine
 image::{uml_diagrams_uri}/RM-version_lifecycle.svg[id=version_lifecycle, align="center"]
+
+Usually content will be committed in the `complete` state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as `incomplete` meaning that it is either partial or perhaps unreviewed. In hospitals this is a common occurrence. Unfinished content items (EHR Compositions, Demographic Parties etc) cannot be saved locally on the client machine, as this represents a security risk (since a client-side app or database is easier to compromise than a secure server). They must therefore be persisted on the server, either in the actual EHR (or other appropriate repository), or in a 'holding bay' which is recognised as not being part of the primary destination repository. Either way, the author normally retrieves the item(s) and after further work or review, promotes them into the final destination (i.e. patient EHR etc), in the `complete` state. Alternatively, the author might decide to throw them away, achieved by logical deletion, in which case the final commit is in the `deleted` state.
+
+One of the consequences of accepting content that is semantically incomplete (e.g. may contain only partial clinical notes or incomplete demographic details) into the target EHR or other location is that it might also be technically 'incomplete', i.e. it may be missing mandatory data fields with respect to its generating archetypes. If being committed in the `complete` state, such data would be treated as invalid by the repository and rejected by the API.
+
+NOTE: In the `incomplete` state however, a limited form of invalidity is allowed: mandatory attributes may be absent. Concretely, single-valued attributes may have null values and container attributes may be empty, even though they may have minimum existence and cardinality respectively of one. All other validity requirements must be satisfied. In other words, in an `incomplete` commit, data may be missing, but it may not be wrong.
+
+At an implementation level, templated and archetyped data being committed in the `incomplete` state therefore respects the same template and archetype(s), but with all existence and cardinality lower limits set to zero.
+
+Transitioning from `incomplete` to `complete` states requires any missing fields to be populated. However, even if the `incomplete` content was technically valid and no new content is added, the transition to `complete` will generate a new `VERSION` regardless.
+
+Systems and/or applications are responsible for implementing checks to find 'old' Versions in the `incomplete` state, and bring them to the relevant user's notice, or automatically deleting them or progressing them to `complete` in a reasonable way.
 
 === Logical Deletion
 
