@@ -80,7 +80,7 @@ In an EHR, there is a need to record items that summarise the key aspects of pat
 * Social situation - picture of patient living situation relevant to care provision;
 * Care plan - Plan(s) produced by clinicians describing planned management of chronic problems.
 
-Persistent Compositions can be thought of as proxies for the state or situation of the patient, which are maintained as a single source-of truth over an entire patient lifetime. The intent is that any changes or updates are applied to the same single composition instance. Together they provide a picture of the patient at a point in time. The total number of Persistent Compositions is normally small for any given patient even with the possibility of more than one instance of some, e.g. multiple condition-specific problem lists. However the number of versions due to updating over time may be significant.
+Persistent Compositions can be thought of as proxies for the state or situation of the patient, which are maintained as a single source-of-truth over an entire patient lifetime. The intent is that any changes or updates are applied to the same logical composition instance as new versions. Together they provide a picture of the patient over time. The total number of Persistent Compositions is normally small for any given patient even with the possibility of more than one instance of some, e.g. multiple condition-specific problem lists. However the number of versions due to updating over time may be significant.
 
 ==== Event Compositions
 
@@ -96,9 +96,7 @@ Over time, the number of event Compositions is likely to far outstrip the number
 
 ==== Episodic Compositions
 
-Compositions may be classified as _episodic_ if they contain information relevant to an ongoing care situation spanning sigificant time, such as pregnancy and birth, major surgery and recovery etc. During a specific episode of care, event Compositions will still be used to record normal clinical events, particularly routine observations. However, assessments, summaries and care plans specific to the condition being treated may be committed in Compositions with `_category_` set to `episodic` to indicate that they should be treated as having a persistent-quality i.e updated as as single instance source-of-truth, but only maintained as such for a defined period or set of conditions and not for the entire life of the patient. An example might be a Problem list which is maintained as a continuously updated single instance during a hospital admission but only for the duration of that admission. If the patient is re-admitted, a new instance of an episodic Composition is then created and contunually updated for that admission.
-
-
+Compositions may be classified as _episodic_ if they contain information relevant to an ongoing care situation spanning sigificant time, such as pregnancy and birth, major surgery and recovery etc. During a specific episode of care, Event Compositions will still be used to record normal clinical events, particularly routine observations. However, assessments, summaries and care plans specific to the condition being treated may be committed in Compositions with `_category_` set to `episodic` to indicate that they should be treated as having a persistent-like quality i.e updated as as single instance source-of-truth, but only maintained as such for a defined period or set of conditions and not for the entire life of the patient. An example might be a Problem list which is maintained as a continuously updated single instance during a hospital admission but only for the duration of that admission. If the patient is re-admitted, a new instance of an Episodic Composition is then created and continually updated for that admission.
 
 === Directory and Folders
 
