@@ -48,14 +48,14 @@ a|Time of creation of the EHR.
 
 h|*0..1*
 |*folders*: `List<OBJECT_REF>`
-a|Optional addition Folder structures for this EHR.
+a|Optional additional Folder structures for this EHR.
 
 h|*0..1*
 |*tags*: `List<OBJECT_REF>`
 a|Optional list of tags associated with this EHR. Tag `_target_` values can only be within the same EHR.
 
 h|*Invariants*
-2+a|_Contributions_valid_: `contributions.for_all (c &#124; c.type.is_equal("CONTRIBUTION"))`
+2+a|_Contributions_valid_: `for_all c in contributions &#124; c.type.is_equal("CONTRIBUTION")`
 
 h|
 2+a|_Ehr_access_valid_: `ehr_access.type.is_equal ("VERSIONED_EHR_ACCESS")`
@@ -64,8 +64,11 @@ h|
 2+a|_Ehr_status_valid_: `ehr_status.type.is_equal("VERSIONED_EHR_STATUS")`
 
 h|
-2+a|_Compositions_valid_: `compositions.for_all (c &#124; c.type.is_equal ("VERSIONED_COMPOSITION"))`
+2+a|_Compositions_valid_: `for_all c in compositions &#124; c.type.is_equal ("VERSIONED_COMPOSITION")`
 
 h|
 2+a|_Directory_valid_: `directory /= Void implies directory.type.is_equal ("VERSIONED_FOLDER")`
+
+h|
+2+a|_Folders_valid_: `for_all f in folders &#124; f.type.is_equal("VERSIONED_FOLDER")`
 |===

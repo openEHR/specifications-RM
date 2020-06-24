@@ -1764,7 +1764,7 @@
 <div class="sect3">
 <h4 id="_directory_and_folders"><a class="anchor" href="#_directory_and_folders"></a>4.2.5. Directory and Folders</h4>
 <div class="paragraph">
-<p>As Compositions accumulate over time in the EHR, they form a long-term patient history. The <code><em>directory</em></code> and <code><em>folders</em></code> structures can be used in the EHR to index Compositions using one or more versioned hierarchies of Folders. In the openEHR model, <strong>Folder structures do not contain Compositions, only references</strong>. More than one Folder can therefore refer to the same Composition.</p>
+<p>As Compositions accumulate over time in the EHR, they form a long-term patient history. The <code><em>directory</em></code> and <code><em>folders</em></code> structures can be used in the EHR to index Compositions using one or more versioned hierarchies of Folders. In the openEHR model, <strong>Folder structures do not contain Compositions, only references</strong>. More than one Folder can therefore refer to the same Composition or other target object.</p>
 </div>
 <div class="paragraph">
 <p>The <code><em>directory</em></code> was part of the initial design of the openEHR EHR in which a single Folder hierarchy per EHR was expected to suffice. With implementation experience, the utility of more than one versioned Folder hierarchy became apparent, and the <code><em>folders</em></code> attribute was added.</p>
@@ -2216,7 +2216,7 @@ is is strongly recommended that a UUID always be used for this field.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>folders</strong>: <code>List&lt;OBJECT_REF&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Optional addition Folder structures for this EHR.</p>
+<p>Optional additional Folder structures for this EHR.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2229,7 +2229,7 @@ is is strongly recommended that a UUID always be used for this field.
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Contributions_valid</em>: <code>contributions.for_all (c &#124; c.type.is_equal("CONTRIBUTION"))</code></p>
+<p><em>Contributions_valid</em>: <code>for_all c in contributions &#124; c.type.is_equal("CONTRIBUTION")</code></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2247,13 +2247,19 @@ is is strongly recommended that a UUID always be used for this field.
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Compositions_valid</em>: <code>compositions.for_all (c &#124; c.type.is_equal ("VERSIONED_COMPOSITION"))</code></p>
+<p><em>Compositions_valid</em>: <code>for_all c in compositions &#124; c.type.is_equal ("VERSIONED_COMPOSITION")</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p><em>Directory_valid</em>: <code>directory /= Void implies directory.type.is_equal ("VERSIONED_FOLDER")</code></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Folders_valid</em>: <code>for_all f in folders &#124; f.type.is_equal("VERSIONED_FOLDER")</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2502,13 +2508,13 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Archetype_node_id_valid</em>: <code>all_versions.for_all (v &#124; v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))</code></p>
+<p><em>Archetype_node_id_valid</em>: <code>for_all v in all_versions &#124; v.archetype_node_id.is_equal (all_versions.first.archetype_node_id)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Persistent_validity</em>: <code>all_versions.for_all (v &#124; v.is_persistent = all_versions.first.data.is_persistent)</code></p>
+<p><em>Persistent_validity</em>: <code>for_all v in all_versions &#124; v.is_persistent = all_versions.first.data.is_persistent</code></p>
 </div></div></td>
 </tr>
 </tbody>

@@ -20,8 +20,8 @@ h|*1..1*
 a|Indicates whether this composition set is persistent; derived from first version.
 
 h|*Invariants*
-2+a|_Archetype_node_id_valid_: `all_versions.for_all (v &#124; v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))`
+2+a|_Archetype_node_id_valid_: `for_all v in all_versions &#124; v.archetype_node_id.is_equal (all_versions.first.archetype_node_id)`
 
 h|
-2+a|_Persistent_validity_: `all_versions.for_all (v &#124; v.is_persistent = all_versions.first.data.is_persistent)`
+2+a|_Persistent_validity_: `for_all v in all_versions &#124; v.is_persistent = all_versions.first.data.is_persistent`
 |===
