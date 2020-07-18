@@ -23,18 +23,18 @@ This class is used for recording any clinical datum which is customarily recorde
 For scores or scales that include Real numbers (or might in the future, i.e. not fixed for all time, such as Apgar), use `DV_SCALE`. `DV_SCALE` may also be used in future for representing purely Integer-based scales, however, the `DV_ORDINAL` type should continue to be supported in software implementations in order to accommodate existing data that are instances of this type.
 
 h|*Inherit*
-2+|`DV_ORDERED`
+2+|`<<_dv_ordered_class,DV_ORDERED>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*symbol*: `DV_CODED_TEXT`
+|*symbol*: `<<_dv_coded_text_class,DV_CODED_TEXT>>`
 a|Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  `mild`, `moderate`, `severe`, or even the same number series as the values, e.g. 1, 2, 3.
 
 h|*1..1*
-|*value*: `Integer`
+|*value*: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
 a|Value in ordered enumeration of values. Any integer value can be used.
 h|*Functions*
 ^h|*Signature*
@@ -42,17 +42,17 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*less_than* _alias_ "<" ( +
-other: `DV_ORDINAL[1]` +
-): `Boolean` +
+|*less_than* __alias__ "<" ( +
+other: `<<_dv_ordinal_class,DV_ORDINAL>>[1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
-_Pre_comparable_: `is_strictly_comparable_to (other)`
+__Pre_comparable__: `is_strictly_comparable_to (other)`
 a|True if this Ordinal value is less than `_other_`.
 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `DV_ORDINAL[1]` +
-): `Boolean`
+other: `<<_dv_ordinal_class,DV_ORDINAL>>[1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Test if this Ordinal is strictly comparable to `_other_`.
 |===

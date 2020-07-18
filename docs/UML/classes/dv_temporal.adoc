@@ -3,13 +3,13 @@
 [cols="^1,3,5"]
 |===
 h|*Class*
-2+^h|*_DV_TEMPORAL (abstract)_*
+2+^h|*__DV_TEMPORAL (abstract)__*
 
 h|*Description*
 2+a|Specialised temporal variant of `DV_ABSOLUTE_QUANTITY` whose diff type is `DV_DURATION`.
 
 h|*Inherit*
-2+|`DV_ABSOLUTE_QUANTITY`
+2+|`<<_dv_absolute_quantity_class,DV_ABSOLUTE_QUANTITY>>`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*0..1 +
 (redefined)*
-|*accuracy*: `DV_DURATION`
+|*accuracy*: `<<_dv_duration_class,DV_DURATION>>`
 a|Time accuracy, expressed as a duration.
 h|*Functions*
 ^h|*Signature*
@@ -25,22 +25,22 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*add* _alias_ "+" ( +
-a_diff: `DV_DURATION[1]` +
-): `DV_TEMPORAL`
+|*add* __alias__ "+" ( +
+a_diff: `<<_dv_duration_class,DV_DURATION>>[1]` +
+): `<<_dv_temporal_class,DV_TEMPORAL>>`
 a|Addition of a Duration to this temporal entity.
 
 h|*1..1 +
 (effected)*
-|*subtract* _alias_ "-" ( +
-a_diff: `DV_DURATION[1]` +
-): `DV_TEMPORAL`
+|*subtract* __alias__ "-" ( +
+a_diff: `<<_dv_duration_class,DV_DURATION>>[1]` +
+): `<<_dv_temporal_class,DV_TEMPORAL>>`
 a|Subtract a Duration from this temporal entity.
 
 h|*1..1 +
 (effected)*
-|*diff* _alias_ "-" ( +
-other: `DV_TEMPORAL[1]` +
-): `DV_DURATION`
+|*diff* __alias__ "-" ( +
+other: `<<_dv_temporal_class,DV_TEMPORAL>>[1]` +
+): `<<_dv_duration_class,DV_DURATION>>`
 a|Difference between this temporal entity and `_other_`.
 |===

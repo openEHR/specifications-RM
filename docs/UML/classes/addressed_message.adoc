@@ -13,19 +13,19 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*sender*: `String`
+|*sender*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
 a|Party sending the message.
 
 h|*1..1*
-|*sender_reference*: `String`
+|*sender_reference*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
 a|Identification of message used by sender. This will be the same no matter how many times this message is sent to these recipients.
 
 h|*1..1*
-|*addressees*: `List<String>`
+|*addressees*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]>`
 a|Intended recipients, in the form of internet addresses.
 
 h|*0..1*
-|*urgency*: `Integer`
+|*urgency*: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
 a|Urgency with which destination should deal with message:
 
 * -1 - low
@@ -33,6 +33,6 @@ a|Urgency with which destination should deal with message:
 * 1 - high
 
 h|*1..1*
-|*message*: `MESSAGE`
+|*message*: `<<_message_class,MESSAGE>>`
 a|The content of the message.
 |===

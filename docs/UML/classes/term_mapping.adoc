@@ -26,49 +26,49 @@ a|The relative match of the target term with respect to the mapped text item. Re
 The first three values are taken from the ISO standards 2788 ( Guide to Establishment and development of monolingual thesauri) and 5964 (Guide to Establishment and development of multilingual thesauri).
 
 h|*0..1*
-|*purpose*: `DV_CODED_TEXT`
+|*purpose*: `<<_dv_coded_text_class,DV_CODED_TEXT>>`
 a|Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'.
 
 h|*1..1*
-|*target*: `CODE_PHRASE`
+|*target*: `<<_code_phrase_class,CODE_PHRASE>>`
 a|The target term of the mapping.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*narrower* (): `Boolean` +
+|*narrower* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
-_Post_: `match = ‘<’ implies Result`
+__Post__: `match = ‘<’ implies Result`
 a|The mapping is to a narrower term.
 
 h|*1..1*
-|*broader* (): `Boolean` +
+|*broader* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
-_Post_: `match = ‘>’ implies Result`
+__Post__: `match = ‘>’ implies Result`
 a|The mapping is to a broader term.
 
 h|*1..1*
-|*equivalent* (): `Boolean`
+|*equivalent* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|The mapping is to an equivalent term.
 
 h|*1..1*
-|*unknown* (): `Boolean` +
+|*unknown* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
-_Post_: `match = ‘?’ implies Result`
+__Post__: `match = ‘?’ implies Result`
 a|The kind of mapping is unknown.
 
 h|*1..1*
 |*is_valid_match_code* ( +
 c: `char[1]` +
-): `Boolean` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
-_Post_: `Result := c = ‘>’ or c = ‘=’ or c = ‘<’ or c = ‘?’`
+__Post__: `Result := c = ‘>’ or c = ‘=’ or c = ‘<’ or c = ‘?’`
 a|True if match valid.
 
 h|*Invariants*
-2+a|_Purpose_valid_: `purpose /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)`
+2+a|__Purpose_valid__: `purpose /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)`
 
 h|
-2+a|_Match_valid_: `is_valid_match_code (match)`
+2+a|__Match_valid__: `is_valid_match_code (match)`
 |===

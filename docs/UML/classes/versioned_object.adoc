@@ -13,146 +13,146 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*uid*: `HIER_OBJECT_ID`
+|*uid*: `link:/releases/BASE/{rm_release}/base_types.html#_hier_object_id_class[HIER_OBJECT_ID^]`
 a|Unique identifier of this version container in the form of a UID with no extension. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the  virtual version tree.
 
 h|*1..1*
-|*owner_id*: `OBJECT_REF`
+|*owner_id*: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]`
 a|Reference to object to which this version container belongs, e.g. the id of the containing EHR or other relevant owning entity.
 
 h|*1..1*
-|*time_created*: `DV_DATE_TIME`
+|*time_created*: `link:/releases/RM/{rm_release}/data_types.html#_dv_date_time_class[DV_DATE_TIME^]`
 a|Time of initial creation of this versioned object.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*version_count* (): `Integer`
+|*version_count* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
 a|Return the total number of versions in this object.
 
 h|*1..1*
-|*all_version_ids* (): `List<OBJECT_VERSION_ID>`
+|*all_version_ids* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^]>`
 a|Return a list of ids of all versions in this object.
 
 h|*1..1*
-|*all_versions* (): `List<VERSION>`
+|*all_versions* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<<<_version_class,VERSION>>>`
 a|Return a list of all versions in this object.
 
 h|*1..1*
 |*has_version_at_time* ( +
-a_time: `DV_DATE_TIME[1]` +
-): `Boolean`
+a_time: `link:/releases/RM/{rm_release}/data_types.html#_dv_date_time_class[DV_DATE_TIME^][1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if a version for time  `_a_time_` exists.
 
 h|*1..1*
 |*has_version_id* ( +
-a_version_uid: `OBJECT_VERSION_ID[1]` +
-): `Boolean`
+a_version_uid: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if a version with `_a_version_uid_` exists.
 
 h|*1..1*
 |*version_with_id* ( +
-a_version_uid: `OBJECT_VERSION_ID[1]` +
-): `VERSION` +
+a_version_uid: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]` +
+): `<<_version_class,VERSION>>` +
  +
-_Pre_: `has_version_id (a_ver_id)`
+__Pre__: `has_version_id (a_ver_id)`
 a|Return the version with `_uid_` =  `_a_version_uid_`.
 
 h|*1..1*
 |*is_original_version* ( +
-a_version_uid: `OBJECT_VERSION_ID[1]` +
-): `Boolean` +
+a_version_uid: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
-_Pre_: `has_version_id(a_ver_id)`
+__Pre__: `has_version_id(a_ver_id)`
 a|True if version with `_a_version_uid_` is an `ORIGINAL_VERSION`.
 
 h|*1..1*
 |*version_at_time* ( +
-a_time: `DV_DATE_TIME[1]` +
-): `VERSION` +
+a_time: `link:/releases/RM/{rm_release}/data_types.html#_dv_date_time_class[DV_DATE_TIME^][1]` +
+): `<<_version_class,VERSION>>` +
  +
-_Pre_: `has_version_at_time (a_time)`
+__Pre__: `has_version_at_time (a_time)`
 a|Return the version for time  `_a_time_`.
 
 h|*1..1*
-|*revision_history* (): `REVISION_HISTORY`
+|*revision_history* (): `<<_revision_history_class,REVISION_HISTORY>>`
 a|History of all audits and attestations in this versioned repository.
 
 h|*1..1*
-|*latest_version* (): `VERSION`
+|*latest_version* (): `<<_version_class,VERSION>>`
 a|Return the most recently added version (i.e. on trunk or any branch).
 
 h|*1..1*
-|*latest_trunk_version* (): `VERSION`
+|*latest_trunk_version* (): `<<_version_class,VERSION>>`
 a|Return the most recently added trunk version.
 
 h|*1..1*
-|*trunk_lifecycle_state* (): `DV_CODED_TEXT` +
+|*trunk_lifecycle_state* (): `link:/releases/RM/{rm_release}/data_types.html#_dv_coded_text_class[DV_CODED_TEXT^]` +
  +
-_Post_: `Result = latest_trunk_version.lifecycle_state`
+__Post__: `Result = latest_trunk_version.lifecycle_state`
 a|Return the lifecycle state from the latest trunk version. Useful for determining if the version container is logically deleted.
 
 h|*1..1*
 |*commit_original_version* ( +
-a_contribution: `OBJECT_REF[1]`, +
-a_new_version_uid: `OBJECT_VERSION_ID[1]`, +
-a_preceding_version_id: `OBJECT_VERSION_ID[1]`, +
-an_audit: `AUDIT_DETAILS[1]`, +
-a_lifecycle_state: `DV_CODED_TEXT[1]`, +
+a_contribution: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^][1]`, +
+a_new_version_uid: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
+a_preceding_version_id: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
+an_audit: `<<_audit_details_class,AUDIT_DETAILS>>[1]`, +
+a_lifecycle_state: `link:/releases/RM/{rm_release}/data_types.html#_dv_coded_text_class[DV_CODED_TEXT^][1]`, +
 a_data: `T[1]`, +
-signing_key: `String[1]` +
+signing_key: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^][1]` +
 ): `void` +
  +
-_Pre_: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0`
+__Pre__: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0`
 a|Add a new original version.
 
 h|*1..1*
 |*commit_original_merged_version* ( +
-a_contribution: `OBJECT_REF[1]`, +
-a_new_version_uid: `OBJECT_VERSION_ID[1]`, +
-a_preceding_version_id: `OBJECT_VERSION_ID[1]`, +
-an_audit: `AUDIT_DETAILS[1]`, +
-a_lifecycle_state: `DV_CODED_TEXT[1]`, +
+a_contribution: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^][1]`, +
+a_new_version_uid: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
+a_preceding_version_id: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
+an_audit: `<<_audit_details_class,AUDIT_DETAILS>>[1]`, +
+a_lifecycle_state: `link:/releases/RM/{rm_release}/data_types.html#_dv_coded_text_class[DV_CODED_TEXT^][1]`, +
 a_data: `T[1]`, +
-an_other_input_uids: `List<OBJECT_VERSION_ID>[1]`, +
-signing_key: `String[1]` +
+an_other_input_uids: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^]>[1]`, +
+signing_key: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^][1]` +
 ): `void` +
  +
-_Pre_: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0`
+__Pre__: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0`
 a|Add a new original merged version. This commit function adds a parameter containing the ids of other versions merged into the current one.
 
 h|*1..1*
 |*commit_imported_version* ( +
-a_contribution: `OBJECT_REF[1]`, +
-an_audit: `AUDIT_DETAILS[1]`, +
-a_version: `ORIGINAL_VERSION[1]` +
+a_contribution: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^][1]`, +
+an_audit: `<<_audit_details_class,AUDIT_DETAILS>>[1]`, +
+a_version: `<<_original_version_class,ORIGINAL_VERSION>>[1]` +
 ): `void`
 a|Add a new imported version. Details of version id etc come from the `ORIGINAL_VERSION` being committed.
 
 h|*1..1*
 |*commit_attestation* ( +
-an_attestation: `ATTESTATION[1]`, +
-a_ver_id: `OBJECT_VERSION_ID[1]`, +
-signing_key: `String[1]` +
+an_attestation: `<<_attestation_class,ATTESTATION>>[1]`, +
+a_ver_id: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
+signing_key: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^][1]` +
 ): `void` +
  +
-_Pre_: `has_version_id(a_ver_id)
+__Pre__: `has_version_id(a_ver_id)
 and is_original_version(a_ver_id)`
 a|Add a new attestation to a specified original version. Attestations can only be added to Original versions.
 
 h|*Invariants*
-2+a|_Version_count_valid_: `version_count >= 0`
+2+a|__Version_count_valid__: `version_count >= 0`
 
 h|
-2+a|_All_version_ids_valid_: `all_version_ids.count = version_count`
+2+a|__All_version_ids_valid__: `all_version_ids.count = version_count`
 
 h|
-2+a|_All_versions_valid_: `all_versions.count = version_count`
+2+a|__All_versions_valid__: `all_versions.count = version_count`
 
 h|
-2+a|_Latest_version_valid_: `version_count > 0 implies latest_version /= Void`
+2+a|__Latest_version_valid__: `version_count > 0 implies latest_version /= Void`
 
 h|
-2+a|_Uid_validity_: `extension.is_empty`
+2+a|__Uid_validity__: `extension.is_empty`
 |===

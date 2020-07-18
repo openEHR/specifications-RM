@@ -11,31 +11,31 @@ h|*Description*
 Used in therapeutic prescriptions, expressed as `INSTRUCTIONs` in the openEHR model.
 
 h|*Inherit*
-2+|`DV_TIME_SPECIFICATION`
+2+|`<<_dv_time_specification_class,DV_TIME_SPECIFICATION>>`
 
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*period* (): `DV_DURATION`
+|*period* (): `<<_dv_duration_class,DV_DURATION>>`
 a|The period of the repetition, computationally derived from the syntax representation. Extracted from the  value' attribute.
 
 h|*1..1 +
 (effected)*
-|*calendar_alignment* (): `String`
+|*calendar_alignment* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
 a|Calendar alignment extracted from value.
 
 h|*1..1 +
 (effected)*
-|*event_alignment* (): `String`
+|*event_alignment* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
 a|Event alignment extracted from value.
 
 h|*1..1 +
 (effected)*
-|*institution_specified* (): `Boolean`
+|*institution_specified* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Extracted from value.
 
 h|*Invariants*
-2+a|_Value_valid_: `value.formalism.is_equal (“HL7:PIVL”) or value.formalism. is_equal (“HL7:EIVL”)`
+2+a|__Value_valid__: `value.formalism.is_equal (“HL7:PIVL”) or value.formalism. is_equal (“HL7:EIVL”)`
 |===

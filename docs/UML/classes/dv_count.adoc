@@ -11,24 +11,24 @@ h|*Description*
 Misuse: Not to be used for amounts of physical entities (which all have units).
 
 h|*Inherit*
-2+|`DV_AMOUNT`
+2+|`<<_dv_amount_class,DV_AMOUNT>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*magnitude*: `Integer64`
+|*magnitude*: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer64_class[Integer64^]`
 a|
 
 h|*0..1 +
 (redefined)*
-|*normal_range*: `DV_INTERVAL<DV_COUNT>`
+|*normal_range*: `@DV_INTERVAL<DV_COUNT>@`
 a|Optional normal range.
 
 h|*0..1 +
 (redefined)*
-|*other_reference_ranges*: `List<REFERENCE_RANGE<DV_COUNT>>`
+|*other_reference_ranges*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<@REFERENCE_RANGE<DV_COUNT>@>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
 h|*Functions*
 ^h|*Signature*
@@ -36,38 +36,38 @@ h|*Functions*
 
 h|*1..1 +
 (redefined)*
-|*add* _alias_ "+" ( +
-other: `DV_COUNT[1]` +
-): `DV_COUNT`
+|*add* __alias__ "+" ( +
+other: `<<_dv_count_class,DV_COUNT>>[1]` +
+): `<<_dv_count_class,DV_COUNT>>`
 a|Sum of this `DV_COUNT` and `_other_`.
 
 h|*1..1 +
 (redefined)*
-|*subtract* _alias_ "-" ( +
-other: `DV_COUNT[1]` +
-): `DV_COUNT`
+|*subtract* __alias__ "-" ( +
+other: `<<_dv_count_class,DV_COUNT>>[1]` +
+): `<<_dv_count_class,DV_COUNT>>`
 a|Difference of this `DV_COUNT` and `_other_`.
 
 h|*1..1 +
 (redefined)*
-|*multiply* _alias_ "&#42;" ( +
-factor: `Real[1]` +
-): `DV_COUNT`
+|*multiply* __alias__ "&#42;" ( +
+factor: `link:/releases/BASE/{rm_release}/foundation_types.html#_real_class[Real^][1]` +
+): `<<_dv_count_class,DV_COUNT>>`
 a|Product of this `DV_COUNT` and `_factor_`.
 
 h|*1..1 +
 (effected)*
-|*less_than* _alias_ "<" ( +
-other: `DV_COUNT[1]` +
-): `Boolean` +
+|*less_than* __alias__ "<" ( +
+other: `<<_dv_count_class,DV_COUNT>>[1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
-_Post_result_: `Result = magnitude < other.magnitude`
+__Post_result__: `Result = magnitude < other.magnitude`
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `DV_ORDERED[1]` +
-): `Boolean`
+other: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Return True.
 |===

@@ -13,49 +13,49 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*language*: `CODE_PHRASE`
+|*language*: `link:/releases/RM/{rm_release}/data_types.html#_code_phrase_class[CODE_PHRASE^]`
 a|The localised language in which the items in this description item are written. Coded from openEHR code set `languages`.
 
 h|*1..1*
-|*purpose*: `String`
+|*purpose*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
 a|Purpose of the resource.
 
 h|*0..1*
-|*keywords*: `List<String>`
+|*keywords*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]>`
 a|Keywords which characterise this resource, used e.g. for indexing and searching.
 
 h|*0..1*
-|*use*: `String`
+|*use*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
 a|Description of the uses of the resource, i.e. contexts in which it could be used.
 
 h|*0..1*
-|*misuse*: `String`
+|*misuse*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
 a|Description of any misuses of the resource, i.e. contexts in which it should not be used.
 
 h|*0..1*
-|*copyright*: `String`
+|*copyright*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
 a|Optional copyright statement for the resource as a knowledge resource.
 
 h|*0..1*
-|*original_resource_uri*: `Hash<String, String>`
+|*original_resource_uri*: `@Hash<String, String>@`
 a|URIs of original clinical document(s) or description of which resource is a formalisation, in the language of this description item; keyed by meaning.
 
 h|*0..1*
-|*other_details*: `Hash<String, String>`
+|*other_details*: `@Hash<String, String>@`
 a|Additional language-senstive resource metadata, as a list of name/value pairs.
 
 h|*Invariants*
-2+a|_Language_valid_: `code_set (Code_set_id_languages).has_code (language)`
+2+a|__Language_valid__: `code_set (Code_set_id_languages).has_code (language)`
 
 h|
-2+a|_Purpose_valid_: `not purpose.is_empty`
+2+a|__Purpose_valid__: `not purpose.is_empty`
 
 h|
-2+a|_Use_valid_: `use /= Void implies not use.is_empty`
+2+a|__Use_valid__: `use /= Void implies not use.is_empty`
 
 h|
-2+a|_misuse_valid_: `misuse /= Void implies not misuse.is_empty`
+2+a|__misuse_valid__: `misuse /= Void implies not misuse.is_empty`
 
 h|
-2+a|_copyright_valid_: `copyright /= Void implies not copyright.is_empty`
+2+a|__copyright_valid__: `copyright /= Void implies not copyright.is_empty`
 |===

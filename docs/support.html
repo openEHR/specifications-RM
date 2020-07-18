@@ -708,7 +708,7 @@ access, access to externally defined scientific units and conversion information
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>TERMINOLOGY_SERVICE</code>, <code>MEASUREMENT_SERVICE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_terminology_service_class">TERMINOLOGY_SERVICE</a></code>, <code><a href="#_measurement_service_class">MEASUREMENT_SERVICE</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1462,7 +1462,7 @@ list. A definitive list may be found on the <a href="https://www.nlm.nih.gov/res
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</code>, <code>OPENEHR_CODE_SET_IDENTIFIERS</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_openehr_terminology_group_identifiers_class">OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS</a></code>, <code><a href="#_openehr_code_set_identifiers_class">OPENEHR_CODE_SET_IDENTIFIERS</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -1472,8 +1472,8 @@ list. A definitive list may be found on the <a href="https://www.nlm.nih.gov/res
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology</strong> (<br>
-name: <code>String[1]</code><br>
-): <code>TERMINOLOGY_ACCESS</code></p></td>
+name: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_terminology_access_interface">TERMINOLOGY_ACCESS</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return an interface to the terminology named name. Allowable names include:-</p>
 </div>
@@ -1494,8 +1494,8 @@ name: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set</strong> (<br>
-name: <code>String[1]</code><br>
-): <code>CODE_SET_ACCESS</code><br>
+name: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_code_set_access_interface">CODE_SET_ACCESS</a></code><br>
 <br>
 <em>Pre</em>: <code>has_code_set (name)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1505,8 +1505,8 @@ name: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_for_id</strong> (<br>
-id: <code>String[1]</code><br>
-): <code>CODE_SET_ACCESS</code><br>
+id: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_code_set_access_interface">CODE_SET_ACCESS</a></code><br>
 <br>
 <em>Pre</em>: <code>valid_code_set_id (id)</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -1516,8 +1516,8 @@ id: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_terminology</strong> (<br>
-name: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+name: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if terminology named name known by this service. Allowable names include:-</p>
 </div>
@@ -1538,29 +1538,29 @@ name: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_set</strong> (<br>
-name: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+name: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if code_set linked to internal name (e.g. languages ) is available.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong> (): <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>terminology_identifiers</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Set of all terminology identifiers known in the terminology service. Values from the US NLM UMLS meta-data list at:- <a href="http://www.nlm.nih.gov/research/umls/metaa1.html" class="bare">http://www.nlm.nih.gov/research/umls/metaa1.html</a></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openehr_code_sets</strong> (): <code>Hash&lt;String, String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openehr_code_sets</strong> (): <code>@Hash&lt;String, String&gt;@</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Set of all code set identifiers known in the terminology service.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong> (): <code>List&lt;String&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>code_set_identifiers</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Set of all code sets identifiers for which there is an internal openEHR name; returned as a Map of ids keyed by internal name.</p>
 </div></div></td>
@@ -1594,14 +1594,14 @@ name: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong> (): <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identification of this Terminology.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code>CODE_PHRASE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code><a href="/releases/RM/latest/data_types.html#_code_phrase_class" target="_blank" rel="noopener">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes known in this terminology.</p>
 </div></div></td>
@@ -1609,8 +1609,8 @@ name: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_id</strong> (<br>
-a_group_id: <code>String[1]</code><br>
-): <code>List&lt;CODE_PHRASE&gt;</code></p></td>
+a_group_id: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/latest/data_types.html#_code_phrase_class">CODE_PHRASE</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes under grouper 'a_group_id' from this terminology.</p>
 </div></div></td>
@@ -1618,16 +1618,16 @@ a_group_id: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>codes_for_group_name</strong> (<br>
-a_lang: <code>String[1]</code>,<br>
-a_name: <code>String[1]</code><br>
-): <code>List&lt;CODE_PHRASE&gt;</code></p></td>
+a_lang: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code>,<br>
+a_name: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/latest/data_types.html#_code_phrase_class">CODE_PHRASE</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes under grouper whose name in 'a_lang' is 'a_name' from this terminology.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_for_group_id</strong> (): <code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code_for_group_id</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if  a_code' is known in group  group_id' in the openEHR terminology.</p>
 </div></div></td>
@@ -1635,8 +1635,8 @@ a_name: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rubric_for_code</strong> (<br>
-a_code: <code>String[1]</code><br>
-): <code>String</code></p></td>
+a_code: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all rubric of code  code' in language  lang'.</p>
 </div></div></td>
@@ -1670,14 +1670,14 @@ a_code: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong> (): <code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>id</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>External identifier of this code set.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code>List&lt;CODE_PHRASE&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_codes</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/latest/data_types.html#_code_phrase_class">CODE_PHRASE</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return all codes known in this code set.</p>
 </div></div></td>
@@ -1685,8 +1685,8 @@ a_code: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_lang</strong> (<br>
-a_lang: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+a_lang: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if code set knows about 'a_lang' .</p>
 </div></div></td>
@@ -1694,8 +1694,8 @@ a_lang: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_code</strong> (<br>
-a_code: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+a_code: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if code set knows about  'a_code'.</p>
 </div></div></td>
@@ -1729,79 +1729,79 @@ a_code: <code>String[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Terminology_id_openehr</strong>: <code>String&#160;=&#160;"openehr"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Terminology_id_openehr</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"openehr"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Name of openEHR&#8217;s own terminology.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_audit_change_type</strong>: <code>String&#160;=&#160;"audit change type"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_audit_change_type</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"audit change type"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_attestation_reason</strong>: <code>String&#160;=&#160;"attestation reason"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_attestation_reason</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"attestation reason"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_composition_category</strong>: <code>String&#160;=&#160;"composition category"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_composition_category</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"composition category"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_event_math_function</strong>: <code>String&#160;=&#160;"event math function"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_event_math_function</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"event math function"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_instruction_states</strong>: <code>String&#160;=&#160;"instruction states"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_instruction_states</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"instruction states"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_instruction_transitions</strong>: <code>String&#160;=&#160;"instruction transitions"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_instruction_transitions</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"instruction transitions"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_null_flavours</strong>: <code>String&#160;=&#160;"null flavours"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_null_flavours</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"null flavours"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_property</strong>: <code>String&#160;=&#160;"property"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_property</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"property"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_participation_function</strong>: <code>String&#160;=&#160;"participation function"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_participation_function</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"participation function"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_participation_mode</strong>: <code>String&#160;=&#160;"participation mode"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_participation_mode</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"participation mode"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_setting</strong>: <code>String&#160;=&#160;"setting"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_setting</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"setting"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_term_mapping_purpose</strong>: <code>String&#160;=&#160;"term mapping purpose"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_term_mapping_purpose</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"term mapping purpose"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_subject_relationship</strong>: <code>String&#160;=&#160;"subject relationship"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_subject_relationship</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"subject relationship"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_version_life_cycle_state</strong>: <code>String&#160;=&#160;"version lifecycle state"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group_id_version_life_cycle_state</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"version lifecycle state"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
@@ -1812,8 +1812,8 @@ a_code: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_terminology_group_id</strong> (<br>
-an_id: <code>Boolean[1]</code><br>
-): <code>Boolean</code></p></td>
+an_id: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Validity function to test if an identifier is in the set defined by this class.</p>
 </div></div></td>
@@ -1847,37 +1847,37 @@ an_id: <code>Boolean[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_character_sets</strong>: <code>String&#160;=&#160;"character sets"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_character_sets</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"character sets"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_compression_algorithms</strong>: <code>String&#160;=&#160;"compression algorithms"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_compression_algorithms</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"compression algorithms"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_countries</strong>: <code>String&#160;=&#160;"countries"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_countries</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"countries"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_integrity_check_algorithms</strong>: <code>String&#160;=&#160;"integrity check algorithms"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_integrity_check_algorithms</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"integrity check algorithms"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_languages</strong>: <code>String&#160;=&#160;"languages"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_languages</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"languages"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_media_types</strong>: <code>String&#160;=&#160;"media types"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_media_types</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"media types"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_normal_statuses</strong>: <code>String&#160;=&#160;"normal statuses"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code_set_id_normal_statuses</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>&#160;=&#160;"normal statuses"</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
@@ -1888,8 +1888,8 @@ an_id: <code>Boolean[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>valid_code_set_id</strong> (<br>
-an_id: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+an_id: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Validity function to test if an identifier is in the set defined by this class.</p>
 </div></div></td>
@@ -1971,8 +1971,8 @@ only the minimum functions required by the openEHR Reference Model.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_valid_units_string</strong> (<br>
-units: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+units: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the units string  units' is a valid string according to the HL7 UCUM specification.</p>
 </div></div></td>
@@ -1980,9 +1980,9 @@ units: <code>String[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>units_equivalent</strong> (<br>
-units1: <code>String[1]</code>,<br>
-units2: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
+units1: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code>,<br>
+units2: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if two units strings correspond to the same measured property.</p>
 </div></div></td>
@@ -2019,7 +2019,7 @@ The classes documented in this section are now available in the BASE component <
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-07-15 21:56:37 +0100
+Last updated 2020-07-16 15:47:26 +0100
 </div>
 </div>
 </body>

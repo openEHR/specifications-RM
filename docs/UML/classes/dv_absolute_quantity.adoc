@@ -3,13 +3,13 @@
 [cols="^1,3,5"]
 |===
 h|*Class*
-2+^h|*_DV_ABSOLUTE_QUANTITY (abstract)_*
+2+^h|*__DV_ABSOLUTE_QUANTITY (abstract)__*
 
 h|*Description*
 2+a|Abstract class defining the concept of quantified entities whose values are absolute with respect to an origin. Dates and Times are the main example.
 
 h|*Inherit*
-2+|`DV_QUANTIFIED`
+2+|`<<_dv_quantified_class,DV_QUANTIFIED>>`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*0..1 +
 (redefined)*
-|*accuracy*: `DV_AMOUNT`
+|*accuracy*: `<<_dv_amount_class,DV_AMOUNT>>`
 a|
 h|*Functions*
 ^h|*Signature*
@@ -25,9 +25,9 @@ h|*Functions*
 
 h|*1..1 +
 (abstract)*
-|*add* _alias_ "+" ( +
-a_diff: `DV_AMOUNT[1]` +
-): `DV_ABSOLUTE_QUANTITY`
+|*add* __alias__ "+" ( +
+a_diff: `<<_dv_amount_class,DV_AMOUNT>>[1]` +
+): `<<_dv_absolute_quantity_class,DV_ABSOLUTE_QUANTITY>>`
 a|Addition of a differential amount to this quantity.
 
 The value of accuracy in the result is either:
@@ -37,9 +37,9 @@ The value of accuracy in the result is either:
 
 h|*1..1 +
 (abstract)*
-|*subtract* _alias_ "-" ( +
-a_diff: `DV_AMOUNT[1]` +
-): `DV_ABSOLUTE_QUANTITY`
+|*subtract* __alias__ "-" ( +
+a_diff: `<<_dv_amount_class,DV_AMOUNT>>[1]` +
+): `<<_dv_absolute_quantity_class,DV_ABSOLUTE_QUANTITY>>`
 a|Result of subtracting a differential amount from this quantity.
 
 The value of `_accuracy_` in the result is either:
@@ -49,9 +49,9 @@ The value of `_accuracy_` in the result is either:
 
 h|*1..1 +
 (abstract)*
-|*diff* _alias_ "-" ( +
-other: `DV_ABSOLUTE_QUANTITY[1]` +
-): `DV_AMOUNT`
+|*diff* __alias__ "-" ( +
+other: `<<_dv_absolute_quantity_class,DV_ABSOLUTE_QUANTITY>>[1]` +
+): `<<_dv_amount_class,DV_AMOUNT>>`
 a|Difference of two quantities.
 
 The value of accuracy in the result is either:

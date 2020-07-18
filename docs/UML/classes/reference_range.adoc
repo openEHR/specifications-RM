@@ -13,11 +13,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*meaning*: `DV_TEXT`
+|*meaning*: `<<_dv_text_class,DV_TEXT>>`
 a|Term whose value indicates the meaning of this range, e.g.  normal,  critical,  therapeutic  etc.
 
 h|*1..1*
-|*range*: `DV_INTERVAL`
+|*range*: `<<_dv_interval_class,DV_INTERVAL>>`
 a|The data range for this meaning, e.g. critical  etc.
 h|*Functions*
 ^h|*Signature*
@@ -25,10 +25,10 @@ h|*Functions*
 
 h|*1..1*
 |*is_in_range* ( +
-v: `DV_ORDERED[1]` +
-): `Boolean`
+v: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Indicates if the value  `_v_` is inside the range.
 
 h|*Invariants*
-2+a|_Range_is_simple_: `(range.lower_unbounded or else range.lower.is_simple) and (range.upper_unbounded or else range.upper.is_simple)`
+2+a|__Range_is_simple__: `(range.lower_unbounded or else range.lower.is_simple) and (range.upper_unbounded or else range.upper.is_simple)`
 |===

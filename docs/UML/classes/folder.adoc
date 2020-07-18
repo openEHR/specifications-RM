@@ -12,24 +12,24 @@ NOTE: It is strongly recommended that the inherited attribute `_uid_` be populat
 For example, the `ORIGINAL_VERSION.uid` `87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2`  would be copied to the `_uid_` field of the top `FOLDER` object.
 
 h|*Inherit*
-2+|`LOCATABLE`
+2+|`<<_locatable_class,LOCATABLE>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*items*: `List<OBJECT_REF>`
+|*items*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]>`
 a|The list of references to other (usually) versioned objects logically in this folder.
 
 h|*0..1*
-|*folders*: `List<FOLDER>`
+|*folders*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<<<_folder_class,FOLDER>>>`
 a|Sub-folders of this `FOLDER`.
 
 h|*0..1*
-|*details*: `ITEM_STRUCTURE`
+|*details*: `link:/releases/RM/{rm_release}/data_structures.html#_item_structure_class[ITEM_STRUCTURE^]`
 a|Archetypable meta-data for `FOLDER`.
 
 h|*Invariants*
-2+a|_Folders_valid_: `not folders.is_empty`
+2+a|__Folders_valid__: `not folders.is_empty`
 |===

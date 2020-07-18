@@ -12,22 +12,22 @@ NOTE: It is strongly recommended that the inherited attribute `_uid_` be populat
 For example, the `ORIGINAL_VERSION.uid` `87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2` would be copied to the `_uid_` field of the Composition.
 
 h|*Inherit*
-2+|`LOCATABLE`
+2+|`link:/releases/RM/{rm_release}/common.html#_locatable_class[LOCATABLE^]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*language*: `CODE_PHRASE`
+|*language*: `link:/releases/RM/{rm_release}/data_types.html#_code_phrase_class[CODE_PHRASE^]`
 a|Mandatory indicator of the localised language in which this Composition is written. Coded from openEHR Code Set  `languages`. The language of an Entry if different from the Composition is indicated in `ENTRY._language_`.
 
 h|*1..1*
-|*territory*: `CODE_PHRASE`
+|*territory*: `link:/releases/RM/{rm_release}/data_types.html#_code_phrase_class[CODE_PHRASE^]`
 a|Name of territory in which this Composition was written. Coded from openEHR  countries  code set, which is an expression of the ISO 3166 standard.
 
 h|*1..1*
-|*category*: `DV_CODED_TEXT`
+|*category*: `link:/releases/RM/{rm_release}/data_types.html#_dv_coded_text_class[DV_CODED_TEXT^]`
 a|Temporal category of this Composition, i.e.
 
 * `431&#124;persistent&#124;` - of potential life-time validity;
@@ -37,36 +37,36 @@ a|Temporal category of this Composition, i.e.
 or any other code defined in the openEHR terminology group 'category'.
 
 h|*0..1*
-|*context*: `EVENT_CONTEXT`
+|*context*: `<<_event_context_class,EVENT_CONTEXT>>`
 a|The clinical session context of this Composition, i.e. the contextual attributes of the clinical session.
 
 h|*1..1*
-|*composer*: `PARTY_PROXY`
+|*composer*: `link:/releases/RM/{rm_release}/common.html#_party_proxy_class[PARTY_PROXY^]`
 a|The person primarily responsible for the content of the Composition (but not necessarily its committal into the EHR system). This is the identifier which should appear on the screen. It may or may not be the person who entered the data. When it is the patient, the special self  instance of `PARTY_PROXY` will be used.
 
 h|*0..1*
-|*content*: `List<CONTENT_ITEM>`
+|*content*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<<<_content_item_class,CONTENT_ITEM>>>`
 a|The content of this Composition.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*is_persistent* (): `Boolean`
+|*is_persistent* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if category is `431&#124;persistent&#124;`, False otherwise. Useful for finding Compositions in an EHR which are guaranteed to be of interest to most users.
 
 h|*Invariants*
-2+a|_Category_validity_: `terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_composition_category, category.defining_code)`
+2+a|__Category_validity__: `terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_composition_category, category.defining_code)`
 
 h|
-2+a|_Territory_valid_: `code_set(Code_set_id_countries).has_code(territory)`
+2+a|__Territory_valid__: `code_set(Code_set_id_countries).has_code(territory)`
 
 h|
-2+a|_Language_valid_: `code_set(Code_set_id_languages).has_code(language)`
+2+a|__Language_valid__: `code_set(Code_set_id_languages).has_code(language)`
 
 h|
-2+a|_Content_valid_: `content /= Void implies not content.is_empty`
+2+a|__Content_valid__: `content /= Void implies not content.is_empty`
 
 h|
-2+a|_Is_archetype_root_: `is_archetype_root`
+2+a|__Is_archetype_root__: `is_archetype_root`
 |===

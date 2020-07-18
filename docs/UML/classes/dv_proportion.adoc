@@ -13,36 +13,36 @@ Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary
 Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) "6/24" in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations.
 
 h|*Inherit*
-2+|`PROPORTION_KIND`, `DV_AMOUNT`
+2+|`<<_proportion_kind_class,PROPORTION_KIND>>`, `<<_dv_amount_class,DV_AMOUNT>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*numerator*: `Real`
+|*numerator*: `link:/releases/BASE/{rm_release}/foundation_types.html#_real_class[Real^]`
 a|Numerator of ratio
 
 h|*1..1*
-|*denominator*: `Real`
+|*denominator*: `link:/releases/BASE/{rm_release}/foundation_types.html#_real_class[Real^]`
 a|Denominator of ratio.
 
 h|*1..1*
-|*type*: `Integer`
+|*type*: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
 a|Indicates semantic type of proportion, including percent, unitary etc.
 
 h|*0..1*
-|*precision*: `Integer`
+|*precision*: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
 a|Precision  to  which  the  `_numerator_` and `_denominator_` values of  the  proportion are expressed, in terms of number  of decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places.
 
 h|*0..1 +
 (redefined)*
-|*normal_range*: `DV_INTERVAL<DV_PROPORTION>`
+|*normal_range*: `@DV_INTERVAL<DV_PROPORTION>@`
 a|Optional normal range.
 
 h|*0..1 +
 (redefined)*
-|*other_reference_ranges*: `List<REFERENCE_RANGE<DV_PROPORTION>>`
+|*other_reference_ranges*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<@REFERENCE_RANGE<DV_PROPORTION>@>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
 h|*Functions*
 ^h|*Signature*
@@ -50,75 +50,75 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*magnitude* (): `Real`
+|*magnitude* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_real_class[Real^]`
 a|Effective magnitude represented by ratio.
 
 h|*1..1*
-|*is_integral* (): `Boolean`
+|*is_integral* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if the `_numerator_` and `_denominator_` values are integers, i.e. if `_precision_` is 0.
 
 h|*1..1 +
 (redefined)*
-|*add* _alias_ "+" ( +
-other: `DV_PROPORTION[1]` +
-): `DV_PROPORTION`
+|*add* __alias__ "+" ( +
+other: `<<_dv_proportion_class,DV_PROPORTION>>[1]` +
+): `<<_dv_proportion_class,DV_PROPORTION>>`
 a|Sum of two strictly comparable proportions.
 
 h|*1..1 +
 (redefined)*
-|*subtract* _alias_ "-" ( +
-other: `DV_PROPORTION[1]` +
-): `DV_PROPORTION`
+|*subtract* __alias__ "-" ( +
+other: `<<_dv_proportion_class,DV_PROPORTION>>[1]` +
+): `<<_dv_proportion_class,DV_PROPORTION>>`
 a|Difference between two strictly comparable proportions.
 
 h|*1..1 +
 (effected)*
 |*is_equal* ( +
-other: `DV_PROPORTION[1]` +
-): `Boolean`
+other: `<<_dv_proportion_class,DV_PROPORTION>>[1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Return True if this `DV_AMOUNT` is considered equal to `_other_`.
 
 h|*1..1 +
 (redefined)*
-|*multiply* _alias_ "&#42;" ( +
-factor: `Real[1]` +
-): `DV_PROPORTION`
+|*multiply* __alias__ "&#42;" ( +
+factor: `link:/releases/BASE/{rm_release}/foundation_types.html#_real_class[Real^][1]` +
+): `<<_dv_proportion_class,DV_PROPORTION>>`
 a|Product of this Proportion and `_factor_`.
 
 h|*1..1 +
 (effected)*
-|*less_than* _alias_ "<" ( +
-other: `DV_PROPORTION[1]` +
-): `Boolean` +
+|*less_than* __alias__ "<" ( +
+other: `<<_dv_proportion_class,DV_PROPORTION>>[1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
-_Post_result_: `Result = magnitude < other.magnitude`
+__Post_result__: `Result = magnitude < other.magnitude`
 a|True if this Proportion is less than  `_other_`. Only valid if `_is_strictly_comparable_to()_` is True.
 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `DV_ORDERED[1]` +
-): `Boolean`
+other: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Return True if the `_type_` of this proportion is the same as the `_type_` of `_other_`.
 
 h|*Invariants*
-2+a|_Type_validity_: `valid_proportion_kind (type)`
+2+a|__Type_validity__: `valid_proportion_kind (type)`
 
 h|
-2+a|_Precision_validity_: `precision = 0 implies is_integral`
+2+a|__Precision_validity__: `precision = 0 implies is_integral`
 
 h|
-2+a|_Is_integral_validity_: `is_integral implies (numerator.floor = numerator and denominator.floor = denominator)`
+2+a|__Is_integral_validity__: `is_integral implies (numerator.floor = numerator and denominator.floor = denominator)`
 
 h|
-2+a|_Fraction_validity_: `(type = pk_fraction or type = pk_integer_fraction) implies is_integral`
+2+a|__Fraction_validity__: `(type = pk_fraction or type = pk_integer_fraction) implies is_integral`
 
 h|
-2+a|_Unitary_validity_: `type = pk_unitary implies denominator = 1`
+2+a|__Unitary_validity__: `type = pk_unitary implies denominator = 1`
 
 h|
-2+a|_Percent_validity_: `type = pk_percent implies denominator = 100`
+2+a|__Percent_validity__: `type = pk_percent implies denominator = 100`
 
 h|
-2+a|_Valid_denominator_: `denominator /= 0.0`
+2+a|__Valid_denominator__: `denominator /= 0.0`
 |===

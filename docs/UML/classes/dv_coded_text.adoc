@@ -13,13 +13,13 @@ Since `DV_CODED_TEXT` is a subtype of `DV_TEXT`, it can be used in place of it, 
 Misuse: If the intention is to represent a term code attached in some way to a fragment of plain text, `DV_CODED_TEXT` should not be used; instead use a `DV_TEXT` and a `TERM_MAPPING` to a `CODE_PHRASE`.
 
 h|*Inherit*
-2+|`DV_TEXT`
+2+|`<<_dv_text_class,DV_TEXT>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*defining_code*: `CODE_PHRASE`
+|*defining_code*: `<<_code_phrase_class,CODE_PHRASE>>`
 a|The term of which the  `_value_` attribute is the textual rendition (i.e. rubric).
 |===

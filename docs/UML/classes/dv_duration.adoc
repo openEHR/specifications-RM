@@ -15,7 +15,7 @@ Used for recording the duration of something in the real world, particularly whe
 Misuse: Durations cannot be used to represent points in time, or intervals of time.
 
 h|*Inherit*
-2+|`DV_AMOUNT`, `Iso8601_duration`
+2+|`<<_dv_amount_class,DV_AMOUNT>>`, `link:/releases/BASE/{rm_release}/foundation_types.html#_iso8601_duration_class[Iso8601_duration^]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -23,7 +23,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*value*: `String`
+|*value*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
 a|ISO8601 duration string.
 h|*Functions*
 ^h|*Signature*
@@ -31,51 +31,51 @@ h|*Functions*
 
 h|*1..1 +
 (redefined)*
-|*add* _alias_ "+" ( +
-other: `DV_DURATION[1]` +
-): `DV_DURATION`
+|*add* __alias__ "+" ( +
+other: `<<_dv_duration_class,DV_DURATION>>[1]` +
+): `<<_dv_duration_class,DV_DURATION>>`
 a|Sum of this Duration and `_other_`.
 
 h|*1..1 +
 (redefined)*
-|*subtract* _alias_ "-" ( +
-other: `DV_DURATION[1]` +
-): `DV_DURATION`
+|*subtract* __alias__ "-" ( +
+other: `<<_dv_duration_class,DV_DURATION>>[1]` +
+): `<<_dv_duration_class,DV_DURATION>>`
 a|Difference of this Duration and `_other_`.
 
 h|*1..1 +
 (redefined)*
-|*multiply* _alias_ "&#42;" ( +
-factor: `Real[1]` +
-): `DV_DURATION`
+|*multiply* __alias__ "&#42;" ( +
+factor: `link:/releases/BASE/{rm_release}/foundation_types.html#_real_class[Real^][1]` +
+): `<<_dv_duration_class,DV_DURATION>>`
 a|Product of this Duration and `_factor_`.
 
 h|*1..1 +
 (effected)*
-|*less_than* _alias_ "<" ( +
-other: `DV_DURATION[1]` +
-): `Boolean` +
+|*less_than* __alias__ "<" ( +
+other: `<<_dv_duration_class,DV_DURATION>>[1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
-_Post_result_: `Result = magnitude < other.magnitude`
+__Post_result__: `Result = magnitude < other.magnitude`
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `DV_DURATION[1]` +
-): `Boolean`
+other: `<<_dv_duration_class,DV_DURATION>>[1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True, for any two Durations.
 
 h|*1..1 +
 (redefined)*
-|*negative* _alias_ "-" (): `DV_DURATION`
+|*negative* __alias__ "-" (): `<<_dv_duration_class,DV_DURATION>>`
 a|Negated version of current duration, representing a time prior to some origin point, or a negative age (e.g. so-called 'adjusted age' of premature infant).
 
 h|*1..1 +
 (effected)*
-|*magnitude* (): `Double`
+|*magnitude* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_double_class[Double^]`
 a|Numeric value of the duration as a number of seconds. Computed using the method `_to_seconds()_` inherited from `Iso8601_duration`.
 
 h|*Invariants*
-2+a|_Value_valid_: `valid_iso8601_duration (value)`
+2+a|__Value_valid__: `valid_iso8601_duration (value)`
 |===

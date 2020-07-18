@@ -13,62 +13,62 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*system_id*: `HIER_OBJECT_ID`
+|*system_id*: `link:/releases/BASE/{rm_release}/base_types.html#_hier_object_id_class[HIER_OBJECT_ID^]`
 a|The identifier of the logical EHR management system in which this EHR was created.
 
 h|*1..1*
-|*ehr_id*: `HIER_OBJECT_ID`
+|*ehr_id*: `link:/releases/BASE/{rm_release}/base_types.html#_hier_object_id_class[HIER_OBJECT_ID^]`
 a|The unique identifier of this EHR.
 
 NOTE: is is strongly recommended that a UUID always be used for this field.
 
 h|*0..1*
-|*contributions*: `List<OBJECT_REF>`
+|*contributions*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]>`
 a|List of contributions causing changes to this EHR. Each contribution contains a list of versions, which may include references to any number of `VERSION` instances, i.e. items of type `VERSIONED_COMPOSITION` and `VERSIONED_FOLDER`.
 
 h|*1..1*
-|*ehr_status*: `OBJECT_REF`
+|*ehr_status*: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]`
 a|Reference to `EHR_STATUS` object for this EHR.
 
 h|*1..1*
-|*ehr_access*: `OBJECT_REF`
+|*ehr_access*: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]`
 a|Reference to `EHR_ACCESS` object for this EHR.
 
 h|*0..1*
-|*compositions*: `List<OBJECT_REF>`
+|*compositions*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]>`
 a|Master list of all Versioned Composition references in this EHR.
 
 h|*0..1*
-|*directory*: `OBJECT_REF`
+|*directory*: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]`
 a|Optional directory structure for this EHR.
 
 h|*1..1*
-|*time_created*: `DV_DATE_TIME`
+|*time_created*: `link:/releases/RM/{rm_release}/data_types.html#_dv_date_time_class[DV_DATE_TIME^]`
 a|Time of creation of the EHR.
 
 h|*0..1*
-|*folders*: `List<OBJECT_REF>`
+|*folders*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]>`
 a|Optional additional Folder structures for this EHR.
 
 h|*0..1*
-|*tags*: `List<OBJECT_REF>`
+|*tags*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]>`
 a|Optional list of tags associated with this EHR. Tag `_target_` values can only be within the same EHR.
 
 h|*Invariants*
-2+a|_Contributions_valid_: `for_all c in contributions &#124; c.type.is_equal("CONTRIBUTION")`
+2+a|__Contributions_valid__: `for_all c in contributions &#124; c.type.is_equal("CONTRIBUTION")`
 
 h|
-2+a|_Ehr_access_valid_: `ehr_access.type.is_equal ("VERSIONED_EHR_ACCESS")`
+2+a|__Ehr_access_valid__: `ehr_access.type.is_equal ("VERSIONED_EHR_ACCESS")`
 
 h|
-2+a|_Ehr_status_valid_: `ehr_status.type.is_equal("VERSIONED_EHR_STATUS")`
+2+a|__Ehr_status_valid__: `ehr_status.type.is_equal("VERSIONED_EHR_STATUS")`
 
 h|
-2+a|_Compositions_valid_: `for_all c in compositions &#124; c.type.is_equal ("VERSIONED_COMPOSITION")`
+2+a|__Compositions_valid__: `for_all c in compositions &#124; c.type.is_equal ("VERSIONED_COMPOSITION")`
 
 h|
-2+a|_Directory_valid_: `directory /= Void implies directory.type.is_equal ("VERSIONED_FOLDER")`
+2+a|__Directory_valid__: `directory /= Void implies directory.type.is_equal ("VERSIONED_FOLDER")`
 
 h|
-2+a|_Folders_valid_: `for_all f in folders &#124; f.type.is_equal("VERSIONED_FOLDER")`
+2+a|__Folders_valid__: `for_all f in folders &#124; f.type.is_equal("VERSIONED_FOLDER")`
 |===

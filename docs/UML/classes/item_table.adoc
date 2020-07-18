@@ -15,83 +15,83 @@ Used for representing any data which is logically a table of values, such as blo
 Misuse: Not to be used for time-based data, which should be represented with the temporal class `HISTORY`. The table may be empty.
 
 h|*Inherit*
-2+|`ITEM_STRUCTURE`
+2+|`<<_item_structure_class,ITEM_STRUCTURE>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*rows*: `List<CLUSTER>`
+|*rows*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<<<_cluster_class,CLUSTER>>>`
 a|Physical representation of the table as a list of `CLUSTERs`, each containing the data of one row of the table.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*row_count* (): `Integer`
+|*row_count* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
 a|Number of rows in the table.
 
 h|*1..1*
-|*column_count* (): `Integer`
+|*column_count* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
 a|Return number of columns in the table.
 
 h|*0..1*
-|*row_names* (): `List<DV_TEXT>`
+|*row_names* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/RM/{rm_release}/data_types.html#_dv_text_class[DV_TEXT^]>`
 a|Return set of row names.
 
 h|*0..1*
-|*column_names* (): `List<DV_TEXT>`
+|*column_names* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/RM/{rm_release}/data_types.html#_dv_text_class[DV_TEXT^]>`
 a|Return set of column names.
 
 h|*1..1*
 |*ith_row* ( +
-i: `Integer[1]` +
-): `CLUSTER`
+i: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^][1]` +
+): `<<_cluster_class,CLUSTER>>`
 a|Return i-th row.
 
 h|*1..1*
 |*has_row_with_name* ( +
-a_key: `String[1]` +
-): `Boolean`
+a_key: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^][1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Return `True` if there is a column with name = `_a_key_`.
 
 h|*1..1*
 |*has_column_with_name* ( +
-a_key: `String[1]` +
-): `Boolean`
+a_key: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^][1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Return `True` if there is a column with name = `_a_key_`.
 
 h|*1..1*
 |*named_row* ( +
-a_key: `String[1]` +
-): `CLUSTER`
+a_key: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^][1]` +
+): `<<_cluster_class,CLUSTER>>`
 a|Return row with name = `_a_key_`.
 
 h|*1..1*
 |*has_row_with_key* ( +
-keys: `List<String>[0..1]` +
-): `Boolean`
+keys: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]>[0..1]` +
+): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Return `True` if there is a row with key `_keys_`.
 
 h|*1..1*
 |*row_with_key* ( +
-keys: `List<String>[0..1]` +
-): `CLUSTER`
+keys: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]>[0..1]` +
+): `<<_cluster_class,CLUSTER>>`
 a|Return rows with particular keys.
 
 h|*1..1*
 |*element_at_cell_ij* ( +
-i: `Integer[1]`, +
-j: `Integer[1]` +
-): `ELEMENT`
+i: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^][1]`, +
+j: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^][1]` +
+): `<<_element_class,ELEMENT>>`
 a|Return cell at a particular location.
 
 h|*1..1 +
 (redefined)*
-|*as_hierarchy* (): `CLUSTER`
+|*as_hierarchy* (): `<<_cluster_class,CLUSTER>>`
 a|Generate a CEN EN13606-compatible hierarchy consisting of a single `CLUSTER` containing the `CLUSTERs` representing the columns of this table.
 
 h|*Invariants*
-2+a|_Valid_structure_: `rows.for_all (items.for_all (instance_of ("ELEMENT")))`
+2+a|__Valid_structure__: `rows.for_all (items.for_all (instance_of ("ELEMENT")))`
 |===
