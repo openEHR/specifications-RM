@@ -5266,7 +5266,7 @@ two deviations from ISO 8601 are supported, the first, to allow a negative sign,
 (redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>ISO8601 duration string.</p>
+<p>ISO8601 duration string, including described deviations to support negative values and weeks.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5331,7 +5331,10 @@ other: <code><a href="#_dv_duration_class">DV_DURATION</a>[1]</code><br>
 (redefined)</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>negative</strong> <em>alias</em> "-" (): <code><a href="#_dv_duration_class">DV_DURATION</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Negated version of current duration, representing a time prior to some origin point, or a negative age (e.g. so-called 'adjusted age' of premature infant).</p>
+<p>Negated version of current duration.</p>
+</div>
+<div class="paragraph">
+<p>Assuming the current duration is positive, the negated version represents a time prior to some origin point, or a negative age (e.g. so-called 'adjusted age' of premature infant).</p>
 </div></div></td>
 </tr>
 <tr>
