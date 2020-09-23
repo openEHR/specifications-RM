@@ -13,8 +13,8 @@ In this figure, the parts of the EHR are as follows:
 * _EHR_: the root object, identified by a globally unique EHR identifier;
 * _EHR_access (versioned)_: an object containing access control settings for the record;
 * _EHR_status (versioned)_: an object containing various status and control information, optionally including the identifier of the subject (i.e. patient) currently associated with the record;
-* _Directory (versioned)_: an optional hierarchical structure of Folders that can be used to logically organise Compositions in a global directory;
 * _Folders (versioned)_: additional optional hierarchical folder structures that can be used to logically organise Compositions within purpose-specific directories;
+* _directory_: reference to first folder structure, for compatibility with pre-Release 1.1.0 systems;
 * _Compositions (versioned)_: the containers of all clinical and administrative content of the record;
 * _Contributions_: the change-set records for every change made to the health record; each Contribution references a set of one or more Versions of any of the versioned items in the record that were committed or attested together by a user to an EHR system.
 
@@ -98,19 +98,19 @@ Over time, the number of event Compositions is likely to far outstrip the number
 
 Compositions may be classified as _episodic_ if they contain information relevant to an ongoing care situation spanning sigificant time, such as pregnancy and birth, major surgery and recovery etc. During a specific episode of care, Event Compositions will still be used to record normal clinical events, particularly routine observations. However, assessments, summaries and care plans specific to the condition being treated may be committed in Compositions with `_category_` set to `episodic` to indicate that they should be treated as having a persistent-like quality i.e updated as as single instance source-of-truth, but only maintained as such for a defined period or set of conditions and not for the entire life of the patient. An example might be a Problem list which is maintained as a continuously updated single instance during a hospital admission but only for the duration of that admission. If the patient is re-admitted, a new instance of an Episodic Composition is then created and continually updated for that admission.
 
-=== Directory and Folders
+=== Folders
 
-As Compositions accumulate over time in the EHR, they form a long-term patient history. The `_directory_` and `_folders_` structures can be used in the EHR to index Compositions using one or more versioned hierarchies of Folders. In the openEHR model, *Folder structures do not contain Compositions, only references*. More than one Folder can therefore refer to the same Composition or other target object.
+As Compositions accumulate over time in the EHR, they form a long-term patient history. The `_folders_` structures can be used in the EHR to index Compositions using one or more versioned hierarchies of `FOLDER` objects. In the openEHR model, *Folder structures do not contain Compositions, only references to them*. _More than one Folder can therefore refer to the same Composition_ or other target object. If `_folders_` is not Void, the `_directory_` attribute always contains a reference to the first member, for backward compatibility with pre-Release 1.1.0 systems.
 
-The `_directory_` was part of the initial design of the openEHR EHR in which a single Folder hierarchy per EHR was expected to suffice. With implementation experience, the utility of more than one versioned Folder hierarchy became apparent, and the `_folders_` attribute was added.
+Structurally, each reference in `_folders_` points to a logical tree of `FOLDER` objects each potentially containing references to `COMPOSITIONs`, or possibly just more `FOLDERS`. *Each such tree is versioned*, i.e. each version of one folder tree contains a modified version of the previous state of the tree. Folder trees consist of `FOLDER` objects, which inherit from the `LOCATABALE`, enabling archetypes to be used to define specific folder tree structures. Within a Folder archetype, the `_details_` attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).
 
-Structurally, the Folder hierarchy in `_directory_` is identical to each hierarchy in `_folders_` in its general form, i.e. each is a logical tree of named `FOLDER` objects each potentially containing references to `COMPOSITIONs`. Practically, since the `_directory_` hierarchy is a singleton per EHR, it is considered as a shared object for all users (human and software) of the EHR over its lifetime, whereas each Folder hierarchy in `_folders_` may be created, maintained and used by different users, e.g. different hospital departments, or different parts of the health system.
+The `_directory_` reference may be considered _by convention_ as referring to a folder hierarchy that is _shared by all users of the EHR_ to which it is attached, e.g. all medical specialities, departments or settings. It might thus be used to represent episodes. In this case, the other Folder hierarchies referred to by `_folders_` may be created, maintained and used by different departments, specialities etc. However, completely different usage of the folder structures is possible. Use of Folder archetypes should be considered for communicating the intended usage in a particular system.
 
-In the case of the `_directory_` hierarchy, Folders may be added contemporaneously or after the fact of recording of referenced Compositions. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. In the case of the multiple Folder hierarchies in `_folders_`, entirely new hierarchies may be added at any time, including much later than the creation of the data to which they refer.
+In any Folder hierarchy, regardless of specific use, Folders may be _added or removed contemporaneously or subsequently_ to the committal of the referenced Compositions, including after substantial time has passed. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. Similarly, at any time, an entirely new Folder hierarchy may be added, which will be referenced by a new member of the `EHR._folders_` attribute.
 
-Semantically, Folders may be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped, and within Folder archetypes, the `_details_` attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).
+Semantically, Folders may be used to manage a simple classification of Compositions, e.g into Event and Persistent, or they might be used to create categories based on episodes or other groupings of Compositions. 
 
-A `_directory_` structure showing Folders referencing Compositions is shown below, in which the following Folders are used:
+A Folder structure containing references to Compositions is shown below, in which the following Folders are used:
 
 * *Persistent compositions*: compositions containing information which is valid in the long term;
 * *Diabetes*: compositions relating to diabetic care, arranged in sub-folders;
@@ -127,7 +127,7 @@ This structure separates out Compositions on the basis of likely access by appli
 
 Neither the Folder names nor the Composition names illustrated above are part of the openEHR EHR reference model: all such details are provided by archetypes; hence, EHR structures based on completely different conceptions of division of information, or even different types of medicine are equally possible.
 
-The Folder hierarchy in the `_directory_` attribute, and in each member of the `_folders_` attribute, is maintained in its own versioned object, ensuring that changes to the indexing structure are versioned over time in the same way as changes to the EHR content itself.
+The Folder hierarchy in each member of the `_folders_` attribute is maintained in its own versioned object, ensuring that changes to the indexing structure are versioned over time in the same way as changes to the EHR content itself.
 
 === Tagging of EHR Content
 

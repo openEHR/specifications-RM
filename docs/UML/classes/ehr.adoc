@@ -40,7 +40,7 @@ a|Master list of all Versioned Composition references in this EHR.
 
 h|*0..1*
 |*directory*: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]`
-a|Optional directory structure for this EHR.
+a|Optional directory structure for this EHR. If present, this is a reference to the first member of `_folders_`.
 
 h|*1..1*
 |*time_created*: `link:/releases/RM/{rm_release}/data_types.html#_dv_date_time_class[DV_DATE_TIME^]`
@@ -48,7 +48,7 @@ a|Time of creation of the EHR.
 
 h|*0..1*
 |*folders*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]>`
-a|Optional additional Folder structures for this EHR.
+a|Optional additional Folder structures for this EHR. If set, the `_directory_` attribute refers to the first member.
 
 h|*0..1*
 |*tags*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]>`
@@ -70,5 +70,8 @@ h|
 2+a|__Directory_valid__: `directory /= Void implies directory.type.is_equal ("VERSIONED_FOLDER")`
 
 h|
-2+a|__Folders_valid__: `for_all f in folders &#124; f.type.is_equal("VERSIONED_FOLDER")`
+2+a|__Folders_valid__: `folders /= Void implies for_all f in folders &#124; f.type.is_equal("VERSIONED_FOLDER")`
+
+h|
+2+a|__Directory_in_folders__: `folders /= Void implies folders.item(1) = directory`
 |===

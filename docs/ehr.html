@@ -76,7 +76,7 @@
 <li><a href="#_episodic_compositions">4.2.4.3. Episodic Compositions</a></li>
 </ul>
 </li>
-<li><a href="#_directory_and_folders">4.2.5. Directory and Folders</a></li>
+<li><a href="#_folders">4.2.5. Folders</a></li>
 <li><a href="#_tagging_of_ehr_content">4.2.6. Tagging of EHR Content</a></li>
 </ul>
 </li>
@@ -335,18 +335,10 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-87" target="_blank" rel="noopener">SPECRM-87</a>: Support tags (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-265" target="_blank" rel="noopener">SPECPR-265</a>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
- B Næss,<br>
- M Polajnar</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>27 Apr 2020</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-55" target="_blank" rel="noopener">SPECRM-55</a>. Add <code><em>folders</em>:LIST&lt;OBJECT_REF&gt;</code> on <code>EHR</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-55" target="_blank" rel="noopener">SPECRM-55</a>. Add <code><em>folders</em>:LIST&lt;OBJECT_REF&gt;</code> on <code>EHR</code>; make <code><em>directory</em></code> refer to first member of <code><em>folders</em></code>. See <a href="#_folders">Section 4.2.5</a>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">B Naess,<br>
  S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">27 Apr 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Sep 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1592,10 +1584,10 @@
 <p><em>EHR_status (versioned)</em>: an object containing various status and control information, optionally including the identifier of the subject (i.e. patient) currently associated with the record;</p>
 </li>
 <li>
-<p><em>Directory (versioned)</em>: an optional hierarchical structure of Folders that can be used to logically organise Compositions in a global directory;</p>
+<p><em>Folders (versioned)</em>: additional optional hierarchical folder structures that can be used to logically organise Compositions within purpose-specific directories;</p>
 </li>
 <li>
-<p><em>Folders (versioned)</em>: additional optional hierarchical folder structures that can be used to logically organise Compositions within purpose-specific directories;</p>
+<p><em>directory</em>: reference to first folder structure, for compatibility with pre-Release 1.1.0 systems;</p>
 </li>
 <li>
 <p><em>Compositions (versioned)</em>: the containers of all clinical and administrative content of the record;</p>
@@ -1762,24 +1754,24 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_directory_and_folders"><a class="anchor" href="#_directory_and_folders"></a>4.2.5. Directory and Folders</h4>
+<h4 id="_folders"><a class="anchor" href="#_folders"></a>4.2.5. Folders</h4>
 <div class="paragraph">
-<p>As Compositions accumulate over time in the EHR, they form a long-term patient history. The <code><em>directory</em></code> and <code><em>folders</em></code> structures can be used in the EHR to index Compositions using one or more versioned hierarchies of Folders. In the openEHR model, <strong>Folder structures do not contain Compositions, only references</strong>. More than one Folder can therefore refer to the same Composition or other target object.</p>
+<p>As Compositions accumulate over time in the EHR, they form a long-term patient history. The <code><em>folders</em></code> structures can be used in the EHR to index Compositions using one or more versioned hierarchies of <code>FOLDER</code> objects. In the openEHR model, <strong>Folder structures do not contain Compositions, only references to them</strong>. <em>More than one Folder can therefore refer to the same Composition</em> or other target object. If <code><em>folders</em></code> is not Void, the <code><em>directory</em></code> attribute always contains a reference to the first member, for backward compatibility with pre-Release 1.1.0 systems.</p>
 </div>
 <div class="paragraph">
-<p>The <code><em>directory</em></code> was part of the initial design of the openEHR EHR in which a single Folder hierarchy per EHR was expected to suffice. With implementation experience, the utility of more than one versioned Folder hierarchy became apparent, and the <code><em>folders</em></code> attribute was added.</p>
+<p>Structurally, each reference in <code><em>folders</em></code> points to a logical tree of <code>FOLDER</code> objects each potentially containing references to <code>COMPOSITIONs</code>, or possibly just more <code>FOLDERS</code>. <strong>Each such tree is versioned</strong>, i.e. each version of one folder tree contains a modified version of the previous state of the tree. Folder trees consist of <code>FOLDER</code> objects, which inherit from the <code>LOCATABALE</code>, enabling archetypes to be used to define specific folder tree structures. Within a Folder archetype, the <code><em>details</em></code> attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).</p>
 </div>
 <div class="paragraph">
-<p>Structurally, the Folder hierarchy in <code><em>directory</em></code> is identical to each hierarchy in <code><em>folders</em></code> in its general form, i.e. each is a logical tree of named <code>FOLDER</code> objects each potentially containing references to <code>COMPOSITIONs</code>. Practically, since the <code><em>directory</em></code> hierarchy is a singleton per EHR, it is considered as a shared object for all users (human and software) of the EHR over its lifetime, whereas each Folder hierarchy in <code><em>folders</em></code> may be created, maintained and used by different users, e.g. different hospital departments, or different parts of the health system.</p>
+<p>The <code><em>directory</em></code> reference may be considered <em>by convention</em> as referring to a folder hierarchy that is <em>shared by all users of the EHR</em> to which it is attached, e.g. all medical specialities, departments or settings. It might thus be used to represent episodes. In this case, the other Folder hierarchies referred to by <code><em>folders</em></code> may be created, maintained and used by different departments, specialities etc. However, completely different usage of the folder structures is possible. Use of Folder archetypes should be considered for communicating the intended usage in a particular system.</p>
 </div>
 <div class="paragraph">
-<p>In the case of the <code><em>directory</em></code> hierarchy, Folders may be added contemporaneously or after the fact of recording of referenced Compositions. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. In the case of the multiple Folder hierarchies in <code><em>folders</em></code>, entirely new hierarchies may be added at any time, including much later than the creation of the data to which they refer.</p>
+<p>In any Folder hierarchy, regardless of specific use, Folders may be <em>added or removed contemporaneously or subsequently</em> to the committal of the referenced Compositions, including after substantial time has passed. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. Similarly, at any time, an entirely new Folder hierarchy may be added, which will be referenced by a new member of the <code>EHR.<em>folders</em></code> attribute.</p>
 </div>
 <div class="paragraph">
-<p>Semantically, Folders may be used to manage a simple classification of Compositions, e.g into event and persistent, or they might be used to create numerous categories, based on episodes or other groupings of Compositions. Folder structures can be archetyped, and within Folder archetypes, the <code><em>details</em></code> attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).</p>
+<p>Semantically, Folders may be used to manage a simple classification of Compositions, e.g into Event and Persistent, or they might be used to create categories based on episodes or other groupings of Compositions.</p>
 </div>
 <div class="paragraph">
-<p>A <code><em>directory</em></code> structure showing Folders referencing Compositions is shown below, in which the following Folders are used:</p>
+<p>A Folder structure containing references to Compositions is shown below, in which the following Folders are used:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1820,7 +1812,7 @@
 <p>Neither the Folder names nor the Composition names illustrated above are part of the openEHR EHR reference model: all such details are provided by archetypes; hence, EHR structures based on completely different conceptions of division of information, or even different types of medicine are equally possible.</p>
 </div>
 <div class="paragraph">
-<p>The Folder hierarchy in the <code><em>directory</em></code> attribute, and in each member of the <code><em>folders</em></code> attribute, is maintained in its own versioned object, ensuring that changes to the indexing structure are versioned over time in the same way as changes to the EHR content itself.</p>
+<p>The Folder hierarchy in each member of the <code><em>folders</em></code> attribute is maintained in its own versioned object, ensuring that changes to the indexing structure are versioned over time in the same way as changes to the EHR content itself.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2202,7 +2194,7 @@ is is strongly recommended that a UUID always be used for this field.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>directory</strong>: <code><a href="/releases/BASE/latest/base_types.html#_object_ref_class" target="_blank" rel="noopener">OBJECT_REF</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Optional directory structure for this EHR.</p>
+<p>Optional directory structure for this EHR. If present, this is a reference to the first member of <code><em>folders</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2216,7 +2208,7 @@ is is strongly recommended that a UUID always be used for this field.
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>folders</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/base_types.html#_object_ref_class">OBJECT_REF</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Optional additional Folder structures for this EHR.</p>
+<p>Optional additional Folder structures for this EHR. If set, the <code><em>directory</em></code> attribute refers to the first member.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2259,7 +2251,13 @@ is is strongly recommended that a UUID always be used for this field.
 <tr>
 <th class="tableblock halign-center valign-top"></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p><em>Folders_valid</em>: <code>for_all f in folders &#124; f.type.is_equal("VERSIONED_FOLDER")</code></p>
+<p><em>Folders_valid</em>: <code>folders /= Void implies for_all f in folders &#124; f.type.is_equal("VERSIONED_FOLDER")</code></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Directory_in_folders</em>: <code>folders /= Void implies folders.item(1) = directory</code></p>
 </div></div></td>
 </tr>
 </tbody>
