@@ -129,18 +129,6 @@ Neither the Folder names nor the Composition names illustrated above are part of
 
 The Folder hierarchy in each member of the `_folders_` attribute is maintained in its own versioned object, ensuring that changes to the indexing structure are versioned over time in the same way as changes to the EHR content itself.
 
-=== Tagging of EHR Content
-
-Items in the EHR may be tagged using openEHR _tags_, which are lightweight annotations that may be used to thematically classify previously committed data for convenient subsequent retrieval. They are described in detail in the {openehr_rm_common}#_tags_package[Common IM Tags section^].
-
-Tags are associated with an EHR via the `EHR._tags_` attribute, and have no direct association with the objects they annotate. This has the following consequences:
-
-* they may be added at any time with respect to the commit time of the content they annotate, including much later;
-* they do not constitute part of the content they annotate;
-* accordingly, where they annotate versioned content, they do not cause re-versioning of the content.
-
-The primary use of tags post-creation is in querying, and their use is supported directly in the {openehr_query_aql}[openEHR AQL query language^] such that a query mentioning a tag (either by key, or key/value pair if applicable) will return all items of any RM type annotated by the tag in question.
-
 == Change Control in the EHR
 
 Given an EHR in which there is an EHR Access object, EHR Status object, Event and Persistent Compositions, and possibly a directory structure, the general model of update of the EHR is that any of these might be created and/or modified during an update. The simplest, most common case is the creation of a single contact Composition. Another common case will be the creation of an Event Composition, and modification of one or more Persistent Compositions, e.g. due to facts learned in the consultation about family history, or due to prescription of new medications. Other types of updates include corrections to existing Compositions, and acquisition of Compositions from another site such as a hospital. Any of these updates might also include a change to the folder structure, or the moving of existing Compositions to other Folders. Naturally these scenarios depend on a structure of the record including event and persistent compositions, and a folder structure. In the extreme, an EHR consisting only of event Compositions and no Folders will experience only the creation of a single Composition for most updates, with acquisitions being the exception. Less often, updates will be made to the EHR Access and EHR Status objects, according to the management and access control needs of the patient and health care providers.
