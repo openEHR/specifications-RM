@@ -10,7 +10,7 @@ image::{uml_diagrams_uri}/RM-ehr-packages.svg[id=ehr_packages, align="center"]
 
 The packages are as follows:
 
-* `ehr`: this package contains the top level structure, the EHR, which consists of an `EHR_ACCESS` object, an `EHR_STATUS` object, versioned data containers in the form of `VERSIONED_COMPOSITIONs`, optionally indexed by a hierarchical directory of `FOLDERs`. A collection of `CONTRIBUTIONs` which document the changes to the EHR over time is also included.
+* `ehr`: this package contains the top level structure, the EHR, which consists of an `EHR_ACCESS` object, an `EHR_STATUS` object, versioned data containers in the form of `VERSIONED_COMPOSITIONs`, optionally indexed by one or more hierarchical directory of `FOLDERs`. A collection of `CONTRIBUTIONs` which document the changes to the EHR over time is also included.
 * `composition`: the Composition is the EHR’s top level "data container", and is described by the `COMPOSITION` class.
 * `content`: this package contains the Navigation and Entry packages, whose classes describe the structure and semantics of the contents of Compositions in the health record.
 ** `navigation`: the `SECTION` class provides a navigational structure to the record, similar to "headings" in the paper record. `ENTRYs` and other `SECTIONs` can appear under `SECTIONs`. 
