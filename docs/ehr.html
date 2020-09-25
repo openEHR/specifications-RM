@@ -1522,7 +1522,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p><code>ehr</code>: this package contains the top level structure, the EHR, which consists of an <code>EHR_ACCESS</code> object, an <code>EHR_STATUS</code> object, versioned data containers in the form of <code>VERSIONED_COMPOSITIONs</code>, optionally indexed by a hierarchical directory of <code>FOLDERs</code>. A collection of <code>CONTRIBUTIONs</code> which document the changes to the EHR over time is also included.</p>
+<p><code>ehr</code>: this package contains the top level structure, the EHR, which consists of an <code>EHR_ACCESS</code> object, an <code>EHR_STATUS</code> object, versioned data containers in the form of <code>VERSIONED_COMPOSITIONs</code>, optionally indexed by one or more hierarchical <code>FOLDER</code> structures. A collection of <code>CONTRIBUTIONs</code> which document the changes to the EHR over time is also included.</p>
 </li>
 <li>
 <p><code>composition</code>: the Composition is the EHR’s top level "data container", and is described by the <code>COMPOSITION</code> class.</p>
@@ -1583,10 +1583,7 @@
 <p><em>EHR_status (versioned)</em>: an object containing various status and control information, optionally including the identifier of the subject (i.e. patient) currently associated with the record;</p>
 </li>
 <li>
-<p><em>Folders (versioned)</em>: additional optional hierarchical folder structures that can be used to logically organise Compositions within purpose-specific directories;</p>
-</li>
-<li>
-<p><em>directory</em>: reference to first folder structure, for compatibility with pre-Release 1.1.0 systems;</p>
+<p><em>Folders (versioned)</em>: optional hierarchical folder structures that can be used to logically index Compositions;</p>
 </li>
 <li>
 <p><em>Compositions (versioned)</em>: the containers of all clinical and administrative content of the record;</p>
@@ -1761,7 +1758,7 @@
 <p>Structurally, each reference in <code><em>folders</em></code> points to a logical tree of <code>FOLDER</code> objects each potentially containing references to <code>COMPOSITIONs</code>, or possibly just more <code>FOLDERS</code>. <strong>Each such tree is versioned</strong>, i.e. each version of one folder tree contains a modified version of the previous state of the tree. Folder trees consist of <code>FOLDER</code> objects, which inherit from the <code>LOCATABALE</code>, enabling archetypes to be used to define specific folder tree structures. Within a Folder archetype, the <code><em>details</em></code> attribute may be configured to contain meta-data specific to the purpose of the Folder (tree).</p>
 </div>
 <div class="paragraph">
-<p>The <code><em>directory</em></code> reference may be considered <em>by convention</em> as referring to a folder hierarchy that is <em>shared by all users of the EHR</em> to which it is attached, e.g. all medical specialities, departments or settings. It might thus be used to represent episodes. In this case, the other Folder hierarchies referred to by <code><em>folders</em></code> may be created, maintained and used by different departments, specialities etc. However, completely different usage of the folder structures is possible. Use of Folder archetypes should be considered for communicating the intended usage in a particular system.</p>
+<p>The <code><em>directory</em></code> reference may be considered <em>by convention</em> as referring to a folder hierarchy that is <em>shared by all users of the EHR</em> to which it is attached, e.g. all medical specialities, departments or settings. It might thus be used to represent episodes. In this case, the other Folder hierarchies referred to by <code><em>folders</em></code> might be created, maintained and used by different departments, specialities etc. However, completely different usage of the folder structures is possible. Use of Folder archetypes should be considered for communicating the intended usage in a particular system.</p>
 </div>
 <div class="paragraph">
 <p>In any Folder hierarchy, regardless of specific use, Folders may be <em>added or removed contemporaneously or subsequently</em> to the committal of the referenced Compositions, including after substantial time has passed. Contemporaneous additions would normally be included in the same Contribution as the referenced Compositions. Similarly, at any time, an entirely new Folder hierarchy may be added, which will be referenced by a new member of the <code>EHR.<em>folders</em></code> attribute.</p>
@@ -1802,7 +1799,7 @@
 <div class="content">
 <img src="ehr/diagrams/folders_for_indexing.svg" alt="folders for indexing">
 </div>
-<div class="title">Figure 6. Using the EHR directory to index Compositions</div>
+<div class="title">Figure 6. Using Folders to index Compositions in the EHR</div>
 </div>
 <div class="paragraph">
 <p>This structure separates out Compositions on the basis of likely access by applications. Persistent Compositions remain relevant, usually for the patient lifetime,  consequently need to be quickly accessible by numerous applications views. Event Compositions contain information whose relevance may fade quickly (e.g. vital signs measurements) or which are effectively indexed by various persistent compositions (e.g. diagnoses). They are indexed in this example by a Folder structure that makes it easy to find Compositions on the basis of problem type (diabetes etc), and then by type of visit.</p>
@@ -1818,7 +1815,7 @@
 <div class="sect2">
 <h3 id="_change_control_in_the_ehr"><a class="anchor" href="#_change_control_in_the_ehr"></a>4.3. Change Control in the EHR</h3>
 <div class="paragraph">
-<p>Given an EHR in which there is an EHR Access object, EHR Status object, Event and Persistent Compositions, and possibly a directory structure, the general model of update of the EHR is that any of these might be created and/or modified during an update. The simplest, most common case is the creation of a single contact Composition. Another common case will be the creation of an Event Composition, and modification of one or more Persistent Compositions, e.g. due to facts learned in the consultation about family history, or due to prescription of new medications. Other types of updates include corrections to existing Compositions, and acquisition of Compositions from another site such as a hospital. Any of these updates might also include a change to the folder structure, or the moving of existing Compositions to other Folders. Naturally these scenarios depend on a structure of the record including event and persistent compositions, and a folder structure. In the extreme, an EHR consisting only of event Compositions and no Folders will experience only the creation of a single Composition for most updates, with acquisitions being the exception. Less often, updates will be made to the EHR Access and EHR Status objects, according to the management and access control needs of the patient and health care providers.</p>
+<p>Given an EHR in which there is an EHR Access object, EHR Status object, Event and Persistent Compositions, and possibly hierarchical Folders structures, the general model of update of the EHR is that any of these might be created and/or modified during an update. The simplest, most common case is the creation of a single contact Composition. Another common case will be the creation of an Event Composition, and modification of one or more Persistent Compositions, e.g. due to facts learned in the consultation about family history, or due to prescription of new medications. Other types of updates include corrections to existing Compositions, and acquisition of Compositions from another site such as a hospital. Any of these updates might also include a change to the folder structure, or the moving of existing Compositions to other Folders. Naturally these scenarios depend on a structure of the record including event and persistent compositions, and a folder structure. In the extreme, an EHR consisting only of event Compositions and no Folders will experience only the creation of a single Composition for most updates, with acquisitions being the exception. Less often, updates will be made to the EHR Access and EHR Status objects, according to the management and access control needs of the patient and health care providers.</p>
 </div>
 <div class="paragraph">
 <p>In general, the following requirements must always be met, regardless of the particular changes made at any one time:</p>
@@ -2008,7 +2005,7 @@ is is strongly recommended that a UUID always be used for the <code><em>ehr_id</
 <div class="sect2">
 <h3 id="_ehr_active_status"><a class="anchor" href="#_ehr_active_status"></a>4.5. EHR Active Status</h3>
 <div class="paragraph">
-<p>The <code>EHR_STATUS.<em>is_modifiable</em></code> attribute is used to indicate whether <em>the contents of an EHR</em> are modifiable, and is set to <code>True</code> if the EHR is considered <em>active</em>. An EHR&#8217;s 'contents' consist of everything other than the <code>EHR_STATUS</code> object, i.e. its Compositions (Versioned objects referred to by the <code><em>compositions</em></code> attribute), its Directory (Versioned objects referred to by the <code><em>directory</em></code> attribute) and any other content that may be added in later releases of this specification. An active EHR is used within a given EHR system as the primary patient record for a subject. An EHR may be deactivated in circumstances such as the following:</p>
+<p>The <code>EHR_STATUS.<em>is_modifiable</em></code> attribute is used to indicate whether <em>the contents of an EHR</em> are modifiable, and is set to <code>True</code> if the EHR is considered <em>active</em>. An EHR&#8217;s 'contents' consist of everything other than the <code>EHR_STATUS</code> object, i.e. its Compositions (Versioned objects referred to by the <code><em>compositions</em></code> attribute), its hierarchical Folders (Versioned objects referred to by the <code><em>folders</em></code> attribute) and any other content that may be added in later releases of this specification. An active EHR is used within a given EHR system as the primary patient record for a subject. An EHR may be deactivated in circumstances such as the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4868,7 +4865,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-23 17:03:49 +0100
+Last updated 2020-09-23 17:13:44 +0100
 </div>
 </div>
 </body>
