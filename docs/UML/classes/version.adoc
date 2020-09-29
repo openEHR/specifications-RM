@@ -13,11 +13,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*contribution*: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]`
+|*contribution*: `link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^]`
 a|Contribution in which this version was added.
 
 h|*0..1*
-|*signature*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
+|*signature*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|OpenPGP digital signature or digest of content committed in this Version.
 
 h|*1..1*
@@ -29,12 +29,12 @@ h|*Functions*
 
 h|*1..1 +
 (abstract)*
-|*uid* (): `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^]`
+|*uid* (): `link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^]`
 a|Unique identifier of this `VERSION`, in the form of an `{object_id, a version_tree_id, creating_system_id}` triple, where the `_object_id_` has the same value as the containing `VERSIONED_OBJECT _uid_`.
 
 h|*1..1 +
 (abstract)*
-|*preceding_version_uid* (): `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^]`
+|*preceding_version_uid* (): `link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^]`
 a|Unique identifier of the version of which this version is a modification; Void if this is the first version.
 
 h|*1..1 +
@@ -49,19 +49,19 @@ h|*1..1 +
 a|Lifecycle state of this version; coded by openEHR vocabulary `version lifecycle state`.
 
 h|*1..1*
-|*canonical_form* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
+|*canonical_form* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|A canonical serial form of this Version, suitable for generating reliable hashes and signatures.
 Canonical form of Version object, created by serialising all attributes except
 signature.
 
 h|*1..1*
-|*owner_id* (): `link:/releases/BASE/{rm_release}/base_types.html#_hier_object_id_class[HIER_OBJECT_ID^]` +
+|*owner_id* (): `link:/releases/BASE/{base_release}/base_types.html#_hier_object_id_class[HIER_OBJECT_ID^]` +
  +
 __Post__: `Result.value.is_equal (uid.object_id.value)`
 a|Copy of the owning `VERSIONED_OBJECT._uid_` value; extracted from the local `_uid_` property's `_object_id_`.
 
 h|*1..1*
-|*is_branch* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*is_branch* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if this Version represents a branch. Derived from `_uid_` attribute.
 
 h|*Invariants*

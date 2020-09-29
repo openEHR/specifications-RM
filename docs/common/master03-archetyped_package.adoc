@@ -9,9 +9,10 @@ The `archetyped` package defines the core types `PATHABLE`, `LOCATABLE`, `ARCHET
 image::{uml_diagrams_uri}/RM-common.archetyped.svg[id=archetyped_package, align="center"]
 
 === The PATHABLE Class
+
 The `PATHABLE` class defines the pathing capabilities used by nearly all classes in the openEHR reference model, mostly via inheritance of `LOCATABLE`. The defining characteristics of `PATHABLE` objects are that they can locate child objects using paths, and they know their parent object in a compositional hierarchy. The `_parent_` feature is defined as abstract in the model, and may be implemented in any way convenient.
 
-A number of functions provide the path functionality, of which `item_at_path()` and `items_at_path()` are the key functions. The former returns an item corresponding to a unique path, i.e. a path that resolves against the data structure to a single node. The latter returns a list of items corresponding to a non-unique path. These functions can be used safely using the following pattern, but can also be used without checking the validity of paths, if this is known a priori in the code anyway.
+A number of functions provide the path functionality, of which `_item_at_path()_` and `_items_at_path()_` are the key functions. The former returns an item corresponding to a unique path, i.e. a path that resolves against the data structure to a single node. The latter returns a list of items corresponding to a non-unique path. These functions can be used safely using the following pattern, but can also be used without checking the validity of paths, if this is known a priori in the code anyway.
 
 [source, java]
 ----
@@ -28,6 +29,7 @@ if path_exists (a_path) {
 ----
 
 === The LOCATABLE Class
+
 Most classes in the openEHR reference model inherit from the `LOCATABLE` class, which defines the idea of 'locatability in an archetyped structure'. `LOCATABLE` defines a runtime name and an `_archetype_node_id_`. The `_archetype_node_id_` is the standardised semantic code for a node and comes from the corresponding node in the archetype used to create the data. The only exception is at archetype root points in data, where `_archetype_node_id_` carries the archetype identifier in string form rather than an interior node id from an archetype. `LOCATABLE` also provides the attribute `_archetype_details_`, which is non-Void for archetype root points in data, and carries meta-data relevant to root points. The `_name_` attribute carries a name created at runtime. The 'meaning' of any node is derived formally from the archetype by obtaining the text value for the `_archetype_node_id_` code from the archetype `ontology` section, in the language required.
 
 The `_name_` and `_archetype_node_id_` valuesin a `LOCATABLE` instance are often the same semantically, but may differ. For example, in "problem/SOAP" Sections (i.e. headings), the name of a section at the problem level might be "diabetes", but its meaning might be "problem". The default value for `_name_` should be assumed to be the text value in the local language for the `_archetype_node_id_` code on the node in question, unless explicitly set otherwise.

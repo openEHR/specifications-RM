@@ -13,7 +13,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*include_all_versions*: `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*include_all_versions*: `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if all versions of each item in the Extract are included.
 
 h|*0..1*
@@ -21,11 +21,11 @@ h|*0..1*
 a|Specifies commit time interval of items to source repository to include in Extract. By default, only latest versions whose commit times fall in the range are included. If include_all_versions is True, then the range includes all versions committed within the interval.
 
 h|*1..1*
-|*include_revision_history*: `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*include_revision_history*: `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if revision histories of the items in the Extract are included. If included, it is always the full revision history.
 
 h|*1..1*
-|*include_data*: `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*include_data*: `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|`True` if the data of items matched by the content spec should be included. This is the default. If `False`, only revision history is included in serialised versions. Turning this option on in openEHR systems causes `X_VERSIONED_OBJECTs` to have `_revision_history_` set, but versions Void. Useful for interrogating a server without having to look at any content data. In other systems it may or may not have a sensible meaning.
 
 h|*Invariants*

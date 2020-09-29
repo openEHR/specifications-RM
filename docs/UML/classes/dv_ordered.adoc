@@ -11,7 +11,7 @@ h|*Description*
 Data value types which are to be used as limits in the `DV_INTERVAL<T>` class must inherit from this class, and implement the function `_is_strictly_comparable_to()_` to ensure that instances compare meaningfully. For example, instances of `DV_QUANTITY` can only be compared if they measure the same kind of physical quantity.
 
 h|*Inherit*
-2+|`<<_data_value_class,DATA_VALUE>>`, `link:/releases/BASE/{rm_release}/foundation_types.html#_ordered_class[Ordered^]`
+2+|`<<_data_value_class,DATA_VALUE>>`, `link:/releases/BASE/{base_release}/foundation_types.html#_ordered_class[Ordered^]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -26,7 +26,7 @@ h|*0..1*
 a|Optional normal range.
 
 h|*0..1*
-|*other_reference_ranges*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<<<_reference_range_class,REFERENCE_RANGE>>>`
+|*other_reference_ranges*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_reference_range_class,REFERENCE_RANGE>>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
 h|*Functions*
 ^h|*Signature*
@@ -36,15 +36,15 @@ h|*1..1 +
 (abstract)*
 |*is_strictly_comparable_to* ( +
 other: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Test if two instances are strictly comparable. Effected in descendants.
 
 h|*1..1*
-|*is_simple* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*is_simple* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if this quantity has no reference ranges.
 
 h|*1..1*
-|*is_normal* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
+|*is_normal* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
 __Pre__: `normal_range /= Void or normal_status /= Void` +
 __Post_range__: `normal_range /= Void implies Result = normal_range.has (self)` +
@@ -55,7 +55,7 @@ h|*1..1 +
 (effected)*
 |*less_than* __alias__ "<" ( +
 other: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)`
 a|True if this Ordered object is less than `_other_`. Redefined in descendants.

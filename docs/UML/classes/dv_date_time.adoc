@@ -11,7 +11,7 @@ h|*Description*
 Used for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a `HISTORY` in an `OBSERVATION` which is only partially known.
 
 h|*Inherit*
-2+|`<<_dv_temporal_class,DV_TEMPORAL>>`, `link:/releases/BASE/{rm_release}/foundation_types.html#_iso8601_date_time_class[Iso8601_date_time^]`
+2+|`<<_dv_temporal_class,DV_TEMPORAL>>`, `link:/releases/BASE/{base_release}/foundation_types.html#_iso8601_date_time_class[Iso8601_date_time^]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -19,7 +19,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*value*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
+|*value*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|ISO8601 date/time string.
 h|*Functions*
 ^h|*Signature*
@@ -27,7 +27,7 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*magnitude* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_double_class[double^]`
+|*magnitude* (): `link:/releases/BASE/{base_release}/foundation_types.html#_double_class[double^]`
 a|Numeric value of the date/time as seconds since the calendar origin date/time `0001-01-01T00:00:00Z`.
 
 h|*1..1 +
@@ -55,7 +55,7 @@ h|*1..1 +
 (effected)*
 |*less_than* __alias__ "<" ( +
 other: `<<_dv_date_time_class,DV_DATE_TIME>>[1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
 __Post_result__: `Result = magnitude > other.magnitude`
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
@@ -64,7 +64,7 @@ h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
 other: `<<_dv_date_time_class,DV_DATE_TIME>>[1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True, for any two Date/times.
 
 h|*Invariants*

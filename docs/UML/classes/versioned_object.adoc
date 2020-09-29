@@ -13,11 +13,11 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*uid*: `link:/releases/BASE/{rm_release}/base_types.html#_hier_object_id_class[HIER_OBJECT_ID^]`
+|*uid*: `link:/releases/BASE/{base_release}/base_types.html#_hier_object_id_class[HIER_OBJECT_ID^]`
 a|Unique identifier of this version container in the form of a UID with no extension. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the  virtual version tree.
 
 h|*1..1*
-|*owner_id*: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^]`
+|*owner_id*: `link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^]`
 a|Reference to object to which this version container belongs, e.g. the id of the containing EHR or other relevant owning entity.
 
 h|*1..1*
@@ -28,32 +28,32 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*version_count* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
+|*version_count* (): `link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]`
 a|Return the total number of versions in this object.
 
 h|*1..1*
-|*all_version_ids* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^]>`
+|*all_version_ids* (): `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^]>`
 a|Return a list of ids of all versions in this object.
 
 h|*1..1*
-|*all_versions* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<<<_version_class,VERSION>>>`
+|*all_versions* (): `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_version_class,VERSION>>>`
 a|Return a list of all versions in this object.
 
 h|*1..1*
 |*has_version_at_time* ( +
 a_time: `link:/releases/RM/{rm_release}/data_types.html#_dv_date_time_class[DV_DATE_TIME^][1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if a version for time  `_a_time_` exists.
 
 h|*1..1*
 |*has_version_id* ( +
-a_version_uid: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+a_version_uid: `link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if a version with `_a_version_uid_` exists.
 
 h|*1..1*
 |*version_with_id* ( +
-a_version_uid: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]` +
+a_version_uid: `link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]` +
 ): `<<_version_class,VERSION>>` +
  +
 __Pre__: `has_version_id (a_ver_id)`
@@ -61,8 +61,8 @@ a|Return the version with `_uid_` =  `_a_version_uid_`.
 
 h|*1..1*
 |*is_original_version* ( +
-a_version_uid: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
+a_version_uid: `link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
 __Pre__: `has_version_id(a_ver_id)`
 a|True if version with `_a_version_uid_` is an `ORIGINAL_VERSION`.
@@ -95,13 +95,13 @@ a|Return the lifecycle state from the latest trunk version. Useful for determini
 
 h|*1..1*
 |*commit_original_version* ( +
-a_contribution: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^][1]`, +
-a_new_version_uid: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
-a_preceding_version_id: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
+a_contribution: `link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^][1]`, +
+a_new_version_uid: `link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
+a_preceding_version_id: `link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
 an_audit: `<<_audit_details_class,AUDIT_DETAILS>>[1]`, +
 a_lifecycle_state: `link:/releases/RM/{rm_release}/data_types.html#_dv_coded_text_class[DV_CODED_TEXT^][1]`, +
 a_data: `T[1]`, +
-signing_key: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^][1]` +
+signing_key: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^][1]` +
 ): `void` +
  +
 __Pre__: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0`
@@ -109,14 +109,14 @@ a|Add a new original version.
 
 h|*1..1*
 |*commit_original_merged_version* ( +
-a_contribution: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^][1]`, +
-a_new_version_uid: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
-a_preceding_version_id: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
+a_contribution: `link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^][1]`, +
+a_new_version_uid: `link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
+a_preceding_version_id: `link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
 an_audit: `<<_audit_details_class,AUDIT_DETAILS>>[1]`, +
 a_lifecycle_state: `link:/releases/RM/{rm_release}/data_types.html#_dv_coded_text_class[DV_CODED_TEXT^][1]`, +
 a_data: `T[1]`, +
-an_other_input_uids: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^]>[1]`, +
-signing_key: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^][1]` +
+an_other_input_uids: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^]>[1]`, +
+signing_key: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^][1]` +
 ): `void` +
  +
 __Pre__: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0`
@@ -124,7 +124,7 @@ a|Add a new original merged version. This commit function adds a parameter conta
 
 h|*1..1*
 |*commit_imported_version* ( +
-a_contribution: `link:/releases/BASE/{rm_release}/base_types.html#_object_ref_class[OBJECT_REF^][1]`, +
+a_contribution: `link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^][1]`, +
 an_audit: `<<_audit_details_class,AUDIT_DETAILS>>[1]`, +
 a_version: `<<_original_version_class,ORIGINAL_VERSION>>[1]` +
 ): `void`
@@ -133,8 +133,8 @@ a|Add a new imported version. Details of version id etc come from the `ORIGINAL_
 h|*1..1*
 |*commit_attestation* ( +
 an_attestation: `<<_attestation_class,ATTESTATION>>[1]`, +
-a_ver_id: `link:/releases/BASE/{rm_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
-signing_key: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^][1]` +
+a_ver_id: `link:/releases/BASE/{base_release}/base_types.html#_object_version_id_class[OBJECT_VERSION_ID^][1]`, +
+signing_key: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^][1]` +
 ): `void` +
  +
 __Pre__: `has_version_id(a_ver_id)

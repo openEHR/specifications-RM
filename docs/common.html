@@ -225,7 +225,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: RM latest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: RM Release-1.1.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
 </tr>
 <tr>
@@ -289,7 +289,7 @@
 </thead>
 <tbody>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0 (unreleased)</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0</strong></p></th>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.4</p></td>
@@ -1077,10 +1077,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="https://specifications.openehr.org/releases/RM/latest/support.html" target="_blank" rel="noopener">openEHR Support Information Model</a>;</p>
+<p>The <a href="https://specifications.openehr.org/releases/RM/Release-1.1.0/support.html" target="_blank" rel="noopener">openEHR Support Information Model</a>;</p>
 </li>
 <li>
-<p>The <a href="https://specifications.openehr.org/releases/RM/latest/data_types.html" target="_blank" rel="noopener">openEHR Data Types Information Model</a>.</p>
+<p>The <a href="https://specifications.openehr.org/releases/RM/Release-1.1.0/data_types.html" target="_blank" rel="noopener">openEHR Data Types Information Model</a>.</p>
 </li>
 </ul>
 </div>
@@ -1157,7 +1157,7 @@
 <p>The <code>PATHABLE</code> class defines the pathing capabilities used by nearly all classes in the openEHR reference model, mostly via inheritance of <code>LOCATABLE</code>. The defining characteristics of <code>PATHABLE</code> objects are that they can locate child objects using paths, and they know their parent object in a compositional hierarchy. The <code><em>parent</em></code> feature is defined as abstract in the model, and may be implemented in any way convenient.</p>
 </div>
 <div class="paragraph">
-<p>A number of functions provide the path functionality, of which <code>item_at_path()</code> and <code>items_at_path()</code> are the key functions. The former returns an item corresponding to a unique path, i.e. a path that resolves against the data structure to a single node. The latter returns a list of items corresponding to a non-unique path. These functions can be used safely using the following pattern, but can also be used without checking the validity of paths, if this is known a priori in the code anyway.</p>
+<p>A number of functions provide the path functionality, of which <code><em>item_at_path()</em></code> and <code><em>items_at_path()</em></code> are the key functions. The former returns an item corresponding to a unique path, i.e. a path that resolves against the data structure to a single node. The latter returns a list of items corresponding to a non-unique path. These functions can be used safely using the following pattern, but can also be used without checking the validity of paths, if this is known a priori in the code anyway.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1388,7 +1388,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <p>There is no guarantee that the granularity of information recorded in the feeder system obeys the rules of Entries, Compositions, etc. As a consquence, feeder information might correspond to any level of information defined in the openEHR models. In order to be able to record feeder audit information correctly, the model has to be able to associate an audit trail with any granularity of object. For this reason, feeder audit information is attached to the <code>LOCATABLE</code> class via the feeder_audit attribute, even though it is preferable by design to have it attached to the equivalent of Compositions or at least the equivalent of archetype entities (i.e. Compositions, Section trees and Entries). Its usual usage is to attach it to the outermost object to which it applies. In other words, in most cases, during a legacy data conversion process, the entirety of a Composition needs only one <code>FEEDER_AUDIT</code> to document its origins. In exceptional cases, where feeder data comes in in near real time, e.g. from an ICU database, separate <code>FEEDER_AUDIT</code> objects may need to be generated for parts of a Composition; each commit in this situation will create a stack of versions of one Composition, with a growing number of <code>FEEDER_AUDIT</code> objects attached to internal data nodes, each documenting the last import of data.</p>
 </div>
 <div class="paragraph">
-<p>The Feeder audit information is included as part of the data of the Composition, rather than part of the audit trail of version committal, because it remains relevant throughout the versioning of a logical Composition, i.e. when a new version is created, the feeder information is retained as part of the current version to be seen and possibly modified, just as for the rest of its content. If the main part of the content is modified so drastically as to make the feeder audit irrelevant, it too can be removed. A second consequence of feeder and legacy systems is that structural data items may need to be synthesised in order to create valid structures, even though the source system does not have them. For example, a system may have the equivalent data of Clusters and Elements (see <a href="https://specifications.openehr.org/releases/RM/latest/data_structures.html" target="_blank" rel="noopener">openEHR Data Structures IM</a> or <a href="https://www.iso.org/standard/40784.html" target="_blank" rel="noopener">ISO 13606</a>), but no Entries, Sections or other higher-level data items; these have to be synthesised during conversion. To indicate synthesis of a data node, a <code>FEEDER_AUDIT</code> instance is attached to the <code>LOCATABLE</code> in question, and its <code><em>change_type</em></code> set to "synthesised".</p>
+<p>The Feeder audit information is included as part of the data of the Composition, rather than part of the audit trail of version committal, because it remains relevant throughout the versioning of a logical Composition, i.e. when a new version is created, the feeder information is retained as part of the current version to be seen and possibly modified, just as for the rest of its content. If the main part of the content is modified so drastically as to make the feeder audit irrelevant, it too can be removed. A second consequence of feeder and legacy systems is that structural data items may need to be synthesised in order to create valid structures, even though the source system does not have them. For example, a system may have the equivalent data of Clusters and Elements (see <a href="https://specifications.openehr.org/releases/RM/Release-1.1.0/data_structures.html" target="_blank" rel="noopener">openEHR Data Structures IM</a> or <a href="https://www.iso.org/standard/40784.html" target="_blank" rel="noopener">ISO 13606</a>), but no Entries, Sections or other higher-level data items; these have to be synthesised during conversion. To indicate synthesis of a data node, a <code>FEEDER_AUDIT</code> instance is attached to the <code>LOCATABLE</code> in question, and its <code><em>change_type</em></code> set to "synthesised".</p>
 </div>
 </div>
 <div class="sect4">
@@ -1417,7 +1417,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>The PATHABLE class defines the pathing capabilities used by nearly all classes in the openEHR reference model, mostly via inheritance of LOCATABLE. The defining characteristics of PATHABLE objects are that they can locate child objects using paths, and they know their parent object in a compositional hierarchy. The parent feature is defined as abstract in the model, and may be implemented in any way convenient.</p>
+<p>The <code>PATHABLE</code> class defines the pathing capabilities used by nearly all classes in the openEHR reference model, mostly via inheritance of <code>LOCATABLE</code>. The defining characteristics of <code>PATHABLE</code> objects are that they can locate child objects using paths, and they know their parent object in a compositional hierarchy. The parent feature is defined as abstract in the model, and may be implemented in any way convenient.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1520,7 +1520,7 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>name</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Runtime name of this fragment, used to build runtime paths. This is the term provided via a clinical application or batch process to name this EHR construct: its retention in the EHR faithfully preserves the original label by which this entry was known to end users.</p>
 </div></div></td>
@@ -1570,7 +1570,7 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept</strong> (): <code><a href="/releases/RM/latest/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>concept</strong> (): <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Clinical concept of the archetype as a whole (= derived from the archetype_node_id' of the root node)</p>
 </div></div></td>
@@ -1692,21 +1692,21 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>meaning</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>meaning</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Used to describe the relationship, usually in clinical terms, such as  in response to  (the relationship between test results and an order),  follow-up to  and so on. Such relationships can represent any clinically meaningful connection between pieces of information. Values for meaning include those described in Annex C, ENV 13606 pt 2 under the categories of  generic ,  documenting and reporting ,  organisational ,  clinical ,  circumstancial , and  view management .</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The type attribute is used to indicate a clinical or domain-level meaning for the kind of link, for example  problem  or  issue . If type values are designed appropriately, they can be used by the requestor of EHR extracts to categorise links which must be followed and which can be broken when the extract is created.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_ehr_uri_class" target="_blank" rel="noopener">DV_EHR_URI</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_ehr_uri_class" target="_blank" rel="noopener">DV_EHR_URI</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The logical  to  object in the link relation, as per the linguistic sense of the meaning attribute.</p>
 </div></div></td>
@@ -1740,21 +1740,21 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>originating_system_item_ids</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/latest/data_types.html#_dv_identifier_class">DV_IDENTIFIER</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>originating_system_item_ids</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.1.0/data_types.html#_dv_identifier_class">DV_IDENTIFIER</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifiers used for the item in the originating system, e.g. filler and placer ids.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>feeder_system_item_ids</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/latest/data_types.html#_dv_identifier_class">DV_IDENTIFIER</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>feeder_system_item_ids</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.1.0/data_types.html#_dv_identifier_class">DV_IDENTIFIER</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifiers used for the item in the feeder system, where the feeder system is distinct from the originating system.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_content</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_encapsulated_class" target="_blank" rel="noopener">DV_ENCAPSULATED</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_content</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_encapsulated_class" target="_blank" rel="noopener">DV_ENCAPSULATED</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional inline inclusion of or reference to original content corresponding to the openEHR content at this node. Typically a URI reference to a document or message in a persistent store associated with the EHR.</p>
 </div></div></td>
@@ -1830,7 +1830,7 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time of handling the item. For an originating system, this will be time of creation, for an intermediate feeder system, this will be a time of accession or other time of handling, where available.</p>
 </div></div></td>
@@ -1844,7 +1844,7 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code><a href="/releases/RM/latest/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code><a href="/releases/RM/Release-1.1.0/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional attribute to carry any custom meta-data. May be archetyped.</p>
 </div></div></td>
@@ -2129,7 +2129,7 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifiers</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/latest/data_types.html#_dv_identifier_class">DV_IDENTIFIER</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identifiers</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.1.0/data_types.html#_dv_identifier_class">DV_IDENTIFIER</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>One or more formal identifiers (possibly computable).</p>
 </div></div></td>
@@ -2185,7 +2185,7 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relationship</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relationship</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Relationship of subject of this ENTRY to the subject of the record. May be coded. If it is the patient, coded as  self.</p>
 </div></div></td>
@@ -2228,14 +2228,14 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>function</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>function</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The function of the Party in this participation (note that a given party might participate in more than one way in a particular activity). This attribute should be coded, but cannot be limited to the HL7v3:ParticipationFunction vocabulary, since it is too limited and hospital-oriented.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mode</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mode</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional field for recording the 'mode' of the performer / activity interaction, e.g. present, by telephone, by email etc.</p>
 </div></div></td>
@@ -2249,7 +2249,7 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_interval_class">DV_INTERVAL<sup></a>&lt;<a href="/releases/RM/latest/data_types.html#_dv_date_time_class">DV_DATE_TIME</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_interval_class">DV_INTERVAL<sup></a>&lt;<a href="/releases/RM/Release-1.1.0/data_types.html#_dv_date_time_class">DV_DATE_TIME</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The time interval during which the participation took place, if it is used in an observational context (i.e. recording facts about the past); or the intended time interval of the participation when used in future contexts, such as EHR Instructions.</p>
 </div></div></td>
@@ -2303,21 +2303,21 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_committed</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_committed</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time of committal of the item.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>change_type</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>change_type</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Type of change. Coded using the openEHR Terminology  audit change type  group.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reason for committal. This may be used to qualify the value in the <code><em>change_type</em></code> field. For example, if the change affects only the EHR directory, this field might be used to indicate 'Folder "episode 2018-02-16" added' or similar.</p>
 </div></div></td>
@@ -2387,7 +2387,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>attested_view</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_multimedia_class" target="_blank" rel="noopener">DV_MULTIMEDIA</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>attested_view</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_multimedia_class" target="_blank" rel="noopener">DV_MULTIMEDIA</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional visual representation of content attested e.g. screen image.</p>
 </div></div></td>
@@ -2401,14 +2401,14 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/latest/data_types.html#_dv_ehr_uri_class">DV_EHR_URI</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.1.0/data_types.html#_dv_ehr_uri_class">DV_EHR_URI</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Items attested, expressed as fully qualified runtime paths to the items in question. Although not recommended, these may include fine-grained items which have been attested in some other system. Otherwise it is assumed to be for the entire VERSION with which it is associated.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>reason</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>reason</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reason of this attestation. Optionally coded by the openEHR Terminology group  attestation reason ; includes values like  authorisation ,  witness  etc.</p>
 </div></div></td>
@@ -2661,7 +2661,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code><a href="/releases/RM/latest/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code><a href="/releases/RM/Release-1.1.0/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Archetypable meta-data for <code>FOLDER</code>.</p>
 </div></div></td>
@@ -3079,7 +3079,7 @@ In the <code>incomplete</code> state however, a limited form of invalidity is al
 </ul>
 </div>
 <div class="paragraph">
-<p>In the first situation, there is not even an EHR (i.e. repository of Versioned objects for the patient in question) in the target system. A new one has to be created. As mentioned in the <a href="https://specifications.openehr.org/releases/RM/latest/ehr.html#_ehr_creation_semantics">EHR IM specification</a>, the newly created EHR should re-use the EHR identifier from the source system. This establishes the new EHR as an intentional clone of the source EHR (or more correctly, part of the family of EHRs making up the virtual EHR for that patient).</p>
+<p>In the first situation, there is not even an EHR (i.e. repository of Versioned objects for the patient in question) in the target system. A new one has to be created. As mentioned in the <a href="https://specifications.openehr.org/releases/RM/Release-1.1.0/ehr.html#_ehr_creation_semantics">EHR IM specification</a>, the newly created EHR should re-use the EHR identifier from the source system. This establishes the new EHR as an intentional clone of the source EHR (or more correctly, part of the family of EHRs making up the virtual EHR for that patient).</p>
 </div>
 <div class="paragraph">
 <p>If it is the first time any version of the item logically identified by its <code>ORIGINAL_VERSION.<em>uid.object_id()</em></code> (i.e. the <code><em>uid</em></code> of its original <code>VERSIONED_OBJECT</code>, common to all Versions in the same container) was received from the originating system, a new <code>VERSIONED_OBJECT&lt;T&gt;</code> (e.g. <code>VERSIONED_OBJECT&lt;COMPOSITION&gt;</code>) is created, with its uid set to the same value as the received <code>VERSION.<em>uid.object_id()</em></code>. This establishes the newly created <code>VERSIONED_OBJECT</code> as being a logical clone of the one from which the received <code>ORIGINAL_VERSION</code> was copied. If some version of the item had already been received, this step will have already occurred, and the requisite <code>VERSIONED_OBJECT</code> would already exist.</p>
@@ -3292,7 +3292,7 @@ In the <code>incomplete</code> state however, a limited form of invalidity is al
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time of initial creation of this versioned object.</p>
 </div></div></td>
@@ -3326,7 +3326,7 @@ In the <code>incomplete</code> state however, a limited form of invalidity is al
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_version_at_time</strong> (<br>
-a_time: <code><a href="/releases/RM/latest/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a>[1]</code><br>
+a_time: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a>[1]</code><br>
 ): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if a version for time  <code><em>a_time</em></code> exists.</p>
@@ -3366,7 +3366,7 @@ a_version_uid: <code><a href="/releases/BASE/latest/base_types.html#_object_vers
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_at_time</strong> (<br>
-a_time: <code><a href="/releases/RM/latest/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a>[1]</code><br>
+a_time: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a>[1]</code><br>
 ): <code><a href="#_version_class">VERSION</a></code><br>
 <br>
 <em>Pre</em>: <code>has_version_at_time (a_time)</code></p></td>
@@ -3397,7 +3397,7 @@ a_time: <code><a href="/releases/RM/latest/data_types.html#_dv_date_time_class" 
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong> (): <code><a href="/releases/RM/latest/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code><br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trunk_lifecycle_state</strong> (): <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code><br>
 <br>
 <em>Post</em>: <code>Result = latest_trunk_version.lifecycle_state</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -3411,7 +3411,7 @@ a_contribution: <code><a href="/releases/BASE/latest/base_types.html#_object_ref
 a_new_version_uid: <code><a href="/releases/BASE/latest/base_types.html#_object_version_id_class" target="_blank" rel="noopener">OBJECT_VERSION_ID</a>[1]</code>,<br>
 a_preceding_version_id: <code><a href="/releases/BASE/latest/base_types.html#_object_version_id_class" target="_blank" rel="noopener">OBJECT_VERSION_ID</a>[1]</code>,<br>
 an_audit: <code><a href="#_audit_details_class">AUDIT_DETAILS</a>[1]</code>,<br>
-a_lifecycle_state: <code><a href="/releases/RM/latest/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a>[1]</code>,<br>
+a_lifecycle_state: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a>[1]</code>,<br>
 a_data: <code>T[1]</code>,<br>
 signing_key: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
 ): <code>void</code><br>
@@ -3428,7 +3428,7 @@ a_contribution: <code><a href="/releases/BASE/latest/base_types.html#_object_ref
 a_new_version_uid: <code><a href="/releases/BASE/latest/base_types.html#_object_version_id_class" target="_blank" rel="noopener">OBJECT_VERSION_ID</a>[1]</code>,<br>
 a_preceding_version_id: <code><a href="/releases/BASE/latest/base_types.html#_object_version_id_class" target="_blank" rel="noopener">OBJECT_VERSION_ID</a>[1]</code>,<br>
 an_audit: <code><a href="#_audit_details_class">AUDIT_DETAILS</a>[1]</code>,<br>
-a_lifecycle_state: <code><a href="/releases/RM/latest/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a>[1]</code>,<br>
+a_lifecycle_state: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a>[1]</code>,<br>
 a_data: <code>T[1]</code>,<br>
 an_other_input_uids: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/base_types.html#_object_version_id_class">OBJECT_VERSION_ID</sup></a>&gt;[1]</code>,<br>
 signing_key: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
@@ -3575,7 +3575,7 @@ Original content of this Version.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (abstract)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code><a href="/releases/RM/latest/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of this version; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
@@ -3671,7 +3671,7 @@ signature.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of the content item in this version; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
@@ -3786,7 +3786,7 @@ signature.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (effected)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code><a href="/releases/RM/latest/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>lifecycle_state</strong> (): <code><a href="/releases/RM/Release-1.1.0/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Lifecycle state of the content item in wrapped <code>ORIGINAL_VERSION</code>, derived as <code><em>item.lifecycle_state</em></code>; coded by openEHR vocabulary <code>version lifecycle state</code>.</p>
 </div></div></td>
@@ -3948,7 +3948,7 @@ the version of the Resource package described below is used only in ADL 1.4 arch
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code><a href="/releases/RM/latest/data_types.html#_code_phrase_class" target="_blank" rel="noopener">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>original_language</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_code_phrase_class" target="_blank" rel="noopener">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.</p>
 </div></div></td>
@@ -4068,7 +4068,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="/releases/RM/latest/data_types.html#_code_phrase_class" target="_blank" rel="noopener">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_code_phrase_class" target="_blank" rel="noopener">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Language of the translation.</p>
 </div></div></td>
@@ -4236,7 +4236,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="/releases/RM/latest/data_types.html#_code_phrase_class" target="_blank" rel="noopener">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>language</strong>: <code><a href="/releases/RM/Release-1.1.0/data_types.html#_code_phrase_class" target="_blank" rel="noopener">CODE_PHRASE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The localised language in which the items in this description item are written. Coded from openEHR code set <code>languages</code>.</p>
 </div></div></td>
@@ -4343,7 +4343,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-23 17:08:34 +0100
+Last updated 2020-09-23 17:13:44 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">

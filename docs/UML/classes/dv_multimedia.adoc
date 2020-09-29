@@ -16,7 +16,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*alternate_text*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
+|*alternate_text*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Text to display in lieu of multimedia display/replay.
 
 h|*0..1*
@@ -24,7 +24,7 @@ h|*0..1*
 a|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference.
 
 h|*0..1*
-|*data*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<Byte>`
+|*data*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<Byte>`
 a|The actual data found at `_uri_`, if supplied inline.
 
 h|*1..1*
@@ -36,7 +36,7 @@ h|*0..1*
 a|Compression type, a coded value from the openEHR Integrity check code set. Void means no compression.
 
 h|*0..1*
-|*integrity_check*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<Byte>`
+|*integrity_check*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<Byte>`
 a|Binary cryptographic integrity checksum.
 
 h|*0..1*
@@ -48,26 +48,26 @@ h|*0..1*
 a|The thumbnail for this item, if one exists; mainly for graphics formats.
 
 h|*1..1*
-|*size*: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
+|*size*: `link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]`
 a|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc do not change the value of this attribute.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*is_external* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*is_external* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Computed from the value of the `_uri_` attribute: True if  the data is stored externally to the record, as indicated by `_uri_`. A copy may also be stored internally, in which case `_is_expanded_` is also true.
 
 h|*1..1*
-|*is_inline* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*is_inline* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Computed from the value of the data attribute. True if  the  data is stored  in  expanded  form, ie within the EHR itself.
 
 h|*1..1*
-|*is_compressed* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*is_compressed* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Computed from the value of the `_compression_algorithm_` attribute: True if  the  data is stored in compressed form.
 
 h|*1..1*
-|*has_integrity_check* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*has_integrity_check* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Computed from the value of the `_integrity_check_algorithm_` attribute: True if an integrity check has been computed.
 
 h|*Invariants*

@@ -15,7 +15,7 @@ Used for recording the duration of something in the real world, particularly whe
 Misuse: Durations cannot be used to represent points in time, or intervals of time.
 
 h|*Inherit*
-2+|`<<_dv_amount_class,DV_AMOUNT>>`, `link:/releases/BASE/{rm_release}/foundation_types.html#_iso8601_duration_class[Iso8601_duration^]`
+2+|`<<_dv_amount_class,DV_AMOUNT>>`, `link:/releases/BASE/{base_release}/foundation_types.html#_iso8601_duration_class[Iso8601_duration^]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -23,7 +23,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*value*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
+|*value*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|ISO8601 duration string, including described deviations to support negative values and weeks.
 h|*Functions*
 ^h|*Signature*
@@ -46,7 +46,7 @@ a|Difference of this Duration and `_other_`.
 h|*1..1 +
 (redefined)*
 |*multiply* __alias__ "&#42;" ( +
-factor: `link:/releases/BASE/{rm_release}/foundation_types.html#_real_class[Real^][1]` +
+factor: `link:/releases/BASE/{base_release}/foundation_types.html#_real_class[Real^][1]` +
 ): `<<_dv_duration_class,DV_DURATION>>`
 a|Product of this Duration and `_factor_`.
 
@@ -54,7 +54,7 @@ h|*1..1 +
 (effected)*
 |*less_than* __alias__ "<" ( +
 other: `<<_dv_duration_class,DV_DURATION>>[1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
 __Post_result__: `Result = magnitude < other.magnitude`
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
@@ -63,7 +63,7 @@ h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
 other: `<<_dv_duration_class,DV_DURATION>>[1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True, for any two Durations.
 
 h|*1..1 +
@@ -75,7 +75,7 @@ Assuming the current duration is positive, the negated version represents a time
 
 h|*1..1 +
 (effected)*
-|*magnitude* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_double_class[Double^]`
+|*magnitude* (): `link:/releases/BASE/{base_release}/foundation_types.html#_double_class[Double^]`
 a|Numeric value of the duration as a number of seconds. Computed using the method `_to_seconds()_` inherited from `Iso8601_duration`.
 
 h|*Invariants*

@@ -34,17 +34,17 @@ a|Coded term indicating the type of content required, e.g.
 Coded by openEHR Terminology group `'extract content type'`.
 
 h|*1..1*
-|*include_multimedia*: `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*include_multimedia*: `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Indicates whether in-line instances of `DV_MULTIMEDIA` in the source data are included or not.
 
 h|*1..1*
-|*priority*: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
+|*priority*: `link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]`
 a|Requested priority of this request to be handled by server. Priority schemes are likely to be local, and use values agreed by both ends.
 
 TBD: alternative is standard coded terms
 
 h|*1..1*
-|*link_depth*: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
+|*link_depth*: `link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]`
 a|Degree of links to follow emanating from content items specified for inclusion. The kind of links to follow is dependent on the type of Extract.
 
 All items at the target end of followed links at the given depth are also included in the extract; `EXTRACT_CONTENT_ITEM._is_primary_` is used to differentiate.
@@ -56,7 +56,7 @@ All items at the target end of followed links at the given depth are also includ
 * n = follow nth degree links
 
 h|*0..1*
-|*criteria*: `link:/releases/BASE/{rm_release}/foundation_types.html#_list_class[List^]<link:/releases/RM/{rm_release}/data_types.html#_dv_parsable_class[DV_PARSABLE^]>`
+|*criteria*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/RM/{rm_release}/data_types.html#_dv_parsable_class[DV_PARSABLE^]>`
 a|Queries specifying the contents of this Extract.
 
 h|*0..1*

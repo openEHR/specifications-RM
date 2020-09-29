@@ -18,16 +18,16 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*magnitude*: `link:/releases/BASE/{rm_release}/foundation_types.html#_real_class[Real^]`
+|*magnitude*: `link:/releases/BASE/{base_release}/foundation_types.html#_real_class[Real^]`
 a|Numeric magnitude of the quantity.
 
 h|*0..1*
-|*precision*: `link:/releases/BASE/{rm_release}/foundation_types.html#_integer_class[Integer^]`
+|*precision*: `link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]`
 a|Precision to which the value of the quantity is expressed, in terms of number of decimal places. The value 0 implies an integral quantity.
 The value -1 implies no limit, i.e. any number of decimal places.
 
 h|*1..1*
-|*units*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
+|*units*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Quantity units, expressed as a code or syntax string from either UCUM (the default) or the units system specified in `_units_system_`, when set.
 
 In either case, the value is the code or syntax - normally formed of standard ASCII - which is in principal not the same as the display string, although in simple cases such as 'm' (for meters) it will be.
@@ -37,13 +37,13 @@ If the `_units_display_name_` field is set, this may be used for display. If not
 Example values from UCUM: "kg/m^2", “mm[Hg]", "ms-1", "km/h".
 
 h|*0..1*
-|*units_system*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
+|*units_system*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Optional field used to specify a units system from which codes in `_units_` are defined. Value is a URI identifying a terminology containing units concepts from the  (https://www.hl7.org/fhir/terminologies-systems.html[HL7 FHIR terminologies list]).
 
 If not set, the UCUM standard (case-sensitive codes) is assumed as the units system.
 
 h|*0..1*
-|*units_display_name*: `link:/releases/BASE/{rm_release}/foundation_types.html#_string_class[String^]`
+|*units_display_name*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Optional field containing the displayable form of the `_units_` field, e.g. `'°C'`.
 
 If not set, the application environment needs to determine the displayable form.
@@ -80,7 +80,7 @@ a|Difference of this `DV_QUANTITY` and `_other_`.
 h|*1..1 +
 (redefined)*
 |*multiply* __alias__ "&#42;" ( +
-factor: `link:/releases/BASE/{rm_release}/foundation_types.html#_real_class[Real^][1]` +
+factor: `link:/releases/BASE/{base_release}/foundation_types.html#_real_class[Real^][1]` +
 ): `<<_dv_quantity_class,DV_QUANTITY>>`
 a|Product of this `DV_QUANTITY` and `_factor_`.
 
@@ -88,19 +88,19 @@ h|*1..1 +
 (effected)*
 |*less_than* __alias__ "<" ( +
 other: `<<_dv_quantity_class,DV_QUANTITY>>[1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
 __Post_result__: `Result = magnitude < other.magnitude`
 a|True if this Quantified object is less than `_other_`. Based on comparison of `_magnitude_`. Only valid if `_is_strictly_comparable_to()_` is True.
 
 h|*1..1*
-|*is_integral* (): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+|*is_integral* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if `_precision_` = 0, meaning that the `_magnitude_` is a whole number.
 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
 other: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
-): `link:/releases/BASE/{rm_release}/foundation_types.html#_boolean_class[Boolean^]`
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if this quantity and `_other_` have the same `_units_` and also `_units_system_` if it exists.
 |===
