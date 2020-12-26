@@ -389,21 +389,14 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-101" target="_blank" rel="noopener">SPECRM-101</a>: Correct error in <code><em>less_than()</em></code> description in various <code>DV_ORDERED</code> descendants: <code>DV_QUANTIFIED</code>, <code>DV_COUNT</code>, <code>DV_QUANTITY</code>, and the DV date/time types to indicate that the result is 'this object &lt; other'.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">B Verhees,<br>
- T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>26 Dec 2020</p></td>
-</tr>
-<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-96" target="_blank" rel="noopener">SPECRM-96</a>: Consistently support negative durations. Improve documentation of negated form of <code>DV_DURATION</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">H Leslie,<br>
  S Garde</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">30 Apr 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>30 Apr 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1111,9 +1104,6 @@
 </li>
 <li>
 <p>Erik Sundvall PhD, Linkoping University, Sweden</p>
-</li>
-<li>
-<p>Bert Verhees, Senior Developer, Netherlands</p>
 </li>
 <li>
 <p>Zar zar Tun, DSTC, Australia</p>
@@ -3654,7 +3644,7 @@ other: <code><a href="#_dv_quantified_class">DV_QUANTIFIED</a>[1]</code><br>
 <br>
 <em>Post_result</em>: <code>Result = magnitude &lt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this Quantified object is less than <code><em>other</em></code>, based on comparison of <code><em>magnitude</em></code>.</p>
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -3981,7 +3971,7 @@ other: <code><a href="#_dv_quantity_class">DV_QUANTITY</a>[1]</code><br>
 <br>
 <em>Post_result</em>: <code>Result = magnitude &lt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this Quantity object is less than <code><em>other</em></code>, based on comparison of <code><em>magnitude</em></code>. Only valid if <code><em>is_strictly_comparable_to()</em></code> is True.</p>
+<p>True if this Quantified object is less than <code><em>other</em></code>. Based on comparison of <code><em>magnitude</em></code>. Only valid if <code><em>is_strictly_comparable_to()</em></code> is True.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4100,7 +4090,7 @@ other: <code><a href="#_dv_count_class">DV_COUNT</a>[1]</code><br>
 <br>
 <em>Post_result</em>: <code>Result = magnitude &lt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this Quantified object is less than <code><em>other</em></code>, based on comparison of <code><em>magnitude</em></code>.</p>
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4977,7 +4967,7 @@ other: <code><a href="#_dv_date_class">DV_DATE</a>[1]</code><br>
 <br>
 <em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this date object is less than <code><em>other</em></code>, based on comparison of <code><em>magnitude()</em></code>.</p>
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5090,7 +5080,7 @@ other: <code><a href="#_dv_time_class">DV_TIME</a>[1]</code><br>
 <br>
 <em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this time object is less than <code><em>other</em></code>, based on comparison of <code><em>magnitude()</em></code>.</p>
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5203,7 +5193,7 @@ other: <code><a href="#_dv_date_time_class">DV_DATE_TIME</a>[1]</code><br>
 <br>
 <em>Post_result</em>: <code>Result = magnitude &gt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this date-time object is less than <code><em>other</em></code>, based on comparison of <code><em>magnitude()</em></code>.</p>
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -5323,7 +5313,7 @@ other: <code><a href="#_dv_duration_class">DV_DURATION</a>[1]</code><br>
 <br>
 <em>Post_result</em>: <code>Result = magnitude &lt; other.magnitude</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>True if this duration object is less than <code><em>other</em></code>, based on comparison of <code><em>magnitude()</em></code>.</p>
+<p>True if <code><em>other</em></code> is less than this Quantified object. Based on comparison of <code><em>magnitude</em></code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -6995,7 +6985,7 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-12-26 18:05:34 UTC
+Last updated 2020-09-23 17:13:44 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
