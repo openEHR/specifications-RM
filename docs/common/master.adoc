@@ -1,25 +1,8 @@
 //
 // ============================================ Asciidoc HEADER =============================================
 //
-:doctype: book
-:source-highlighter: pygments
-:pygments-style: murphy
-//:toc: macro
-:toc: left
-:toclevels: 4
-:pagenums:
-:numbered!:
-// git rid of PDF 'Chapter' labs on level 1 headings
-:chapter-label:
-:copyright_year: 2003
-//
-// HTML-only attributes
-//
-:linkcss:
-:keywords: common, EHR, reference model, openehr
-:description: openEHR Common Information Model specification
-:spec_status: STABLE
-
+include::{ref_dir}/docs/boilerplate/book_style_settings.adoc[]
+include::manifest_vars.adoc[]
 include::{ref_dir}/docs/boilerplate/global_vars.adoc[]
 
 //
@@ -28,20 +11,21 @@ include::{ref_dir}/docs/boilerplate/global_vars.adoc[]
 
 image::{openehr_logo}["openEHR logo",align="center"]
 
-= Common Information Model
+= {spec_title}
 
 include::{ref_dir}/docs/boilerplate/full_front_block.adoc[]
-include::{ref_dir}/docs/references/reference_definitions.adoc[]
 
 //
 // ============================================= Asciidoc BODY ===============================================
 //
+include::{ref_dir}/docs/references/reference_definitions.adoc[]
 
 include::master00-amendment_record.adoc[leveloffset=+1]
 
 //
 // --------------------------------------------- Preface -----------------------------------------------
 //
+
 
 == Acknowledgements
 
@@ -85,5 +69,4 @@ include::master07-resource_package.adoc[leveloffset=+1]
 :sectnums!:
 == References
 
-include::{ref_dir}/docs/references/publications_general_it.adoc[leveloffset=+1]
-include::{ref_dir}/docs/references/publications_ehealth.adoc[leveloffset=+1]
+bibliography::[]

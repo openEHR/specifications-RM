@@ -15,18 +15,27 @@ Used for recording the duration of something in the real world, particularly whe
 Misuse: Durations cannot be used to represent points in time, or intervals of time.
 
 h|*Inherit*
-2+|`DV_AMOUNT`, `Iso8601_duration`
+2+|`<<_dv_amount_class,DV_AMOUNT>>`, `link:/releases/BASE/{base_release}/foundation_types.html#_iso8601_duration_class[Iso8601_duration^]`
 
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(redefined)*
+|*value*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
+a|ISO8601 duration string
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_strictly_comparable_to* ( +
-other: `DV_ORDERED[1]` +
-): `Boolean`
+other: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|
 
 h|*Invariants*
-2+a|*_Value_valid_*: `valid_iso8601_duration (value)`
+2+a|__Value_valid__: `valid_iso8601_duration (value)`
 |===

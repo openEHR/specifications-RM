@@ -12,35 +12,35 @@ witnessing of content by senior clinical professional;
 indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result.
 
 h|*Inherit*
-2+|`AUDIT_DETAILS`
+2+|`<<_audit_details_class,AUDIT_DETAILS>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*attested_view*: `DV_MULTIMEDIA`
+|*attested_view*: `link:/releases/RM/{rm_release}/data_types.html#_dv_multimedia_class[DV_MULTIMEDIA^]`
 a|Optional visual representation of content attested e.g. screen image.
 
 h|*0..1*
-|*proof*: `String`
+|*proof*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Proof of attestation.
 
 h|*0..1*
-|*items*: `List<DV_EHR_URI>`
+|*items*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/RM/{rm_release}/data_types.html#_dv_ehr_uri_class[DV_EHR_URI^]>`
 a|Items attested, expressed as fully qualified runtime paths to the items in question. Although not recommended, these may include fine-grained items which have been attested in some other system. Otherwise it is assumed to be for the entire VERSION with which it is associated.
 
 h|*1..1*
-|*reason*: `DV_TEXT`
+|*reason*: `link:/releases/RM/{rm_release}/data_types.html#_dv_text_class[DV_TEXT^]`
 a|Reason of this attestation. Optionally coded by the openEHR Terminology group  attestation reason ; includes values like  authorisation ,  witness  etc.
 
 h|*1..1*
-|*is_pending*: `Boolean`
+|*is_pending*: `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if this attestation is outstanding; False means it has been completed.
 
 h|*Invariants*
-2+a|*_Items_valid_*: `items /= Void implies not items.is_empty`
+2+a|__Items_valid__: `items /= Void implies not items.is_empty`
 
 h|
-2+a|*_Reason_valid_*: `(reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))`
+2+a|__Reason_valid__: `(reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))`
 |===

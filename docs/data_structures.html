@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="description" content="openEHR Data Structures Information Model specification">
-<meta name="keywords" content="EHR, data structures, openehr">
+<meta name="keywords" content="EHR, data structures, reference model, openehr">
 <title>Data Structures Information Model</title>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
-<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -103,10 +102,10 @@
 </li>
 <li><a href="#_class_descriptions_4">6.2. Class Descriptions</a>
 <ul class="sectlevel3">
-<li><a href="#_history_t_class">6.2.1. HISTORY&lt;T&gt; Class</a></li>
-<li><a href="#_event_t_class">6.2.2. EVENT&lt;T&gt; Class</a></li>
-<li><a href="#_point_event_t_class">6.2.3. POINT_EVENT&lt;T&gt; Class</a></li>
-<li><a href="#_interval_event_t_class">6.2.4. INTERVAL_EVENT&lt;T&gt; Class</a></li>
+<li><a href="#_history_class">6.2.1. HISTORY Class</a></li>
+<li><a href="#_event_class">6.2.2. EVENT Class</a></li>
+<li><a href="#_point_event_class">6.2.3. POINT_EVENT Class</a></li>
+<li><a href="#_interval_event_class">6.2.4. INTERVAL_EVENT Class</a></li>
 </ul>
 </li>
 <li><a href="#_history_instance_structures">6.3. History Instance Structures</a>
@@ -117,6 +116,7 @@
 </li>
 </ul>
 </li>
+<li><a href="#_references">References</a></li>
 </ul>
 </li>
 </ul>
@@ -125,20 +125,20 @@
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
-<img src="https://specifications.openehr.org/images/openehr_logo_large.png" alt="openEHR logo">
+<img src="https://specifications.openehr.org/images/openEHR_logo_RGB.svg" alt="openEHR logo">
 </div>
 </div>
 </div>
 </div>
-<h1 id="_data_structures_information_model" class="sect0">Data Structures Information Model</h1>
+<h1 id="_data_structures_information_model" class="sect0"><a class="anchor" href="#_data_structures_information_model"></a>Data Structures Information Model</h1>
 <div class="openblock partintro">
 <div class="content">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all fit-content spread">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col>
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -155,28 +155,28 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong>: <a href="#latest_issue_date">[latest_issue_date]</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: EHR, data structures, openehr</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: EHR, data structures, reference model, openehr</p></td>
 </tr>
 </tbody>
 </table>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
-<img src="openehr_block_diagram.svg" alt="openEHR components" width="60%">
+<object type="image/svg+xml" data="openehr_block_diagram.svg" width="60%"><span class="alt">openEHR components</span></object>
 </div>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2019 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2021 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open standards-based implementations.</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit foundation, facilitating the sharing of health records by consumers and clinicians via open specifications, clinical models and open platform implementations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
@@ -192,9 +192,9 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_amendment_record">Amendment Record</h2>
+<h2 id="_amendment_record"><a class="anchor" href="#_amendment_record"></a>Amendment Record</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 54.5454%;">
@@ -476,7 +476,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_acknowledgements">Acknowledgements</h2>
+<h2 id="_acknowledgements"><a class="anchor" href="#_acknowledgements"></a>Acknowledgements</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The work reported in this paper has been funded in by the following organisations:</p>
@@ -553,7 +553,7 @@ lists, tables, trees, and history.</p>
 <div class="sect2">
 <h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
 <div class="paragraph">
-<p>This specification is in the STABLE state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/RM/Release-1.0.2/data_structures.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/RM/Release-1.0.2/data_structures.html</a>.</p>
+<p>This specification is in the STABLE state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/RM/latest/data_structures.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/RM/latest/data_structures.html</a>.</p>
 </div>
 <div class="paragraph">
 <p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
@@ -565,7 +565,7 @@ lists, tables, trees, and history.</p>
 <div class="sect2">
 <h3 id="_feedback"><a class="anchor" href="#_feedback"></a>1.4. Feedback</h3>
 <div class="paragraph">
-<p>Feedback may be provided on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org" target="_blank" rel="noopener">technical mailing list</a>.</p>
+<p>Feedback may be provided on the <a href="https://discourse.openehr.org/c/specifications/rm" target="_blank" rel="noopener">openEHR RM specifications forum</a>.</p>
 </div>
 <div class="paragraph">
 <p>Issues may be raised on the <a href="https://specifications.openehr.org/components/RM/open_issues" target="_blank" rel="noopener">specifications Problem Report tracker</a>.</p>
@@ -669,7 +669,7 @@ the <code>history</code> package. The first describes generic, path-addressable 
 describes a generic notion of linear history, for recording events in past time. The
 <code>data_structures package</code> is illustrated in the UML diagram below.</p>
 </div>
-<div id="data_structures_package" class="imageblock text-center" style="text-align: center">
+<div id="data_structures_package" class="imageblock text-center text-center">
 <div class="content">
 <img src="UML/diagrams/RM-data_structures.svg" alt="RM data structures">
 </div>
@@ -711,7 +711,7 @@ well-known attribute names:</p>
 <h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>3.2. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_data_structure_class"><a class="anchor" href="#_data_structure_class"></a>3.2.1. DATA_STRUCTURE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -724,13 +724,13 @@ well-known attribute names:</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Abstract parent class of all data structure types. Includes the as_hierarchy function which can generate the equivalent CEN EN13606 single hierarchy for each subtype&#8217;s physical representation. For example, the physical representation of an ITEM_LIST is List&lt;ELEMENT&gt;; its implementation of as_hierarchy will generate a CLUSTER containing the set of ELEMENT nodes from the list.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/Release-1.0.2/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -738,9 +738,9 @@ well-known attribute names:</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>ITEM</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code><a href="#_item_class">ITEM</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Hierarchical equivalent of the physical representation of each subtype, compatible with CEN EN 13606 structures.</p>
 </div></div></td>
 </tr>
@@ -778,7 +778,7 @@ how to read the value. A small domain termlist containing values such as "unknow
 Support Information Model.</p>
 </div>
 <div class="paragraph">
-<p>The openEHR class model for spatial structures is illustrated on the right-hand side of the figure <a href="#data_structures_package">Figure 1</a>. It
+<p>The openEHR class model for spatial structures is illustrated on the right-hand side of <a href="#_data_structures_package">[_data_structures_package]</a>. It
 should be noted that these classes (<code>ITEM_LIST</code> etc) are not equivalents of similarly named classes
 (such as <code>List&lt;T&gt;</code>) in most data structure libraries - they also include per-node <code><em>name</em></code>,
 <code><em>archetype_node_id</em></code> and leaf node value and null flavour, and path capabilities.</p>
@@ -832,7 +832,7 @@ from the openEHR list.</p>
 <h3 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>4.3. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_item_structure_class"><a class="anchor" href="#_item_structure_class"></a>4.3.1. ITEM_STRUCTURE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -845,20 +845,20 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Abstract parent class of all spatial data types.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>DATA_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_data_structure_class">DATA_STRUCTURE</a></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
 <h4 id="_item_single_class"><a class="anchor" href="#_item_single_class"></a>4.3.2. ITEM_SINGLE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -871,13 +871,13 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Logical single value data structure. Used to represent any data which is logically a single value, such as a person&#8217;s height or weight.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_item_structure_class">ITEM_STRUCTURE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -886,8 +886,8 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code><a href="#_element_class">ELEMENT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
@@ -895,9 +895,10 @@ from the openEHR list.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code><a href="#_element_class">ELEMENT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single ELEMENT.</p>
 </div></div></td>
 </tr>
@@ -906,7 +907,7 @@ from the openEHR list.</p>
 </div>
 <div class="sect3">
 <h4 id="_item_list_class"><a class="anchor" href="#_item_list_class"></a>4.3.3. ITEM_LIST Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -919,7 +920,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Logical list data structure, where each item has a value and can be referred to by a name and a positional index in the list. The list may be empty. Use Used to represent any data which is logically a list of values, such as blood pressure, most protocols, many blood tests etc.</p>
 </div>
 <div class="paragraph">
@@ -928,7 +929,7 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_item_structure_class">ITEM_STRUCTURE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -937,8 +938,8 @@ from the openEHR list.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;ELEMENT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_element_class">ELEMENT</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Physical representation of the list.</p>
 </div></div></td>
 </tr>
@@ -948,48 +949,49 @@ from the openEHR list.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_count</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_count</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Count of all items.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>names</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/data_types.html#_dv_text_class">DV_TEXT</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the names of all items.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code><a href="#_cluster_class">CLUSTER</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_item</strong> (<br>
-a_name: <code>String[1]</code><br>
-): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+a_name: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_element_class">ELEMENT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the item with name ‘a_name’.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_item</strong> (<br>
-i: <code>Integer[1]</code><br>
-): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+i: <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a>[1]</code><br>
+): <code><a href="#_element_class">ELEMENT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Retrieve the i-th item with name.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Valid_structure</em></strong>: ` items.forall (i:ITEM &#124; i.type = "ELEMENT")`</p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Valid_structure</em>: ` items.forall (i:ITEM &#124; i.type = "ELEMENT")`</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -997,7 +999,7 @@ i: <code>Integer[1]</code><br>
 </div>
 <div class="sect3">
 <h4 id="_item_table_class"><a class="anchor" href="#_item_table_class"></a>4.3.4. ITEM_TABLE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1010,7 +1012,7 @@ i: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Logical relational database style table data structure, in which columns are named and ordered with respect to each other. Implemented using Cluster-per-row encoding. Each row Cluster must have an identical number of Elements, each of which in turn must have identical names and value types in the corresponding positions in each row.</p>
 </div>
 <div class="paragraph">
@@ -1025,7 +1027,7 @@ i: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_item_structure_class">ITEM_STRUCTURE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1034,8 +1036,8 @@ i: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rows</strong>: <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>rows</strong>: <code><a href="#_cluster_class">CLUSTER</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Physical representation of the table as a list of CLUSTERs, each containing the data of one row of the table.</p>
 </div></div></td>
 </tr>
@@ -1045,86 +1047,87 @@ i: <code>Integer[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code><a href="#_cluster_class">CLUSTER</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_count</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_count</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_count</strong> (): <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_count</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_names</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/data_types.html#_dv_text_class">DV_TEXT</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_names</strong> (): <code>List&lt;DV_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>column_names</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/data_types.html#_dv_text_class">DV_TEXT</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ith_row</strong> (<br>
-i: <code>Integer[1]</code><br>
-): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+i: <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a>[1]</code><br>
+): <code><a href="#_cluster_class">CLUSTER</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_name</strong> (<br>
-a_key: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+a_key: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_column_with_name</strong> (<br>
-a_key: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+a_key: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>named_row</strong> (<br>
-a_key: <code>String[1]</code><br>
-): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+a_key: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_cluster_class">CLUSTER</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_row_with_key</strong> (<br>
-keys: <code>List&lt;String&gt;[0..1]</code><br>
-): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+keys: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>&gt;[0..1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>row_with_key</strong> (<br>
-keys: <code>List&lt;String&gt;[0..1]</code><br>
-): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+keys: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>&gt;[0..1]</code><br>
+): <code><a href="#_cluster_class">CLUSTER</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>element_at_cell_ij</strong> (<br>
 i,<br>
-j: <code>Integer[1]</code><br>
-): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+j: <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a>[1]</code><br>
+): <code><a href="#_element_class">ELEMENT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Valid_structure</em></strong>: <code>rows.for_all (items.for_all (instance_of ("ELEMENT")))</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Valid_structure</em>: <code>rows.for_all (items.for_all (instance_of ("ELEMENT")))</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1132,7 +1135,7 @@ j: <code>Integer[1]</code><br>
 </div>
 <div class="sect3">
 <h4 id="_item_tree_class"><a class="anchor" href="#_item_tree_class"></a>4.3.5. ITEM_TREE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1145,13 +1148,13 @@ j: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Logical tree data structure. The tree may be empty. Used for representing data which are logically a tree such as audiology results, microbiology results, biochemistry results.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_item_structure_class">ITEM_STRUCTURE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1160,8 +1163,8 @@ j: <code>Integer[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;ITEM&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_item_class">ITEM</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The items comprising the ITEM_TREE. Can include 0 or more CLUSTERs and/or 0 or more individual ELEMENTs.</p>
 </div></div></td>
 </tr>
@@ -1171,27 +1174,28 @@ j: <code>Integer[1]</code><br>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>has_element_path</strong> (<br>
-a_path: <code>String[1]</code><br>
-): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+a_path: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if path  a_path' is a valid leaf path.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>element_at_path</strong> (<br>
-a_path: <code>String[1]</code><br>
-): <code>ELEMENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+a_path: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a>[1]</code><br>
+): <code><a href="#_element_class">ELEMENT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Return the leaf element at the path  a_path'.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock">(redefined)</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code>CLUSTER</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_hierarchy</strong> (): <code><a href="#_cluster_class">CLUSTER</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Generate a CEN EN13606-compatible hierarchy, which is the same as the tree&#8217;s physical representation.</p>
 </div></div></td>
 </tr>
@@ -1206,7 +1210,7 @@ a_path: <code>String[1]</code><br>
 <div class="paragraph">
 <p>The figure below illustrates a <code>ITEM_SINGLE</code> instance, in both physical and logical forms.</p>
 </div>
-<div id="instance_item_single" class="imageblock text-center" style="text-align: center">
+<div id="instance_item_single" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/instance_item_single.png" alt="instance item single" width="60%">
 </div>
@@ -1218,7 +1222,7 @@ a_path: <code>String[1]</code><br>
 <div class="paragraph">
 <p>The following figure illustrates a typical <code>ITEM_LIST</code> structure, in this case for a BP protocol.</p>
 </div>
-<div id="instance_item_list" class="imageblock text-center" style="text-align: center">
+<div id="instance_item_list" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/instance_item_list.png" alt="instance item list" width="75%">
 </div>
@@ -1230,7 +1234,7 @@ a_path: <code>String[1]</code><br>
 <div class="paragraph">
 <p>The next figure illustrates a table of visual acuity test results.</p>
 </div>
-<div id="instance_item_table" class="imageblock text-center" style="text-align: center">
+<div id="instance_item_table" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/instance_item_table.png" alt="instance item table" width="70%">
 </div>
@@ -1243,7 +1247,7 @@ a_path: <code>String[1]</code><br>
 <p>The following figure illustrates te logical and physical form of an example <code>ITEM_TREE</code> instance, representing a
 biochemistry result.</p>
 </div>
-<div id="instance_item_tree" class="imageblock text-center" style="text-align: center">
+<div id="instance_item_tree" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/instance_item_tree.png" alt="instance item tree" width="70%">
 </div>
@@ -1260,7 +1264,7 @@ biochemistry result.</p>
 <h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>5.1. Overview</h3>
 <div class="paragraph">
 <p>This package contains classes for a simple hierarchical representation of any data structure, as shown
-on the lower right side of the figure <a href="#data_structures_package">Figure 1</a>. These classes are compatible with the CEN EN13606 classes of
+on the lower right side of <a href="#_data_structures_package">[_data_structures_package]</a>. These classes are compatible with the CEN EN13606 classes of
 the same names, and instances can be losslessly generated to and from EN13606 instances structures.</p>
 </div>
 </div>
@@ -1268,7 +1272,7 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 <h3 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>5.2. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_item_class"><a class="anchor" href="#_item_class"></a>5.2.1. ITEM Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1281,20 +1285,20 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>The abstract parent of CLUSTER and ELEMENT representation classes.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/Release-1.0.2/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
 <h4 id="_cluster_class"><a class="anchor" href="#_cluster_class"></a>5.2.2. CLUSTER Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1307,13 +1311,13 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>The grouping variant of ITEM, which may contain further instances of ITEM, in an ordered list.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_item_class">ITEM</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1322,8 +1326,8 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;ITEM&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_item_class">ITEM</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Ordered list of items - CLUSTER or ELEMENT objects - under this CLUSTER.</p>
 </div></div></td>
 </tr>
@@ -1332,7 +1336,7 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 </div>
 <div class="sect3">
 <h4 id="_element_class"><a class="anchor" href="#_element_class"></a>5.2.3. ELEMENT Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1345,13 +1349,13 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>The leaf variant of ITEM, to which a DATA_VALUE instance is attached.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>ITEM</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_item_class">ITEM</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1360,15 +1364,15 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>null_flavor</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>null_flavor</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Flavour of null value, e.g. indeterminate, not asked etc.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code>DATA_VALUE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>value</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_data_value_class" target="_blank" rel="noopener">DATA_VALUE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Property representing leaf value object of ELEMENT. In real data, any concrete subtype of DATA_VALUE can be used.</p>
 </div></div></td>
 </tr>
@@ -1378,28 +1382,28 @@ the same names, and instances can be losslessly generated to and from EN13606 in
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_null</strong> (): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_null</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if value logically not known, e.g. if indeterminate, not asked etc.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Is_null_valid</em></strong>: <code>is_null = (value = Void)</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Is_null_valid</em>: <code>is_null = (value = Void)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Null_flavour_indicated</em></strong>: <code>is_null xor null_flavour = Void</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Null_flavour_indicated</em>: <code>is_null xor null_flavour = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Null_flavour_valid</em></strong>: <code>is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Null_flavour_valid</em>: <code>is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1440,7 +1444,7 @@ usually delivered in averaged form potentially with additional minimum and maxim
 <div class="paragraph">
 <p>As with all other parts of the openEHR reference model, the <code>history</code> package is designed for archetyping;
 archetypes define the domain semantics of <code>HISTORY</code> instances. The <code>history</code> package is
-shown on the left of the figure <a href="#data_structures_package">Figure 1</a>.</p>
+shown on the left of <a href="#_data_structures_package">[_data_structures_package]</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_basic_semantics"><a class="anchor" href="#_basic_semantics"></a>6.1.1. Basic Semantics</h4>
@@ -1483,7 +1487,7 @@ attributes. For a periodic time-series, <code><em>period</em></code> is set to t
 True. The total duration of the History is given by the <code>HISTORY</code>.duration function. The following figure illustrates
 a number of variations in History periodicity and Event type.</p>
 </div>
-<div id="history_period" class="imageblock text-center" style="text-align: center">
+<div id="history_period" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_period.png" alt="history period" width="70%">
 </div>
@@ -1503,7 +1507,7 @@ data, the number of samples may be too voluminous for the health record, and mor
 recording in the form of summary Interval events (see below) might be desired. The diagram below illustrates
 the structure of a <code>HISTORY</code> containing <code>POINT_EVENTs</code>.</p>
 </div>
-<div id="history_bp" class="imageblock text-center" style="text-align: center">
+<div id="history_bp" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_bp.png" alt="history bp" width="70%">
 </div>
@@ -1530,7 +1534,7 @@ underlying datum over time. The next figure illustrates a History containing 2 p
 Interval events, with each pair containing maximum and mean blood pressure value structures
 for +4h and +8h timepoints (each of which consist of a systolic and diastolic value).</p>
 </div>
-<div id="history_bp_math" class="imageblock text-center" style="text-align: center">
+<div id="history_bp_math" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_bp_math.png" alt="history bp math" width="60%">
 </div>
@@ -1543,7 +1547,7 @@ pressure events, overlapped by a 24-hour event which contains the values over a 
 periods. In general a long Interval event can overlap any combination of Point or Interval events, as
 shown in the following figure.</p>
 </div>
-<div id="history_event_overlapping" class="imageblock text-center" style="text-align: center">
+<div id="history_event_overlapping" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_event_overlapping.png" alt="history event overlapping" width="60%">
 </div>
@@ -1583,7 +1587,7 @@ carries the semantic of negativity e.g. "decrease of &#8230;&#8203;.; fall of &#
 </li>
 </ul>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1628,7 +1632,7 @@ stored</th>
 </li>
 </ul>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1717,7 +1721,7 @@ details, this general approach provides a way to include hours of fine-grained d
 vital signs monitors in very little space; the data simply need to be transfomed into equivalent
 openEHR History form first.</p>
 </div>
-<div id="history_data_compression" class="imageblock text-center" style="text-align: center">
+<div id="history_data_compression" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_data_compression.png" alt="history data compression" width="70%">
 </div>
@@ -1757,7 +1761,7 @@ test. The state information for each event is, respectively (in a typical test):
 <div class="paragraph">
 <p>The History structure for this example is illustrated in the following figure.</p>
 </div>
-<div id="history_ogtt" class="imageblock text-center" style="text-align: center">
+<div id="history_ogtt" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_ogtt.png" alt="history ogtt" width="65%">
 </div>
@@ -1768,8 +1772,8 @@ test. The state information for each event is, respectively (in a typical test):
 <div class="sect2">
 <h3 id="_class_descriptions_4"><a class="anchor" href="#_class_descriptions_4"></a>6.2. Class Descriptions</h3>
 <div class="sect3">
-<h4 id="_history_t_class"><a class="anchor" href="#_history_t_class"></a>6.2.1. HISTORY&lt;T&gt; Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<h4 id="_history_class"><a class="anchor" href="#_history_class"></a>6.2.1. HISTORY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1782,13 +1786,13 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Root object of a linear history, i.e. time series structure. For a periodic series of events, period will be set, and the time of each Event in the History must correspond; i.e. the EVENT.offset must be a multiple of period for each Event. Missing events in a period History are however allowed.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>DATA_STRUCTURE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_data_structure_class">DATA_STRUCTURE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1797,36 +1801,36 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>origin</strong>: <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>origin</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time origin of this event history. The first event is not necessarily at the origin point.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>period</strong>: <code>DV_DURATION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>period</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_duration_class" target="_blank" rel="noopener">DV_DURATION</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Period between samples in this segment if periodic.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>duration</strong>: <code>DV_DURATION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>duration</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_duration_class" target="_blank" rel="noopener">DV_DURATION</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Duration of the entire History; either corresponds to the duration of all the events, and/or the duration represented by the summary, if it exists.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>summary</strong>: <code>ITEM_STRUCTURE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>summary</strong>: <code><a href="#_item_structure_class">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional summary data expressing e.g. text or image which summarises entire History.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>events</strong>: <code>List&lt;EVENT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>events</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_event_class">EVENT</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The events in the series.</p>
 </div></div></td>
 </tr>
@@ -1836,36 +1840,36 @@ test. The state information for each event is, respectively (in a typical test):
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_periodic</strong> (): <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_periodic</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Indicates whether history is periodic.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Events_valid</em></strong>: <code>(events /= Void and then not events.is_empty) or summary /= Void</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Events_valid</em>: <code>(events /= Void and then not events.is_empty) or summary /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Periodic_validity</em></strong>: <code>is_periodic xor period = Void</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Periodic_validity</em>: <code>is_periodic xor period = Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Period_consistency</em></strong>: <code>is_periodic implies events.for_all (e: EVENT &#124; e.offset. to_seconds.mod(period.to_seconds) = 0)</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Period_consistency</em>: <code>is_periodic implies events.for_all (e: EVENT &#124; e.offset. to_seconds.mod(period.to_seconds) = 0)</code></p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_event_t_class"><a class="anchor" href="#_event_t_class"></a>6.2.2. EVENT&lt;T&gt; Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<h4 id="_event_class"><a class="anchor" href="#_event_class"></a>6.2.2. EVENT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1878,13 +1882,13 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Defines the abstract notion of a single event in a series. This class is generic, allowing types to be generated which are locked to particular spatial types, such as EVENT&lt;ITEM_LIST&gt;. Subtypes express point or intveral data.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/Release-1.0.2/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1893,22 +1897,22 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time of this event. If the width is non-zero, it is the time point of the trailing edge of the event.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>state</strong>: <code>ITEM_STRUCTURE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>state</strong>: <code><a href="#_item_structure_class">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional state data for this event.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code>ITEM_STRUCTURE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code><a href="#_item_structure_class">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The data of this event.</p>
 </div></div></td>
 </tr>
@@ -1918,25 +1922,26 @@ test. The state information for each event is, respectively (in a typical test):
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>offset</strong> (): <code>DV_DURATION</code><br>
-<strong><em>Post_condition</em></strong>: <code>Result = time.diff(parent.origin)</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>offset</strong> (): <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_duration_class" target="_blank" rel="noopener">DV_DURATION</a></code><br>
+<br>
+<em>Post_condition</em>: <code>Result = time.diff(parent.origin)</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Offset of this event from origin, computed as time.diff(parent.origin).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Offset_validity1</em></strong>: <code>offset /= Void and then offset = time.diff (parent.origin)</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Offset_validity1</em>: <code>offset /= Void and then offset = time.diff (parent.origin)</code></p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_point_event_t_class"><a class="anchor" href="#_point_event_t_class"></a>6.2.3. POINT_EVENT&lt;T&gt; Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<h4 id="_point_event_class"><a class="anchor" href="#_point_event_class"></a>6.2.3. POINT_EVENT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1949,20 +1954,20 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Defines a single point event in a series.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EVENT</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_event_class">EVENT</a></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_interval_event_t_class"><a class="anchor" href="#_interval_event_t_class"></a>6.2.4. INTERVAL_EVENT&lt;T&gt; Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<h4 id="_interval_event_class"><a class="anchor" href="#_interval_event_class"></a>6.2.4. INTERVAL_EVENT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1975,13 +1980,13 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Defines a single interval event in a series.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EVENT</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_event_class">EVENT</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1990,22 +1995,22 @@ test. The state information for each event is, respectively (in a typical test):
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>width</strong>: <code>DV_DURATION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>width</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_duration_class" target="_blank" rel="noopener">DV_DURATION</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Length of the interval during which the state was true. Void if an instantaneous event.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sample_count</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sample_count</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional count of original samples to which this event corresponds.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>math_function</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>math_function</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Mathematical function of the data of this event, e.g.  maximum ,  mean  etc. Coded using openEHR Terminology group  event math function.</p>
 </div></div></td>
 </tr>
@@ -2015,22 +2020,22 @@ test. The state information for each event is, respectively (in a typical test):
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval_start_time</strong> (): <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>interval_start_time</strong> (): <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Start time of the interval of this event.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Math_function_validity</em></strong>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_event_math_function, math_function.defining_code)</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Math_function_validity</em>: <code>terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_event_math_function, math_function.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Interval_start_time_valid</em></strong>: <code>interval_start_time = time - width</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Interval_start_time_valid</em>: <code>interval_start_time = time - width</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2045,7 +2050,7 @@ test. The state information for each event is, respectively (in a typical test):
 <p>The following diagram illustrates a single weight measurement. The Event objects contain the timing information,
 which in this case is simply the time of measurement (the origin).</p>
 </div>
-<div id="history_single_sample" class="imageblock text-center" style="text-align: center">
+<div id="history_single_sample" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_single_sample.png" alt="history single sample" width="70%">
 </div>
@@ -2058,7 +2063,7 @@ which in this case is simply the time of measurement (the origin).</p>
 <p>The next figure illustrates two Interval events representing 5 minute blood pressure averages, the first at
 5 minutes' offset from an initial event and lasting 5 minutes, the second 5 minutes later.</p>
 </div>
-<div id="history_bp_series_instances" class="imageblock text-center" style="text-align: center">
+<div id="history_bp_series_instances" class="imageblock text-center text-center">
 <div class="content">
 <img src="data_structures/diagrams/history_bp_series_instances.png" alt="history bp series instances" width="70%">
 </div>
@@ -2068,10 +2073,16 @@ which in this case is simply the time of measurement (the origin).</p>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
+<div class="sectionbody">
+
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-22 16:53:12 GMT
+Last updated 2021-02-15 10:02:04 UTC
 </div>
 </div>
 </body>

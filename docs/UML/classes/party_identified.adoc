@@ -13,26 +13,26 @@ Used to describe parties where only identifiers may be known, and there is no en
 Should not be used to include patient identifying information.
 
 h|*Inherit*
-2+|`PARTY_PROXY`
+2+|`<<_party_proxy_class,PARTY_PROXY>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*name*: `String`
+|*name*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Optional human-readable name (in String form).
 
 h|*0..1*
-|*identifiers*: `List<DV_IDENTIFIER>`
+|*identifiers*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/RM/{rm_release}/data_types.html#_dv_identifier_class[DV_IDENTIFIER^]>`
 a|One or more formal identifiers (possibly computable).
 
 h|*Invariants*
-2+a|*_Basic_validity_*: `name /= Void or identifiers /= Void or external_ref /= Void`
+2+a|__Basic_validity__: `name /= Void or identifiers /= Void or external_ref /= Void`
 
 h|
-2+a|*_Name_valid_*: `name /= Void implies not name.is_empty`
+2+a|__Name_valid__: `name /= Void implies not name.is_empty`
 
 h|
-2+a|*_Identifiers_valid_*: `identifiers /= Void implies not identifiers.is_empty`
+2+a|__Identifiers_valid__: `identifiers /= Void implies not identifiers.is_empty`
 |===

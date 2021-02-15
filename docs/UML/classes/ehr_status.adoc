@@ -9,28 +9,28 @@ h|*Description*
 2+a|Single object per EHR giving various EHR-wide information.
 
 h|*Inherit*
-2+|`LOCATABLE`
+2+|`link:/releases/RM/{rm_release}/common.html#_locatable_class[LOCATABLE^]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*subject*: `PARTY_SELF`
+|*subject*: `link:/releases/RM/{rm_release}/common.html#_party_self_class[PARTY_SELF^]`
 a|The subject of this EHR. The external_ref attribute can be used to contain a direct reference to the subject in a demographic or identity service. Alternatively, the association between patients and their records may be done elsewhere for security reasons.
 
 h|*1..1*
-|*is_queryable*: `Boolean`
+|*is_queryable*: `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if this EHR should be included in population queries, i.e. if this EHR is considered active in the population.
 
 h|*1..1*
-|*is_modifiable*: `Boolean`
+|*is_modifiable*: `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if this EHR is allowed to be written to.
 
 h|*0..1*
-|*other_details*: `ITEM_STRUCTURE`
+|*other_details*: `link:/releases/RM/{rm_release}/data_structures.html#_item_structure_class[ITEM_STRUCTURE^]`
 a|Any other details of the EHR summary object, in the form of an archetyped Item_structure.
 
 h|*Invariants*
-2+a|*_Is_archetype_root_*: `is_archetype_root`
+2+a|__Is_archetype_root__: `is_archetype_root`
 |===

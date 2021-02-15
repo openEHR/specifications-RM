@@ -14,45 +14,48 @@ h|*Description*
 This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. {neg, trace, +, ++, +++} are used for leucocytes, protein, nitrites etc; for non-haemolysed blood {neg, trace, moderate}; for haemolysed blood small, moderate, large}.
 
 h|*Inherit*
-2+|`DV_ORDERED`
+2+|`<<_dv_ordered_class,DV_ORDERED>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*symbol*: `DV_CODED_TEXT`
+|*symbol*: `<<_dv_coded_text_class,DV_CODED_TEXT>>`
 a|Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  mild ,  moderate ,  severe , or even the same number series as the values, e.g.  1 ,  2 ,  3 . Codes come from archetype.
 
 h|*1..1*
-|*value*: `Integer`
+|*value*: `link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]`
 a|Value in ordered enumeration of values. Any integer value can be used.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
-|*limits* (): `DV_ORDINAL`
+h|*1..1*
+|*limits* (): `<<_dv_ordinal_class,DV_ORDINAL>>`
 a|Limits of the ordinal enumeration, to allow comparison of an ordinal
 value to its limits.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_strictly_comparable_to* ( +
-other: `DV_ORDERED[1]` +
-): `Boolean` +
-*_Post_*: `symbol.is_comparable (other.symbol) implies Result`
+other: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
+ +
+__Post__: `symbol.is_comparable (other.symbol) implies Result`
 a|
 
-h|
+h|*1..1*
 |*<* ( +
-other: `Ordered[1]` +
-): `Boolean` +
-*_Post_*: `Result = value < other.value`
+other: `link:/releases/BASE/{base_release}/foundation_types.html#_ordered_class[Ordered^][1]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
+ +
+__Post__: `Result = value < other.value`
 a|
 
 h|*Invariants*
-2+a|*_Limits_valid_*: `limits.meaning.is_equal (“limits”)`
+2+a|__Limits_valid__: `limits.meaning.is_equal (“limits”)`
 
 h|
-2+a|*_Reference_range_valid_*: `other_reference_ranges.has (limits)`
+2+a|__Reference_range_valid__: `other_reference_ranges.has (limits)`
 |===

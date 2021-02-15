@@ -9,26 +9,26 @@ h|*Description*
 2+a|Defines a single activity within an Instruction, such as a medication administration.
 
 h|*Inherit*
-2+|`LOCATABLE`
+2+|`link:/releases/RM/{rm_release}/common.html#_locatable_class[LOCATABLE^]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*timing*: `DV_PARSABLE`
+|*timing*: `link:/releases/RM/{rm_release}/data_types.html#_dv_parsable_class[DV_PARSABLE^]`
 a|Timing of the activity, in the form of a parsable string, such as an HL7 GTS or ISO8601 string.
 
 h|*1..1*
-|*action_archetype_id*: `String`
+|*action_archetype_id*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Perl-compliant regular expression pattern, enclosed in  '//' delimiters, indicating the valid archetype identifiers of archetypes for Actions corresponding to this Activity specification.
 
 Defaults to `"/.*/"`, meaning any archetype.
 
 h|*1..1*
-|*description*: `ITEM_STRUCTURE`
+|*description*: `link:/releases/RM/{rm_release}/data_structures.html#_item_structure_class[ITEM_STRUCTURE^]`
 a|Description of the activity, in the form of an archetyped structure.
 
 h|*Invariants*
-2+a|*_Action_archteype_id_valid_*: `not action_archetype_id.is_empty`
+2+a|__Action_archteype_id_valid__: `not action_archetype_id.is_empty`
 |===

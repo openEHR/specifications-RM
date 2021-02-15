@@ -11,17 +11,17 @@ h|*Description*
 DV_STATE is expressed as a String but its values are driven by archetype-defined  state machines. This provides a powerful way of capturing stateful complex processes  in simple data.
 
 h|*Inherit*
-2+|`DATA_VALUE`
+2+|`<<_data_value_class,DATA_VALUE>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*value*: `DV_CODED_TEXT`
+|*value*: `<<_dv_coded_text_class,DV_CODED_TEXT>>`
 a|The state name. State names are determined by a state/event table defined in archetypes, and coded using openEHR Terminology or local archetype terms, as specified by the archetype.
 
 h|*1..1*
-|*is_terminal*: `Boolean`
+|*is_terminal*: `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Indicates whether this state is a terminal state, such as  "aborted",  "completed" etc. from which no further transitions are possible.
 |===

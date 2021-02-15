@@ -12,13 +12,13 @@ h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
-|*is_persistent* (): `Boolean`
+h|*1..1*
+|*is_persistent* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Indicates whether this composition set is persistent; derived from first version.
 
 h|*Invariants*
-2+a|*_Archetype_node_id_valid_*: `all_versions.for_all (v &#124; v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))`
+2+a|__Archetype_node_id_valid__: `all_versions.for_all (v &#124; v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))`
 
 h|
-2+a|*_Persistent_validity_*: `all_versions.for_all (v &#124; v.is_persistent = all_versions.first.data.is_persistent)`
+2+a|__Persistent_validity__: `all_versions.for_all (v &#124; v.is_persistent = all_versions.first.data.is_persistent)`
 |===

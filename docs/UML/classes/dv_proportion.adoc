@@ -14,60 +14,61 @@ Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary
 Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) “6/24” in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations.
 
 h|*Inherit*
-2+|`PROPORTION_KIND`, `DV_AMOUNT`
+2+|`<<_proportion_kind_class,PROPORTION_KIND>>`, `<<_dv_amount_class,DV_AMOUNT>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*numerator*: `Real`
+|*numerator*: `link:/releases/BASE/{base_release}/foundation_types.html#_real_class[Real^]`
 a|Numerator of ratio
 
 h|*1..1*
-|*denominator*: `Real`
+|*denominator*: `link:/releases/BASE/{base_release}/foundation_types.html#_real_class[Real^]`
 a|Denominator of ratio.
 
 h|*1..1*
-|*type*: `Integer`
+|*type*: `link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]`
 a|Indicates semantic type of proportion, including percent, unitary etc.
 
 h|*0..1*
-|*precision*: `Integer`
+|*precision*: `link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]`
 a|Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
-|*magnitude* (): `Real`
+h|*1..1 +
+(effected)*
+|*magnitude* (): `link:/releases/BASE/{base_release}/foundation_types.html#_real_class[Real^]`
 a|Effective magnitude represented by ratio.
 
-h|
-|*is_integral* (): `Boolean`
+h|*1..1*
+|*is_integral* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if the numerator and denominator values are integers, i.e. if the precision is 0.
 
-h|
+h|*1..1*
 |*operator=* ( +
-source: `DV_PROPORTION[1]` +
-): `DV_PROPORTION`
+source: `<<_dv_proportion_class,DV_PROPORTION>>[1]` +
+): `<<_dv_proportion_class,DV_PROPORTION>>`
 a|Assignment operator
 
 h|*Invariants*
-2+a|*_Type_validity_*: `valid_proportion_kind (type)`
+2+a|__Type_validity__: `valid_proportion_kind (type)`
 
 h|
-2+a|*_Precision_validity_*: `precision = 0 implies is_integral`
+2+a|__Precision_validity__: `precision = 0 implies is_integral`
 
 h|
-2+a|*_Is_integral_validity_*: `is_integral implies (numerator.floor = numerator and denominator.floor = denominator)`
+2+a|__Is_integral_validity__: `is_integral implies (numerator.floor = numerator and denominator.floor = denominator)`
 
 h|
-2+a|*_Fraction_validity_*: `(type = pk_fraction or type = pk_integer_fraction) implies is_integral`
+2+a|__Fraction_validity__: `(type = pk_fraction or type = pk_integer_fraction) implies is_integral`
 
 h|
-2+a|*_Unitary_validity_*: `type = pk_unitary implies denominator = 1`
+2+a|__Unitary_validity__: `type = pk_unitary implies denominator = 1`
 
 h|
-2+a|*_Percent_validity_*: `type = pk_percent implies denominator = 100`
+2+a|__Percent_validity__: `type = pk_percent implies denominator = 100`
 |===

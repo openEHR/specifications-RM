@@ -9,27 +9,28 @@ h|*Description*
 2+a|Encapsulated data expressed as a parsable String. The internal model of the data item is not described in the openEHR model in common with other encapsulated types, but in this case, the form of the data is assumed to be plaintext, rather than compressed or other types of large binary data.
 
 h|*Inherit*
-2+|`DV_ENCAPSULATED`
+2+|`<<_dv_encapsulated_class,DV_ENCAPSULATED>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*value*: `String`
+|*value*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|The string, which may validly be empty in some syntaxes.
 
 h|*1..1*
-|*formalism*: `String`
+|*formalism*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Name of the formalism, e.g.  GLIF 1.0 ,  Proforma  etc.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
-|*size* (): `Integer`
+h|*1..1 +
+(effected)*
+|*size* (): `link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]`
 a|Size in bytes of value.
 
 h|*Invariants*
-2+a|*_Formalism_valid_*: `not formalism.is_empty`
+2+a|__Formalism_valid__: `not formalism.is_empty`
 |===

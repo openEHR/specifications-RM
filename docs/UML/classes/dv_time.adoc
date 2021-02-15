@@ -11,7 +11,7 @@ h|*Description*
 Used for recording real world times, rather than scientifically measured fine amounts of time. The partial form is used for approximate times of events and substance administrations.
 
 h|*Inherit*
-2+|`DV_TEMPORAL`, `Iso8601_time`
+2+|`<<_dv_temporal_class,DV_TEMPORAL>>`, `link:/releases/BASE/{base_release}/foundation_types.html#_iso8601_time_class[Iso8601_time^]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -19,46 +19,51 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*value*: `String`
+|*value*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|ISO8601 time string
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
-|*magnitude* (): `Real`
+h|*1..1 +
+(effected)*
+|*magnitude* (): `link:/releases/BASE/{base_release}/foundation_types.html#_real_class[Real^]`
 a|Numeric value of the time as seconds since the start of day.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_strictly_comparable_to* ( +
-other: `DV_ORDERED[1]` +
-): `Boolean`
+other: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Test if two instances are strictly comparable.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*add* ( +
-a_diff: `DV_AMOUNT[1]` +
-): `DV_ABSOLUTE_QUANTITY`
+a_diff: `<<_dv_amount_class,DV_AMOUNT>>[1]` +
+): `<<_dv_absolute_quantity_class,DV_ABSOLUTE_QUANTITY>>`
 a|Add a time period to this time.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*subtract* ( +
-a_diif: `DV_AMOUNT[1]` +
-): `DV_ABSOLUTE_QUANTITY`
+a_diif: `<<_dv_amount_class,DV_AMOUNT>>[1]` +
+): `<<_dv_absolute_quantity_class,DV_ABSOLUTE_QUANTITY>>`
 a|Subtract a duration from this time.
 
-h|
+h|*1..1*
 |*operator=* ( +
-source: `DV_TIME[1]` +
-): `DV_TIME`
+source: `<<_dv_time_class,DV_TIME>>[1]` +
+): `<<_dv_time_class,DV_TIME>>`
 a|
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*diff* ( +
-other: `DV_TIME[1]` +
-): `DV_DURATION`
+other: `<<_dv_time_class,DV_TIME>>[1]` +
+): `<<_dv_duration_class,DV_DURATION>>`
 a|Difference of two quantities.
 
 h|*Invariants*
-2+a|*_Value_valid_*: `valid_iso8601_time (value)`
+2+a|__Value_valid__: `valid_iso8601_time (value)`
 |===

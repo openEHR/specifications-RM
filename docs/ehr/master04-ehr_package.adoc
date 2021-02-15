@@ -17,7 +17,7 @@ In this figure, the parts of the EHR are as follows:
 * _Compositions (versioned)_: the containers of all clinical and administrative content of the record;
 * _Contributions_: the change-set records for every change made to the health record; each Contribution references a set of one or more Versions of any of the versioned items in the record that were committed or attested together by a user to an EHR system.
 
-The `ehr` package is illustrated in the figure <<rm_ehr>> below. The classes have a more or less one-to-one correspondence with the objects shown in figure <<high_level_ehr_structure>>. Each versioned object of type `XXX` is defined by a class `VERSIONED_XXX`, which is a binding of the type `XXX` to the generic type paremeter `T` in the generic type `VERSIONED_COMPOSITION` (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).
+The `ehr` package is illustrated in <<_rm_ehr>> below. The classes have a more or less one-to-one correspondence with the objects shown in <<_high_level_ehr_structure>>. Each versioned object of type `XXX` is defined by a class `VERSIONED_XXX`, which is a binding of the type `XXX` to the generic type paremeter `T` in the generic type `VERSIONED_COMPOSITION` (while such bindings do not strictly require classes of their own, they facilitate implementation in languages lacking genericity).
 
 [.text-center]
 .rm.ehr package
@@ -45,7 +45,7 @@ Other EHR-wide meta-data may be recorded in the archetyped part of this object, 
 
 === Compositions
 
-The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the Transaction concept of the GEHR project (<<GEHR_del_4>>, <<GEHR_del_7>>, <<GEHR_del_8>>, <<GEHR_del_19_20_24>>), which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the wellknown ACID characteristics of transactions <<Gray_reuter_1993>>):
+The main data of the EHR is found in its Compositions. The Composition concept in the openEHR EHR originated from the Transaction concept of the GEHR project cite:[GEHR_Del_4], cite:[GEHR_Del_7], cite:[GEHR_Del_8], cite:[GEHR1995], which was based on the concept of a unit of information corresponding to the interaction of a healthcare agent with the EHR. It was originally designed to satisfy the following needs (which include the wellknown ACID characteristics of transactions cite:[Gray_Reuter1993]):
 
 * _durability_: the need for a persistent unit of information committal in the record;
 * _atomicity_: the need for a minimal unit of integrity for clinical information, corresponding to a minimal unit for committal, transmission and security;
@@ -79,7 +79,7 @@ In a more sophisticated EHR, there is also a need to record items of long-term i
 * Social history
 * Care plan
 
-Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. For example, the meaning of the "medication list" Composition is always: this is the list of medications currently being taken by patient X. Similarly for the other persistent Composition types given above. In scientific philosophy, the kind of information recorded in a persistent Composition is known as a _continuant_ (see e.g. the KR ontology in <<Sowa_2000>>). This is in contrast with event Compositions, which do not generally record continuants, but instead record _occurrents_, i.e. things that were true or did happen but have no longevity.
+Persistent Compositions can be thought of as proxies for the state or situation of the patient - together they provide a picture of the patient at a point in time. For example, the meaning of the "medication list" Composition is always: this is the list of medications currently being taken by patient X. Similarly for the other persistent Composition types given above. In scientific philosophy, the kind of information recorded in a persistent Composition is known as a _continuant_ (see e.g. the KR ontology in citenp:[Sowa2000]). This is in contrast with event Compositions, which do not generally record continuants, but instead record _occurrents_, i.e. things that were true or did happen but have no longevity.
 
 Over time, the number of event Compositions is likely to far outstrip the number of persistent Compositions. The figure below illustrates an EHR containing persistent information as well as event information.
 
@@ -87,7 +87,7 @@ Over time, the number of event Compositions is likely to far outstrip the number
 .An EHR containing Event and Persistent Compositions
 image::{diagrams_uri}/event_persistent_ehr.png[id=event_persistent_ehr, align="center", width=80%]
 
-In any clinical session, an event composition will be created, and in many cases, persistent compositions will be modified. How this works is described below in the section <<Change Control in the EHR>>.
+In any clinical session, an event composition will be created, and in many cases, persistent compositions will be modified. How this works is described below in <<Change Control in the EHR>>.
 
 === Directory
 

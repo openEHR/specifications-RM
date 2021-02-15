@@ -12,9 +12,7 @@ to an existing service.
 .rm.demographic package
 image::{uml_diagrams_uri}/RM-demographic.svg[id=rm_demographic, align="center"]
 
-The general design is based on the scheme of party and accountability described by Fowler <<Fowler_1997>>, and
-is influenced by clinical adaptations including work done in Australia and the HL7v3 RIM <<HL7v3_ballot2>>
-(itself influenced by the Fowler models).
+The general design is based on the scheme of party and accountability described by cite:[Fowler1997], and is influenced by clinical adaptations including work done in Australia and {hl7v3}[HL7v3^] (itself influenced by the Fowler models).
 
 One of the main design criteria of the model is that it expresses attributes and relationships of demographic
 entities which exist regardless of particular clinical involvements or participations in particular
@@ -72,7 +70,7 @@ image::{diagrams_uri}/general_model.png[id=general_model, align="center", width=
 Relationships are considered directional, hence the use of the attribute names source and target, however,
 these names are otherwise neutral, and give no indication as to the meaning of the relationships,
 such as which party is responsible and which accountable (for comparison, see the demographic models
-of Fowler <<Fowler_1997>>). Accordingly, each Party involved in a relationship includes it in its relationships
+of Fowler cite:[Fowler1997]). Accordingly, each Party involved in a relationship includes it in its relationships
 list, if it is at the source end, or in the `_reverse_relationships_` list, if at the target end.
 
 The usual way to determine the directionality of a relationship between two Parties is usually by

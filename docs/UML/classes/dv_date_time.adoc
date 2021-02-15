@@ -11,7 +11,7 @@ h|*Description*
 Used for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a HISTORY in an OBSERVATION which is only partially known.
 
 h|*Inherit*
-2+|`DV_TEMPORAL`, `Iso8601_date_time`
+2+|`<<_dv_temporal_class,DV_TEMPORAL>>`, `link:/releases/BASE/{base_release}/foundation_types.html#_iso8601_date_time_class[Iso8601_date_time^]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -19,50 +19,56 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*value*: `String`
+|*value*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|ISO8601 date/time string.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|(effected)
-|*magnitude* (): `Real`
+h|*1..1 +
+(effected)*
+|*magnitude* (): `link:/releases/BASE/{base_release}/foundation_types.html#_real_class[Real^]`
 a|Numeric value of the date/time as seconds since the calendar origin point.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*is_strictly_comparable_to* ( +
-other: `DV_ORDERED[1]` +
-): `Boolean`
+other: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|Test if two instances are strictly comparable.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*add* ( +
-a_diff: `DV_AMOUNT[1]` +
-): `DV_ABSOLUTE_QUANTITY`
+a_diff: `<<_dv_amount_class,DV_AMOUNT>>[1]` +
+): `<<_dv_absolute_quantity_class,DV_ABSOLUTE_QUANTITY>>`
 a|Add a time period to this date_time.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*subtract* ( +
-a_diif: `DV_AMOUNT[1]` +
-): `DV_ABSOLUTE_QUANTITY`
+a_diif: `<<_dv_amount_class,DV_AMOUNT>>[1]` +
+): `<<_dv_absolute_quantity_class,DV_ABSOLUTE_QUANTITY>>`
 a|Subtract a time period from this date_time.
 
-h|(effected)
+h|*1..1 +
+(effected)*
 |*diff* ( +
-other: `DV_ABSOLUTE_QUANTITY[1]` +
-): `DV_AMOUNT`
+other: `<<_dv_absolute_quantity_class,DV_ABSOLUTE_QUANTITY>>[1]` +
+): `<<_dv_amount_class,DV_AMOUNT>>`
 a|Difference of two quantities.
 
-h|
+h|*1..1*
 |*operator=* ( +
-source: `DV_DATE_TIME[1]` +
-): `DV_DATE_TIME`
+source: `<<_dv_date_time_class,DV_DATE_TIME>>[1]` +
+): `<<_dv_date_time_class,DV_DATE_TIME>>`
 a|
 
-h|(redefined)
-|*as_string* (): `String`
+h|*1..1 +
+(redefined)*
+|*as_string* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|
 
 h|*Invariants*
-2+a|*_Value_valid_*: `valid_iso8601_date_time (value)`
+2+a|__Value_valid__: `valid_iso8601_date_time (value)`
 |===

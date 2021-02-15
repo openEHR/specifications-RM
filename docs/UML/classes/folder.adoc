@@ -9,20 +9,20 @@ h|*Description*
 2+a|The concept of a named folder.
 
 h|*Inherit*
-2+|`LOCATABLE`
+2+|`<<_locatable_class,LOCATABLE>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*items*: `List<OBJECT_REF>`
+|*items*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/RM/{rm_release}/support.html#_object_ref_class[OBJECT_REF^]>`
 a|The list of references to other (usually) versioned objects logically in this folder.
 
 h|*0..1*
-|*folders*: `List<FOLDER>`
+|*folders*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_folder_class,FOLDER>>>`
 a|Sub-folders of this FOLDER.
 
 h|*Invariants*
-2+a|*_Folders_valid_*: `not folders.is_empty`
+2+a|__Folders_valid__: `not folders.is_empty`
 |===

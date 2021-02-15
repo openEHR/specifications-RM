@@ -11,29 +11,29 @@ h|*Description*
 Can also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years.
 
 h|*Inherit*
-2+|`DV_AMOUNT`
+2+|`<<_dv_amount_class,DV_AMOUNT>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*magnitude*: `Real`
+|*magnitude*: `link:/releases/BASE/{base_release}/foundation_types.html#_real_class[Real^]`
 a|Numeric magnitude of the quantity.
 
 h|*0..1*
-|*precision*: `Integer`
+|*precision*: `link:/releases/BASE/{base_release}/foundation_types.html#_integer_class[Integer^]`
 a|Precision to which the value of the quantity is expressed, in terms of number of decimal places. The value 0 implies an integral quantity.
 The value -1 implies no limit, i.e. any number of decimal places.
 
 h|*1..1*
-|*units*: `String`
+|*units*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Stringified units, expressed in UCUM unit syntax, e.g. "kg/m2", “mm[Hg]", "ms-1", "km/h". Implemented accordingly in subtypes.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|
-|*is_integral* (): `Boolean`
+h|*1..1*
+|*is_integral* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|
 |===

@@ -7,7 +7,7 @@ There are broadly three sets of requirements which inform this model, as describ
 
 === Original GEHR Requirements
 
-From the European GEHR project (1992-5; <<Ingram_1995>>), the following broad requirements areas were identified:
+From the European GEHR project 1992-5 cite:[Ingram1995], the following broad requirements areas were identified:
 
 * the life-long EHR;
 * priority: Clinician / Patient interaction;
@@ -22,7 +22,7 @@ The original deliverables can be reviewed in detail at the GEHR page at CHIME, U
 
 === GEHR Australia Requirements
 
-The GEHR Australia project (1997-2001; <<GeHR_Aus_gpcg>>, <<GeHR_Aus_req>>) introduced further requirements, including:
+The GEHR Australia project (1997-2001; citenp:[GeHR_Aus_GPCG], citenp:[GeHR_Aus2001]) introduced further requirements, including:
 
 * support for clinical data structures: lists, tables, time-series etc;
 * safer information model than the original (European) GEHR: context attributes only in valid places (but still similar style);
@@ -32,23 +32,24 @@ The GEHR Australia project (1997-2001; <<GeHR_Aus_gpcg>>, <<GeHR_Aus_req>>) intr
 * XML-enabled;
 * consider compatibility with CEN 13606, Corbamed, HL7v3.
 
-GEHR Australia produced a proof of concept implementation in which clinical archetypes were developed and used. See <<Beale_2000>> for a technical description of archetypes.
+GEHR Australia produced a proof of concept implementation in which clinical archetypes were developed and used. See citenp:[Beale2000] for a technical description of archetypes.
 
 === European Synapses and SynEx Project Requirements
-Following the original Good European Health Record project the EU-funded Synapses (1996-8; <<Synapses_req_B>>) and SynEx (1998-2000; <<Sottile_1999>>) projects extended the original requirements basis of GEHR to include further requirements, as follows:
 
-* the requirements of a federation approach to unifying disparate clinical databases and EPR systems: the federated health record (FHR) <<Synapses_req_A>>; 
+Following the original Good European Health Record project the EU-funded Synapses (1996-8; citenp:[Synapses_Req_B]) and SynEx (1998-2000; citenp:[Sottile1999]) projects extended the original requirements basis of GEHR to include further requirements, as follows:
+
+* the requirements of a federation approach to unifying disparate clinical databases and EPR systems: the federated health record (FHR) cite:[Synapses_Req_A]; 
 * the need to separate a generic and domain independent high-level model for the federated health record from the (closely related) model of the meta-data which defines the domain specific health record characteristics of any given clinical specialty and any given federation of database schemata;
-* a formalism to define and communicate (share) knowledge about the semantic hierarchical organisation of an FHR, the permitted data values associated with each leaf node in a record hierarchy and any constraints on values that leaf nodes may take (the Synapses Object Dictionary) <<Synapses_odp>>;
-* the core technical requirements of and interfaces for a federation middleware service <<Synapses_req_B>>.
+* a formalism to define and communicate (share) knowledge about the semantic hierarchical organisation of an FHR, the permitted data values associated with each leaf node in a record hierarchy and any constraints on values that leaf nodes may take (the Synapses Object Dictionary, citenp:[Synapses_ODP]);
+* the core technical requirements of and interfaces for a federation middleware service cite:[Synapses_Req_B].
 
 === European EHCR Support Action Requirements
 
-This EU Support Action project ("SupA"; <<EHCR_supA_24>>, <<EHCR_supA_31_32>>, <<EHCR_supA_35>>) consolidated the requirements published by a wide range of European projects and national health informatics organisations as a Consolidated List of Requirements <<EHCR_supA_14>>.
+This EU Support Action project ('SupA'; citenp:[EHCR_supA1998], citenp:[EHCR_supA2000a], citenp:[EHCR_supA2000b]) consolidated the requirements published by a wide range of European projects and national health informatics organisations as a Consolidated List of Requirements cite:[EHCR_supA2001].
 
 === ISO EHR Requirements
 
-The above requirements publications and the recent experience of openEHR feed into the definition of a set of EHR requirements authored by ISO Technical Committee 215 (Health Informatics) - ISO TS 18308. The present draft <<ISO_18308>> has been reviewed by the authors of this document and openEHR will seek to maintain a close mapping between its information models and services and this international requirements work. The openEHR mapping to ISO 18308 can be found on the openEHR website.
+The above requirements publications and the recent experience of openEHR feed into the definition of a set of EHR requirements authored by ISO Technical Committee 215 (Health Informatics) - {iso_18308}[ISO 18308^]. This has been reviewed and a {openehr_18308}[mapping to openEHR^] developed.
 
 === openEHR Requirements
 
@@ -82,7 +83,7 @@ Implementation experience with Release 0.9 and 0.95 of openEHR has further impro
 
 === HL7 Version 3
 
-Correspondences to some parts of HL7 version 3 (ballot 5, July 2003) are also documented where possible, however, it should be understood that there are a number of difficulties with this. Firstly, while the HL7v3 Reference Information Model (RIM) - the closest HL7 artifact to an information model - provides similar data types and some related semantics, it is not intended to be a model of the EHR. In fact, it differs from the information model presented here (and for that matter most published information models) in two basic respects: a) it is an amalgam of semantics from many systems which would exist in a distributed health information environment, rather than a model of just one (the EHR); b) it is also not a model of data, but a combination of "analysis patterns" in the sense of Fowler <<Fowler_1997>> from which further specific models - subschemas - are developed by a custom process of "refinement by restriction", in order to arrive at message definitions. As a consequence, data in messages are not instances of HL7v3 RIM classes, as would be the case in other systems based on information models of the kind presented here.
+Correspondences to some parts of HL7 version 3 (ballot 5, July 2003) are also documented where possible, however, it should be understood that there are a number of difficulties with this. Firstly, while the HL7v3 Reference Information Model (RIM) - the closest HL7 artifact to an information model - provides similar data types and some related semantics, it is not intended to be a model of the EHR. In fact, it differs from the information model presented here (and for that matter most published information models) in two basic respects: a) it is an amalgam of semantics from many systems which would exist in a distributed health information environment, rather than a model of just one (the EHR); b) it is also not a model of data, but a combination of "analysis patterns" in the sense of citenp:[Fowler1997] from which further specific models - subschemas - are developed by a custom process of "refinement by restriction", in order to arrive at message definitions. As a consequence, data in messages are not instances of HL7v3 RIM classes, as would be the case in other systems based on information models of the kind presented here.
 
 Despite the differences, there are some areas that appear to be candidates for mapping, specifically the data types and terminology use, and the correspondence between openEHR Compositions and parts of the HL7 Clinical Document Architecture (CDA).
 

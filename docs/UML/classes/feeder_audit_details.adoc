@@ -13,29 +13,29 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*system_id*: `String`
+|*system_id*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Identifier of the system which handled the information item.
 
 h|*0..1*
-|*location*: `PARTY_IDENTIFIED`
+|*location*: `<<_party_identified_class,PARTY_IDENTIFIED>>`
 a|Identifier of the particular site/facility within an organisation which handled the item. For computability, this identifier needs to be e.g. a PKI identifier which can be included in the identifier list of the PARTY_IDENTIFIED object.
 
 h|*0..1*
-|*subject*: `PARTY_PROXY`
+|*subject*: `<<_party_proxy_class,PARTY_PROXY>>`
 a|Identifiers for subject of the received information item.
 
 h|*0..1*
-|*provider*: `PARTY_IDENTIFIED`
+|*provider*: `<<_party_identified_class,PARTY_IDENTIFIED>>`
 a|Optional provider(s) who created, committed, forwarded or otherwise handled the item.
 
 h|*0..1*
-|*time*: `DV_DATE_TIME`
+|*time*: `link:/releases/RM/{rm_release}/data_types.html#_dv_date_time_class[DV_DATE_TIME^]`
 a|Time of handling the item. For an originating system, this will be time of creation, for an intermediate feeder system, this will be a time of accession or other time of handling, where available.
 
 h|*0..1*
-|*version_id*: `String`
+|*version_id*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|Any identifier used in the system such as  "interim" ,  "final" , or numeric versions if available.
 
 h|*Invariants*
-2+a|*_System_id_valid_*: `not system_id.is_empty`
+2+a|__System_id_valid__: `not system_id.is_empty`
 |===

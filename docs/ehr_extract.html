@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="description" content="openEHR EHR Extract Information Model specification">
-<meta name="keywords" content="EHR, Extract, openehr">
+<meta name="keywords" content="EHR, extract, openehr">
 <title>EHR Extract Information Model</title>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
-<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -53,11 +52,11 @@
 <li><a href="#_move_of_entire_record">2.3.8. Move of Entire Record</a></li>
 <li><a href="#_system_synchronisation">2.3.9. System Synchronisation</a>
 <ul class="sectlevel4">
-<li><a href="#_mirroring">Mirroring</a></li>
-<li><a href="#_the_virtual_ehr">The Virtual EHR</a></li>
+<li><a href="#_mirroring">2.3.9.1. Mirroring</a></li>
+<li><a href="#_the_virtual_ehr">2.3.9.2. The Virtual EHR</a></li>
 </ul>
 </li>
-<li><a href="#_communication_between_non_openehr_emr_ehr_systems">2.3.10. Communication between non-openEHR EMR/EHR systems</a></li>
+<li><a href="#_communication_between_non_openehr_emrehr_systems">2.3.10. Communication between non-openEHR EMR/EHR systems</a></li>
 </ul>
 </li>
 <li><a href="#_technical_requirements">2.4. Technical Requirements</a>
@@ -66,17 +65,17 @@
 <li><a href="#_specification_of_versions">2.4.2. Specification of Versions</a></li>
 <li><a href="#_completeness_of_data">2.4.3. Completeness of Data</a>
 <ul class="sectlevel4">
-<li><a href="#_references_to_other_parts_of_the_same_ehr">References to Other Parts of the Same EHR</a></li>
-<li><a href="#_references_to_other_ehrs">References to Other EHRs</a></li>
-<li><a href="#_references_to_resources_outside_the_ehr">References to Resources Outside the EHR</a></li>
-<li><a href="#_references_to_demographic_entities">References to Demographic Entities</a></li>
-<li><a href="#_archetypes_and_terminology">Archetypes and Terminology</a></li>
+<li><a href="#_references_to_other_parts_of_the_same_ehr">2.4.3.1. References to Other Parts of the Same EHR</a></li>
+<li><a href="#_references_to_other_ehrs">2.4.3.2. References to Other EHRs</a></li>
+<li><a href="#_references_to_resources_outside_the_ehr">2.4.3.3. References to Resources Outside the EHR</a></li>
+<li><a href="#_references_to_demographic_entities">2.4.3.4. References to Demographic Entities</a></li>
+<li><a href="#_archetypes_and_terminology">2.4.3.5. Archetypes and Terminology</a></li>
 </ul>
 </li>
 <li><a href="#_security_and_privacy">2.4.4. Security and Privacy</a></li>
 <li><a href="#_update_basis">2.4.5. Update Basis</a>
 <ul class="sectlevel4">
-<li><a href="#_persistent_request">Persistent Request</a></li>
+<li><a href="#_persistent_request">2.4.5.1. Persistent Request</a></li>
 </ul>
 </li>
 </ul>
@@ -97,16 +96,16 @@
 <ul class="sectlevel3">
 <li><a href="#_extract_request">4.2.1. Extract Request</a>
 <ul class="sectlevel4">
-<li><a href="#_content_criteria_specification">Content Criteria Specification</a></li>
-<li><a href="#_update_specification">Update Specification</a></li>
-<li><a href="#_the_manifest">The Manifest</a></li>
-<li><a href="#_version_specification">Version Specification</a></li>
+<li><a href="#_content_criteria_specification">4.2.1.1. Content Criteria Specification</a></li>
+<li><a href="#_update_specification">4.2.1.2. Update Specification</a></li>
+<li><a href="#_the_manifest">4.2.1.3. The Manifest</a></li>
+<li><a href="#_version_specification">4.2.1.4. Version Specification</a></li>
 </ul>
 </li>
 <li><a href="#_extract">4.2.2. Extract</a>
 <ul class="sectlevel4">
-<li><a href="#_content_specification">Content Specification</a></li>
-<li><a href="#_content">Content</a></li>
+<li><a href="#_content_specification">4.2.2.1. Content Specification</a></li>
+<li><a href="#_content">4.2.2.2. Content</a></li>
 </ul>
 </li>
 <li><a href="#_participations_and_demographic_referencing">4.2.3. Participations and Demographic Referencing</a></li>
@@ -145,7 +144,7 @@
 <li><a href="#_class_descriptions_2">5.3. Class Descriptions</a>
 <ul class="sectlevel3">
 <li><a href="#_openehr_content_item_class">5.3.1. OPENEHR_CONTENT_ITEM Class</a></li>
-<li><a href="#_x_versioned_object_t_class">5.3.2. X_VERSIONED_OBJECT&lt;T&gt; Class</a></li>
+<li><a href="#_x_versioned_object_class">5.3.2. X_VERSIONED_OBJECT Class</a></li>
 <li><a href="#_x_versioned_ehr_access_class">5.3.3. X_VERSIONED_EHR_ACCESS Class</a></li>
 <li><a href="#_x_versioned_ehr_status_class">5.3.4. X_VERSIONED_EHR_STATUS Class</a></li>
 <li><a href="#_x_versioned_composition_class">5.3.5. X_VERSIONED_COMPOSITION Class</a></li>
@@ -162,7 +161,7 @@
 <ul class="sectlevel3">
 <li><a href="#_structure">6.2.1. Structure</a>
 <ul class="sectlevel4">
-<li><a href="#_demographic_referencing_2">Demographic Referencing</a></li>
+<li><a href="#_demographic_referencing_2">6.2.1.1. Demographic Referencing</a></li>
 </ul>
 </li>
 </ul>
@@ -217,20 +216,20 @@
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
-<img src="https://specifications.openehr.org/images/openehr_logo_large.png" alt="openEHR logo">
+<img src="https://specifications.openehr.org/images/openEHR_logo_RGB.svg" alt="openEHR logo">
 </div>
 </div>
 </div>
 </div>
-<h1 id="_ehr_extract_information_model" class="sect0">EHR Extract Information Model</h1>
+<h1 id="_ehr_extract_information_model" class="sect0"><a class="anchor" href="#_ehr_extract_information_model"></a>EHR Extract Information Model</h1>
 <div class="openblock partintro">
 <div class="content">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all fit-content spread">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col>
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -240,35 +239,35 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: RM Release-1.0.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: TRIAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: STABLE</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Revision</strong>: <a href="#latest_issue">[latest_issue]</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong>: <a href="#latest_issue_date">[latest_issue_date]</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: EHR, Extract, openehr</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: EHR, extract, openehr</p></td>
 </tr>
 </tbody>
 </table>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
-<img src="openehr_block_diagram.svg" alt="openEHR components" width="60%">
+<object type="image/svg+xml" data="openehr_block_diagram.svg" width="60%"><span class="alt">openEHR components</span></object>
 </div>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2019 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2021 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit community organisation, facilitating the sharing of health records by consumers and clinicians via open standards-based implementations.</p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit foundation, facilitating the sharing of health records by consumers and clinicians via open specifications, clinical models and open platform implementations.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
@@ -284,9 +283,9 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_amendment_record">Amendment Record</h2>
+<h2 id="_amendment_record"><a class="anchor" href="#_amendment_record"></a>Amendment Record</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 54.5454%;">
@@ -420,7 +419,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_acknowledgements">Acknowledgements</h2>
+<h2 id="_acknowledgements"><a class="anchor" href="#_acknowledgements"></a>Acknowledgements</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The work reported in this paper has been funded in by the following organisations:</p>
@@ -446,7 +445,7 @@
 <div class="sect2">
 <h3 id="_purpose"><a class="anchor" href="#_purpose"></a>1.1. Purpose</h3>
 <div class="paragraph">
-<p>This document defines the openEHR Data Types This document describes the architecture of the openEHR EHR Extract Information Model. This model formally defines the concepts of ‘extract request’, ‘extract’, various kinds of content including openEHR and non-openEHR, and a message wrapper. It covers use cases including EHR system communication, other clinical content messaging, and EHR system synchronisation, as well as providing an equivalent of the ISO 13606 EHR Extract.</p>
+<p>This document defines the openEHR Data Types This document describes the architecture of the openEHR EHR Extract Information Model. This model formally defines the concepts of ‘extract request’, ‘extract’, various kinds of content including openEHR and non-openEHR, and a message wrapper. It covers use cases including EHR system communication, other clinical content messaging, and EHR system synchronisation, as well as providing an equivalent of the <a href="https://www.iso.org/standard/40784.html" target="_blank" rel="noopener">ISO 13606-1 EHR Extract</a>.</p>
 </div>
 <div class="paragraph">
 <p>The intended audience includes:</p>
@@ -493,7 +492,7 @@
 <div class="sect2">
 <h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
 <div class="paragraph">
-<p>This specification is in the TRIAL state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/RM/Release-1.0.2/ehr_extract.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/RM/Release-1.0.2/ehr_extract.html</a>.</p>
+<p>This specification is in the STABLE state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/RM/latest/ehr_extract.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/RM/latest/ehr_extract.html</a>.</p>
 </div>
 <div class="paragraph">
 <p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
@@ -505,7 +504,7 @@
 <div class="sect2">
 <h3 id="_feedback"><a class="anchor" href="#_feedback"></a>1.4. Feedback</h3>
 <div class="paragraph">
-<p>Feedback may be provided on the <a href="http://lists.openehr.org/mailman/listinfo/openehr-technical_lists.openehr.org" target="_blank" rel="noopener">technical mailing list</a>.</p>
+<p>Feedback may be provided on the <a href="https://discourse.openehr.org/c/specifications/rm" target="_blank" rel="noopener">openEHR RM specifications forum</a>.</p>
 </div>
 <div class="paragraph">
 <p>Issues may be raised on the <a href="https://specifications.openehr.org/components/RM/open_issues" target="_blank" rel="noopener">specifications Problem Report tracker</a>.</p>
@@ -552,7 +551,7 @@ more Extracts. The Request/Response interaction is enabled by a transport mechan
 other services. This be be in the form of comprehensive middleware, web services, or simple point-topoint
 protocols such as SMTP (email) transport.</p>
 </div>
-<div id="operational_environment" class="imageblock text-center" style="text-align: center">
+<div id="operational_environment" class="imageblock text-center text-center">
 <div class="content">
 <img src="ehr_extract/diagrams/operational_environment.png" alt="operational environment" width="80%">
 </div>
@@ -650,7 +649,7 @@ particular Subject of interest (e.g. a certain patient); in simpler environments
 may need to explicitly identify the target systems of the request. The diagram below illustrates a direct request
 and a request mediated by a location service.</p>
 </div>
-<div id="reference_environment" class="imageblock text-center" style="text-align: center">
+<div id="reference_environment" class="imageblock text-center text-center">
 <div class="content">
 <img src="ehr_extract/diagrams/reference_environment.png" alt="reference environment" width="60%">
 </div>
@@ -666,7 +665,7 @@ of Extracts from multiple Responding systems.</p>
 <div class="sect3">
 <h4 id="_granularity_of_extract_data"><a class="anchor" href="#_granularity_of_extract_data"></a>2.2.4. Granularity of Extract Data</h4>
 <div class="paragraph">
-<p>In the figure <a href="#operational_environment">Figure 1</a> the lowest level of information shown in a Responding system is simply marked 'content'.
+<p>In <a href="#_operational_environment">Section 2.2</a> the lowest level of information shown in a Responding system is simply marked 'content'.
 This corresponds to top-level information structures such as Compositions, Folder trees, Parties
 etc in openEHR. Each such content item potentially contains a whole hierarchy of information items,
 only some of which is generally of interest to the Requestor. The typical database idea of a "query
@@ -900,7 +899,7 @@ could be used.</p>
 <div class="sect3">
 <h4 id="_system_synchronisation"><a class="anchor" href="#_system_synchronisation"></a>2.3.9. System Synchronisation</h4>
 <div class="sect4">
-<h5 id="_mirroring"><a class="anchor" href="#_mirroring"></a>Mirroring</h5>
+<h5 id="_mirroring"><a class="anchor" href="#_mirroring"></a>2.3.9.1. Mirroring</h5>
 <div class="paragraph">
 <p>Two openEHR systems containing the same kind of data (i.e. EHR, demographic etc) may contain
 records that are intended to be logical "mirrors" (i.e. clones) of each other. In some cases, an entire
@@ -915,7 +914,7 @@ record in a system, it can also be used as the unit of update to the same record
 </div>
 </div>
 <div class="sect4">
-<h5 id="_the_virtual_ehr"><a class="anchor" href="#_the_virtual_ehr"></a>The Virtual EHR</h5>
+<h5 id="_the_virtual_ehr"><a class="anchor" href="#_the_virtual_ehr"></a>2.3.9.2. The Virtual EHR</h5>
 <div class="paragraph">
 <p>If changes are allowed to multiple systems that also systematically synchronise, a "virtual EHR"
 exists. This term indicates that the totality of changes taken together form a complete EHR, even if
@@ -940,7 +939,7 @@ when and how updating occurs.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_communication_between_non_openehr_emr_ehr_systems"><a class="anchor" href="#_communication_between_non_openehr_emr_ehr_systems"></a>2.3.10. Communication between non-openEHR EMR/EHR systems</h4>
+<h4 id="_communication_between_non_openehr_emrehr_systems"><a class="anchor" href="#_communication_between_non_openehr_emrehr_systems"></a>2.3.10. Communication between non-openEHR EMR/EHR systems</h4>
 <div class="paragraph">
 <p>Since the openEHR Extract represents a generic, open standardised specification for representing
 clinical information, there is no reason why it cannot be used for systems that not otherwise implement
@@ -1014,7 +1013,7 @@ either contain the reference target, or else it must be reasonable to assume tha
 access, or else doesn&#8217;t need it.</p>
 </div>
 <div class="sect4">
-<h5 id="_references_to_other_parts_of_the_same_ehr"><a class="anchor" href="#_references_to_other_parts_of_the_same_ehr"></a>References to Other Parts of the Same EHR</h5>
+<h5 id="_references_to_other_parts_of_the_same_ehr"><a class="anchor" href="#_references_to_other_parts_of_the_same_ehr"></a>2.4.3.1. References to Other Parts of the Same EHR</h5>
 <div class="paragraph">
 <p>In openEHR, there are two kinds of cross reference within an EHR: <code>LINKs</code> (defined in <code>LOCATABLE</code>),
 and hyperlinks (<code>DV_TEXT</code>.<code><em>hyperlink</em></code>). Both of these use a <code>DV_EHR_URI</code> instance to represent the link
@@ -1053,7 +1052,7 @@ means "don&#8217;t follow any links".</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_references_to_other_ehrs"><a class="anchor" href="#_references_to_other_ehrs"></a>References to Other EHRs</h5>
+<h5 id="_references_to_other_ehrs"><a class="anchor" href="#_references_to_other_ehrs"></a>2.4.3.2. References to Other EHRs</h5>
 <div class="paragraph">
 <p>References to items in other EHRs may occur within an EHR, e.g. to the EHR of a parent, other relation,
 organ donor etc. There is no requirement for such links to be followed when constructing EHR
@@ -1061,7 +1060,7 @@ Extracts.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_references_to_resources_outside_the_ehr"><a class="anchor" href="#_references_to_resources_outside_the_ehr"></a>References to Resources Outside the EHR</h5>
+<h5 id="_references_to_resources_outside_the_ehr"><a class="anchor" href="#_references_to_resources_outside_the_ehr"></a>2.4.3.3. References to Resources Outside the EHR</h5>
 <div class="paragraph">
 <p>Computable references can also be made to external items from within an openEHR EHR. Instances
 of the data type DV_URI occurring either on their own or in a <code>DV_TEXT</code> hyperlink are typically used to
@@ -1077,7 +1076,7 @@ images would be made separately to a request for EHR Extracts.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_references_to_demographic_entities"><a class="anchor" href="#_references_to_demographic_entities"></a>References to Demographic Entities</h5>
+<h5 id="_references_to_demographic_entities"><a class="anchor" href="#_references_to_demographic_entities"></a>2.4.3.4. References to Demographic Entities</h5>
 <div class="paragraph">
 <p>Two kinds of demographic entities are referred to throughout an openEHR EHR. Individual providers
 and provider institutions are referenced from <code>PARTY_PROXY</code> objects in the record, via the
@@ -1101,7 +1100,7 @@ and independently, whether subject demographics should be included.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_archetypes_and_terminology"><a class="anchor" href="#_archetypes_and_terminology"></a>Archetypes and Terminology</h5>
+<h5 id="_archetypes_and_terminology"><a class="anchor" href="#_archetypes_and_terminology"></a>2.4.3.5. Archetypes and Terminology</h5>
 <div class="paragraph">
 <p>Another kind of "reference" is terminology codes, stored in instances of the data type <code>DV_TEXT</code> (via
 the mapping attribute) and <code>DV_CODED_TEXT</code>.<code><em>defining_code</em></code>. In openEHR systems, all coded terms
@@ -1152,7 +1151,7 @@ case is that of an ad hoc one-off query.
 More complex cases are periodic update and event-driven update.</p>
 </div>
 <div class="sect4">
-<h5 id="_persistent_request"><a class="anchor" href="#_persistent_request"></a>Persistent Request</h5>
+<h5 id="_persistent_request"><a class="anchor" href="#_persistent_request"></a>2.4.5.1. Persistent Request</h5>
 <div class="paragraph tbd">
 <p>To Be Continued:</p>
 </div>
@@ -1176,7 +1175,7 @@ Extract are thus used to satisfy particular groups of requirements, rather than 
 of Extract perform all possible tasks. The figure below illustrates key Extract communication scenarios,
 along with the various concrete Extract types defined by the model.</p>
 </div>
-<div id="use_cases" class="imageblock text-center" style="text-align: center">
+<div id="use_cases" class="imageblock text-center text-center">
 <div class="content">
 <img src="ehr_extract/diagrams/use_cases.png" alt="use cases" width="80%">
 </div>
@@ -1231,7 +1230,7 @@ generic Extract containment structure into which specific archetyped content can
 whole structure being templated. Each such template corresponds to one extract type, i.e. one message
 type. This is visualised in the figure below.</p>
 </div>
-<div id="extract_archetyping" class="imageblock text-center" style="text-align: center">
+<div id="extract_archetyping" class="imageblock text-center text-center">
 <div class="content">
 <img src="ehr_extract/diagrams/extract_archetyping.png" alt="extract archetyping" width="60%">
 </div>
@@ -1251,7 +1250,7 @@ In this method, the XML of any message is specific to its own schema. If changes
 the message content, the schema usually has to be re-generated. The two methods are illustrated in
 the following figure.</p>
 </div>
-<div id="representation_options" class="imageblock text-center" style="text-align: center">
+<div id="representation_options" class="imageblock text-center text-center">
 <div class="content">
 <img src="ehr_extract/diagrams/representation_options.png" alt="representation options" width="70%">
 </div>
@@ -1269,7 +1268,7 @@ show details of the concrete data representations involved.</p>
 <p>The <code>rm.extract</code> package defines the semantics of Extracts from openEHR data sources, including
 EHRs. The UML diagram below illustrates the package structure of the <code>rm.extract</code> package.</p>
 </div>
-<div id="rm_ehr_extract_packages" class="imageblock text-center" style="text-align: center">
+<div id="rm_ehr_extract_packages" class="imageblock text-center text-center">
 <div class="content">
 <img src="UML/diagrams/RM-ehr_extract-packages.svg" alt="RM ehr extract packages">
 </div>
@@ -1325,7 +1324,7 @@ and demographic content are defined in various sub-packages, How the content is 
 within folders in each chapter, and across chapters is managed by the use of archetypes and templates
 for the Extract/chapter structure. The following uML diagram illustrates the <code>rm.extract.common</code> package.</p>
 </div>
-<div id="rm_ehr_extract_common" class="imageblock text-center" style="text-align: center">
+<div id="rm_ehr_extract_common" class="imageblock text-center text-center">
 <div class="content">
 <img src="UML/diagrams/RM-ehr_extract.common.svg" alt="RM ehr extract.common">
 </div>
@@ -1334,7 +1333,7 @@ for the Extract/chapter structure. The following uML diagram illustrates the <co
 <div class="paragraph">
 <p>The typical instance structure of the <code>EXTRACT_REQUEST</code> and <code>EXTRACT</code> types is illustrated below.</p>
 </div>
-<div id="abstract_request_extract" class="imageblock text-center" style="text-align: center">
+<div id="abstract_request_extract" class="imageblock text-center text-center">
 <div class="content">
 <img src="ehr_extract/diagrams/abstract_request_extract.png" alt="abstract request extract" width="70%">
 </div>
@@ -1353,7 +1352,7 @@ and a <code><em>manifest</em></code>, specifying which entities (records or subj
 entities should be included.</p>
 </div>
 <div class="sect4">
-<h5 id="_content_criteria_specification"><a class="anchor" href="#_content_criteria_specification"></a>Content Criteria Specification</h5>
+<h5 id="_content_criteria_specification"><a class="anchor" href="#_content_criteria_specification"></a>4.2.1.1. Content Criteria Specification</h5>
 <div class="paragraph">
 <p>The <code>extract_spec</code> part of the Request applies to all content in the Extract. The attributes are as follows:</p>
 </div>
@@ -1385,7 +1384,7 @@ EHR from the <code><em>manifest</em></code> list. Queries may be as simple as th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="sql"><span class="tok-k">SELECT</span> <span class="tok-o">*</span> <span class="tok-k">FROM</span> <span class="tok-err">$</span><span class="tok-n">ehr</span>              <span class="tok-c1">-- get all items in the record</span>
+<pre class="pygments highlight"><code data-lang="sql"><span></span><span class="tok-k">SELECT</span> <span class="tok-o">*</span> <span class="tok-k">FROM</span> <span class="tok-err">$</span><span class="tok-n">ehr</span>              <span class="tok-c1">-- get all items in the record</span>
 <span class="tok-k">SELECT</span> <span class="tok-o">/</span><span class="tok-n">ehr_access</span> <span class="tok-k">FROM</span> <span class="tok-err">$</span><span class="tok-n">ehr</span>    <span class="tok-c1">-- retrieve the EHR_ACCESS object in an EHR</span>
 <span class="tok-k">SELECT</span> <span class="tok-o">/</span><span class="tok-n">ehr_status</span> <span class="tok-k">FROM</span> <span class="tok-err">$</span><span class="tok-n">ehr</span>    <span class="tok-c1">-- retrieve the EHR_STATUS object in an EHR</span></code></pre>
 </div>
@@ -1395,7 +1394,7 @@ EHR from the <code><em>manifest</em></code> list. Queries may be as simple as th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="sql"><span class="tok-k">SELECT</span> <span class="tok-p">....</span>     <span class="tok-c1">-- retrieve last 6 months&#39; worth of blood glucose measurements</span>
+<pre class="pygments highlight"><code data-lang="sql"><span></span><span class="tok-k">SELECT</span> <span class="tok-p">....</span>     <span class="tok-c1">-- retrieve last 6 months&#39; worth of blood glucose measurements</span>
 <span class="tok-p">...</span>             <span class="tok-c1">-- retrieve ongoing medications list</span>
 <span class="tok-p">......</span>          <span class="tok-c1">-- retrieve items relating to active pregnancy</span>
 <span class="tok-p">.....</span>           <span class="tok-c1">-- retrieve all GP encounter notes since 12-03-2005</span></code></pre>
@@ -1406,7 +1405,7 @@ EHR from the <code><em>manifest</em></code> list. Queries may be as simple as th
 </div>
 </div>
 <div class="sect4">
-<h5 id="_update_specification"><a class="anchor" href="#_update_specification"></a>Update Specification</h5>
+<h5 id="_update_specification"><a class="anchor" href="#_update_specification"></a>4.2.1.2. Update Specification</h5>
 <div class="paragraph">
 <p>The update_spec part of the Request specifies how the Request is to be processed by the server. The
 default situation, requiring no update_spec at all, is a one-off request. Other alternatives include:</p>
@@ -1429,7 +1428,7 @@ identification.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_the_manifest"><a class="anchor" href="#_the_manifest"></a>The Manifest</h5>
+<h5 id="_the_manifest"><a class="anchor" href="#_the_manifest"></a>4.2.1.3. The Manifest</h5>
 <div class="paragraph">
 <p>The <code><em>manifest</em></code> that decides the scope of records to be retrieved. In the simplest case, only a single
 entity and no specific items will be identified (the content will be determined by the criteria in the
@@ -1448,7 +1447,7 @@ latter are specified using the criteria attribute.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_version_specification"><a class="anchor" href="#_version_specification"></a>Version Specification</h5>
+<h5 id="_version_specification"><a class="anchor" href="#_version_specification"></a>4.2.1.4. Version Specification</h5>
 <div class="paragraph">
 <p>An Extract request in its simplest form has no version specification, corresponding to the assumption
 of 'latest available version' for each matched item. However, in some situations there is a need to rettrieve
@@ -1476,7 +1475,7 @@ of the Extract Request.</p>
 <div class="sect3">
 <h4 id="_extract"><a class="anchor" href="#_extract"></a>4.2.2. Extract</h4>
 <div class="sect4">
-<h5 id="_content_specification"><a class="anchor" href="#_content_specification"></a>Content Specification</h5>
+<h5 id="_content_specification"><a class="anchor" href="#_content_specification"></a>4.2.2.1. Content Specification</h5>
 <div class="paragraph">
 <p>The <code>EXTRACT</code> consists of a <code><em>request_id</em></code>, an optional <code><em>participations</em></code> list, an optional <code><em>specification</em></code> and a
 set of chapters, containing the retrieved content. The <code><em>participations</em></code> attribute denotes parties that were
@@ -1489,7 +1488,7 @@ than were retrievable in the receiver system.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_content"><a class="anchor" href="#_content"></a>Content</h5>
+<h5 id="_content"><a class="anchor" href="#_content"></a>4.2.2.2. Content</h5>
 <div class="paragraph">
 <p>The content of an Extract is contained within the chapters attribute, in the form of one of more
 instances of the <code>EXTRACT_CHAPTER</code> class or its subtype <code>EXTRACT_ENTITY_CHAPTER</code>. Within an
@@ -1551,7 +1550,7 @@ the EHR and generic Extract sections below.</p>
 <h3 id="_class_descriptions"><a class="anchor" href="#_class_descriptions"></a>4.3. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_extract_request_class"><a class="anchor" href="#_extract_request_class"></a>4.3.1. EXTRACT_REQUEST Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1564,13 +1563,13 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Generic model of a Request for an Extract, containing an Extract specification.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/Release-1.0.2/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1579,23 +1578,23 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_spec</strong>: <code>EXTRACT_SPEC</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_spec</strong>: <code><a href="#_extract_spec_class">EXTRACT_SPEC</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specification details of the request.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>update_spec</strong>: <code>EXTRACT_UPDATE_SPEC</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>update_spec</strong>: <code><a href="#_extract_update_spec_class">EXTRACT_UPDATE_SPEC</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Update details of the request.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>HIER_OBJECT_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code><a href="/releases/RM/Release-1.0.2/support.html#_hier_object_id_class" target="_blank" rel="noopener">HIER_OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier of this Request, generated by requestor.</p>
 </div></div></td>
 </tr>
@@ -1604,7 +1603,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_action_request_class"><a class="anchor" href="#_extract_action_request_class"></a>4.3.2. EXTRACT_ACTION_REQUEST Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1617,13 +1616,13 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Generic model of a Request for an Extract, containing an Extract specification.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/Release-1.0.2/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -1632,30 +1631,30 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>request_id</strong>: <code>OBJECT_REF</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>request_id</strong>: <code><a href="/releases/RM/Release-1.0.2/support.html#_object_ref_class" target="_blank" rel="noopener">OBJECT_REF</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier of previous EXTRACT_REQUEST.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>action</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>action</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Requested action: cancel, resend, send new.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>HIER_OBJECT_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code><a href="/releases/RM/Release-1.0.2/support.html#_hier_object_id_class" target="_blank" rel="noopener">HIER_OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
 <h4 id="_extract_spec_class"><a class="anchor" href="#_extract_spec_class"></a>4.3.3. EXTRACT_SPEC Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1668,7 +1667,7 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Specification of an Extract&#8217;s contents. Subtypes can be used to add details specific to the type of Extract. The specification consists of attributes specifying the directory, and two further groups of attributes in their own classes, namely a version specfication (which versions of information items are to be included) and a manifest (which entities are to be included in the extract).</p>
 </div>
 <div class="paragraph">
@@ -1682,22 +1681,22 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_spec</strong>: <code>EXTRACT_VERSION_SPEC</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_spec</strong>: <code><a href="#_extract_version_spec_class">EXTRACT_VERSION_SPEC</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specification of which versions of information items to include in the Extract. If Void, the default is latest versions only (which is reasonable for non-versioning systems as well).</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>manifest</strong>: <code>EXTRACT_MANIFEST</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>manifest</strong>: <code><a href="#_extract_manifest_class">EXTRACT_MANIFEST</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specification of entities (e.g. records) to include in the Extract.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_type</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_type</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Coded term indicating the type of content required, e.g.
 &#124;openehr-ehr&#124;
 &#124;openehr-demographic&#124;
@@ -1707,15 +1706,15 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_multimedia</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_multimedia</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Indicates whether inline instances of DV_MULTIMEDIA in the source data are included or not.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>priority</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>priority</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Requested priority of this request to be handled by server. Priority schemes are likely to be local, and use values agreed by both ends.</p>
 </div>
 <div class="paragraph">
@@ -1724,8 +1723,8 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>link_depth</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>link_depth</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Degree of links to follow emanating from content items specified for inclusion. The kind of links to follow is dependent on the type of Extract.</p>
 </div>
 <div class="paragraph">
@@ -1739,15 +1738,15 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>criteria</strong>: <code>List&lt;DV_PARSABLE&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>criteria</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/data_types.html#_dv_parsable_class">DV_PARSABLE</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Queries specifying the contents of this Extract.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>ITEM_STRUCTURE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code><a href="/releases/RM/Release-1.0.2/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Other specification items. Archetypable.</p>
 </div></div></td>
 </tr>
@@ -1756,7 +1755,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_manifest_class"><a class="anchor" href="#_extract_manifest_class"></a>4.3.4. EXTRACT_MANIFEST Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1769,7 +1768,7 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Specification of the candidate entities and optionally top-level items to be included in the Extract.</p>
 </div></div></td>
 </tr>
@@ -1780,8 +1779,8 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entities</strong>: <code>List&lt;EXTRACT_ENTITY_MANIFEST&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_extract_entity_manifest_class">EXTRACT_ENTITY_MANIFEST</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of entity manifests uids of items included in the Extract; for openEHR data, these are uids identifying the version containers.</p>
 </div></div></td>
 </tr>
@@ -1790,7 +1789,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_entity_manifest_class"><a class="anchor" href="#_extract_entity_manifest_class"></a>4.3.5. EXTRACT_ENTITY_MANIFEST Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1803,7 +1802,7 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>The manifest for one entity, identifying the entity and optionally specifying toplevel items to be included in the Extract. The list actually included may be modified by the version_spec part of the specification, and also by the link_depth attribute. In repeat (standing order) requests, the final inclusion may be modified by the send_changes_only flag of the update_spec.</p>
 </div>
 <div class="paragraph">
@@ -1817,36 +1816,36 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_id_key</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_id_key</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier by which this entity is known in the Extract. May be one of the other identifiers, e.g. ehr_id or subject_id, or it may be something else, including a simple integer.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ehr_id</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ehr_id</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>EHR / EMR identifier for the entity at the target system.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subject_id</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>subject_id</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Subject (i.e. patient or similar) identifier for the entity at the target system.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_ids</strong>: <code>List&lt;String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_ids</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Other identifiers that may be used to find the entity at the target system, keyed by type. May include medicare numbers, drivers license number, tax number etc.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_list</strong>: <code>List&lt;OBJECT_REF&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_list</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/support.html#_object_ref_class">OBJECT_REF</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of uids of items included in the Extract; for openEHR data, these are uids identifying the version containers.</p>
 </div></div></td>
 </tr>
@@ -1855,7 +1854,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_version_spec_class"><a class="anchor" href="#_extract_version_spec_class"></a>4.3.6. EXTRACT_VERSION_SPEC Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1868,7 +1867,7 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Specification of what versions should be included in an Extract. By default, only latest versions are included in the Extract, in which case this part of the Extract specification is not needed at all. The attributes include_all_versions and commit_time_interval are used to modify this; the former forces all versions to be included; the latter limits the versions to be those latest versions committed in the time interval, or if include_all_versions is True, all versions committed in the time interval.</p>
 </div></div></td>
 </tr>
@@ -1879,36 +1878,36 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_all_versions</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_all_versions</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if all versions of each item in the Extract are included.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_time_interval</strong>: <code>DV_INTERVAL&lt;DV_DATE_TIME&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>commit_time_interval</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_interval_class">DV_INTERVAL<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/data_types.html#_dv_date_time_class">DV_DATE_TIME</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specifies commit time interval of items to source repository to include in Extract. By default, only latest versions whose commit times fall in the range are included. If include_all_versions is True, then the range includes all versions committed within the interval.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_revision_history</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_revision_history</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if revision histories of the items in the Extract are included. If included, it is always the full revision history.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_data</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>include_data</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the data of items matched by the content spec should be included. This is the default. If False, only revision history is included in serialised versions. Turning this option on in openEHR systems causes X_VERSIONED_OBJECTs to have revision_history set, but versions Void. Useful for interrogating a server without having to look at any content data. In other systems it may or may not have a sensible meaning.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Includes_revision_history_valid</em></strong>: <code>not include_data implies include_revision_history</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Includes_revision_history_valid</em>: <code>not include_data implies include_revision_history</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1916,7 +1915,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_update_spec_class"><a class="anchor" href="#_extract_update_spec_class"></a>4.3.7. EXTRACT_UPDATE_SPEC Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -1929,7 +1928,7 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Specification of the how the request should be processed by server. The request can be persisted in the server, meaning that a) it can be re-activated by the requesting system simply by indicating Request id, and b) that a changes-only pattern of Extract updates can be set up. To achieve this, the server has to remember what was send in the previous reponse.</p>
 </div>
 <div class="paragraph">
@@ -1943,22 +1942,22 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>persist_in_server</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>persist_in_server</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>If True, this Request is persisted in the server until further notice.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>repeat_period</strong>: <code>DV_DURATION</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>repeat_period</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_duration_class" target="_blank" rel="noopener">DV_DURATION</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Period for resending update Extracts in response to original Request.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trigger_events</strong>: <code>List&lt;DV_CODED_TEXT&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>trigger_events</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/data_types.html#_dv_coded_text_class">DV_CODED_TEXT</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Set of Event names that will cause sending of update Extracts. Event types include:   &#124;any_change&#124; - any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.</p>
 </div>
 <div class="paragraph">
@@ -1968,27 +1967,27 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>update_method</strong>: <code>CODE_PHRASE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>update_method</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_code_phrase_class" target="_blank" rel="noopener">CODE_PHRASE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Indicate mode of update. Can be: send only items that are changed (including logical deletions) or new since last send. For persist_in_server Requests only.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Overall_validity</em></strong>: <code>repeat_period /= Void or trigger_events /= Void</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Overall_validity</em>: <code>repeat_period /= Void or trigger_events /= Void</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Trigger_events_validity</em></strong>: <code>trigger_events /= Void implies not trigger_events.is_empty</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Trigger_events_validity</em>: <code>trigger_events /= Void implies not trigger_events.is_empty</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Send_changes_only_validity</em></strong>: <code>send_changes_only implies persist_in_server</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Send_changes_only_validity</em>: <code>send_changes_only implies persist_in_server</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1996,7 +1995,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_class"><a class="anchor" href="#_extract_class"></a>4.3.8. EXTRACT Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2009,13 +2008,13 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Generic model of an Extract of some information from a repository.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/Release-1.0.2/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2024,57 +2023,57 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>chapters</strong>: <code>List&lt;EXTRACT_CHAPTER&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>chapters</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_extract_chapter_class">EXTRACT_CHAPTER</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The content extracted and serialised from the source repository for this Extract.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specification</strong>: <code>EXTRACT_SPEC</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specification</strong>: <code><a href="#_extract_spec_class">EXTRACT_SPEC</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The specification that this Extract actually conforms to; might not be identical with the specification of the corresponding request.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>request_id</strong>: <code>HIER_OBJECT_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>request_id</strong>: <code><a href="/releases/RM/Release-1.0.2/support.html#_hier_object_id_class" target="_blank" rel="noopener">HIER_OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference to causing Request, if any.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Creation time of this Extract</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>system_id</strong>: <code>HIER_OBJECT_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>system_id</strong>: <code><a href="/releases/RM/Release-1.0.2/support.html#_hier_object_id_class" target="_blank" rel="noopener">HIER_OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier of creating system.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sequence_nr</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sequence_nr</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Number of this Extract response in sequence of responses to Extract request identified by request_id. If this is the sole response, or there was no request, value is 1.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>participations</strong>: <code>List&lt;EXTRACT_PARTICIPATION&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>participations</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_extract_participation_class">EXTRACT_PARTICIPATION</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Participations relevant to the creation of this Extract.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Sequence_nr_valid</em></strong>: <code>sequence_nr &gt;= 1</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Sequence_nr_valid</em>: <code>sequence_nr &gt;= 1</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2082,7 +2081,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_chapter_class"><a class="anchor" href="#_extract_chapter_class"></a>4.3.9. EXTRACT_CHAPTER Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2095,13 +2094,13 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>One content chapter of an Extract; contains information relating to only one entity.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/Release-1.0.2/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2110,8 +2109,8 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;EXTRACT_ITEM&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_extract_item_class">EXTRACT_ITEM</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The information content of this chapter.</p>
 </div></div></td>
 </tr>
@@ -2120,7 +2119,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_entity_chapter_class"><a class="anchor" href="#_extract_entity_chapter_class"></a>4.3.10. EXTRACT_ENTITY_CHAPTER Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2133,13 +2132,13 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Type of chapter that contains information relating to a single demographic entity.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXTRACT_CHAPTER</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_extract_chapter_class">EXTRACT_CHAPTER</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2148,8 +2147,8 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_id_key</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_id_key</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference to entity, usually a demographic entity such as a patient that the content of this chapter relates to.</p>
 </div></div></td>
 </tr>
@@ -2158,7 +2157,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_item_class"><a class="anchor" href="#_extract_item_class"></a>4.3.11. EXTRACT_ITEM Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2171,20 +2170,20 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Abstract parent of Extract Folder and Content types.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>LOCATABLE</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/Release-1.0.2/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
 <h4 id="_extract_folder_class"><a class="anchor" href="#_extract_folder_class"></a>4.3.12. EXTRACT_FOLDER Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2197,13 +2196,13 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Folder in local Folder structure in an Extract. Empty Folders are allowed.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXTRACT_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_extract_item_class">EXTRACT_ITEM</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2212,8 +2211,8 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;EXTRACT_ITEM&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_extract_item_class">EXTRACT_ITEM</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of Folders and content items in this Folder.</p>
 </div></div></td>
 </tr>
@@ -2222,7 +2221,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_content_item_class"><a class="anchor" href="#_extract_content_item_class"></a>4.3.13. EXTRACT_CONTENT_ITEM Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2235,13 +2234,13 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Abstract model of a wrapper for one content item in an Extract, containing various meta-data. Indicates whether it was part of the primary set and what its original path was. Intended to be subtyped for wrappers of specific types of content.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXTRACT_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_extract_item_class">EXTRACT_ITEM</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2250,44 +2249,44 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primary</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_primary</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the content item carried in this container was part of the primary set for the Extract, i.e. not added due to link-following.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_changed</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_changed</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the content item carried in this container is any kind of change since last send, in repeat sending situations.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_masked</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_masked</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the content of this item has not been included due to insufficient access rights of requestor.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>Any</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_any_class" target="_blank" rel="noopener">Any</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Content object.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>HIER_OBJECT_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code><a href="/releases/RM/Release-1.0.2/support.html#_hier_object_id_class" target="_blank" rel="noopener">HIER_OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Unique id of this Extract item; used for all referencing from elsewhere in Extract, including from Extract Folders.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Item_validity</em></strong>: <code>is_masked xor item /= Void</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Item_validity</em>: <code>is_masked xor item /= Void</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2295,7 +2294,7 @@ the EHR and generic Extract sections below.</p>
 </div>
 <div class="sect3">
 <h4 id="_extract_participation_class"><a class="anchor" href="#_extract_participation_class"></a>4.3.14. EXTRACT_PARTICIPATION Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2308,7 +2307,7 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Model of a participation of a Party (any Actor or Role) in an activity.  Used to represent any participation of a Party in some activity, which is not  explicitly in the model, e.g. assisting nurse. Can be used to record past or  future participations.</p>
 </div>
 <div class="paragraph">
@@ -2322,42 +2321,42 @@ the EHR and generic Extract sections below.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code>DV_INTERVAL&lt;DV_DATE_TIME&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_interval_class">DV_INTERVAL<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/data_types.html#_dv_date_time_class">DV_DATE_TIME</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The time interval during which the participation took place, if it is used in an observational context (i.e. recording facts about the past); or the intended time interval of the participation when used in future contexts, such as EHR Instructions.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>function</strong>: <code>DV_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>function</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The function of the Party in this participation (note that a given party might participate in more than one way in a particular activity). This attribute should be coded, but cannot be limited to the HL7v3:ParticipationFunction vocabulary, since it is too limited and hospital-oriented.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mode</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>mode</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The mode of the performer / activity interaction, e.g. present, by telephone, by email etc.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>performer</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>performer</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Uid of demographic entity within Extract who performed this participation.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Function_valid</em></strong>: <code>function /= Void and then function.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Function_valid</em>: <code>function /= Void and then function.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)</code></p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
-<p><strong><em>Mode_valid</em></strong>: <code>mode /= Void and terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)</code></p>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Mode_valid</em>: <code>mode /= Void and terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)</code></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2382,7 +2381,7 @@ to the top-level object types of the openEHR EHR.</p>
 <div class="paragraph">
 <p>The UML diagram below illustrates the <code>rm.extract.openehr_extract</code> package.</p>
 </div>
-<div id="rm_openehr_extract" class="imageblock text-center" style="text-align: center">
+<div id="rm_openehr_extract" class="imageblock text-center text-center">
 <div class="content">
 <img src="UML/diagrams/RM-ehr_extract.openehr_extract.svg" alt="RM ehr extract.openehr extract">
 </div>
@@ -2391,7 +2390,7 @@ to the top-level object types of the openEHR EHR.</p>
 <div class="paragraph">
 <p>The following figure illustrates a typical instance structure of an EHR Extract.</p>
 </div>
-<div id="typical_extract_structure" class="imageblock text-center" style="text-align: center">
+<div id="typical_extract_structure" class="imageblock text-center text-center">
 <div class="content">
 <img src="ehr_extract/diagrams/typical_extract_structure.png" alt="typical extract structure" width="80%">
 </div>
@@ -2425,7 +2424,7 @@ corresponding <code>VERSIONED_OBJECT</code> object in the source system.</p>
 <p>The overall structure of the openEHR EHR for a subject can be replicated with an archetyped Folder
 structure that creates the groupings of directory, compositions, ehr_access, and ehr_status that are
 found in an openEHR EHR. This use of folders is not mandatory, but is likely to be useful in most
-cases, and is the structure shown in the figure <a href="#typical_extract_structure">Figure 10</a> above.</p>
+cases, and is the structure shown in <a href="#_typical_extract_structure">[_typical_extract_structure]</a> above.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2435,7 +2434,7 @@ cases, and is the structure shown in the figure <a href="#typical_extract_struct
 (for the latter, the <code>PARTY_SEL`F and `PARTY_IDENTIFIED</code> descendants), they are preserved intact,
 for reasons of fidelity. However, the final 'pointer', i.e. the <code>OBJECT_ID</code>.<code><em>value</em></code> may be rewritten
 within the Extract to correctly refer to the intended demographic. A typical <code>S_PARTICIPATION</code>
-structure is illustrated at the bottom of the figure <a href="#typical_extract_structure">Figure 10</a>. In this figure, the <code>OBJECT_ID</code>.<code><em>value</em></code> has been
+structure is illustrated at the bottom of <a href="#_typical_extract_structure">[_typical_extract_structure]</a>. In this figure, the <code>OBJECT_ID</code>.<code><em>value</em></code> has been
 rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM</code> object shown in the figure.</p>
 </div>
 </div>
@@ -2444,7 +2443,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <h3 id="_class_descriptions_2"><a class="anchor" href="#_class_descriptions_2"></a>5.3. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_openehr_content_item_class"><a class="anchor" href="#_openehr_content_item_class"></a>5.3.1. OPENEHR_CONTENT_ITEM Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2457,13 +2456,13 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Form of EHR EXTRACT_ITEM containing openEHR serialised VERSIONED_OBJECTs.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXTRACT_CONTENT_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_extract_content_item_class">EXTRACT_CONTENT_ITEM</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2473,8 +2472,8 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>X_VERSIONED_OBJECT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code><a href="#_x_versioned_object_class">X_VERSIONED_OBJECT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Content object.</p>
 </div></div></td>
 </tr>
@@ -2482,8 +2481,8 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </table>
 </div>
 <div class="sect3">
-<h4 id="_x_versioned_object_t_class"><a class="anchor" href="#_x_versioned_object_t_class"></a>5.3.2. X_VERSIONED_OBJECT&lt;T&gt; Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<h4 id="_x_versioned_object_class"><a class="anchor" href="#_x_versioned_object_class"></a>5.3.2. X_VERSIONED_OBJECT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2496,7 +2495,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Variety of Extract content that consists is a sharable data-oriented version of VERSIONED_OBJECT&lt;T&gt;.</p>
 </div></div></td>
 </tr>
@@ -2507,50 +2506,50 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>HIER_OBJECT_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code><a href="/releases/RM/Release-1.0.2/support.html#_hier_object_id_class" target="_blank" rel="noopener">HIER_OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Uid of original VERSIONED_OBJECT.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner_id</strong>: <code>OBJECT_REF</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>owner_id</strong>: <code><a href="/releases/RM/Release-1.0.2/support.html#_object_ref_class" target="_blank" rel="noopener">OBJECT_REF</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Owner_id from original VERSIONED_OBJECT, which identifies source EHR.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_created</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Creation time of original VERSIONED_OBJECT.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>total_version_count</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>total_version_count</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Total number of versions in original VERSIONED_OBJECT at time of creation of this X_VERSIONED_OBJECT.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_version_count</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>extract_version_count</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The number of Versions in this extract for this Versioned object, i.e. the count of items in the versions attribute. May be 0 if only revision history is requested.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code>REVISION_HISTORY</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>revision_history</strong>: <code><a href="/releases/RM/Release-1.0.2/common.html#_revision_history_class" target="_blank" rel="noopener">REVISION_HISTORY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional revision history of the original VERSIONED_OBJECT. If included, it is the complete revision history.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>versions</strong>: <code>List&lt;ORIGINAL_VERSION&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>versions</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/common.html#_original_version_class">ORIGINAL_VERSION</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>0 or more Versions from the original VERSIONED_OBJECT, according to the Extract specification.</p>
 </div></div></td>
 </tr>
@@ -2559,7 +2558,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </div>
 <div class="sect3">
 <h4 id="_x_versioned_ehr_access_class"><a class="anchor" href="#_x_versioned_ehr_access_class"></a>5.3.3. X_VERSIONED_EHR_ACCESS Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2572,7 +2571,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Form of X_VERSIONED_OBJECT for EHR_ACCESS EHR object.</p>
 </div></div></td>
 </tr>
@@ -2581,7 +2580,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </div>
 <div class="sect3">
 <h4 id="_x_versioned_ehr_status_class"><a class="anchor" href="#_x_versioned_ehr_status_class"></a>5.3.4. X_VERSIONED_EHR_STATUS Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2594,7 +2593,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Form of X_VERSIONED_OBJECT for EHR_STATUS EHR object.</p>
 </div></div></td>
 </tr>
@@ -2603,7 +2602,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </div>
 <div class="sect3">
 <h4 id="_x_versioned_composition_class"><a class="anchor" href="#_x_versioned_composition_class"></a>5.3.5. X_VERSIONED_COMPOSITION Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2616,7 +2615,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Form of X_VERSIONED_OBJECT for COMPOSITION EHR object.</p>
 </div></div></td>
 </tr>
@@ -2625,7 +2624,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </div>
 <div class="sect3">
 <h4 id="_x_versioned_folder_class"><a class="anchor" href="#_x_versioned_folder_class"></a>5.3.6. X_VERSIONED_FOLDER Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2638,7 +2637,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Form of X_VERSIONED_OBJECT for FOLDER EHR object.</p>
 </div></div></td>
 </tr>
@@ -2647,7 +2646,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </div>
 <div class="sect3">
 <h4 id="_x_versioned_party_class"><a class="anchor" href="#_x_versioned_party_class"></a>5.3.7. X_VERSIONED_PARTY Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2660,7 +2659,7 @@ rewritten to refer to the uid (11111111) of the first <code>OPENEHR_CONTENT_ITEM
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Form of X_VERSIONED_OBJECT for PARTY demographic object.</p>
 </div></div></td>
 </tr>
@@ -2682,7 +2681,7 @@ openEHR structures defined by archetypes and templates. Such systems typically d
 standardised data of any kind, and usually have quite variable and idiosyncratic support for versioning.
 The following UML diagram illustrates the <code>rm.extract.generic_extract package</code>.</p>
 </div>
-<div id="rm_generic_extract" class="imageblock text-center" style="text-align: center">
+<div id="rm_generic_extract" class="imageblock text-center text-center">
 <div class="content">
 <img src="UML/diagrams/RM-ehr_extract.generic_extract.svg" alt="RM ehr extract.generic extract">
 </div>
@@ -2692,7 +2691,7 @@ The following UML diagram illustrates the <code>rm.extract.generic_extract packa
 <p>The figure below illustrates the instance structure of a typical <code>GENERIC_EXTRACT</code>. The containment structure
 is shown in blue, and content item wrappers (meta-data) in yellow.</p>
 </div>
-<div id="typical_generic_extract" class="imageblock text-center" style="text-align: center">
+<div id="typical_generic_extract" class="imageblock text-center text-center">
 <div class="content">
 <img src="ehr_extract/diagrams/typical_generic_extract.png" alt="typical generic extract" width="80%">
 </div>
@@ -2771,7 +2770,7 @@ things like <code>COMPOSITION</code>, any kind of <code>ENTRY</code> including <
 within the original system.</p>
 </div>
 <div class="sect4">
-<h5 id="_demographic_referencing_2"><a class="anchor" href="#_demographic_referencing_2"></a>Demographic Referencing</h5>
+<h5 id="_demographic_referencing_2"><a class="anchor" href="#_demographic_referencing_2"></a>6.2.1.1. Demographic Referencing</h5>
 <div class="paragraph">
 <p>Within the content a generic Extract, expressed using openEHR <code>COMPOSITIONs</code>, participations are
 expressed using intances of <code>PARTICIPATION</code>. This is clearly somewhat inefficient for the required
@@ -2788,7 +2787,7 @@ variant may be required for the future.</p>
 <h3 id="_class_descriptions_3"><a class="anchor" href="#_class_descriptions_3"></a>6.3. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_generic_content_item_class"><a class="anchor" href="#_generic_content_item_class"></a>6.3.1. GENERIC_CONTENT_ITEM Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2801,13 +2800,13 @@ variant may be required for the future.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Single item in generic extract, designed for 13606 and CDA data.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>EXTRACT_CONTENT_ITEM</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_extract_content_item_class">EXTRACT_CONTENT_ITEM</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2816,86 +2815,86 @@ variant may be required for the future.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_type</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_type</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier of model or schema used to create the content.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_type_version</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_type_version</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version of model or schema used to create the content item.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>author</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>author</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference to a demographic entity elsewhere in this Extract representing the author of the item version. The reference should be a UID corresponding to the UID of a GENERIC_CONTENT_ITEM containing the demographic information.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>creation_time</strong>: <code>Iso8601_date_time</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>creation_time</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_iso8601_date_time_class" target="_blank" rel="noopener">Iso8601_date_time</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time of creation of this item version on the original system. This may be an earlier commit time, or it may be the time at which the item was created during the Extract generation process.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>authoriser</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>authoriser</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Reference to a demographic entity elsewhere in this Extract representing an authoriser of the item version, if relevant. The reference should be a UID corresponding to the UID of a GENERIC_CONTENT_ITEM containing the demographic information.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>authorisation_time</strong>: <code>Iso8601_date_time</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>authorisation_time</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_iso8601_date_time_class" target="_blank" rel="noopener">Iso8601_date_time</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Time of authorisation of this item version on the original system where relevant.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_status</strong>: <code>DV_CODED_TEXT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item_status</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_coded_text_class" target="_blank" rel="noopener">DV_CODED_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Coded lifecycle status of the item.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_id</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version id of this item in original system.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_set_id</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>version_set_id</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Version set id of this item in original system, where applicable.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>system_id</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>system_id</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identifier of EMR or other system from which the item was created / extracted. Typically in the form of a domain name.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code>List&lt;String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>other_details</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Other details about the content item.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
 (redefined)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code>LOCATABLE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>item</strong>: <code><a href="/releases/RM/Release-1.0.2/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Content object.</p>
 </div></div></td>
 </tr>
@@ -2916,7 +2915,7 @@ specification only allows for a list of Contributions, or Contributions since a 
 also allows the actual versions to be included or excluded. If they are excluded, you can get just Contributions
 on their own - i..e find out what the other system has got.</p>
 </div>
-<div id="rm_sync_extract" class="imageblock text-center" style="text-align: center">
+<div id="rm_sync_extract" class="imageblock text-center text-center">
 <div class="content">
 <img src="UML/diagrams/RM-ehr_extract.sync_extract.svg" alt="RM ehr extract.sync extract">
 </div>
@@ -2927,7 +2926,7 @@ on their own - i..e find out what the other system has got.</p>
 <h3 id="_class_descriptions_4"><a class="anchor" href="#_class_descriptions_4"></a>7.2. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_sync_extract_request_class"><a class="anchor" href="#_sync_extract_request_class"></a>7.2.1. SYNC_EXTRACT_REQUEST Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2940,13 +2939,13 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Type of request designed for synchronisation of Contributions between openEHR servers.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>MESSAGE_CONTENT</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_message_content_class">MESSAGE_CONTENT</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2955,8 +2954,8 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specification</strong>: <code>SYNC_EXTRACT_SPEC</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specification</strong>: <code><a href="#_sync_extract_spec_class">SYNC_EXTRACT_SPEC</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Details of specification of synchronisation request.</p>
 </div></div></td>
 </tr>
@@ -2965,7 +2964,7 @@ on their own - i..e find out what the other system has got.</p>
 </div>
 <div class="sect3">
 <h4 id="_sync_extract_class"><a class="anchor" href="#_sync_extract_class"></a>7.2.2. SYNC_EXTRACT Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -2978,11 +2977,11 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code>MESSAGE_CONTENT</code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_message_content_class">MESSAGE_CONTENT</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -2991,15 +2990,15 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specification</strong>: <code>SYNC_EXTRACT_SPEC</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>specification</strong>: <code><a href="#_sync_extract_spec_class">SYNC_EXTRACT_SPEC</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Details of specification of this Extract.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code>List&lt;X_CONTRIBUTION&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_x_contribution_class">X_CONTRIBUTION</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Content, in the form of a serialised Contributions.</p>
 </div></div></td>
 </tr>
@@ -3008,7 +3007,7 @@ on their own - i..e find out what the other system has got.</p>
 </div>
 <div class="sect3">
 <h4 id="_sync_extract_spec_class"><a class="anchor" href="#_sync_extract_spec_class"></a>7.2.3. SYNC_EXTRACT_SPEC Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -3021,7 +3020,7 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Details of specification of Extract, used in a request to specify an Extract, or in a response, to describe what is actually in the Extract.</p>
 </div></div></td>
 </tr>
@@ -3032,29 +3031,29 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes_versions</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>includes_versions</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if the Versions from the Contribution are included; False if just the Contribution and its Audit are included.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contribution_list</strong>: <code>List&lt;HIER_OBJECT_ID&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contribution_list</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/support.html#_hier_object_id_class">HIER_OBJECT_ID</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>List of Contributions to include / that are included in the Extract.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contributions_since</strong>: <code>DV_DATE_TIME</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contributions_since</strong>: <code><a href="/releases/RM/Release-1.0.2/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Specify Contributions included in Extract by threshold date.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_contributions</strong>: <code>Boolean</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>all_contributions</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>True if all Contributions in the record are included.</p>
 </div></div></td>
 </tr>
@@ -3063,7 +3062,7 @@ on their own - i..e find out what the other system has got.</p>
 </div>
 <div class="sect3">
 <h4 id="_x_contribution_class"><a class="anchor" href="#_x_contribution_class"></a>7.2.4. X_CONTRIBUTION Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -3076,7 +3075,7 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Serialised form of Contribution for an Extract.</p>
 </div></div></td>
 </tr>
@@ -3087,22 +3086,22 @@ on their own - i..e find out what the other system has got.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code>HIER_OBJECT_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>uid</strong>: <code><a href="/releases/RM/Release-1.0.2/support.html#_hier_object_id_class" target="_blank" rel="noopener">HIER_OBJECT_ID</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Uid of Contribution in source system.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audit</strong>: <code>AUDIT_DETAILS</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audit</strong>: <code><a href="/releases/RM/Release-1.0.2/common.html#_audit_details_class" target="_blank" rel="noopener">AUDIT_DETAILS</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Audit of Contribution in source system.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>versions</strong>: <code>List&lt;VERSION&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>versions</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/Release-1.0.2/common.html#_version_class">VERSION</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Serialised Versions from Contribution in source system.</p>
 </div></div></td>
 </tr>
@@ -3132,7 +3131,7 @@ without an explicit transfer of care.</p>
 point message containing a payload, of abstract type <code>MESSAGE</code>. The <code>message</code> Package is illustrated in
 the UML diagram below.</p>
 </div>
-<div id="rm__extract_message" class="imageblock text-center" style="text-align: center">
+<div id="rm__extract_message" class="imageblock text-center text-center">
 <div class="content">
 <img src="UML/diagrams/RM-ehr_extract.message.svg" alt="RM ehr extract.message">
 </div>
@@ -3163,7 +3162,7 @@ environments, such as a private hospital or community health network.</p>
 <h3 id="_class_descriptions_5"><a class="anchor" href="#_class_descriptions_5"></a>8.3. Class Descriptions</h3>
 <div class="sect3">
 <h4 id="_addressed_message_class"><a class="anchor" href="#_addressed_message_class"></a>8.3.1. ADDRESSED_MESSAGE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -3176,7 +3175,7 @@ environments, such as a private hospital or community health network.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>The concept of a message addressed to nominated recipients.</p>
 </div></div></td>
 </tr>
@@ -3187,29 +3186,29 @@ environments, such as a private hospital or community health network.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sender</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sender</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Party sending the message.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sender_reference</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>sender_reference</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Identification of message used by sender. This will be the same no matter how many times this message is sent to these recipients.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>addressees</strong>: <code>List&lt;String&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>addressees</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_string_class">String</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Intended recipients, in the form of internet addresses.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>urgency</strong>: <code>Integer</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>urgency</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_integer_class" target="_blank" rel="noopener">Integer</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Urgency with which destination should deal with message:</p>
 </div>
 <div class="ulist">
@@ -3228,8 +3227,8 @@ environments, such as a private hospital or community health network.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>message</strong>: <code>MESSAGE</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>message</strong>: <code><a href="#_message_class">MESSAGE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The content of the message.</p>
 </div></div></td>
 </tr>
@@ -3238,7 +3237,7 @@ environments, such as a private hospital or community health network.</p>
 </div>
 <div class="sect3">
 <h4 id="_message_class"><a class="anchor" href="#_message_class"></a>8.3.2. MESSAGE Class</h4>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 33.3333%;">
@@ -3251,7 +3250,7 @@ environments, such as a private hospital or community health network.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>A “message” is an authored, possibly signed, piece of content intended for one or more recipients. Since the recipient may or may not be known directly, recipients are specified in the ADDRESSED_MESSAGE class.</p>
 </div></div></td>
 </tr>
@@ -3262,8 +3261,8 @@ environments, such as a private hospital or community health network.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>author</strong>: <code>PARTY_PROXY</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>author</strong>: <code><a href="/releases/RM/Release-1.0.2/common.html#_party_proxy_class" target="_blank" rel="noopener">PARTY_PROXY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Party responsible for the message content, who may or may not be technically responsible for its creation (e.g. by data entry etc).</p>
 </div></div></td>
 </tr>
@@ -3274,22 +3273,22 @@ environments, such as a private hospital or community health network.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audit</strong>: <code>AUDIT_DETAILS</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>audit</strong>: <code><a href="/releases/RM/Release-1.0.2/common.html#_audit_details_class" target="_blank" rel="noopener">AUDIT_DETAILS</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Details of who actually created the message and when. This is the person who entered the data or otherwise caused the message to be created, or might be a piece of software.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>content</strong>: <code>MESSAGE_CONTENT</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>content</strong>: <code><a href="#_message_content_class">MESSAGE_CONTENT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Content of the message.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>signature</strong>: <code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>signature</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Optional signature by the author of message content in openPGP format. The signature is created as a Hash and optional signing of the serialisation of this message object with this signature field Void.</p>
 </div></div></td>
 </tr>
@@ -3319,7 +3318,7 @@ justification for this is that no assumptions should made on sender or receiver 
 ability to represent or efficiently process versions. Whole Compositions can always be processed by
 even the simplest systems.</p>
 </div>
-<div id="composition_versioning" class="imageblock text-center" style="text-align: center">
+<div id="composition_versioning" class="imageblock text-center text-center">
 <div class="content">
 <img src="ehr_extract/diagrams/composition_versioning.png" alt="composition versioning" width="65%">
 </div>
@@ -3366,7 +3365,7 @@ illustrates the structure generated by the accumulation of only three changes sh
 versions in the figure below. The large numbers of changes likely in persistent Compositions will generate
 far more complex structures.</p>
 </div>
-<div id="cumulative_diff" class="imageblock text-center" style="text-align: center">
+<div id="cumulative_diff" class="imageblock text-center text-center">
 <div class="content">
 <img src="ehr_extract/diagrams/cumulative_diff.png" alt="cumulative diff" width="55%">
 </div>
@@ -3453,8 +3452,9 @@ set <code><em>is_primary</em></code> = False, write the path and write the targe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-22 16:53:12 GMT
+Last updated 2021-02-15 11:00:42 UTC
 </div>
 </div>
+<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
 </body>
 </html>
