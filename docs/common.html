@@ -249,7 +249,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2020 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2021 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -1999,7 +1999,7 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </ul>
 </div>
 <div class="paragraph">
-<p>The digital signature, if present, is generated using the openPGP standard (<a href="https://www.ietf.org/rfc/rfc4880">IETF RFC 4880</a>) as, according to the process shown below.</p>
+<p>The digital signature, if present, is generated using the openPGP standard (<a href="https://tools.ietf.org/html/rfc4880">IETF RFC 4880</a>) as, according to the process shown below.</p>
 </div>
 <div id="attestation_signature_generation" class="imageblock text-center text-center">
 <div class="content">
@@ -2859,7 +2859,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <p>At the time of committal of a Version, a digital signature of the object can be made. In this process, a Version object (an <code>ORIGINAL_VERSION</code> or <code>IMPORTED_VERSION</code>) is serialised into canonical form which is then hashed to produce a digest. If public key or equivalent infrastructure is in place so that users are able to sign content, a digital signature can be created from the hash, using the user&#8217;s private key. Either way, the result is then radix-64 encoded to create an ASCII string so as to remove or reduce potential problems with subsequent communication. The openPGP standard ensures that the trasformations and algorithms used to create the signature are indicated within it.</p>
 </div>
 <div class="paragraph">
-<p>The signature can serve two purposes. If only the hashing step is done, the digest acts as a data integrity check, indicating if the data have been tampered with after creation. If the signing step is carried out, it authenticates the user as the author of the content to readers of the content. In a versioned EHR system, it also acts as a non-repudiation measure, since the signature is stored permanently with the data. To circumvent hacking of the data, public notarisation of the signature can be used. The signature, if present, is generated according to the openPGP standard (<a href="https://www.ietf.org/rfc/rfc4880">IETF RFC 4880</a>), following the process shown below.</p>
+<p>The signature can serve two purposes. If only the hashing step is done, the digest acts as a data integrity check, indicating if the data have been tampered with after creation. If the signing step is carried out, it authenticates the user as the author of the content to readers of the content. In a versioned EHR system, it also acts as a non-repudiation measure, since the signature is stored permanently with the data. To circumvent hacking of the data, public notarisation of the signature can be used. The signature, if present, is generated according to the openPGP standard (<a href="https://tools.ietf.org/html/rfc4880">IETF RFC 4880</a>), following the process shown below.</p>
 </div>
 <div id="version_signature" class="imageblock text-center text-center">
 <div class="content">
@@ -4343,7 +4343,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-23 17:13:44 +0100
+Last updated 2021-02-15 13:27:48 UTC
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
