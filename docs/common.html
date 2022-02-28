@@ -289,15 +289,22 @@
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-103" target="_blank" rel="noopener">SPECRM-103</a>: Documentation fixes and typos:<br>
+ Fix <code>PARTY_RELATED</code> typo (fixes <a href="https://specifications.openehr.org/tickets/SPECPR-385" target="_blank" rel="noopener">SPECPR-385</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Bos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>28 Feb 2022</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1.4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-97" target="_blank" rel="noopener">SPECRM-97</a>: Define data validity rules for Versions with <code><em>lifecycle_state</em> = incomplete</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">M Polajnar,<br>
  S Iancu,<br>
  P Bos</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Sep 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23 Sep 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -694,7 +701,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPEC-80" target="_blank" rel="noopener">SPEC-80</a>. Remove <code>ARCHETYPED.<em>concept</em></code> - not needed in data<br>
  <a href="https://specifications.openehr.org/tickets/SPEC-81" target="_blank" rel="noopener">SPEC-81</a>. <code>LINK</code> should be unidirectional.<br>
- <a href="https://specifications.openehr.org/tickets/SPEC-83" target="_blank" rel="noopener">SPEC-83</a>. <code>RELATED_PARTY.<em>party</em></code> should be optional.<br>
+ <a href="https://specifications.openehr.org/tickets/SPEC-83" target="_blank" rel="noopener">SPEC-83</a>. <code>PARTY_RELATED.<em>party</em></code> should be optional.<br>
  <a href="https://specifications.openehr.org/tickets/SPEC-85" target="_blank" rel="noopener">SPEC-85</a>. <code>LOCATABLE.<em>synthesised</em></code> not needed. Add vocabulary for <code>FEEDER_AUDIT.<em>change_type</em></code>.<br>
  <a href="https://specifications.openehr.org/tickets/SPEC-86" target="_blank" rel="noopener">SPEC-86</a>. <code>LOCATABLE.<em>presentation</em></code> not needed.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DSTC</p></td>
@@ -703,7 +710,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPEC-91" target="_blank" rel="noopener">SPEC-91</a>. Correct anomalies in use of <code>CODE_PHRASE</code> and <code>DV_CODED_TEXT</code>.<br>
- Changed <code>PARTICIPATION.<em>mode</em></code>, changed <code>ATTESTATION.<em>status</em></code>, <code>RELATED_PARTY.<em>relationship</em></code>, <code>VERSION_AUDIT.<em>change_type</em></code>, <code>FEEDER_AUDIT.<em>change_type</em></code> to to <code>DV_CODED_TEXT</code>.</p></td>
+ Changed <code>PARTICIPATION.<em>mode</em></code>, changed <code>ATTESTATION.<em>status</em></code>, <code>PARTY_RELATED.<em>relationship</em></code>, <code>VERSION_AUDIT.<em>change_type</em></code>, <code>FEEDER_AUDIT.<em>change_type</em></code> to to <code>DV_CODED_TEXT</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale,<br>
  S Heard</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -794,7 +801,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.4.4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPEC-7" target="_blank" rel="noopener">SPEC-7</a>. Add <code>RELATED_PARTY</code> class to <code>generic</code> package.<br>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPEC-7" target="_blank" rel="noopener">SPEC-7</a>. Add <code>PARTY_RELATED</code> class to <code>generic</code> package.<br>
  <a href="https://specifications.openehr.org/tickets/SPEC-17" target="_blank" rel="noopener">SPEC-17</a>. Renamed <code>VERSION.<em>parent_version_id</em></code> to <code><em>preceding_version_id</em></code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Heard,<br>
  D Kalra</p></td>
@@ -1903,7 +1910,7 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 <p>The two subtypes correspond to the mutually distinct categories of the 'subject of the record', known as the 'self' party in openEHR, and any other party. Whenever the record subject has to be referred to in the record, an instance of <code>PARTY_SELF</code> is used, while <code>PARTY_IDENTIFIED</code> is used for all other situations. The latter class provides for optional human-readable names and formal identifiers, each keyed by purpose or meaning.</p>
 </div>
 <div class="paragraph">
-<p>The <code>RELATED_PARTY</code> type is used whenever the relationship of the party to the record subject is required. Relationships are coded and include familial ones ('mother', 'uncle', etc) as well as relationships like 'donor', 'travelling companion' and so on.</p>
+<p>The <code>PARTY_RELATED</code> type is used whenever the relationship of the party to the record subject is required. Relationships are coded and include familial ones ('mother', 'uncle', etc) as well as relationships like 'donor', 'travelling companion' and so on.</p>
 </div>
 <div class="sect4">
 <h5 id="_party_self_and_referring_to_the_patient_from_the_ehr"><a class="anchor" href="#_party_self_and_referring_to_the_patient_from_the_ehr"></a>4.2.1.1. PARTY_SELF and Referring to the Patient from the EHR</h5>
