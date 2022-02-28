@@ -1,0 +1,35 @@
+=== PLACE Class
+
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*__PLACE (abstract)__*
+
+h|*Description*
+2+a|Spatial extent; approximate synonym for bfo:Immaterial entity.
+
+h|*Inherit*
+2+|`<<_entity_class,ENTITY>>`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*contained_objects*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_material_entity_class,MATERIAL_ENTITY>>>`
+a|Physical objects (devices etc) contained within a Place.
+
+h|*0..1*
+|*addresses*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_address2_class,ADDRESS2>>>`
+a|Addresses of a place within one or more address spaces.
+
+h|*0..1*
+|*available_parties*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_party2_class,PARTY2>>>`
+a|Parties available within a Site (
+
+h|*1..1*
+|*operator*: `link:/releases/RM/{rm_release}/demographic.html#_organisation_class[ORGANISATION^]`
+a|Business owner and/or operator of the place. Understood as the organisation for which this is a place of business, rather than the legal owner if this is different.
+
+TODO: probably should allow for any Place/Party relationship.
+|===
