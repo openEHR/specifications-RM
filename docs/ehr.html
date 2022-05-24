@@ -331,14 +331,22 @@
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-100" target="_blank" rel="noopener">SPECRM-100</a>. Facilitate <code>ACTION</code> with unknown date. Document use of <code>ACTION.<em>time</em></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P Pazos,<br>
+ S Iancu,<br>
+ I McNicoll</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>24 May 2022</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.2.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-55" target="_blank" rel="noopener">SPECRM-55</a>. Add <code><em>folders</em>:LIST&lt;OBJECT_REF&gt;</code> on <code>EHR</code>; make <code><em>directory</em></code> refer to first member of <code><em>folders</em></code>. See <a href="#_folders">Section 4.2.5</a>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">B Naess,<br>
  S Iancu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>23 Sep 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23 Sep 2020</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -4408,7 +4416,7 @@ The data of the Entry; modelled in archetypes.</p>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_date_time_class" target="_blank" rel="noopener">DV_DATE_TIME</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Point in time at which this action completed.</p>
+<p>Point in time at which this action completed. To indicate an unknown time, use a <code>DV_DATE_TIME</code> instance with <code><em>value</em></code> set to the time of creation (or some other known time before which the Action is known to have occurred, e.g. data accession timestamp from integration engine), and <code><em>magnitude_status</em></code> set to <code>&lt;</code>.</p>
 </div></div></td>
 </tr>
 <tr>
