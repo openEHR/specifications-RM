@@ -141,7 +141,12 @@
 </li>
 <li><a href="#_versioning_semantics">6.3. Versioning Semantics</a>
 <ul class="sectlevel3">
-<li><a href="#_version_lifecycle">6.3.1. Version Lifecycle</a></li>
+<li><a href="#_version_lifecycle">6.3.1. Version Lifecycle</a>
+<ul class="sectlevel4">
+<li><a href="#_incomplete_content">6.3.1.1. Incomplete Content</a></li>
+<li><a href="#_inactive_state">6.3.1.2. Inactive State</a></li>
+</ul>
+</li>
 <li><a href="#_logical_deletion">6.3.2. Logical Deletion</a></li>
 <li><a href="#_version_identification">6.3.3. Version Identification</a>
 <ul class="sectlevel4">
@@ -290,10 +295,16 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-107" target="_blank" rel="noopener">SPECRM-107</a>: Add <code>inactive</code> state to Version lifecycle (fixes <a href="https://specifications.openehr.org/tickets/SPECPR-383" target="_blank" rel="noopener">SPECPR-383</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">J Holslag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>29 Jun 2022</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-103" target="_blank" rel="noopener">SPECRM-103</a>: Documentation fixes and typos:<br>
  Fix <code>PARTY_RELATED</code> typo (fixes <a href="https://specifications.openehr.org/tickets/SPECPR-385" target="_blank" rel="noopener">SPECPR-385</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">P Bos</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>28 Feb 2022</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28 Feb 2022</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0</strong></p></th>
@@ -946,6 +957,9 @@
 </li>
 <li>
 <p>Sam Heard MD, Ocean Informatics, Australia</p>
+</li>
+<li>
+<p>Joost Holslag MD, Nedap, Netherlands</p>
 </li>
 <li>
 <p>Sebastian Iancu, Architect, Code24, Netherlands</p>
@@ -2921,7 +2935,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="sect3">
 <h4 id="_version_lifecycle"><a class="anchor" href="#_version_lifecycle"></a>6.3.1. Version Lifecycle</h4>
 <div class="paragraph">
-<p>Content in Original versions has a lifecycle state associated with it, modelled using the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are <code>532|complete|</code>, <code>553|incomplete|</code> and <code>523|deleted|</code>.</p>
+<p>Content in Original versions has a lifecycle state associated with it, modelled using the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are <code>532|complete|</code>, <code>553|incomplete|</code>, <code>523|deleted|</code>, and <code>680|inactive|</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following diagram shows the formal state machine of the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute.</p>
@@ -2933,8 +2947,10 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="title">Figure 10. <code>ORIGINAL_VERSION <em>lifecycle_state</em></code> state machine</div>
 </div>
 <div class="paragraph">
-<p>Usually content will be committed in the <code>complete</code> state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as <code>incomplete</code> meaning that it is either partial or perhaps unreviewed. In hospitals this is a common occurrence. Unfinished content items (EHR Compositions, Demographic Parties etc) cannot be saved locally on the client machine, as this represents a security risk (since a client-side app or database is easier to compromise than a secure server). They must therefore be persisted on the server, either in the actual EHR (or other appropriate repository), or in a 'holding bay' which is recognised as not being part of the primary destination repository. Either way, the author normally retrieves the item(s) and after further work or review, promotes them into the final destination (i.e. patient EHR etc), in the <code>complete</code> state. Alternatively, the author might decide to throw them away, achieved by logical deletion, in which case the final commit is in the <code>deleted</code> state.</p>
+<p>Usually content will be committed in the <code>complete</code> state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as <code>incomplete</code> meaning that it is either partial and/or unreviewed. In hospitals this is a common occurrence. Unfinished content items (EHR Compositions, Demographic Parties etc) cannot be saved locally on the client machine, as this represents a security risk (since a client-side app or database is easier to compromise than a secure server). They must therefore be persisted on the server, either in the actual EHR (or other appropriate repository), or in a 'holding area' which is recognised as not being part of the primary destination record, but is still within the secure repository. Either way, the author normally retrieves the item(s) and after further work or review, promotes them into the final destination (i.e. patient EHR etc), in the <code>complete</code> state. Alternatively, the author might decide to throw them away, achieved by logical deletion, in which case the final commit is in the <code>deleted</code> state.</p>
 </div>
+<div class="sect4">
+<h5 id="_incomplete_content"><a class="anchor" href="#_incomplete_content"></a>6.3.1.1. Incomplete Content</h5>
 <div class="paragraph">
 <p>One of the consequences of accepting content that is semantically incomplete (e.g. may contain only partial clinical notes or incomplete demographic details) into the target EHR or other location is that it might also be technically 'incomplete', i.e. it may be missing mandatory data fields with respect to its generating archetypes. If being committed in the <code>complete</code> state, such data would be treated as invalid by the repository and rejected by the API.</p>
 </div>
@@ -2958,6 +2974,64 @@ In the <code>incomplete</code> state however, a limited form of invalidity is al
 </div>
 <div class="paragraph">
 <p>Systems and/or applications are responsible for implementing checks to find 'old' Versions in the <code>incomplete</code> state, and bring them to the relevant user&#8217;s notice, or automatically deleting them or progressing them to <code>complete</code> in a reasonable way.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_inactive_state"><a class="anchor" href="#_inactive_state"></a>6.3.1.2. Inactive State</h5>
+<div class="paragraph">
+<p>An Original version may also be marked as being in the <code>inactive</code> state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion state - to be marked as no longer valid. The exact meaning of 'validity' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose.</p>
+</div>
+<div class="paragraph">
+<p>The transitions related to the <code>inactive</code> state are as follows.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 57.1429%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Initial<br>
+ State</th>
+<th class="tableblock halign-left valign-top">Transition</th>
+<th class="tableblock halign-left valign-top">Target<br>
+                                 State</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>incomplete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>suspend</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inactive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A new care plan (the version content) was made in rehabilitation centre, but patient transferred to hospital before care plan was completed.
+                                                 Should be archived for later reference e.g. if the patient comes to rehab again.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inactive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>resume</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>incomplete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient returns to rehab and care is resumed; the care plan is therefore brought back into use.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>complete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deactivate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inactive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A care plan (the version content) is in active use. Subsequently, the patient is discharged and the care plan is no longer actively maintained.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inactive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>reactivate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>complete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient is readmitted after discharge and the care plan is reactivated.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The most common of these transitions is likely to be <code>deactivate</code>, i.e. marking of the content as inactive after final use.</p>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -4350,7 +4424,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-02-15 13:27:48 UTC
+Last updated 2022-06-29 10:36:02 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
