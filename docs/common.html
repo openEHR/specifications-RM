@@ -144,7 +144,8 @@
 <li><a href="#_version_lifecycle">6.3.1. Version Lifecycle</a>
 <ul class="sectlevel4">
 <li><a href="#_incomplete_content">6.3.1.1. Incomplete Content</a></li>
-<li><a href="#_inactive_state">6.3.1.2. Inactive State</a></li>
+<li><a href="#_abandoned_state">6.3.1.2. Abandoned State</a></li>
+<li><a href="#_inactive_state">6.3.1.3. Inactive State</a></li>
 </ul>
 </li>
 <li><a href="#_logical_deletion">6.3.2. Logical Deletion</a></li>
@@ -295,9 +296,11 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.1.5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-107" target="_blank" rel="noopener">SPECRM-107</a>: Add <code>inactive</code> state to Version lifecycle (fixes <a href="https://specifications.openehr.org/tickets/SPECPR-383" target="_blank" rel="noopener">SPECPR-383</a>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">J Holslag</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>29 Jun 2022</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-107" target="_blank" rel="noopener">SPECRM-107</a>: Add <code>inactive</code> and <code>abandoned</code> states to Version lifecycle (fixes <a href="https://specifications.openehr.org/tickets/SPECPR-383" target="_blank" rel="noopener">SPECPR-383</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">J Holslag,<br>
+ Jelte Zeilstra,<br>
+ Bas Janssen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>12 Aug 2022</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -959,10 +962,13 @@
 <p>Sam Heard MD, Ocean Informatics, Australia</p>
 </li>
 <li>
-<p>Joost Holslag MD, Nedap, Netherlands</p>
+<p>Joost Holslag MD, Netherlands</p>
 </li>
 <li>
 <p>Sebastian Iancu, Architect, Code24, Netherlands</p>
+</li>
+<li>
+<p>Bas Janssen, Nedap, Netherlands</p>
 </li>
 <li>
 <p>Dipak Kalra MD, PhD, Professor Health Informatics, CHIME, UCL, UK</p>
@@ -996,6 +1002,9 @@
 </li>
 <li>
 <p>Bert Verhees, ROSA Software, The Netherlands.</p>
+</li>
+<li>
+<p>Jelte Zeilstra, Nedap, Netherlands</p>
 </li>
 </ul>
 </div>
@@ -2935,7 +2944,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="sect3">
 <h4 id="_version_lifecycle"><a class="anchor" href="#_version_lifecycle"></a>6.3.1. Version Lifecycle</h4>
 <div class="paragraph">
-<p>Content in Original versions has a lifecycle state associated with it, modelled using the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are <code>532|complete|</code>, <code>553|incomplete|</code>, <code>523|deleted|</code>, and <code>680|inactive|</code>.</p>
+<p>Content in Original versions has a lifecycle state associated with it, modelled using the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are <code>532|complete|</code>, <code>553|incomplete|</code>, <code>523|deleted|</code>, <code>680|inactive|</code> and <code>681|abandoned|</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following diagram shows the formal state machine of the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute.</p>
@@ -2947,7 +2956,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="title">Figure 10. <code>ORIGINAL_VERSION <em>lifecycle_state</em></code> state machine</div>
 </div>
 <div class="paragraph">
-<p>Usually content will be committed in the <code>complete</code> state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as <code>incomplete</code> meaning that it is either partial and/or unreviewed. In hospitals this is a common occurrence. Unfinished content items (EHR Compositions, Demographic Parties etc) cannot be saved locally on the client machine, as this represents a security risk (since a client-side app or database is easier to compromise than a secure server). They must therefore be persisted on the server, either in the actual EHR (or other appropriate repository), or in a 'holding area' which is recognised as not being part of the primary destination record, but is still within the secure repository. Either way, the author normally retrieves the item(s) and after further work or review, promotes them into the final destination (i.e. patient EHR etc), in the <code>complete</code> state. Alternatively, the author might decide to throw them away, achieved by logical deletion, in which case the final commit is in the <code>deleted</code> state.</p>
+<p>Usually content will be committed in the <code>complete</code> state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as <code>incomplete</code> meaning that it is either partial and/or unreviewed. In hospitals this is a common occurrence. Unfinished content items (EHR Compositions, Demographic Parties etc) cannot be saved locally on the client machine, as this represents a security risk (since a client-side app or database is easier to compromise than a secure server). They must therefore be persisted on the server, either in the actual EHR (or other appropriate repository), or in a 'holding area' which is recognised as not being part of the primary destination record, but is still within a secure repository. Either way, the author normally retrieves the item(s) and after further work or review, promotes them into the final destination (i.e. patient EHR etc), in the <code>complete</code> state. Alternatively, the author might decide to throw them away, achieved by logical deletion, in which case the final commit is in the <code>deleted</code> state.</p>
 </div>
 <div class="sect4">
 <h5 id="_incomplete_content"><a class="anchor" href="#_incomplete_content"></a>6.3.1.1. Incomplete Content</h5>
@@ -2961,7 +2970,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="title">Note</div>
 </td>
 <td class="content">
-In the <code>incomplete</code> state however, a limited form of invalidity is allowed: mandatory attributes may be absent. Concretely, single-valued attributes may have null values and container attributes may be empty, even though they may have minimum existence and cardinality respectively of one. All other validity requirements must be satisfied. In other words, in an <code>incomplete</code> commit, data may be missing, but it may not be wrong.
+In the <code>incomplete</code> state, a limited form of invalidity is allowed: mandatory attributes may be absent. Concretely, single-valued attributes may have null values and container attributes may be empty, even though they may have minimum existence and cardinality respectively of one. All other validity requirements must be satisfied. In other words, in an <code>incomplete</code> commit, data may be missing, but it may not be wrong.
 </td>
 </tr>
 </table>
@@ -2977,12 +2986,18 @@ In the <code>incomplete</code> state however, a limited form of invalidity is al
 </div>
 </div>
 <div class="sect4">
-<h5 id="_inactive_state"><a class="anchor" href="#_inactive_state"></a>6.3.1.2. Inactive State</h5>
+<h5 id="_abandoned_state"><a class="anchor" href="#_abandoned_state"></a>6.3.1.2. Abandoned State</h5>
+<div class="paragraph">
+<p>A content item that is in the <code>incomplete</code> state may lose relevance before it is ever completed, e.g. due to its data subject no longer being under care. The version containing such an item may be transitioned to the <code>abandoned</code> state to represent this state of affairs. If circumstances change again and the abandoned item once again becomes relevant, it may be transitioned back to the <code>incomplete</code> state via the <code>retrieve</code> transition.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_inactive_state"><a class="anchor" href="#_inactive_state"></a>6.3.1.3. Inactive State</h5>
 <div class="paragraph">
 <p>An Original version may also be marked as being in the <code>inactive</code> state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion state - to be marked as no longer valid. The exact meaning of 'validity' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose.</p>
 </div>
 <div class="paragraph">
-<p>The transitions related to the <code>inactive</code> state are as follows.</p>
+<p>The transitions related to the <code>abandoned</code> and <code>inactive</code> states are as follows.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -3004,16 +3019,16 @@ In the <code>incomplete</code> state however, a limited form of invalidity is al
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>incomplete</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>suspend</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inactive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>abandon</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>abandoned</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A new care plan (the version content) was made in rehabilitation centre, but patient transferred to hospital before care plan was completed.
-                                                 Should be archived for later reference e.g. if the patient comes to rehab again.</p></td>
+                                                 The draft care plan is abandoned.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inactive</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>resume</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>abandoned</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>retrieve</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>incomplete</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Patient returns to rehab and care is resumed; the care plan is therefore brought back into use.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient returns to rehab and care is resumed; the abandoned draft care plan is therefore brought back into use.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>complete</code></p></td>
@@ -3048,7 +3063,7 @@ In the <code>incomplete</code> state however, a limited form of invalidity is al
 <p>delete its <code><em>data</em></code> (which will by default be a copy of the data of the previous Version);</p>
 </li>
 <li>
-<p>set the <code><em>lifecycle_state</em></code> value to the code for "deleted"</p>
+<p>set the <code><em>lifecycle_state</em></code> value to the code for <code>deleted</code>;</p>
 </li>
 <li>
 <p>commit in the normal way.</p>
@@ -4424,7 +4439,7 @@ translations.has_key (d.language.code_string)))</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-06-29 10:36:02 +0100
+Last updated 2022-08-12 00:11:50 +0100
 </div>
 </div>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">

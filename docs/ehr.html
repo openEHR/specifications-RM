@@ -332,9 +332,11 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>5.2.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-107" target="_blank" rel="noopener">SPECRM-107</a>: Add <code>inactive</code> state to Version lifecycle (fixes <a href="https://specifications.openehr.org/tickets/SPECPR-383" target="_blank" rel="noopener">SPECPR-383</a>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">J Holslag</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>29 Jun 2022</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-107" target="_blank" rel="noopener">SPECRM-107</a>: Add <code>inactive</code> and <code>abandoned</code> states to Version lifecycle (fixes <a href="https://specifications.openehr.org/tickets/SPECPR-383" target="_blank" rel="noopener">SPECPR-383</a>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">J Holslag,<br>
+ Jelte Zeilstra,<br>
+ Bas Janssen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>12 Aug 2022</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -1149,10 +1151,13 @@
 <p>Sam Heard MD, Ocean Informatics, Australia</p>
 </li>
 <li>
-<p>Joost Holslag MD, Nedap, Netherlands</p>
+<p>Joost Holslag MD, Netherlands</p>
 </li>
 <li>
 <p>David Ingram PhD, Emeritus Professor of Health Informatics, UCL, UK</p>
+</li>
+<li>
+<p>Bas Janssen, Nedap, Netherlands</p>
 </li>
 <li>
 <p>Dipak Kalra MD, PhD, Professor Health Informatics, CHIME, UCL, UK</p>
@@ -1182,7 +1187,10 @@
 <p>Zar zar Tun, DSTC, Australia</p>
 </li>
 <li>
-<p>Bert Verhees, ROSA Software, The Netherlands.</p>
+<p>Bert Verhees, ROSA Software, The Netherlands</p>
+</li>
+<li>
+<p>Jelte Zeilstra, Nedap, Netherlands</p>
 </li>
 </ul>
 </div>
@@ -1767,7 +1775,7 @@
 <p>Compositions may be classified as <em>episodic</em> if they contain information relevant to an ongoing care situation spanning sigificant time, such as pregnancy and birth, major surgery and recovery etc. During a specific episode of care, Event Compositions will still be used to record normal clinical events, particularly routine observations. However, assessments, summaries and care plans specific to the condition being treated may be committed in Compositions with <code><em>category</em></code> set to <code>episodic</code> to indicate that they should be treated as having a persistent-like quality i.e updated as as single instance source-of-truth, but only maintained as such for a defined period or set of conditions and not for the entire life of the patient. An example is a Problem list that is maintained as a continuously updated single instance during a hospital admission but only for the duration of that admission. If the patient is re-admitted, a new instance of an Episodic Composition is then created and continually updated for that admission.</p>
 </div>
 <div class="paragraph">
-<p>Since episodic Compositions are typically regarded as no longer relevant once the episode of care is considered complete, it may be useful to mark them as such. This may be done by setting the owning <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> to the <code>inactive</code> state. This is described in detail in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_version_lifecycle" target="_blank" rel="noopener">openEHR Common Information Model</a></p>
+<p>Since episodic Compositions are typically regarded as no longer relevant once the episode of care is considered complete, it may be useful to mark them as such. This may be done for a Composition whose owning Version is in the lifecycle state <code>completed</code> by setting the owning <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> to the <code>inactive</code> state. If the owning Version is in the <code>incomplete</code> state, it may be <code>abandoned</code>. Version lifecycle transitions are described in detail in the <a href="https://specifications.openehr.org/releases/RM/latest/common.html#_version_lifecycle" target="_blank" rel="noopener">openEHR Common Information Model</a>.</p>
 </div>
 </div>
 </div>
@@ -4902,7 +4910,7 @@ has_code_for_group_id (Group_id_instruction_transitions, transition.defining_cod
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-06-29 11:17:22 +0100
+Last updated 2022-08-12 00:12:26 +0100
 </div>
 </div>
 </body>
