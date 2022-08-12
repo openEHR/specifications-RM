@@ -2955,6 +2955,9 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 </div>
 <div class="title">Figure 10. <code>ORIGINAL_VERSION <em>lifecycle_state</em></code> state machine</div>
 </div>
+<div class="paragraph">
+<p>One basic rule must be observed with the use of states, which is that any transition requires the commit of a <em>new version</em>, even if the content is otherwise unchanged. This also means that transitions through a number of successive states entails a number of commits, each recording one transition.</p>
+</div>
 <div class="sect4">
 <h5 id="_incomplete_content"><a class="anchor" href="#_incomplete_content"></a>6.3.1.1. Incomplete Content</h5>
 <div class="paragraph">

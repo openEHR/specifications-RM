@@ -136,6 +136,8 @@ The following diagram shows the formal state machine of the `ORIGINAL_VERSION._l
 .`ORIGINAL_VERSION _lifecycle_state_` state machine
 image::{uml_diagrams_uri}/RM-version_lifecycle.svg[id=version_lifecycle, align="center"]
 
+One basic rule must be observed with the use of states, which is that any transition requires the commit of a _new version_, even if the content is otherwise unchanged. This also means that transitions through a number of successive states entails a number of commits, each recording one transition.
+
 ==== Incomplete Content
 
 Usually content will be committed in the `complete` state. However, in some circumstances, e.g. because the author has run out of time or due to an emergency, it may be committed as `incomplete` meaning that it is either partial and/or unreviewed. In hospitals this is a common occurrence. Unfinished content items (EHR Compositions, Demographic Parties etc) cannot be saved locally on the client machine, as this represents a security risk (since a client-side app or database is easier to compromise than a secure server). They must therefore be persisted on the server, either in the actual EHR (or other appropriate repository), or in a 'holding area' which is recognised as not being part of the primary destination record, but is still within a secure repository. Either way, the author normally retrieves the item(s) and after further work or review, promotes them into the final destination (i.e. patient EHR etc), in the `complete` state. Alternatively, the author might decide to throw them away, achieved by logical deletion, in which case the final commit is in the `deleted` state.
