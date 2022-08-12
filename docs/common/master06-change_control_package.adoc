@@ -152,11 +152,9 @@ Transitioning from `incomplete` to `complete` states requires any missing fields
 
 Systems and/or applications are responsible for implementing checks to find 'old' Versions in the `incomplete` state, and bring them to the relevant user's notice, or automatically deleting them or progressing them to `complete` in a reasonable way.
 
-==== Abandoned State
+==== Abandoned and Inactive States
 
-A content item that is in the `incomplete` state may lose relevance before it is ever completed, e.g. due to its data subject no longer being under care. The version containing such an item may be transitioned to the `abandoned` state to represent this state of affairs. If circumstances change again and the abandoned item once again becomes relevant, it may be transitioned back to the `incomplete` state via the `retrieve` transition.
-
-==== Inactive State
+A content item that is in the `incomplete` state may lose relevance before it is ever completed, e.g. due to its data subject no longer being under care. The version containing such an item may be transitioned to the `abandoned` state to represent this state of affairs. If circumstances change again and the abandoned item once more becomes relevant, it may be transitioned back to the `incomplete` state via the `retrieve` transition.
 
 An Original version may also be marked as being in the `inactive` state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion state - to be marked as no longer valid. The exact meaning of 'validity' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose.
 
@@ -179,7 +177,7 @@ The transitions related to the `abandoned` and `inactive` states are as follows.
 
 |===
 
-The most common of these transitions is likely to be `deactivate`, i.e. marking of the content as inactive after final use.
+The most common of these transitions is likely to be `deactivate`, i.e. marking of the content as inactive once its operational relevance ceases.
 
 === Logical Deletion
 
