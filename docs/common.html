@@ -299,7 +299,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">J Holslag,<br>
  Jelte Zeilstra,<br>
  Bas Janssen</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>12 Aug 2022</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>06 Oct 2022</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -2993,7 +2993,7 @@ In the <code>incomplete</code> state, a limited form of invalidity is allowed: m
 <p>A content item that is in the <code>incomplete</code> state may lose relevance before it is ever completed, e.g. due to its data subject no longer being under care. The version containing such an item may be transitioned to the <code>abandoned</code> state to represent this state of affairs. If circumstances change again and the abandoned item once more becomes relevant, it may be transitioned back to the <code>incomplete</code> state via the <code>retrieve</code> transition.</p>
 </div>
 <div class="paragraph">
-<p>An Original version may also be marked as being in the <code>inactive</code> state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion state - to be marked as no longer valid. The exact meaning of 'validity' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose.</p>
+<p>An Original version may also be marked as being in the <code>inactive</code> state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion state - to be marked as no longer valid for use. The exact meaning of 'valid' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose. An <code>inactive</code> item be be reactivated back to the <code>complete</code> state, or retrieved back to the <code>incomplete</code> state (see table below for examples of when).</p>
 </div>
 <div class="paragraph">
 <p>The transitions related to the <code>abandoned</code> and <code>inactive</code> states are as follows.</p>
@@ -3040,6 +3040,12 @@ In the <code>incomplete</code> state, a limited form of invalidity is allowed: m
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>reactivate</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>complete</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Patient is readmitted after discharge and the care plan is reactivated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inactive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>retrieve</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>incomplete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A de-activated care plan is used as the draft for a new care plan.</p></td>
 </tr>
 </tbody>
 </table>

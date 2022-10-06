@@ -156,7 +156,7 @@ Systems and/or applications are responsible for implementing checks to find 'old
 
 A content item that is in the `incomplete` state may lose relevance before it is ever completed, e.g. due to its data subject no longer being under care. The version containing such an item may be transitioned to the `abandoned` state to represent this state of affairs. If circumstances change again and the abandoned item once more becomes relevant, it may be transitioned back to the `incomplete` state via the `retrieve` transition.
 
-An Original version may also be marked as being in the `inactive` state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion state - to be marked as no longer valid. The exact meaning of 'validity' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose.
+An Original version may also be marked as being in the `inactive` state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion state - to be marked as no longer valid for use. The exact meaning of 'valid' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose. An `inactive` item be be reactivated back to the `complete` state, or retrieved back to the `incomplete` state (see table below for examples of when). 
 
 The transitions related to the `abandoned` and `inactive` states are as follows.
 
@@ -174,6 +174,8 @@ The transitions related to the `abandoned` and `inactive` states are as follows.
 |`complete`     |`deactivate`   |`inactive`     |A care plan (the version content) is in active use. Subsequently, the patient is discharged and the care plan is no longer actively maintained.
 
 |`inactive`     |`reactivate`   |`complete`     |Patient is readmitted after discharge and the care plan is reactivated.
+
+|`inactive`     |`retrieve`     |`incomplete`   |A de-activated care plan is used as the draft for a new care plan.
 
 |===
 
