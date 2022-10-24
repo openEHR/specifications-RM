@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.10">
+<meta name="generator" content="Asciidoctor 2.0.17">
 <meta name="description" content="openEHR Data Types Information Model specification">
 <meta name="keywords" content="EHR, clinical, data types, openehr">
 <title>Data Types Information Model</title>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
+<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -2478,7 +2479,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>match</strong>: <code>char</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>match</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_character_class" target="_blank" rel="noopener">Character</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The relative match of the target term with respect to the mapped text item. Result meanings:</p>
 </div>
@@ -2558,7 +2559,7 @@ Additionally, the <code><em>value</em></code> field was assumed to contain no ne
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>is_valid_match_code</strong> (<br>
-c: <code>char[1]</code><br>
+c: <code><a href="/releases/BASE/latest/foundation_types.html#_character_class" target="_blank" rel="noopener">Character</a>[1]</code><br>
 ): <code><a href="/releases/BASE/latest/foundation_types.html#_boolean_class" target="_blank" rel="noopener">Boolean</a></code><br>
 <br>
 <em>Post</em>: <code>Result := c = ‘&gt;’ or c = ‘=’ or c = ‘&lt;’ or c = ‘?’</code></p></td>
@@ -5159,7 +5160,7 @@ other: <code><a href="#_dv_time_class">DV_TIME</a>[1]</code><br>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1<br>
 (effected)</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_double_class" target="_blank" rel="noopener">double</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>magnitude</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_double_class" target="_blank" rel="noopener">Double</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Numeric value of the date/time as seconds since the calendar origin date/time <code>0001-01-01T00:00:00Z</code>.</p>
 </div></div></td>
@@ -6031,7 +6032,7 @@ ED type from the HL7v3 data types specification.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;Byte&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>data</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_byte_class">Byte</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>The actual data found at <code><em>uri</em></code>, if supplied inline.</p>
 </div></div></td>
@@ -6052,7 +6053,7 @@ ED type from the HL7v3 data types specification.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>integrity_check</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;Byte&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>integrity_check</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_byte_class">Byte</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Binary cryptographic integrity checksum.</p>
 </div></div></td>
@@ -6760,18 +6761,18 @@ the possibility of containing a Null marker.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="java"><span></span><span class="tok-n">type</span> <span class="tok-n">Interval</span><span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span> <span class="tok-n">alias</span> <span class="tok-n">IVL</span><span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span> <span class="tok-kd">extends</span> <span class="tok-n">Set</span><span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span>
-<span class="tok-o">{</span>
-    <span class="tok-n">T</span> <span class="tok-n">low</span><span class="tok-o">;</span>
-    <span class="tok-n">BL</span> <span class="tok-n">lowClosed</span><span class="tok-o">;</span>
-    <span class="tok-n">T</span> <span class="tok-n">high</span><span class="tok-o">;</span>
-    <span class="tok-n">BL</span> <span class="tok-n">highClosed</span><span class="tok-o">;</span>
-    <span class="tok-n">T</span><span class="tok-o">.</span><span class="tok-na">diff</span> <span class="tok-n">width</span><span class="tok-o">;</span>
-    <span class="tok-n">T</span> <span class="tok-n">center</span><span class="tok-o">;</span>
-    <span class="tok-n">IVL</span><span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span> <span class="tok-nf">hull</span><span class="tok-o">(</span><span class="tok-n">IVL</span><span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span> <span class="tok-n">x</span><span class="tok-o">);</span>
-    <span class="tok-n">literal</span> <span class="tok-n">ST</span><span class="tok-o">;</span>
-    <span class="tok-n">promotion</span> <span class="tok-n">IVL</span><span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span> <span class="tok-o">(</span><span class="tok-n">T</span> <span class="tok-n">x</span><span class="tok-o">);</span>
-    <span class="tok-n">demotion</span> <span class="tok-n">T</span><span class="tok-o">;</span>
-<span class="tok-o">};</span></code></pre>
+<span class="tok-p">{</span>
+    <span class="tok-n">T</span> <span class="tok-n">low</span><span class="tok-p">;</span>
+    <span class="tok-n">BL</span> <span class="tok-n">lowClosed</span><span class="tok-p">;</span>
+    <span class="tok-n">T</span> <span class="tok-n">high</span><span class="tok-p">;</span>
+    <span class="tok-n">BL</span> <span class="tok-n">highClosed</span><span class="tok-p">;</span>
+    <span class="tok-n">T</span><span class="tok-p">.</span><span class="tok-na">diff</span> <span class="tok-n">width</span><span class="tok-p">;</span>
+    <span class="tok-n">T</span> <span class="tok-n">center</span><span class="tok-p">;</span>
+    <span class="tok-n">IVL</span><span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span> <span class="tok-nf">hull</span><span class="tok-p">(</span><span class="tok-n">IVL</span><span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span> <span class="tok-n">x</span><span class="tok-p">);</span>
+    <span class="tok-n">literal</span> <span class="tok-n">ST</span><span class="tok-p">;</span>
+    <span class="tok-n">promotion</span> <span class="tok-n">IVL</span><span class="tok-o">&lt;</span><span class="tok-n">T</span><span class="tok-o">&gt;</span> <span class="tok-p">(</span><span class="tok-n">T</span> <span class="tok-n">x</span><span class="tok-p">);</span>
+    <span class="tok-n">demotion</span> <span class="tok-n">T</span><span class="tok-p">;</span>
+<span class="tok-p">};</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6995,9 +6996,8 @@ related by inheritance, as supported by all object-oriented languages.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-04-20 16:02:43 +0100
+Last updated 2022-10-15 21:30:32 +0100
 </div>
 </div>
-<link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
 </body>
 </html>

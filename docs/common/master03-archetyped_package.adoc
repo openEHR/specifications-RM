@@ -16,13 +16,13 @@ A number of functions provide the path functionality, of which `_item_at_path()_
 
 [source, java]
 ----
-if path_exists (a_path) {
-    if path_unique(a_path) {
-        x := item_at_path(a_path)
-            // process one item
-        }
+if (path_exists (a_path)) {
+    if (path_unique (a_path)) {
+        x = item_at_path (a_path);
+		// process one item
+	}
     else {
-        list_of_x := items_at_path(a_path)
+        list_of_x = items_at_path (a_path);
         //iterate the list
     }
 }
@@ -134,14 +134,14 @@ The features of the model described so far allow accurate referencing of content
 
 == Class Definitions
 
-include::{uml_export_dir}/classes/pathable.adoc[]
+include::{uml_export_dir}/classes/{pkg}pathable.adoc[]
 
-include::{uml_export_dir}/classes/locatable.adoc[]
+include::{uml_export_dir}/classes/{pkg}locatable.adoc[]
 
-include::{uml_export_dir}/classes/archetyped.adoc[]
+include::{uml_export_dir}/classes/{pkg}archetyped.adoc[]
 
-include::{uml_export_dir}/classes/link.adoc[]
+include::{uml_export_dir}/classes/{pkg}link.adoc[]
 
-include::{uml_export_dir}/classes/feeder_audit.adoc[]
+include::{uml_export_dir}/classes/{pkg}feeder_audit.adoc[]
 
-include::{uml_export_dir}/classes/feeder_audit_details.adoc[]
+include::{uml_export_dir}/classes/{pkg}feeder_audit_details.adoc[]
