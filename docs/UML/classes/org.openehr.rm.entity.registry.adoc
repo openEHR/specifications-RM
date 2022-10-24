@@ -1,0 +1,38 @@
+=== REGISTRY Class
+
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*REGISTRY*
+
+h|*Description*
+2+a|A logical representation of a repository of versioned Entities of various types.
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*entities*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^],<<_versioned_entity_class,VERSIONED_ENTITY>>>`
+a|
+
+h|*0..1*
+|*folders*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/base_types.html#_uuid_class[UUID^],link:/releases/RM/{rm_release}/common.html#_versioned_folder_class[VERSIONED_FOLDER^]>`
+a|Folders, used for classifying / grouping other entities.
+
+h|*0..1*
+|*material_entities*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^],<<_versioned_material_entity_class,VERSIONED_MATERIAL_ENTITY>>>`
+a|Collection of material entities, i.e. 'things'.
+
+h|*0..1*
+|*assets*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^],<<_versioned_asset_class,VERSIONED_ASSET>>>`
+a|Collection of assets, i.e. owned entities.
+
+h|*0..1*
+|*parties*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^],<<_versioned_party_class,VERSIONED_PARTY>>>`
+a|Collection of parties.
+
+h|*0..1*
+|*resources*: `link:/releases/BASE/{base_release}/foundation_types.html#_hash_class[Hash^]<link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^],<<_versioned_resource_item_class,VERSIONED_RESOURCE_ITEM>>>`
+a|Collection of resources.
+|===

@@ -1,0 +1,111 @@
+= Party Package
+
+== Overview
+
+A Party is a kind of Social entity corresponding to an autonomous Agent, or a particular Persona thereof. Agent is understood as a 'real' social entities with agency, in and of itself, while a Persona is a particular personality of an Agent, based on specific Capabilities. For example, the Person Jane Smith may have two Personas: general practitioner (based on her qualifications and registration to practice medicine), and amateur opera singer, based on her singing experience and CV.
+
+The following UML diagram illustrates the `party` package.
+
+[.text-center]
+.rm.entity.social_entity.party package
+image::{uml_diagrams_uri}/RM-entity.social_entity.party.svg[id=rm_social_entity_party, align="center"]
+
+Parties may generally have identities (i.e. names of various kinds), contact information, legal status and relationships, with the specific kinds of these  being dependent upon the kind of Party.
+
+For example, in most cases, only Agents will have identities, which will act as the identities for any Persona the Agent may have. In some cases however, a Persona may have its own Identity, such as a stage or pen name for a Person, or a trading name for a business (Organisation).
+
+Contact information is typically associated both with Agents - corresponding to 'at home', 'citizen' status - and also with Persona, where it is specific to the purpose of the Persona.
+
+Party relationships are how real-world relationships between Parties are represented, including employment, contractual, membership, and other social relationships. Many of these will be based on an Accountability, which describes the responsbility of one Party to another in the relationship.
+
+=== Party Identities
+
+TODO: old text; review
+
+
+=== Contacts
+
+TODO: old text; review
+
+Classes have been included for `PARTY_IDENTITY` and `ADDRESS`, even though they contain only a link to details, in the form of the generic `ITEM_STRUCTURE` class. This is not strictly necessary - it could have been done simply using appropriately named attributes in the classes `PARTY` and `CONTACT` - but is done to provide a place to add specific semantics in future releases of the model. It is also expected to make software development easier, since it provides explicit classes to which behaviour and other implementation attributes can be added. Lastly, it allows the notions of `PARTY_IDENTITY` and `ADDRESS` to be explicitly used in archetype-authoring tools.
+
+Instances of `PARTY_IDENTITY`, linked to `PARTY` by the attribute `_identities_` are intended to express the names of people, organisations, and other actors - that is names which are "owned" by the party, e.g.  self-declared (in the case of institutions and companies) or by virtue of social relations (names given by parents, tribes etc). Identifiers of Parties given by other organisations, or the state are not represented in this way, and should be recorded in the `PARTY._details_` structure instead (see below).
+
+=== Party Relationships
+
+Relationships between parties in the real world may be expressed using `PARTY_RELATIONSHIP` objects, as illustrated below.
+
+
+Relationships are considered directional, hence the use of the attribute names source and target, however, these names are otherwise neutral, and give no indication as to the meaning of the relationships, such as which party is responsible and which accountable (for comparison, see the demographic models of Fowler cite:[Fowler1997]). Accordingly, each Party involved in a relationship includes it in its relationships list, if it is at the source end, or in the `_reverse_relationships_` list, if at the target end.
+
+The usual way to determine the directionality of a relationship between two Parties is usually by which Party’s actions caused the relationship to come into being. For example, a relationship representing the concept "patient", between a health consumer and a health care organisation would have the consumer as source and the organisation as target.
+
+`PARTY_RELATIONSHIPs` are stored as part of the data of the `PARTY` designated as the source. This means that the relationships attribute is by value, while reverse_relationships is by references, as are `PARTY_RELATIONSHIP._source_` and target. The actual kind of reference is via the use of `OBJECT_REFs` containing `HIER_OBJECT_IDs` to denote the Version container of a Party, rather than `OBJECT_VERSION_IDs`, which would denote particular versions. Logically this implements the semantic that such relationships in the real world are between _continuants_, i.e. the real Parties, not just one of their version instances in a demographic system.
+
+=== Versioning Semantics
+
+The class `PARTY` and its descendants `ACTOR` and `ROLE` are all potentially versioned in a demographic system. A Version of a `PARTY` includes all the compositional parts, such as identities, contacts, Party relationships of which it is the source. Every Party is stored in its own Version container.
+
+== Class Definitions
+
+include::{uml_export_dir}/classes/{pkg}party.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}agent.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}persona.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}party_identity.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}contact.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}address.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}capability.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}aggregate_agent.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}organisation.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}group.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}individual_agent.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}automaton.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}person.adoc[]
+
+include::{uml_export_dir}/classes/{pkg}party_relationship.adoc[]
+
+== Instance Examples
+
+In the following instance examples, the values of the attributes uid, source, target, and reverse_relationships are not meant to be taken as literally valid `OBJECT_IDs` - for the purposes of clarity, simple integers have been used.
+
+=== Parties
+
+==== Person
+
+The diagram below illustrates a possible set of instances for a `PERSON`, with home and work contact information.  There are separate archetypes for the `PERSON`, each `ADDRESS`, and each `PARTY_IDENTITY`. In the following figure, "meaning" is the meaning from the value of the archetype_node_id attribute, functionally derived from the archetype local ontology.
+
+==== Clinician
+
+==== Credentials
+
+==== Health Care Facility
+
+==== Group
+
+The figure below illustrates the demographic information for a cadiac surgery team in a hospital. The group includes a head surgeon, anaesthetist, assistant surgeon, and presumably others (not shown). Each of these members of the team have an employment relationship with the hospital (shown only for one surgeon, in the interests of clarity).
+
+
+=== Relationships
+
+==== Familial Relationship
+
+==== Employment Relationship
+
+==== Patient
+
+The figure below shows a simple way of representing the patient relationship between a person and a health
+care organisation.
+
+

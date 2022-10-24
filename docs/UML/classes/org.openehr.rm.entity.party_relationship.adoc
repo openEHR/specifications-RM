@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*PARTY_RELATIONSHIP*
 
 h|*Description*
-2+a|Generic description of a relationship between parties.
+2+a|A relationship between parties. In BFO terms, a Relational quality, i.e. a Quality that s-depends on the parties of the relation.
 
 h|*Inherit*
 2+|`link:/releases/RM/{rm_release}/common.html#_locatable_class[LOCATABLE^]`
@@ -15,21 +15,21 @@ h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|*0..1*
-|*details*: `link:/releases/RM/{rm_release}/data_structures.html#_item_structure_class[ITEM_STRUCTURE^]`
-a|The detailed description of the relationship.
-
 h|*1..1*
 |*target*: `link:/releases/BASE/{base_release}/base_types.html#_party_ref_class[PARTY_REF^]`
 a|Target of relationship.
 
 h|*0..1*
-|*time_validity*: `link:/releases/RM/{rm_release}/data_types.html#_dv_interval_class[DV_INTERVAL^]<link:/releases/RM/{rm_release}/data_types.html#_dv_date_class[DV_DATE^]>`
+|*time_validity*: `link:/releases/BASE/{base_release}/foundation_types.html#_interval_class[Interval^]<link:/releases/BASE/{base_release}/foundation_types.html#_iso8601_date_class[Iso8601_date^]>`
 a|Valid time interval for this relationship.
 
 h|*1..1*
 |*source*: `link:/releases/BASE/{base_release}/base_types.html#_party_ref_class[PARTY_REF^]`
-a|Source of relationship.
+a|Source of relationship, may be understood as 'owner' of relationship.
+
+h|*0..1*
+|*scoper*: `<<_accountability_class,ACCOUNTABILITY>>`
+a|The Accountability defining the scope of this relationship; typically a job post.
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*

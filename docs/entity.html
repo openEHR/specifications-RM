@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="description" content="openEHR Entity Information Model specification">
+<meta name="keywords" content="Entity, demographics, reference model, openehr">
+<title>Entity Information Model</title>
+<link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel0">
+<li><a href="#_entity_information_model">Entity Information Model</a>
+<ul class="sectlevel1">
+<li><a href="#_amendment_record">Amendment Record</a></li>
+<li><a href="#_acknowledgements">Acknowledgements</a>
+<ul class="sectlevel2">
+<li><a href="#_editor">Editor</a></li>
+<li><a href="#_contributors">Contributors</a></li>
+<li><a href="#_support">Support</a></li>
+</ul>
+</li>
+<li><a href="#_preface">1. Preface</a>
+<ul class="sectlevel2">
+<li><a href="#_purpose">1.1. Purpose</a></li>
+<li><a href="#_related_documents">1.2. Related Documents</a></li>
+<li><a href="#_status">1.3. Status</a></li>
+<li><a href="#_feedback">1.4. Feedback</a></li>
+<li><a href="#_conformance">1.5. Conformance</a></li>
+</ul>
+</li>
+<li><a href="#_entity_model">2. Entity Model</a>
+<ul class="sectlevel2">
+<li><a href="#_overview">2.1. Overview</a>
+<ul class="sectlevel3">
+<li><a href="#_archetyping">2.1.1. Archetyping</a></li>
+<li><a href="#_identification">2.1.2. Identification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_physical_entity_package">3. Physical Entity Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_2">3.1. Overview</a></li>
+<li><a href="#_class_definitions">3.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_physical_entity_class">3.2.1. PHYSICAL_ENTITY Class</a></li>
+<li><a href="#_material_entity_class">3.2.2. MATERIAL_ENTITY Class</a></li>
+<li><a href="#_object_aggregate_class">3.2.3. OBJECT_AGGREGATE Class</a></li>
+<li><a href="#_independent_object_class">3.2.4. INDEPENDENT_OBJECT Class</a></li>
+<li><a href="#_biological_entity_class">3.2.5. BIOLOGICAL_ENTITY Class</a></li>
+<li><a href="#_artefact_class">3.2.6. ARTEFACT Class</a></li>
+<li><a href="#_substance_class">3.2.7. SUBSTANCE Class</a></li>
+</ul>
+</li>
+<li><a href="#_instance_examples">3.3. Instance Examples</a>
+<ul class="sectlevel3">
+<li><a href="#_biological_entities">3.3.1. Biological Entities</a>
+<ul class="sectlevel4">
+<li><a href="#_xxx">3.3.1.1. XXX</a></li>
+</ul>
+</li>
+<li><a href="#_artefacts">3.3.2. Artefacts</a></li>
+<li><a href="#_substances">3.3.3. Substances</a></li>
+<li><a href="#_aggregate_objects">3.3.4. Aggregate objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_social_entity_package">4. Social Entity Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_3">4.1. Overview</a></li>
+<li><a href="#_class_definitions_2">4.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_social_entity_class">4.2.1. SOCIAL_ENTITY Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_party_package">5. Party Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_4">5.1. Overview</a>
+<ul class="sectlevel3">
+<li><a href="#_party_identities">5.1.1. Party Identities</a></li>
+<li><a href="#_contacts">5.1.2. Contacts</a></li>
+<li><a href="#_party_relationships">5.1.3. Party Relationships</a></li>
+<li><a href="#_versioning_semantics">5.1.4. Versioning Semantics</a></li>
+</ul>
+</li>
+<li><a href="#_class_definitions_3">5.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_party_class">5.2.1. PARTY Class</a></li>
+<li><a href="#_agent_class">5.2.2. AGENT Class</a></li>
+<li><a href="#_persona_class">5.2.3. PERSONA Class</a></li>
+<li><a href="#_party_identity_class">5.2.4. PARTY_IDENTITY Class</a></li>
+<li><a href="#_contact_class">5.2.5. CONTACT Class</a></li>
+<li><a href="#_address_class">5.2.6. ADDRESS Class</a></li>
+<li><a href="#_capability_class">5.2.7. CAPABILITY Class</a></li>
+<li><a href="#_aggregate_agent_class">5.2.8. AGGREGATE_AGENT Class</a></li>
+<li><a href="#_organisation_class">5.2.9. ORGANISATION Class</a></li>
+<li><a href="#_group_class">5.2.10. GROUP Class</a></li>
+<li><a href="#_individual_agent_class">5.2.11. INDIVIDUAL_AGENT Class</a></li>
+<li><a href="#_automaton_class">5.2.12. AUTOMATON Class</a></li>
+<li><a href="#_person_class">5.2.13. PERSON Class</a></li>
+<li><a href="#_party_relationship_class">5.2.14. PARTY_RELATIONSHIP Class</a></li>
+</ul>
+</li>
+<li><a href="#_instance_examples_2">5.3. Instance Examples</a>
+<ul class="sectlevel3">
+<li><a href="#_parties">5.3.1. Parties</a>
+<ul class="sectlevel4">
+<li><a href="#_person">5.3.1.1. Person</a></li>
+<li><a href="#_clinician">5.3.1.2. Clinician</a></li>
+<li><a href="#_credentials">5.3.1.3. Credentials</a></li>
+<li><a href="#_health_care_facility">5.3.1.4. Health Care Facility</a></li>
+<li><a href="#_group">5.3.1.5. Group</a></li>
+</ul>
+</li>
+<li><a href="#_relationships">5.3.2. Relationships</a>
+<ul class="sectlevel4">
+<li><a href="#_familial_relationship">5.3.2.1. Familial Relationship</a></li>
+<li><a href="#_employment_relationship">5.3.2.2. Employment Relationship</a></li>
+<li><a href="#_patient">5.3.2.3. Patient</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_asset_package">6. Asset Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_5">6.1. Overview</a></li>
+<li><a href="#_class_definitions_4">6.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_asset_class">6.2.1. ASSET Class</a></li>
+<li><a href="#_equipment_class">6.2.2. EQUIPMENT Class</a></li>
+<li><a href="#_consumable_class">6.2.3. CONSUMABLE Class</a></li>
+<li><a href="#_place_class">6.2.4. PLACE Class</a></li>
+<li><a href="#_geographical_site_class">6.2.5. GEOGRAPHICAL_SITE Class</a></li>
+<li><a href="#_facility_class">6.2.6. FACILITY Class</a></li>
+</ul>
+</li>
+<li><a href="#_instance_examples_3">6.3. Instance Examples</a>
+<ul class="sectlevel3">
+<li><a href="#_places">6.3.1. Places</a></li>
+<li><a href="#_equipment">6.3.2. Equipment</a></li>
+<li><a href="#_consumables">6.3.3. Consumables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_resource_package">7. Resource Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_6">7.1. Overview</a></li>
+<li><a href="#_class_definitions_5">7.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_resource_item_class">7.2.1. RESOURCE_ITEM Class</a></li>
+<li><a href="#_resource_package_class">7.2.2. RESOURCE_PACKAGE Class</a></li>
+<li><a href="#_resource_class">7.2.3. RESOURCE Class</a></li>
+<li><a href="#_resource_use_class">7.2.4. RESOURCE_USE Class</a></li>
+<li><a href="#_service_use_class">7.2.5. SERVICE_USE Class</a></li>
+<li><a href="#_consumable_use_class">7.2.6. CONSUMABLE_USE Class</a></li>
+</ul>
+</li>
+<li><a href="#_instance_examples_4">7.3. Instance Examples</a>
+<ul class="sectlevel3">
+<li><a href="#_biological_entities_2">7.3.1. Biological Entities</a>
+<ul class="sectlevel4">
+<li><a href="#_xxx_2">7.3.1.1. XXX</a></li>
+</ul>
+</li>
+<li><a href="#_artefacts_2">7.3.2. Artefacts</a></li>
+<li><a href="#_substances_2">7.3.3. Substances</a></li>
+<li><a href="#_aggregate_objects_2">7.3.4. Aggregate objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_registry_package">8. Registry Package</a>
+<ul class="sectlevel2">
+<li><a href="#_overview_7">8.1. Overview</a></li>
+<li><a href="#_class_definitions_6">8.2. Class Definitions</a>
+<ul class="sectlevel3">
+<li><a href="#_registry_class">8.2.1. REGISTRY Class</a></li>
+<li><a href="#_versioned_entity_class">8.2.2. VERSIONED_ENTITY Class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_references">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock text-center">
+<div class="content">
+<img src="https://specifications.openehr.org/images/openEHR_logo_RGB.svg" alt="openEHR logo">
+</div>
+</div>
+</div>
+</div>
+<h1 id="_entity_information_model" class="sect0"><a class="anchor" href="#_entity_information_model"></a>Entity Information Model</h1>
+<div class="openblock partintro">
+<div class="content">
+<table class="tableblock frame-all grid-all fit-content spread">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2"><strong>Issuer</strong>: <a href="https://www.openehr.org/programs/specification" target="_blank" rel="noopener">openEHR Specification Program</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Release</strong>: RM latest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong>: DEVELOPMENT</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Revision</strong>: <a href="#latest_issue">[latest_issue]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong>: <a href="#latest_issue_date">[latest_issue_date]</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>Keywords</strong>: Entity, demographics, reference model, openehr</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock text-center">
+<div class="content">
+<object type="image/svg+xml" data="openehr_block_diagram.svg" width="60%"><span class="alt">openEHR components</span></object>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2022 - 2022 The openEHR Foundation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><a href="https://www.openehr.org" target="_blank" rel="noopener">The openEHR Foundation</a> is an independent, non-profit foundation, facilitating the sharing of health records by consumers and clinicians via open specifications, clinical models and open platform implementations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Licence</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="https://specifications.openehr.org/images/cc-by-nd-88x31.png" alt="image"></span> Creative Commons Attribution-NoDerivs 3.0 Unported. <a href="https://creativecommons.org/licenses/by-nd/3.0/" class="bare">https://creativecommons.org/licenses/by-nd/3.0/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>Support</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Issues: <a href="https://specifications.openehr.org/components/RM/open_issues" target="_blank" rel="noopener">Problem Reports</a><br>
+ Web: <a href="https://specifications.openehr.org" target="_blank" rel="noopener">specifications.openEHR.org</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_amendment_record"><a class="anchor" href="#_amendment_record"></a>Amendment Record</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 54.5454%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1819%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Issue</th>
+<th class="tableblock halign-left valign-top">Details</th>
+<th class="tableblock halign-left valign-top">Raiser</th>
+<th class="tableblock halign-left valign-top">Completed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.?.?</strong></p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>0.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-?" target="_blank" rel="noopener">SPECRM-?</a>: Initial writing; adapted from Demographic IM.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Oct 2022</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_acknowledgements"><a class="anchor" href="#_acknowledgements"></a>Acknowledgements</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_editor"><a class="anchor" href="#_editor"></a>Editor</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Thomas Beale, Ars Semantica (UK); openEHR Foundation Management Board.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_contributors"><a class="anchor" href="#_contributors"></a>Contributors</h3>
+<div class="paragraph">
+<p>This specification benefited from wide formal and informal input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people for their contributions.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Erik Sundvall, Karolinska Institute, Sweden</p>
+</li>
+<li>
+<p>Pablo Pazos, Cabolabs, Uruguay</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_support"><a class="anchor" href="#_support"></a>Support</h3>
+<div class="paragraph">
+<p>The work reported in this paper has been funded in part by the following organisations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ars Semantica (UK).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_preface"><a class="anchor" href="#_preface"></a>1. Preface</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_purpose"><a class="anchor" href="#_purpose"></a>1.1. Purpose</h3>
+<div class="paragraph">
+<p>This document describes the architecture of the openEHR Entity Information Model. The semantics are drawn from the <a href="https://specifications.openehr.org/releases/RM/latest/demographic.html" target="_blank" rel="noopener">openEHR Demographic Information Model</a> and ontologies, including the <a href="http://ifomis.uni-saarland.de/bfo/" target="_blank" rel="noopener">Basic Formal Ontology (BFO)</a>.</p>
+</div>
+<div class="paragraph">
+<p>The intended audience includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Standards bodies producing health informatics standards;</p>
+</li>
+<li>
+<p>Academic groups using openEHR;</p>
+</li>
+<li>
+<p>The open source healthcare community;</p>
+</li>
+<li>
+<p>Solution vendors;</p>
+</li>
+<li>
+<p>Medical informaticians and clinicians interested in health information.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_related_documents"><a class="anchor" href="#_related_documents"></a>1.2. Related Documents</h3>
+<div class="paragraph">
+<p>Prerequisite documents for reading this document include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="https://specifications.openehr.org/releases/BASE/latest/architecture_overview.html" target="_blank" rel="noopener">openEHR Architecture Overview</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other documents describing related models, include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="https://specifications.openehr.org/releases/RM/latest/support.html" target="_blank" rel="noopener">openEHR Support Information Model</a>;</p>
+</li>
+<li>
+<p>The <a href="https://specifications.openehr.org/releases/RM/latest/data_types.html" target="_blank" rel="noopener">openEHR Data Types Information Model</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_status"><a class="anchor" href="#_status"></a>1.3. Status</h3>
+<div class="paragraph">
+<p>This specification is in the Stable state. The development version of this document can be found at <a href="https://specifications.openehr.org/releases/RM/latest/entity.html" target="_blank" rel="noopener">https://specifications.openehr.org/releases/RM/latest/entity.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>Known omissions or questions are indicated in the text with a 'to be determined' paragraph, as follows:</p>
+</div>
+<div class="paragraph tbd">
+<p><strong>TBD</strong>: (example To Be Determined paragraph)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_feedback"><a class="anchor" href="#_feedback"></a>1.4. Feedback</h3>
+<div class="paragraph">
+<p>Feedback may be provided on the <a href="https://discourse.openehr.org/c/specifications/rm" target="_blank" rel="noopener">openEHR RM specifications forum</a>.</p>
+</div>
+<div class="paragraph">
+<p>Issues may be raised on the <a href="https://specifications.openehr.org/components/RM/open_issues" target="_blank" rel="noopener">specifications Problem Report tracker</a>.</p>
+</div>
+<div class="paragraph">
+<p>To see changes made due to previously reported issues, see the <a href="https://specifications.openehr.org/components/RM/history" target="_blank" rel="noopener">RM component Change Request tracker</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conformance"><a class="anchor" href="#_conformance"></a>1.5. Conformance</h3>
+<div class="paragraph">
+<p>Conformance of a data or software artifact to an openEHR specification is determined by a formal test of that artifact against the relevant openEHR Implementation Technology Specification(s) (ITSs), such as an IDL interface or an XML-schema. Since ITSs are formal derivations from underlying models, ITS conformance indicates model conformance.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_entity_model"><a class="anchor" href="#_entity_model"></a>2. Entity Model</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview"><a class="anchor" href="#_overview"></a>2.1. Overview</h3>
+<div class="paragraph">
+<p>The openEHR Entity model defines formal representation for various kinds of real world entity, including 'things' such as devices and medicines, biological organisms (including human), as well as all kinds of 'social entity', which includes persons and organisations (parties), in the socio-legal sense, as well as 'assets', i.e. objects as owned and/or used by parties.</p>
+</div>
+<div class="paragraph">
+<p>Instances of the Entity model correspond to the contents of typical industry repositories for patients, e.g. 'master patient index', 'provider registry', as well as asset registries and many kinds of 'reference data' repositories.</p>
+</div>
+<div class="paragraph">
+<p>The following UML diagram illustrates the upper level of the Entity model.</p>
+</div>
+<div id="rm_entity_overview" class="imageblock text-center text-center">
+<div class="content">
+<img src="UML/diagrams/RM-entity-overview.svg" alt="RM entity overview">
+</div>
+<div class="title">Figure 1. rm.entity package</div>
+</div>
+<div class="paragraph">
+<p>The design of the model is influenced by the <a href="http://ifomis.uni-saarland.de/bfo/" target="_blank" rel="noopener">Basic Formal Ontology (BFO)</a>, a scientific realist ontology widely used in biomedical science and healthcare. The Physical entity part of the model described here follows BFO fairly closely, for the entity types included (i.e. not all BFO is included).</p>
+</div>
+<div class="paragraph">
+<p>However, we depart from BFO in representing social entities such as Person, Organisation, and Asset, as top-level Entities, rather than 'dependent' entities such as BFO::role. This primarily because social entities are normally represented as independent entities in IT systems, with their material bearers (a human organism, for Person; the physical premises of a company etc) generally being assumed.</p>
+</div>
+<div class="sect3">
+<h4 id="_archetyping"><a class="anchor" href="#_archetyping"></a>2.1.1. Archetyping</h4>
+<div class="paragraph">
+<p>The model is designed to be used with archetypes, hence the generic nature of all classes. Every class containing an attribute of the form <code><em>details</em>:ITEM_STRUCTURE</code> is a completely archetypable structure. As a result, archetypes can be defined for concepts such as particular kinds of <code>PERSON</code>, <code>DEVICE</code>, etc, and for many subordinate structures, such as Party identities and addresses.</p>
+</div>
+<div class="paragraph tbc">
+<p>To Be Continued</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_identification"><a class="anchor" href="#_identification"></a>2.1.2. Identification</h4>
+<div class="paragraph">
+<p>Technical identifiers of Entity instances are represented  via the <code><em>uid</em></code> attribute (type <code>OBJECT_VERSION_ID</code>) of the containing <code>VERSION</code>. These identifiers are used in all cross-references between Entities.</p>
+</div>
+<div class="paragraph tbc">
+<p>To Be Continued</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_physical_entity_package"><a class="anchor" href="#_physical_entity_package"></a>3. Physical Entity Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
+<div class="paragraph">
+<p>Following BFO, openEHR Physical entities are understood as entities found within physical existence, and include material objects of any kind (Material entities); spaces and spatial extents, and processes, including events etc.</p>
+</div>
+<div id="rm_physical_entity" class="imageblock text-center text-center">
+<div class="content">
+<img src="UML/diagrams/RM-entity.physical_entity.svg" alt="RM entity.physical entity">
+</div>
+<div class="title">Figure 2. rm.entity.physical_entity package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions"><a class="anchor" href="#_class_definitions"></a>3.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_physical_entity_class"><a class="anchor" href="#_physical_entity_class"></a>3.2.1. PHYSICAL_ENTITY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>PHYSICAL_ENTITY (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Purely physical entities, in the realist sense of BFO. Includes material entities (entities consisting of matter) and physical entities corresponding to voids, spaces and spatial extents.</p>
+</div>
+<div class="paragraph">
+<p>Equivalent to bfo::Entity.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_entity_class">ENTITY</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_material_entity_class"><a class="anchor" href="#_material_entity_class"></a>3.2.2. MATERIAL_ENTITY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>MATERIAL_ENTITY (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Any entity consisting of physical matter. Synonym for bfo:Material entity.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_physical_entity_class">PHYSICAL_ENTITY</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_object_aggregate_class"><a class="anchor" href="#_object_aggregate_class"></a>3.2.3. OBJECT_AGGREGATE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>OBJECT_AGGREGATE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Synonym for bfo:Object aggregate. Member parts are causally independent Entities - either more Object aggregates, or else Independent objects.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_material_entity_class">MATERIAL_ENTITY</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_material_entity_class">MATERIAL_ENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Containment relation of an aggregate (non-primitive) object.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_independent_object_class"><a class="anchor" href="#_independent_object_class"></a>3.2.4. INDEPENDENT_OBJECT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>INDEPENDENT_OBJECT (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Synonym for bfo:object ('Object' is generally a problematic term in a class model, hence 'independent object'). Understood as a causally independent / unified object, following BFO.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_material_entity_class">MATERIAL_ENTITY</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_biological_entity_class"><a class="anchor" href="#_biological_entity_class"></a>3.2.5. BIOLOGICAL_ENTITY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>BIOLOGICAL_ENTITY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Any entity containing DNA and/or RNA, including living organisms, deceased organisms, body parts, tissue, blood, food items (meat, vegetables, fruit), bacteria and viruses.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_independent_object_class">INDEPENDENT_OBJECT</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_artefact_class"><a class="anchor" href="#_artefact_class"></a>3.2.6. ARTEFACT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ARTEFACT</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>An artificial (i.e. manufactured) object with a designed function. Encompasses re-usable / long-term use devices (e.g. heart-rate monitor; ultrasound machine, heart pacemaker) and consumable items designed to be consumed in use, bandage, catheter, drug, food.</p>
+</div>
+<div class="paragraph">
+<p>A device is considered to be usable until it is determined to be 'worn out' or otherwise not fit for service. This distinguishes it from a consumable, which is considered to be 'used' after one or a small number of uses (the latter situation should be understood as 'one use').</p>
+</div>
+<div class="paragraph">
+<p>Some consumable items e.g. nasal drip tubes can be physically 'used' more than once with the same patient for a short period of time, but are replaced for different patients and also over longer periods; typically considered consumable.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_independent_object_class">INDEPENDENT_OBJECT</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>function</strong>: <code>@@</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Purpose of the artefact.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_substance_class"><a class="anchor" href="#_substance_class"></a>3.2.7. SUBSTANCE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>SUBSTANCE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Undifferentiated (portion of) material of any kind,including pure elemental materials (e.g. oxygen), compounds, complex molecular substances (e.g. albumin), admixtures, medicines etc.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_independent_object_class">INDEPENDENT_OBJECT</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instance_examples"><a class="anchor" href="#_instance_examples"></a>3.3. Instance Examples</h3>
+<div class="paragraph">
+<p>xxx.</p>
+</div>
+<div class="sect3">
+<h4 id="_biological_entities"><a class="anchor" href="#_biological_entities"></a>3.3.1. Biological Entities</h4>
+<div class="sect4">
+<h5 id="_xxx"><a class="anchor" href="#_xxx"></a>3.3.1.1. XXX</h5>
+<div class="paragraph">
+<p>xxx.</p>
+</div>
+<div id="person_demographics" class="imageblock text-center text-center">
+<div class="content">
+<img src="entity/diagrams/person_demographics.png" alt="person demographics" width="80%">
+</div>
+<div class="title">Figure 3. Biological Entity</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_artefacts"><a class="anchor" href="#_artefacts"></a>3.3.2. Artefacts</h4>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_substances"><a class="anchor" href="#_substances"></a>3.3.3. Substances</h4>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_aggregate_objects"><a class="anchor" href="#_aggregate_objects"></a>3.3.4. Aggregate objects</h4>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_social_entity_package"><a class="anchor" href="#_social_entity_package"></a>4. Social Entity Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_3"><a class="anchor" href="#_overview_3"></a>4.1. Overview</h3>
+<div class="paragraph">
+<p>Social entities are understood as entities whose identity, status, type etc are created within the social realm, via legal, commercial or informal social means. Social entities have a physical host of some Physical entity (which may include non-material entities like spaces).</p>
+</div>
+<div class="paragraph">
+<p>In BFO terms, Social entities roughly correspond to BFO::role, but for pragmatic reasons, are not considered dependent entities as BFO::role is, i.e. their material bearers are not usually recorded or of interest.</p>
+</div>
+<div class="paragraph">
+<p>In this model, Social entities are of two types: Parties and Assets.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_2"><a class="anchor" href="#_class_definitions_2"></a>4.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_social_entity_class"><a class="anchor" href="#_social_entity_class"></a>4.2.1. SOCIAL_ENTITY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>SOCIAL_ENTITY (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>An entity whose existence and description are within the social world, i.e. civil, business, legal realms.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_entity_class">ENTITY</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>physical_bearer</strong>: <code><a href="#_physical_entity_class">PHYSICAL_ENTITY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Physical bearer of this Social entity.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_party_package"><a class="anchor" href="#_party_package"></a>5. Party Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_4"><a class="anchor" href="#_overview_4"></a>5.1. Overview</h3>
+<div class="paragraph">
+<p>A Party is a kind of Social entity corresponding to an autonomous Agent, or a particular Persona thereof. Agent is understood as a 'real' social entities with agency, in and of itself, while a Persona is a particular personality of an Agent, based on specific Capabilities. For example, the Person Jane Smith may have two Personas: general practitioner (based on her qualifications and registration to practice medicine), and amateur opera singer, based on her singing experience and CV.</p>
+</div>
+<div class="paragraph">
+<p>The following UML diagram illustrates the <code>party</code> package.</p>
+</div>
+<div id="rm_social_entity_party" class="imageblock text-center text-center">
+<div class="content">
+<img src="UML/diagrams/RM-entity.social_entity.party.svg" alt="RM entity.social entity.party">
+</div>
+<div class="title">Figure 4. rm.entity.social_entity.party package</div>
+</div>
+<div class="paragraph">
+<p>Parties may generally have identities (i.e. names of various kinds), contact information, legal status and relationships, with the specific kinds of these  being dependent upon the kind of Party.</p>
+</div>
+<div class="paragraph">
+<p>For example, in most cases, only Agents will have identities, which will act as the identities for any Persona the Agent may have. In some cases however, a Persona may have its own Identity, such as a stage or pen name for a Person, or a trading name for a business (Organisation).</p>
+</div>
+<div class="paragraph">
+<p>Contact information is typically associated both with Agents - corresponding to 'at home', 'citizen' status - and also with Persona, where it is specific to the purpose of the Persona.</p>
+</div>
+<div class="paragraph">
+<p>Party relationships are how real-world relationships between Parties are represented, including employment, contractual, membership, and other social relationships. Many of these will be based on an Accountability, which describes the responsbility of one Party to another in the relationship.</p>
+</div>
+<div class="sect3">
+<h4 id="_party_identities"><a class="anchor" href="#_party_identities"></a>5.1.1. Party Identities</h4>
+<div class="paragraph">
+<p>TODO: old text; review</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_contacts"><a class="anchor" href="#_contacts"></a>5.1.2. Contacts</h4>
+<div class="paragraph">
+<p>TODO: old text; review</p>
+</div>
+<div class="paragraph">
+<p>Classes have been included for <code>PARTY_IDENTITY</code> and <code>ADDRESS</code>, even though they contain only a link to details, in the form of the generic <code>ITEM_STRUCTURE</code> class. This is not strictly necessary - it could have been done simply using appropriately named attributes in the classes <code>PARTY</code> and <code>CONTACT</code> - but is done to provide a place to add specific semantics in future releases of the model. It is also expected to make software development easier, since it provides explicit classes to which behaviour and other implementation attributes can be added. Lastly, it allows the notions of <code>PARTY_IDENTITY</code> and <code>ADDRESS</code> to be explicitly used in archetype-authoring tools.</p>
+</div>
+<div class="paragraph">
+<p>Instances of <code>PARTY_IDENTITY</code>, linked to <code>PARTY</code> by the attribute <code><em>identities</em></code> are intended to express the names of people, organisations, and other actors - that is names which are "owned" by the party, e.g.  self-declared (in the case of institutions and companies) or by virtue of social relations (names given by parents, tribes etc). Identifiers of Parties given by other organisations, or the state are not represented in this way, and should be recorded in the <code>PARTY.<em>details</em></code> structure instead (see below).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_party_relationships"><a class="anchor" href="#_party_relationships"></a>5.1.3. Party Relationships</h4>
+<div class="paragraph">
+<p>Relationships between parties in the real world may be expressed using <code>PARTY_RELATIONSHIP</code> objects, as illustrated below.</p>
+</div>
+<div class="paragraph">
+<p>Relationships are considered directional, hence the use of the attribute names source and target, however, these names are otherwise neutral, and give no indication as to the meaning of the relationships, such as which party is responsible and which accountable (for comparison, see the demographic models of Fowler (<a href="#Fowler1997">Fowler&#44; 1997</a>)). Accordingly, each Party involved in a relationship includes it in its relationships list, if it is at the source end, or in the <code><em>reverse_relationships</em></code> list, if at the target end.</p>
+</div>
+<div class="paragraph">
+<p>The usual way to determine the directionality of a relationship between two Parties is usually by which Party’s actions caused the relationship to come into being. For example, a relationship representing the concept "patient", between a health consumer and a health care organisation would have the consumer as source and the organisation as target.</p>
+</div>
+<div class="paragraph">
+<p><code>PARTY_RELATIONSHIPs</code> are stored as part of the data of the <code>PARTY</code> designated as the source. This means that the relationships attribute is by value, while reverse_relationships is by references, as are <code>PARTY_RELATIONSHIP.<em>source</em></code> and target. The actual kind of reference is via the use of <code>OBJECT_REFs</code> containing <code>HIER_OBJECT_IDs</code> to denote the Version container of a Party, rather than <code>OBJECT_VERSION_IDs</code>, which would denote particular versions. Logically this implements the semantic that such relationships in the real world are between <em>continuants</em>, i.e. the real Parties, not just one of their version instances in a demographic system.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_versioning_semantics"><a class="anchor" href="#_versioning_semantics"></a>5.1.4. Versioning Semantics</h4>
+<div class="paragraph">
+<p>The class <code>PARTY</code> and its descendants <code>ACTOR</code> and <code>ROLE</code> are all potentially versioned in a demographic system. A Version of a <code>PARTY</code> includes all the compositional parts, such as identities, contacts, Party relationships of which it is the source. Every Party is stored in its own Version container.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_3"><a class="anchor" href="#_class_definitions_3"></a>5.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_party_class"><a class="anchor" href="#_party_class"></a>5.2.1. PARTY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>PARTY (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>An independent entity in the social world, often known as a 'party'. Includes all business, civil, military and legal entities.</p>
+</div>
+<div class="paragraph">
+<p>A Social entity is either an Agent or a 'Persona' (of an Agent). An intentional  agent can participate in an activity, task, process etc, and make decisions.</p>
+</div>
+<div class="paragraph">
+<p>Theoretically equivalent to BFO:Realizable entity, i.e. an s-dependent continuant whose bearer is some physical entity - e.g. a material person, or an aggregate of persons making up a 'company'.</p>
+</div>
+<div class="paragraph">
+<p>However, we tend to treat social entities in business and civic life, and hence administratively and legally, as being independent entities that stand for their bearers. Concretely, we don&#8217;t usually represent the related material entity at all.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_social_entity_class">SOCIAL_ENTITY</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>identities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_party_identity_class">PARTY_IDENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identities used by the Party to identify itself. Most commonly, Agents will have identity/ies (at least legal name), but occasionally, a Persona will have identities as well, e.g. stage names, aliases, nicknames.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>contacts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_contact_class">CONTACT</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Contacts for this party.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>relationships</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_party_relationship_class">PARTY_RELATIONSHIP</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Relationships in which this Party takes part as source.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>legal_status</strong>: <code>@@</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Legal status of this entity, potentially supported by documentation (references).</p>
+</div>
+<div class="paragraph">
+<p>TODO: detail</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Type_valid</em>: <code>type = name</code></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Contacts_valid</em>: <code>contacts /= Void implies not contacts.is_empty</code></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Relationships_validity</em>: <code>relationships /= Void implies (not relationships.is_empty and then relationships.for_all (r &#124; r.source = self)</code></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Reverse_relationships_validity</em>: <code>reverse_relationships /= Void implies (not reverse_relationships.empty and then reverse_relationships.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository("demographics").all_party_relationships.object (item).target = self))</code></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Is_archetype_root</em>: <code>is_archetype_root</code></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Uid_mandatory</em>: <code>uid /= Void</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_agent_class"><a class="anchor" href="#_agent_class"></a>5.2.2. AGENT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>AGENT (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>An intentional agent, equivalent to a mind, either individual or aggregate. An Agent may have one or more Personae, each of which is characterised by one or more Capabilities.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_party_class">PARTY</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>languages</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_terminology_term_class">Terminology_term</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Languages which can be used to communicate with this actor, in preferred order of use (if known, else order irrelevant).</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>capabilities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_capability_class">CAPABILITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Capacities of this Actor.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accountabilities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_accountability_class">ACCOUNTABILITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Set of accountabilities defined by this Actor. For an Organisation, may be understood as organisational posts, i.e. available jobs.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>personae</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_persona_class">PERSONA</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Personae of an Agent based on Capabilities. A Persona corresponds to the potential to act in a specific capability-based way, i.e. to have a competency or ability.</p>
+</div>
+<div class="paragraph">
+<p>For example, the Person Margaret Smith may have a Persona based on her GP (medical) credentials, and another based on her amateur opera singing Capability. She could therefore work as a GP in a health practice and also as a singer in a drama society.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_persona_class"><a class="anchor" href="#_persona_class"></a>5.2.3. PERSONA Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PERSONA</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A particular, coherent social presentation of an Agent, corresponding to one or more Capabilities, and usually having its own Contact information.</p>
+</div>
+<div class="paragraph">
+<p>Example: Dr Jones (a Person) who is a General practitioner (a Persona) works as health centre coordinator (an Accountability) at Park St Health Centre (an Organisation). The employment relationship is the Party relationship whose scope is the same Accountability.</p>
+</div>
+<div class="paragraph">
+<p>May be understood as a BFO:Capability, a proposed category between Disposition and Function.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_party_class">PARTY</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>capability</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_capability_class">CAPABILITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Capabilities of a Persona.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_party_identity_class"><a class="anchor" href="#_party_identity_class"></a>5.2.4. PARTY_IDENTITY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PARTY_IDENTITY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>An identity  of a Social entity, such as a person name or company name, and which is used by the party to identify itself. Actual structure is archetyped.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/latest/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code><a href="/releases/RM/latest/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The value of the identity. This will usually take the form of a small structure of strings.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_terminology_term_class" target="_blank" rel="noopener">Terminology_term</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Purpose of identity, e.g. legal ,  stagename,  nickname,  tribal name,  trading name. Taken from value of inherited <code><em>name</em></code> attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Purpose_valid</em>: <code>purpose = name</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_contact_class"><a class="anchor" href="#_contact_class"></a>5.2.5. CONTACT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>CONTACT</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Description of a means of contact of a Party. Actual structure is archetyped.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/latest/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>addresses</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_address_class">ADDRESS</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>A set of address alternatives for this contact purpose and time validity combination.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_validity</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_interval_class">Interval<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_iso8601_date_class">Iso8601_date</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Valid time interval for this contact descriptor.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_terminology_term_class" target="_blank" rel="noopener">Terminology_term</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Purpose for which this contact is used, e.g. mail,  daytime phone, etc. Taken from value of inherited <code><em>name</em></code> attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Purpose_valid</em>: <code>purpose = name</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_address_class"><a class="anchor" href="#_address_class"></a>5.2.6. ADDRESS Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ADDRESS</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Address of contact, which may be electronic or geographic.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/latest/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code><a href="/releases/RM/latest/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Archetypable structured address.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_terminology_term_class" target="_blank" rel="noopener">Terminology_term</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Type of address, e.g. electronic,  locality. Taken from value of inherited <code><em>name</em></code> attribute.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Type_valid</em>: <code>type = name</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_capability_class"><a class="anchor" href="#_capability_class"></a>5.2.7. CAPABILITY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>CAPABILITY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Capability of an Agent, such as  GP, vascular surgeon. Capability is based on credentials, normally professional certifications.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/latest/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>credentials</strong>: <code><a href="/releases/RM/latest/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The qualifications of the performer of the role for this capability. This might include professional qualifications and official identifications such as provider numbers etc.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_validity</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_interval_class">Interval<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_iso8601_date_class">Iso8601_date</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Valid time interval for the credentials of this capability.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_aggregate_agent_class"><a class="anchor" href="#_aggregate_agent_class"></a>5.2.8. AGGREGATE_AGENT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>AGGREGATE_AGENT (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>An aggregate of multiple parties, that acts as a single mind, and whose agency is an emergent behaviour.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_agent_class">AGENT</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>purpose</strong>: <code>@@</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_party_class">PARTY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Simple list of members, if not represented by <code>PARTY.relationships</code>.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_organisation_class"><a class="anchor" href="#_organisation_class"></a>5.2.9. ORGANISATION Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>ORGANISATION</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A legally constituted body whose existence (in general) outlives the existence of parties that either work for it or own it.</p>
+</div>
+<div class="paragraph">
+<p>Includes public bureaucracies (e.g. UK NHS), companies, joint ventures, multi-national corporations, sports clubs, NGOs.</p>
+</div>
+<div class="paragraph">
+<p>Larger organisations generally have parts which may be internal organisational units, or some other cooperative form of group</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_aggregate_agent_class">AGGREGATE_AGENT</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_group_class"><a class="anchor" href="#_group_class"></a>5.2.10. GROUP Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>GROUP</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A real world group of Agents constituted for a stated purpose, and whose membership is fully defined, but that is not a legal organisation.</p>
+</div>
+<div class="paragraph">
+<p>Examples: a cardiac surgery team; marketing department of a company, treasury part of a government.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_aggregate_agent_class">AGGREGATE_AGENT</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_individual_agent_class"><a class="anchor" href="#_individual_agent_class"></a>5.2.11. INDIVIDUAL_AGENT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>INDIVIDUAL_AGENT (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>An agent that is an indivisible 'single mind' which is the seat of agency.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_agent_class">AGENT</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_automaton_class"><a class="anchor" href="#_automaton_class"></a>5.2.12. AUTOMATON Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>AUTOMATON</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A non-human autonomous agent, including robots and AIs.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_individual_agent_class">INDIVIDUAL_AGENT</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_person_class"><a class="anchor" href="#_person_class"></a>5.2.13. PERSON Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PERSON</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Human being.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_individual_agent_class">INDIVIDUAL_AGENT</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_party_relationship_class"><a class="anchor" href="#_party_relationship_class"></a>5.2.14. PARTY_RELATIONSHIP Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PARTY_RELATIONSHIP</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A relationship between parties. In BFO terms, a Relational quality, i.e. a Quality that s-depends on the parties of the relation.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/latest/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code><a href="/releases/BASE/latest/base_types.html#_party_ref_class" target="_blank" rel="noopener">PARTY_REF</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Target of relationship.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_validity</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_interval_class">Interval<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_iso8601_date_class">Iso8601_date</sup></a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Valid time interval for this relationship.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>source</strong>: <code><a href="/releases/BASE/latest/base_types.html#_party_ref_class" target="_blank" rel="noopener">PARTY_REF</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Source of relationship, may be understood as 'owner' of relationship.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scoper</strong>: <code><a href="#_accountability_class">ACCOUNTABILITY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The Accountability defining the scope of this relationship; typically a job post.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type</strong> (): <code><a href="/releases/RM/latest/data_types.html#_dv_text_class" target="_blank" rel="noopener">DV_TEXT</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Type of relationship, such as  employment,  authority,  health provision</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Source_valid</em>: <code>source /= Void and then source.relationships.has (self)</code></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Target_valid</em>: <code>target /= Void and then not target.reverse_relationships.has (self)</code></p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p><em>Type_validity</em>: <code>type = name</code></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instance_examples_2"><a class="anchor" href="#_instance_examples_2"></a>5.3. Instance Examples</h3>
+<div class="paragraph">
+<p>In the following instance examples, the values of the attributes uid, source, target, and reverse_relationships are not meant to be taken as literally valid <code>OBJECT_IDs</code> - for the purposes of clarity, simple integers have been used.</p>
+</div>
+<div class="sect3">
+<h4 id="_parties"><a class="anchor" href="#_parties"></a>5.3.1. Parties</h4>
+<div class="sect4">
+<h5 id="_person"><a class="anchor" href="#_person"></a>5.3.1.1. Person</h5>
+<div class="paragraph">
+<p>The diagram below illustrates a possible set of instances for a <code>PERSON</code>, with home and work contact information.  There are separate archetypes for the <code>PERSON</code>, each <code>ADDRESS</code>, and each <code>PARTY_IDENTITY</code>. In the following figure, "meaning" is the meaning from the value of the archetype_node_id attribute, functionally derived from the archetype local ontology.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_clinician"><a class="anchor" href="#_clinician"></a>5.3.1.2. Clinician</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_credentials"><a class="anchor" href="#_credentials"></a>5.3.1.3. Credentials</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_health_care_facility"><a class="anchor" href="#_health_care_facility"></a>5.3.1.4. Health Care Facility</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_group"><a class="anchor" href="#_group"></a>5.3.1.5. Group</h5>
+<div class="paragraph">
+<p>The figure below illustrates the demographic information for a cadiac surgery team in a hospital. The group includes a head surgeon, anaesthetist, assistant surgeon, and presumably others (not shown). Each of these members of the team have an employment relationship with the hospital (shown only for one surgeon, in the interests of clarity).</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_relationships"><a class="anchor" href="#_relationships"></a>5.3.2. Relationships</h4>
+<div class="sect4">
+<h5 id="_familial_relationship"><a class="anchor" href="#_familial_relationship"></a>5.3.2.1. Familial Relationship</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_employment_relationship"><a class="anchor" href="#_employment_relationship"></a>5.3.2.2. Employment Relationship</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_patient"><a class="anchor" href="#_patient"></a>5.3.2.3. Patient</h5>
+<div class="paragraph">
+<p>The figure below shows a simple way of representing the patient relationship between a person and a health
+care organisation.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_asset_package"><a class="anchor" href="#_asset_package"></a>6. Asset Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+<div id="rm_social_entity_asset" class="imageblock text-center text-center">
+<div class="content">
+<img src="UML/diagrams/RM-entity.social_entity.asset.svg" alt="RM entity.social entity.asset">
+</div>
+<div class="title">Figure 5. rm.entity.social_entity.asset package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_4"><a class="anchor" href="#_class_definitions_4"></a>6.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_asset_class"><a class="anchor" href="#_asset_class"></a>6.2.1. ASSET Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>ASSET (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Social / business view of one or more physical entities.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_social_entity_class">SOCIAL_ENTITY</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_equipment_class"><a class="anchor" href="#_equipment_class"></a>6.2.2. EQUIPMENT Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>EQUIPMENT</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Capital equipment asset, including machines and devices, used by a Party to achieve its goals.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_asset_class">ASSET</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_consumable_class"><a class="anchor" href="#_consumable_class"></a>6.2.3. CONSUMABLE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>CONSUMABLE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Assets that are used or consumed in business processes. May be true consumable items like bandages, as well as devices, prostheses, etc that are delivered as part of a procedure.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_asset_class">ASSET</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_place_class"><a class="anchor" href="#_place_class"></a>6.2.4. PLACE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>PLACE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Locatable place within a geo-spatial address system.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_asset_class">ASSET</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>addresses</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_address_class">ADDRESS</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Addresses of a Place within one or more address spaces.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_geographical_site_class"><a class="anchor" href="#_geographical_site_class"></a>6.2.5. GEOGRAPHICAL_SITE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>GEOGRAPHICAL_SITE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A geographical site containing (or to contain) built edifices such as a university or hospital.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_place_class">PLACE</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>facilities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_facility_class">FACILITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The facilities within a Site; e.g. departments.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_facility_class"><a class="anchor" href="#_facility_class"></a>6.2.6. FACILITY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>FACILITY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Building, theatre, ward, room etc normally with a specific business function.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_place_class">PLACE</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_facility_class">FACILITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Sub-parts of a facility, e.g. wards, operating rooms within the orthopedic department.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instance_examples_3"><a class="anchor" href="#_instance_examples_3"></a>6.3. Instance Examples</h3>
+<div class="paragraph">
+<p>xxx.</p>
+</div>
+<div class="sect3">
+<h4 id="_places"><a class="anchor" href="#_places"></a>6.3.1. Places</h4>
+<div class="paragraph">
+<p>xxx.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_equipment"><a class="anchor" href="#_equipment"></a>6.3.2. Equipment</h4>
+<div class="paragraph">
+<p>xxx.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_consumables"><a class="anchor" href="#_consumables"></a>6.3.3. Consumables</h4>
+<div class="paragraph">
+<p>xxx.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resource_package"><a class="anchor" href="#_resource_package"></a>7. Resource Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_6"><a class="anchor" href="#_overview_6"></a>7.1. Overview</h3>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+<div id="rm_entity_resource" class="imageblock text-center text-center">
+<div class="content">
+<img src="UML/diagrams/RM-entity.resource.svg" alt="RM entity.resource">
+</div>
+<div class="title">Figure 6. rm.entity.resource package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_5"><a class="anchor" href="#_class_definitions_5"></a>7.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_resource_item_class"><a class="anchor" href="#_resource_item_class"></a>7.2.1. RESOURCE_ITEM Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RESOURCE_ITEM (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Abstract ancestor of Resource classes.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/latest/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_resource_package_class"><a class="anchor" href="#_resource_package_class"></a>7.2.2. RESOURCE_PACKAGE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RESOURCE_PACKAGE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Package of Resources, that may include other packages.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_resource_item_class">RESOURCE_ITEM</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>resources</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_resource_class">RESOURCE</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Resources in this package.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_resource_package_class">RESOURCE_PACKAGE</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Sub-packages of this package.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_resource_class"><a class="anchor" href="#_resource_class"></a>7.2.3. RESOURCE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RESOURCE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>An description of how to use one or more real Entities for a purpose within the context of some work process.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_resource_item_class">RESOURCE_ITEM</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_entity_class">ENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Real world entity that is used as a resource in some work context.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>itilisations</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_resource_use_class">RESOURCE_USE</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Descriptions of ways to use an Entity as a Resource.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_resource_use_class"><a class="anchor" href="#_resource_use_class"></a>7.2.4. RESOURCE_USE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RESOURCE_USE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Record of the utilisation of some Entity, in the role of a specific kind of Resource. Archetypes provide models of kinds of use.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code><a href="/releases/RM/latest/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>All other details for this Party.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>start_time</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_iso8601_date_time_class" target="_blank" rel="noopener">Iso8601_date_time</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>duration</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_iso8601_duration_class" target="_blank" rel="noopener">Iso8601_duration</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cost_data</strong>: <code><a href="/releases/RM/latest/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>All other details for this Party.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_service_use_class"><a class="anchor" href="#_service_use_class"></a>7.2.5. SERVICE_USE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>SERVICE_USE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Details of an episode of service corresponding to a single logical 'use' of a re-usable Entity, e.g. a Device or Place.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_resource_use_class">RESOURCE_USE</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_consumable_use_class"><a class="anchor" href="#_consumable_use_class"></a>7.2.6. CONSUMABLE_USE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>CONSUMABLE_USE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Details of single use and potentially disposal of a consumable artefact.</p>
+</div>
+<div class="paragraph">
+<p>TODO: possibly need to distinguish between strictly consumable things like medication, food, and disposable things like catheters?</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_resource_use_class">RESOURCE_USE</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>amount</strong>: <code>@@</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instance_examples_4"><a class="anchor" href="#_instance_examples_4"></a>7.3. Instance Examples</h3>
+<div class="paragraph">
+<p>xxx.</p>
+</div>
+<div class="sect3">
+<h4 id="_biological_entities_2"><a class="anchor" href="#_biological_entities_2"></a>7.3.1. Biological Entities</h4>
+<div class="sect4">
+<h5 id="_xxx_2"><a class="anchor" href="#_xxx_2"></a>7.3.1.1. XXX</h5>
+<div class="paragraph">
+<p>xxx.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_artefacts_2"><a class="anchor" href="#_artefacts_2"></a>7.3.2. Artefacts</h4>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_substances_2"><a class="anchor" href="#_substances_2"></a>7.3.3. Substances</h4>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_aggregate_objects_2"><a class="anchor" href="#_aggregate_objects_2"></a>7.3.4. Aggregate objects</h4>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_registry_package"><a class="anchor" href="#_registry_package"></a>8. Registry Package</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_overview_7"><a class="anchor" href="#_overview_7"></a>8.1. Overview</h3>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+<div id="rm_entity_registry" class="imageblock text-center text-center">
+<div class="content">
+<img src="UML/diagrams/RM-entity.registry.svg" alt="RM entity.registry">
+</div>
+<div class="title">Figure 7. rm.entity.registry package</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_6"><a class="anchor" href="#_class_definitions_6"></a>8.2. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_registry_class"><a class="anchor" href="#_registry_class"></a>8.2.1. REGISTRY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>REGISTRY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A logical representation of a repository of versioned Entities of various types.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/base_types.html#_object_ref_class">OBJECT_REF</sup></a>,<a href="#_versioned_entity_class">VERSIONED_ENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>folders</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/base_types.html#_uuid_class">UUID</sup></a>,<a href="/releases/RM/latest/common.html#_versioned_folder_class" target="_blank" rel="noopener">VERSIONED_FOLDER</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Folders, used for classifying / grouping other entities.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>material_entities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/base_types.html#_object_ref_class">OBJECT_REF</sup></a>,<a href="#_versioned_material_entity_class">VERSIONED_MATERIAL_ENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Collection of material entities, i.e. 'things'.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>assets</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/base_types.html#_object_ref_class">OBJECT_REF</sup></a>,<a href="#_versioned_asset_class">VERSIONED_ASSET</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Collection of assets, i.e. owned entities.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>parties</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/base_types.html#_object_ref_class">OBJECT_REF</sup></a>,<a href="#_versioned_party_class">VERSIONED_PARTY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Collection of parties.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>resources</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_hash_class">Hash<sup></a>&lt;<a href="/releases/BASE/latest/base_types.html#_object_ref_class">OBJECT_REF</sup></a>,<a href="#_versioned_resource_item_class">VERSIONED_RESOURCE_ITEM</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Collection of resources.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_versioned_entity_class"><a class="anchor" href="#_versioned_entity_class"></a>8.2.2. VERSIONED_ENTITY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>VERSIONED_ENTITY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Static type formed by binding generic parameter of <code>VERSIONED_OBJECT&lt;T&gt;</code> to <code>ENTITY</code>.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/latest/common.html#_versioned_object_class" target="_blank" rel="noopener">VERSIONED_OBJECT</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a id="Fowler1997"></a>Fowler, M. (1997). <em>Analysis Patterns: Reusable Object Models</em>. Addison Wesley.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2022-10-15 21:31:34 +0100
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+= Entity Model
+
+== Overview
+
+The openEHR Entity model defines formal representation for various kinds of real world entity, including 'things' such as devices and medicines, biological organisms (including human), as well as all kinds of 'social entity', which includes persons and organisations (parties), in the socio-legal sense, as well as 'assets', i.e. objects as owned and/or used by parties.
+
+Instances of the Entity model correspond to the contents of typical industry repositories for patients, e.g. 'master patient index', 'provider registry', as well as asset registries and many kinds of 'reference data' repositories.
+
+The following UML diagram illustrates the upper level of the Entity model.
+
+[.text-center]
+.rm.entity package
+image::{uml_diagrams_uri}/RM-entity-overview.svg[id=rm_entity_overview, align="center"]
+
+The design of the model is influenced by the {bfo}[Basic Formal Ontology (BFO)^], a scientific realist ontology widely used in biomedical science and healthcare. The Physical entity part of the model described here follows BFO fairly closely, for the entity types included (i.e. not all BFO is included).
+
+However, we depart from BFO in representing social entities such as Person, Organisation, and Asset, as top-level Entities, rather than 'dependent' entities such as BFO::role. This primarily because social entities are normally represented as independent entities in IT systems, with their material bearers (a human organism, for Person; the physical premises of a company etc) generally being assumed.
+
+=== Archetyping
+
+The model is designed to be used with archetypes, hence the generic nature of all classes. Every class containing an attribute of the form `_details_:ITEM_STRUCTURE` is a completely archetypable structure. As a result, archetypes can be defined for concepts such as particular kinds of `PERSON`, `DEVICE`, etc, and for many subordinate structures, such as Party identities and addresses.
+
+[.tbc]
+To Be Continued
+
+=== Identification
+
+Technical identifiers of Entity instances are represented  via the `_uid_` attribute (type `OBJECT_VERSION_ID`) of the containing `VERSION`. These identifiers are used in all cross-references between Entities.
+
+[.tbc]
+To Be Continued
