@@ -50,6 +50,10 @@ h|*0..1*
 |*folders*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^]>`
 a|Optional additional Folder structures for this EHR. If set, the `_directory_` attribute refers to the first member.
 
+h|*0..1*
+|*tags*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/base_types.html#_object_ref_class[OBJECT_REF^]>`
+a|Optional list of tags associated with this EHR. Tag `_target_` values can only be within the same EHR.
+
 h|*Invariants*
 2+a|__Contributions_valid__: `for_all c in contributions &#124; c.type.is_equal("CONTRIBUTION")`
 
