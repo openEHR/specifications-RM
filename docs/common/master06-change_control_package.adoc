@@ -128,7 +128,7 @@ When subsequent Versions are added, the existing Attestations can not be assumed
 
 === Version Lifecycle
 
-Content in Original versions has a lifecycle state associated with it, modelled using the `ORIGINAL_VERSION._lifecycle_state_` attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are `532|complete|`, `553|incomplete|`, `523|deleted|`, `680|inactive|` and `681|abandoned|`. 
+Content in Original versions has a lifecycle state associated with it, modelled using the `ORIGINAL_VERSION._lifecycle_state_` attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are `532|complete|`, `553|incomplete|`, `523|deleted|`, `800|inactive|` and `801|abandoned|`.
 
 The following diagram shows the formal state machine of the `ORIGINAL_VERSION._lifecycle_state_` attribute.
 
@@ -136,7 +136,7 @@ The following diagram shows the formal state machine of the `ORIGINAL_VERSION._l
 .`ORIGINAL_VERSION _lifecycle_state_` state machine
 image::{uml_diagrams_uri}/RM-version_lifecycle.svg[id=version_lifecycle, align="center"]
 
-One basic rule must be observed with the use of states, which is that any transition requires the commit of a _new version_, even if the content is otherwise unchanged. This also means that transitions through a number of successive states entails a number of commits, each recording one transition.
+One basic rule that must be observed with the use of states is that any transition requires the commit of a _new version_, even if the content is otherwise unchanged. This also means that transitions through a number of successive states entails a number of commits, each recording one transition.
 
 ==== Incomplete Content
 
@@ -156,9 +156,11 @@ Systems and/or applications are responsible for implementing checks to find 'old
 
 A content item that is in the `incomplete` state may lose relevance before it is ever completed, e.g. due to its data subject no longer being under care. The version containing such an item may be transitioned to the `abandoned` state to represent this state of affairs. If circumstances change again and the abandoned item once more becomes relevant, it may be transitioned back to the `incomplete` state via the `retrieve` transition.
 
-An Original version may also be marked as being in the `inactive` state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion state - to be marked as no longer valid for use. The exact meaning of 'valid' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose. An `inactive` item be be reactivated back to the `complete` state, or retrieved back to the `incomplete` state (see table below for examples of when). 
+An Original version may also be marked as being in the `inactive` state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion status - to be marked as no longer valid for use. The exact meaning of 'valid' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose. An `inactive` item may be reactivated back to the `complete` state, or retrieved back to the `incomplete` state (see table below for examples of when).
 
-The transitions related to the `abandoned` and `inactive` states are as follows.
+An abandoned or inactive content item may be deleted at any time, if it is determined to be of no potential future use.
+
+The transitions related to the `abandoned` and `inactive` states are as follows, using a 'care plan' as the versioned content.
 
 [cols="1,1,1,4", options="header"]
 |===
@@ -171,11 +173,15 @@ The transitions related to the `abandoned` and `inactive` states are as follows.
 
 |`abandoned`    |`retrieve`     |`incomplete`   |Patient returns to rehab and care is resumed; the abandoned draft care plan is therefore brought back into use.
 
+|`abandoned`    |`delete`     |`deleted`   |Previously abandoned care plan determined to be of no further use, and deleted.
+
 |`complete`     |`deactivate`   |`inactive`     |A care plan (the version content) is in active use. Subsequently, the patient is discharged and the care plan is no longer actively maintained.
 
 |`inactive`     |`reactivate`   |`complete`     |Patient is readmitted after discharge and the care plan is reactivated.
 
-|`inactive`     |`retrieve`     |`incomplete`   |A de-activated care plan is used as the draft for a new care plan.
+|`inactive`     |`retrieve`     |`incomplete`   |An inactive care plan is used as the draft for a new care plan.
+
+|`inactive`    |`delete`     |`deleted`   |Previously de-activated care plan determined to be of no further use, and deleted.
 
 |===
 

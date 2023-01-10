@@ -266,7 +266,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2022 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2023 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -1599,7 +1599,7 @@ some classes in the openEHR architecture that do not inherit from <code>LOCATABL
 <div class="sect4">
 <h5 id="_original_content"><a class="anchor" href="#_original_content"></a>3.1.3.10. Original Content</h5>
 <div class="paragraph">
-<p>The features of the model described so far allow accurate referencing of content as it is known in source systems and intermediate feeder systems. A further feature of the <code>FEEDER_AUDIT</code> class, the original_content attribute allows the original content item itself to be either included inline or pointed to. If a link is used, the usual situation is that the content is in a store associated with the receiving system, such as a message or document database. The content could also be included inline. Since the original_content link is on a <code>FEEDER_AUDIT</code> object, more than one can be used within the same generated Composition if required. It may be deemed preferable to attach only a single link at the top node, i.e. the Composition node, since this establishes basic equivalent between the whole Composition and the whole document or message.</p>
+<p>The features of the model described so far allow accurate referencing of content as it is known in source systems and intermediate feeder systems. A further feature of the <code>FEEDER_AUDIT</code> class, the <code><em>original_content</em></code> attribute allows the original content item itself to be either included inline or pointed to. If a link is used, the usual situation is that the content is in a store associated with the receiving system, such as a message or document database. The content could also be included inline. Since the <code><em>original_content</em></code> link is on a <code>FEEDER_AUDIT</code> object, more than one can be used within the same generated Composition if required. It may be deemed preferable to attach only a single link at the top node, i.e. the Composition node, since this establishes basic equivalent between the whole Composition and the whole document or message.</p>
 </div>
 </div>
 </div>
@@ -3119,7 +3119,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="sect3">
 <h4 id="_version_lifecycle"><a class="anchor" href="#_version_lifecycle"></a>6.3.1. Version Lifecycle</h4>
 <div class="paragraph">
-<p>Content in Original versions has a lifecycle state associated with it, modelled using the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are <code>532|complete|</code>, <code>553|incomplete|</code>, <code>523|deleted|</code>, <code>680|inactive|</code> and <code>681|abandoned|</code>.</p>
+<p>Content in Original versions has a lifecycle state associated with it, modelled using the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute, which is coded from the openEHR Terminology 'version lifecycle state' group. The possible values are <code>532|complete|</code>, <code>553|incomplete|</code>, <code>523|deleted|</code>, <code>800|inactive|</code> and <code>801|abandoned|</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following diagram shows the formal state machine of the <code>ORIGINAL_VERSION.<em>lifecycle_state</em></code> attribute.</p>
@@ -3131,7 +3131,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="title">Figure 10. <code>ORIGINAL_VERSION <em>lifecycle_state</em></code> state machine</div>
 </div>
 <div class="paragraph">
-<p>One basic rule must be observed with the use of states, which is that any transition requires the commit of a <em>new version</em>, even if the content is otherwise unchanged. This also means that transitions through a number of successive states entails a number of commits, each recording one transition.</p>
+<p>One basic rule that must be observed with the use of states is that any transition requires the commit of a <em>new version</em>, even if the content is otherwise unchanged. This also means that transitions through a number of successive states entails a number of commits, each recording one transition.</p>
 </div>
 <div class="sect4">
 <h5 id="_incomplete_content"><a class="anchor" href="#_incomplete_content"></a>6.3.1.1. Incomplete Content</h5>
@@ -3169,10 +3169,13 @@ In the <code>incomplete</code> state, a limited form of invalidity is allowed: m
 <p>A content item that is in the <code>incomplete</code> state may lose relevance before it is ever completed, e.g. due to its data subject no longer being under care. The version containing such an item may be transitioned to the <code>abandoned</code> state to represent this state of affairs. If circumstances change again and the abandoned item once more becomes relevant, it may be transitioned back to the <code>incomplete</code> state via the <code>retrieve</code> transition.</p>
 </div>
 <div class="paragraph">
-<p>An Original version may also be marked as being in the <code>inactive</code> state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion state - to be marked as no longer valid for use. The exact meaning of 'valid' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose. An <code>inactive</code> item be be reactivated back to the <code>complete</code> state, or retrieved back to the <code>incomplete</code> state (see table below for examples of when).</p>
+<p>An Original version may also be marked as being in the <code>inactive</code> state. This allows content that is understood as informationally valid with respect to the real world activities it represents - regardless of completion status - to be marked as no longer valid for use. The exact meaning of 'valid' will depend on the content: it may be that the content is no longer relevant or useful with respect to its original purpose. An <code>inactive</code> item may be reactivated back to the <code>complete</code> state, or retrieved back to the <code>incomplete</code> state (see table below for examples of when).</p>
 </div>
 <div class="paragraph">
-<p>The transitions related to the <code>abandoned</code> and <code>inactive</code> states are as follows.</p>
+<p>An abandoned or inactive content item may be deleted at any time, if it is determined to be of no potential future use.</p>
+</div>
+<div class="paragraph">
+<p>The transitions related to the <code>abandoned</code> and <code>inactive</code> states are as follows, using a 'care plan' as the versioned content.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -3206,6 +3209,12 @@ In the <code>incomplete</code> state, a limited form of invalidity is allowed: m
 <td class="tableblock halign-left valign-top"><p class="tableblock">Patient returns to rehab and care is resumed; the abandoned draft care plan is therefore brought back into use.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>abandoned</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleted</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Previously abandoned care plan determined to be of no further use, and deleted.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>complete</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>deactivate</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>inactive</code></p></td>
@@ -3221,7 +3230,13 @@ In the <code>incomplete</code> state, a limited form of invalidity is allowed: m
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>inactive</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>retrieve</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>incomplete</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A de-activated care plan is used as the draft for a new care plan.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An inactive care plan is used as the draft for a new care plan.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>inactive</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleted</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Previously de-activated care plan determined to be of no further use, and deleted.</p></td>
 </tr>
 </tbody>
 </table>
