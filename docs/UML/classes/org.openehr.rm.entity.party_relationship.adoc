@@ -9,40 +9,31 @@ h|*Description*
 2+a|A relationship between parties. In BFO terms, a Relational quality, i.e. a Quality that s-depends on the parties of the relation.
 
 h|*Inherit*
-2+|`link:/releases/RM/{rm_release}/common.html#_locatable_class[LOCATABLE^]`
+2+|`<<_entity_relationship_class,ENTITY_RELATIONSHIP>>`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
-h|*1..1*
-|*target*: `link:/releases/BASE/{base_release}/base_types.html#_party_ref_class[PARTY_REF^]`
-a|Target of relationship.
-
-h|*0..1*
-|*time_validity*: `link:/releases/BASE/{base_release}/foundation_types.html#_interval_class[Interval^]<link:/releases/BASE/{base_release}/foundation_types.html#_iso8601_date_class[Iso8601_date^]>`
-a|Valid time interval for this relationship.
-
-h|*1..1*
-|*source*: `link:/releases/BASE/{base_release}/base_types.html#_party_ref_class[PARTY_REF^]`
-a|Source of relationship, may be understood as 'owner' of relationship.
-
 h|*0..1*
 |*scoper*: `<<_accountability_class,ACCOUNTABILITY>>`
 a|The Accountability defining the scope of this relationship; typically a job post.
-h|*Functions*
-^h|*Signature*
-^h|*Meaning*
 
-h|*1..1*
-|*type* (): `link:/releases/RM/{rm_release}/data_types.html#_dv_text_class[DV_TEXT^]`
-a|Type of relationship, such as  employment,  authority,  health provision
+h|*1..1 +
+(redefined)*
+|*source*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
+a|Source of relationship, may be understood as 'owner' of relationship.
+
+h|*1..1 +
+(redefined)*
+|*target*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
+a|Target of relationship.
 
 h|*Invariants*
-2+a|__Source_valid__: `source /= Void and then source.relationships.has (self)`
+2+a|__Target_valid__: `target /= Void and then not target.reverse_relationships.has (self)`
 
 h|
-2+a|__Target_valid__: `target /= Void and then not target.reverse_relationships.has (self)`
+2+a|__Source_valid__: `source /= Void and then source.relationships.has (self)`
 
 h|
 2+a|__Type_validity__: `type = name`
