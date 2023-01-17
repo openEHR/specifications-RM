@@ -2,6 +2,13 @@
 
 == Overview
 
+The most general characteristics of Entities are considered to consist of just
+
+* the definitional properties of each Entity type;
+* the relationships between them.
+
+These are respectively modelled using the classes `ENTITY` and `ENTITY_RELATIONSHIP`. A third class `RELATIONSHIP_GROUP` is used to group the relationships based on type, for example 'employees' or 'associates'.
+
 The following UML diagram illustrates the upper Entity model.
 
 [.text-center]
@@ -10,7 +17,9 @@ image::{uml_diagrams_uri}/RM-entity.svg[id=rm_entity_upper, align="center"]
 
 == Semantics
 
-TBD
+The concrete representation chosen for connecting relationships to owning Entities is intended to facilitate realistic database implementations containing very large numbers (e.g. O(100m)) of Entities, potentially with large numbers of relationships (e.g. O(100)).
+
+`ENTITY` instances are accordingly stored only with their related `RELATIONSHIP_GROUP` objects, which contain identifiers of the target `ENTITY_RELATIONSHIP` objects. This approach allows flexible lazy loading of potentially large structures.
 
 == Archetyping
 

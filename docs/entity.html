@@ -36,8 +36,9 @@
 </li>
 <li><a href="#_overview">2. Overview</a>
 <ul class="sectlevel2">
-<li><a href="#_archetyping">2.1. Archetyping</a></li>
-<li><a href="#_identification">2.2. Identification</a></li>
+<li><a href="#_ontological_basis">2.1. Ontological Basis</a></li>
+<li><a href="#_archetyping">2.2. Archetyping</a></li>
+<li><a href="#_identification">2.3. Identification</a></li>
 </ul>
 </li>
 <li><a href="#_upper_entity_model">3. Upper Entity Model</a>
@@ -62,11 +63,14 @@
 <ul class="sectlevel3">
 <li><a href="#_physical_entity_class">4.3.1. PHYSICAL_ENTITY Class</a></li>
 <li><a href="#_material_entity_class">4.3.2. MATERIAL_ENTITY Class</a></li>
-<li><a href="#_object_aggregate_class">4.3.3. OBJECT_AGGREGATE Class</a></li>
-<li><a href="#_independent_object_class">4.3.4. INDEPENDENT_OBJECT Class</a></li>
-<li><a href="#_biological_entity_class">4.3.5. BIOLOGICAL_ENTITY Class</a></li>
-<li><a href="#_artefact_class">4.3.6. ARTEFACT Class</a></li>
-<li><a href="#_substance_class">4.3.7. SUBSTANCE Class</a></li>
+<li><a href="#_immaterial_entity_class">4.3.3. IMMATERIAL_ENTITY Class</a></li>
+<li><a href="#_geographical_site_class">4.3.4. GEOGRAPHICAL_SITE Class</a></li>
+<li><a href="#_facility_class">4.3.5. FACILITY Class</a></li>
+<li><a href="#_object_aggregate_class">4.3.6. OBJECT_AGGREGATE Class</a></li>
+<li><a href="#_independent_object_class">4.3.7. INDEPENDENT_OBJECT Class</a></li>
+<li><a href="#_biological_entity_class">4.3.8. BIOLOGICAL_ENTITY Class</a></li>
+<li><a href="#_artefact_class">4.3.9. ARTEFACT Class</a></li>
+<li><a href="#_substance_class">4.3.10. SUBSTANCE Class</a></li>
 </ul>
 </li>
 <li><a href="#_instance_examples">4.4. Instance Examples</a>
@@ -161,9 +165,7 @@
 <li><a href="#_asset_class">7.2.1. ASSET Class</a></li>
 <li><a href="#_equipment_class">7.2.2. EQUIPMENT Class</a></li>
 <li><a href="#_consumable_class">7.2.3. CONSUMABLE Class</a></li>
-<li><a href="#_place_class">7.2.4. PLACE Class</a></li>
-<li><a href="#_geographical_site_class">7.2.5. GEOGRAPHICAL_SITE Class</a></li>
-<li><a href="#_facility_class">7.2.6. FACILITY Class</a></li>
+<li><a href="#_property_class">7.2.4. PROPERTY Class</a></li>
 </ul>
 </li>
 <li><a href="#_instance_examples_3">7.3. Instance Examples</a>
@@ -475,14 +477,17 @@
 </div>
 <div class="title">Figure 1. rm.entity taxonomy</div>
 </div>
+<div class="sect2">
+<h3 id="_ontological_basis"><a class="anchor" href="#_ontological_basis"></a>2.1. Ontological Basis</h3>
 <div class="paragraph">
 <p>The design of the model is influenced by the <a href="http://ifomis.uni-saarland.de/bfo/" target="_blank" rel="noopener">Basic Formal Ontology (BFO)</a>, a scientific realist ontology widely used in biomedical science and healthcare. The Physical entity part of the model described here follows BFO fairly closely, for the entity types included (i.e. not all BFO is included).</p>
 </div>
 <div class="paragraph">
-<p>However, we depart from BFO in representing social entities such as Person, Organisation, and Asset, as top-level Entities, rather than 'dependent' entities such as BFO::role. This primarily because social entities are normally represented as independent entities in IT systems, with their material bearers (a human organism, for Person; the physical premises of a company etc) generally being assumed.</p>
+<p>However, we depart from BFO in representing social entities such as Person, Organisation, and Asset, as top-level Entities, rather than 'dependent' entities such as <code>BFO::role</code>. This primarily because social entities are normally represented as independent entities in IT systems, with their material bearers (a human organism, for Person; the physical premises of a company etc) generally being assumed.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_archetyping"><a class="anchor" href="#_archetyping"></a>2.1. Archetyping</h3>
+<h3 id="_archetyping"><a class="anchor" href="#_archetyping"></a>2.2. Archetyping</h3>
 <div class="paragraph">
 <p>The model is designed to be used with archetypes, hence the generic nature of all classes. Every class containing an attribute of the form <code><em>details</em>:ITEM_STRUCTURE</code> is a completely archetypable structure. As a result, archetypes can be defined for concepts such as particular kinds of <code>PERSON</code>, <code>DEVICE</code>, etc, and for many subordinate structures, such as Party identities and addresses.</p>
 </div>
@@ -491,7 +496,7 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_identification"><a class="anchor" href="#_identification"></a>2.2. Identification</h3>
+<h3 id="_identification"><a class="anchor" href="#_identification"></a>2.3. Identification</h3>
 <div class="paragraph">
 <p>Technical identifiers of Entity instances are represented  via the <code><em>uid</em></code> attribute (type <code>OBJECT_VERSION_ID</code>) of the containing <code>VERSION</code>. These identifiers are used in all cross-references between Entities.</p>
 </div>
@@ -507,6 +512,22 @@
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
 <div class="paragraph">
+<p>The most general characteristics of Entities are considered to consist of just</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the definitional properties of each Entity type;</p>
+</li>
+<li>
+<p>the relationships between them.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These are respectively modelled using the classes <code>ENTITY</code> and <code>ENTITY_RELATIONSHIP</code>. A third class <code>RELATIONSHIP_GROUP</code> is used to group the relationships based on type, for example 'employees' or 'associates'.</p>
+</div>
+<div class="paragraph">
 <p>The following UML diagram illustrates the upper Entity model.</p>
 </div>
 <div id="rm_entity_upper" class="imageblock text-center text-center">
@@ -519,7 +540,10 @@
 <div class="sect2">
 <h3 id="_semantics"><a class="anchor" href="#_semantics"></a>3.2. Semantics</h3>
 <div class="paragraph">
-<p>TBD</p>
+<p>The concrete representation chosen for connecting relationships to owning Entities is intended to facilitate realistic database implementations containing very large numbers (e.g. O(100m)) of Entities, potentially with large numbers of relationships (e.g. O(100)).</p>
+</div>
+<div class="paragraph">
+<p><code>ENTITY</code> instances are accordingly stored only with their related <code>RELATIONSHIP_GROUP</code> objects, which contain identifiers of the target <code>ENTITY_RELATIONSHIP</code> objects. This approach allows flexible lazy loading of potentially large structures.</p>
 </div>
 </div>
 <div class="sect2">
@@ -546,7 +570,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Continuant entity whose identity is stable over its period of existence. Includes physical entities as well as other kinds of entities from the social, legal and business worlds, including intentional agents.</p>
+<p>Continuant Entity whose identity is stable over its period of existence. Includes physical entities as well as other kinds of entities from the social, legal and business worlds, including intentional agents.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -673,7 +697,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_entity_relationship_class">ENTITY_RELATIONSHIP</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>members</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;String&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Individual relationships within this group (type).</p>
 </div></div></td>
@@ -738,7 +762,7 @@
 <p>Purely physical entities, in the realist sense of BFO. Includes material entities (entities consisting of matter) and physical entities corresponding to voids, spaces and spatial extents.</p>
 </div>
 <div class="paragraph">
-<p>Equivalent to bfo::Entity.</p>
+<p>Equivalent to <code>BFO::Independent Continuant</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -764,7 +788,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Any entity consisting of physical matter. Synonym for bfo:Material entity.</p>
+<p>Any entity consisting of physical matter. Synonym for <code>BFO:Material entity</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -775,7 +799,95 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_object_aggregate_class"><a class="anchor" href="#_object_aggregate_class"></a>4.3.3. OBJECT_AGGREGATE Class</h4>
+<h4 id="_immaterial_entity_class"><a class="anchor" href="#_immaterial_entity_class"></a>4.3.3. IMMATERIAL_ENTITY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>IMMATERIAL_ENTITY (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_physical_entity_class">PHYSICAL_ENTITY</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_geographical_site_class"><a class="anchor" href="#_geographical_site_class"></a>4.3.4. GEOGRAPHICAL_SITE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>GEOGRAPHICAL_SITE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A geographical site containing (or to contain) built edifices such as a university or hospital. Defined by a boundary, usually found in a civil cadastral system, land register etc.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_immaterial_entity_class">IMMATERIAL_ENTITY</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_facilities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_facility_class">FACILITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>The facilities within a Site; e.g. departments.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_facility_class"><a class="anchor" href="#_facility_class"></a>4.3.5. FACILITY Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>FACILITY</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A physical edifice or part thereof, e.g. a building, theatre, ward, room etc normally with a specific business function.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_object_aggregate_class">OBJECT_AGGREGATE</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_object_aggregate_class"><a class="anchor" href="#_object_aggregate_class"></a>4.3.6. OBJECT_AGGREGATE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -790,7 +902,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Synonym for bfo:Object aggregate. Member parts are causally independent Entities - either more Object aggregates, or else Independent objects.</p>
+<p>Synonym for <code>BFO:Object aggregate</code>. Member parts are causally independent Entities - either more Object aggregates, or else Independent objects.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -813,7 +925,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_independent_object_class"><a class="anchor" href="#_independent_object_class"></a>4.3.4. INDEPENDENT_OBJECT Class</h4>
+<h4 id="_independent_object_class"><a class="anchor" href="#_independent_object_class"></a>4.3.7. INDEPENDENT_OBJECT Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -828,7 +940,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Synonym for bfo:object ('Object' is generally a problematic term in a class model, hence 'independent object'). Understood as a causally independent / unified object, following BFO.</p>
+<p>Synonym for <code>BFO:object</code> ('Object' is generally a problematic term in a class model, hence 'independent object'). Understood as a causally independent / unified object, following BFO.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -839,7 +951,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_biological_entity_class"><a class="anchor" href="#_biological_entity_class"></a>4.3.5. BIOLOGICAL_ENTITY Class</h4>
+<h4 id="_biological_entity_class"><a class="anchor" href="#_biological_entity_class"></a>4.3.8. BIOLOGICAL_ENTITY Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -887,7 +999,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_artefact_class"><a class="anchor" href="#_artefact_class"></a>4.3.6. ARTEFACT Class</h4>
+<h4 id="_artefact_class"><a class="anchor" href="#_artefact_class"></a>4.3.9. ARTEFACT Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -931,7 +1043,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_substance_class"><a class="anchor" href="#_substance_class"></a>4.3.7. SUBSTANCE Class</h4>
+<h4 id="_substance_class"><a class="anchor" href="#_substance_class"></a>4.3.10. SUBSTANCE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1153,7 +1265,7 @@
 <p>A Social entity is either an Agent or a 'Persona' (of an Agent). An intentional  agent can participate in an activity, task, process etc, and make decisions.</p>
 </div>
 <div class="paragraph">
-<p>Theoretically equivalent to BFO:Realizable entity, i.e. an s-dependent continuant whose bearer is some physical entity - e.g. a material person, or an aggregate of persons making up a 'company'.</p>
+<p>Theoretically equivalent to <code>BFO:Realizable</code> entity, i.e. an s-dependent continuant whose bearer is some physical entity - e.g. a material person, or an aggregate of persons making up a 'company'.</p>
 </div>
 <div class="paragraph">
 <p>However, we tend to treat social entities in business and civic life, and hence administratively and legally, as being independent entities that stand for their bearers. Concretely, we don&#8217;t usually represent the related material entity at all.</p>
@@ -1261,7 +1373,10 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>An intentional agent, equivalent to a mind, either individual or aggregate. An Agent may have one or more Personae, each of which is characterised by one or more Capabilities.</p>
+<p>An <em>intentional</em> real-world agent, equivalent to a mind, either individual or aggregate. An Agent may have one or more Personae, each of which is characterised by one or more Capabilities.</p>
+</div>
+<div class="paragraph">
+<p>Possibly equivalent to <code>BFO:Role</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1611,6 +1726,9 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Any kind of organisational entity that may contain Org units as well as have individual members.</p>
+</div>
+<div class="paragraph">
+<p>An Org Unit may have as its <code><em>physical_bearer</em></code> a Facility.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1993,7 +2111,7 @@ care organisation.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_place_class"><a class="anchor" href="#_place_class"></a>7.2.4. PLACE Class</h4>
+<h4 id="_property_class"><a class="anchor" href="#_property_class"></a>7.2.4. PROPERTY Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2003,12 +2121,18 @@ care organisation.</p>
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>PLACE (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>PROPERTY</strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Locatable place within a geo-spatial address system.</p>
+<p>A real estate entity used by a Party, either a land area and contained buildings and other facilities, or just a building or part thereof.</p>
+</div>
+<div class="paragraph">
+<p>Normally specified by a street address within the system of the locale (e.g. '72 King St, Hammersmith, London'), and/or via a well-known name (e.g. 'University of Maryland'). Has an associated boundary within a cadastral system defining the land area of the property.</p>
+</div>
+<div class="paragraph">
+<p>May have a <code><em>physical_bearer</em></code> of type Geographical Site or Facility.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2025,82 +2149,6 @@ care organisation.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>addresses</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_address_class">ADDRESS</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Addresses of a Place within one or more address spaces.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_geographical_site_class"><a class="anchor" href="#_geographical_site_class"></a>7.2.5. GEOGRAPHICAL_SITE Class</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>GEOGRAPHICAL_SITE</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>A geographical site containing (or to contain) built edifices such as a university or hospital.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_place_class">PLACE</a></code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_facilities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_facility_class">FACILITY</a>&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The facilities within a Site; e.g. departments.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_facility_class"><a class="anchor" href="#_facility_class"></a>7.2.6. FACILITY Class</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>FACILITY</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Building, theatre, ward, room etc normally with a specific business function.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_place_class">PLACE</a></code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_facility_class">FACILITY</a>&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Sub-parts of a facility, e.g. wards, operating rooms within the orthopedic department.</p>
 </div></div></td>
 </tr>
 </tbody>
