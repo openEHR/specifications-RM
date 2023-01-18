@@ -16,6 +16,18 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*r_parts*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_material_entity_class,MATERIAL_ENTITY>>>`
-a|Containment relation of an aggregate (non-primitive) object.
+|*r_material_parts*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_material_entity_class,MATERIAL_ENTITY>>>`
+a|Material part-of relation from an aggregate object to other material objects that are materially connected, e.g. apartment 3-9 within the apartment block 'Mirabeau' at 32 Av. Bento Loyola, Casamarela, Recife.
+
+Excludes contained immaterial spaces, sites etc.
+
+h|*0..1*
+|*r_contained_items*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_material_entity_class,MATERIAL_ENTITY>>>`
+a|Containment relation between an Object aggregate and other objects located within but not materially part of the aggregate, for example equipment in a room.
+
+h|*0..1*
+|*r_parts*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_physical_entity_class,PHYSICAL_ENTITY>>>`
+a|Continuant part-of relation between an aggregate entity and all physical entities considered to be part of it.
+
+Example: Object Aggregate 'City of Stockholm' has parts Normalm, Östermalm, Sodermalm, ..., each of which will have further parts including properties, parks, lakes, buildings etc.
 |===

@@ -4,7 +4,7 @@ The openEHR Entity model defines formal representation for various kinds of real
 
 Instances of the Entity model correspond to the contents of typical industry repositories for patients, e.g. 'master patient index', 'provider registry', as well as asset registries and many kinds of 'reference data' repositories.
 
-The following UML diagram illustrates the primary taxonomy of the Entity model.
+The following UML diagram illustrates the primary taxonomy of the Entity model, with terminal classes (shown in various colours) standing for major categories of real world Entity likely to be recorded in enterprise information systems.
 
 [.text-center]
 .rm.entity taxonomy
@@ -16,9 +16,17 @@ The design of the model is influenced by the {bfo}[Basic Formal Ontology (BFO)^]
 
 However, we depart from BFO in representing social entities such as Person, Organisation, and Asset, as top-level Entities, rather than 'dependent' entities such as `BFO::role`. This primarily because social entities are normally represented as independent entities in IT systems, with their material bearers (a human organism, for Person; the physical premises of a company etc) generally being assumed.
 
+== Conceptual Relations
+
+BFO and related ontologies such as the {ro}[Relation Ontology^] define many possible concrete relations between Entities, both between universals (e.g. is-a, continuant-part-of etc.) and between instances (various kinds of parthood etc).
+
+Accordingly, the model shown in this specification includes _indicative conceptual relationships_ between classes (i.e. standing for universals), as a guide to the concrete relationships that may be instantiated at the instance level. These conceptual relations are shown in brown, and have names of the form `'r_xxx'`.
+
+These conceptual relations are intended to be concretely represented using instances of the `ENTITY`, `ENTITY_RELATIONSHIP` and `RELATIONSHIP_GROUP` classes described in the following section.
+
 == Archetyping
 
-The model is designed to be used with archetypes, hence the generic nature of all classes. Every class containing an attribute of the form `_details_:ITEM_STRUCTURE` is a completely archetypable structure. As a result, archetypes can be defined for concepts such as particular kinds of `PERSON`, `DEVICE`, etc, and for many subordinate structures, such as Party identities and addresses.
+The model is designed to be used with archetypes, hence the generic nature of all classes. Every class containing an attribute of the form `_details_:ITEM_STRUCTURE` is a completely archetypable structure. As a result, archetypes can be defined for concepts such as particular kinds of `PERSON`, `DEVICE` etc., and for many subordinate structures, such as Party identities and addresses.
 
 [.tbc]
 To Be Continued

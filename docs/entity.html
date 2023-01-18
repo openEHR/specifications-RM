@@ -37,8 +37,9 @@
 <li><a href="#_overview">2. Overview</a>
 <ul class="sectlevel2">
 <li><a href="#_ontological_basis">2.1. Ontological Basis</a></li>
-<li><a href="#_archetyping">2.2. Archetyping</a></li>
-<li><a href="#_identification">2.3. Identification</a></li>
+<li><a href="#_conceptual_relations">2.2. Conceptual Relations</a></li>
+<li><a href="#_archetyping">2.3. Archetyping</a></li>
+<li><a href="#_identification">2.4. Identification</a></li>
 </ul>
 </li>
 <li><a href="#_upper_entity_model">3. Upper Entity Model</a>
@@ -166,6 +167,7 @@
 <li><a href="#_equipment_class">7.2.2. EQUIPMENT Class</a></li>
 <li><a href="#_consumable_class">7.2.3. CONSUMABLE Class</a></li>
 <li><a href="#_property_class">7.2.4. PROPERTY Class</a></li>
+<li><a href="#_service_class">7.2.5. SERVICE Class</a></li>
 </ul>
 </li>
 <li><a href="#_instance_examples_3">7.3. Instance Examples</a>
@@ -376,7 +378,7 @@
 <div class="sect2">
 <h3 id="_purpose"><a class="anchor" href="#_purpose"></a>1.1. Purpose</h3>
 <div class="paragraph">
-<p>This document describes the architecture of the openEHR Entity Information Model. The semantics are drawn from the <a href="https://specifications.openehr.org/releases/RM/latest/demographic.html" target="_blank" rel="noopener">openEHR Demographic Information Model</a> and ontologies, including the <a href="http://ifomis.uni-saarland.de/bfo/" target="_blank" rel="noopener">Basic Formal Ontology (BFO)</a>.</p>
+<p>This document describes the architecture of the openEHR Entity Information Model. The semantics are drawn from the <a href="https://specifications.openehr.org/releases/RM/latest/demographic.html" target="_blank" rel="noopener">openEHR Demographic Information Model</a> and ontologies, including the <a href="https://basic-formal-ontology.org" target="_blank" rel="noopener">Basic Formal Ontology (BFO)</a>.</p>
 </div>
 <div class="paragraph">
 <p>The intended audience includes:</p>
@@ -469,7 +471,7 @@
 <p>Instances of the Entity model correspond to the contents of typical industry repositories for patients, e.g. 'master patient index', 'provider registry', as well as asset registries and many kinds of 'reference data' repositories.</p>
 </div>
 <div class="paragraph">
-<p>The following UML diagram illustrates the primary taxonomy of the Entity model.</p>
+<p>The following UML diagram illustrates the primary taxonomy of the Entity model, with terminal classes (shown in various colours) standing for major categories of real world Entity likely to be recorded in enterprise information systems.</p>
 </div>
 <div id="rm_entity_taxonomy" class="imageblock text-center text-center">
 <div class="content">
@@ -480,23 +482,35 @@
 <div class="sect2">
 <h3 id="_ontological_basis"><a class="anchor" href="#_ontological_basis"></a>2.1. Ontological Basis</h3>
 <div class="paragraph">
-<p>The design of the model is influenced by the <a href="http://ifomis.uni-saarland.de/bfo/" target="_blank" rel="noopener">Basic Formal Ontology (BFO)</a>, a scientific realist ontology widely used in biomedical science and healthcare. The Physical entity part of the model described here follows BFO fairly closely, for the entity types included (i.e. not all BFO is included).</p>
+<p>The design of the model is influenced by the <a href="https://basic-formal-ontology.org" target="_blank" rel="noopener">Basic Formal Ontology (BFO)</a>, a scientific realist ontology widely used in biomedical science and healthcare. The Physical entity part of the model described here follows BFO fairly closely, for the entity types included (i.e. not all BFO is included).</p>
 </div>
 <div class="paragraph">
 <p>However, we depart from BFO in representing social entities such as Person, Organisation, and Asset, as top-level Entities, rather than 'dependent' entities such as <code>BFO::role</code>. This primarily because social entities are normally represented as independent entities in IT systems, with their material bearers (a human organism, for Person; the physical premises of a company etc) generally being assumed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_archetyping"><a class="anchor" href="#_archetyping"></a>2.2. Archetyping</h3>
+<h3 id="_conceptual_relations"><a class="anchor" href="#_conceptual_relations"></a>2.2. Conceptual Relations</h3>
 <div class="paragraph">
-<p>The model is designed to be used with archetypes, hence the generic nature of all classes. Every class containing an attribute of the form <code><em>details</em>:ITEM_STRUCTURE</code> is a completely archetypable structure. As a result, archetypes can be defined for concepts such as particular kinds of <code>PERSON</code>, <code>DEVICE</code>, etc, and for many subordinate structures, such as Party identities and addresses.</p>
+<p>BFO and related ontologies such as the <a href="https://obofoundry.org/ontology/ro.html" target="_blank" rel="noopener">Relation Ontology</a> define many possible concrete relations between Entities, both between universals (e.g. is-a, continuant-part-of etc.) and between instances (various kinds of parthood etc).</p>
+</div>
+<div class="paragraph">
+<p>Accordingly, the model shown in this specification includes <em>indicative conceptual relationships</em> between classes (i.e. standing for universals), as a guide to the concrete relationships that may be instantiated at the instance level. These conceptual relations are shown in brown, and have names of the form <code>'r_xxx'</code>.</p>
+</div>
+<div class="paragraph">
+<p>These conceptual relations are intended to be concretely represented using instances of the <code>ENTITY</code>, <code>ENTITY_RELATIONSHIP</code> and <code>RELATIONSHIP_GROUP</code> classes described in the following section.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_archetyping"><a class="anchor" href="#_archetyping"></a>2.3. Archetyping</h3>
+<div class="paragraph">
+<p>The model is designed to be used with archetypes, hence the generic nature of all classes. Every class containing an attribute of the form <code><em>details</em>:ITEM_STRUCTURE</code> is a completely archetypable structure. As a result, archetypes can be defined for concepts such as particular kinds of <code>PERSON</code>, <code>DEVICE</code> etc., and for many subordinate structures, such as Party identities and addresses.</p>
 </div>
 <div class="paragraph tbc">
 <p>To Be Continued</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_identification"><a class="anchor" href="#_identification"></a>2.3. Identification</h3>
+<h3 id="_identification"><a class="anchor" href="#_identification"></a>2.4. Identification</h3>
 <div class="paragraph">
 <p>Technical identifiers of Entity instances are represented  via the <code><em>uid</em></code> attribute (type <code>OBJECT_VERSION_ID</code>) of the containing <code>VERSION</code>. These identifiers are used in all cross-references between Entities.</p>
 </div>
@@ -512,7 +526,7 @@
 <div class="sect2">
 <h3 id="_overview_2"><a class="anchor" href="#_overview_2"></a>3.1. Overview</h3>
 <div class="paragraph">
-<p>The most general characteristics of Entities are considered to consist of just</p>
+<p>The most general characteristics of Entities are considered to consist of just:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -525,7 +539,10 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>These are respectively modelled using the classes <code>ENTITY</code> and <code>ENTITY_RELATIONSHIP</code>. A third class <code>RELATIONSHIP_GROUP</code> is used to group the relationships based on type, for example 'employees' or 'associates'.</p>
+<p>The top-level universal Entity is represented by the generic class <code>ENTITY</code>. Descendants of this class will add properties pertinent to the type it represents.</p>
+</div>
+<div class="paragraph">
+<p>Indicative conceptual relationships are shown in this model using direct UML associations with names of the form <code>'r_xxx'</code>, as explained above. These could be used within software and databases if desired, however, concrete representation is more likely to be achieved by instantiating the relationship classes <code>ENTITY_RELATIONSHIP</code> and <code>RELATIONSHIP_GROUP</code> described here.</p>
 </div>
 <div class="paragraph">
 <p>The following UML diagram illustrates the upper Entity model.</p>
@@ -543,7 +560,7 @@
 <p>The concrete representation chosen for connecting relationships to owning Entities is intended to facilitate realistic database implementations containing very large numbers (e.g. O(100m)) of Entities, potentially with large numbers of relationships (e.g. O(100)).</p>
 </div>
 <div class="paragraph">
-<p><code>ENTITY</code> instances are accordingly stored only with their related <code>RELATIONSHIP_GROUP</code> objects, which contain identifiers of the target <code>ENTITY_RELATIONSHIP</code> objects. This approach allows flexible lazy loading of potentially large structures.</p>
+<p><code>ENTITY</code> instances are accordingly stored only with their related <code>RELATIONSHIP_GROUP</code> objects, which contain the <em>identifiers</em> of target <code>ENTITY_RELATIONSHIP</code> objects. This approach allows flexible lazy loading of potentially large structures. It is assumed that the <code><em>uid</em></code> field inherited from <code>LOCATABLE</code> is used as the identifier for both Entity and Entity Relationship instances.</p>
 </div>
 </div>
 <div class="sect2">
@@ -586,13 +603,15 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="/releases/RM/latest/data_structures.html#_cluster_class" target="_blank" rel="noopener">CLUSTER</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>All other details for this Party.</p>
+<p>Archetypable generic description for this entity.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>type_uri</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_uri_class" target="_blank" rel="noopener">Uri</a></code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>URI to a detailed description of the concrete type of Entity represented by instances of any descendant of this class. For example, a specific archetype of <code>PERSON</code> might be used to represent Employees. This field might then contain a URI pointing to the relevant description of 'employee' within the owning organisation.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
@@ -666,6 +685,13 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>time_validity</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_interval_class">Interval<sup></a>&lt;<a href="/releases/BASE/latest/foundation_types.html#_iso8601_date_class">Iso8601_date</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Valid time interval for this relationship.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="/releases/RM/latest/data_structures.html#_cluster_class" target="_blank" rel="noopener">CLUSTER</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Archetypable generic description for this relationship.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -813,7 +839,9 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Physical Entities without substance: spaces, boundaries etc. Equivalent to <code>BFO:Immaterial Entity</code>.</p>
+</div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
@@ -839,6 +867,9 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>A geographical site containing (or to contain) built edifices such as a university or hospital. Defined by a boundary, usually found in a civil cadastral system, land register etc.</p>
+</div>
+<div class="paragraph">
+<p>A kind of <code>BFO:Site</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -876,7 +907,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>A physical edifice or part thereof, e.g. a building, theatre, ward, room etc normally with a specific business function.</p>
+<p>A physical edifice or part thereof, e.g. a building, theatre, ward, room etc normally with a specific business function. May have as sub-parts other Facilities, e.g. individual rooms. May contain other objects.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -916,9 +947,29 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_material_entity_class">MATERIAL_ENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_material_parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_material_entity_class">MATERIAL_ENTITY</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Containment relation of an aggregate (non-primitive) object.</p>
+<p>Material part-of relation from an aggregate object to other material objects that are materially connected, e.g. apartment 3-9 within the apartment block 'Mirabeau' at 32 Av. Bento Loyola, Casamarela, Recife.</p>
+</div>
+<div class="paragraph">
+<p>Excludes contained immaterial spaces, sites etc.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_contained_items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_material_entity_class">MATERIAL_ENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Containment relation between an Object aggregate and other objects located within but not materially part of the aggregate, for example equipment in a room.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_physical_entity_class">PHYSICAL_ENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Continuant part-of relation between an aggregate entity and all physical entities considered to be part of it.</p>
+</div>
+<div class="paragraph">
+<p>Example: Object Aggregate 'City of Stockholm' has parts Normalm, Östermalm, Sodermalm, &#8230;&#8203;, each of which will have further parts including properties, parks, lakes, buildings etc.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1129,7 +1180,7 @@
 <p>Social entities are understood as entities whose identity, status, type etc are created within the social realm, via legal, commercial or informal social means. Social entities have a physical host of some Physical entity (which may include non-material entities like spaces).</p>
 </div>
 <div class="paragraph">
-<p>In BFO terms, Social entities roughly correspond to BFO::role, but for pragmatic reasons, are not considered dependent entities as BFO::role is, i.e. their material bearers are not usually recorded or of interest.</p>
+<p>In BFO terms, Social entities roughly correspond to <code>BFO:role</code>, but for pragmatic reasons, are not considered dependent entities as <code>BFO:role</code> is, i.e. their material bearers are not usually recorded or of interest.</p>
 </div>
 <div class="paragraph">
 <p>In this model, Social entities are of two types: Parties and Assets.</p>
@@ -1167,7 +1218,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>physical_bearer</strong>: <code><a href="#_physical_entity_class">PHYSICAL_ENTITY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_physical_bearer</strong>: <code><a href="#_physical_entity_class">PHYSICAL_ENTITY</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Physical bearer of this Social entity.</p>
 </div></div></td>
@@ -1184,7 +1235,7 @@
 <div class="sect2">
 <h3 id="_overview_5"><a class="anchor" href="#_overview_5"></a>6.1. Overview</h3>
 <div class="paragraph">
-<p>A Party is a kind of Social entity corresponding to an autonomous Agent, or a particular Persona thereof. Agent is understood as a 'real' social entities with agency, in and of itself, while a Persona is a particular personality of an Agent, based on specific Capabilities. For example, the Person Jane Smith may have two Personas: general practitioner (based on her qualifications and registration to practice medicine), and amateur opera singer, based on her singing experience and CV.</p>
+<p>A Party is a kind of Social entity corresponding either to an autonomous Agent, or a particular Persona thereof. Agent is understood as a 'real' social entity with agency, in and of itself, while a Persona is a particular personality of an Agent, defined by specific Capabilities. For example, the Person Jane Smith may have two Personas: general practitioner (based on her qualifications and registration to practice medicine), and amateur opera singer, based on her singing experience and CV.</p>
 </div>
 <div class="paragraph">
 <p>The following UML diagram illustrates the <code>party</code> package.</p>
@@ -1205,13 +1256,13 @@
 <p>Contact information is typically associated both with Agents - corresponding to 'at home', 'citizen' status - and also with Persona, where it is specific to the purpose of the Persona.</p>
 </div>
 <div class="paragraph">
-<p>Party relationships are how real-world relationships between Parties are represented, including employment, contractual, membership, and other social relationships. Many of these will be based on an Accountability, which describes the responsbility of one Party to another in the relationship.</p>
+<p>Party relationships are how real-world relationships between Parties are represented, including employment, contractual, membership, and other social relationships. Many of these will be based on an Accountability, which describes the responsibility of one Party to another in the relationship.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_party_identities_and_contacts"><a class="anchor" href="#_party_identities_and_contacts"></a>6.2. Party Identities and Contacts</h3>
 <div class="paragraph">
-<p>TODO: old text; review</p>
+<p>Parties are characterised by identity,</p>
 </div>
 <div class="paragraph">
 <p>Classes have been included for <code>PARTY_IDENTITY</code> and <code>ADDRESS</code>, even though they contain only a link to details, in the form of the generic <code>ITEM_STRUCTURE</code> class. This is not strictly necessary - it could have been done simply using appropriately named attributes in the classes <code>PARTY</code> and <code>CONTACT</code> - but is done to provide a place to add specific semantics in future releases of the model. It is also expected to make software development easier, since it provides explicit classes to which behaviour and other implementation attributes can be added. Lastly, it allows the notions of <code>PARTY_IDENTITY</code> and <code>ADDRESS</code> to be explicitly used in archetype-authoring tools.</p>
@@ -1223,16 +1274,10 @@
 <div class="sect2">
 <h3 id="_party_relationships_and_accountability"><a class="anchor" href="#_party_relationships_and_accountability"></a>6.3. Party Relationships and Accountability</h3>
 <div class="paragraph">
-<p>Relationships between parties in the real world may be expressed using <code>PARTY_RELATIONSHIP</code> objects, as illustrated below.</p>
+<p>Relationships between Parties in the real world may be expressed using <code>PARTY_RELATIONSHIP</code> instances. Relationships are considered directional, hence the use of the attribute names <code><em>source</em></code> and <code><em>target</em></code>.</p>
 </div>
 <div class="paragraph">
-<p>Relationships are considered directional, hence the use of the attribute names source and target, however, these names are otherwise neutral, and give no indication as to the meaning of the relationships, such as which party is responsible and which accountable (for comparison, see the demographic models of Fowler (<a href="#Fowler1997">Fowler&#44; 1997</a>)). Accordingly, each Party involved in a relationship includes it in its relationships list, if it is at the source end, or in the <code><em>reverse_relationships</em></code> list, if at the target end.</p>
-</div>
-<div class="paragraph">
-<p>The usual way to determine the directionality of a relationship between two Parties is usually by which Party’s actions caused the relationship to come into being. For example, a relationship representing the concept "patient", between a health consumer and a health care organisation would have the consumer as source and the organisation as target.</p>
-</div>
-<div class="paragraph">
-<p><code>PARTY_RELATIONSHIPs</code> are stored as part of the data of the <code>PARTY</code> designated as the source. This means that the relationships attribute is by value, while reverse_relationships is by references, as are <code>PARTY_RELATIONSHIP.<em>source</em></code> and target. The actual kind of reference is via the use of <code>OBJECT_REFs</code> containing <code>HIER_OBJECT_IDs</code> to denote the Version container of a Party, rather than <code>OBJECT_VERSION_IDs</code>, which would denote particular versions. Logically this implements the semantic that such relationships in the real world are between <em>continuants</em>, i.e. the real Parties, not just one of their version instances in a demographic system.</p>
+<p>A Party Relationship may have a <code><em>scoper</em></code> of type <code>ACCOUNTABILITY</code>. Accountability types are defined by one Party in the relationship, and are used to represent job posts (formal and informal) and other responsibilities that might be filled by another Party. From the point of view of the Party defining the scope of a Party Relationship, accountabilities are understood as <em>types</em>, since multiple Parties (say, Persons who are software developer) may have the same Accountability (say, 'Python developer').</p>
 </div>
 <div class="sect3">
 <h4 id="_versioning_semantics"><a class="anchor" href="#_versioning_semantics"></a>6.3.1. Versioning Semantics</h4>
@@ -1313,10 +1358,22 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accountabilities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_accountability_class">ACCOUNTABILITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>accountability_types</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_accountability_class">ACCOUNTABILITY</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Set of accountabilities defined by this Party. For an Organisation, may be understood as organisational posts, i.e. available jobs.</p>
+<p>Types of formal accountability defined by this Party. For an Organisation, may be understood as organisational post types, i.e. potentially available jobs.</p>
 </div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_assets</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_asset_class">ASSET</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Assets of a Party.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_services</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_service_class">SERVICE</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -1427,10 +1484,10 @@
 <p>A particular, coherent social presentation of an Agent, corresponding to one or more Capabilities, and usually having its own Contact information.</p>
 </div>
 <div class="paragraph">
-<p>Example: Dr Jones (a Person) who is a General practitioner (a Persona) works as health centre coordinator (an Accountability) at Park St Health Centre (an Organisation). The employment relationship is the Party relationship whose scope is the same Accountability.</p>
+<p>Example: Dr Jones (a Person) who is a General practitioner (a Persona) works as health centre coordinator (an Accountability) at Park St Health Centre (an Organisation). The employment relationship is the Party relationship whose scoper is the same Accountability.</p>
 </div>
 <div class="paragraph">
-<p>May be understood as a BFO:Capability, a proposed category between Disposition and Function.</p>
+<p>May be understood as a <code>BFO:Capability</code>, a proposed category between Disposition and Function in BFO.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1919,9 +1976,9 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scoper</strong>: <code><a href="#_accountability_class">ACCOUNTABILITY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scoper</strong>: <code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The Accountability defining the scope of this relationship; typically a job post.</p>
+<p>The Accountability type defining the scope of this relationship; typically a job post.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2048,7 +2105,7 @@ care organisation.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Social / business view of one or more physical entities.</p>
+<p>Social / business view of one or more physical entities that are available as usable assets to a Party.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2150,6 +2207,35 @@ care organisation.</p>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Addresses of a Place within one or more address spaces.</p>
 </div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_service_class"><a class="anchor" href="#_service_class"></a>7.2.5. SERVICE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>SERVICE</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>A business level service provided by a Party.</p>
+</div>
+<div class="paragraph">
+<p>TBD: detail.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_social_entity_class">SOCIAL_ENTITY</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2285,7 +2371,7 @@ care organisation.</p>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>An description of how to use one or more real Entities for a purpose within the context of some work process.</p>
+<p>A description of how to use one or more real Entities for a purpose within the context of some work process.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2302,6 +2388,13 @@ care organisation.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_entity_class">ENTITY</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Real world entities that are used as a resource in some work context.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="/releases/RM/latest/data_structures.html#_cluster_class" target="_blank" rel="noopener">CLUSTER</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Detailed description of this resource.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2351,16 +2444,16 @@ care organisation.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cost_data</strong>: <code><a href="/releases/RM/latest/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>cost_data</strong>: <code><a href="/releases/RM/latest/data_structures.html#_cluster_class" target="_blank" rel="noopener">CLUSTER</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Cost data for this resource use.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="/releases/RM/latest/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="/releases/RM/latest/data_structures.html#_cluster_class" target="_blank" rel="noopener">CLUSTER</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Detailed description of this resource.</p>
+<p>Detailed description of this resource utilisation.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2701,9 +2794,7 @@ care organisation.</p>
 <div class="sect1">
 <h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p><a id="Fowler1997"></a>Fowler, M. (1997). <em>Analysis Patterns: Reusable Object Models</em>. Addison Wesley.</p>
-</div>
+
 </div>
 </div>
 </div>

@@ -2,7 +2,7 @@
 
 == Overview
 
-A Party is a kind of Social entity corresponding to an autonomous Agent, or a particular Persona thereof. Agent is understood as a 'real' social entities with agency, in and of itself, while a Persona is a particular personality of an Agent, based on specific Capabilities. For example, the Person Jane Smith may have two Personas: general practitioner (based on her qualifications and registration to practice medicine), and amateur opera singer, based on her singing experience and CV.
+A Party is a kind of Social entity corresponding either to an autonomous Agent, or a particular Persona thereof. Agent is understood as a 'real' social entity with agency, in and of itself, while a Persona is a particular personality of an Agent, defined by specific Capabilities. For example, the Person Jane Smith may have two Personas: general practitioner (based on her qualifications and registration to practice medicine), and amateur opera singer, based on her singing experience and CV.
 
 The following UML diagram illustrates the `party` package.
 
@@ -16,11 +16,11 @@ For example, in most cases, only Agents will have identities, which will act as 
 
 Contact information is typically associated both with Agents - corresponding to 'at home', 'citizen' status - and also with Persona, where it is specific to the purpose of the Persona.
 
-Party relationships are how real-world relationships between Parties are represented, including employment, contractual, membership, and other social relationships. Many of these will be based on an Accountability, which describes the responsbility of one Party to another in the relationship.
+Party relationships are how real-world relationships between Parties are represented, including employment, contractual, membership, and other social relationships. Many of these will be based on an Accountability, which describes the responsibility of one Party to another in the relationship.
 
 == Party Identities and Contacts
 
-TODO: old text; review
+Parties are characterised by identity,
 
 Classes have been included for `PARTY_IDENTITY` and `ADDRESS`, even though they contain only a link to details, in the form of the generic `ITEM_STRUCTURE` class. This is not strictly necessary - it could have been done simply using appropriately named attributes in the classes `PARTY` and `CONTACT` - but is done to provide a place to add specific semantics in future releases of the model. It is also expected to make software development easier, since it provides explicit classes to which behaviour and other implementation attributes can be added. Lastly, it allows the notions of `PARTY_IDENTITY` and `ADDRESS` to be explicitly used in archetype-authoring tools.
 
@@ -28,14 +28,9 @@ Instances of `PARTY_IDENTITY`, linked to `PARTY` by the attribute `_identities_`
 
 == Party Relationships and Accountability
 
-Relationships between parties in the real world may be expressed using `PARTY_RELATIONSHIP` objects, as illustrated below.
+Relationships between Parties in the real world may be expressed using `PARTY_RELATIONSHIP` instances. Relationships are considered directional, hence the use of the attribute names `_source_` and `_target_`.
 
-
-Relationships are considered directional, hence the use of the attribute names source and target, however, these names are otherwise neutral, and give no indication as to the meaning of the relationships, such as which party is responsible and which accountable (for comparison, see the demographic models of Fowler cite:[Fowler1997]). Accordingly, each Party involved in a relationship includes it in its relationships list, if it is at the source end, or in the `_reverse_relationships_` list, if at the target end.
-
-The usual way to determine the directionality of a relationship between two Parties is usually by which Party’s actions caused the relationship to come into being. For example, a relationship representing the concept "patient", between a health consumer and a health care organisation would have the consumer as source and the organisation as target.
-
-`PARTY_RELATIONSHIPs` are stored as part of the data of the `PARTY` designated as the source. This means that the relationships attribute is by value, while reverse_relationships is by references, as are `PARTY_RELATIONSHIP._source_` and target. The actual kind of reference is via the use of `OBJECT_REFs` containing `HIER_OBJECT_IDs` to denote the Version container of a Party, rather than `OBJECT_VERSION_IDs`, which would denote particular versions. Logically this implements the semantic that such relationships in the real world are between _continuants_, i.e. the real Parties, not just one of their version instances in a demographic system.
+A Party Relationship may have a `_scoper_` of type `ACCOUNTABILITY`. Accountability types are defined by one Party in the relationship, and are used to represent job posts (formal and informal) and other responsibilities that might be filled by another Party. From the point of view of the Party defining the scope of a Party Relationship, accountabilities are understood as _types_, since multiple Parties (say, Persons who are software developer) may have the same Accountability (say, 'Python developer').
 
 === Versioning Semantics
 
