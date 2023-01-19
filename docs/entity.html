@@ -60,40 +60,49 @@
 <ul class="sectlevel2">
 <li><a href="#_issues">4.1. Issues</a></li>
 <li><a href="#_overview_3">4.2. Overview</a></li>
-<li><a href="#_class_definitions_2">4.3. Class Definitions</a>
+<li><a href="#_semantics_2">4.3. Semantics</a>
 <ul class="sectlevel3">
-<li><a href="#_physical_entity_class">4.3.1. PHYSICAL_ENTITY Class</a></li>
-<li><a href="#_material_entity_class">4.3.2. MATERIAL_ENTITY Class</a></li>
-<li><a href="#_immaterial_entity_class">4.3.3. IMMATERIAL_ENTITY Class</a></li>
-<li><a href="#_geographical_site_class">4.3.4. GEOGRAPHICAL_SITE Class</a></li>
-<li><a href="#_facility_class">4.3.5. FACILITY Class</a></li>
-<li><a href="#_object_aggregate_class">4.3.6. OBJECT_AGGREGATE Class</a></li>
-<li><a href="#_independent_object_class">4.3.7. INDEPENDENT_OBJECT Class</a></li>
-<li><a href="#_biological_entity_class">4.3.8. BIOLOGICAL_ENTITY Class</a></li>
-<li><a href="#_artefact_class">4.3.9. ARTEFACT Class</a></li>
-<li><a href="#_substance_class">4.3.10. SUBSTANCE Class</a></li>
+<li><a href="#_biological_entities">4.3.1. Biological Entities</a></li>
+<li><a href="#_artefacts">4.3.2. Artefacts</a></li>
+<li><a href="#_substances">4.3.3. Substances</a></li>
+<li><a href="#_sites_and_facilities">4.3.4. Sites and Facilities</a></li>
 </ul>
 </li>
-<li><a href="#_instance_examples">4.4. Instance Examples</a>
+<li><a href="#_class_definitions_2">4.4. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_biological_entities">4.4.1. Biological Entities</a>
-<ul class="sectlevel4">
-<li><a href="#_tissue_sample">4.4.1.1. Tissue Sample</a></li>
+<li><a href="#_physical_entity_class">4.4.1. PHYSICAL_ENTITY Class</a></li>
+<li><a href="#_material_entity_class">4.4.2. MATERIAL_ENTITY Class</a></li>
+<li><a href="#_immaterial_entity_class">4.4.3. IMMATERIAL_ENTITY Class</a></li>
+<li><a href="#_site_class">4.4.4. SITE Class</a></li>
+<li><a href="#_geographical_site_class">4.4.5. GEOGRAPHICAL_SITE Class</a></li>
+<li><a href="#_facility_class">4.4.6. FACILITY Class</a></li>
+<li><a href="#_object_aggregate_class">4.4.7. OBJECT_AGGREGATE Class</a></li>
+<li><a href="#_independent_object_class">4.4.8. INDEPENDENT_OBJECT Class</a></li>
+<li><a href="#_biological_entity_class">4.4.9. BIOLOGICAL_ENTITY Class</a></li>
+<li><a href="#_artefact_class">4.4.10. ARTEFACT Class</a></li>
+<li><a href="#_substance_class">4.4.11. SUBSTANCE Class</a></li>
 </ul>
 </li>
-<li><a href="#_artefacts">4.4.2. Artefacts</a>
+<li><a href="#_instance_examples">4.5. Instance Examples</a>
+<ul class="sectlevel3">
+<li><a href="#_biological_entities_2">4.5.1. Biological Entities</a>
 <ul class="sectlevel4">
-<li><a href="#_ultrasound_machine">4.4.2.1. Ultrasound Machine</a></li>
-<li><a href="#_cardiac_pacemaker">4.4.2.2. Cardiac Pacemaker</a></li>
+<li><a href="#_tissue_sample">4.5.1.1. Tissue Sample</a></li>
 </ul>
 </li>
-<li><a href="#_substances">4.4.3. Substances</a>
+<li><a href="#_artefacts_2">4.5.2. Artefacts</a>
 <ul class="sectlevel4">
-<li><a href="#_medication">4.4.3.1. Medication</a></li>
-<li><a href="#_food">4.4.3.2. Food</a></li>
+<li><a href="#_ultrasound_machine">4.5.2.1. Ultrasound Machine</a></li>
+<li><a href="#_cardiac_pacemaker">4.5.2.2. Cardiac Pacemaker</a></li>
 </ul>
 </li>
-<li><a href="#_aggregate_objects">4.4.4. Aggregate objects</a></li>
+<li><a href="#_substances_2">4.5.3. Substances</a>
+<ul class="sectlevel4">
+<li><a href="#_medication">4.5.3.1. Medication</a></li>
+<li><a href="#_food">4.5.3.2. Food</a></li>
+</ul>
+</li>
+<li><a href="#_aggregate_objects">4.5.4. Aggregate objects</a></li>
 </ul>
 </li>
 </ul>
@@ -170,11 +179,17 @@
 <li><a href="#_service_class">7.2.5. SERVICE Class</a></li>
 </ul>
 </li>
-<li><a href="#_instance_examples_3">7.3. Instance Examples</a>
+<li><a href="#_semantics_3">7.3. Semantics</a>
 <ul class="sectlevel3">
-<li><a href="#_places">7.3.1. Places</a></li>
-<li><a href="#_equipment">7.3.2. Equipment</a></li>
-<li><a href="#_consumables">7.3.3. Consumables</a></li>
+<li><a href="#_service">7.3.1. Service</a></li>
+</ul>
+</li>
+<li><a href="#_instance_examples_3">7.4. Instance Examples</a>
+<ul class="sectlevel3">
+<li><a href="#_property">7.4.1. Property</a></li>
+<li><a href="#_equipment">7.4.2. Equipment</a></li>
+<li><a href="#_consumables">7.4.3. Consumables</a></li>
+<li><a href="#_service_dialysis">7.4.4. Service: Dialysis</a></li>
 </ul>
 </li>
 </ul>
@@ -184,23 +199,20 @@
 <li><a href="#_overview_7">8.1. Overview</a></li>
 <li><a href="#_class_definitions_6">8.2. Class Definitions</a>
 <ul class="sectlevel3">
-<li><a href="#_resource_item_class">8.2.1. RESOURCE_ITEM Class</a></li>
-<li><a href="#_resource_package_class">8.2.2. RESOURCE_PACKAGE Class</a></li>
-<li><a href="#_resource_class">8.2.3. RESOURCE Class</a></li>
-<li><a href="#_resource_use_class">8.2.4. RESOURCE_USE Class</a></li>
-<li><a href="#_service_use_class">8.2.5. SERVICE_USE Class</a></li>
-<li><a href="#_consumable_use_class">8.2.6. CONSUMABLE_USE Class</a></li>
+<li><a href="#_resource_use_class">8.2.1. RESOURCE_USE Class</a></li>
+<li><a href="#_service_use_class">8.2.2. SERVICE_USE Class</a></li>
+<li><a href="#_consumable_use_class">8.2.3. CONSUMABLE_USE Class</a></li>
 </ul>
 </li>
 <li><a href="#_instance_examples_4">8.3. Instance Examples</a>
 <ul class="sectlevel3">
-<li><a href="#_biological_entities_2">8.3.1. Biological Entities</a>
+<li><a href="#_biological_entities_3">8.3.1. Biological Entities</a>
 <ul class="sectlevel4">
 <li><a href="#_xxx">8.3.1.1. XXX</a></li>
 </ul>
 </li>
-<li><a href="#_artefacts_2">8.3.2. Artefacts</a></li>
-<li><a href="#_substances_2">8.3.3. Substances</a></li>
+<li><a href="#_artefacts_3">8.3.2. Artefacts</a></li>
+<li><a href="#_substances_3">8.3.3. Substances</a></li>
 <li><a href="#_aggregate_objects_2">8.3.4. Aggregate objects</a></li>
 </ul>
 </li>
@@ -768,9 +780,36 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_class_definitions_2"><a class="anchor" href="#_class_definitions_2"></a>4.3. Class Definitions</h3>
+<h3 id="_semantics_2"><a class="anchor" href="#_semantics_2"></a>4.3. Semantics</h3>
 <div class="sect3">
-<h4 id="_physical_entity_class"><a class="anchor" href="#_physical_entity_class"></a>4.3.1. PHYSICAL_ENTITY Class</h4>
+<h4 id="_biological_entities"><a class="anchor" href="#_biological_entities"></a>4.3.1. Biological Entities</h4>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_artefacts"><a class="anchor" href="#_artefacts"></a>4.3.2. Artefacts</h4>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_substances"><a class="anchor" href="#_substances"></a>4.3.3. Substances</h4>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sites_and_facilities"><a class="anchor" href="#_sites_and_facilities"></a>4.3.4. Sites and Facilities</h4>
+<div class="paragraph">
+<p>xxx</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_class_definitions_2"><a class="anchor" href="#_class_definitions_2"></a>4.4. Class Definitions</h3>
+<div class="sect3">
+<h4 id="_physical_entity_class"><a class="anchor" href="#_physical_entity_class"></a>4.4.1. PHYSICAL_ENTITY Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -785,10 +824,13 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Purely physical entities, in the realist sense of BFO. Includes material entities (entities consisting of matter) and physical entities corresponding to voids, spaces and spatial extents.</p>
+<p>Entities with physical existence, in the realist sense of BFO. Includes material entities (entities consisting of matter) and physical entities corresponding to voids and spaces created by Material entities.</p>
 </div>
 <div class="paragraph">
-<p>Equivalent to <code>BFO::Independent Continuant</code>.</p>
+<p>Equivalent to <code>BFO::Independent Continuant</code>, except that Spatial regions are excluded.</p>
+</div>
+<div class="paragraph">
+<p>Various kinds of Physical Entity may be used to resolve 'anatomical location', i.e. location on the body of an organism, including (following FMA) anatomical spaces (i.e. cavities) and anatomical structures.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -799,7 +841,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_material_entity_class"><a class="anchor" href="#_material_entity_class"></a>4.3.2. MATERIAL_ENTITY Class</h4>
+<h4 id="_material_entity_class"><a class="anchor" href="#_material_entity_class"></a>4.4.2. MATERIAL_ENTITY Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -825,7 +867,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_immaterial_entity_class"><a class="anchor" href="#_immaterial_entity_class"></a>4.3.3. IMMATERIAL_ENTITY Class</h4>
+<h4 id="_immaterial_entity_class"><a class="anchor" href="#_immaterial_entity_class"></a>4.4.3. IMMATERIAL_ENTITY Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -840,7 +882,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Physical Entities without substance: spaces, boundaries etc. Equivalent to <code>BFO:Immaterial Entity</code>.</p>
+<p>Physical Entities without substance: spaces, boundaries etc. Nearly equivalent to <code>BFO:Immaterial Entity</code>, except excludes <code>BFO:Spatial region</code>.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -851,7 +893,36 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_geographical_site_class"><a class="anchor" href="#_geographical_site_class"></a>4.3.4. GEOGRAPHICAL_SITE Class</h4>
+<h4 id="_site_class"><a class="anchor" href="#_site_class"></a>4.4.4. SITE Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>SITE (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Equivalent to <code>BFO:Site</code>, i.e. a three-dimensional Immaterial Entity that is (partially or wholly) bounded by a Material Entity or it is a three-dimensional immaterial part thereof.</p>
+</div>
+<div class="paragraph">
+<p>Descendant types provide examples.</p>
+</div></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_immaterial_entity_class">IMMATERIAL_ENTITY</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_geographical_site_class"><a class="anchor" href="#_geographical_site_class"></a>4.4.5. GEOGRAPHICAL_SITE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -867,14 +938,11 @@
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>A geographical site containing (or to contain) built edifices such as a university or hospital. Defined by a boundary, usually found in a civil cadastral system, land register etc.</p>
-</div>
-<div class="paragraph">
-<p>A kind of <code>BFO:Site</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_immaterial_entity_class">IMMATERIAL_ENTITY</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_site_class">SITE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -892,7 +960,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_facility_class"><a class="anchor" href="#_facility_class"></a>4.3.5. FACILITY Class</h4>
+<h4 id="_facility_class"><a class="anchor" href="#_facility_class"></a>4.4.6. FACILITY Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -918,7 +986,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_object_aggregate_class"><a class="anchor" href="#_object_aggregate_class"></a>4.3.6. OBJECT_AGGREGATE Class</h4>
+<h4 id="_object_aggregate_class"><a class="anchor" href="#_object_aggregate_class"></a>4.4.7. OBJECT_AGGREGATE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -976,7 +1044,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_independent_object_class"><a class="anchor" href="#_independent_object_class"></a>4.3.7. INDEPENDENT_OBJECT Class</h4>
+<h4 id="_independent_object_class"><a class="anchor" href="#_independent_object_class"></a>4.4.8. INDEPENDENT_OBJECT Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1002,7 +1070,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_biological_entity_class"><a class="anchor" href="#_biological_entity_class"></a>4.3.8. BIOLOGICAL_ENTITY Class</h4>
+<h4 id="_biological_entity_class"><a class="anchor" href="#_biological_entity_class"></a>4.4.9. BIOLOGICAL_ENTITY Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1050,7 +1118,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_artefact_class"><a class="anchor" href="#_artefact_class"></a>4.3.9. ARTEFACT Class</h4>
+<h4 id="_artefact_class"><a class="anchor" href="#_artefact_class"></a>4.4.10. ARTEFACT Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1094,7 +1162,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_substance_class"><a class="anchor" href="#_substance_class"></a>4.3.10. SUBSTANCE Class</h4>
+<h4 id="_substance_class"><a class="anchor" href="#_substance_class"></a>4.4.11. SUBSTANCE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1121,14 +1189,14 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="_instance_examples"><a class="anchor" href="#_instance_examples"></a>4.4. Instance Examples</h3>
+<h3 id="_instance_examples"><a class="anchor" href="#_instance_examples"></a>4.5. Instance Examples</h3>
 <div class="paragraph">
 <p>xxx.</p>
 </div>
 <div class="sect3">
-<h4 id="_biological_entities"><a class="anchor" href="#_biological_entities"></a>4.4.1. Biological Entities</h4>
+<h4 id="_biological_entities_2"><a class="anchor" href="#_biological_entities_2"></a>4.5.1. Biological Entities</h4>
 <div class="sect4">
-<h5 id="_tissue_sample"><a class="anchor" href="#_tissue_sample"></a>4.4.1.1. Tissue Sample</h5>
+<h5 id="_tissue_sample"><a class="anchor" href="#_tissue_sample"></a>4.5.1.1. Tissue Sample</h5>
 <div class="paragraph">
 <p>xxx.</p>
 </div>
@@ -1141,29 +1209,29 @@
 </div>
 </div>
 <div class="sect3">
-<h4 id="_artefacts"><a class="anchor" href="#_artefacts"></a>4.4.2. Artefacts</h4>
+<h4 id="_artefacts_2"><a class="anchor" href="#_artefacts_2"></a>4.5.2. Artefacts</h4>
 <div class="sect4">
-<h5 id="_ultrasound_machine"><a class="anchor" href="#_ultrasound_machine"></a>4.4.2.1. Ultrasound Machine</h5>
+<h5 id="_ultrasound_machine"><a class="anchor" href="#_ultrasound_machine"></a>4.5.2.1. Ultrasound Machine</h5>
 
 </div>
 <div class="sect4">
-<h5 id="_cardiac_pacemaker"><a class="anchor" href="#_cardiac_pacemaker"></a>4.4.2.2. Cardiac Pacemaker</h5>
-
-</div>
-</div>
-<div class="sect3">
-<h4 id="_substances"><a class="anchor" href="#_substances"></a>4.4.3. Substances</h4>
-<div class="sect4">
-<h5 id="_medication"><a class="anchor" href="#_medication"></a>4.4.3.1. Medication</h5>
-
-</div>
-<div class="sect4">
-<h5 id="_food"><a class="anchor" href="#_food"></a>4.4.3.2. Food</h5>
+<h5 id="_cardiac_pacemaker"><a class="anchor" href="#_cardiac_pacemaker"></a>4.5.2.2. Cardiac Pacemaker</h5>
 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_aggregate_objects"><a class="anchor" href="#_aggregate_objects"></a>4.4.4. Aggregate objects</h4>
+<h4 id="_substances_2"><a class="anchor" href="#_substances_2"></a>4.5.3. Substances</h4>
+<div class="sect4">
+<h5 id="_medication"><a class="anchor" href="#_medication"></a>4.5.3.1. Medication</h5>
+
+</div>
+<div class="sect4">
+<h5 id="_food"><a class="anchor" href="#_food"></a>4.5.3.2. Food</h5>
+
+</div>
+</div>
+<div class="sect3">
+<h4 id="_aggregate_objects"><a class="anchor" href="#_aggregate_objects"></a>4.5.4. Aggregate objects</h4>
 <div class="paragraph">
 <p>xxx</p>
 </div>
@@ -2242,26 +2310,41 @@ care organisation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_instance_examples_3"><a class="anchor" href="#_instance_examples_3"></a>7.3. Instance Examples</h3>
+<h3 id="_semantics_3"><a class="anchor" href="#_semantics_3"></a>7.3. Semantics</h3>
+<div class="sect3">
+<h4 id="_service"><a class="anchor" href="#_service"></a>7.3.1. Service</h4>
+<div class="paragraph">
+<p>A Service is understood as a standardised offering of a Party, generally consisting of a combination of Assets and Parties required to effect an instance of the Service.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instance_examples_3"><a class="anchor" href="#_instance_examples_3"></a>7.4. Instance Examples</h3>
 <div class="paragraph">
 <p>xxx.</p>
 </div>
 <div class="sect3">
-<h4 id="_places"><a class="anchor" href="#_places"></a>7.3.1. Places</h4>
+<h4 id="_property"><a class="anchor" href="#_property"></a>7.4.1. Property</h4>
 <div class="paragraph">
 <p>xxx.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_equipment"><a class="anchor" href="#_equipment"></a>7.3.2. Equipment</h4>
+<h4 id="_equipment"><a class="anchor" href="#_equipment"></a>7.4.2. Equipment</h4>
 <div class="paragraph">
 <p>xxx.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_consumables"><a class="anchor" href="#_consumables"></a>7.3.3. Consumables</h4>
+<h4 id="_consumables"><a class="anchor" href="#_consumables"></a>7.4.3. Consumables</h4>
 <div class="paragraph">
 <p>xxx.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_service_dialysis"><a class="anchor" href="#_service_dialysis"></a>7.4.4. Service: Dialysis</h4>
+<div class="paragraph">
+<p>xxx</p>
 </div>
 </div>
 </div>
@@ -2273,7 +2356,10 @@ care organisation.</p>
 <div class="sect2">
 <h3 id="_overview_7"><a class="anchor" href="#_overview_7"></a>8.1. Overview</h3>
 <div class="paragraph">
-<p>This section describes the <code>entity.resource</code> package within the openEHR Entity model. Conceptually an Asset is a usable Entity, while a Resource is the utilisation of one or more Entities, and may include cost information, and data relating to service or consumption of the Entities.</p>
+<p>This section describes the <code>entity.resource</code> package within the openEHR Entity model. Conceptually an Asset is a usable Entity, i.e. a <em>resource</em>. The use of a resource is recorded using the <code>RESOURCE_USE</code> class and its descendants.</p>
+</div>
+<div class="paragraph">
+<p>The following illustrates the <code>entity.resource</code> package.</p>
 </div>
 <div id="rm_entity_resource" class="imageblock text-center text-center">
 <div class="content">
@@ -2285,123 +2371,7 @@ care organisation.</p>
 <div class="sect2">
 <h3 id="_class_definitions_6"><a class="anchor" href="#_class_definitions_6"></a>8.2. Class Definitions</h3>
 <div class="sect3">
-<h4 id="_resource_item_class"><a class="anchor" href="#_resource_item_class"></a>8.2.1. RESOURCE_ITEM Class</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>RESOURCE_ITEM (abstract)</em></strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Abstract ancestor of Resource classes.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="/releases/RM/latest/common.html#_locatable_class" target="_blank" rel="noopener">LOCATABLE</a></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_resource_package_class"><a class="anchor" href="#_resource_package_class"></a>8.2.2. RESOURCE_PACKAGE Class</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RESOURCE_PACKAGE</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Package of Resources, that may include other packages.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_resource_item_class">RESOURCE_ITEM</a></code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>resources</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_resource_class">RESOURCE</a>&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Resources in this package.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>packages</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_resource_package_class">RESOURCE_PACKAGE</a>&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Sub-packages of this package.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_resource_class"><a class="anchor" href="#_resource_class"></a>8.2.3. RESOURCE Class</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 33.3333%;">
-<col style="width: 55.5556%;">
-</colgroup>
-<tbody>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>RESOURCE</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>A description of how to use one or more real Entities for a purpose within the context of some work process.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_resource_item_class">RESOURCE_ITEM</a></code></p></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>entities</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_entity_class">ENTITY</a>&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Real world entities that are used as a resource in some work context.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>description</strong>: <code><a href="/releases/RM/latest/data_structures.html#_cluster_class" target="_blank" rel="noopener">CLUSTER</a></code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Detailed description of this resource.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_resource_use_class"><a class="anchor" href="#_resource_use_class"></a>8.2.4. RESOURCE_USE Class</h4>
+<h4 id="_resource_use_class"><a class="anchor" href="#_resource_use_class"></a>8.2.1. RESOURCE_USE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2458,14 +2428,14 @@ care organisation.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>resource</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_resource_item_class">RESOURCE_ITEM</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>resource</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_entity_class">ENTITY</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_service_use_class"><a class="anchor" href="#_service_use_class"></a>8.2.5. SERVICE_USE Class</h4>
+<h4 id="_service_use_class"><a class="anchor" href="#_service_use_class"></a>8.2.2. SERVICE_USE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2491,7 +2461,7 @@ care organisation.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_consumable_use_class"><a class="anchor" href="#_consumable_use_class"></a>8.2.6. CONSUMABLE_USE Class</h4>
+<h4 id="_consumable_use_class"><a class="anchor" href="#_consumable_use_class"></a>8.2.3. CONSUMABLE_USE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -2538,7 +2508,7 @@ care organisation.</p>
 <p>xxx.</p>
 </div>
 <div class="sect3">
-<h4 id="_biological_entities_2"><a class="anchor" href="#_biological_entities_2"></a>8.3.1. Biological Entities</h4>
+<h4 id="_biological_entities_3"><a class="anchor" href="#_biological_entities_3"></a>8.3.1. Biological Entities</h4>
 <div class="sect4">
 <h5 id="_xxx"><a class="anchor" href="#_xxx"></a>8.3.1.1. XXX</h5>
 <div class="paragraph">
@@ -2547,13 +2517,13 @@ care organisation.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_artefacts_2"><a class="anchor" href="#_artefacts_2"></a>8.3.2. Artefacts</h4>
+<h4 id="_artefacts_3"><a class="anchor" href="#_artefacts_3"></a>8.3.2. Artefacts</h4>
 <div class="paragraph">
 <p>xxx</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_substances_2"><a class="anchor" href="#_substances_2"></a>8.3.3. Substances</h4>
+<h4 id="_substances_3"><a class="anchor" href="#_substances_3"></a>8.3.3. Substances</h4>
 <div class="paragraph">
 <p>xxx</p>
 </div>
