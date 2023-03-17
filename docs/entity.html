@@ -72,15 +72,16 @@
 <ul class="sectlevel3">
 <li><a href="#_physical_entity_class">4.4.1. PHYSICAL_ENTITY Class</a></li>
 <li><a href="#_material_entity_class">4.4.2. MATERIAL_ENTITY Class</a></li>
-<li><a href="#_immaterial_entity_class">4.4.3. IMMATERIAL_ENTITY Class</a></li>
-<li><a href="#_site_class">4.4.4. SITE Class</a></li>
-<li><a href="#_geographical_site_class">4.4.5. GEOGRAPHICAL_SITE Class</a></li>
-<li><a href="#_facility_class">4.4.6. FACILITY Class</a></li>
-<li><a href="#_object_aggregate_class">4.4.7. OBJECT_AGGREGATE Class</a></li>
-<li><a href="#_independent_object_class">4.4.8. INDEPENDENT_OBJECT Class</a></li>
-<li><a href="#_biological_entity_class">4.4.9. BIOLOGICAL_ENTITY Class</a></li>
-<li><a href="#_artefact_class">4.4.10. ARTEFACT Class</a></li>
-<li><a href="#_substance_class">4.4.11. SUBSTANCE Class</a></li>
+<li><a href="#_materially_dependent_entity_class">4.4.3. MATERIALLY_DEPENDENT_ENTITY Class</a></li>
+<li><a href="#_spatial_region_class">4.4.4. SPATIAL_REGION Class</a></li>
+<li><a href="#_space_class">4.4.5. SPACE Class</a></li>
+<li><a href="#_geographical_site_class">4.4.6. GEOGRAPHICAL_SITE Class</a></li>
+<li><a href="#_facility_class">4.4.7. FACILITY Class</a></li>
+<li><a href="#_object_aggregate_class">4.4.8. OBJECT_AGGREGATE Class</a></li>
+<li><a href="#_independent_object_class">4.4.9. INDEPENDENT_OBJECT Class</a></li>
+<li><a href="#_biological_entity_class">4.4.10. BIOLOGICAL_ENTITY Class</a></li>
+<li><a href="#_artefact_class">4.4.11. ARTEFACT Class</a></li>
+<li><a href="#_substance_class">4.4.12. SUBSTANCE Class</a></li>
 </ul>
 </li>
 <li><a href="#_instance_examples">4.5. Instance Examples</a>
@@ -861,13 +862,28 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_physical_entity_class">PHYSICAL_ENTITY</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_materially_dependent_entity_class">MATERIALLY_DEPENDENT_ENTITY</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_material_entity_class">MATERIAL_ENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Material part-of relation from an object to other material objects that are materially connected, e.g. apartment 3-9 within the apartment block 'Mirabeau' at 32 Av. Bento Loyola, Casamarela, Recife.</p>
+</div>
+<div class="paragraph">
+<p>Excludes contained spaces, sites etc.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_immaterial_entity_class"><a class="anchor" href="#_immaterial_entity_class"></a>4.4.3. IMMATERIAL_ENTITY Class</h4>
+<h4 id="_materially_dependent_entity_class"><a class="anchor" href="#_materially_dependent_entity_class"></a>4.4.3. MATERIALLY_DEPENDENT_ENTITY Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -877,7 +893,41 @@
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>IMMATERIAL_ENTITY (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>MATERIALLY_DEPENDENT_ENTITY (abstract)</em></strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_physical_entity_class">PHYSICAL_ENTITY</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_contains</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_materially_dependent_entity_class">MATERIALLY_DEPENDENT_ENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_spatial_region_class"><a class="anchor" href="#_spatial_region_class"></a>4.4.4. SPATIAL_REGION Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>SPATIAL_REGION (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
@@ -893,7 +943,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_site_class"><a class="anchor" href="#_site_class"></a>4.4.4. SITE Class</h4>
+<h4 id="_space_class"><a class="anchor" href="#_space_class"></a>4.4.5. SPACE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -903,26 +953,50 @@
 <tbody>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
-<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>SITE (abstract)</em></strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong><em>SPACE (abstract)</em></strong></p></th>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Equivalent to <code>BFO:Site</code>, i.e. a three-dimensional Immaterial Entity that is (partially or wholly) bounded by a Material Entity or it is a three-dimensional immaterial part thereof.</p>
+<p>A three-dimensional Materially-dependent entity that is partially or wholly bounded by a Material Entity. Examples: naturally and partially fiat-defined cavities, holes and spaces.</p>
 </div>
 <div class="paragraph">
 <p>Descendant types provide examples.</p>
+</div>
+<div class="paragraph">
+<p>Similar to <code>BFO:Site</code>.</p>
 </div></div></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_immaterial_entity_class">IMMATERIAL_ENTITY</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_object_part_class">OBJECT_PART</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_located_in</strong>: <code><a href="#_material_entity_class">MATERIAL_ENTITY</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_space_class">SPACE</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Material part-of relation from an object to other material objects that are materially connected, e.g. apartment 3-9 within the apartment block 'Mirabeau' at 32 Av. Bento Loyola, Casamarela, Recife.</p>
+</div>
+<div class="paragraph">
+<p>Excludes contained spaces, sites etc.</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_geographical_site_class"><a class="anchor" href="#_geographical_site_class"></a>4.4.5. GEOGRAPHICAL_SITE Class</h4>
+<h4 id="_geographical_site_class"><a class="anchor" href="#_geographical_site_class"></a>4.4.6. GEOGRAPHICAL_SITE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -942,7 +1016,7 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_site_class">SITE</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_space_class">SPACE</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Attributes</strong></p></th>
@@ -960,7 +1034,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_facility_class"><a class="anchor" href="#_facility_class"></a>4.4.6. FACILITY Class</h4>
+<h4 id="_facility_class"><a class="anchor" href="#_facility_class"></a>4.4.7. FACILITY Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -986,7 +1060,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_object_aggregate_class"><a class="anchor" href="#_object_aggregate_class"></a>4.4.7. OBJECT_AGGREGATE Class</h4>
+<h4 id="_object_aggregate_class"><a class="anchor" href="#_object_aggregate_class"></a>4.4.8. OBJECT_AGGREGATE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1015,36 +1089,27 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_material_parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_material_entity_class">MATERIAL_ENTITY</a>&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Material part-of relation from an aggregate object to other material objects that are materially connected, e.g. apartment 3-9 within the apartment block 'Mirabeau' at 32 Av. Bento Loyola, Casamarela, Recife.</p>
-</div>
-<div class="paragraph">
-<p>Excludes contained immaterial spaces, sites etc.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_contained_items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_material_entity_class">MATERIAL_ENTITY</a>&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_members</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_material_entity_class">MATERIAL_ENTITY</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Containment relation between an Object aggregate and other objects located within but not materially part of the aggregate, for example equipment in a room.</p>
 </div></div></td>
 </tr>
 <tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_physical_entity_class">PHYSICAL_ENTITY</a>&gt;</code></p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1<br>
+(redefined)</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>r_parts</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class" target="_blank" rel="noopener">List</a>&lt;<a href="#_object_aggregate_class">OBJECT_AGGREGATE</a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Continuant part-of relation between an aggregate entity and all physical entities considered to be part of it.</p>
+<p>Material part-of relation from an object to other material objects that are materially connected, e.g. apartment 3-9 within the apartment block 'Mirabeau' at 32 Av. Bento Loyola, Casamarela, Recife.</p>
 </div>
 <div class="paragraph">
-<p>Example: Object Aggregate 'City of Stockholm' has parts Normalm, Östermalm, Sodermalm, &#8230;&#8203;, each of which will have further parts including properties, parks, lakes, buildings etc.</p>
+<p>Excludes contained spaces, sites etc.</p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_independent_object_class"><a class="anchor" href="#_independent_object_class"></a>4.4.8. INDEPENDENT_OBJECT Class</h4>
+<h4 id="_independent_object_class"><a class="anchor" href="#_independent_object_class"></a>4.4.9. INDEPENDENT_OBJECT Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1064,13 +1129,13 @@
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_material_entity_class">MATERIAL_ENTITY</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_object_part_class">OBJECT_PART</a></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_biological_entity_class"><a class="anchor" href="#_biological_entity_class"></a>4.4.9. BIOLOGICAL_ENTITY Class</h4>
+<h4 id="_biological_entity_class"><a class="anchor" href="#_biological_entity_class"></a>4.4.10. BIOLOGICAL_ENTITY Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1118,7 +1183,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_artefact_class"><a class="anchor" href="#_artefact_class"></a>4.4.10. ARTEFACT Class</h4>
+<h4 id="_artefact_class"><a class="anchor" href="#_artefact_class"></a>4.4.11. ARTEFACT Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1162,7 +1227,7 @@
 </table>
 </div>
 <div class="sect3">
-<h4 id="_substance_class"><a class="anchor" href="#_substance_class"></a>4.4.11. SUBSTANCE Class</h4>
+<h4 id="_substance_class"><a class="anchor" href="#_substance_class"></a>4.4.12. SUBSTANCE Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1177,7 +1242,7 @@
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>Undifferentiated (portion of) material of any kind,including pure elemental materials (e.g. oxygen), compounds, complex molecular substances (e.g. albumin), admixtures, medicines etc.</p>
+<p>Portion of undifferentiated  material of any kind, including pure elemental materials (e.g. oxygen), compounds, complex molecular substances (e.g. albumin), admixtures, medicines etc.</p>
 </div></div></td>
 </tr>
 <tr>
