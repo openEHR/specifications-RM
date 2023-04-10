@@ -16,7 +16,7 @@ As with all other parts of the openEHR reference model, the `history` package is
 
 === Basic Semantics
 
-The intention of the History model is to represent time-based data for which every sample in the series is a measurement of the same phenomenon (e.g. patient heart rate) and is obtained using the same measurement method (e.g. pulse oximeter). Samples taken in this way can be reliably treated as comparable, i.e. representing changes in the same phenomenon over time, and accordingly can be safely used for time-based computation, such as graphing, statistical analysis and so on. A History can contain any mixture of `POINT_EVENT` and `INTERVAL_EVENT` instances. Clearly it is impossible for the model to guarantee completely correct usage on its own, however there two major safeguards.
+The intention of the History model is to represent time-based data for which every sample in the series is a measurement of the same phenomenon (e.g. patient heart rate) and is obtained using the same measurement method (e.g. pulse oximeter). Samples taken in this way can be reliably treated as comparable, i.e. representing changes in the same phenomenon over time, and accordingly can be safely used for time-based computation, such as graphing, statistical analysis and so on. A History can contain any mixture of `POINT_EVENT` and `INTERVAL_EVENT` instances. Clearly it is impossible for the model to guarantee completely correct usage on its own, however there are two major safeguards.
 
 Firstly, the use of generic types forces the type of the data in each Event to be the same. A History of type `HISTORY<ITEM_LIST>` therefore constrains the type of the data at each Event (`EVENT._item_`) to be of type `ITEM_LIST` and nothing else.
 
