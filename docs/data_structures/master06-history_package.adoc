@@ -37,7 +37,9 @@ image::{diagrams_uri}/history_period.svg[id=history_period, align="center", widt
 
 === Point Events
 
-The simplest kind of Event in a History is a 'point' event, expressed by instances of the class `POINT_EVENT`, representing an instantaneous value. A `HISTORY` instance may be composed solely of Point events, as would be the case with a number of blood pressure values measured over time as the patient changes position. An Apgar result is a typical example of aperiodic point data, typically consisting of 2 or 3 events, each containing 5 values and a 6th value repersenting the Apgar score for that time point. Point data may also be available from monitoring devices. For fine-granularity (e.g. 1 second) data, the number of samples may be too voluminous for the health record, and more efficient recording in the form of summary Interval events (see below) might be desired. The diagram below  illustrates the structure of a `HISTORY` containing `POINT_EVENTs`.
+The simplest kind of Event in a History is a 'point' event, expressed by instances of the class `POINT_EVENT`, representing an instantaneous value. A `HISTORY` instance may be composed solely of Point events, as would be the case with a number of blood pressure values measured over time as the patient changes position. An Apgar result is a typical example of aperiodic point data, typically consisting of 2 or 3 events, each containing 5 values and a 6th value representing the Apgar score for that time point. 
+
+Point data may also be available from monitoring devices. For fine-granularity (e.g. 1 second) data, the number of samples may be too voluminous for the health record, and more efficient recording in the form of summary Interval events (see below) might be desired. The diagram below  illustrates the structure of a `HISTORY` containing `POINT_EVENTs`.
 
 [.text-center]
 .Structure of `HISTORY<T>` of `POINT_EVENTs`
