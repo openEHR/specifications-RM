@@ -317,7 +317,7 @@ WARNING: `DV_PARAGRAPH` is now deprecated, and all text should be represented us
 
 Formatting of the text in the `_value_` field of `DV_TEXT` and `DV_CODED_TEXT` instances may be indicated via the optional `_formatting_` attribute. How this attribute is used has changed from initial versions of the openEHR Reference Model.
 
-WARNING: Additionally, the `_value_` field was assumed to contain no newlines. This assumption is no longer made starting from RM Release 1.0.4, since `DV_PARAGRAPH` is no longer use to represent paragraphs.
+WARNING: Additionally, the `_value_` field was assumed to contain no newlines. This assumption is no longer made starting from RM Release 1.0.4, since `DV_PARAGRAPH` is no longer used to represent paragraphs.
 
 A common model of text processing is of a processing pipeline that consumes readable text containing markings, which is then rendered into HTML, PDF or some other rendering format, and then displayed by a tool such as a web browser that consumes the latter format. Historical approaches to marking text were known as 'markup', such as nroff, troff, Latek, and then more recently, numerous formats whose base syntax is XML. These formats all have the disadvantages of poor human readability in raw form, and being specific to particular rendering engines, and are starting to fall out of favour for uses involving human reading of the raw text. Another common approach to formatting text is to use the _output format_, usually HTML, to express e.g. fonts, bolding etc. This is also problematic for human readability, being complicated by the use of CSS classes in tags, which then need to be defined.
 
