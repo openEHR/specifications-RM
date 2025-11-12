@@ -351,7 +351,7 @@ In terms of archetypes therefore, definition of say two `ACTIVITYs` in an `INSTR
 .Instruction and Action Archetypes
 image::{diagrams_uri}/instruction_and_action_archetypes.png[id=instruction_and_action_archetypes, align="center", width=70%]
 
-The second category of archetypable semantics is the correspondence between steps in a healthcare business process and the standard instruction state machine, as described above. This mapping is an archetype of the `_ism_transition_` attribute of an `ACTION` attribute, and therefore defines part of the `ACTION` archetype. <<instruction_and_action_archetypes>> shows how logical archetype elements in the archetyped editor environment corresponds to the resulting archetypes.
+The second category of archetypable semantics is the correspondence between steps in a healthcare business process and the standard instruction state machine, as described above. This mapping is an archetype of the `_ism_transition_` attribute of an `ACTION` attribute, and therefore defines part of the `ACTION` archetype. <<instruction_and_action_archetypes>> shows how logical archetype elements in the archetype editor environment corresponds to the resulting archetypes.
 
 Consequently, the set of archetypes defining the clinical semantics of a specific kind of intervention will normally consists of archetypes of `INSTRUCTION`, `ACTION` and potentially component archetypes of the `ITEM_STRUCTURE` classes.
 
@@ -376,7 +376,7 @@ The approach taken by the current release of openEHR in representing computable 
 * Access to patient data items are expressed within the syntax as symbolic queries.
 * Actions, such as requests to the notification service are represented as symbolic commands.
 
-The entire definition of a workflow is expressed as an optional parsable string, in the wf_definition: `DV_PARSABLE` attribute of the `INSTRUCTION` class. Any syntax may currently be used. A workflow syntax is under development by the openEHR Foundation, which is designed to incorporate the relevant features of current workflow models and research, while integrating it into the openEHR type system and archetype framework. In particular, early versions of this syntax will show how patient data access and service commands can be expressed.
+The entire definition of a workflow is expressed as an optional parsable string, in the `_wf_definition_ : DV_PARSABLE` attribute of the `INSTRUCTION` class. Any syntax may currently be used. A workflow syntax is under development by the openEHR Foundation, which is designed to incorporate the relevant features of current workflow models and research, while integrating it into the openEHR type system and archetype framework. In particular, early versions of this syntax will show how patient data access and service commands can be expressed.
 
 == Class Descriptions
 
