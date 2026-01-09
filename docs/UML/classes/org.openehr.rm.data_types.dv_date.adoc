@@ -19,6 +19,7 @@ h|*1..1 +
 (redefined)*
 |*value*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
 a|ISO8601 date string.
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -36,31 +37,33 @@ other: `<<_dv_quantified_class,DV_QUANTIFIED>>[1]` +
 a|Return True if this `DV_QUANTIFIED` is considered equal to `_other_`.
 
 h|*1..1 +
-(redefined)*
+(effected)*
 |*add* __alias__ "+" ( +
 a_diff: `<<_dv_duration_class,DV_DURATION>>[1]` +
 ): `<<_dv_date_class,DV_DATE>>`
 a|Addition of a Duration to this Date.
 
 h|*1..1 +
-(redefined)*
+(effected)*
 |*subtract* __alias__ "-" ( +
 a_diff: `<<_dv_duration_class,DV_DURATION>>[1]` +
 ): `<<_dv_date_class,DV_DATE>>`
 a|Subtract a Duration from this Date.
 
 h|*1..1 +
-(redefined)*
+(effected)*
 |*diff* __alias__ "-" ( +
 other: `<<_dv_date_class,DV_DATE>>[1]` +
 ): `<<_dv_duration_class,DV_DURATION>>`
 a|Difference between this Date and `_other_`.
 
 h|*1..1 +
-(effected)*
+(redefined)*
 |*less_than* __alias__ "<" ( +
 other: `<<_dv_date_class,DV_DATE>>[1]` +
 ): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
+ +
+__Pre_comparable__: `is_strictly_comparable_to (other)` +
  +
 __Post_result__: `Result = magnitude < other.magnitude`
 a|True if this date object is less than `_other_`, based on comparison of `_magnitude()_`.

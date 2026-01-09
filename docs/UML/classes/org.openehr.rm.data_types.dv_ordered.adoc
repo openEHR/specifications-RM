@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*__DV_ORDERED (abstract)__*
 
 h|*Description*
-2+a|Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  `<` and `_is_strictly_comparable_to()_`, the latter of which must evaluate to `True` for instances being compared with the  `<` function, or used as limits in the `DV_INTERVAL<T>` class.
+2+a|Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  `<` and `_is_strictly_comparable_to()_`, the latter of which must evaluate to `True` for instances being compared with the  `<` function, or used as limits in the `DV_INTERVAL<T>` class. 
 
 Data value types which are to be used as limits in the `DV_INTERVAL<T>` class must inherit from this class, and implement the function `_is_strictly_comparable_to()_` to ensure that instances compare meaningfully. For example, instances of `DV_QUANTITY` can only be compared if they measure the same kind of physical quantity.
 
@@ -26,8 +26,9 @@ h|*0..1*
 a|Optional normal range.
 
 h|*0..1*
-|*other_reference_ranges*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_reference_range_class,REFERENCE_RANGE>>>`
+|*other_reference_ranges*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_reference_range_class,REFERENCE_RANGE>><<<_dv_ordered_class,DV_ORDERED>>>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -47,17 +48,16 @@ h|*1..1*
 |*is_normal* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
 __Pre__: `normal_range /= Void or normal_status /= Void` +
+ +
 __Post_range__: `normal_range /= Void implies Result = normal_range.has (self)` +
 __Post_status__: `normal_status /= Void implies normal_status.code_string.is_equal (“N”)`
 a|Value is in the normal range, determined by comparison of the value to `_normal_range_` if present, or by the `_normal_status_` marker if present.
 
 h|*1..1 +
-(effected)*
+(abstract)*
 |*less_than* __alias__ "<" ( +
 other: `<<_dv_ordered_class,DV_ORDERED>>[1]` +
-): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
- +
-__Pre_comparable__: `is_strictly_comparable_to (other)`
+): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
 a|True if this Ordered object is less than `_other_`. Redefined in descendants.
 
 h|*Invariants*

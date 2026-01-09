@@ -25,6 +25,7 @@ h|*0..1 +
 a|Accuracy of measurement, expressed either as a half-range percent value (`_accuracy_is_percent_` = `True`) or a half-range quantity. A value of `0` means that accuracy is 100%, i.e. no error.
 
 A value of `_unknown_accuracy_value_` means that accuracy was not recorded.
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -62,7 +63,7 @@ a|Difference of this amount and another. The value of `_accuracy_` in the result
 If the `_accuracy_` value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.
 
 h|*1..1 +
-(effected)*
+(abstract)*
 |*is_equal* ( +
 other: `<<_dv_amount_class,DV_AMOUNT>>[1]` +
 ): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
@@ -79,10 +80,12 @@ h|*1..1*
 a|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
 
 h|*1..1 +
-(effected)*
+(redefined)*
 |*less_than* __alias__ "<" ( +
 other: `<<_dv_amount_class,DV_AMOUNT>>[1]` +
 ): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
+ +
+__Pre_comparable__: `is_strictly_comparable_to (other)` +
  +
 __Post_result__: `Result = magnitude < other.magnitude`
 a|True if this object is less than `_other_`. Based on comparison of `_magnitude_`.

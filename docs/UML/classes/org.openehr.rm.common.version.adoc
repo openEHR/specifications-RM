@@ -23,6 +23,7 @@ a|OpenPGP digital signature or digest of content committed in this Version.
 h|*1..1*
 |*commit_audit*: `<<_audit_details_class,AUDIT_DETAILS>>`
 a|Audit trail corresponding to the committal of this version to the `VERSIONED_OBJECT`.
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -41,7 +42,6 @@ h|*1..1 +
 (abstract)*
 |*data* (): `T`
 a|The data of this Version.
-Original content of this Version.
 
 h|*1..1 +
 (abstract)*
@@ -50,9 +50,7 @@ a|Lifecycle state of this version; coded by openEHR vocabulary `version lifecycl
 
 h|*1..1*
 |*canonical_form* (): `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
-a|A canonical serial form of this Version, suitable for generating reliable hashes and signatures.
-Canonical form of Version object, created by serialising all attributes except
-signature.
+a|A canonical serial form of this Version, created by serialising all attributes except signature, suitable for generating reliable hashes and signatures.
 
 h|*1..1*
 |*owner_id* (): `link:/releases/BASE/{base_release}/base_types.html#_hier_object_id_class[HIER_OBJECT_ID^]` +
@@ -65,6 +63,9 @@ h|*1..1*
 a|True if this Version represents a branch. Derived from `_uid_` attribute.
 
 h|*Invariants*
+2+a|__Owner_id_valid__: `owner_id.value.is_equal (uid.object_id.value)`
+
+h|
 2+a|__Preceding_version_uid_validity__: `uid.version_tree_id.is_first xor preceding_version_uid /= Void`
 
 h|

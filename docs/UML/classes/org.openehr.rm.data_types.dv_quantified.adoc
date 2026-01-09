@@ -17,20 +17,21 @@ h|*Attributes*
 
 h|*0..1*
 |*magnitude_status*: `link:/releases/BASE/{base_release}/foundation_types.html#_string_class[String^]`
-a|Optional status of magnitude with values:
+a|Optional status of magnitude with values: 
 
-* `"="`   :   magnitude is a point value
-* `"<"`   :   value is < magnitude
-* `">"`   :   value is > magnitude
-* `"\<="` : value is \<= magnitude
-* `">="` : value is >= magnitude
-* `"~"`   :   value is approximately magnitude
+* `"="`   :   magnitude is a point value 
+* `"<"`   :   value is < magnitude 
+* `">"`   :   value is > magnitude 
+* `"\<="` : value is \<= magnitude 
+* `">="` : value is >= magnitude 
+* `"~"`   :   value is approximately magnitude 
 
 If not present, assumed meaning is  `"="` .
 
 h|*0..1*
 |*accuracy*: `link:/releases/BASE/{base_release}/foundation_types.html#_any_class[Any^]`
 a|Accuracy of measurement. Exact form of expression determined in descendants.
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -38,7 +39,7 @@ h|*Functions*
 h|*1..1*
 |*valid_magnitude_status* (): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
  +
-__Post__: `Result = s in {"=", "<", ">", "\<=", ">=", "~"}`
+__Post__: `Result = s in \{"=", "<", ">", "\<=", ">=", "~"}`
 a|Test whether a string value is one of the valid values for the magnitude_status attribute.
 
 h|*1..1 +
@@ -51,7 +52,7 @@ h|*1..1*
 a|True if accuracy is not known, e.g. due to not being recorded or discernable.
 
 h|*1..1 +
-(effected)*
+(abstract)*
 |*is_equal* ( +
 other: `<<_dv_quantified_class,DV_QUANTIFIED>>[1]` +
 ): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]`
@@ -62,6 +63,8 @@ h|*1..1 +
 |*less_than* __alias__ "<" ( +
 other: `<<_dv_quantified_class,DV_QUANTIFIED>>[1]` +
 ): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
+ +
+__Pre_comparable__: `is_strictly_comparable_to (other)` +
  +
 __Post_result__: `Result = magnitude < other.magnitude`
 a|True if this Quantified object is less than `_other_`, based on comparison of `_magnitude_`.

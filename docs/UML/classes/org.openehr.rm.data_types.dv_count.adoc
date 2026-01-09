@@ -6,7 +6,7 @@ h|*Class*
 2+^h|*DV_COUNT*
 
 h|*Description*
-2+a|Countable quantities. Used for countable types such as pregnancies and steps (taken by a physiotherapy patient), number of cigarettes smoked in a day.
+2+a|Countable quantities. Used for countable types such as pregnancies and steps (taken by a physiotherapy patient), number of cigarettes smoked in a day. 
 
 Misuse: Not to be used for amounts of physical entities (which all have units).
 
@@ -30,6 +30,7 @@ h|*0..1 +
 (redefined)*
 |*other_reference_ranges*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_reference_range_class,REFERENCE_RANGE>><<<_dv_count_class,DV_COUNT>>>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -56,10 +57,12 @@ factor: `link:/releases/BASE/{base_release}/foundation_types.html#_real_class[Re
 a|Product of this `DV_COUNT` and `_factor_`.
 
 h|*1..1 +
-(effected)*
+(redefined)*
 |*less_than* __alias__ "<" ( +
 other: `<<_dv_count_class,DV_COUNT>>[1]` +
 ): `link:/releases/BASE/{base_release}/foundation_types.html#_boolean_class[Boolean^]` +
+ +
+__Pre_comparable__: `is_strictly_comparable_to (other)` +
  +
 __Post_result__: `Result = magnitude < other.magnitude`
 a|True if this Quantified object is less than `_other_`, based on comparison of `_magnitude_`.
