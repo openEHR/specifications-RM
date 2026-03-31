@@ -37,11 +37,11 @@ Relationships between parties in the real world may be expressed using `PARTY_RE
 .General Relationship Model
 image::{diagrams_uri}/general_model.png[id=general_model, align="center", width=50%]
 
-Relationships are considered directional, hence the use of the attribute names source and target, however, these names are otherwise neutral, and give no indication as to the meaning of the relationships, such as which party is responsible and which accountable (for comparison, see the demographic models of Fowler cite:[Fowler1997]). Accordingly, each Party involved in a relationship includes it in its relationships list, if it is at the source end, or in the `_reverse_relationships_` list, if at the target end.
+Relationships are considered directional, hence the use of the attribute names source and target, however, these names are otherwise neutral, and give no indication as to the meaning of the relationships, such as which party is responsible and which accountable (for comparison, see the demographic models of Fowler cite:[Fowler1997]). Accordingly, each Party involved in a relationship includes it in its relationships list, if it is at the source end.
 
 The usual way to determine the directionality of a relationship between two Parties is usually by which Party’s actions caused the relationship to come into being. For example, a relationship representing the concept "patient", between a health consumer and a health care organisation would have the consumer as source and the organisation as target.
 
-`PARTY_RELATIONSHIPs` are stored as part of the data of the `PARTY` designated as the source. This means that the relationships attribute is by value, while reverse_relationships is by references, as are `PARTY_RELATIONSHIP._source_` and target. The actual kind of reference is via the use of `OBJECT_REFs` containing `HIER_OBJECT_IDs` to denote the Version container of a Party, rather than `OBJECT_VERSION_IDs`, which would denote particular versions. Logically this implements the semantic that such relationships in the real world are between _continuants_, i.e. the real Parties, not just one of their version instances in a demographic system.
+`PARTY_RELATIONSHIPs` are stored as part of the data of the `PARTY` designated as the source. This means that the relationships attribute is by value, while the `PARTY_RELATIONSHIP._source_` and `_target_` are represented by references. The actual kind of reference is via the use of `OBJECT_REFs` containing `HIER_OBJECT_IDs` to denote the Version container of a Party, rather than `OBJECT_VERSION_IDs`, which would denote particular versions. Logically this implements the semantic that such relationships in the real world are between _continuants_, i.e. the real Parties, not just one of their version instances in a demographic system.
 
 === Versioning Semantics
 
@@ -77,13 +77,13 @@ include::{uml_export_dir}/classes/{pkg}agent.adoc[]
 
 == Instance Examples
 
-In the following instance examples, the values of the attributes uid, source, target, and reverse_relationships are not meant to be taken as literally valid `OBJECT_IDs` - for the purposes of clarity, simple integers have been used.
+In the following instance examples, the values of the attributes `_uid_`, `_source_` and `_target_` are not meant to be taken as literally valid `OBJECT_IDs`: for the purposes of clarity, simple integers have been used.
 
 === Parties
 
 ==== Person
 
-The diagram below illustrates a possible set of instances for a `PERSON`, with home and work contact information.  There are separate archetypes for the `PERSON`, each `ADDRESS`, and each `PARTY_IDENTITY`. In the following figure, "meaning" is the meaning from the value of the archetype_node_id attribute, functionally derived from the archetype local ontology.
+The diagram below illustrates a possible set of instances for a `PERSON`, with home and work contact information.  There are separate archetypes for the `PERSON`, each `ADDRESS`, and each `PARTY_IDENTITY`. In the following figure, "meaning" is the meaning from the value of the `_archetype_node_id_` attribute, functionally derived from the archetype local ontology.
 
 [.text-center]
 .Person Demographic Information
@@ -97,7 +97,7 @@ image::{diagrams_uri}/person_demographics.png[id=person_demographics, align="cen
 
 ==== Group
 
-The figure below illustrates the demographic information for a cadiac surgery team in a hospital. The group includes a head surgeon, anaesthetist, assistant surgeon, and presumably others (not shown). Each of these members of the team have an employment relationship with the hospital (shown only for one surgeon, in the interests of clarity).
+The figure below illustrates the demographic information for a cardiac surgery team in a hospital. The group includes a head surgeon, anaesthetist, assistant surgeon, and presumably others (not shown). Each of these members of the team have an employment relationship with the hospital (shown only for one surgeon, in the interests of clarity).
 
 [.text-center]
 .Group Demographics

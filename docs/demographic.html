@@ -9,6 +9,7 @@
 <meta name="keywords" content="EHR, demographics, reference model, openehr">
 <title>Demographic Information Model</title>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
+<link rel="stylesheet" href="https://specifications.openehr.org/styles/asciidoctor-tabs.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -139,7 +140,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2023 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2024 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -179,13 +180,19 @@
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-124" target="_blank" rel="noopener">SPECRM-124</a>: Remove <code>PARTY.<em>reverse_relationships</em></code> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>01 Nov 2024</p></td>
+</tr>
+<tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0</strong></p></th>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0.5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECPUB-7" target="_blank" rel="noopener">SPECPUB-7</a>: Convert citations to bibtex form.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>15 Dec 2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15 Dec 2019</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -597,13 +604,13 @@ to an existing service.</p>
 <div class="title">Figure 2. General Relationship Model</div>
 </div>
 <div class="paragraph">
-<p>Relationships are considered directional, hence the use of the attribute names source and target, however, these names are otherwise neutral, and give no indication as to the meaning of the relationships, such as which party is responsible and which accountable (for comparison, see the demographic models of Fowler (<a href="#Fowler1997">Fowler&#44; 1997</a>)). Accordingly, each Party involved in a relationship includes it in its relationships list, if it is at the source end, or in the <code><em>reverse_relationships</em></code> list, if at the target end.</p>
+<p>Relationships are considered directional, hence the use of the attribute names source and target, however, these names are otherwise neutral, and give no indication as to the meaning of the relationships, such as which party is responsible and which accountable (for comparison, see the demographic models of Fowler (<a href="#Fowler1997">Fowler&#44; 1997</a>)). Accordingly, each Party involved in a relationship includes it in its relationships list, if it is at the source end.</p>
 </div>
 <div class="paragraph">
 <p>The usual way to determine the directionality of a relationship between two Parties is usually by which Party’s actions caused the relationship to come into being. For example, a relationship representing the concept "patient", between a health consumer and a health care organisation would have the consumer as source and the organisation as target.</p>
 </div>
 <div class="paragraph">
-<p><code>PARTY_RELATIONSHIPs</code> are stored as part of the data of the <code>PARTY</code> designated as the source. This means that the relationships attribute is by value, while reverse_relationships is by references, as are <code>PARTY_RELATIONSHIP.<em>source</em></code> and target. The actual kind of reference is via the use of <code>OBJECT_REFs</code> containing <code>HIER_OBJECT_IDs</code> to denote the Version container of a Party, rather than <code>OBJECT_VERSION_IDs</code>, which would denote particular versions. Logically this implements the semantic that such relationships in the real world are between <em>continuants</em>, i.e. the real Parties, not just one of their version instances in a demographic system.</p>
+<p><code>PARTY_RELATIONSHIPs</code> are stored as part of the data of the <code>PARTY</code> designated as the source. This means that the relationships attribute is by value, while the <code>PARTY_RELATIONSHIP.<em>source</em></code> and <code><em>target</em></code> are represented by references. The actual kind of reference is via the use of <code>OBJECT_REFs</code> containing <code>HIER_OBJECT_IDs</code> to denote the Version container of a Party, rather than <code>OBJECT_VERSION_IDs</code>, which would denote particular versions. Logically this implements the semantic that such relationships in the real world are between <em>continuants</em>, i.e. the real Parties, not just one of their version instances in a demographic system.</p>
 </div>
 </div>
 <div class="sect3">
@@ -675,13 +682,6 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>details</strong>: <code><a href="/releases/RM/latest/data_structures.html#_item_structure_class" target="_blank" rel="noopener">ITEM_STRUCTURE</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>All other details for this Party.</p>
-</div></div></td>
-</tr>
-<tr>
-<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>reverse_relationships</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/BASE/latest/base_types.html#_locatable_ref_class">LOCATABLE_REF</sup></a>&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>References to relationships in which this Party takes part as target.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1288,14 +1288,14 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="sect2">
 <h3 id="_instance_examples"><a class="anchor" href="#_instance_examples"></a>2.3. Instance Examples</h3>
 <div class="paragraph">
-<p>In the following instance examples, the values of the attributes uid, source, target, and reverse_relationships are not meant to be taken as literally valid <code>OBJECT_IDs</code> - for the purposes of clarity, simple integers have been used.</p>
+<p>In the following instance examples, the values of the attributes <code><em>uid</em></code>, <code><em>source</em></code> and <code><em>target</em></code> are not meant to be taken as literally valid <code>OBJECT_IDs</code>: for the purposes of clarity, simple integers have been used.</p>
 </div>
 <div class="sect3">
 <h4 id="_parties"><a class="anchor" href="#_parties"></a>2.3.1. Parties</h4>
 <div class="sect4">
 <h5 id="_person"><a class="anchor" href="#_person"></a>2.3.1.1. Person</h5>
 <div class="paragraph">
-<p>The diagram below illustrates a possible set of instances for a <code>PERSON</code>, with home and work contact information.  There are separate archetypes for the <code>PERSON</code>, each <code>ADDRESS</code>, and each <code>PARTY_IDENTITY</code>. In the following figure, "meaning" is the meaning from the value of the archetype_node_id attribute, functionally derived from the archetype local ontology.</p>
+<p>The diagram below illustrates a possible set of instances for a <code>PERSON</code>, with home and work contact information.  There are separate archetypes for the <code>PERSON</code>, each <code>ADDRESS</code>, and each <code>PARTY_IDENTITY</code>. In the following figure, "meaning" is the meaning from the value of the <code><em>archetype_node_id</em></code> attribute, functionally derived from the archetype local ontology.</p>
 </div>
 <div id="person_demographics" class="imageblock text-center text-center">
 <div class="content">
@@ -1319,7 +1319,7 @@ For example, the <code>ORIGINAL_VERSION.uid</code> <code>87284370-2D4B-4e3d-A3F3
 <div class="sect4">
 <h5 id="_group"><a class="anchor" href="#_group"></a>2.3.1.5. Group</h5>
 <div class="paragraph">
-<p>The figure below illustrates the demographic information for a cadiac surgery team in a hospital. The group includes a head surgeon, anaesthetist, assistant surgeon, and presumably others (not shown). Each of these members of the team have an employment relationship with the hospital (shown only for one surgeon, in the interests of clarity).</p>
+<p>The figure below illustrates the demographic information for a cardiac surgery team in a hospital. The group includes a head surgeon, anaesthetist, assistant surgeon, and presumably others (not shown). Each of these members of the team have an employment relationship with the hospital (shown only for one surgeon, in the interests of clarity).</p>
 </div>
 <div id="group_demographics" class="imageblock text-center text-center">
 <div class="content">
@@ -1379,5 +1379,6 @@ care organisation.</p>
 Last updated 2022-11-17 15:24:01 UTC
 </div>
 </div>
+<script src="https://specifications.openehr.org/js/asciidoctor-tabs.js"></script>
 </body>
 </html>
