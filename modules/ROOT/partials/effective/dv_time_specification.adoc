@@ -1,0 +1,34 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__DV_TIME_SPECIFICATION (abstract)__*
+
+2+a|This is an abstract class of which all timing specifications are specialisations. Specifies points in time, possibly linked to the calendar, or a real world repeating event, such as  breakfast.
+
+2+|Inherits: xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE]
+
+2+h|*Constants*
+
+|*CR*: `link:/classes/Character[Character] {nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `link:/classes/Character[Character] {nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*value*: `xref:RM:data_types:encapsulated_package.adoc#_dv_parsable_class[DV_PARSABLE]` [1..1]
+a|The specification, in the HL7v3 syntax for PIVL or EIVL types.
+
+2+h|*Functions*
+
+|_(abstract)_ *calendar_alignment* (): `link:/classes/String[String] ` [1..1]
+a|Indicates what prototypical point in the calendar the specification is aligned to, e.g.  5th of the month . Empty if not aligned. Extracted from the  value' attribute.
+
+|_(abstract)_ *event_alignment* (): `link:/classes/String[String] ` [1..1]
+a|Indicates what real-world event the specification is aligned to if any. Extracted from the  value' attribute.
+
+|_(abstract)_ *institution_specified* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|Indicates if the specification is aligned with institution schedules, e.g. a hospital nursing changeover or meal serving times. Extracted from the  value' attribute.
+|===

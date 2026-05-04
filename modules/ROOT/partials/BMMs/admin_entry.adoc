@@ -1,0 +1,19 @@
+[source,json]
+--------
+{
+    "name": "ADMIN_ENTRY",
+    "documentation": "Entry subtype for administrative information, i.e. information about setting up the clinical process, but not itself clinically relevant. Archetypes will define contained information. \nUsed for admistrative details of admission, episode, ward location, discharge, appointment (if not stored in a practice management or appointments system). \nNot to be used for any clinically significant information.",
+    "ancestors": [
+        "ENTRY"
+    ],
+    "properties": {
+        "data": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "data",
+            "documentation": "The data of the Entry; modelled in archetypes. \n",
+            "is_mandatory": true,
+            "type": "ITEM_STRUCTURE"
+        }
+    }
+}
+--------

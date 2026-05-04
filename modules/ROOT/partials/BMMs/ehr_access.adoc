@@ -1,0 +1,32 @@
+[source,json]
+--------
+{
+    "name": "EHR_ACCESS",
+    "documentation": "EHR-wide access contol object. All access decisions to data in the EHR must be made in accordance with the policies and rules in this object. ",
+    "ancestors": [
+        "LOCATABLE"
+    ],
+    "properties": {
+        "settings": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "settings",
+            "documentation": "Access control settings for the EHR. Instance is a subtype of the type ACCESS_CONTROL_SETTINGS, allowing for the use of different access control schemes. ",
+            "type": "ACCESS_CONTROL_SETTINGS"
+        }
+    },
+    "functions": {
+        "scheme": {
+            "name": "scheme",
+            "documentation": "The name of the access control scheme in use; corresponds to the concrete instance of the settings attribute. ",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    },
+    "invariants": {
+        "Scheme_valid": "not scheme.is_empty",
+        "Is_archetype_root": "is_archetype_root"
+    }
+}
+--------

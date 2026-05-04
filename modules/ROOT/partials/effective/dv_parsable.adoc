@@ -1,0 +1,53 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*DV_PARSABLE*
+
+2+a|Encapsulated data expressed as a parsable String. The internal model of the data item is not described in the openEHR model in common with other encapsulated types, but in this case, the form of the data is assumed to be plaintext, rather than compressed or other types of large binary data.
+
+2+|Inherits: xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]
+
+2+h|*Constants*
+
+|*CR*: `link:/classes/Character[Character] {nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `link:/classes/Character[Character] {nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*charset*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions. +
+_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+
+|*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+a|Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set  languages. +
+_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+
+|*value*: `link:/classes/String[String] ` [1..1]
+a|The string, which may validly be empty in some syntaxes.
+
+|*formalism*: `link:/classes/String[String] ` [1..1]
+a|Name of the formalism, e.g.  GLIF 1.0 ,  Proforma  etc.
+
+2+h|*Functions*
+
+|*size* (): `link:/classes/Integer[Integer] ` [1..1]
+a|Size in bytes of value.
+
+2+h|*Invariants*
+
+2+a|__Size_valid__: `size >= 0` +
+_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+
+2+a|__Language_valid__: `language /= Void implies code_set (Code_set_id_languages).has_code (language)` +
+_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+
+2+a|__Charset_valid__: `charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)` +
+_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+
+2+a|__Formalism_valid__: `not formalism.is_empty`
+
+|===

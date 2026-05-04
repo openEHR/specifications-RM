@@ -1,0 +1,70 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*INSTRUCTION_DETAILS*
+
+2+a|Used to record details of the Instruction causing an Action.
+
+2+|Inherits: xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]
+
+2+h|*Attributes*
+
+|*instruction_id*: `xref:RM:support:identification_package.adoc#_locatable_ref_class[LOCATABLE_REF]` [1..1]
+a|Reference to causing Instruction.
+
+|*activity_id*: `link:/classes/String[String] ` [1..1]
+a|Identifier of Activity within Instruction, in the form of its archetype path.
+
+|*wf_details*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]` [0..1]
+a|Various workflow engine state details, potentially including such things as: 
+ * condition that fired to cause this Action to be done (with actual variables substituted); 
+ * list of notifications which actually occurred (with all variables substituted); 
+ * other workflow engine state. 
+This specification does not currently define the actual structure or semantics of this field.
+
+2+h|*Functions*
+
+|*parent* (): `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]` [1..1]
+a|Parent of this node in a compositional hierarchy. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*item_at_path* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/Any[Any] ` +
+ +
+__Pre__: `path_unique (a_path)` [1..1]
+a|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*items_at_path* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/List[List] <link:/classes/Any[Any] >` [0..1]
+a|List of items corresponding to a non-unique path. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*path_exists* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/Boolean[Boolean] ` +
+ +
+__Pre__: `not a_path.is_empty` [1..1]
+a|True if the path exists in the data with respect to the current item. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*path_unique* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/Boolean[Boolean] ` +
+ +
+__Pre__: `path_exists (a_path)` [1..1]
+a|True if the path corresponds to a single item in the data. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*path_of_item* ( +
+a_loc: `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE][1]` +
+): `link:/classes/String[String] ` [1..1]
+a|The path to an item relative to the root of this archetyped structure. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+2+h|*Invariants*
+
+2+a|__Activity_path_valid__: `not activity_id.is_empty`
+
+|===

@@ -1,0 +1,107 @@
+[source,json]
+--------
+{
+    "name": "DV_TIME",
+    "documentation": "Represents an absolute point in time from an origin usually interpreted as eaning the start of the current day, specified to the second. Semantics defined by ISO 8601. \n\nUsed for recording real world times, rather than scientifically measured fine amounts of time. The partial form is used for approximate times of events and substance administrations. ",
+    "ancestors": [
+        "DV_TEMPORAL",
+        "Iso8601_time"
+    ],
+    "properties": {
+        "value": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "value",
+            "documentation": "ISO8601 time string",
+            "is_mandatory": true,
+            "type": "String"
+        }
+    },
+    "functions": {
+        "magnitude": {
+            "name": "magnitude",
+            "documentation": "Numeric value of the time as seconds since the start of day. ",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Real"
+            }
+        },
+        "is_strictly_comparable_to": {
+            "name": "is_strictly_comparable_to",
+            "documentation": "Test if two instances are strictly comparable.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "DV_ORDERED"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "add": {
+            "name": "add",
+            "documentation": "Add a time period to this time.",
+            "parameters": {
+                "a_diff": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_diff",
+                    "type": "DV_AMOUNT"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_ABSOLUTE_QUANTITY"
+            }
+        },
+        "subtract": {
+            "name": "subtract",
+            "documentation": "Subtract a duration from this time.",
+            "parameters": {
+                "a_diif": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_diif",
+                    "type": "DV_AMOUNT"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_ABSOLUTE_QUANTITY"
+            }
+        },
+        "operator=": {
+            "name": "operator=",
+            "parameters": {
+                "source": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "source",
+                    "type": "DV_TIME"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_TIME"
+            }
+        },
+        "diff": {
+            "name": "diff",
+            "documentation": "Difference of two quantities.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "DV_TIME"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_DURATION"
+            }
+        }
+    },
+    "invariants": {
+        "Value_valid": "valid_iso8601_time (value)"
+    }
+}
+--------

@@ -1,0 +1,69 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*ISM_TRANSITION*
+
+2+a|Model of a transition in the Instruction State Machine, caused by a careflow step. The attributes document the careflow step as well as the ISM transition.
+
+2+|Inherits: xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]
+
+2+h|*Attributes*
+
+|*current_state*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+a|The ISM current state. Coded by openEHR terminology group Instruction states.
+
+|*transition*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
+a|The ISM transition which occurred to arrive in the current_state. Coded by openEHR terminology group  Instruction transitions.
+
+|*careflow_step*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
+a|The step in the careflow process which occurred as part of generating this action, e.g.  dispense ,  start_administration . This attribute represents the clinical  label for the activity, as  opposed to current_state which represents  the state machine (ISM)  computable form. Defined in archetype.
+
+2+h|*Functions*
+
+|*parent* (): `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]` [1..1]
+a|Parent of this node in a compositional hierarchy. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*item_at_path* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/Any[Any] ` +
+ +
+__Pre__: `path_unique (a_path)` [1..1]
+a|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*items_at_path* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/List[List] <link:/classes/Any[Any] >` [0..1]
+a|List of items corresponding to a non-unique path. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*path_exists* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/Boolean[Boolean] ` +
+ +
+__Pre__: `not a_path.is_empty` [1..1]
+a|True if the path exists in the data with respect to the current item. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*path_unique* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/Boolean[Boolean] ` +
+ +
+__Pre__: `path_exists (a_path)` [1..1]
+a|True if the path corresponds to a single item in the data. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*path_of_item* ( +
+a_loc: `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE][1]` +
+): `link:/classes/String[String] ` [1..1]
+a|The path to an item relative to the root of this archetyped structure. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+2+h|*Invariants*
+
+2+a|__Current_state_valid__: `terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_instruction_states, current_state.defining_code)`
+
+2+a|__Transition_valid__: `transition /= Void implies terminology (Terminology_id_openehr).
+has_code_for_group_id (Group_id_instruction_transitions, transition.defining_code)`
+
+|===

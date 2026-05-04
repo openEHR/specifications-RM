@@ -1,0 +1,97 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*DV_ORDINAL*
+
+2+a|Models rankings and scores, e.g. pain, Apgar values, etc, where there is a) implied ordering, b) no implication that the distance between each value is constant, and c) the total number of values is finite. Note that although the term  ordinal' in mathematics means natural numbers only, here any integer is allowed, since negative and zero values are often used by medical professionals for values around a neutral point. Examples of sets of ordinal values: 
+
+*   -3, -2, -1, 0, 1, 2, 3  -- reflex response values 
+*    0, 1, 2                  -- Apgar values 
+
+This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. \{neg, trace, +, ++, +++} are used for leucocytes, protein, nitrites etc; for non-haemolysed blood \{neg, trace, moderate}; for haemolysed blood small, moderate, large}.
+
+2+|Inherits: xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], link:/classes/Ordered[Ordered] , xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]
+
+2+h|*Constants*
+
+|*CR*: `link:/classes/Character[Character] {nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `link:/classes/Character[Character] {nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*normal_status*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  normal status . +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]` [0..1]
+a|Optional normal range. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*other_reference_ranges*: `link:/classes/List[List] <xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]>>` [0..1]
+a|Optional tagged other reference ranges for this value in its particular measurement context. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*symbol*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+a|Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  mild ,  moderate ,  severe , or even the same number series as the values, e.g.  1 ,  2 ,  3 . Codes come from archetype.
+
+|*value*: `link:/classes/Integer[Integer] ` [1..1]
+a|Value in ordered enumeration of values. Any integer value can be used.
+
+2+h|*Functions*
+
+|*is_strictly_comparable_to* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
+): `link:/classes/Boolean[Boolean] ` +
+ +
+__Post__: `symbol.is_comparable (other.symbol) implies Result` [1..1]
+a|
+
+|*is_simple* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|True if this quantity has no reference ranges. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*is_normal* (): `link:/classes/Boolean[Boolean] ` +
+ +
+__Pre__: `normal_range /= Void or normal_status /= Void` +
+ +
+__Post_range__: `normal_range /= Void implies Result = normal_range.has (self)` +
+__Post_status__: `normal_status /= Void implies normal_status.code_string.is_equal (“N”)` [1..1]
+a|Value is in the normal range, determined by comparison of the value to the normal_range if present, or by the normal_status marker if present. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|_(abstract)_ *infix <* ( +
+other: `link:/classes/Ordered[Ordered] [1]` +
+): `link:/classes/Boolean[Boolean] ` [1..1]
+a| +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*limits* (): `xref:RM:data_types:quantity_package.adoc#_dv_ordinal_class[DV_ORDINAL]` [1..1]
+a|Limits of the ordinal enumeration, to allow comparison of an ordinal 
+value to its limits.
+
+|*<* ( +
+other: `link:/classes/Ordered[Ordered] [1]` +
+): `link:/classes/Boolean[Boolean] ` +
+ +
+__Post__: `Result = value < other.value` [1..1]
+a|
+
+2+h|*Invariants*
+
+2+a|__Other_reference_ranges_validity__: `other_reference_ranges /= Void implies not other_reference_ranges.is_empty` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+a|__Is_simple_validity__: `(normal_range = Void and other_reference_ranges = Void) implies is_simple` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+a|__Normal_status_validity__: `normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+a|__Normal_range_and_status_consistency__: `(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|===

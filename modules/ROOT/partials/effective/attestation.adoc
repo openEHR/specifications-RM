@@ -1,0 +1,61 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*ATTESTATION*
+
+2+a|Record an attestation of a party (the committer) to item(s) of record content. An attestation is an explicit signing by one healthcare agent of particular content for various particular purposes, including: 
+    for authorisation of a controlled substance or procedure (e.g. sectioning of patient under mental health act); 
+    witnessing of content by senior clinical professional; 
+    indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result.
+
+2+|Inherits: xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]
+
+2+h|*Attributes*
+
+|*system_id*: `link:/classes/String[String] ` [1..1]
+a|Identity of the system where the change was committed. Ideally this is a machine- and human-processable identifier, but it may not be. +
+_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+
+|*time_committed*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [1..1]
+a|Time of committal of the item. +
+_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+
+|*change_type*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+a|Type of change. Coded using the openEHR Terminology  audit change type  group. +
+_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+
+|*description*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [0..1]
+a|Reason for committal. +
+_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+
+|*committer*: `xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]` [1..1]
+a|Identity and optional reference into identity management service, of user who committed the item. +
+_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+
+|*attested_view*: `xref:RM:data_types:encapsulated_package.adoc#_dv_multimedia_class[DV_MULTIMEDIA]` [0..1]
+a|Optional visual representation of content attested e.g. screen image.
+
+|*proof*: `link:/classes/String[String] ` [0..1]
+a|Proof of attestation.
+
+|*items*: `link:/classes/List[List] <xref:RM:data_types:uri_package.adoc#_dv_ehr_uri_class[DV_EHR_URI]>` [0..1]
+a|Items attested, expressed as fully qualified runtime paths to the items in question. Although not recommended, these may include fine-grained items which have been attested in some other system. Otherwise it is assumed to be for the entire VERSION with which it is associated.
+
+|*reason*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
+a|Reason of this attestation. Optionally coded by the openEHR Terminology group  attestation reason ; includes values like  authorisation ,  witness  etc.
+
+|*is_pending*: `link:/classes/Boolean[Boolean] ` [1..1]
+a|True if this attestation is outstanding; False means it has been completed.
+
+2+h|*Invariants*
+
+2+a|__System_id_valid__: `not system_id.is_empty` +
+_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+
+2+a|__Change_type_valid__: `terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)` +
+_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+
+2+a|__Items_valid__: `items /= Void implies not items.is_empty`
+
+2+a|__Reason_valid__: `(reason.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_attestation_reason, reason.defining_code))`
+
+|===

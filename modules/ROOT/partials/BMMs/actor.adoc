@@ -1,0 +1,55 @@
+[source,json]
+--------
+{
+    "name": "ACTOR",
+    "documentation": "Ancestor of all real-world types, including people and organisations. An actor is any real-world entity capable of taking on a role.",
+    "is_abstract": true,
+    "ancestors": [
+        "PARTY"
+    ],
+    "properties": {
+        "languages": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "languages",
+            "documentation": "Languages which can be used to communicate with this actor, in preferred order of use (if known, else order irrelevant).",
+            "is_mandatory": true,
+            "type_def": {
+                "container_type": "List",
+                "type": "DV_TEXT"
+            },
+            "cardinality": {
+                "lower": 1,
+                "upper_unbounded": true
+            }
+        },
+        "roles": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "roles",
+            "documentation": "Identifiers of the Version container for each Role played by this party.",
+            "is_mandatory": true,
+            "type_def": {
+                "container_type": "List",
+                "type": "PARTY_REF"
+            },
+            "cardinality": {
+                "lower": 1,
+                "upper_unbounded": true
+            }
+        }
+    },
+    "functions": {
+        "has_legal_identity": {
+            "name": "has_legal_identity",
+            "documentation": "True if one there is an identity with purpose  legal identity.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        }
+    },
+    "invariants": {
+        "Roles_valid": "roles /= Void implies not roles.is_empty",
+        "Legal_identity_exists": "has_legal_identity"
+    }
+}
+--------

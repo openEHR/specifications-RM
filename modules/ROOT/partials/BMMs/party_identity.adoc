@@ -1,0 +1,40 @@
+[source,json]
+--------
+{
+    "name": "PARTY_IDENTITY",
+    "documentation": "An identity  owned  by a PARTY, such as a person name or company name, and which is used by the party to identify itself. Actual structure is archetyped.",
+    "ancestors": [
+        "LOCATABLE"
+    ],
+    "properties": {
+        "details": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "details",
+            "documentation": "The value of the indentity. This will often taken the form of a parsable string or a small structure of strings.",
+            "is_mandatory": true,
+            "type": "ITEM_STRUCTURE"
+        }
+    },
+    "functions": {
+        "purpose": {
+            "name": "purpose",
+            "documentation": "Purpose of identity, e.g.  legal ,  stagename ,  nickname ,  tribal name ,  trading name . Taken from value of inherited name attribute.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_TEXT"
+            }
+        },
+        "as_string": {
+            "name": "as_string",
+            "documentation": "Identity in the form of a single string.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    },
+    "invariants": {
+        "Purpose_valid": "purpose = name"
+    }
+}
+--------

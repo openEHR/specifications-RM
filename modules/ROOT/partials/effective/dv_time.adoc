@@ -1,0 +1,133 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*DV_TIME*
+
+2+a|Represents an absolute point in time from an origin usually interpreted as eaning the start of the current day, specified to the second. Semantics defined by ISO 8601. 
+
+Used for recording real world times, rather than scientifically measured fine amounts of time. The partial form is used for approximate times of events and substance administrations.
+
+2+|Inherits: xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], link:/classes/Ordered[Ordered] , xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED], xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED], xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY], xref:RM:data_types:quantity_package.adoc#_dv_temporal_class[DV_TEMPORAL], link:/classes/Iso8601_time[Iso8601_time] 
+
+2+h|*Constants*
+
+|*CR*: `link:/classes/Character[Character] {nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `link:/classes/Character[Character] {nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*normal_status*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  normal status . +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]` [0..1]
+a|Optional normal range. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*other_reference_ranges*: `link:/classes/List[List] <xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]>>` [0..1]
+a|Optional tagged other reference ranges for this value in its particular measurement context. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*magnitude_status*: `link:/classes/String[String] ` [0..1]
+a|Optional status of magnitude with values: 
+
+* =   :   magnitude is a point value 
+* <   :   value is < magnitude 
+* >   :   value is > magnitude 
+* \\<= : value is \<= magnitude 
+* >= : value is >= magnitude 
+* ~   :   value is approximately magnitude 
+
+If not present, meaning is  = . +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
+
+|*accuracy*: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]` [0..1]
+a| +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]_
+
+|*value*: `link:/classes/String[String] ` [1..1]
+a|ISO8601 time string
+
+2+h|*Functions*
+
+|*is_strictly_comparable_to* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
+): `link:/classes/Boolean[Boolean] ` [1..1]
+a|Test if two instances are strictly comparable.
+
+|*is_simple* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|True if this quantity has no reference ranges. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*is_normal* (): `link:/classes/Boolean[Boolean] ` +
+ +
+__Pre__: `normal_range /= Void or normal_status /= Void` +
+ +
+__Post_range__: `normal_range /= Void implies Result = normal_range.has (self)` +
+__Post_status__: `normal_status /= Void implies normal_status.code_string.is_equal (“N”)` [1..1]
+a|Value is in the normal range, determined by comparison of the value to the normal_range if present, or by the normal_status marker if present. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|_(abstract)_ *infix <* ( +
+other: `link:/classes/Ordered[Ordered] [1]` +
+): `link:/classes/Boolean[Boolean] ` [1..1]
+a| +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*valid_magnitude_status* (): `link:/classes/Boolean[Boolean] ` +
+ +
+__Post__: `Result = s.is_equal (“=”) or s.is_equal (“<”) or s.is_equal (“>”) or s.is_equal (“\<=”) or s.is_equal (“>=”) or s.is_equal (“~”)` [1..1]
+a|Test whether a string value is one of the valid values for the magnitude_status attribute. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
+
+|*magnitude* (): `link:/classes/Real[Real] ` [1..1]
+a|Numeric value of the time as seconds since the start of day.
+
+|*accuracy_unknown* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|True if accuracy is not known, e.g. due to not being recorded or discernable. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
+
+|*diff* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]` [1..1]
+a|Difference of two quantities.
+
+|*add* ( +
+a_diff: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]` [1..1]
+a|Add a time period to this time.
+
+|*subtract* ( +
+a_diif: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]` [1..1]
+a|Subtract a duration from this time.
+
+|*operator=* ( +
+source: `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME]` [1..1]
+a|
+
+2+h|*Invariants*
+
+2+a|__Other_reference_ranges_validity__: `other_reference_ranges /= Void implies not other_reference_ranges.is_empty` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+a|__Is_simple_validity__: `(normal_range = Void and other_reference_ranges = Void) implies is_simple` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+a|__Normal_status_validity__: `normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+a|__Normal_range_and_status_consistency__: `(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+a|__Magnitude_status_valid__: `magnitude_status /= Void implies valid_magnitude_status (magnitude_status)` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
+
+2+a|__Value_valid__: `valid_iso8601_time (value)`
+
+|===

@@ -1,0 +1,42 @@
+[source,json]
+--------
+{
+    "name": "EHR_STATUS",
+    "documentation": "Single object per EHR giving various EHR-wide information. ",
+    "ancestors": [
+        "LOCATABLE"
+    ],
+    "properties": {
+        "subject": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "subject",
+            "documentation": "The subject of this EHR. The external_ref attribute can be used to contain a direct reference to the subject in a demographic or identity service. Alternatively, the association between patients and their records may be done elsewhere for security reasons. ",
+            "is_mandatory": true,
+            "type": "PARTY_SELF"
+        },
+        "is_queryable": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "is_queryable",
+            "documentation": "True if this EHR should be included in population queries, i.e. if this EHR is considered active in the population.",
+            "is_mandatory": true,
+            "type": "Boolean"
+        },
+        "is_modifiable": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "is_modifiable",
+            "documentation": "True if this EHR is allowed to be written to. ",
+            "is_mandatory": true,
+            "type": "Boolean"
+        },
+        "other_details": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "other_details",
+            "documentation": "Any other details of the EHR summary object, in the form of an archetyped Item_structure.",
+            "type": "ITEM_STRUCTURE"
+        }
+    },
+    "invariants": {
+        "Is_archetype_root": "is_archetype_root"
+    }
+}
+--------

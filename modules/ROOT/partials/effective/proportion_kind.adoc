@@ -1,0 +1,32 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*PROPORTION_KIND*
+
+2+a|Class of enumeration constants defining types of proportion for the DV_PROPORTION class.
+
+2+|Inherits: link:/classes/Integer[Integer] 
+
+2+h|*Constants*
+
+|*pk_ratio*: `link:/classes/Integer[Integer] {nbsp}={nbsp}0`
+a|Ratio type. Numerator and denominator may be any value.
+
+|*pk_unitary*: `link:/classes/Integer[Integer] {nbsp}={nbsp}1`
+a|Denominator must be 1.
+
+|*pk_percent*: `link:/classes/Integer[Integer] {nbsp}={nbsp}2`
+a|Denominator is 100, numerator is understood as a percentage value.
+
+|*pk_fraction*: `link:/classes/Integer[Integer] {nbsp}={nbsp}3`
+a|Numerator and denominator are integral, and the presentation method uses a slash, e.g.  1/2 .
+
+|*pk_integer_fraction*: `link:/classes/Integer[Integer] {nbsp}={nbsp}4`
+a|Numerator and denominator are integral, and the presentation method uses a slash, e.g.  1/2 ; if the numerator is greater than the denominator, e.g. n=3, d=2, the presentation is  1 1/2 .
+
+2+h|*Functions*
+
+|*valid_proportion_kind* ( +
+nq: `link:/classes/Integer[Integer] [1]` +
+): `link:/classes/Boolean[Boolean] ` [1..1]
+a|True if n is one of the defined types.
+|===

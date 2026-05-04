@@ -1,0 +1,28 @@
+[source,json]
+--------
+{
+    "name": "DV_TEMPORAL",
+    "documentation": "Specialised temporal variant of DV_ABSOLUTE_QUANTITY whose diff type is DV_DURATION. ",
+    "is_abstract": true,
+    "ancestors": [
+        "DV_ABSOLUTE_QUANTITY"
+    ],
+    "functions": {
+        "diff": {
+            "name": "diff",
+            "documentation": "Difference of two quantities.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "DV_TEMPORAL"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_DURATION"
+            }
+        }
+    }
+}
+--------

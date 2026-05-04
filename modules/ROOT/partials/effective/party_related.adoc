@@ -1,0 +1,39 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*PARTY_RELATED*
+
+2+a|Proxy type for identifying a party and its relationship to the subject of the record. Use where the relationship between the party and the subject of the record must be known.
+
+2+|Inherits: xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY], xref:RM:common:generic_package.adoc#_party_identified_class[PARTY_IDENTIFIED]
+
+2+h|*Attributes*
+
+|*external_ref*: `xref:RM:support:identification_package.adoc#_party_ref_class[PARTY_REF]` [0..1]
+a|Optional reference to more detailed demographic or identification information for this party, in an external system. +
+_Inherited from xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]_
+
+|*name*: `link:/classes/String[String] ` [0..1]
+a|Optional human-readable name (in String form). +
+_Inherited from xref:RM:common:generic_package.adoc#_party_identified_class[PARTY_IDENTIFIED]_
+
+|*identifiers*: `link:/classes/List[List] <xref:RM:data_types:basic_package.adoc#_dv_identifier_class[DV_IDENTIFIER]>` [0..1]
+a|One or more formal identifiers (possibly computable). +
+_Inherited from xref:RM:common:generic_package.adoc#_party_identified_class[PARTY_IDENTIFIED]_
+
+|*relationship*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+a|Relationship of subject of this ENTRY to the subject of the record. May be coded. If it is the patient, coded as  self.
+
+2+h|*Invariants*
+
+2+a|__Basic_validity__: `name /= Void or identifiers /= Void or external_ref /= Void` +
+_Inherited from xref:RM:common:generic_package.adoc#_party_identified_class[PARTY_IDENTIFIED]_
+
+2+a|__Name_valid__: `name /= Void implies not name.is_empty` +
+_Inherited from xref:RM:common:generic_package.adoc#_party_identified_class[PARTY_IDENTIFIED]_
+
+2+a|__Identifiers_valid__: `identifiers /= Void implies not identifiers.is_empty` +
+_Inherited from xref:RM:common:generic_package.adoc#_party_identified_class[PARTY_IDENTIFIED]_
+
+2+a|__Relationship_valid__: `terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_subject_relationship, relationship.defining_code)`
+
+|===

@@ -1,0 +1,27 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*ADDRESSED_MESSAGE*
+
+2+a|The concept of a message addressed to nominated recipients.
+
+2+h|*Attributes*
+
+|*sender*: `link:/classes/String[String] ` [1..1]
+a|Party sending the message.
+
+|*sender_reference*: `link:/classes/String[String] ` [1..1]
+a|Identification of message used by sender. This will be the same no matter how many times this message is sent to these recipients.
+
+|*addressees*: `link:/classes/List[List] <link:/classes/String[String] >` [1..1]
+a|Intended recipients, in the form of internet addresses.
+
+|*urgency*: `link:/classes/Integer[Integer] ` [0..1]
+a|Urgency with which destination should deal with message:
+
+* -1 - low
+* 0 - normal
+* 1 - high
+
+|*message*: `xref:RM:ehr_extract:message_package.adoc#_message_class[MESSAGE]` [1..1]
+a|The content of the message.
+|===

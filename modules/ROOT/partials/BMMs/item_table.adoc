@@ -1,0 +1,182 @@
+[source,json]
+--------
+{
+    "name": "ITEM_TABLE",
+    "documentation": "Logical relational database style table data structure, in which columns are named and ordered with respect to each other. Implemented using Cluster-per-row encoding. Each row Cluster must have an identical number of Elements, each of which in turn must have identical names and value types in the corresponding positions in each row. \n\nSome columns may be designated  key' columns, containing key data for each row, in the manner of relational tables. This allows row-naming, where each row represents a body site, a blood antigen etc. All values in a column have the same data type. \n\nUsed for representing any data which is logically a table of values, such as blood pressure, most protocols, many blood tests etc. \n\nMisuse: Not to be used for time-based data, which should be represented with the temporal class HISTORY. The table may be empty. ",
+    "ancestors": [
+        "ITEM_STRUCTURE"
+    ],
+    "properties": {
+        "rows": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "rows",
+            "documentation": "Physical representation of the table as a list of CLUSTERs, each containing the data of one row of the table. ",
+            "type": "CLUSTER"
+        }
+    },
+    "functions": {
+        "as_hierarchy": {
+            "name": "as_hierarchy",
+            "documentation": "Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table. ",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "CLUSTER"
+            }
+        },
+        "row_count": {
+            "name": "row_count",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "column_count": {
+            "name": "column_count",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Integer"
+            }
+        },
+        "row_names": {
+            "name": "row_names",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "DV_TEXT"
+            },
+            "is_nullable": true
+        },
+        "column_names": {
+            "name": "column_names",
+            "result": {
+                "_type": "P_BMM_CONTAINER_TYPE",
+                "container_type": "List",
+                "type": "DV_TEXT"
+            },
+            "is_nullable": true
+        },
+        "ith_row": {
+            "name": "ith_row",
+            "parameters": {
+                "i": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "i",
+                    "type": "Integer"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "CLUSTER"
+            }
+        },
+        "has_row_with_name": {
+            "name": "has_row_with_name",
+            "parameters": {
+                "a_key": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_key",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "has_column_with_name": {
+            "name": "has_column_with_name",
+            "parameters": {
+                "a_key": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_key",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "named_row": {
+            "name": "named_row",
+            "parameters": {
+                "a_key": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_key",
+                    "type": "String"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "CLUSTER"
+            }
+        },
+        "has_row_with_key": {
+            "name": "has_row_with_key",
+            "parameters": {
+                "keys": {
+                    "_type": "P_BMM_CONTAINER_FUNCTION_PARAMETER",
+                    "name": "keys",
+                    "is_nullable": true,
+                    "type_def": {
+                        "container_type": "List",
+                        "type": "String"
+                    },
+                    "cardinality": {
+                        "lower": 0,
+                        "upper_unbounded": true
+                    }
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "row_with_key": {
+            "name": "row_with_key",
+            "parameters": {
+                "keys": {
+                    "_type": "P_BMM_CONTAINER_FUNCTION_PARAMETER",
+                    "name": "keys",
+                    "is_nullable": true,
+                    "type_def": {
+                        "container_type": "List",
+                        "type": "String"
+                    },
+                    "cardinality": {
+                        "lower": 0,
+                        "upper_unbounded": true
+                    }
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "CLUSTER"
+            }
+        },
+        "element_at_cell_ij": {
+            "name": "element_at_cell_ij",
+            "parameters": {
+                "i": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "i",
+                    "type": "Any"
+                },
+                "j": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "j",
+                    "type": "Integer"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "ELEMENT"
+            }
+        }
+    },
+    "invariants": {
+        "Valid_structure": "rows.for_all (items.for_all (instance_of (\"ELEMENT\")))"
+    }
+}
+--------

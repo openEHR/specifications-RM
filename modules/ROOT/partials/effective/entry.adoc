@@ -1,0 +1,143 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__ENTRY (abstract)__*
+
+2+a|The abstract parent of all ENTRY subtypes. An ENTRY is the root of a logical item of  hard  clinical information created in the  clinical statement  context, within a clinical session. There can be numerous such contexts in a clinical session. Observations and other Entry types only ever document information captured/created in the event documented by the enclosing Composition.
+
+An ENTRY is also the minimal unit of information any query should return, since a whole ENTRY (including subparts) records spatial structure, timing information, and contextual information, as well as the subject and generator of the information.
+
+2+|Inherits: xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE], xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE], xref:RM:ehr:content_package.adoc#_content_item_class[CONTENT_ITEM]
+
+2+h|*Attributes*
+
+|*name*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
+a|Runtime name of this fragment, used to build runtime paths. This is the term provided via a clinical application or batch process to name this EHR construct: its retention in the EHR faithfully preserves the original label by which this entry was known to end users. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+|*archetype_node_id*: `link:/classes/String[String] ` [1..1]
+a|Design-time archetype id of this node taken from its generating archetype; used to build archetype paths. Always in the form of an  at  code, e.g.  at0005 . This value enables a "standardised" name for this node to be generated, by referring to the generating archetype local ontology. 
+
+At an archetype root point, the value of this attribute is always the stringified form of the archetype_id found in the archetype_details object. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+|*uid*: `xref:RM:support:identification_package.adoc#_uid_based_id_class[UID_BASED_ID]` [0..1]
+a|Optional globally unique object identifier for root points of archetyped structures. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+|*links*: `link:/classes/List[List] <xref:RM:common:archetyped_package.adoc#_link_class[LINK]>` [0..1]
+a|Links to other archetyped structures (data whose root object inherits from ARCHETYPED, such as ENTRY, SECTION and so on). Links may be to structures in other compositions. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+|*archetype_details*: `xref:RM:common:archetyped_package.adoc#_archetyped_class[ARCHETYPED]` [0..1]
+a|Details of archetyping used on this node. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+|*feeder_audit*: `xref:RM:common:archetyped_package.adoc#_feeder_audit_class[FEEDER_AUDIT]` [0..1]
+a|Audit trail from non-openEHR system of original commit of information forming the content of this node, or from a conversion gateway which has synthesised this node. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+|*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+a|Mandatory indicator of the localised language in which this Entry is written. Coded from openEHR Code Set  languages .
+
+|*encoding*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+a|Name of character set in which text values in this Entry are encoded. Coded from openEHR Code Set  character sets.
+
+|*other_participations*: `link:/classes/List[List] <xref:RM:common:generic_package.adoc#_participation_class[PARTICIPATION]>` [0..1]
+a|Other participations at ENTRY level.
+
+|*workflow_id*: `xref:RM:support:identification_package.adoc#_object_ref_class[OBJECT_REF]` [0..1]
+a|Identifier of externally held workflow engine data for this workflow execution, for this subject of care.
+
+|*subject*: `xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]` [1..1]
+a|Id of human subject of this ENTRY, e.g.: 
+* organ donor 
+* foetus 
+* a family member 
+* another clinically relevant person.
+
+|*provider*: `xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]` [0..1]
+a|Optional identification of provider of the information in this ENTRY, which might be: 
+  * the patient 
+  * a patient agent, e.g. parent, guardian 
+  * the clinician 
+  * a device or software 
+
+Generally only used when the recorder needs to make it explicit. Otherwise, Composition composer and other participants are assumed.
+
+2+h|*Functions*
+
+|*parent* (): `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]` [1..1]
+a|Parent of this node in a compositional hierarchy. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*item_at_path* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/Any[Any] ` +
+ +
+__Pre__: `path_unique (a_path)` [1..1]
+a|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*items_at_path* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/List[List] <link:/classes/Any[Any] >` [0..1]
+a|List of items corresponding to a non-unique path. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*path_exists* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/Boolean[Boolean] ` +
+ +
+__Pre__: `not a_path.is_empty` [1..1]
+a|True if the path exists in the data with respect to the current item. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*path_unique* ( +
+a_path: `link:/classes/String[String] [1]` +
+): `link:/classes/Boolean[Boolean] ` +
+ +
+__Pre__: `path_exists (a_path)` [1..1]
+a|True if the path corresponds to a single item in the data. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*path_of_item* ( +
+a_loc: `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE][1]` +
+): `link:/classes/String[String] ` [1..1]
+a|The path to an item relative to the root of this archetyped structure. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+
+|*concept* (): `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
+a|Clinical concept of the archetype as a whole (= derived from the archetype_node_id' of the root node) +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+|*is_archetype_root* (): `link:/classes/Boolean[Boolean] ` [1..1]
+a|True if this node is the root of an archetyped structure. +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+|*subject_is_self* (): `link:/classes/Boolean[Boolean] ` +
+ +
+__Post_condition__: `Result implies subject.generating_type = “PARTY_SELF”` [1..1]
+a|Returns True if this Entry is about the subject of the EHR, in which case the subject attribute is of type PARTY_SELF.
+
+2+h|*Invariants*
+
+2+a|__Links_valid__: `links /= Void implies not links.is_empty` +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+2+a|__Archetyped_valid__: `is_archetype_root xor archetype_details = Void` +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+2+a|__Archetype_node_id_valid__: `not archetype_node_id.is_empty` +
+_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+
+2+a|__Language_valid__: `code_set (Code_set_id_languages).has_code (language)`
+
+2+a|__Encoding_valid__: `code_set (Code_set_id_character_sets).has_code (encoding)`
+
+2+a|__Subject_validity__: `subject_is_self implies subject.generating_type = “PARTY_SELF”`
+
+2+a|__Other_participations_valid__: `other_participations /= Void implies not other_participations.is_empty`
+
+2+a|__Is_archetype_root__: `is_archetype_root`
+
+|===
