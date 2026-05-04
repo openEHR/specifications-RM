@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Change Control Package
 
 == Overview
@@ -8,7 +10,7 @@ The figure <<change_control_package>> illustrates the openEHR model of a Version
 
 [.text-center]
 .common.change_control Package
-image::{uml_diagrams_uri}/RM-common.change_control.svg[id=change_control_package, align="center"]
+image::ROOT:uml/RM-common.change_control.svg[id=change_control_package, align="center"]
 
 The figure <<version_control_structures>> illustrates a single `VERSIONED_OBJECT` containing a number of `VERSIONs`. Although the figure implies physical containment of Versions by a Versioned object, this is only one possible implementation. Other implementations (e.g. using orthodox relational structures) might use references, separate compressed copies, or any other mechanism.
 
@@ -269,12 +271,12 @@ image::diagrams/moving_version_container.png[id=moving_version_container, align=
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/versioned_object.adoc[]
+include::ROOT:partial$classes/versioned_object.adoc[]
 
-include::{uml_export_dir}/classes/version.adoc[]
+include::ROOT:partial$classes/version.adoc[]
 
-include::{uml_export_dir}/classes/original_version.adoc[]
+include::ROOT:partial$classes/original_version.adoc[]
 
-include::{uml_export_dir}/classes/imported_version.adoc[]
+include::ROOT:partial$classes/imported_version.adoc[]
 
-include::{uml_export_dir}/classes/contribution.adoc[]
+include::ROOT:partial$classes/contribution.adoc[]
