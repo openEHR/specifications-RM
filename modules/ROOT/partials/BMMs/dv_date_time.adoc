@@ -1,0 +1,114 @@
+[source,json]
+--------
+{
+    "name": "DV_DATE_TIME",
+    "documentation": "Represents an absolute point in time, specified to the second. Semantics defined by ISO 8601. \n\nUsed for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a `HISTORY` in an `OBSERVATION` which is only partially known. \n",
+    "ancestors": [
+        "DV_TEMPORAL",
+        "Iso8601_date_time"
+    ],
+    "properties": {
+        "value": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "value",
+            "documentation": "ISO8601 date/time string.",
+            "is_mandatory": true,
+            "type": "String"
+        }
+    },
+    "functions": {
+        "magnitude": {
+            "name": "magnitude",
+            "documentation": "Numeric value of the date/time as seconds since the calendar origin date/time `0001-01-01T00:00:00Z`. \n",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Double"
+            }
+        },
+        "is_strictly_comparable_to": {
+            "name": "is_strictly_comparable_to",
+            "documentation": "Test if two instances are strictly comparable.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "DV_ORDERED"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "add": {
+            "name": "add",
+            "documentation": "Add a time period to this date_time.",
+            "parameters": {
+                "a_diff": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_diff",
+                    "type": "DV_AMOUNT"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_ABSOLUTE_QUANTITY"
+            }
+        },
+        "subtract": {
+            "name": "subtract",
+            "documentation": "Subtract a time period from this date_time.",
+            "parameters": {
+                "a_diif": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "a_diif",
+                    "type": "DV_AMOUNT"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_ABSOLUTE_QUANTITY"
+            }
+        },
+        "diff": {
+            "name": "diff",
+            "documentation": "Difference of two quantities.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "DV_ABSOLUTE_QUANTITY"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_AMOUNT"
+            }
+        },
+        "operator=": {
+            "name": "operator=",
+            "parameters": {
+                "source": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "source",
+                    "type": "DV_DATE_TIME"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_DATE_TIME"
+            }
+        },
+        "as_string": {
+            "name": "as_string",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "String"
+            }
+        }
+    },
+    "invariants": {
+        "Value_valid": "valid_iso8601_date_time (value)"
+    }
+}
+--------

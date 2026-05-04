@@ -1,0 +1,98 @@
+[source,json]
+--------
+{
+    "name": "DV_AMOUNT",
+    "documentation": "Abstract class defining the concept of relative quantified  'amounts'. For relative quantities, the  `+` and  `-` operators are defined (unlike descendants of `DV_ABSOLUTE_QUANTITY`, such as the date/time types). \n",
+    "is_abstract": true,
+    "ancestors": [
+        "DV_QUANTIFIED"
+    ],
+    "properties": {
+        "accuracy_is_percent": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "accuracy_is_percent",
+            "documentation": "If `True`, indicates that when this object was created, accuracy was recorded as a percent value; if `False`, as an absolute quantity value.",
+            "type": "Boolean"
+        },
+        "accuracy": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "accuracy",
+            "documentation": "Accuracy of measurement, expressed either as a half-range percent value (`_accuracy_is_percent_` = `True`) or a half-range quantity. A value of `0` means that accuracy is 100%, i.e. no error.\n\nA value of `_unknown_accuracy_value_` means that accuracy was not recorded.",
+            "type": "Real"
+        }
+    },
+    "functions": {
+        "valid_percentage": {
+            "name": "valid_percentage",
+            "documentation": "Test whether a number is a valid percentage, i.e. between 0 and 100. ",
+            "parameters": {
+                "number": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "number",
+                    "type": "Ordered_Numeric"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "infix =": {
+            "name": "infix =",
+            "parameters": {
+                "source": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "source",
+                    "type": "DV_AMOUNT"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_AMOUNT"
+            }
+        },
+        "infix +": {
+            "name": "infix +",
+            "documentation": "Sum of this quantity and another whose formal type must be the difference type of this quantity. The value of accuracy in the result is either:\n\n* the sum of the accuracies of the operands, if both present, or;\n* both operand accuracies are unknown_accuracy_value.\n\nIf the accuracy value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "DV_AMOUNT"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_AMOUNT"
+            }
+        },
+        "infix -": {
+            "name": "infix -",
+            "documentation": "Negated version of current object, such as used for representing a difference, e.g. a weight loss.\n\nThe value of accuracy in the result is either:\n\n* the sum of the accuracies of the operands, if both present, or;\n* unknown, if either or both operand accuracies are unknown.\n\nIf the accuracy value is a percentage in one operand and not in the other, the form in the result is that of the larger operand.",
+            "parameters": {
+                "other": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "other",
+                    "type": "DV_AMOUNT"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_AMOUNT"
+            }
+        },
+        "prefix -": {
+            "name": "prefix -",
+            "documentation": "Negated version of current object, such as used for representing a difference, e.g. a weight loss.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_AMOUNT"
+            }
+        }
+    },
+    "invariants": {
+        "Accuracy_is_percent_validity": "accuracy = 0 implies not accuracy_is_percent",
+        "Accuracy_validity": "accuracy_is_percent implies valid_percentage (accuracy)"
+    }
+}
+--------

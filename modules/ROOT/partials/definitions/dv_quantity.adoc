@@ -1,0 +1,48 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*DV_QUANTITY*
+
+h|*Description*
+2+a|Quantitified type representing  scientific  quantities, i.e. quantities expressed as a magnitude and units. Units were inspired by the http://unitsofmeasure.org/ucum.html[Unified Code for Units of Measure (UCUM)], developed by Gunther Schadow and Clement J. McDonald of The Regenstrief Institute. 
+
+Can also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years.
+
+h|*Inherit*
+2+|`xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*magnitude*: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+a|Numeric magnitude of the quantity.
+
+h|*0..1*
+|*precision*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+a|Precision to which the value of the quantity is expressed, in terms of number of decimal places. The value 0 implies an integral quantity.
+The value -1 implies no limit, i.e. any number of decimal places.
+
+h|*1..1*
+|*units*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|Stringified units, expressed in UCUM unit syntax, e.g. "kg/m2", “mm[Hg]", "ms-1", "km/h". Implemented accordingly in subtypes.
+
+h|*0..1 +
+(redefined)*
+|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]<xref:RM:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]>`
+a|Optional normal range.
+
+h|*0..1 +
+(redefined)*
+|*other_reference_ranges*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]>>`
+a|Optional tagged other reference ranges for this value in its particular measurement context.
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*is_integral* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|True if precision = 0, meaning that the magnitude is a whole number.
+|===

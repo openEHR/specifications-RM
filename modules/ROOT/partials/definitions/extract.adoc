@@ -1,0 +1,46 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*EXTRACT*
+
+h|*Description*
+2+a|Generic model of an Extract of some information from a repository.
+
+h|*Inherit*
+2+|`xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*0..1*
+|*chapters*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:ehr_extract:common_package.adoc#_extract_chapter_class[EXTRACT_CHAPTER]>`
+a|The content extracted and serialised from the source repository for this Extract.
+
+h|*0..1*
+|*specification*: `xref:RM:ehr_extract:common_package.adoc#_extract_spec_class[EXTRACT_SPEC]`
+a|The specification that this Extract actually conforms to; might not be identical with the specification of the corresponding request.
+
+h|*0..1*
+|*request_id*: `xref:BASE:base_types:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]`
+a|Reference to causing Request, if any.
+
+h|*1..1*
+|*time_created*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]`
+a|Creation time of this Extract
+
+h|*1..1*
+|*system_id*: `xref:BASE:base_types:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]`
+a|Identifier of creating system.
+
+h|*1..1*
+|*sequence_nr*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+a|Number of this Extract response in sequence of responses to Extract request identified by request_id. If this is the sole response, or there was no request, value is 1.
+
+h|*0..1*
+|*participations*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:ehr_extract:common_package.adoc#_extract_participation_class[EXTRACT_PARTICIPATION]>`
+a|Participations relevant to the creation of this Extract.
+
+h|*Invariants*
+2+a|__Sequence_nr_valid__: `sequence_nr >= 1`
+|===

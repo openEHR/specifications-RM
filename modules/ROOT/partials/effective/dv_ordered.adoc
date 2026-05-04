@@ -1,0 +1,93 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__DV_ORDERED (abstract)__*
+
+2+a|Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities. It defines the functions  `<` and is_strictly_comparable_to, the latter of which must evaluate to `True` for instances being compared with the  `<` function, or used as limits in the `DV_INTERVAL<T>` class. 
+
+Data value types which are to be used as limits in the `DV_INTERVAL<T>` class must inherit from this class, and implement the function `_is_strictly_comparable_to_` to ensure that instances compare meaningfully. For example, instances of `DV_QUANTITY` can only be compared if they measure the same kind of physical quantity.
+
+2+|Inherits: xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]
+
+2+h|*Constants*
+
+|*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*normal_status*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`.
+
+|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]` [0..1]
+a|Optional normal range.
+
+|*other_reference_ranges*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]>>` [0..1]
+a|Optional tagged other reference ranges for this value in its particular measurement context.
+
+2+h|*Functions*
+
+|_(abstract)_ *is_equal* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Value equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*infix =* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Reference equality. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+.Parameters +
+[horizontal]
+`_other_`:: Reference equality.
+
+|*instance_of* ( +
+a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*type_of* ( +
+an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Type name of an object as a string. May include generic parameters, as in "Interval<Time>". +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|_(abstract)_ *infix <* ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|
+
+|_(abstract)_ *is_strictly_comparable_to* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Test if two instances are strictly comparable.
+
+|*is_simple* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this quantity has no reference ranges.
+
+|*is_normal* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Pre__: `normal_range /= Void or normal_status /= Void` +
+ +
+__Post_range__: `normal_range /= Void implies Result = normal_range.has (self)` +
+__Post_status__: `normal_status /= Void implies normal_status.code_string.is_equal (“N”)` [1..1]
+a|Value is in the normal range, determined by comparison of the value to the normal_range if present, or by the normal_status marker if present.
+
+2+h|*Invariants*
+
+2+a|__Other_reference_ranges_validity__: `other_reference_ranges /= Void implies not other_reference_ranges.is_empty`
+
+2+a|__Is_simple_validity__: `(normal_range = Void and other_reference_ranges = Void) implies is_simple`
+
+2+a|__Normal_status_validity__: `normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)`
+
+2+a|__Normal_range_and_status_consistency__: `(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))`
+
+|===

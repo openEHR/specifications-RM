@@ -1,0 +1,23 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*REVISION_HISTORY*
+
+2+a|Purpose Defines the notion of a revision history of audit items, each associated with the version for which that audit was committed. The list is in most-recent-first order.
+
+2+h|*Attributes*
+
+|*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:common:generic_package.adoc#_revision_history_item_class[REVISION_HISTORY_ITEM]>` [1..1]
+a|The items in this history in most-recent-last order.
+
+2+h|*Functions*
+
+|*most_recent_version* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
+ +
+__Post__: `Result.is_equal (items.last.version_id.value)` [1..1]
+a|The version id of the most recent item, as a String.
+
+|*most_recent_version_time_committed* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` +
+ +
+__Post__: `Result.is_equal (items.last.audits.first. time_committed.value)` [1..1]
+a|The commit date/time of the most recent item, as a String.
+|===

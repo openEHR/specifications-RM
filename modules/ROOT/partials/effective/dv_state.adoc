@@ -1,0 +1,28 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*DV_STATE*
+
+2+a|For representing state values which obey a defined state machine, such as a variable  representing the states of an instruction or care process. 
+
+DV_STATE is expressed as a String but its values are driven by archetype-defined  state machines. This provides a powerful way of capturing stateful complex processes  in simple data.
+
+2+|Inherits: xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE]
+
+2+h|*Constants*
+
+|*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*value*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+a|The state name. State names are determined by a state/event table defined in archetypes, and coded using openEHR Terminology or local archetype terms, as specified by the archetype.
+
+|*is_terminal*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Indicates whether this state is a terminal state, such as  "aborted",  "completed" etc. from which no further transitions are possible.
+|===

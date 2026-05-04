@@ -1,0 +1,73 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*DV_DATE_TIME*
+
+h|*Description*
+2+a|Represents an absolute point in time, specified to the second. Semantics defined by ISO 8601. 
+
+Used for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a `HISTORY` in an `OBSERVATION` which is only partially known.
+
+h|*Inherit*
+2+|`xref:RM:data_types:quantity_package.adoc#_dv_temporal_class[DV_TEMPORAL]`, `xref:BASE:foundation_types:time_types.adoc#_iso8601_date_time_class[Iso8601_date_time]`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(redefined)*
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|ISO8601 date/time string.
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(effected)*
+|*magnitude* (): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]`
+a|Numeric value of the date/time as seconds since the calendar origin date/time `0001-01-01T00:00:00Z`.
+
+h|*1..1 +
+(effected)*
+|*is_strictly_comparable_to* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Test if two instances are strictly comparable.
+
+h|*1..1 +
+(effected)*
+|*add* ( +
+a_diff: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]`
+a|Add a time period to this date_time.
+
+h|*1..1 +
+(effected)*
+|*subtract* ( +
+a_diif: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]`
+a|Subtract a time period from this date_time.
+
+h|*1..1 +
+(redefined)*
+|*diff* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
+a|Difference of two quantities.
+
+h|*1..1*
+|*operator=* ( +
+source: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]`
+a|
+
+h|*1..1 +
+(redefined)*
+|*as_string* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|
+
+h|*Invariants*
+2+a|__Value_valid__: `valid_iso8601_date_time (value)`
+|===

@@ -1,0 +1,112 @@
+[source,json]
+--------
+{
+    "name": "DV_PROPORTION",
+    "documentation": "Models a ratio of values, i.e. where the numerator and denominator are both pure numbers. The `_valid_proportion_kind_` property of the `PROPORTION_KIND` class is used to control the type attribute to be one of a defined set.\n\nUsed for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary denominator), albumin:creatinine ratio, and percentages, e.g. red cell distirbution width (RDW). \n \nMisuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) \"6/24\" in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations. ",
+    "ancestors": [
+        "PROPORTION_KIND",
+        "DV_AMOUNT"
+    ],
+    "properties": {
+        "numerator": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "numerator",
+            "documentation": "Numerator of ratio",
+            "is_mandatory": true,
+            "type": "Real"
+        },
+        "denominator": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "denominator",
+            "documentation": "Denominator of ratio.",
+            "is_mandatory": true,
+            "type": "Real"
+        },
+        "type": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "type",
+            "documentation": "Indicates semantic type of proportion, including percent, unitary etc.",
+            "is_mandatory": true,
+            "type": "Integer"
+        },
+        "precision": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "precision",
+            "documentation": "Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places. ",
+            "type": "Integer"
+        },
+        "normal_range": {
+            "_type": "P_BMM_GENERIC_PROPERTY",
+            "name": "normal_range",
+            "documentation": "Optional normal range. ",
+            "type_def": {
+                "root_type": "DV_INTERVAL",
+                "generic_parameters": [
+                    "DV_PROPORTION"
+                ]
+            }
+        },
+        "other_reference_ranges": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "other_reference_ranges",
+            "documentation": "Optional tagged other reference ranges for this value in its particular measurement context.",
+            "type_def": {
+                "container_type": "List",
+                "type_def": {
+                    "_type": "P_BMM_GENERIC_TYPE",
+                    "root_type": "REFERENCE_RANGE",
+                    "generic_parameters": [
+                        "DV_PROPORTION"
+                    ]
+                }
+            },
+            "cardinality": {
+                "lower": 0,
+                "upper_unbounded": true
+            }
+        }
+    },
+    "functions": {
+        "magnitude": {
+            "name": "magnitude",
+            "documentation": "Effective magnitude represented by ratio.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Real"
+            }
+        },
+        "is_integral": {
+            "name": "is_integral",
+            "documentation": "True if the numerator and denominator values are integers, i.e. if the precision is 0.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        },
+        "infix =": {
+            "name": "infix =",
+            "documentation": "Assignment operator",
+            "parameters": {
+                "source": {
+                    "_type": "P_BMM_SINGLE_FUNCTION_PARAMETER",
+                    "name": "source",
+                    "type": "DV_PROPORTION"
+                }
+            },
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "DV_PROPORTION"
+            }
+        }
+    },
+    "invariants": {
+        "Type_validity": "valid_proportion_kind (type)",
+        "Precision_validity": "precision = 0 implies is_integral",
+        "Is_integral_validity": "is_integral implies (numerator.floor = numerator and denominator.floor = denominator)",
+        "Fraction_validity": "(type = pk_fraction or type = pk_integer_fraction) implies is_integral",
+        "Unitary_validity": "type = pk_unitary implies denominator = 1",
+        "Percent_validity": "type = pk_percent implies denominator = 100",
+        "Valid_denominator": "denominator /= 0.0"
+    }
+}
+--------

@@ -1,0 +1,67 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*DV_DATE*
+
+h|*Description*
+2+a|Represents an absolute point in time, as measured on the Gregorian calendar, and specified only to the day. Semantics defined by ISO 8601. Used for recording dates in real world time. The partial form is used for approximate birth dates, dates of death, etc.
+
+h|*Inherit*
+2+|`xref:RM:data_types:quantity_package.adoc#_dv_temporal_class[DV_TEMPORAL]`, `xref:BASE:foundation_types:time_types.adoc#_iso8601_date_class[Iso8601_date]`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(redefined)*
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|ISO8601 date string.
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(effected)*
+|*magnitude* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+a|Numeric value of the date as days since the calendar origin date `0001-01-01`.
+
+h|*1..1 +
+(effected)*
+|*is_strictly_comparable_to* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Test if two instances are strictly comparable.
+
+h|*1..1 +
+(effected)*
+|*infix <* ( +
+other_quantity: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Tests if this date is earlier than the cited date.
+
+h|*1..1 +
+(effected)*
+|*add* ( +
+a_diff: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]`
+a|Add a time period to this date.
+
+h|*1..1 +
+(effected)*
+|*subtract* ( +
+a_diif: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]`
+a|Subtract a time period from this date.
+
+h|*1..1 +
+(redefined)*
+|*diff* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_date_class[DV_DATE][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+a|Difference of two quantities.
+
+h|*Invariants*
+2+a|__Value_valid__: `valid_iso8601_date(value)`
+|===

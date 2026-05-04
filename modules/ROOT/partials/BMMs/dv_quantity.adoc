@@ -1,0 +1,72 @@
+[source,json]
+--------
+{
+    "name": "DV_QUANTITY",
+    "documentation": "Quantitified type representing  scientific  quantities, i.e. quantities expressed as a magnitude and units. Units were inspired by the http://unitsofmeasure.org/ucum.html[Unified Code for Units of Measure (UCUM)], developed by Gunther Schadow and Clement J. McDonald of The Regenstrief Institute. \n\nCan also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years. ",
+    "ancestors": [
+        "DV_AMOUNT"
+    ],
+    "properties": {
+        "magnitude": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "magnitude",
+            "documentation": "Numeric magnitude of the quantity.",
+            "is_mandatory": true,
+            "type": "Real"
+        },
+        "precision": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "precision",
+            "documentation": "Precision to which the value of the quantity is expressed, in terms of number of decimal places. The value 0 implies an integral quantity.\nThe value -1 implies no limit, i.e. any number of decimal places.",
+            "type": "Integer"
+        },
+        "units": {
+            "_type": "P_BMM_SINGLE_PROPERTY",
+            "name": "units",
+            "documentation": "Stringified units, expressed in UCUM unit syntax, e.g. \"kg/m2\", “mm[Hg]\", \"ms-1\", \"km/h\". Implemented accordingly in subtypes.",
+            "is_mandatory": true,
+            "type": "String"
+        },
+        "normal_range": {
+            "_type": "P_BMM_GENERIC_PROPERTY",
+            "name": "normal_range",
+            "documentation": "Optional normal range. ",
+            "type_def": {
+                "root_type": "DV_INTERVAL",
+                "generic_parameters": [
+                    "DV_QUANTITY"
+                ]
+            }
+        },
+        "other_reference_ranges": {
+            "_type": "P_BMM_CONTAINER_PROPERTY",
+            "name": "other_reference_ranges",
+            "documentation": "Optional tagged other reference ranges for this value in its particular measurement context.",
+            "type_def": {
+                "container_type": "List",
+                "type_def": {
+                    "_type": "P_BMM_GENERIC_TYPE",
+                    "root_type": "REFERENCE_RANGE",
+                    "generic_parameters": [
+                        "DV_QUANTITY"
+                    ]
+                }
+            },
+            "cardinality": {
+                "lower": 0,
+                "upper_unbounded": true
+            }
+        }
+    },
+    "functions": {
+        "is_integral": {
+            "name": "is_integral",
+            "documentation": "True if precision = 0, meaning that the magnitude is a whole number.",
+            "result": {
+                "_type": "P_BMM_SIMPLE_TYPE",
+                "type": "Boolean"
+            }
+        }
+    }
+}
+--------

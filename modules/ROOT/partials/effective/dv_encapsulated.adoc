@@ -1,0 +1,33 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__DV_ENCAPSULATED (abstract)__*
+
+2+a|Abstract class defining the common meta-data of all types of encapsulated data.
+
+2+|Inherits: xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE]
+
+2+h|*Constants*
+
+|*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*charset*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.
+
+|*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+a|Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set `languages`.
+
+2+h|*Invariants*
+
+2+a|__Language_valid__: `language /= Void implies code_set (Code_set_id_languages).has_code (language)`
+
+2+a|__Charset_valid__: `charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)`
+
+|===

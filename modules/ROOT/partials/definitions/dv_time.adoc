@@ -1,0 +1,68 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*DV_TIME*
+
+h|*Description*
+2+a|Represents an absolute point in time from an origin usually interpreted as meaning the start of the current day, specified to a fraction of a second. Semantics defined by ISO 8601. 
+
+Used for recording real world times, rather than scientifically measured fine amounts of time. The partial form is used for approximate times of events and substance administrations.
+
+h|*Inherit*
+2+|`xref:RM:data_types:quantity_package.adoc#_dv_temporal_class[DV_TEMPORAL]`, `xref:BASE:foundation_types:time_types.adoc#_iso8601_time_class[Iso8601_time]`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(redefined)*
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+a|ISO8601 time string
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(effected)*
+|*magnitude* (): `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+a|Numeric value of the time as seconds since the start of day, i.e. `00:00:00`.
+
+h|*1..1 +
+(effected)*
+|*is_strictly_comparable_to* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+a|Test if two instances are strictly comparable.
+
+h|*1..1 +
+(effected)*
+|*add* ( +
+a_diff: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]`
+a|Add a time period to this time.
+
+h|*1..1 +
+(effected)*
+|*subtract* ( +
+a_diif: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]`
+a|Subtract a duration from this time.
+
+h|*1..1*
+|*operator=* ( +
+source: `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME]`
+a|
+
+h|*1..1 +
+(redefined)*
+|*diff* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME][1]` +
+): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+a|Difference of two quantities.
+
+h|*Invariants*
+2+a|__Value_valid__: `valid_iso8601_time (value)`
+|===

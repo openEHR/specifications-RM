@@ -1,0 +1,25 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*TRANSLATION_DETAILS*
+
+2+a|Class providing details of a natural language translation.
+
+2+h|*Attributes*
+
+|*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+a|Language of the translation.
+
+|*author*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [1..1]
+a|Translator name and other demographic details.
+
+|*accreditaton*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Accreditation of translator, usually a national translator's registration or association membership id.
+
+|*other_details*: `xref:BASE:foundation_types:structure_types.adoc#_hash_class[Hash]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String],xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>` [0..1]
+a|Any other meta-data.
+
+2+h|*Invariants*
+
+2+a|__Language_valid__: `code_set (Code_set_id_languages).has_code (language)`
+
+|===

@@ -1,0 +1,60 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*TERM_MAPPING*
+
+2+a|Represents a coded term mapped to a `DV_TEXT`, and the relative match of the target term with respect to the mapped item. Plain or coded text items may appear in the EHR for which one or mappings in alternative terminologies are required. Mappings are only used to enable computer processing, so they can only be instances of `DV_CODED_TEXT`.
+
+Used for adding classification terms (e.g. adding ICD classifiers to SNOMED descriptive terms), or mapping into equivalents in other terminologies (e.g. across nursing vocabularies).
+
+2+h|*Attributes*
+
+|*match*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]` [1..1]
+a|The relative match of the target term with respect to the mapped text item. Result meanings: 
+
+* `'>'`: the mapping is to a broader term e.g. orginal text =  arbovirus infection , target =  viral infection  
+* `'='`: the mapping is to a (supposedly) equivalent to the original item 
+* `'<'`: the mapping is to a narrower term. e.g. original text =  diabetes , mapping =  diabetes mellitus . 
+* `'?'`: the kind of mapping is unknown. 
+
+The first three values are taken from the ISO standards 2788 ( Guide to Establishment and development of monolingual thesauri) and 5964 (Guide to Establishment and development of multilingual thesauri).
+
+|*purpose*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
+a|Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'.
+
+|*target*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+a|The target term of the mapping.
+
+2+h|*Functions*
+
+|*narrower* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `match = ‘<’ implies Result` [1..1]
+a|The mapping is to a narrower term.
+
+|*broader* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `match = ‘>’ implies Result` [1..1]
+a|The mapping is to a broader term.
+
+|*equivalent* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|The mapping is to an equivalent term.
+
+|*unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `match = ‘?’ implies Result` [1..1]
+a|The kind of mapping is unknown.
+
+|*is_valid_match_code* ( +
+c: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post__: `Result := c = ‘>’ or c = ‘=’ or c = ‘<’ or c = ‘?’` [1..1]
+a|True if match valid.
+
+2+h|*Invariants*
+
+2+a|__Purpose_valid__: `purpose /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)`
+
+2+a|__Match_valid__: `is_valid_match_code (match)`
+
+|===

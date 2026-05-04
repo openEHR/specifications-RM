@@ -1,0 +1,47 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*EHR*
+
+2+a|The EHR object is the root object and access point of an EHR for a subject of care.
+
+2+h|*Attributes*
+
+|*system_id*: `xref:BASE:base_types:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]` [1..1]
+a|The identifier of the logical EHR management system in which this EHR was created.
+
+|*ehr_id*: `xref:BASE:base_types:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]` [1..1]
+a|The unique identifier of this EHR.
+
+NOTE: is is strongly recommended that a UUID always be used for this field.
+
+|*contributions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]>` [0..1]
+a|List of contributions causing changes to this EHR. Each contribution contains a list of versions, which may include references to any number of `VERSION` instances, i.e. items of type `VERSIONED_COMPOSITION` and `VERSIONED_FOLDER`.
+
+|*ehr_status*: `xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]` [1..1]
+a|Reference to `EHR_STATUS` object for this EHR.
+
+|*ehr_access*: `xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]` [1..1]
+a|Reference to `EHR_ACCESS` object for this EHR.
+
+|*compositions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]>` [0..1]
+a|Master list of all Versioned Composition references in this EHR.
+
+|*directory*: `xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]` [0..1]
+a|Optional directory structure for this EHR.
+
+|*time_created*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [1..1]
+a|Time of creation of the EHR.
+
+2+h|*Invariants*
+
+2+a|__Contributions_valid__: `contributions.for_all (c &#124; c.type.is_equal(“CONTRIBUTION”))`
+
+2+a|__Ehr_access_valid__: `ehr_access.type.is_equal (“VERSIONED_EHR_ACCESS”)`
+
+2+a|__Ehr_status_valid__: `ehr_status.type.is_equal(“VERSIONED_EHR_STATUS”)`
+
+2+a|__Compositions_valid__: `compositions.for_all (c &#124; c.type.is_equal (“VERSIONED_COMPOSITION”))`
+
+2+a|__Directory_valid__: `directory /= Void implies directory.type.is_equal (“VERSIONED_FOLDER”)`
+
+|===
