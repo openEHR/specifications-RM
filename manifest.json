@@ -1,194 +1,193 @@
 {
-    "id": "RM",
-    "title": "Reference Model",
-    "description": "openEHR Reference Model Component",
-    "keywords": "reference model, openehr",
-    "specifications": [
-        {
-            "id": "ehr",
-            "title": "EHR Information Model",
-            "title_short": "EHR",
-            "description": "openEHR EHR Information Model specification",
-            "micro_summary": "Top-level health record info model",
-            "summary": "The information model of the openEHR EHR.",
-            "classes": [
-                "COMPOSITION",
-                "SECTION",
-                "ENTRY",
-                "OBSERVATION",
-                "EVALUATION",
-                "INSTRUCTION",
-                "ACTION",
-                "ADMIN_ENTRY"
-            ],
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, EMR, reference model, openehr"
-        },
-        {
-            "id": "demographic",
-            "title": "Demographic Information Model",
-            "title_short": "Demographic",
-            "description": "openEHR Demographic Information Model specification",
-            "micro_summary": "Top-level demographics info model",
-            "summary": "The openEHR demographics information model.",
-            "classes": [
-                "PARTY",
-                "PARTY_RELATIONSHIP",
-                "ACTOR",
-                "ROLE",
-                "CONTACT",
-                "ADDRESS"
-            ],
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, demographics, reference model, openehr"
-        },
-        {
-            "id": "common",
-            "title": "Common Information Model",
-            "title_short": "Common",
-            "description": "openEHR Common Information Model specification",
-            "micro_summary": "Common semantic patterns and structures",
-            "summary": "Information model containing common concepts, including the archetype-enabling `LOCATABLE` class, party references, audits and attestations, change control, and authored resources.",
-            "classes": [
-                "VERSIONED_OBJECT",
-                "VERSION",
-                "CONTRIBUTION",
-                "LOCATABLE",
-                "PARTY_SELF",
-                "AUDIT_DETAILS"
-            ],
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "common, EHR, reference model, openehr"
-        },
-        {
-            "id": "data_structures",
-            "title": "Data Structures Information Model",
-            "title_short": "Data Structures",
-            "description": "openEHR Data Structures Information Model specification",
-            "micro_summary": "Common data structures",
-            "summary": "Information model of data structures, including a powerful model of time-series data.",
-            "classes": [
-                "HISTORY",
-                "EVENT",
-                "ITEM_TREE",
-                "CLUSTER",
-                "ELEMENT"
-            ],
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, data structures, reference model, openehr"
-        },
-        {
-            "id": "data_types",
-            "title": "Data Types Information Model",
-            "title_short": "Data Types",
-            "description": "openEHR Data Types Information Model specification",
-            "summary": "Information model of data types, including quantities, date/times, plain and coded text, time specification, multimedia and URIs.",
-            "classes": [
-                "DV_BOOLEAN",
-                "DV_TEXT",
-                "DV_CODED_TEXT",
-                "DV_URI",
-                "DV_QUANTITY",
-                "DV_DATE",
-                "DV_TIME",
-                "DV_MULTIMEDIA",
-                "DV_IDENTIFIER"
-            ],
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, clinical, data types, openehr"
-        },
-        {
-            "id": "support",
-            "title": "Support Information Model",
-            "title_short": "Support",
-            "description": "openEHR Support Information Model specification",
-            "summary": "Support model defining identifiers, assumed types, and terminology interface specification used in the rest of the IMs.",
-            "micro_summary": "(mostly obsolete) Terminology and Measurement service interfaces",
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, openehr, identifiers, primitive types, openehr"
-        },
-        {
-            "id": "integration",
-            "title": "Integration Information Model",
-            "title_short": "Integration",
-            "description": "openEHR Integration Information Model specification",
-            "micro_summary": "Model of free-form external system data",
-            "summary": "Information model for representing legacy data is a free-form Entry type for implementing integration solutions.",
-            "classes": [
-                "GENERIC_ENTRY"
-            ],
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, integration, openehr"
-        },
-        {
-            "id": "ehr_extract",
-            "title": "EHR Extract Information Model",
-            "title_short": "EHR Extract",
-            "description": "openEHR EHR Extract Information Model specification",
-            "micro_summary": "Top-level EHR Extract request and response model",
-            "summary": "The information model of the EHR Extract, which is a serialisation of content from an EHR.",
-            "classes": [
-                "EXTRACT",
-                "EXTRACT_CONTENT_ITEM",
-                "EXTRACT_REQUEST",
-                "EXTRACT_SPEC"
-            ],
-            "copyright_year": "2003",
-            "spec_status": "STABLE",
-            "keywords": "EHR, extract, openehr"
-        }
-    ],
-    "expressions": [
-        {
-            "id": "openEHR_UML-RM.mdzip",
-            "type": "uml",
-            "title": "RM UML",
-            "description": "UML file for MagicDraw 19 for RM model. Contains UML 2.5 standard XMI file."
-        },
-        {
-            "id": "openEHR_UML-BASE.mdzip",
-            "dependency": {
-                "component": "BASE",
-                "release": "latest"
-            }
-        }
-    ],
-    "jira": {
-        "open_issues": "11103",
-        "roadmap": "SPECRM"
+  "id": "RM",
+  "title": "Reference Model",
+  "description": "openEHR Reference Model Component",
+  "keywords": "reference model, openehr",
+  "specifications": [
+    {
+      "id": "ehr",
+      "title": "EHR Information Model",
+      "title_short": "EHR",
+      "description": "openEHR EHR Information Model specification",
+      "micro_summary": "Top-level health record info model",
+      "summary": "Core model of the openEHR Electronic Health Record. Specifies the top-level EHR structure, Composition as the unit of clinical documentation, and the entry hierarchy covering observations, evaluations, instructions, and actions. EHR_STATUS carries subject identity and access control metadata, while COMPOSITION represents a clinically committed unit of information contributed by a care episode. The entry hierarchy - OBSERVATION, EVALUATION, INSTRUCTION, ACTION - maps to the main clinical documentation intents and is the primary target of archetype constraints.",
+      "classes": [
+        "COMPOSITION",
+        "SECTION",
+        "ENTRY",
+        "OBSERVATION",
+        "EVALUATION",
+        "INSTRUCTION",
+        "ACTION",
+        "ADMIN_ENTRY"
+      ],
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, EMR, reference model, openehr"
     },
-    "releases": [
-        {
-            "id": "1.0.4",
-            "date": "2019-01-04",
-            "jira": {
-                "crs": "SPECRM/versions/11074",
-                "prs": "SPECPR/versions/10861"
-            }
-        },
-        {
-            "id": "1.0.3",
-            "date": "2015-12-15",
-            "jira": {
-                "crs": "SPECRM/versions/10860",
-                "prs": "SPECPR/versions/10060"
-            }
-        },
-        {
-            "id": "1.0.2",
-            "date": "2008-12-20",
-            "jira": {
-                "crs": "SPEC/versions/10030",
-                "prs": "SPECPR/versions/10040"
-            }
-        }
-    ]
+    {
+      "id": "demographic",
+      "title": "Demographic Information Model",
+      "title_short": "Demographic",
+      "description": "openEHR Demographic Information Model specification",
+      "micro_summary": "Top-level demographics info model",
+      "summary": "Information model for parties and their relationships: persons, organisations, roles, identity types, contact details, and party relationships. Designed for use alongside or independently of the EHR. PARTY_SELF, PARTY_RELATED, and PARTY_IDENTIFIED provide progressively richer representations of subjects referenced in EHR entries. The model is intentionally generic, allowing it to serve as a standalone demographic service or to be referenced from within EHR content.",
+      "classes": [
+        "PARTY",
+        "PARTY_RELATIONSHIP",
+        "ACTOR",
+        "ROLE",
+        "CONTACT",
+        "ADDRESS"
+      ],
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, demographics, reference model, openehr"
+    },
+    {
+      "id": "common",
+      "title": "Common Information Model",
+      "title_short": "Common",
+      "description": "openEHR Common Information Model specification",
+      "micro_summary": "Common semantic patterns and structures",
+      "summary": "Cross-cutting Reference Model constructs: the archetyped class hierarchy, entry metadata, feeder audit for legacy data, party references, change control, version containers, and directory structures. The LOCATABLE class and its archetyped subclass form the root of the constraint hierarchy that archetypes act upon, making this package central to understanding how archetypes bind to RM instances. The VERSIONED_OBJECT and VERSION classes implement an optimistic locking model for EHR content, supporting concurrent access and merge scenarios.",
+      "classes": [
+        "VERSIONED_OBJECT",
+        "VERSION",
+        "CONTRIBUTION",
+        "LOCATABLE",
+        "PARTY_SELF",
+        "AUDIT_DETAILS"
+      ],
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "common, EHR, reference model, openehr"
+    },
+    {
+      "id": "data_structures",
+      "title": "Data Structures Information Model",
+      "title_short": "Data Structures",
+      "description": "openEHR Data Structures Information Model specification",
+      "micro_summary": "Common data structures",
+      "summary": "Generic structural types used throughout the Reference Model: single items, lists, tables, and trees, each parameterised to hold any RM data type instance. ITEM_TREE, ITEM_LIST, ITEM_TABLE, and ITEM_SINGLE are the four structural types, parameterised with ELEMENT as the leaf value holder. Archetypes impose specific structural constraints on these types to define the shape of data captured in clinical entries.",
+      "classes": [
+        "HISTORY",
+        "EVENT",
+        "ITEM_TREE",
+        "CLUSTER",
+        "ELEMENT"
+      ],
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, data structures, reference model, openehr"
+    },
+    {
+      "id": "data_types",
+      "title": "Data Types Information Model",
+      "title_short": "Data Types",
+      "description": "openEHR Data Types Information Model specification",
+      "summary": "Complete set of clinical and administrative data types: quantities with units and precision, coded text, plain text, date and time representations, proportions, encapsulated media content, and URIs. The type hierarchy is designed to cover clinical documentation requirements without being domain-specific, enabling archetype authors to constrain them to particular use cases. Key types include DV_QUANTITY for measured values with units, DV_CODED_TEXT for terminology-bound concepts, and DV_DATE_TIME for temporal data.",
+      "classes": [
+        "DV_BOOLEAN",
+        "DV_TEXT",
+        "DV_CODED_TEXT",
+        "DV_URI",
+        "DV_QUANTITY",
+        "DV_DATE",
+        "DV_TIME",
+        "DV_MULTIMEDIA",
+        "DV_IDENTIFIER"
+      ],
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, clinical, data types, openehr"
+    },
+    {
+      "id": "support",
+      "title": "Support Information Model",
+      "title_short": "Support",
+      "description": "openEHR Support Information Model specification",
+      "summary": "Foundation package of the Reference Model. Defines assumed types, external terminology references, version identifiers, and measurement information shared by all other RM packages. It includes terminology-related definitions for referencing external terminologies such as SNOMED CT, LOINC, and openEHR's own terminology within RM instances. Implementers building any openEHR service layer will use the types defined here for version control, audit trails, and measurement unit handling.",
+      "micro_summary": "(mostly obsolete) Terminology and Measurement service interfaces",
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, openehr, identifiers, primitive types, openehr"
+    },
+    {
+      "id": "integration",
+      "title": "Integration Information Model",
+      "title_short": "Integration",
+      "description": "openEHR Integration Information Model specification",
+      "micro_summary": "Model of free-form external system data",
+      "summary": "Structures for incorporating legacy or non-archetyped clinical content into an openEHR EHR. Provides a bridge representation enabling incremental migration of existing data from external systems. The GENERIC_ENTRY class carries data that cannot yet be expressed in archetypes, allowing legacy content to coexist with fully archetyped data in the same EHR. This approach supports phased migration strategies where systems incrementally replace legacy data representations with properly constrained archetype-based content.",
+      "classes": [
+        "GENERIC_ENTRY"
+      ],
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, integration, openehr"
+    },
+    {
+      "id": "ehr_extract",
+      "title": "EHR Extract Information Model",
+      "title_short": "EHR Extract",
+      "description": "openEHR EHR Extract Information Model specification",
+      "micro_summary": "Top-level EHR Extract request and response model",
+      "summary": "Model for packaging and exchanging structured subsets of an EHR between systems, supporting query-driven extraction, synchronisation-based transfer, and discharge summary scenarios. The model supports both full and partial extracts, including the ability to filter by care episode, date range, archetype, or composition type. It is used in discharge summary exchange, patient summary transfer, and cross-institutional record sharing scenarios.",
+      "classes": [
+        "EXTRACT",
+        "EXTRACT_CONTENT_ITEM",
+        "EXTRACT_REQUEST",
+        "EXTRACT_SPEC"
+      ],
+      "copyright_year": "2003",
+      "spec_status": "STABLE",
+      "keywords": "EHR, extract, openehr"
+    }
+  ],
+  "expressions": [
+    {
+      "id": "openEHR_UML-RM.mdzip",
+      "type": "uml",
+      "title": "RM UML",
+      "description": "UML file for MagicDraw 19 for RM model. Contains UML 2.5 standard XMI file."
+    },
+    {
+      "id": "openEHR_UML-BASE.mdzip",
+      "dependency": {
+        "component": "BASE",
+        "release": "latest"
+      }
+    }
+  ],
+  "jira": {
+    "open_issues": "11103",
+    "roadmap": "SPECRM"
+  },
+  "releases": [
+    {
+      "id": "1.0.4",
+      "date": "2019-01-04",
+      "jira": {
+        "crs": "SPECRM/versions/11074",
+        "prs": "SPECPR/versions/10861"
+      }
+    },
+    {
+      "id": "1.0.3",
+      "date": "2015-12-15",
+      "jira": {
+        "crs": "SPECRM/versions/10860",
+        "prs": "SPECPR/versions/10060"
+      }
+    },
+    {
+      "id": "1.0.2",
+      "date": "2008-12-20",
+      "jira": {
+        "crs": "SPEC/versions/10030",
+        "prs": "SPECPR/versions/10040"
+      }
+    }
+  ]
 }
-

@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Archetyped Package
 
 == Overview
@@ -6,7 +8,7 @@ The `archetyped` package defines the core types `PATHABLE`, `LOCATABLE`, `ARCHET
 
 [.text-center]
 .common.archetyped Package
-image::{uml_diagrams_uri}/RM-common.archetyped.svg[id=archetyped_package, align="center"]
+image::ROOT:uml/RM-common.archetyped.svg[id=archetyped_package, align="center"]
 
 === The PATHABLE Class
 The `PATHABLE` class defines the pathing capabilities used by nearly all classes in the openEHR reference model, mostly via inheritance of `LOCATABLE`. The defining characteristics of `PATHABLE` objects are that they can locate child objects using paths, and they know their parent object in a compositional hierarchy. The `_parent_` feature is defined as abstract in the model, and may be implemented in any way convenient.
@@ -130,14 +132,14 @@ The features of the model described so far allow accurate referencing of content
 
 == Class Definitions
 
-include::{uml_export_dir}/classes/pathable.adoc[]
+include::ROOT:partial$classes/pathable.adoc[]
 
-include::{uml_export_dir}/classes/locatable.adoc[]
+include::ROOT:partial$classes/locatable.adoc[]
 
-include::{uml_export_dir}/classes/archetyped.adoc[]
+include::ROOT:partial$classes/archetyped.adoc[]
 
-include::{uml_export_dir}/classes/link.adoc[]
+include::ROOT:partial$classes/link.adoc[]
 
-include::{uml_export_dir}/classes/feeder_audit.adoc[]
+include::ROOT:partial$classes/feeder_audit.adoc[]
 
-include::{uml_export_dir}/classes/feeder_audit_details.adoc[]
+include::ROOT:partial$classes/feeder_audit_details.adoc[]

@@ -7,30 +7,30 @@ h|*Description*
 2+a|Ancestor of all Party types, including real world entities and their roles. A Party is any entity which can participate in an activity. The `_name_` attribute inherited from `LOCATABLE` is used to indicate the actual type of party (note that the actual names, i.e. identities of parties are indicated in the `_identities_` attribute, not the `_name_` attribute).
 
 h|*Inherit*
-2+|`xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]`
+2+|`xref:{class_locatable}[LOCATABLE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*identities*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:demographic:demographic_package.adoc#_party_identity_class[PARTY_IDENTITY]>`
+|*identities*: `xref:{class_list}[List]<xref:{class_party_identity}[PARTY_IDENTITY]>`
 a|Identities used by the party to identify itself, such as legal name, stage names, aliases, nicknames and so on.
 
 h|*0..1*
-|*contacts*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:demographic:demographic_package.adoc#_contact_class[CONTACT]>`
+|*contacts*: `xref:{class_list}[List]<xref:{class_contact}[CONTACT]>`
 a|Contacts for this party.
 
 h|*0..1*
-|*details*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]`
+|*details*: `xref:{class_item_structure}[ITEM_STRUCTURE]`
 a|All other details for this Party.
 
 h|*0..1*
-|*reverse_relationships*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:base_types:identification_package.adoc#_locatable_ref_class[LOCATABLE_REF]>`
+|*reverse_relationships*: `xref:{class_list}[List]<xref:{class_locatable_ref}[LOCATABLE_REF]>`
 a|References to relationships in which this Party takes part as target.
 
 h|*0..1*
-|*relationships*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:demographic:demographic_package.adoc#_party_relationship_class[PARTY_RELATIONSHIP]>`
+|*relationships*: `xref:{class_list}[List]<xref:{class_party_relationship}[PARTY_RELATIONSHIP]>`
 a|Relationships in which this Party takes part as source.
 
 h|*Functions*
@@ -38,7 +38,7 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*type* (): `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]`
+|*type* (): `xref:{class_dv_text}[DV_TEXT]`
 a|Type of party, such as  `PERSON`,  `ORGANISATION`, etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited `_name_` attribute.
 
 h|*Invariants*

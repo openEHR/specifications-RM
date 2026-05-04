@@ -7,26 +7,26 @@ h|*Description*
 2+a|Abstract model of a wrapper for one content item in an Extract, containing various meta-data. Indicates whether it was part of the primary set and what its original path was. Intended to be subtyped for wrappers of specific types of content.
 
 h|*Inherit*
-2+|`xref:RM:ehr_extract:common_package.adoc#_extract_item_class[EXTRACT_ITEM]`
+2+|`xref:{class_extract_item}[EXTRACT_ITEM]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*is_primary*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_primary*: `xref:{class_boolean}[Boolean]`
 a|True if the content item carried in this container was part of the primary set for the Extract, i.e. not added due to link-following.
 
 h|*0..1*
-|*is_changed*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_changed*: `xref:{class_boolean}[Boolean]`
 a|True if the content item carried in this container is any kind of change since last send, in repeat sending situations.
 
 h|*0..1*
-|*is_masked*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_masked*: `xref:{class_boolean}[Boolean]`
 a|True if the content of this item has not been included due to insufficient access rights of requestor.
 
 h|*0..1*
-|*item*: `xref:BASE:foundation_types:overview.adoc#_any_class[Any]`
+|*item*: `xref:{class_any}[Any]`
 a|Content object.
 
 h|*Invariants*

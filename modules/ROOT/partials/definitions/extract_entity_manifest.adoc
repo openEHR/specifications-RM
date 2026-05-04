@@ -13,22 +13,22 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*extract_id_key*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*extract_id_key*: `xref:{class_string}[String]`
 a|Identifier by which this entity is known in the Extract. May be one of the other identifiers, e.g. ehr_id or subject_id, or it may be something else, including a simple integer.
 
 h|*0..1*
-|*ehr_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*ehr_id*: `xref:{class_string}[String]`
 a|EHR / EMR identifier for the entity at the target system.
 
 h|*0..1*
-|*subject_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*subject_id*: `xref:{class_string}[String]`
 a|Subject (i.e. patient or similar) identifier for the entity at the target system.
 
 h|*0..1*
-|*other_ids*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]>`
+|*other_ids*: `xref:{class_list}[List]<xref:{class_string}[String]>`
 a|Other identifiers that may be used to find the entity at the target system, keyed by type. May include medicare numbers, drivers license number, tax number etc.
 
 h|*0..1*
-|*item_list*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]>`
+|*item_list*: `xref:{class_list}[List]<xref:{class_object_ref}[OBJECT_REF]>`
 a|List of uids of items to be included in the Extract, in cases where individual items are being requested by id. More typically, this attribute is not used, and the EXTRACT_SPEC.criteria query defines the Extract contents. If set, for openEHR data, these are uids identifying the version containers.
 |===

@@ -7,7 +7,7 @@ h|*Description*
 2+a|Abstract class defining the concept of quantified entities whose values are absolute with respect to an origin. Dates and Times are the main example.
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]`
+2+|`xref:{class_dv_quantified}[DV_QUANTIFIED]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -15,7 +15,7 @@ h|*Attributes*
 
 h|*0..1 +
 (redefined)*
-|*accuracy*: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
+|*accuracy*: `xref:{class_dv_amount}[DV_AMOUNT]`
 a|
 
 h|*Functions*
@@ -25,8 +25,8 @@ h|*Functions*
 h|*1..1 +
 (abstract)*
 |*diff* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
+other: `xref:{class_dv_absolute_quantity}[DV_ABSOLUTE_QUANTITY][1]` +
+): `xref:{class_dv_amount}[DV_AMOUNT]`
 a|Difference of two quantities.
 
 The value of accuracy in the result is either:
@@ -37,8 +37,8 @@ The value of accuracy in the result is either:
 h|*1..1 +
 (abstract)*
 |*add* ( +
-a_diff: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]`
+a_diff: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
+): `xref:{class_dv_absolute_quantity}[DV_ABSOLUTE_QUANTITY]`
 a|Addition of a differential amount to this quantity. 
 
 The value of accuracy in the result is either:
@@ -49,8 +49,8 @@ The value of accuracy in the result is either:
 h|*1..1 +
 (abstract)*
 |*subtract* ( +
-a_diif: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]`
+a_diif: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
+): `xref:{class_dv_absolute_quantity}[DV_ABSOLUTE_QUANTITY]`
 a|Result of subtracting a differential amount from this quantity.
 
 The value of accuracy in the result is either:

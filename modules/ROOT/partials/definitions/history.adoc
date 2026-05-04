@@ -9,30 +9,30 @@ h|*Description*
 For a periodic series of events, period will be set, and the time of each Event in the History must correspond; i.e. the `EVENT._offset_` must be a multiple of period for each Event. Missing events in a period History are however allowed.
 
 h|*Inherit*
-2+|`xref:RM:data_structures:item_structure_package.adoc#_data_structure_class[DATA_STRUCTURE]`
+2+|`xref:{class_data_structure}[DATA_STRUCTURE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*origin*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]`
+|*origin*: `xref:{class_dv_date_time}[DV_DATE_TIME]`
 a|Time origin of this event history. The first event is not necessarily at the origin point.
 
 h|*0..1*
-|*period*: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+|*period*: `xref:{class_dv_duration}[DV_DURATION]`
 a|Period between samples in this segment if periodic.
 
 h|*0..1*
-|*duration*: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+|*duration*: `xref:{class_dv_duration}[DV_DURATION]`
 a|Duration of the entire History; either corresponds to the duration of all the events, and/or the duration represented by the summary, if it exists.
 
 h|*0..1*
-|*summary*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]`
+|*summary*: `xref:{class_item_structure}[ITEM_STRUCTURE]`
 a|Optional summary data that aggregates, organizes, reduces and transforms the event series. This may be a text or image that presents a graphical presentation, or some data that assists with the interpretation of the data.
 
 h|*0..1*
-|*events*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_structures:history_package.adoc#_event_class[EVENT]<T>>`
+|*events*: `xref:{class_list}[List]<xref:{class_event}[EVENT]<T>>`
 a|The events in the series. This attribute is of a generic type whose parameter must be a descendant of `ITEM_SUTRUCTURE`.
 
 h|*Functions*
@@ -40,7 +40,7 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*is_periodic* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_periodic* (): `xref:{class_boolean}[Boolean]`
 a|Indicates whether history is periodic.
 
 h|*Invariants*

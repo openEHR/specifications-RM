@@ -4,157 +4,157 @@
 
 2+a|Version-controlled composition abstraction, defined by inheriting `VERSIONED_OBJECT<COMPOSITION>`.
 
-2+|Inherits: xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]
+2+|Inherits: xref:{class_versioned_object}[VERSIONED_OBJECT]
 
 2+h|*Attributes*
 
-|*uid*: `xref:BASE:base_types:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]` [1..1]
+|*uid*: `xref:{class_hier_object_id}[HIER_OBJECT_ID]` [1..1]
 a|Unique identifier of this version container in the form of a UID with no extension. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the  virtual version tree. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
-|*owner_id*: `xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]` [1..1]
+|*owner_id*: `xref:{class_object_ref}[OBJECT_REF]` [1..1]
 a|Reference to object to which this version container belongs, e.g. the id of the containing EHR or other relevant owning entity. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
-|*time_created*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [1..1]
+|*time_created*: `xref:{class_dv_date_time}[DV_DATE_TIME]` [1..1]
 a|Time of initial creation of this versioned object. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 2+h|*Functions*
 
-|*version_count* (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+|*version_count* (): `xref:{class_integer}[Integer]` [1..1]
 a|Return the total number of versions in this object. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
-|*all_version_ids* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]>` [1..1]
+|*all_version_ids* (): `xref:{class_list}[List]<xref:{class_object_version_id}[OBJECT_VERSION_ID]>` [1..1]
 a|Return a list of ids of all versions in this object. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
-|*all_versions* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:common:change_control_package.adoc#_version_class[VERSION]<T>>` [1..1]
+|*all_versions* (): `xref:{class_list}[List]<xref:{class_version}[VERSION]<T>>` [1..1]
 a|Return a list of all versions in this object. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 |*has_version_at_time* ( +
-a_ver_id: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a_ver_id: `xref:{class_object_version_id}[OBJECT_VERSION_ID][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|True if a version for time  `_a_time_` exists. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 |*has_version_id* ( +
-a_ver_id: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a_ver_id: `xref:{class_object_version_id}[OBJECT_VERSION_ID][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|True if a version with `_an_id_` exists. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 |*version_with_id* ( +
-a_ver_id: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID][1]` +
-): `xref:RM:common:change_control_package.adoc#_version_class[VERSION]` +
+a_ver_id: `xref:{class_object_version_id}[OBJECT_VERSION_ID][1]` +
+): `xref:{class_version}[VERSION]` +
  +
 __Pre__: `has_version_id (a_ver_id)` [1..1]
 a|Return the version with `_uid_` =  `_a_ver_id_`. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 |*is_original_version* ( +
-a_ver_id: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+a_ver_id: `xref:{class_object_version_id}[OBJECT_VERSION_ID][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Pre__: `has_version_id(a_ver_id)` [1..1]
 a|True if version with `_an_id_` is an `ORIGINAL_VERSION`. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 |*version_at_time* ( +
-a_time: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME][1]` +
-): `xref:RM:common:change_control_package.adoc#_version_class[VERSION]` +
+a_time: `xref:{class_dv_date_time}[DV_DATE_TIME][1]` +
+): `xref:{class_version}[VERSION]` +
  +
 __Pre__: `has_version_at_time (a_time)` [1..1]
 a|Return the version for time  `_a_time_`. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
-|*revision_history* (): `xref:RM:common:generic_package.adoc#_revision_history_class[REVISION_HISTORY]` [1..1]
+|*revision_history* (): `xref:{class_revision_history}[REVISION_HISTORY]` [1..1]
 a|History of all audits and attestations in this versioned repository. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
-|*latest_version* (): `xref:RM:common:change_control_package.adoc#_version_class[VERSION]` [1..1]
+|*latest_version* (): `xref:{class_version}[VERSION]` [1..1]
 a|Return the most recently added version (i.e. on trunk or any branch). +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
-|*latest_trunk_version* (): `xref:RM:common:change_control_package.adoc#_version_class[VERSION]` [1..1]
+|*latest_trunk_version* (): `xref:{class_version}[VERSION]` [1..1]
 a|Return the most recently added trunk version. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
-|*trunk_lifecycle_state* (): `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` +
+|*trunk_lifecycle_state* (): `xref:{class_dv_coded_text}[DV_CODED_TEXT]` +
  +
 __Post__: `Result = latest_trunk_version.lifecycle_state` [1..1]
 a|Return the lifecycle state from the latest trunk version. Useful for determining if the version container is logically deleted. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 |*commit_original_version* ( +
-a_contribution: `xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF][1]`, +
-a_new_version_uid: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID][1]`, +
-a_preceding_version_id: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID][1]`, +
-an_audit: `xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS][1]`, +
-a_lifecycle_state: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT][1]`, +
+a_contribution: `xref:{class_object_ref}[OBJECT_REF][1]`, +
+a_new_version_uid: `xref:{class_object_version_id}[OBJECT_VERSION_ID][1]`, +
+a_preceding_version_id: `xref:{class_object_version_id}[OBJECT_VERSION_ID][1]`, +
+an_audit: `xref:{class_audit_details}[AUDIT_DETAILS][1]`, +
+a_lifecycle_state: `xref:{class_dv_coded_text}[DV_CODED_TEXT][1]`, +
 a_data: `T[1]`, +
-signing_key: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+signing_key: `xref:{class_string}[String][1]` +
 ): `void` +
  +
 __Pre__: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0` [1..1]
 a|Add a new original version. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 |*commit_original_merged_version* ( +
-a_contribution: `xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF][1]`, +
-a_new_version_uid: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID][1]`, +
-a_preceding_version_id: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID][1]`, +
-an_audit: `xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS][1]`, +
-a_lifecycle_state: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT][1]`, +
+a_contribution: `xref:{class_object_ref}[OBJECT_REF][1]`, +
+a_new_version_uid: `xref:{class_object_version_id}[OBJECT_VERSION_ID][1]`, +
+a_preceding_version_id: `xref:{class_object_version_id}[OBJECT_VERSION_ID][1]`, +
+an_audit: `xref:{class_audit_details}[AUDIT_DETAILS][1]`, +
+a_lifecycle_state: `xref:{class_dv_coded_text}[DV_CODED_TEXT][1]`, +
 a_data: `T[1]`, +
-an_other_input_uids: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]>[1]`, +
-signing_key: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+an_other_input_uids: `xref:{class_list}[List]<xref:{class_object_version_id}[OBJECT_VERSION_ID]>[1]`, +
+signing_key: `xref:{class_string}[String][1]` +
 ): `void` +
  +
 __Pre__: `all_version_ids.has (a_preceding_version_uid) or else version_count = 0` [1..1]
 a|Add a new original merged version. This commit function adds a parameter containing the ids of other versions merged into the current one. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 |*commit_imported_version* ( +
-a_contribution: `xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF][1]`, +
-an_audit: `xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS][1]`, +
-a_version: `xref:RM:common:change_control_package.adoc#_original_version_class[ORIGINAL_VERSION][1]` +
+a_contribution: `xref:{class_object_ref}[OBJECT_REF][1]`, +
+an_audit: `xref:{class_audit_details}[AUDIT_DETAILS][1]`, +
+a_version: `xref:{class_original_version}[ORIGINAL_VERSION][1]` +
 ): `void` [1..1]
 a|Add a new imported version. Details of version id etc come from the `ORIGINAL_VERSION` being committed. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 |*commit_attestation* ( +
-an_attestation: `xref:RM:common:generic_package.adoc#_attestation_class[ATTESTATION][1]`, +
-a_ver_id: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID][1]`, +
-signing_key: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+an_attestation: `xref:{class_attestation}[ATTESTATION][1]`, +
+a_ver_id: `xref:{class_object_version_id}[OBJECT_VERSION_ID][1]`, +
+signing_key: `xref:{class_string}[String][1]` +
 ): `void` +
  +
 __Pre__: `has_version_id(a_ver_id)
 and is_original_version(a_ver_id)` [1..1]
 a|Add a new attestation to a specified original version. Attestations can only be added to Original versions. +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
-|*is_persistent* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*is_persistent* (): `xref:{class_boolean}[Boolean]` [1..1]
 a|Indicates whether this composition set is persistent; derived from first version.
 
 2+h|*Invariants*
 
 2+a|__Version_count_valid__: `version_count >= 0` +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 2+a|__All_version_ids_valid__: `all_version_ids.count = version_count` +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 2+a|__All_versions_valid__: `all_versions.count = version_count` +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 2+a|__Latest_version_valid__: `version_count > 0 implies latest_version /= Void` +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 2+a|__Uid_validity__: `extension.is_empty` +
-_Inherited from xref:RM:common:change_control_package.adoc#_versioned_object_class[VERSIONED_OBJECT]_
+_Inherited from xref:{class_versioned_object}[VERSIONED_OBJECT]_
 
 2+a|__Archetype_node_id_valid__: `all_versions.for_all (v &#124; v.archetype_node_id.is_equal (all_versions.first.archetype_node_id))`
 

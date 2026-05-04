@@ -9,7 +9,7 @@ h|*Description*
 Used for recording real world times, rather than scientifically measured fine amounts of time. The partial form is used for approximate times of events and substance administrations.
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_dv_temporal_class[DV_TEMPORAL]`, `xref:BASE:foundation_types:time_types.adoc#_iso8601_time_class[Iso8601_time]`
+2+|`xref:{class_dv_temporal}[DV_TEMPORAL]`, `xref:{class_iso8601_time}[Iso8601_time]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*value*: `xref:{class_string}[String]`
 a|ISO8601 time string
 
 h|*Functions*
@@ -26,41 +26,41 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*magnitude* (): `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+|*magnitude* (): `xref:{class_real}[Real]`
 a|Numeric value of the time as seconds since the start of day, i.e. `00:00:00`.
 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_ordered}[DV_ORDERED][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|Test if two instances are strictly comparable.
 
 h|*1..1 +
 (effected)*
 |*add* ( +
-a_diff: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]`
+a_diff: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
+): `xref:{class_dv_absolute_quantity}[DV_ABSOLUTE_QUANTITY]`
 a|Add a time period to this time.
 
 h|*1..1 +
 (effected)*
 |*subtract* ( +
-a_diif: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY]`
+a_diif: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
+): `xref:{class_dv_absolute_quantity}[DV_ABSOLUTE_QUANTITY]`
 a|Subtract a duration from this time.
 
 h|*1..1*
 |*operator=* ( +
-source: `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME]`
+source: `xref:{class_dv_time}[DV_TIME][1]` +
+): `xref:{class_dv_time}[DV_TIME]`
 a|
 
 h|*1..1 +
 (redefined)*
 |*diff* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+other: `xref:{class_dv_time}[DV_TIME][1]` +
+): `xref:{class_dv_duration}[DV_DURATION]`
 a|Difference of two quantities.
 
 h|*Invariants*

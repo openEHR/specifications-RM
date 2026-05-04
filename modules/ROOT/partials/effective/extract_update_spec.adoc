@@ -8,13 +8,13 @@ The update mode may be event-driven and periodic update or a mixture of both. Th
 
 2+h|*Attributes*
 
-|*persist_in_server*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*persist_in_server*: `xref:{class_boolean}[Boolean]` [1..1]
 a|If True, this Request is persisted in the server until further notice.
 
-|*repeat_period*: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]` [0..1]
+|*repeat_period*: `xref:{class_dv_duration}[DV_DURATION]` [0..1]
 a|Period for resending update Extracts in response to original Request.
 
-|*trigger_events*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]>` [0..1]
+|*trigger_events*: `xref:{class_list}[List]<xref:{class_dv_coded_text}[DV_CODED_TEXT]>` [0..1]
 a|Set of Event names that will cause sending of update Extracts. Event types include:   
 
 * any_change - any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.
@@ -23,7 +23,7 @@ a|Set of Event names that will cause sending of update Extracts. Event types inc
 
 Coded by openEHR Terminology group "extract update trigger event type".
 
-|*update_method*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+|*update_method*: `xref:{class_code_phrase}[CODE_PHRASE]` [1..1]
 a|Indicate mode of update. Can be: send only items that are changed (including logical deletions) or new since last send. For persist_in_server Requests only.
 
 2+h|*Invariants*

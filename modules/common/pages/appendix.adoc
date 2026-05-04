@@ -1,43 +1,7 @@
-//
-// ============================================ Asciidoc HEADER =============================================
-//
-include::{ref_dir}/docs/boilerplate/book_style_settings.adoc[]
+include::partial$module_vars.adoc[]
 
-//
-// Document-specific attributes
-//
-:copyright_year: 2003
-:spec_status: STABLE
+= Appendix
 
-//
-// HTML-only attributes
-//
-:linkcss:
-:keywords: common, EHR, reference model, openehr
-:description: openEHR Common Information Model specification
-
-include::{ref_dir}/docs/boilerplate/global_vars.adoc[]
-
-//
-// ============================================ Asciidoc PREAMBLE =============================================
-//
-
-image::{openehr_logo}["openEHR logo",align="center"]
-
-= Common Information Model
-
-include::{ref_dir}/docs/boilerplate/full_front_block.adoc[]
-
-//
-// ============================================= Asciidoc BODY ===============================================
-//
-include::{ref_dir}/docs/references/reference_definitions.adoc[]
-
-include::master00-amendment_record.adoc[leveloffset=+1]
-
-//
-// --------------------------------------------- Preface -----------------------------------------------
-//
 
 == Acknowledgements
 
@@ -86,27 +50,11 @@ Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL,
 * 'openEHR' is a trademark of the openEHR Foundation
 * 'Java' is a registered trademark of Oracle Corporation
 * 'Microsoft' is a trademark of the Microsoft Corporation
+== Conformance
+
+Conformance of a data or software artifact to an openEHR specification is determined by a formal test of that artifact against the relevant openEHR Implementation Technology Specification(s) (ITSs), such as an IDL interface or an XML-schema. Since ITSs are formal derivations from underlying models, ITS conformance indicates model conformance.
 
 
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-:sectanchors:
-:sectnums:
-include::master01-preface.adoc[leveloffset=+1]
-include::master02-overview.adoc[leveloffset=+1]
-include::master03-archetyped_package.adoc[leveloffset=+1]
-include::master04-generic_package.adoc[leveloffset=+1]
-include::master05-directory_package.adoc[leveloffset=+1]
-include::master06-change_control_package.adoc[leveloffset=+1]
-include::master07-resource_package.adoc[leveloffset=+1]
-
-
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
 :sectnums!:
-== References
 
-include::{ref_dir}/docs/references/publications_general_it.adoc[leveloffset=+1]
-include::{ref_dir}/docs/references/publications_ehealth.adoc[leveloffset=+1]
+include::partial$amendment_record.adoc[]

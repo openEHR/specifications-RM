@@ -8,13 +8,13 @@ Use: Used in a request to specify an Extract, as well as to describe what is con
 
 2+h|*Attributes*
 
-|*version_spec*: `xref:RM:ehr_extract:common_package.adoc#_extract_version_spec_class[EXTRACT_VERSION_SPEC]` [0..1]
+|*version_spec*: `xref:{class_extract_version_spec}[EXTRACT_VERSION_SPEC]` [0..1]
 a|Specification of which versions of information items to include in the Extract. If Void, the default is latest versions only (which is reasonable for non-versioning systems as well).
 
-|*manifest*: `xref:RM:ehr_extract:common_package.adoc#_extract_manifest_class[EXTRACT_MANIFEST]` [1..1]
+|*manifest*: `xref:{class_extract_manifest}[EXTRACT_MANIFEST]` [1..1]
 a|Specification of entities (e.g. records) to include in the Extract.
 
-|*extract_type*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+|*extract_type*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]` [1..1]
 a|Coded term indicating the type of content required, e.g.
 
 * openehr-ehr
@@ -24,15 +24,15 @@ a|Coded term indicating the type of content required, e.g.
 
 Coded by openEHR Terminology group "extract content type".
 
-|*include_multimedia*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*include_multimedia*: `xref:{class_boolean}[Boolean]` [1..1]
 a|Indicates whether inline instances of DV_MULTIMEDIA in the source data are included or not.
 
-|*priority*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+|*priority*: `xref:{class_integer}[Integer]` [1..1]
 a|Requested priority of this request to be handled by server. Priority schemes are likely to be local, and use values agreed by both ends.
 
 TBD: alternative is standard coded terms
 
-|*link_depth*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+|*link_depth*: `xref:{class_integer}[Integer]` [1..1]
 a|Degree of links to follow emanating from content items specified for inclusion. The kind of links to follow is dependent on the type of Extract.
 
 All items at the target end of followed links at the given depth are also included in the extract; EXTRACT_CONTENT_ITEM.is_primary is used to differentiate.
@@ -42,9 +42,9 @@ All items at the target end of followed links at the given depth are also includ
 - ....
 - n = follow nth degree links
 
-|*criteria*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:encapsulated_package.adoc#_dv_parsable_class[DV_PARSABLE]>` [0..1]
+|*criteria*: `xref:{class_list}[List]<xref:{class_dv_parsable}[DV_PARSABLE]>` [0..1]
 a|Queries specifying the contents of this Extract.
 
-|*other_details*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]` [0..1]
+|*other_details*: `xref:{class_item_structure}[ITEM_STRUCTURE]` [0..1]
 a|Other specification items. Archetypable.
 |===

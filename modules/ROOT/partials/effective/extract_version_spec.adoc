@@ -6,16 +6,16 @@
 
 2+h|*Attributes*
 
-|*include_all_versions*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*include_all_versions*: `xref:{class_boolean}[Boolean]` [1..1]
 a|True if all versions of each item in the Extract are included.
 
-|*commit_time_interval*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]<xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]>` [0..1]
+|*commit_time_interval*: `xref:{class_dv_interval}[DV_INTERVAL]<xref:{class_dv_date_time}[DV_DATE_TIME]>` [0..1]
 a|Specifies commit time interval of items to source repository to include in Extract. By default, only latest versions whose commit times fall in the range are included. If include_all_versions is True, then the range includes all versions committed within the interval.
 
-|*include_revision_history*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*include_revision_history*: `xref:{class_boolean}[Boolean]` [1..1]
 a|True if revision histories of the items in the Extract are included. If included, it is always the full revision history.
 
-|*include_data*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*include_data*: `xref:{class_boolean}[Boolean]` [1..1]
 a|True if the data of items matched by the content spec should be included. This is the default. If False, only revision history is included in serialised versions. Turning this option on in openEHR systems causes X_VERSIONED_OBJECTs to have revision_history set, but versions Void. Useful for interrogating a server without having to look at any content data. In other systems it may or may not have a sensible meaning.
 
 2+h|*Invariants*

@@ -7,30 +7,30 @@ h|*Description*
 2+a|A Version containing locally created content and optional attestations.
 
 h|*Inherit*
-2+|`xref:RM:common:change_control_package.adoc#_version_class[VERSION]`
+2+|`xref:{class_version}[VERSION]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*uid*: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]`
+|*uid*: `xref:{class_object_version_id}[OBJECT_VERSION_ID]`
 a|Stored version of inheritance precursor.
 
 h|*0..1*
-|*preceding_version_uid*: `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]`
+|*preceding_version_uid*: `xref:{class_object_version_id}[OBJECT_VERSION_ID]`
 a|Stored version of inheritance precursor.
 
 h|*0..1*
-|*other_input_version_uids*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]>`
+|*other_input_version_uids*: `xref:{class_list}[List]<xref:{class_object_version_id}[OBJECT_VERSION_ID]>`
 a|Identifiers of other versions whose content was merged into this version, if any.
 
 h|*1..1*
-|*lifecycle_state*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
+|*lifecycle_state*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]`
 a|Lifecycle state of the content item in this version; coded by openEHR vocabulary 'version lifecycle state'.
 
 h|*0..1*
-|*attestations*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:common:generic_package.adoc#_attestation_class[ATTESTATION]>`
+|*attestations*: `xref:{class_list}[List]<xref:{class_attestation}[ATTESTATION]>`
 a|Set of attestations relating to this version.
 
 h|*0..1*
@@ -42,7 +42,7 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*is_merged* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_merged* (): `xref:{class_boolean}[Boolean]`
 a|True if this Version was created from more than just the preceding (checked out) version.
 
 h|*Invariants*

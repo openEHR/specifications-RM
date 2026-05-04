@@ -9,22 +9,22 @@ h|*Description*
 Data value types which are to be used as limits in the `DV_INTERVAL<T>` class must inherit from this class, and implement the function `_is_strictly_comparable_to_` to ensure that instances compare meaningfully. For example, instances of `DV_QUANTITY` can only be compared if they measure the same kind of physical quantity.
 
 h|*Inherit*
-2+|`xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE]`, `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]`
+2+|`xref:{class_data_value}[DATA_VALUE]`, `xref:{class_ordered}[Ordered]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*normal_status*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*normal_status*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`.
 
 h|*0..1*
-|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]`
+|*normal_range*: `xref:{class_dv_interval}[DV_INTERVAL]`
 a|Optional normal range.
 
 h|*0..1*
-|*other_reference_ranges*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]>>`
+|*other_reference_ranges*: `xref:{class_list}[List]<xref:{class_reference_range}[REFERENCE_RANGE]<xref:{class_dv_ordered}[DV_ORDERED]>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
 
 h|*Functions*
@@ -34,16 +34,16 @@ h|*Functions*
 h|*1..1 +
 (abstract)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_ordered}[DV_ORDERED][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|Test if two instances are strictly comparable.
 
 h|*1..1*
-|*is_simple* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_simple* (): `xref:{class_boolean}[Boolean]`
 a|True if this quantity has no reference ranges.
 
 h|*1..1*
-|*is_normal* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*is_normal* (): `xref:{class_boolean}[Boolean]` +
  +
 __Pre__: `normal_range /= Void or normal_status /= Void` +
  +
@@ -54,8 +54,8 @@ a|Value is in the normal range, determined by comparison of the value to the nor
 h|*1..1 +
 (abstract)*
 |*infix <* ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_ordered}[Ordered][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|
 
 h|*Invariants*

@@ -11,36 +11,36 @@ Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary
 Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) "6/24" in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations.
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_proportion_kind_enumeration[PROPORTION_KIND]`, `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
+2+|`xref:{class_proportion_kind}[PROPORTION_KIND]`, `xref:{class_dv_amount}[DV_AMOUNT]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*numerator*: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+|*numerator*: `xref:{class_real}[Real]`
 a|Numerator of ratio
 
 h|*1..1*
-|*denominator*: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+|*denominator*: `xref:{class_real}[Real]`
 a|Denominator of ratio.
 
 h|*1..1*
-|*type*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*type*: `xref:{class_integer}[Integer]`
 a|Indicates semantic type of proportion, including percent, unitary etc.
 
 h|*0..1*
-|*precision*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*precision*: `xref:{class_integer}[Integer]`
 a|Precision  to  which  the  numerator and denominator values of  the  proportion are expressed, in terms of number  of  decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places.
 
 h|*0..1 +
 (redefined)*
-|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]<xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION]>`
+|*normal_range*: `xref:{class_dv_interval}[DV_INTERVAL]<xref:{class_dv_proportion}[DV_PROPORTION]>`
 a|Optional normal range.
 
 h|*0..1 +
 (redefined)*
-|*other_reference_ranges*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION]>>`
+|*other_reference_ranges*: `xref:{class_list}[List]<xref:{class_reference_range}[REFERENCE_RANGE]<xref:{class_dv_proportion}[DV_PROPORTION]>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
 
 h|*Functions*
@@ -49,18 +49,18 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*magnitude* (): `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+|*magnitude* (): `xref:{class_real}[Real]`
 a|Effective magnitude represented by ratio.
 
 h|*1..1*
-|*is_integral* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_integral* (): `xref:{class_boolean}[Boolean]`
 a|True if the numerator and denominator values are integers, i.e. if the precision is 0.
 
 h|*1..1 +
 (redefined)*
 |*infix =* ( +
-source: `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION]`
+source: `xref:{class_dv_proportion}[DV_PROPORTION][1]` +
+): `xref:{class_dv_proportion}[DV_PROPORTION]`
 a|Assignment operator
 
 h|*Invariants*

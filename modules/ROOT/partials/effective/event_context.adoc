@@ -4,100 +4,100 @@
 
 2+a|Documents the context information of a healthcare event involving the subject of care and the health system. The context information recorded here are independent of the attributes recorded in the version audit, which document the  system interaction  context, i.e. the context of a user interacting with the health record system. Healthcare events include patient contacts, and any other business activity, such as pathology investigations which take place on behalf of the patient.
 
-2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]
+2+|Inherits: xref:{class_any}[Any], xref:{class_pathable}[PATHABLE]
 
 2+h|*Attributes*
 
-|*start_time*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [1..1]
+|*start_time*: `xref:{class_dv_date_time}[DV_DATE_TIME]` [1..1]
 a|Start time of the clinical session or other kind of event during which a provider performs a service of any kind for the patient.
 
-|*end_time*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [0..1]
+|*end_time*: `xref:{class_dv_date_time}[DV_DATE_TIME]` [0..1]
 a|Optional end time of the clinical session.
 
-|*location*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+|*location*: `xref:{class_string}[String]` [0..1]
 a|The actual location where the session occurred, e.g. 'microbiology lab 2', 'home', 'ward A3'  and so on.
 
-|*setting*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+|*setting*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]` [1..1]
 a|The setting in which the clinical session took place. Coded using the openEHR Terminology,  setting  group.
 
-|*other_context*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]` [0..1]
+|*other_context*: `xref:{class_item_structure}[ITEM_STRUCTURE]` [0..1]
 a|Other optional context which will be archetyped.
 
-|*health_care_facility*: `xref:RM:common:generic_package.adoc#_party_identified_class[PARTY_IDENTIFIED]` [0..1]
+|*health_care_facility*: `xref:{class_party_identified}[PARTY_IDENTIFIED]` [0..1]
 a|The health care facility under whose care the event took place. This is the most specific workgroup or delivery unit within a care delivery enterprise that has an official identifier in the health system, and can be used to ensure medico-legal accountability.
 
-|*participations*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:common:generic_package.adoc#_participation_class[PARTICIPATION]>` [0..1]
+|*participations*: `xref:{class_list}[List]<xref:{class_participation}[PARTICIPATION]>` [0..1]
 a|Parties involved in the healthcare event. These would normally include the physician(s) and often the patient (but not the latter if the clinical session is a pathology test for example).
 
 2+h|*Functions*
 
 |_(abstract)_ *is_equal* ( +
-other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+other: `xref:{class_any}[Any][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|Value equality. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 |*infix =* ( +
-other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+other: `xref:{class_any}[Any][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|Reference equality. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 .Parameters +
 [horizontal]
 `_other_`:: Reference equality.
 
 |*instance_of* ( +
-a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
-): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a_type: `xref:{class_string}[String][1]` +
+): `xref:{class_any}[Any]` [1..1]
 a|Create new instance of a type. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 |*type_of* ( +
-an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+an_object: `xref:{class_any}[Any][1]` +
+): `xref:{class_string}[String]` [1..1]
 a|Type name of an object as a string. May include generic parameters, as in "Interval<Time>". +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
-|*parent* (): `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]` [1..1]
+|*parent* (): `xref:{class_pathable}[PATHABLE]` [1..1]
 a|Parent of this node in a compositional hierarchy. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*item_at_path* ( +
-a_path: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
-): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` +
+a_path: `xref:{class_string}[String][1]` +
+): `xref:{class_any}[Any]` +
  +
 __Pre__: `path_unique (a_path)` [1..1]
 a|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*items_at_path* ( +
-a_path: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
-): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:foundation_types:overview.adoc#_any_class[Any]>` [0..1]
+a_path: `xref:{class_string}[String][1]` +
+): `xref:{class_list}[List]<xref:{class_any}[Any]>` [0..1]
 a|List of items corresponding to a non-unique path. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*path_exists* ( +
-a_path: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+a_path: `xref:{class_string}[String][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Pre__: `not a_path.is_empty` [1..1]
 a|True if the path exists in the data with respect to the current item. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*path_unique* ( +
-a_path: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+a_path: `xref:{class_string}[String][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Pre__: `path_exists (a_path)` [1..1]
 a|True if the path corresponds to a single item in the data. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*path_of_item* ( +
-a_loc: `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a_loc: `xref:{class_pathable}[PATHABLE][1]` +
+): `xref:{class_string}[String]` [1..1]
 a|The path to an item relative to the root of this archetyped structure. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 2+h|*Invariants*
 
