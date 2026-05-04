@@ -7,7 +7,7 @@ h|*Description*
 2+a|A specialisation of DV_ENCAPSULATED for audiovisual and biosignal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of DV_ENCAPSULATED.
 
 h|*Inherit*
-2+|`xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]`
+2+|`xref:{class_dv_encapsulated}[DV_ENCAPSULATED]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -18,7 +18,7 @@ h|*0..1*
 a|Text to display in lieu of multimedia display/replay.
 
 h|*0..1*
-|*uri*: `xref:RM:data_types:uri_package.adoc#_dv_uri_class[DV_URI]`
+|*uri*: `xref:{class_dv_uri}[DV_URI]`
 a|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference.
 
 h|*0..1*
@@ -26,11 +26,11 @@ h|*0..1*
 a|The actual data found at uri, if supplied inline.
 
 h|*1..1*
-|*media_type*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*media_type*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set).
 
 h|*0..1*
-|*compression_algorithm*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*compression_algorithm*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Compression type, a coded value from the openEHR  Integrity check  code set. Void means no compression.
 
 h|*0..1*
@@ -38,11 +38,11 @@ h|*0..1*
 a|Binary cryptographic integrity checksum.
 
 h|*0..1*
-|*integrity_check_algorithm*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*integrity_check_algorithm*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Type of integrity check, a coded value from the openEHR  Integrity check  code set.
 
 h|*0..1*
-|*thumbnail*: `xref:RM:data_types:encapsulated_package.adoc#_dv_multimedia_class[DV_MULTIMEDIA]`
+|*thumbnail*: `xref:{class_dv_multimedia}[DV_MULTIMEDIA]`
 a|The thumbnail for this item, if one exists; mainly for graphics formats.
 
 h|*Functions*

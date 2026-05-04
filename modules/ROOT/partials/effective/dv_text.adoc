@@ -8,24 +8,24 @@ A DV_TEXT can be  coded  by adding mappings to it.
 
 Fragments of text, whether coded or not are used on their own as values, or to make up larger tracts of text which may be marked up in some way, eventually going to make up paragraphs.
 
-2+|Inherits: xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE]
+2+|Inherits: xref:{class_basic_definitions}[BASIC_DEFINITIONS], xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS], xref:{class_data_value}[DATA_VALUE]
 
 2+h|*Constants*
 
 |*CR*: `link:/classes/Character[Character] {nbsp}={nbsp}'\015'` [1..1]
 a|Carriage return character. +
-_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
 |*LF*: `link:/classes/Character[Character] {nbsp}={nbsp}'\012'` [1..1]
 a|Line feed character. +
-_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
 2+h|*Attributes*
 
 |*value*: `link:/classes/String[String] ` [1..1]
 a|Displayable rendition of the item, regardless of its underlying structure. For DV_CODED_TEXT, this is the rubric of the complete term as provided by the terminology service. No carriage returns, line feeds, or other non-printing characters permitted.
 
-|*hyperlink*: `xref:RM:data_types:uri_package.adoc#_dv_uri_class[DV_URI]` [0..1]
+|*hyperlink*: `xref:{class_dv_uri}[DV_URI]` [0..1]
 a|Optional link sitting behind a section of plain text or coded term item.
 
 |*formatting*: `link:/classes/String[String] ` [0..1]
@@ -33,13 +33,13 @@ a|A format string of the form  name:value; name:value... , e.g. "font-weight : b
 
 Values taken from W3C CSS2 properties lists  back-ground  and  font .
 
-|*mappings*: `link:/classes/List[List] <xref:RM:data_types:text_package.adoc#_term_mapping_class[TERM_MAPPING]>` [0..1]
+|*mappings*: `link:/classes/List[List] <xref:{class_term_mapping}[TERM_MAPPING]>` [0..1]
 a|Terms from other terminologies most closely matching this term, typically used where the originator (e.g. pathology lab) of information uses a local terminology but also supplies one or more equivalents from well known terminologies (e.g. LOINC).
 
-|*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*language*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Optional indicator of the localised language in which the value is written. Coded from openEHR Code Set  languages . Only used when either the text object is in a different language from the enclosing ENTRY, or else the text object is being used outside of an ENTRY or other enclosing structure which indicates the language.
 
-|*encoding*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*encoding*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.
 
 2+h|*Invariants*

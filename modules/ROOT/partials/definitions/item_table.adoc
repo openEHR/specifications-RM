@@ -13,14 +13,14 @@ Used for representing any data which is logically a table of values, such as blo
 Misuse: Not to be used for time-based data, which should be represented with the temporal class HISTORY. The table may be empty.
 
 h|*Inherit*
-2+|`xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]`
+2+|`xref:{class_item_structure}[ITEM_STRUCTURE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*rows*: `xref:RM:data_structures:item_structure_package.adoc#_cluster_class[CLUSTER]`
+|*rows*: `xref:{class_cluster}[CLUSTER]`
 a|Physical representation of the table as a list of CLUSTERs, each containing the data of one row of the table.
 
 h|*Functions*
@@ -29,7 +29,7 @@ h|*Functions*
 
 h|*1..1 +
 (redefined)*
-|*as_hierarchy* (): `xref:RM:data_structures:item_structure_package.adoc#_cluster_class[CLUSTER]`
+|*as_hierarchy* (): `xref:{class_cluster}[CLUSTER]`
 a|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the CLUSTERs representing the columns of this table.
 
 h|*1..1*
@@ -41,17 +41,17 @@ h|*1..1*
 a|
 
 h|*0..1*
-|*row_names* (): `link:/classes/List[List] <xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]>`
+|*row_names* (): `link:/classes/List[List] <xref:{class_dv_text}[DV_TEXT]>`
 a|
 
 h|*0..1*
-|*column_names* (): `link:/classes/List[List] <xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]>`
+|*column_names* (): `link:/classes/List[List] <xref:{class_dv_text}[DV_TEXT]>`
 a|
 
 h|*1..1*
 |*ith_row* ( +
 i: `link:/classes/Integer[Integer] [1]` +
-): `xref:RM:data_structures:item_structure_package.adoc#_cluster_class[CLUSTER]`
+): `xref:{class_cluster}[CLUSTER]`
 a|
 
 h|*1..1*
@@ -69,7 +69,7 @@ a|
 h|*1..1*
 |*named_row* ( +
 a_key: `link:/classes/String[String] [1]` +
-): `xref:RM:data_structures:item_structure_package.adoc#_cluster_class[CLUSTER]`
+): `xref:{class_cluster}[CLUSTER]`
 a|
 
 h|*1..1*
@@ -81,14 +81,14 @@ a|
 h|*1..1*
 |*row_with_key* ( +
 keys: `link:/classes/List[List] <link:/classes/String[String] >` +
-): `xref:RM:data_structures:item_structure_package.adoc#_cluster_class[CLUSTER]`
+): `xref:{class_cluster}[CLUSTER]`
 a|
 
 h|*1..1*
 |*element_at_cell_ij* ( +
 i: `link:/classes/Any[Any] [1]`, +
 j: `link:/classes/Integer[Integer] [1]` +
-): `xref:RM:data_structures:item_structure_package.adoc#_element_class[ELEMENT]`
+): `xref:{class_element}[ELEMENT]`
 a|
 
 h|*Invariants*

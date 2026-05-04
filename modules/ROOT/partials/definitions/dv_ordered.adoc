@@ -9,22 +9,22 @@ h|*Description*
 Data value types which are to be used as limits in the DV_INTERVAL<T> class must inherit from this class, and implement the function is_strictly_comparable_to to ensure that instances compare meaningfully. For example, instances of DV_QUANTITY can only be compared if they measure the same kind of physical quantity.
 
 h|*Inherit*
-2+|`xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE]`, `link:/classes/Ordered[Ordered] `
+2+|`xref:{class_data_value}[DATA_VALUE]`, `link:/classes/Ordered[Ordered] `
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*normal_status*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*normal_status*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  normal status .
 
 h|*0..1*
-|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]`
+|*normal_range*: `xref:{class_dv_interval}[DV_INTERVAL]`
 a|Optional normal range.
 
 h|*0..1*
-|*other_reference_ranges*: `link:/classes/List[List] <xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]>>`
+|*other_reference_ranges*: `link:/classes/List[List] <xref:{class_reference_range}[REFERENCE_RANGE]<xref:{class_dv_ordered}[DV_ORDERED]>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
 
 h|*Functions*
@@ -34,7 +34,7 @@ h|*Functions*
 h|*1..1 +
 (abstract)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
+other: `xref:{class_dv_ordered}[DV_ORDERED][1]` +
 ): `link:/classes/Boolean[Boolean] `
 a|Test if two instances are strictly comparable.
 

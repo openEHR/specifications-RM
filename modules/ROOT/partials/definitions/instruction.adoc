@@ -9,26 +9,26 @@ h|*Description*
 Not to be used for plan items which are only specified in general terms.
 
 h|*Inherit*
-2+|`xref:RM:ehr:content_package.adoc#_care_entry_class[CARE_ENTRY]`
+2+|`xref:{class_care_entry}[CARE_ENTRY]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*narrative*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]`
+|*narrative*: `xref:{class_dv_text}[DV_TEXT]`
 a|Mandatory human-readable version of what the Instruction is about.
 
 h|*0..1*
-|*expiry_time*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]`
+|*expiry_time*: `xref:{class_dv_date_time}[DV_DATE_TIME]`
 a|Optional expiry date/time to assist determination of when an Instruction can be assumed to have expired. This helps prevent false listing of Instructions as Active when they clearly must have been terminated in some way or other.
 
 h|*0..1*
-|*wf_definition*: `xref:RM:data_types:encapsulated_package.adoc#_dv_parsable_class[DV_PARSABLE]`
+|*wf_definition*: `xref:{class_dv_parsable}[DV_PARSABLE]`
 a|Optional workflow engine executable expression of the Instruction.
 
 h|*0..1*
-|*activities*: `link:/classes/List[List] <xref:RM:ehr:content_package.adoc#_activity_class[ACTIVITY]>`
+|*activities*: `link:/classes/List[List] <xref:{class_activity}[ACTIVITY]>`
 a|List of all activities in Instruction.
 
 h|*Invariants*

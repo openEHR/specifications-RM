@@ -12,14 +12,14 @@ h|*Description*
 This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. \{neg, trace, +, ++, +++} are used for leucocytes, protein, nitrites etc; for non-haemolysed blood \{neg, trace, moderate}; for haemolysed blood small, moderate, large}.
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]`
+2+|`xref:{class_dv_ordered}[DV_ORDERED]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*symbol*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
+|*symbol*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]`
 a|Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  mild ,  moderate ,  severe , or even the same number series as the values, e.g.  1 ,  2 ,  3 . Codes come from archetype.
 
 h|*1..1*
@@ -31,14 +31,14 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*limits* (): `xref:RM:data_types:quantity_package.adoc#_dv_ordinal_class[DV_ORDINAL]`
+|*limits* (): `xref:{class_dv_ordinal}[DV_ORDINAL]`
 a|Limits of the ordinal enumeration, to allow comparison of an ordinal 
 value to its limits.
 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
+other: `xref:{class_dv_ordered}[DV_ORDERED][1]` +
 ): `link:/classes/Boolean[Boolean] ` +
  +
 __Post__: `symbol.is_comparable (other.symbol) implies Result`

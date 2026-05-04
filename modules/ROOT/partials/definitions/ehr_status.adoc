@@ -7,14 +7,14 @@ h|*Description*
 2+a|Single object per EHR giving various EHR-wide information.
 
 h|*Inherit*
-2+|`xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]`
+2+|`xref:{class_locatable}[LOCATABLE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*subject*: `xref:RM:common:generic_package.adoc#_party_self_class[PARTY_SELF]`
+|*subject*: `xref:{class_party_self}[PARTY_SELF]`
 a|The subject of this EHR. The external_ref attribute can be used to contain a direct reference to the subject in a demographic or identity service. Alternatively, the association between patients and their records may be done elsewhere for security reasons.
 
 h|*1..1*
@@ -26,7 +26,7 @@ h|*1..1*
 a|True if this EHR is allowed to be written to.
 
 h|*0..1*
-|*other_details*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]`
+|*other_details*: `xref:{class_item_structure}[ITEM_STRUCTURE]`
 a|Any other details of the EHR summary object, in the form of an archetyped Item_structure.
 
 h|*Invariants*

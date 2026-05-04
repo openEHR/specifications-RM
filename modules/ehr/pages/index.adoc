@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,38 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-stable]#{spec_status}#
+
+Core model of the openEHR Electronic Health Record. Specifies the top-level EHR structure, Composition as the unit of clinical documentation, and the entry hierarchy covering observations, evaluations, instructions, and actions. EHR_STATUS carries subject identity and access control metadata, while COMPOSITION represents a clinically committed unit of information contributed by a care episode. The entry hierarchy - OBSERVATION, EVALUATION, INSTRUCTION, ACTION - maps to the main clinical documentation intents and is the primary target of archetype constraints.
+
+== Purpose
+
+This document describes the openEHR EHR Information Model, which is a model of an interoperable EHR in the ISO RM/ODP information viewpoint. This model defines a logical EHR information architecture rather than just an architecture for communication of EHR extracts or documents between EHR systems. The openEHR definition of the EHR Extract is given in the openEHR EHR_EXTRACT Information Model.
+
+The intended audience includes:
+
+* Standards bodies producing health informatics standards;
+* Academic groups using openEHR;
+* The open source healthcare community;
+* Solution vendors;
+* Medical informaticians and clinicians interested in health information.
+* Health data managers.
+
+== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The {openehr_overview}[openEHR Architecture Overview^].
+
+Related documents include:
+
+* The {openehr_rm_support}[openEHR Support Information Model^];
+* The {openehr_rm_data_types}[openEHR Data Types Information Model^];
+* The {openehr_rm_data_structures}[openEHR Data Structures Information Model^];
+* The {openehr_rm_common}[openEHR Common Information Model^].
+
+
+
 
 
 //
@@ -18,42 +51,13 @@
 //
 // --------------------------------------------- Preface -----------------------------------------------
 //
-== Acknowledgements
 
-The work reported in this paper has been funded in by the following organisations:
+== Feedback
 
-* University College London - Centre for Health Informatics and Multi-professional Education (CHIME);
-* Ocean Informatics; 
-* Distributed Systems Technology Centre (DSTC), under the Cooperative Research Centres Program through the Department of the Prime Minister and Cabinet of the Commonwealth Government of Australia.
+Feedback may be provided on the {openehr_rm_forum}[openEHR RM specifications forum^].
 
-Andrew Goodchild, senior research scientist at the DSTC, Brisbane provided valuable in-depth comments and insights on all aspects of the model during its early development.
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-Special thanks to Prof David Ingram, head of CHIME, who provided a vision and collegial working environment ever since the days of GEHR (1992).
-
-=== Trademarks
-
-* 'openEHR' is a trademark of the openEHR Foundation
-* 'Java' is a registered trademark of Oracle Corporation
-* 'Microsoft' and '.Net' are trademarks of the Microsoft Corporation
-* 'CORBA' is a trademark of the Object Management Group
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
 
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
-
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-:sectanchors:
-:numbered:
-
-
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-:sectnums!:
-== References
-
-bibliography::[]

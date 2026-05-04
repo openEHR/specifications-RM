@@ -4,50 +4,50 @@
 
 2+a|A specialisation of DV_ENCAPSULATED for audiovisual and biosignal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of DV_ENCAPSULATED.
 
-2+|Inherits: xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]
+2+|Inherits: xref:{class_basic_definitions}[BASIC_DEFINITIONS], xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS], xref:{class_data_value}[DATA_VALUE], xref:{class_dv_encapsulated}[DV_ENCAPSULATED]
 
 2+h|*Constants*
 
 |*CR*: `link:/classes/Character[Character] {nbsp}={nbsp}'\015'` [1..1]
 a|Carriage return character. +
-_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
 |*LF*: `link:/classes/Character[Character] {nbsp}={nbsp}'\012'` [1..1]
 a|Line feed character. +
-_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
 2+h|*Attributes*
 
-|*charset*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*charset*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions. +
-_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
 
-|*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*language*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set  languages. +
-_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
 
 |*alternate_text*: `link:/classes/String[String] ` [0..1]
 a|Text to display in lieu of multimedia display/replay.
 
-|*uri*: `xref:RM:data_types:uri_package.adoc#_dv_uri_class[DV_URI]` [0..1]
+|*uri*: `xref:{class_dv_uri}[DV_URI]` [0..1]
 a|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference.
 
 |*data*: `link:/classes/Byte[Byte] ` [0..1]
 a|The actual data found at uri, if supplied inline.
 
-|*media_type*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+|*media_type*: `xref:{class_code_phrase}[CODE_PHRASE]` [1..1]
 a|Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set).
 
-|*compression_algorithm*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*compression_algorithm*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Compression type, a coded value from the openEHR  Integrity check  code set. Void means no compression.
 
 |*integrity_check*: `link:/classes/Byte[Byte] ` [0..1]
 a|Binary cryptographic integrity checksum.
 
-|*integrity_check_algorithm*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*integrity_check_algorithm*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Type of integrity check, a coded value from the openEHR  Integrity check  code set.
 
-|*thumbnail*: `xref:RM:data_types:encapsulated_package.adoc#_dv_multimedia_class[DV_MULTIMEDIA]` [0..1]
+|*thumbnail*: `xref:{class_dv_multimedia}[DV_MULTIMEDIA]` [0..1]
 a|The thumbnail for this item, if one exists; mainly for graphics formats.
 
 2+h|*Functions*
@@ -70,13 +70,13 @@ a|Computed from the value of the integrity_check_algorithm attribute: True if an
 2+h|*Invariants*
 
 2+a|__Size_valid__: `size >= 0` +
-_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
 
 2+a|__Language_valid__: `language /= Void implies code_set (Code_set_id_languages).has_code (language)` +
-_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
 
 2+a|__Charset_valid__: `charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)` +
-_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
 
 2+a|__Not_empty__: `is_inline or is_external`
 

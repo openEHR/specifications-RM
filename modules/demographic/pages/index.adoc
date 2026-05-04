@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,35 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-stable]#{spec_status}#
+
+Information model for parties and their relationships: persons, organisations, roles, identity types, contact details, and party relationships. Designed for use alongside or independently of the EHR. PARTY_SELF, PARTY_RELATED, and PARTY_IDENTIFIED provide progressively richer representations of subjects referenced in EHR entries. The model is intentionally generic, allowing it to serve as a standalone demographic service or to be referenced from within EHR content.
+
+== Purpose
+
+This document describes the architecture of the openEHR Demographic Information Model. The semantics are drawn from previous work in {openehr_gehr}[GEHR^], existing models in {iso_13606}[ISO 13606^] and the {hl7v3_rim}[HL7v3 RIM], and other work done in Australia.
+
+The intended audience includes:
+
+* Standards bodies producing health informatics standards;
+* Academic groups using openEHR;
+* The open source healthcare community;
+* Solution vendors;
+* Medical informaticians and clinicians interested in health information.
+
+== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The {openehr_overview}[openEHR Architecture Overview^].
+
+Other documents describing related models, include:
+
+* The {openehr_rm_support}[openEHR Support Information Model^];
+* The {openehr_rm_data_types}[openEHR Data Types Information Model^].
+
+
+
 
 
 //
@@ -18,33 +48,13 @@
 //
 // --------------------------------------------- Preface -----------------------------------------------
 //
-== Acknowledgements
 
-The work reported in this paper has been funded in by the following organisations:
+== Feedback
 
-* University College London - Centre for Health Informatics and Multi-professional Education (CHIME);
-* Ocean Informatics; 
-* Distributed Systems Technology Centre (DSTC), under the Cooperative Research Centres Program through the Department of the Prime Minister and Cabinet of the Commonwealth Government of Australia.
+Feedback may be provided on the {openehr_rm_forum}[openEHR RM specifications forum^].
 
-Special thanks to Prof David Ingram, head of CHIME, who provided a vision and collegial working environment ever since the days of GEHR (1992).
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
-
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-:sectanchors:
-:numbered:
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
 
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-:sectnums!:
-== References
-
-bibliography::[]

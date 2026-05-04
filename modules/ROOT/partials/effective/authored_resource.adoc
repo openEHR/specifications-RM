@@ -6,19 +6,19 @@
 
 2+h|*Attributes*
 
-|*original_language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+|*original_language*: `xref:{class_code_phrase}[CODE_PHRASE]` [1..1]
 a|Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. Language is relevant in both the description and ontology sections.
 
 |*is_controlled*: `link:/classes/Boolean[Boolean] ` [0..1]
 a|True if this resource is under any kind of change control (even file copying), in which case revision history is created.
 
-|*translations*: `link:/classes/List[List] <xref:RM:common:resource_package.adoc#_translation_details_class[TRANSLATION_DETAILS]>` [0..1]
+|*translations*: `link:/classes/List[List] <xref:{class_translation_details}[TRANSLATION_DETAILS]>` [0..1]
 a|List of details for each natural translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The original_language does not appear in this list.
 
-|*description*: `xref:RM:common:resource_package.adoc#_resource_description_class[RESOURCE_DESCRIPTION]` [0..1]
+|*description*: `xref:{class_resource_description}[RESOURCE_DESCRIPTION]` [0..1]
 a|Description and lifecycle information of the resource.
 
-|*revision_history*: `xref:RM:common:generic_package.adoc#_revision_history_class[REVISION_HISTORY]` [0..1]
+|*revision_history*: `xref:{class_revision_history}[REVISION_HISTORY]` [0..1]
 a|The revision history of the resource. Only required if is_controlled = True (avoids large revision histories for informal or private editing situations).
 
 2+h|*Functions*

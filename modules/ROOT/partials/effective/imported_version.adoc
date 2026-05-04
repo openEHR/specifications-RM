@@ -4,33 +4,33 @@
 
 2+a|Versions whose content is an ORIGINAL_VERSION copied from another location; this class inherits commit_audit and contribution from VERSION<T>, providing imported versions with their own audit trail and Contribution, distinct from those of the imported ORIGINAL_VERSION.
 
-2+|Inherits: xref:RM:common:change_control_package.adoc#_version_class[VERSION]
+2+|Inherits: xref:{class_version}[VERSION]
 
 2+h|*Attributes*
 
-|*contribution*: `xref:RM:support:identification_package.adoc#_object_ref_class[OBJECT_REF]` [1..1]
+|*contribution*: `xref:{class_object_ref}[OBJECT_REF]` [1..1]
 a|Contribution in which this version was added. +
-_Inherited from xref:RM:common:change_control_package.adoc#_version_class[VERSION]_
+_Inherited from xref:{class_version}[VERSION]_
 
 |*signature*: `link:/classes/String[String] ` [0..1]
 a|OpenPGP digital signature or digest of content committed in this Version. +
-_Inherited from xref:RM:common:change_control_package.adoc#_version_class[VERSION]_
+_Inherited from xref:{class_version}[VERSION]_
 
-|*commit_audit*: `xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]` [1..1]
+|*commit_audit*: `xref:{class_audit_details}[AUDIT_DETAILS]` [1..1]
 a|Audit trail corresponding to the committal of this version to the VERSIONED_OBJECT. +
-_Inherited from xref:RM:common:change_control_package.adoc#_version_class[VERSION]_
+_Inherited from xref:{class_version}[VERSION]_
 
-|*item*: `xref:RM:common:change_control_package.adoc#_original_version_class[ORIGINAL_VERSION]` [1..1]
+|*item*: `xref:{class_original_version}[ORIGINAL_VERSION]` [1..1]
 a|The ORIGINAL_VERSION object that was imported.
 
 2+h|*Functions*
 
-|*uid* (): `xref:RM:support:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]` +
+|*uid* (): `xref:{class_object_version_id}[OBJECT_VERSION_ID]` +
  +
 __Post__: `Result = item.uid` [1..1]
 a|Computed version of inheritance precursor, derived as item.uid.
 
-|*preceding_version_uid* (): `xref:RM:support:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]` +
+|*preceding_version_uid* (): `xref:{class_object_version_id}[OBJECT_VERSION_ID]` +
  +
 __Post__: `Result = item.preceding_version_uid` [1..1]
 a|Computed version of inheritance precursor, derived as item.preceding_version_uid.
@@ -38,31 +38,31 @@ a|Computed version of inheritance precursor, derived as item.preceding_version_u
 |*data* (): `T` [1..1]
 a|Original content of this Version.
 
-|*lifecycle_state* (): `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+|*lifecycle_state* (): `xref:{class_dv_coded_text}[DV_CODED_TEXT]` [1..1]
 a|Lifecycle state of the content item in wrapped ORIGINAL_VERSION, derived as item.lifecycle_state.
 
 |*canonical_form* (): `link:/classes/String[String] ` [1..1]
 a|Canonical form of Version object, created by serialising all attributes except 
 signature. +
-_Inherited from xref:RM:common:change_control_package.adoc#_version_class[VERSION]_
+_Inherited from xref:{class_version}[VERSION]_
 
-|*owner_id* (): `xref:RM:support:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]` [1..1]
+|*owner_id* (): `xref:{class_hier_object_id}[HIER_OBJECT_ID]` [1..1]
 a|Unique identifier of the owning VERSIONED_OBJECT. +
-_Inherited from xref:RM:common:change_control_package.adoc#_version_class[VERSION]_
+_Inherited from xref:{class_version}[VERSION]_
 
 |*is_branch* (): `link:/classes/Boolean[Boolean] ` [1..1]
 a|True if this Version represents a branch. Derived from uid attribute. +
-_Inherited from xref:RM:common:change_control_package.adoc#_version_class[VERSION]_
+_Inherited from xref:{class_version}[VERSION]_
 
 2+h|*Invariants*
 
 2+a|__Owner_id_valid__: `owner_id.value.is_equal (uid.object_id.value)` +
-_Inherited from xref:RM:common:change_control_package.adoc#_version_class[VERSION]_
+_Inherited from xref:{class_version}[VERSION]_
 
 2+a|__Preceding_version_uid_validity__: `uid.version_tree_id.is_first xor preceding_version_uid /= Void` +
-_Inherited from xref:RM:common:change_control_package.adoc#_version_class[VERSION]_
+_Inherited from xref:{class_version}[VERSION]_
 
 2+a|__Lifecycle_state_ valid__: `lifecycle_state /= Void and then terminology (Term_id_openehr).has_code_for_group_id (Group_id_version_lifecycle_state, lifecycle_state.defining_code)` +
-_Inherited from xref:RM:common:change_control_package.adoc#_version_class[VERSION]_
+_Inherited from xref:{class_version}[VERSION]_
 
 |===

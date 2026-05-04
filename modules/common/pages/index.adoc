@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,36 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-stable]#{spec_status}#
+
+Cross-cutting Reference Model constructs: the archetyped class hierarchy, entry metadata, feeder audit for legacy data, party references, change control, version containers, and directory structures. The LOCATABLE class and its archetyped subclass form the root of the constraint hierarchy that archetypes act upon, making this package central to understanding how archetypes bind to RM instances. The VERSIONED_OBJECT and VERSION classes implement an optimistic locking model for EHR content, supporting concurrent access and merge scenarios.
+
+== Purpose
+
+This document describes the architecture of the openEHR Common Reference Model, which contains patterns used by other openEHR reference models.
+
+The intended audience includes:
+
+* Standards bodies producing health informatics standards;
+* Academic groups using openEHR;
+* The open source healthcare community;
+* Solution vendors;
+* Medical informaticians and clinicians interested in health information.
+* Health data managers.
+
+== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The {openehr_overview}[openEHR Architecture Overview^];
+
+Related documents include:
+
+* The {openehr_rm_support}[openEHR Support Information Model^];
+* The {openehr_rm_data_types}[openEHR Data Types Information Model^].
+
+
+
 
 
 //
@@ -19,40 +50,12 @@
 // --------------------------------------------- Preface -----------------------------------------------
 //
 
+== Feedback
 
-== Acknowledgements
+Feedback may be provided on the {openehr_rm_forum}[openEHR RM specifications forum^].
 
-The work reported in this paper has been funded in by the following organisations:
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-* University College London - Centre for Health Informatics and Multi-professional Education (CHIME);
-* Ocean Informatics; 
-* Distributed Systems Technology Centre (DSTC), under the Cooperative Research Centres Program through the Department of the Prime Minister and Cabinet of the Commonwealth Government of Australia.
-
-Special thanks to Prof David Ingram, head of CHIME, who provided a vision and collegial working environment ever since the days of GEHR (1992).
-
-=== Trademarks
-
-* 'openEHR' is a trademark of the openEHR Foundation
-* 'Java' is a registered trademark of Oracle Corporation
-* 'Microsoft' is a trademark of the Microsoft Corporation
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
 
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
-
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-:sectanchors:
-:numbered:
-
-
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-:sectnums!:
-== References
-
-bibliography::[]

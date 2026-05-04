@@ -11,7 +11,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*contribution*: `xref:RM:support:identification_package.adoc#_object_ref_class[OBJECT_REF]`
+|*contribution*: `xref:{class_object_ref}[OBJECT_REF]`
 a|Contribution in which this version was added.
 
 h|*0..1*
@@ -19,7 +19,7 @@ h|*0..1*
 a|OpenPGP digital signature or digest of content committed in this Version.
 
 h|*1..1*
-|*commit_audit*: `xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]`
+|*commit_audit*: `xref:{class_audit_details}[AUDIT_DETAILS]`
 a|Audit trail corresponding to the committal of this version to the VERSIONED_OBJECT.
 
 h|*Functions*
@@ -28,12 +28,12 @@ h|*Functions*
 
 h|*1..1 +
 (abstract)*
-|*uid* (): `xref:RM:support:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]`
+|*uid* (): `xref:{class_object_version_id}[OBJECT_VERSION_ID]`
 a|Unique identifier of this version, containing owner_id, version_tree_id and creating_system_id.
 
 h|*1..1 +
 (abstract)*
-|*preceding_version_uid* (): `xref:RM:support:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]`
+|*preceding_version_uid* (): `xref:{class_object_version_id}[OBJECT_VERSION_ID]`
 a|Unique identifier of the version of which this version is a modification; Void if this is the first version.
 
 h|*1..1 +
@@ -43,7 +43,7 @@ a|Original content of this Version.
 
 h|*1..1 +
 (abstract)*
-|*lifecycle_state* (): `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
+|*lifecycle_state* (): `xref:{class_dv_coded_text}[DV_CODED_TEXT]`
 a|Lifecycle state of this version; coded by openEHR vocabulary version lifecycle state .
 
 h|*1..1*
@@ -52,7 +52,7 @@ a|Canonical form of Version object, created by serialising all attributes except
 signature.
 
 h|*1..1*
-|*owner_id* (): `xref:RM:support:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]`
+|*owner_id* (): `xref:{class_hier_object_id}[HIER_OBJECT_ID]`
 a|Unique identifier of the owning VERSIONED_OBJECT.
 
 h|*1..1*

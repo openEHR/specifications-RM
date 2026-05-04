@@ -6,34 +6,34 @@
 
 2+h|*Attributes*
 
-|*contribution*: `xref:RM:support:identification_package.adoc#_object_ref_class[OBJECT_REF]` [1..1]
+|*contribution*: `xref:{class_object_ref}[OBJECT_REF]` [1..1]
 a|Contribution in which this version was added.
 
 |*signature*: `link:/classes/String[String] ` [0..1]
 a|OpenPGP digital signature or digest of content committed in this Version.
 
-|*commit_audit*: `xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]` [1..1]
+|*commit_audit*: `xref:{class_audit_details}[AUDIT_DETAILS]` [1..1]
 a|Audit trail corresponding to the committal of this version to the VERSIONED_OBJECT.
 
 2+h|*Functions*
 
-|_(abstract)_ *uid* (): `xref:RM:support:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]` [1..1]
+|_(abstract)_ *uid* (): `xref:{class_object_version_id}[OBJECT_VERSION_ID]` [1..1]
 a|Unique identifier of this version, containing owner_id, version_tree_id and creating_system_id.
 
-|_(abstract)_ *preceding_version_uid* (): `xref:RM:support:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]` [1..1]
+|_(abstract)_ *preceding_version_uid* (): `xref:{class_object_version_id}[OBJECT_VERSION_ID]` [1..1]
 a|Unique identifier of the version of which this version is a modification; Void if this is the first version.
 
 |_(abstract)_ *data* (): `T` [1..1]
 a|Original content of this Version.
 
-|_(abstract)_ *lifecycle_state* (): `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+|_(abstract)_ *lifecycle_state* (): `xref:{class_dv_coded_text}[DV_CODED_TEXT]` [1..1]
 a|Lifecycle state of this version; coded by openEHR vocabulary version lifecycle state .
 
 |*canonical_form* (): `link:/classes/String[String] ` [1..1]
 a|Canonical form of Version object, created by serialising all attributes except 
 signature.
 
-|*owner_id* (): `xref:RM:support:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]` [1..1]
+|*owner_id* (): `xref:{class_hier_object_id}[HIER_OBJECT_ID]` [1..1]
 a|Unique identifier of the owning VERSIONED_OBJECT.
 
 |*is_branch* (): `link:/classes/Boolean[Boolean] ` [1..1]

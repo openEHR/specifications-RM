@@ -4,36 +4,36 @@
 
 2+a|Documents the context information of a healthcare event involving the subject of care and the health system. The context information recorded here are independent of the attributes recorded in the version audit, which document the  system interaction  context, i.e. the context of a user interacting with the health record system. Healthcare events include patient contacts, and any other business activity, such as pathology investigations which take place on behalf of the patient.
 
-2+|Inherits: xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]
+2+|Inherits: xref:{class_pathable}[PATHABLE]
 
 2+h|*Attributes*
 
-|*start_time*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [1..1]
+|*start_time*: `xref:{class_dv_date_time}[DV_DATE_TIME]` [1..1]
 a|Start time of the clinical session or other kind of event during which a provider performs a service of any kind for the patient.
 
-|*end_time*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [0..1]
+|*end_time*: `xref:{class_dv_date_time}[DV_DATE_TIME]` [0..1]
 a|Optional end time of the clinical session.
 
 |*location*: `link:/classes/String[String] ` [0..1]
 a|The actual location where the session occurred, e.g. 'microbiology lab 2', 'home', 'ward A3'  and so on.
 
-|*setting*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+|*setting*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]` [1..1]
 a|The setting in which the clinical session took place. Coded using the openEHR Terminology,  setting  group.
 
-|*other_context*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]` [0..1]
+|*other_context*: `xref:{class_item_structure}[ITEM_STRUCTURE]` [0..1]
 a|Other optional context which will be archetyped.
 
-|*health_care_facility*: `xref:RM:common:generic_package.adoc#_party_identified_class[PARTY_IDENTIFIED]` [0..1]
+|*health_care_facility*: `xref:{class_party_identified}[PARTY_IDENTIFIED]` [0..1]
 a|The health care facility under whose care the event took place. This is the most specific workgroup or delivery unit within a care delivery enterprise that has an official identifier in the health system, and can be used to ensure medico-legal accountability.
 
-|*participations*: `link:/classes/List[List] <xref:RM:common:generic_package.adoc#_participation_class[PARTICIPATION]>` [0..1]
+|*participations*: `link:/classes/List[List] <xref:{class_participation}[PARTICIPATION]>` [0..1]
 a|Parties involved in the healthcare event. These would normally include the physician(s) and often the patient (but not the latter if the clinical session is a pathology test for example).
 
 2+h|*Functions*
 
-|*parent* (): `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]` [1..1]
+|*parent* (): `xref:{class_pathable}[PATHABLE]` [1..1]
 a|Parent of this node in a compositional hierarchy. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*item_at_path* ( +
 a_path: `link:/classes/String[String] [1]` +
@@ -41,13 +41,13 @@ a_path: `link:/classes/String[String] [1]` +
  +
 __Pre__: `path_unique (a_path)` [1..1]
 a|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*items_at_path* ( +
 a_path: `link:/classes/String[String] [1]` +
 ): `link:/classes/List[List] <link:/classes/Any[Any] >` [0..1]
 a|List of items corresponding to a non-unique path. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*path_exists* ( +
 a_path: `link:/classes/String[String] [1]` +
@@ -55,7 +55,7 @@ a_path: `link:/classes/String[String] [1]` +
  +
 __Pre__: `not a_path.is_empty` [1..1]
 a|True if the path exists in the data with respect to the current item. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*path_unique* ( +
 a_path: `link:/classes/String[String] [1]` +
@@ -63,13 +63,13 @@ a_path: `link:/classes/String[String] [1]` +
  +
 __Pre__: `path_exists (a_path)` [1..1]
 a|True if the path corresponds to a single item in the data. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*path_of_item* ( +
-a_loc: `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE][1]` +
+a_loc: `xref:{class_pathable}[PATHABLE][1]` +
 ): `link:/classes/String[String] ` [1..1]
 a|The path to an item relative to the root of this archetyped structure. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 2+h|*Invariants*
 

@@ -9,31 +9,31 @@ Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary
  
 Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) “6/24” in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations.
 
-2+|Inherits: link:/classes/Integer[Integer] , xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:RM:support:definition_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], link:/classes/Ordered[Ordered] , xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED], xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED], xref:RM:data_types:quantity_package.adoc#_proportion_kind_enumeration[PROPORTION_KIND], xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]
+2+|Inherits: link:/classes/Integer[Integer] , xref:{class_proportion_kind}[PROPORTION_KIND], xref:{class_dv_amount}[DV_AMOUNT]
 
 2+h|*Constants*
 
 |*CR*: `link:/classes/Character[Character] {nbsp}={nbsp}'\015'` [1..1]
 a|Carriage return character. +
-_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
 |*LF*: `link:/classes/Character[Character] {nbsp}={nbsp}'\012'` [1..1]
 a|Line feed character. +
-_Inherited from xref:RM:support:definition_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
 2+h|*Attributes*
 
-|*normal_status*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*normal_status*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  normal status . +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
-|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]` [0..1]
+|*normal_range*: `xref:{class_dv_interval}[DV_INTERVAL]` [0..1]
 a|Optional normal range. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
-|*other_reference_ranges*: `link:/classes/List[List] <xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]>>` [0..1]
+|*other_reference_ranges*: `link:/classes/List[List] <xref:{class_reference_range}[REFERENCE_RANGE]<xref:{class_dv_ordered}[DV_ORDERED]>>` [0..1]
 a|Optional tagged other reference ranges for this value in its particular measurement context. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
 |*magnitude_status*: `link:/classes/String[String] ` [0..1]
 a|Optional status of magnitude with values: 
@@ -46,17 +46,17 @@ a|Optional status of magnitude with values:
 * ~   :   value is approximately magnitude 
 
 If not present, meaning is  = . +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
+_Inherited from xref:{class_dv_quantified}[DV_QUANTIFIED]_
 
 |*accuracy*: `link:/classes/Real[Real] ` [0..1]
 a|Accuracy of measurement, expressed either as a half-range percent value (accuracy_is_percent = True) or a half-range quantity. A value of 0 means that accuracy is 100%, i.e. no error.
 
 A value of unknown_accuracy_value means that accuracy was not recorded. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]_
+_Inherited from xref:{class_dv_amount}[DV_AMOUNT]_
 
 |*accuracy_is_percent*: `link:/classes/Boolean[Boolean] ` [0..1]
 a|If True, indicates that when this object was created, accuracy was recorded as a percent value; if False, as an absolute quantity value. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]_
+_Inherited from xref:{class_dv_amount}[DV_AMOUNT]_
 
 |*numerator*: `link:/classes/Real[Real] ` [1..1]
 a|Numerator of ratio
@@ -76,17 +76,17 @@ a|Precision  to  which  the  numerator and denominator values of  the  proportio
 nq: `link:/classes/Integer[Integer] [1]` +
 ): `link:/classes/Boolean[Boolean] ` [1..1]
 a|True if n is one of the defined types. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_proportion_kind_enumeration[PROPORTION_KIND]_
+_Inherited from xref:{class_proportion_kind}[PROPORTION_KIND]_
 
 |_(abstract)_ *is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
+other: `xref:{class_dv_ordered}[DV_ORDERED][1]` +
 ): `link:/classes/Boolean[Boolean] ` [1..1]
 a|Test if two instances are strictly comparable. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
 |*is_simple* (): `link:/classes/Boolean[Boolean] ` [1..1]
 a|True if this quantity has no reference ranges. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
 |*is_normal* (): `link:/classes/Boolean[Boolean] ` +
  +
@@ -95,53 +95,53 @@ __Pre__: `normal_range /= Void or normal_status /= Void` +
 __Post_range__: `normal_range /= Void implies Result = normal_range.has (self)` +
 __Post_status__: `normal_status /= Void implies normal_status.code_string.is_equal (“N”)` [1..1]
 a|Value is in the normal range, determined by comparison of the value to the normal_range if present, or by the normal_status marker if present. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
 |_(abstract)_ *infix <* ( +
 other: `link:/classes/Ordered[Ordered] [1]` +
 ): `link:/classes/Boolean[Boolean] ` [1..1]
 a| +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
 |*valid_magnitude_status* (): `link:/classes/Boolean[Boolean] ` +
  +
 __Post__: `Result = s.is_equal (“=”) or s.is_equal (“<”) or s.is_equal (“>”) or s.is_equal (“\<=”) or s.is_equal (“>=”) or s.is_equal (“~”)` [1..1]
 a|Test whether a string value is one of the valid values for the magnitude_status attribute. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
+_Inherited from xref:{class_dv_quantified}[DV_QUANTIFIED]_
 
 |*magnitude* (): `link:/classes/Real[Real] ` [1..1]
 a|Effective magnitude represented by ratio.
 
 |*accuracy_unknown* (): `link:/classes/Boolean[Boolean] ` [1..1]
 a|True if accuracy is not known, e.g. due to not being recorded or discernable. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
+_Inherited from xref:{class_dv_quantified}[DV_QUANTIFIED]_
 
 |*valid_percentage* ( +
 number: `link:/classes/Ordered_Numeric[Ordered_Numeric] [1]` +
 ): `link:/classes/Boolean[Boolean] ` [1..1]
 a|Test whether a number is a valid percentage, i.e. between 0 and 100. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]_
+_Inherited from xref:{class_dv_amount}[DV_AMOUNT]_
 
 |*infix =* ( +
-source: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]` [1..1]
+source: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
+): `xref:{class_dv_amount}[DV_AMOUNT]` [1..1]
 a| +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]_
+_Inherited from xref:{class_dv_amount}[DV_AMOUNT]_
 
 |*infix +* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]` [1..1]
+other: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
+): `xref:{class_dv_amount}[DV_AMOUNT]` [1..1]
 a|Sum of this quantity and another whose formal type must be the difference type of this quantity. The value of accuracy in the result is either:
 
 * the sum of the accuracies of the operands, if both present, or;
 *both operand accuracies are unknown_accuracy_value.
 
 If the accuracy value is a percentage in one operand and not in the other, the form in the result is that of the larger operand. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]_
+_Inherited from xref:{class_dv_amount}[DV_AMOUNT]_
 
 |*infix -* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]` [1..1]
+other: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
+): `xref:{class_dv_amount}[DV_AMOUNT]` [1..1]
 a|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
 
 The value of accuracy in the result is either:
@@ -150,42 +150,42 @@ The value of accuracy in the result is either:
 * unknown, if either or both operand accuracies are unknown.
 
 If the accuracy value is a percentage in one operand and not in the other, the form in the result is that of the larger operand. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]_
+_Inherited from xref:{class_dv_amount}[DV_AMOUNT]_
 
-|*prefix -* (): `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]` [1..1]
+|*prefix -* (): `xref:{class_dv_amount}[DV_AMOUNT]` [1..1]
 a|Negated version of current object, such as used for representing a difference, e.g. a weight loss. +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]_
+_Inherited from xref:{class_dv_amount}[DV_AMOUNT]_
 
 |*is_integral* (): `link:/classes/Boolean[Boolean] ` [1..1]
 a|True if the numerator and denominator values are integers, i.e. if the precision is 0.
 
 |*operator=* ( +
-source: `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION]` [1..1]
+source: `xref:{class_dv_proportion}[DV_PROPORTION][1]` +
+): `xref:{class_dv_proportion}[DV_PROPORTION]` [1..1]
 a|Assignment operator
 
 2+h|*Invariants*
 
 2+a|__Other_reference_ranges_validity__: `other_reference_ranges /= Void implies not other_reference_ranges.is_empty` +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
 2+a|__Is_simple_validity__: `(normal_range = Void and other_reference_ranges = Void) implies is_simple` +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
 2+a|__Normal_status_validity__: `normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)` +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
 2+a|__Normal_range_and_status_consistency__: `(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))` +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
 
 2+a|__Magnitude_status_valid__: `magnitude_status /= Void implies valid_magnitude_status (magnitude_status)` +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
+_Inherited from xref:{class_dv_quantified}[DV_QUANTIFIED]_
 
 2+a|__Accuracy_is_percent_validity__: `accuracy = 0 implies not accuracy_is_percent` +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]_
+_Inherited from xref:{class_dv_amount}[DV_AMOUNT]_
 
 2+a|__Accuracy_validity__: `accuracy_is_percent implies valid_percentage (accuracy)` +
-_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]_
+_Inherited from xref:{class_dv_amount}[DV_AMOUNT]_
 
 2+a|__Type_validity__: `valid_proportion_kind (type)`
 

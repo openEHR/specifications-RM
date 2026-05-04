@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,31 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-stable]#{spec_status}#
+
+Structures for incorporating legacy or non-archetyped clinical content into an openEHR EHR. Provides a bridge representation enabling incremental migration of existing data from external systems. The GENERIC_ENTRY class carries data that cannot yet be expressed in archetypes, allowing legacy content to coexist with fully archetyped data in the same EHR. This approach supports phased migration strategies where systems incrementally replace legacy data representations with properly constrained archetype-based content.
+
+== Purpose
+
+This document describes the architecture of the openEHR Integration Information Model, designed for use in legacy and other integration situations.
+
+The intended audience includes:
+
+* Standards bodies producing health informatics standards;
+* Academic groups using openEHR;
+* The open source healthcare community;
+* Solution vendors;
+* Medical informaticians and clinicians interested in health information.
+* Health data managers.
+
+== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The {openehr_overview}[openEHR Architecture Overview^].
+
+
+
 
 
 //
@@ -19,30 +45,12 @@
 // --------------------------------------------- Preface -----------------------------------------------
 //
 
+== Feedback
 
-== Acknowledgements
+Feedback may be provided on the {openehr_rm_forum}[openEHR RM specifications forum^].
 
-The work reported in this paper has been funded in by the following organisations:
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-* University College London - Centre for Health Informatics and Multi-professional Education (CHIME);
-* Ocean Informatics; 
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
-Special thanks to Prof David Ingram, head of CHIME, who provided a vision and collegial working environment ever since the days of GEHR (1992).
 
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
-
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-:sectanchors:
-:numbered:
-
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-//:sectnums!:
-//== References
-//bibliography::[]

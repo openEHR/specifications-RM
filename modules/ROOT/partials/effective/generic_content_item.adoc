@@ -4,52 +4,52 @@
 
 2+a|Single item in generic extract, designed for 13606 and CDA data.
 
-2+|Inherits: xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE], xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE], xref:RM:ehr_extract:common_package.adoc#_extract_item_class[EXTRACT_ITEM], xref:RM:ehr_extract:common_package.adoc#_extract_content_item_class[EXTRACT_CONTENT_ITEM]
+2+|Inherits: xref:{class_pathable}[PATHABLE], xref:{class_locatable}[LOCATABLE], xref:{class_extract_item}[EXTRACT_ITEM], xref:{class_extract_content_item}[EXTRACT_CONTENT_ITEM]
 
 2+h|*Attributes*
 
-|*name*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
+|*name*: `xref:{class_dv_text}[DV_TEXT]` [1..1]
 a|Runtime name of this fragment, used to build runtime paths. This is the term provided via a clinical application or batch process to name this EHR construct: its retention in the EHR faithfully preserves the original label by which this entry was known to end users. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+_Inherited from xref:{class_locatable}[LOCATABLE]_
 
 |*archetype_node_id*: `link:/classes/String[String] ` [1..1]
 a|Design-time archetype id of this node taken from its generating archetype; used to build archetype paths. Always in the form of an  at  code, e.g.  at0005 . This value enables a "standardised" name for this node to be generated, by referring to the generating archetype local ontology. 
 
 At an archetype root point, the value of this attribute is always the stringified form of the archetype_id found in the archetype_details object. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+_Inherited from xref:{class_locatable}[LOCATABLE]_
 
-|*uid*: `xref:RM:support:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]` [1..1]
+|*uid*: `xref:{class_hier_object_id}[HIER_OBJECT_ID]` [1..1]
 a|Unique id of this Extract item; used for all referencing from elsewhere in Extract, including from Extract Folders. +
-_Inherited from xref:RM:ehr_extract:common_package.adoc#_extract_content_item_class[EXTRACT_CONTENT_ITEM]_
+_Inherited from xref:{class_extract_content_item}[EXTRACT_CONTENT_ITEM]_
 
-|*links*: `link:/classes/List[List] <xref:RM:common:archetyped_package.adoc#_link_class[LINK]>` [0..1]
+|*links*: `link:/classes/List[List] <xref:{class_link}[LINK]>` [0..1]
 a|Links to other archetyped structures (data whose root object inherits from ARCHETYPED, such as ENTRY, SECTION and so on). Links may be to structures in other compositions. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+_Inherited from xref:{class_locatable}[LOCATABLE]_
 
-|*archetype_details*: `xref:RM:common:archetyped_package.adoc#_archetyped_class[ARCHETYPED]` [0..1]
+|*archetype_details*: `xref:{class_archetyped}[ARCHETYPED]` [0..1]
 a|Details of archetyping used on this node. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+_Inherited from xref:{class_locatable}[LOCATABLE]_
 
-|*feeder_audit*: `xref:RM:common:archetyped_package.adoc#_feeder_audit_class[FEEDER_AUDIT]` [0..1]
+|*feeder_audit*: `xref:{class_feeder_audit}[FEEDER_AUDIT]` [0..1]
 a|Audit trail from non-openEHR system of original commit of information forming the content of this node, or from a conversion gateway which has synthesised this node. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+_Inherited from xref:{class_locatable}[LOCATABLE]_
 
 |*is_primary*: `link:/classes/Boolean[Boolean] ` [1..1]
 a|True if the content item carried in this container was part of the primary set for the Extract, i.e. not added due to link-following. +
-_Inherited from xref:RM:ehr_extract:common_package.adoc#_extract_content_item_class[EXTRACT_CONTENT_ITEM]_
+_Inherited from xref:{class_extract_content_item}[EXTRACT_CONTENT_ITEM]_
 
 |*is_changed*: `link:/classes/Boolean[Boolean] ` [0..1]
 a|True if the content item carried in this container is any kind of change since last send, in repeat sending situations. +
-_Inherited from xref:RM:ehr_extract:common_package.adoc#_extract_content_item_class[EXTRACT_CONTENT_ITEM]_
+_Inherited from xref:{class_extract_content_item}[EXTRACT_CONTENT_ITEM]_
 
 |*is_masked*: `link:/classes/Boolean[Boolean] ` [0..1]
 a|True if the content of this item has not been included due to insufficient access rights of requestor. +
-_Inherited from xref:RM:ehr_extract:common_package.adoc#_extract_content_item_class[EXTRACT_CONTENT_ITEM]_
+_Inherited from xref:{class_extract_content_item}[EXTRACT_CONTENT_ITEM]_
 
-|*item*: `xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]` [0..1]
+|*item*: `xref:{class_locatable}[LOCATABLE]` [0..1]
 a|Content object.
 
-|*item_type*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
+|*item_type*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]` [0..1]
 a|Identifier of model or schema used to create the content.
 
 |*item_type_version*: `link:/classes/String[String] ` [0..1]
@@ -67,7 +67,7 @@ a|Reference to a demographic entity elsewhere in this Extract representing an au
 |*authorisation_time*: `link:/classes/Iso8601_date_time[Iso8601_date_time] ` [0..1]
 a|Time of authorisation of this item version on the original system where relevant.
 
-|*item_status*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
+|*item_status*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]` [0..1]
 a|Coded lifecycle status of the item.
 
 |*version_id*: `link:/classes/String[String] ` [0..1]
@@ -84,9 +84,9 @@ a|Other details about the content item.
 
 2+h|*Functions*
 
-|*parent* (): `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]` [1..1]
+|*parent* (): `xref:{class_pathable}[PATHABLE]` [1..1]
 a|Parent of this node in a compositional hierarchy. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*item_at_path* ( +
 a_path: `link:/classes/String[String] [1]` +
@@ -94,13 +94,13 @@ a_path: `link:/classes/String[String] [1]` +
  +
 __Pre__: `path_unique (a_path)` [1..1]
 a|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*items_at_path* ( +
 a_path: `link:/classes/String[String] [1]` +
 ): `link:/classes/List[List] <link:/classes/Any[Any] >` [0..1]
 a|List of items corresponding to a non-unique path. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*path_exists* ( +
 a_path: `link:/classes/String[String] [1]` +
@@ -108,7 +108,7 @@ a_path: `link:/classes/String[String] [1]` +
  +
 __Pre__: `not a_path.is_empty` [1..1]
 a|True if the path exists in the data with respect to the current item. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*path_unique* ( +
 a_path: `link:/classes/String[String] [1]` +
@@ -116,34 +116,34 @@ a_path: `link:/classes/String[String] [1]` +
  +
 __Pre__: `path_exists (a_path)` [1..1]
 a|True if the path corresponds to a single item in the data. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
 |*path_of_item* ( +
-a_loc: `xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE][1]` +
+a_loc: `xref:{class_pathable}[PATHABLE][1]` +
 ): `link:/classes/String[String] ` [1..1]
 a|The path to an item relative to the root of this archetyped structure. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
+_Inherited from xref:{class_pathable}[PATHABLE]_
 
-|*concept* (): `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
+|*concept* (): `xref:{class_dv_text}[DV_TEXT]` [1..1]
 a|Clinical concept of the archetype as a whole (= derived from the archetype_node_id' of the root node) +
-_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+_Inherited from xref:{class_locatable}[LOCATABLE]_
 
 |*is_archetype_root* (): `link:/classes/Boolean[Boolean] ` [1..1]
 a|True if this node is the root of an archetyped structure. +
-_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+_Inherited from xref:{class_locatable}[LOCATABLE]_
 
 2+h|*Invariants*
 
 2+a|__Links_valid__: `links /= Void implies not links.is_empty` +
-_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+_Inherited from xref:{class_locatable}[LOCATABLE]_
 
 2+a|__Archetyped_valid__: `is_archetype_root xor archetype_details = Void` +
-_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+_Inherited from xref:{class_locatable}[LOCATABLE]_
 
 2+a|__Archetype_node_id_valid__: `not archetype_node_id.is_empty` +
-_Inherited from xref:RM:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
+_Inherited from xref:{class_locatable}[LOCATABLE]_
 
 2+a|__Item_validity__: `is_masked xor item /= Void` +
-_Inherited from xref:RM:ehr_extract:common_package.adoc#_extract_content_item_class[EXTRACT_CONTENT_ITEM]_
+_Inherited from xref:{class_extract_content_item}[EXTRACT_CONTENT_ITEM]_
 
 |===

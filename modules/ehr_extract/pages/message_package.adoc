@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = The Message package
 
 == Requirements
@@ -16,7 +18,7 @@ the UML diagram below.
 
 [.text-center]
 .rm.message Package
-image::{uml_diagrams_uri}/RM-ehr_extract.message.svg[id=rm__extract_message, align="center"]
+image::ROOT:uml/RM-ehr_extract.message.svg[id=rm__extract_message, align="center"]
 
 A new message is required for each transmission, even if the payload was created once and is retransmitted
 multiple times.
@@ -36,6 +38,6 @@ Protection against malicious modification can be provided by encryption.
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/addressed_message.adoc[]
+include::ROOT:partial$classes/addressed_message.adoc[]
 
-include::{uml_export_dir}/classes/message.adoc[]
+include::ROOT:partial$classes/message.adoc[]

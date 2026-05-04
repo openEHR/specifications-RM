@@ -9,14 +9,14 @@ h|*Description*
 Misuse: Not to be used for time-based lists, which should be represented with the proper temporal class, i.e. HISTORY.
 
 h|*Inherit*
-2+|`xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]`
+2+|`xref:{class_item_structure}[ITEM_STRUCTURE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*items*: `link:/classes/List[List] <xref:RM:data_structures:item_structure_package.adoc#_element_class[ELEMENT]>`
+|*items*: `link:/classes/List[List] <xref:{class_element}[ELEMENT]>`
 a|Physical representation of the list.
 
 h|*Functions*
@@ -28,24 +28,24 @@ h|*1..1*
 a|Count of all items.
 
 h|*0..1*
-|*names* (): `link:/classes/List[List] <xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]>`
+|*names* (): `link:/classes/List[List] <xref:{class_dv_text}[DV_TEXT]>`
 a|Retrieve the names of all items.
 
 h|*1..1 +
 (redefined)*
-|*as_hierarchy* (): `xref:RM:data_structures:item_structure_package.adoc#_cluster_class[CLUSTER]`
+|*as_hierarchy* (): `xref:{class_cluster}[CLUSTER]`
 a|Generate a CEN EN13606-compatible hierarchy consisting of a single CLUSTER containing the ELEMENTs of this list.
 
 h|*1..1*
 |*named_item* ( +
 a_name: `link:/classes/String[String] [1]` +
-): `xref:RM:data_structures:item_structure_package.adoc#_element_class[ELEMENT]`
+): `xref:{class_element}[ELEMENT]`
 a|Retrieve the item with name ‘a_name’.
 
 h|*1..1*
 |*ith_item* ( +
 i: `link:/classes/Integer[Integer] [1]` +
-): `xref:RM:data_structures:item_structure_package.adoc#_element_class[ELEMENT]`
+): `xref:{class_element}[ELEMENT]`
 a|Retrieve the i-th item with name.
 
 h|*Invariants*
