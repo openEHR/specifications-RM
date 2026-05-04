@@ -1,0 +1,54 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*DV_PARAGRAPH*
+
+2+a|DEPRECATED: use markdown formatted `DV_TEXT` instead.
+
+Original definition:
+
+A logical composite text value consisting of a series of `DV_TEXTs`, i.e. plain text (optionally coded) potentially with simple formatting, to form a larger tract of prose, which may be interpreted for display purposes as a paragraph. 
+
+`DV_PARAGRAPH` is the standard way for constructing longer text items in summaries, reports and so on.
+
+2+|Inherits: xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE]
+
+2+h|*Constants*
+
+|*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Any_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"Any"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".&#42;"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Default_encoding*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"UTF-8"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*None_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"None"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Local_terminology_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"local"` [1..1]
+a|Predefined terminology identifier to indicate it is local to the knowledge resource in which it occurs, e.g. an archetype +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]>` [1..1]
+a|Items making up the paragraph, each of which is a text item (which may have its own formatting, and/or have hyperlinks).
+
+2+h|*Invariants*
+
+2+a|__Items_valid__: `not items.is_empty`
+
+|===

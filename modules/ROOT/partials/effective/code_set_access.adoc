@@ -1,0 +1,24 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*CODE_SET_ACCESS*
+
+2+a|Defines an object providing proxy access to a code_set.
+
+2+h|*Functions*
+
+|*id* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|External identifier of this code set.
+
+|*all_codes* (): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]>` [0..1]
+a|Return all codes known in this code set.
+
+|*has_lang* ( +
+a_lang: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if code set knows about 'a_lang' .
+
+|*has_code* ( +
+a_code: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if code set knows about  'a_code'.
+|===

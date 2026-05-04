@@ -1,0 +1,34 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*FEEDER_AUDIT_DETAILS*
+
+2+a|Audit details for any system in a feeder system chain. Audit details here means the general notion of who/where/when the information item to which the audit is attached was created. None of the attributes is defined as mandatory, however, in different scenarios, various combinations of attributes will usually be mandatory. This can be controlled by specifying feeder audit details in legacy archetypes.
+
+2+h|*Attributes*
+
+|*system_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Identifier of the system which handled the information item. This is the IT system owned by the organisation legally responsible for handling the data, and at which the data were previously created or passed by an earlier system.
+
+|*location*: `xref:RM:common:generic_package.adoc#_party_identified_class[PARTY_IDENTIFIED]` [0..1]
+a|Identifier of the particular site/facility within an organisation which handled the item. For computability, this identifier needs to be e.g. a PKI identifier which can be included in the identifier list of the `PARTY_IDENTIFIED` object.
+
+|*subject*: `xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]` [0..1]
+a|Identifiers for subject of the received information item.
+
+|*provider*: `xref:RM:common:generic_package.adoc#_party_identified_class[PARTY_IDENTIFIED]` [0..1]
+a|Optional provider(s) who created, committed, forwarded or otherwise handled the item.
+
+|*time*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [0..1]
+a|Time of handling the item. For an originating system, this will be time of creation, for an intermediate feeder system, this will be a time of accession or other time of handling, where available.
+
+|*version_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Any identifier used in the system such as  "interim" ,  "final" , or numeric versions if available.
+
+|*other_details*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]` [0..1]
+a|Optional attribute to carry any custom meta-data. May be archetyped.
+
+2+h|*Invariants*
+
+2+a|__System_id_valid__: `not system_id.is_empty`
+
+|===

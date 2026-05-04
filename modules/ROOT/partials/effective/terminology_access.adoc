@@ -1,0 +1,33 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*TERMINOLOGY_ACCESS*
+
+2+a|Defines an object providing proxy access to a terminology.
+
+2+h|*Functions*
+
+|*id* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Identification of this Terminology.
+
+|*all_codes* (): `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+a|Return all codes known in this terminology.
+
+|*codes_for_group_id* ( +
+a_group_id: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]>` [0..1]
+a|Return all codes under grouper 'a_group_id' from this terminology.
+
+|*codes_for_group_name* ( +
+a_lang: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]`, +
+a_name: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]>` [0..1]
+a|Return all codes under grouper whose name in 'a_lang' is 'a_name' from this terminology.
+
+|*has_code_for_group_id* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if  a_code' is known in group  group_id' in the openEHR terminology.
+
+|*rubric_for_code* ( +
+a_code: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Return all rubric of code  code' in language  lang'.
+|===

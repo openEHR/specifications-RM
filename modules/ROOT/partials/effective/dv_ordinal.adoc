@@ -1,0 +1,174 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*DV_ORDINAL*
+
+2+a|A data type that represents integral score values, e.g. pain, Apgar values, etc, where there is:
+
+a) implied ordering, 
+b) no implication that the distance between each value is constant, and 
+c) the total number of values is finite;
+d) integer values only.
+
+Note that although the term 'ordinal' in mathematics means natural numbers only, here any integer is allowed, since negative and zero values are often used by medical professionals for values around a neutral point. Examples of sets of ordinal values: 
+
+*   -3, -2, -1, 0, 1, 2, 3  -- reflex response values 
+*    0, 1, 2                  -- Apgar values 
+
+This class is used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. `{neg, trace, +, ++, +++}` are used for leucocytes, protein, nitrites etc; for non-haemolysed blood `{neg, trace, moderate}`; for haemolysed blood `{small, moderate, large}`.
+
+For scores or scales that include Real numbers (or might in the future, i.e. not fixed for all time, such as Apgar), use `DV_SCALE`. `DV_SCALE` may also be used in future for representing purely Integer-based scales, however, the `DV_ORDINAL` type should continue to be supported in software implementations in order to accommodate existing data that are instances of this type.
+
+2+|Inherits: xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]
+
+2+h|*Constants*
+
+|*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Any_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"Any"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".&#42;"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Default_encoding*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"UTF-8"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*None_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"None"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Local_terminology_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"local"` [1..1]
+a|Predefined terminology identifier to indicate it is local to the knowledge resource in which it occurs, e.g. an archetype +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*normal_status*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]` [0..1]
+a|Optional normal range. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*other_reference_ranges*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]>>` [0..1]
+a|Optional tagged other reference ranges for this value in its particular measurement context. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*symbol*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+a|Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  `mild`, `moderate`, `severe`, or even the same number series as the values, e.g. 1, 2, 3.
+
+|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+a|Value in ordered enumeration of values. Any integer value can be used.
+
+2+h|*Functions*
+
+|_(abstract)_ *is_equal* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+.Parameters +
+[horizontal]
+`_other_`:: Other object for comparison.
+
+|*equal* __alias__ "=", "==" ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Reference equality for reference types, value equality for value types. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+.Parameters +
+[horizontal]
+`_other_`:: Other object for comparison.
+
+|*instance_of* ( +
+a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*type_of* ( +
+an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Type name of an object as a string. May include generic parameters, as in `"Interval<Time>"`. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*not_equal* __alias__ "!=", "≠" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if current object not equal to `_other_`. Returns not `_equal_()`. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*less_than* __alias__ "<" ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_ordinal_class[DV_ORDINAL][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this Ordinal value is less than `_other_`.
+
+|*less_than_or_equal* __alias__ "<=", "≤" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_result__: `not (other < self)` [1..1]
+a|True if current object less than or equal to `_other_`. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+
+|*greater_than* __alias__ ">" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_result__: `Result = (other < self)` [1..1]
+a|True if current object greater than `_other_`. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+
+|*greater_than_or_equal* __alias__ ">=", "≥" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_result__: `Result = (other \<= self)` [1..1]
+a|True if current object greater than or equal to `_other_`. +
+_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+
+|*is_strictly_comparable_to* ( +
+other: `xref:RM:data_types:quantity_package.adoc#_dv_ordinal_class[DV_ORDINAL][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Test if this Ordinal is strictly comparable to `_other_`.
+
+|*is_simple* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this quantity has no reference ranges. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*is_normal* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Pre__: `normal_range /= Void or normal_status /= Void` +
+ +
+__Post_range__: `normal_range /= Void implies Result = normal_range.has (self)` +
+__Post_status__: `normal_status /= Void implies normal_status.code_string.is_equal (“N”)` [1..1]
+a|Value is in the normal range, determined by comparison of the value to `_normal_range_` if present, or by the `_normal_status_` marker if present. +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+h|*Invariants*
+
+2+a|__Other_reference_ranges_validity__: `other_reference_ranges /= Void implies not other_reference_ranges.is_empty` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+a|__Is_simple_validity__: `(normal_range = Void and other_reference_ranges = Void) implies is_simple` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+a|__Normal_status_validity__: `normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+2+a|__Normal_range_and_status_consistency__: `(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))` +
+_Inherited from xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|===

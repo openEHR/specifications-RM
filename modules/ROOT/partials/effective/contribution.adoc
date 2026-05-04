@@ -1,0 +1,17 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*CONTRIBUTION*
+
+2+a|Documents a Contribution (change set) of one or more versions added to a change-controlled repository.
+
+2+h|*Attributes*
+
+|*uid*: `xref:BASE:base_types:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]` [1..1]
+a|Unique identifier for this Contribution.
+
+|*versions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]>` [1..1]
+a|Set of references to Versions causing changes to this EHR. Each contribution contains a list of versions, which may include paths pointing to any number of versionable items, i.e. items of types such as `COMPOSITION` and `FOLDER`.
+
+|*audit*: `xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]` [1..1]
+a|Audit trail corresponding to the committal of this Contribution.
+|===

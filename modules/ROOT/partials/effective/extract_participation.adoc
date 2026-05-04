@@ -1,0 +1,29 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*EXTRACT_PARTICIPATION*
+
+2+a|Model of a participation of a Party (any Actor or Role) in an activity.  Used to represent any participation of a Party in some activity, which is not  explicitly in the model, e.g. assisting nurse. Can be used to record past or  future participations.
+
+Should not be used in place of more permanent relationships between demographic entities.
+
+2+h|*Attributes*
+
+|*time*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]<xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]>` [0..1]
+a|The time interval during which the participation took place, if it is used in an observational context (i.e. recording facts about the past); or the intended time interval of the participation when used in future contexts, such as EHR Instructions.
+
+|*function*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
+a|The function of the Party in this participation (note that a given party might participate in more than one way in a particular activity). This attribute should be coded, but cannot be limited to the HL7v3:ParticipationFunction vocabulary, since it is too limited and hospital-oriented.
+
+|*mode*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [0..1]
+a|The mode of the performer / activity interaction, e.g. present, by telephone, by email etc.
+
+|*performer*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Uid of demographic entity within Extract who performed this participation.
+
+2+h|*Invariants*
+
+2+a|__Function_valid__: `function /= Void and then function.generating_type.is_equal (“DV_CODED_TEXT”) implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_function, function.defining_code)`
+
+2+a|__Mode_valid__: `mode /= Void and terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participation_mode, mode.defining_code)`
+
+|===

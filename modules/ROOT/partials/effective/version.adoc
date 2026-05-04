@@ -1,0 +1,51 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*__VERSION<T> (abstract)__*
+
+2+a|Abstract model of one Version within a Version container, containing data, commit audit trail, and the identifier of its Contribution.
+
+2+h|*Attributes*
+
+|*contribution*: `xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]` [1..1]
+a|Contribution in which this version was added.
+
+|*signature*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|OpenPGP digital signature or digest of content committed in this Version.
+
+|*commit_audit*: `xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]` [1..1]
+a|Audit trail corresponding to the committal of this version to the `VERSIONED_OBJECT`.
+
+2+h|*Functions*
+
+|_(abstract)_ *uid* (): `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]` [1..1]
+a|Unique identifier of this `VERSION`, in the form of an `{object_id, a version_tree_id, creating_system_id}` triple, where the `_object_id_` has the same value as the containing `VERSIONED_OBJECT _uid_`.
+
+|_(abstract)_ *preceding_version_uid* (): `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]` [1..1]
+a|Unique identifier of the version of which this version is a modification; Void if this is the first version.
+
+|_(abstract)_ *data* (): `T` [1..1]
+a|The data of this Version.
+
+|_(abstract)_ *lifecycle_state* (): `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+a|Lifecycle state of this version; coded by openEHR vocabulary `version lifecycle state`.
+
+|*canonical_form* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|A canonical serial form of this Version, created by serialising all attributes except signature, suitable for generating reliable hashes and signatures.
+
+|*owner_id* (): `xref:BASE:base_types:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]` +
+ +
+__Post__: `Result.value.is_equal (uid.object_id.value)` [1..1]
+a|Copy of the owning `VERSIONED_OBJECT._uid_` value; extracted from the local `_uid_` property's `_object_id_`.
+
+|*is_branch* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if this Version represents a branch. Derived from `_uid_` attribute.
+
+2+h|*Invariants*
+
+2+a|__Owner_id_valid__: `owner_id.value.is_equal (uid.object_id.value)`
+
+2+a|__Preceding_version_uid_validity__: `uid.version_tree_id.is_first xor preceding_version_uid /= Void`
+
+2+a|__Lifecycle_state_ valid__: `lifecycle_state /= Void and then terminology (Term_id_openehr).has_code_for_group_id (Group_id_version_lifecycle_state, lifecycle_state.defining_code)`
+
+|===

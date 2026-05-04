@@ -1,0 +1,65 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*DV_PERIODIC_TIME_SPECIFICATION*
+
+2+a|Specifies periodic points in time, linked to the calendar (phase-linked), or a real world repeating event, such as  breakfast  (event-linked). Based on the HL7v3 data types `PIVL<T>` and `EIVL<T>`. 
+
+Used in therapeutic prescriptions, expressed as `INSTRUCTIONs` in the openEHR model.
+
+2+|Inherits: xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:RM:data_types:time_specification_package.adoc#_dv_time_specification_class[DV_TIME_SPECIFICATION]
+
+2+h|*Constants*
+
+|*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Any_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"Any"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".&#42;"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Default_encoding*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"UTF-8"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*None_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"None"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Local_terminology_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"local"` [1..1]
+a|Predefined terminology identifier to indicate it is local to the knowledge resource in which it occurs, e.g. an archetype +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*value*: `xref:RM:data_types:encapsulated_package.adoc#_dv_parsable_class[DV_PARSABLE]` [1..1]
+a|The specification, in the HL7v3 syntax for `PIVL` or `EIVL` types. +
+_Inherited from xref:RM:data_types:time_specification_package.adoc#_dv_time_specification_class[DV_TIME_SPECIFICATION]_
+
+2+h|*Functions*
+
+|*calendar_alignment* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Calendar alignment extracted from value.
+
+|*event_alignment* (): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Event alignment extracted from value.
+
+|*institution_specified* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Extracted from value.
+
+|*period* (): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]` [1..1]
+a|The period of the repetition, computationally derived from the syntax representation. Extracted from the  value' attribute.
+
+2+h|*Invariants*
+
+2+a|__Value_valid__: `value.formalism.is_equal (“HL7:PIVL”) or value.formalism. is_equal (“HL7:EIVL”)`
+
+|===
