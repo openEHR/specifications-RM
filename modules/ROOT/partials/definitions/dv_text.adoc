@@ -15,24 +15,24 @@ If the `_formatting_` field is set, the `_value_` field is affected as follows:
 A `DV_TEXT` can be coded by adding mappings to it.
 
 h|*Inherit*
-2+|`xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE]`
+2+|`xref:{class_data_value}[DATA_VALUE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*value*: `xref:{class_string}[String]`
 a|Displayable rendition of the item, regardless of its underlying structure. For `DV_CODED_TEXT`, this is the rubric of the complete term as provided by the terminology service.
 
 h|*0..1*
-|*hyperlink*: `xref:RM:data_types:uri_package.adoc#_dv_uri_class[DV_URI]`
+|*hyperlink*: `xref:{class_dv_uri}[DV_URI]`
 a|DEPRECATED: this field is deprecated; use markdown link/text in the `_value_` attribute, and `"markdown"` as the value of the `_formatting_` field.
 
 Original usage, prior to RM Release 1.0.4: Optional link sitting behind a section of plain text or coded term item.
 
 h|*0..1*
-|*formatting*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*formatting*: `xref:{class_string}[String]`
 a|If set, contains one of the following values:
 
 * `"plain"`: use for plain text, possibly containing newlines, but otherwise unformatted (same as Void);
@@ -42,15 +42,15 @@ a|If set, contains one of the following values:
 DEPRECATED usage: contains a string of the form `"name:value; name:value..."` , e.g. `"font-weight : bold; font-family : Arial; font-size : 12pt;"`. Values taken from W3C CSS2 properties lists for background and font .
 
 h|*0..1*
-|*mappings*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:text_package.adoc#_term_mapping_class[TERM_MAPPING]>`
+|*mappings*: `xref:{class_list}[List]<xref:{class_term_mapping}[TERM_MAPPING]>`
 a|Terms from other terminologies most closely matching this term, typically used where the originator (e.g. pathology lab) of information uses a local terminology but also supplies one or more equivalents from well known terminologies (e.g. LOINC).
 
 h|*0..1*
-|*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*language*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Optional indicator of the localised language in which the value is written. Coded from openEHR Code Set  languages . Only used when either the text object is in a different language from the enclosing `ENTRY`, or else the text object is being used outside of an `ENTRY` or other enclosing structure which indicates the language.
 
 h|*0..1*
-|*encoding*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*encoding*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.
 
 h|*Invariants*

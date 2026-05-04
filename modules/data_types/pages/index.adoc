@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,32 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-stable]#{spec_status}#
+
+Complete set of clinical and administrative data types: quantities with units and precision, coded text, plain text, date and time representations, proportions, encapsulated media content, and URIs. The type hierarchy is designed to cover clinical documentation requirements without being domain-specific, enabling archetype authors to constrain them to particular use cases. Key types include DV_QUANTITY for measured values with units, DV_CODED_TEXT for terminology-bound concepts, and DV_DATE_TIME for temporal data.
+
+== Purpose
+
+This document defines the openEHR Data Types Information Model, used throughout the openEHR Reference Model.
+
+The intended audience includes:
+
+* Standards bodies producing health informatics standards;
+* Academic groups using openEHR;
+* The open source healthcare community;
+* Solution vendors;
+* Medical informaticians and clinicians interested in health information.
+* Health data managers.
+
+== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The {openehr_overview}[openEHR Architecture Overview^];
+* The {openehr_rm_support}[openEHR Support Information Model^].
+
+
+
 
 
 //
@@ -19,70 +46,12 @@
 // --------------------------------------------- Preface -----------------------------------------------
 //
 
-== Acknowledgements
+== Feedback
 
-=== Editor
+Feedback may be provided on the {openehr_rm_forum}[openEHR RM specifications forum^].
 
-* Thomas Beale, Ars Semantica (UK); openEHR Foundation Management Board.
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-=== Contributors
-
-This specification benefited from wide formal and informal input from the openEHR and wider health informatics community. The openEHR Foundation would like to recognise the following people for their contributions.
-
-* Silje Ljosland Bakke, RN, Nasjonal IKT HF, Norway
-* Pieter Bos, Senior Software Engineer, Nedap, Netherlands
-* Rong Chen MD, PhD, Cambio Healthcare Systems, Sweden
-* Matthew Darlinson, PhD, CHIME, UCL, UK
-* Heath Frankel, CTO Ocean Informatics, Australia
-* Peter Gummer, senior developer, Ocean Informatics, Australia
-* Andrew Goodchild, PhD, senior research scientist DSTC, Australia
-* Grahame Grieve, Kestral Systems, Australia
-* Sam Heard MD, Ocean Informatics, Australia
-* Sebastian Iancu, Architect, Code24, Netherlands
-* Dipak Kalra MD, PhD, Professor Health Informatics, CHIME, UCL, UK
-* Bostjan Lah, Architect, Marand, Slovenia
-* Heather Leslie MD, FRACGP, FACHI, GAICD, Atomica Informatics, Australia
-* David Lloyd (ret), CHIME, UCL, UK
-* Kristoffer Lundberg, chief architect, Cambio, Sweden
-* Chunlan Ma PhD, MD, Ocean Informatics, Australia
-* Jan Mewes, KS-plus.org, India/Germany
-* Bjørn Næss, DIPS, Norway
-* Pablo Pazos Gutierrez, CaboLabs, Uruguay
-* Peter Schloeffel MD, Ocean Informatics, Australia
-* Erik Sundvall PhD, Linkoping University, Sweden
-* Bert Verhees, Senior developer, Netherlands
-* Zar zar Tun, DSTC, Australia
-
-=== Support
-
-The work reported in this paper has been funded in part by the following organisations:
-
-* University College London - Centre for Health Informatics and Multi-professional Education (CHIME);
-* Ocean Informatics; 
-* Distributed Systems Technology Centre (DSTC), under the Cooperative Research Centres Program through the Department of the Prime Minister and Cabinet of the Commonwealth Government of Australia.
-
-Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL, who provided a vision and collegial working environment ever since the days of GEHR (1992).
-
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
 
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-
-ifdef::package_qualifiers[]
-:pkg: org.openehr.rm.data_types.
-endif::[]
-
-
-
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-:sectnums!:
-== References
-
-bibliography::[]

@@ -4,96 +4,96 @@
 
 2+a|A specialisation of `DV_ENCAPSULATED` for audiovisual and bio-signal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of `DV_ENCAPSULATED`.
 
-2+|Inherits: xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]
+2+|Inherits: xref:{class_basic_definitions}[BASIC_DEFINITIONS], xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS], xref:{class_data_value}[DATA_VALUE], xref:{class_dv_encapsulated}[DV_ENCAPSULATED]
 
 2+h|*Constants*
 
-|*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
+|*CR*: `xref:{class_character}[Character]{nbsp}={nbsp}'\015'` [1..1]
 a|Carriage return character. +
-_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
-|*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
+|*LF*: `xref:{class_character}[Character]{nbsp}={nbsp}'\012'` [1..1]
 a|Line feed character. +
-_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
-|*Any_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"Any"` [1..1]
+|*Any_type_name*: `xref:{class_string}[String]{nbsp}={nbsp}"Any"` [1..1]
 a| +
-_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
-|*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".&#42;"` [1..1]
+|*Regex_any_pattern*: `xref:{class_string}[String]{nbsp}={nbsp}".&#42;"` [1..1]
 a| +
-_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
-|*Default_encoding*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"UTF-8"` [1..1]
+|*Default_encoding*: `xref:{class_string}[String]{nbsp}={nbsp}"UTF-8"` [1..1]
 a| +
-_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
-|*None_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"None"` [1..1]
+|*None_type_name*: `xref:{class_string}[String]{nbsp}={nbsp}"None"` [1..1]
 a| +
-_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
-|*Local_terminology_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"local"` [1..1]
+|*Local_terminology_id*: `xref:{class_string}[String]{nbsp}={nbsp}"local"` [1..1]
 a|Predefined terminology identifier to indicate it is local to the knowledge resource in which it occurs, e.g. an archetype +
-_Inherited from xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS]_
+_Inherited from xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS]_
 
 2+h|*Attributes*
 
-|*charset*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*charset*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions. +
-_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
 
-|*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*language*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set `languages`. +
-_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
 
-|*alternate_text*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+|*alternate_text*: `xref:{class_string}[String]` [0..1]
 a|Text to display in lieu of multimedia display/replay.
 
-|*uri*: `xref:RM:data_types:uri_package.adoc#_dv_uri_class[DV_URI]` [0..1]
+|*uri*: `xref:{class_dv_uri}[DV_URI]` [0..1]
 a|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference.
 
-|*data*: `xref:BASE:foundation_types:structure_types.adoc#_array_class[Array]<xref:BASE:foundation_types:primitive_types.adoc#_octet_class[Octet]>` [0..1]
+|*data*: `xref:{class_array}[Array]<xref:{class_octet}[Octet]>` [0..1]
 a|The actual data found at `_uri_`, if supplied inline.
 
-|*media_type*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+|*media_type*: `xref:{class_code_phrase}[CODE_PHRASE]` [1..1]
 a|Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set).
 
-|*compression_algorithm*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*compression_algorithm*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Compression type, a coded value from the openEHR Integrity check code set. Void means no compression.
 
-|*integrity_check*: `xref:BASE:foundation_types:structure_types.adoc#_array_class[Array]<xref:BASE:foundation_types:primitive_types.adoc#_octet_class[Octet]>` [0..1]
+|*integrity_check*: `xref:{class_array}[Array]<xref:{class_octet}[Octet]>` [0..1]
 a|Binary cryptographic integrity checksum.
 
-|*integrity_check_algorithm*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+|*integrity_check_algorithm*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
 a|Type of integrity check, a coded value from the openEHR `Integrity check` code set.
 
-|*thumbnail*: `xref:RM:data_types:encapsulated_package.adoc#_dv_multimedia_class[DV_MULTIMEDIA]` [0..1]
+|*thumbnail*: `xref:{class_dv_multimedia}[DV_MULTIMEDIA]` [0..1]
 a|The thumbnail for this item, if one exists; mainly for graphics formats.
 
-|*size*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+|*size*: `xref:{class_integer}[Integer]` [1..1]
 a|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc do not change the value of this attribute.
 
 2+h|*Functions*
 
-|*is_external* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*is_external* (): `xref:{class_boolean}[Boolean]` [1..1]
 a|Computed from the value of the `_uri_` attribute: True if  the data is stored externally to the record, as indicated by `_uri_`. A copy may also be stored internally, in which case `_is_expanded_` is also true.
 
-|*is_inline* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*is_inline* (): `xref:{class_boolean}[Boolean]` [1..1]
 a|Computed from the value of the data attribute. True if  the  data is stored  in  expanded  form, ie within the EHR itself.
 
-|*is_compressed* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*is_compressed* (): `xref:{class_boolean}[Boolean]` [1..1]
 a|Computed from the value of the `_compression_algorithm_` attribute: True if  the  data is stored in compressed form.
 
-|*has_integrity_check* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*has_integrity_check* (): `xref:{class_boolean}[Boolean]` [1..1]
 a|Computed from the value of the `_integrity_check_algorithm_` attribute: True if an integrity check has been computed.
 
 2+h|*Invariants*
 
 2+a|__Language_valid__: `language /= Void implies code_set (Code_set_id_languages).has_code (language)` +
-_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
 
 2+a|__Charset_valid__: `charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)` +
-_Inherited from xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]_
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
 
 2+a|__Not_empty__: `is_inline or is_external`
 

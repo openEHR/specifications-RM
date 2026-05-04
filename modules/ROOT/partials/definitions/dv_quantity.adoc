@@ -9,23 +9,23 @@ h|*Description*
 Can also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years (in the latter case, `DV_DURATION` may be used).
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
+2+|`xref:{class_dv_amount}[DV_AMOUNT]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*magnitude*: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+|*magnitude*: `xref:{class_real}[Real]`
 a|Numeric magnitude of the quantity.
 
 h|*0..1*
-|*precision*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*precision*: `xref:{class_integer}[Integer]`
 a|Precision to which the value of the quantity is expressed, in terms of number of decimal places. The value 0 implies an integral quantity.
 The value -1 implies no limit, i.e. any number of decimal places.
 
 h|*1..1*
-|*units*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*units*: `xref:{class_string}[String]`
 a|Quantity units, expressed as a code or syntax string from either UCUM (the default) or the units system specified in `_units_system_`, when set.
 
 In either case, the value is the code or syntax - normally formed of standard ASCII - which is in principal not the same as the display string, although in simple cases such as 'm' (for meters) it will be.
@@ -36,22 +36,22 @@ Example values from UCUM: "kg/m^2", “mm[Hg]", "ms-1", "km/h".
 
 h|*0..1 +
 (redefined)*
-|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]<xref:RM:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]>`
+|*normal_range*: `xref:{class_dv_interval}[DV_INTERVAL]<xref:{class_dv_quantity}[DV_QUANTITY]>`
 a|Optional normal range.
 
 h|*0..1 +
 (redefined)*
-|*other_reference_ranges*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]>>`
+|*other_reference_ranges*: `xref:{class_list}[List]<xref:{class_reference_range}[REFERENCE_RANGE]<xref:{class_dv_quantity}[DV_QUANTITY]>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
 
 h|*0..1*
-|*units_system*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*units_system*: `xref:{class_string}[String]`
 a|Optional field used to specify a units system from which codes in `_units_` are defined. Value is a URI identifying a terminology containing units concepts from the  (https://www.hl7.org/fhir/terminologies-systems.html[HL7 FHIR terminologies list]).
 
 If not set, the UCUM standard (case-sensitive codes) is assumed as the units system.
 
 h|*0..1*
-|*units_display_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*units_display_name*: `xref:{class_string}[String]`
 a|Optional field containing the displayable form of the `_units_` field, e.g. `'°C'`.
 
 If not set, the application environment needs to determine the displayable form.
@@ -65,29 +65,29 @@ h|*Functions*
 h|*1..1 +
 (redefined)*
 |*add* __alias__ "+" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]`
+other: `xref:{class_dv_quantity}[DV_QUANTITY][1]` +
+): `xref:{class_dv_quantity}[DV_QUANTITY]`
 a|Sum of this `DV_QUANTITY` and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*subtract* __alias__ "-" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]`
+other: `xref:{class_dv_quantity}[DV_QUANTITY][1]` +
+): `xref:{class_dv_quantity}[DV_QUANTITY]`
 a|Difference of this `DV_QUANTITY` and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*multiply* __alias__ "&#42;" ( +
-factor: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]`
+factor: `xref:{class_real}[Real][1]` +
+): `xref:{class_dv_quantity}[DV_QUANTITY]`
 a|Product of this `DV_QUANTITY` and `_factor_`.
 
 h|*1..1 +
 (redefined)*
 |*less_than* __alias__ "<" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_dv_quantity}[DV_QUANTITY][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +
  +
@@ -95,13 +95,13 @@ __Post_result__: `Result = magnitude < other.magnitude`
 a|True if this Quantified object is less than `_other_`. Based on comparison of `_magnitude_`. Only valid if `_is_strictly_comparable_to()_` is True.
 
 h|*1..1*
-|*is_integral* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_integral* (): `xref:{class_boolean}[Boolean]`
 a|True if `_precision_` = 0, meaning that the `_magnitude_` is a whole number.
 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_ordered}[DV_ORDERED][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|True if this quantity and `_other_` have the same `_units_` and also `_units_system_` if it exists.
 |===

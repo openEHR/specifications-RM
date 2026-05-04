@@ -13,19 +13,19 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*0..1*
-|*time*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]<xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]>`
+|*time*: `xref:{class_dv_interval}[DV_INTERVAL]<xref:{class_dv_date_time}[DV_DATE_TIME]>`
 a|The time interval during which the participation took place, if it is used in an observational context (i.e. recording facts about the past); or the intended time interval of the participation when used in future contexts, such as EHR Instructions.
 
 h|*1..1*
-|*function*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]`
+|*function*: `xref:{class_dv_text}[DV_TEXT]`
 a|The function of the Party in this participation (note that a given party might participate in more than one way in a particular activity). This attribute should be coded, but cannot be limited to the HL7v3:ParticipationFunction vocabulary, since it is too limited and hospital-oriented.
 
 h|*0..1*
-|*mode*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
+|*mode*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]`
 a|The mode of the performer / activity interaction, e.g. present, by telephone, by email etc.
 
 h|*1..1*
-|*performer*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*performer*: `xref:{class_string}[String]`
 a|Uid of demographic entity within Extract who performed this participation.
 
 h|*Invariants*

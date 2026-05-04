@@ -7,14 +7,14 @@ h|*Description*
 2+a|Abstract class defining the concept of true quantified values, i.e. values which are not only ordered, but which have a precise magnitude.
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]`
+2+|`xref:{class_dv_ordered}[DV_ORDERED]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*magnitude_status*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*magnitude_status*: `xref:{class_string}[String]`
 a|Optional status of magnitude with values: 
 
 * `"="`   :   magnitude is a point value 
@@ -27,7 +27,7 @@ a|Optional status of magnitude with values:
 If not present, assumed meaning is  `"="` .
 
 h|*0..1*
-|*accuracy*: `xref:BASE:foundation_types:overview.adoc#_any_class[Any]`
+|*accuracy*: `xref:{class_any}[Any]`
 a|Accuracy of measurement. Exact form of expression determined in descendants.
 
 h|*Functions*
@@ -35,32 +35,32 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*valid_magnitude_status* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*valid_magnitude_status* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post__: `Result = s in \{"=", "<", ">", "\<=", ">=", "~"}`
 a|Test whether a string value is one of the valid values for the magnitude_status attribute.
 
 h|*1..1 +
 (abstract)*
-|*magnitude* (): `xref:BASE:foundation_types:primitive_types.adoc#_ordered_numeric_class[Ordered_Numeric]`
+|*magnitude* (): `xref:{class_ordered_numeric}[Ordered_Numeric]`
 a|
 
 h|*1..1*
-|*accuracy_unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*accuracy_unknown* (): `xref:{class_boolean}[Boolean]`
 a|True if accuracy is not known, e.g. due to not being recorded or discernable.
 
 h|*1..1 +
 (abstract)*
 |*is_equal* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_quantified}[DV_QUANTIFIED][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|Return True if this `DV_QUANTIFIED` is considered equal to `_other_`.
 
 h|*1..1 +
 (effected)*
 |*less_than* __alias__ "<" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_dv_quantified}[DV_QUANTIFIED][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +
  +

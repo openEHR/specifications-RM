@@ -13,7 +13,7 @@ h|*Attributes*
 ^h|*Meaning*
 
 h|*1..1*
-|*match*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]`
+|*match*: `xref:{class_character}[Character]`
 a|The relative match of the target term with respect to the mapped text item. Result meanings: 
 
 * `'>'`: the mapping is to a broader term e.g. orginal text =  arbovirus infection , target =  viral infection  
@@ -24,11 +24,11 @@ a|The relative match of the target term with respect to the mapped text item. Re
 The first three values are taken from the ISO standards 2788 ( Guide to Establishment and development of monolingual thesauri) and 5964 (Guide to Establishment and development of multilingual thesauri).
 
 h|*0..1*
-|*purpose*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
+|*purpose*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]`
 a|Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'.
 
 h|*1..1*
-|*target*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*target*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|The target term of the mapping.
 
 h|*Functions*
@@ -36,31 +36,31 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*narrower* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*narrower* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post__: `match = ‘<’ implies Result`
 a|The mapping is to a narrower term.
 
 h|*1..1*
-|*broader* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*broader* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post__: `match = ‘>’ implies Result`
 a|The mapping is to a broader term.
 
 h|*1..1*
-|*equivalent* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*equivalent* (): `xref:{class_boolean}[Boolean]`
 a|The mapping is to an equivalent term.
 
 h|*1..1*
-|*unknown* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*unknown* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post__: `match = ‘?’ implies Result`
 a|The kind of mapping is unknown.
 
 h|*1..1*
 |*is_valid_match_code* ( +
-c: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+c: `xref:{class_character}[Character][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post__: `Result := c = ‘>’ or c = ‘=’ or c = ‘<’ or c = ‘?’`
 a|True if match valid.

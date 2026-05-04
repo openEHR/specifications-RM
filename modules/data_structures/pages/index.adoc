@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 //
 // ============================================ Asciidoc HEADER =============================================
 //
@@ -7,7 +9,32 @@
 //
 
 
-= {spec_title}
+= {spec_title} [.spec-status.spec-status-stable]#{spec_status}#
+
+Generic structural types used throughout the Reference Model: single items, lists, tables, and trees, each parameterised to hold any RM data type instance. ITEM_TREE, ITEM_LIST, ITEM_TABLE, and ITEM_SINGLE are the four structural types, parameterised with ELEMENT as the leaf value holder. Archetypes impose specific structural constraints on these types to define the shape of data captured in clinical entries.
+
+== Purpose
+
+This document describes the common data structures used in openEHR reference model, including
+lists, tables, trees, and history.
+
+The intended audience includes:
+
+* Standards bodies producing health informatics standards;
+* Academic groups using openEHR;
+* The open source healthcare community;
+* Solution vendors;
+* Medical informaticians and clinicians interested in health information.
+* Health data managers.
+
+== Related Documents
+
+Prerequisite documents for reading this document include:
+
+* The {openehr_overview}[openEHR Architecture Overview^].
+
+
+
 
 
 //
@@ -18,35 +45,13 @@
 //
 // --------------------------------------------- Preface -----------------------------------------------
 //
-== Acknowledgements
 
-The work reported in this paper has been funded in by the following organisations:
+== Feedback
 
-* University College London - Centre for Health Informatics and Multi-professional Education (CHIME);
-* Ocean Informatics; 
-* Distributed Systems Technology Centre (DSTC), under the Cooperative Research Centres Program through the Department of the Prime Minister and Cabinet of the Commonwealth Government of Australia.
+Feedback may be provided on the {openehr_rm_forum}[openEHR RM specifications forum^].
 
-Thanks to Grahame Grieve of Kestral Computing, Australia for general input and examples relating to History data.
+Issues may be raised on the {component_prs}[specifications Problem Report tracker^].
 
-Special thanks to David Ingram, Emeritus Professor of Health Informatics at UCL, who provided a vision and collegial working environment ever since the days of GEHR (1992).
-
-//
-// --------------------------------------------- TOC -----------------------------------------------
-//
-//toc::[left]
-
-//
-// --------------------------------------------- CHAPTERS -----------------------------------------------
-//
-
-ifdef::package_qualifiers[]
-:pkg: org.openehr.rm.data_structures.
-endif::[]
+To see changes made due to previously reported issues, see the {component_history}[{component} component Change Request tracker^].
 
 
-//
-// --------------------------------------------- REFERENCES -----------------------------------------------
-//
-:sectnums!:
-== References
-bibliography::[]

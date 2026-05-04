@@ -21,18 +21,18 @@ This class is used for recording any clinical datum which is customarily recorde
 For scores or scales that include Real numbers (or might in the future, i.e. not fixed for all time, such as Apgar), use `DV_SCALE`. `DV_SCALE` may also be used in future for representing purely Integer-based scales, however, the `DV_ORDINAL` type should continue to be supported in software implementations in order to accommodate existing data that are instances of this type.
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]`
+2+|`xref:{class_dv_ordered}[DV_ORDERED]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*symbol*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
+|*symbol*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]`
 a|Coded textual representation of this value in the enumeration, which may be strings made from  +  symbols, or other enumerations of terms such as  `mild`, `moderate`, `severe`, or even the same number series as the values, e.g. 1, 2, 3.
 
 h|*1..1*
-|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*value*: `xref:{class_integer}[Integer]`
 a|Value in ordered enumeration of values. Any integer value can be used.
 
 h|*Functions*
@@ -42,14 +42,14 @@ h|*Functions*
 h|*1..1 +
 (effected)*
 |*less_than* __alias__ "<" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_ordinal_class[DV_ORDINAL][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_ordinal}[DV_ORDINAL][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|True if this Ordinal value is less than `_other_`.
 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_ordinal_class[DV_ORDINAL][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_ordinal}[DV_ORDINAL][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|Test if this Ordinal is strictly comparable to `_other_`.
 |===

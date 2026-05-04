@@ -7,46 +7,46 @@ h|*Description*
 2+a|A specialisation of `DV_ENCAPSULATED` for audiovisual and bio-signal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of `DV_ENCAPSULATED`.
 
 h|*Inherit*
-2+|`xref:RM:data_types:encapsulated_package.adoc#_dv_encapsulated_class[DV_ENCAPSULATED]`
+2+|`xref:{class_dv_encapsulated}[DV_ENCAPSULATED]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*0..1*
-|*alternate_text*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*alternate_text*: `xref:{class_string}[String]`
 a|Text to display in lieu of multimedia display/replay.
 
 h|*0..1*
-|*uri*: `xref:RM:data_types:uri_package.adoc#_dv_uri_class[DV_URI]`
+|*uri*: `xref:{class_dv_uri}[DV_URI]`
 a|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference.
 
 h|*0..1*
-|*data*: `xref:BASE:foundation_types:structure_types.adoc#_array_class[Array]<xref:BASE:foundation_types:primitive_types.adoc#_octet_class[Octet]>`
+|*data*: `xref:{class_array}[Array]<xref:{class_octet}[Octet]>`
 a|The actual data found at `_uri_`, if supplied inline.
 
 h|*1..1*
-|*media_type*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*media_type*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set).
 
 h|*0..1*
-|*compression_algorithm*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*compression_algorithm*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Compression type, a coded value from the openEHR Integrity check code set. Void means no compression.
 
 h|*0..1*
-|*integrity_check*: `xref:BASE:foundation_types:structure_types.adoc#_array_class[Array]<xref:BASE:foundation_types:primitive_types.adoc#_octet_class[Octet]>`
+|*integrity_check*: `xref:{class_array}[Array]<xref:{class_octet}[Octet]>`
 a|Binary cryptographic integrity checksum.
 
 h|*0..1*
-|*integrity_check_algorithm*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*integrity_check_algorithm*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Type of integrity check, a coded value from the openEHR `Integrity check` code set.
 
 h|*0..1*
-|*thumbnail*: `xref:RM:data_types:encapsulated_package.adoc#_dv_multimedia_class[DV_MULTIMEDIA]`
+|*thumbnail*: `xref:{class_dv_multimedia}[DV_MULTIMEDIA]`
 a|The thumbnail for this item, if one exists; mainly for graphics formats.
 
 h|*1..1*
-|*size*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*size*: `xref:{class_integer}[Integer]`
 a|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc do not change the value of this attribute.
 
 h|*Functions*
@@ -54,19 +54,19 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*is_external* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_external* (): `xref:{class_boolean}[Boolean]`
 a|Computed from the value of the `_uri_` attribute: True if  the data is stored externally to the record, as indicated by `_uri_`. A copy may also be stored internally, in which case `_is_expanded_` is also true.
 
 h|*1..1*
-|*is_inline* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_inline* (): `xref:{class_boolean}[Boolean]`
 a|Computed from the value of the data attribute. True if  the  data is stored  in  expanded  form, ie within the EHR itself.
 
 h|*1..1*
-|*is_compressed* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_compressed* (): `xref:{class_boolean}[Boolean]`
 a|Computed from the value of the `_compression_algorithm_` attribute: True if  the  data is stored in compressed form.
 
 h|*1..1*
-|*has_integrity_check* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*has_integrity_check* (): `xref:{class_boolean}[Boolean]`
 a|Computed from the value of the `_integrity_check_algorithm_` attribute: True if an integrity check has been computed.
 
 h|*Invariants*

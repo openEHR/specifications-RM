@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Directory Package
 
 == Overview
@@ -6,7 +8,7 @@ The directory package is illustrated below. It provides a simple abstraction of 
 
 [.text-center]
 .common.directory Package
-image::{uml_diagrams_uri}/RM-common.directory.svg[id=directory_package, align="center"]
+image::ROOT:uml/RM-common.directory.svg[id=directory_package, align="center"]
 
 `FOLDER` structures inside the `VERSIONED_FOLDER` are archetypable structures, and `FOLDER` archetypes can be created in the same fashion as say `SECTION` archetypes for the EHR.
 
@@ -29,6 +31,6 @@ Uniqueness modifiers are appended in brackets, and are only needed to differenti
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/{pkg}versioned_folder.adoc[]
+include::ROOT:partial$classes/versioned_folder.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}folder.adoc[]
+include::ROOT:partial$classes/folder.adoc[]

@@ -8,18 +8,18 @@ Used to describe parties where only identifiers may be known, and there is no en
 
 Should not be used to include patient identifying information.
 
-2+|Inherits: xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]
+2+|Inherits: xref:{class_party_proxy}[PARTY_PROXY]
 
 2+h|*Attributes*
 
-|*external_ref*: `xref:BASE:base_types:identification_package.adoc#_party_ref_class[PARTY_REF]` [0..1]
+|*external_ref*: `xref:{class_party_ref}[PARTY_REF]` [0..1]
 a|Optional reference to more detailed demographic or identification information for this party, in an external system. +
-_Inherited from xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]_
+_Inherited from xref:{class_party_proxy}[PARTY_PROXY]_
 
-|*name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+|*name*: `xref:{class_string}[String]` [0..1]
 a|Optional human-readable name (in String form).
 
-|*identifiers*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:basic_package.adoc#_dv_identifier_class[DV_IDENTIFIER]>` [0..1]
+|*identifiers*: `xref:{class_list}[List]<xref:{class_dv_identifier}[DV_IDENTIFIER]>` [0..1]
 a|One or more formal identifiers (possibly computable).
 
 2+h|*Invariants*
