@@ -1,0 +1,29 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*X_VERSIONED_OBJECT<T>*
+
+2+a|Variety of Extract content that consists is a sharable data-oriented version of `VERSIONED_OBJECT<T>`.
+
+2+h|*Attributes*
+
+|*uid*: `xref:BASE:base_types:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]` [1..1]
+a|Uid of original `VERSIONED_OBJECT`.
+
+|*owner_id*: `xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]` [1..1]
+a|Owner_id from original `VERSIONED_OBJECT`, which identifies source EHR.
+
+|*time_created*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [1..1]
+a|Creation time of original `VERSIONED_OBJECT`.
+
+|*total_version_count*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+a|Total number of versions in original `VERSIONED_OBJECT` at time of creation of this `X_VERSIONED_OBJECT`.
+
+|*extract_version_count*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+a|The number of Versions in this extract for this Versioned object, i.e. the count of items in the versions attribute. May be 0 if only revision history is requested.
+
+|*revision_history*: `xref:RM:common:generic_package.adoc#_revision_history_class[REVISION_HISTORY]` [0..1]
+a|Optional revision history of the original `VERSIONED_OBJECT`. If included, it is the complete revision history.
+
+|*versions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:common:change_control_package.adoc#_original_version_class[ORIGINAL_VERSION]<T>>` [0..1]
+a|0 or more Versions from the original `VERSIONED_OBJECT`, according to the Extract specification.
+|===

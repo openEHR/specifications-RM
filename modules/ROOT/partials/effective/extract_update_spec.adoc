@@ -1,0 +1,37 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*EXTRACT_UPDATE_SPEC*
+
+2+a|Specification of the how the request should be processed by server. The request can be persisted in the server, meaning that a) it can be re-activated by the requesting system simply by indicating Request id, and b) that a changes-only pattern of Extract updates can be set up. To achieve this, the server has to remember what was sent in the previous response.
+
+The update mode may be event-driven and periodic update or a mixture of both. The candidate items to be sent each time are the result of re-evaluating the content and versioning parts of the specification; what is actually sent is determined by the `_send_changes_only_` flag.
+
+2+h|*Attributes*
+
+|*persist_in_server*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|If True, this Request is persisted in the server until further notice.
+
+|*repeat_period*: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]` [0..1]
+a|Period for resending update Extracts in response to original Request.
+
+|*trigger_events*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]>` [0..1]
+a|Set of Event names that will cause sending of update Extracts. Event types include:   
+
+* `&#124;any_change&#124;` - any change in content items matched by content specification, e.g. new versions of persistent compositions. If the content list allows matching of any, or a wide range of archetypes, this event type will match any additions to the record.
+* `&#124;correction&#124;` - match error corrections only, including deletions.
+* `&#124;update&#124;` - match updates (i.e. new versions) of included content items.
+
+Coded by openEHR Terminology group 'extract update trigger event type'.
+
+|*update_method*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [1..1]
+a|Indicate mode of update. Can be: send only items that are changed (including logical deletions) or new since last send. For `_persist_in_server_` Requests only.
+
+2+h|*Invariants*
+
+2+a|__Overall_validity__: `repeat_period /= Void or trigger_events /= Void`
+
+2+a|__Trigger_events_validity__: `trigger_events /= Void implies not trigger_events.is_empty`
+
+2+a|__Send_changes_only_validity__: `send_changes_only implies persist_in_server`
+
+|===

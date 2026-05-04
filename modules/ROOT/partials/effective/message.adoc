@@ -1,0 +1,20 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*MESSAGE*
+
+2+a|A “message” is an authored, possibly signed, piece of content intended for one or more recipients. Since the recipient may or may not be known directly, recipients are specified in the `ADDRESSED_MESSAGE` class.
+
+2+h|*Attributes*
+
+|*audit*: `xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]` [1..1]
+a|Details of who actually created the message and when. This is the person who entered the data or otherwise caused the message to be created, or might be a piece of software.
+
+|*author*: `xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]` [1..1]
+a|Party responsible for the message content, who may or may not be technically responsible for its creation (e.g. by data entry etc).
+
+|*content*: `xref:RM:ehr_extract:message_package.adoc#_message_content_class[MESSAGE_CONTENT]` [1..1]
+a|Content of the message.
+
+|*signature*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+a|Optional signature by the author of message content in openPGP format. The signature is created as a Hash and optional signing of the serialisation of this message object with this signature field Void.
+|===

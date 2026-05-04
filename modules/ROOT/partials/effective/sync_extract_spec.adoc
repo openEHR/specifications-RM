@@ -1,0 +1,20 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*SYNC_EXTRACT_SPEC*
+
+2+a|Details of specification of Extract, used in a request to specify an Extract, or in a response, to describe what is actually in the Extract.
+
+2+h|*Attributes*
+
+|*includes_versions*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if the Versions from the Contribution are included; False if just the Contribution and its Audit are included.
+
+|*contribution_list*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:BASE:base_types:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]>` [0..1]
+a|List of Contributions to include / that are included in the Extract.
+
+|*contributions_since*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [0..1]
+a|Specify Contributions included in Extract by threshold date.
+
+|*all_contributions*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [0..1]
+a|True if all Contributions in the record are included.
+|===

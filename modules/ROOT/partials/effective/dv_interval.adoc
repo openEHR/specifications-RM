@@ -1,0 +1,138 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*DV_INTERVAL<T>*
+
+2+a|Generic class defining an interval (i.e. range) of a comparable type. An interval is a contiguous subrange of a comparable base type. Used to define intervals of dates, times, quantities (whose units match) and so on. The type parameter, `T`, must be a descendant of the type `DV_ORDERED`, which is necessary (but not sufficient) for instances to be compared (`_strictly_comparable_` is also needed). 
+
+Without the `DV_INTERVAL` class, quite a few more `DV_` classes would be needed to express logical intervals, namely interval versions of all the date/time classes, and of quantity classes. Further, it allows the semantics of intervals to be stated in one place unequivocally, including the conditions for strict comparison. 
+
+The basic semantics are derived from the class `Interval<T>`, described in the support RM.
+
+2+|Inherits: xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS], xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:RM:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]
+
+2+h|*Constants*
+
+|*CR*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*LF*: `xref:BASE:foundation_types:primitive_types.adoc#_character_class[Character]{nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Any_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"Any"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Regex_any_pattern*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}".&#42;"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Default_encoding*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"UTF-8"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*None_type_name*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"None"` [1..1]
+a| +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_basic_definitions_class[BASIC_DEFINITIONS]_
+
+|*Local_terminology_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]{nbsp}={nbsp}"local"` [1..1]
+a|Predefined terminology identifier to indicate it is local to the knowledge resource in which it occurs, e.g. an archetype +
+_Inherited from xref:BASE:base_types:definitions_package.adoc#_openehr_definitions_class[OPENEHR_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*lower*: `T` [0..1]
+a|Lower bound. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*upper*: `T` [0..1]
+a|Upper bound. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*lower_unbounded*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|`lower` boundary open (i.e. = -infinity). +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*upper_unbounded*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|`upper` boundary open (i.e. = +infinity). +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*lower_included*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|`lower` boundary value included in range if not `lower_unbounded`. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*upper_included*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|`upper` boundary value included in range if not `upper_unbounded`. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+2+h|*Functions*
+
+|_(abstract)_ *is_equal* ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if current object's interval is semantically same as `_other_`. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|*equal* __alias__ "=", "==" ( +
+other: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|Reference equality for reference types, value equality for value types. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+.Parameters +
+[horizontal]
+`_other_`:: Other object for comparison.
+
+|*instance_of* ( +
+a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
+): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a|Create new instance of a type. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*type_of* ( +
+an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+a|Type name of an object as a string. May include generic parameters, as in `"Interval<Time>"`. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|*not_equal* __alias__ "!=", "≠" ( +
+other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if current object not equal to `_other_`. Returns not `_equal_()`. +
+_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+
+|_(abstract)_ *has* ( +
+e: `T[1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+ +
+__Post_result__: `Result = (lower_unbounded or lower_included and v >= lower) or v > lower and (upper_unbounded or upper_included and v \<= upper or v < upper)` [1..1]
+a|True if the value `e` is properly contained in this Interval. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|_(abstract)_ *intersects* ( +
+other: `xref:BASE:foundation_types:interval.adoc#_interval_class[Interval][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if there is any overlap between intervals represented by Current and `_other_`. True if at least one limit of other is strictly inside the limits of this interval. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|_(abstract)_ *contains* ( +
+other: `xref:BASE:foundation_types:interval.adoc#_interval_class[Interval][1]` +
+): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+a|True if current interval properly contains `_other_`? True if all points of `_other_` are inside the current interval. +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+2+h|*Invariants*
+
+2+a|__Lower_included_valid__: `lower_unbounded implies not lower_included` +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+2+a|__Upper_included_valid__: `upper_unbounded implies not upper_included` +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+2+a|__Limits_consistent__: `(not upper_unbounded and not lower_unbounded) implies (lower.is_strictly_comparable_to(upper) and lower \<= upper)`
+
+2+a|__Limits_comparable__: `(not upper_unbounded and not lower_unbounded) implies lower.strictly_comparable_to (upper)` +
+_Inherited from xref:BASE:foundation_types:interval.adoc#_interval_class[Interval]_
+
+|===

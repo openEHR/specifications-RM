@@ -1,0 +1,17 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*X_CONTRIBUTION*
+
+2+a|Serialised form of Contribution for an Extract.
+
+2+h|*Attributes*
+
+|*uid*: `xref:BASE:base_types:identification_package.adoc#_hier_object_id_class[HIER_OBJECT_ID]` [1..1]
+a|Uid of Contribution in source system.
+
+|*audit*: `xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]` [1..1]
+a|Audit of Contribution in source system.
+
+|*versions*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:common:change_control_package.adoc#_version_class[VERSION]<xref:RM:ehr_extract:synchronisation_package.adoc#_x_contribution_class[X_CONTRIBUTION]>>` [0..1]
+a|Serialised Versions from Contribution in source system.
+|===
