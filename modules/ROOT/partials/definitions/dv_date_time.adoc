@@ -9,7 +9,7 @@ h|*Description*
 Used for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a `HISTORY` in an `OBSERVATION` which is only partially known.
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_dv_temporal_class[DV_TEMPORAL]`, `xref:BASE:foundation_types:time_types.adoc#_iso8601_date_time_class[Iso8601_date_time]`
+2+|`xref:{class_dv_temporal}[DV_TEMPORAL]`, `xref:{class_iso8601_date_time}[Iso8601_date_time]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*value*: `xref:{class_string}[String]`
 a|ISO8601 date/time string.
 
 h|*Functions*
@@ -26,35 +26,35 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*magnitude* (): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]`
+|*magnitude* (): `xref:{class_double}[Double]`
 a|Numeric value of the date/time as seconds since the calendar origin date/time `0001-01-01T00:00:00Z`.
 
 h|*1..1 +
 (effected)*
 |*add* __alias__ "+" ( +
-a_diff: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]`
+a_diff: `xref:{class_dv_duration}[DV_DURATION][1]` +
+): `xref:{class_dv_date_time}[DV_DATE_TIME]`
 a|Addition of a Duration to this Date/time.
 
 h|*1..1 +
 (effected)*
 |*subtract* __alias__ "-" ( +
-a_diff: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]`
+a_diff: `xref:{class_dv_duration}[DV_DURATION][1]` +
+): `xref:{class_dv_date_time}[DV_DATE_TIME]`
 a|Subtract a Duration from this Date/time.
 
 h|*1..1 +
 (effected)*
 |*diff* __alias__ "-" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+other: `xref:{class_dv_date_time}[DV_DATE_TIME][1]` +
+): `xref:{class_dv_duration}[DV_DURATION]`
 a|Difference between this Date/time and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*less_than* __alias__ "<" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_dv_date_time}[DV_DATE_TIME][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +
  +
@@ -64,8 +64,8 @@ a|True if `_other_` is less than this Quantified object. Based on comparison of 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_date_time}[DV_DATE_TIME][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|True, for any two Date/times.
 
 h|*Invariants*

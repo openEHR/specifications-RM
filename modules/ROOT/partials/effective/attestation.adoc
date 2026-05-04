@@ -8,52 +8,52 @@
 * witnessing of content by senior clinical professional; 
 * indicating acknowledgement of content by intended recipient, e.g. GP who ordered a test result.
 
-2+|Inherits: xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]
+2+|Inherits: xref:{class_audit_details}[AUDIT_DETAILS]
 
 2+h|*Attributes*
 
-|*system_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+|*system_id*: `xref:{class_string}[String]` [1..1]
 a|Identifier of the logical EHR system where the change was committed. This is almost always owned by the organisation legally responsible for the EHR, and is distinct from any application, or any hosting infrastructure. +
-_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+_Inherited from xref:{class_audit_details}[AUDIT_DETAILS]_
 
-|*time_committed*: `xref:RM:data_types:quantity_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [1..1]
+|*time_committed*: `xref:{class_dv_date_time}[DV_DATE_TIME]` [1..1]
 a|Time of committal of the item. +
-_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+_Inherited from xref:{class_audit_details}[AUDIT_DETAILS]_
 
-|*change_type*: `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
+|*change_type*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]` [1..1]
 a|Type of change. Coded using the openEHR Terminology  audit change type  group. +
-_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+_Inherited from xref:{class_audit_details}[AUDIT_DETAILS]_
 
-|*description*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [0..1]
+|*description*: `xref:{class_dv_text}[DV_TEXT]` [0..1]
 a|Reason for committal. This may be used to qualify the value in the `_change_type_` field. For example, if the change affects only the EHR directory, this field might be used to indicate 'Folder "episode 2018-02-16" added' or similar. +
-_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+_Inherited from xref:{class_audit_details}[AUDIT_DETAILS]_
 
-|*committer*: `xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]` [1..1]
+|*committer*: `xref:{class_party_proxy}[PARTY_PROXY]` [1..1]
 a|Identity and optional reference into identity management service, of user who committed the item. +
-_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+_Inherited from xref:{class_audit_details}[AUDIT_DETAILS]_
 
-|*attested_view*: `xref:RM:data_types:encapsulated_package.adoc#_dv_multimedia_class[DV_MULTIMEDIA]` [0..1]
+|*attested_view*: `xref:{class_dv_multimedia}[DV_MULTIMEDIA]` [0..1]
 a|Optional visual representation of content attested e.g. screen image.
 
-|*proof*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [0..1]
+|*proof*: `xref:{class_string}[String]` [0..1]
 a|Proof of attestation.
 
-|*items*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:uri_package.adoc#_dv_ehr_uri_class[DV_EHR_URI]>` [0..1]
+|*items*: `xref:{class_list}[List]<xref:{class_dv_ehr_uri}[DV_EHR_URI]>` [0..1]
 a|Items attested, expressed as fully qualified runtime paths to the items in question. Although not recommended, these may include fine-grained items which have been attested in some other system. Otherwise it is assumed to be for the entire VERSION with which it is associated.
 
-|*reason*: `xref:RM:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
+|*reason*: `xref:{class_dv_text}[DV_TEXT]` [1..1]
 a|Reason of this attestation. Optionally coded by the openEHR Terminology group  attestation reason ; includes values like  authorisation ,  witness  etc.
 
-|*is_pending*: `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+|*is_pending*: `xref:{class_boolean}[Boolean]` [1..1]
 a|True if this attestation is outstanding; False means it has been completed.
 
 2+h|*Invariants*
 
 2+a|__System_id_valid__: `not system_id.is_empty` +
-_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+_Inherited from xref:{class_audit_details}[AUDIT_DETAILS]_
 
 2+a|__Change_type_valid__: `terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_audit_change_type, change_type.defining_code)` +
-_Inherited from xref:RM:common:generic_package.adoc#_audit_details_class[AUDIT_DETAILS]_
+_Inherited from xref:{class_audit_details}[AUDIT_DETAILS]_
 
 2+a|__Items_valid__: `items /= Void implies not items.is_empty`
 

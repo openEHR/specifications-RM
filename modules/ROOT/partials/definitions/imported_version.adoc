@@ -7,14 +7,14 @@ h|*Description*
 2+a|Versions whose content is an `ORIGINAL_VERSION` copied from another location; this class inherits `_commit_audit_` and `_contribution_` from `VERSION<T>`, providing imported versions with their own audit trail and Contribution, distinct from those of the imported `ORIGINAL_VERSION`.
 
 h|*Inherit*
-2+|`xref:RM:common:change_control_package.adoc#_version_class[VERSION]`
+2+|`xref:{class_version}[VERSION]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*item*: `xref:RM:common:change_control_package.adoc#_original_version_class[ORIGINAL_VERSION]`
+|*item*: `xref:{class_original_version}[ORIGINAL_VERSION]`
 a|The `ORIGINAL_VERSION` object that was imported.
 
 h|*Functions*
@@ -23,21 +23,21 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*uid* (): `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]` +
+|*uid* (): `xref:{class_object_version_id}[OBJECT_VERSION_ID]` +
  +
 __Post__: `Result = item.uid`
 a|Computed version of inheritance precursor, derived as `_item.uid_`.
 
 h|*1..1 +
 (effected)*
-|*preceding_version_uid* (): `xref:BASE:base_types:identification_package.adoc#_object_version_id_class[OBJECT_VERSION_ID]` +
+|*preceding_version_uid* (): `xref:{class_object_version_id}[OBJECT_VERSION_ID]` +
  +
 __Post__: `Result = item.preceding_version_uid`
 a|Computed version of inheritance precursor, derived as `_item.preceding_version_uid_`.
 
 h|*1..1 +
 (effected)*
-|*lifecycle_state* (): `xref:RM:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
+|*lifecycle_state* (): `xref:{class_dv_coded_text}[DV_CODED_TEXT]`
 a|Lifecycle state of the content item in wrapped `ORIGINAL_VERSION`, derived as `_item.lifecycle_state_`; coded by openEHR vocabulary `version lifecycle state`.
 
 h|*1..1 +

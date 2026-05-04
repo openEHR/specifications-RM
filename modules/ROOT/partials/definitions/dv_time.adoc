@@ -9,7 +9,7 @@ h|*Description*
 Used for recording real world times, rather than scientifically measured fine amounts of time. The partial form is used for approximate times of events and substance administrations.
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_dv_temporal_class[DV_TEMPORAL]`, `xref:BASE:foundation_types:time_types.adoc#_iso8601_time_class[Iso8601_time]`
+2+|`xref:{class_dv_temporal}[DV_TEMPORAL]`, `xref:{class_iso8601_time}[Iso8601_time]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*value*: `xref:{class_string}[String]`
 a|ISO8601 time string
 
 h|*Functions*
@@ -26,35 +26,35 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*magnitude* (): `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+|*magnitude* (): `xref:{class_real}[Real]`
 a|Numeric value of the time as seconds since the start of day, i.e. `00:00:00`.
 
 h|*1..1 +
 (effected)*
 |*add* __alias__ "+" ( +
-a_diff: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME]`
+a_diff: `xref:{class_dv_duration}[DV_DURATION][1]` +
+): `xref:{class_dv_time}[DV_TIME]`
 a|Addition of a Duration to this Time.
 
 h|*1..1 +
 (effected)*
 |*subtract* __alias__ "-" ( +
-a_diff: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME]`
+a_diff: `xref:{class_dv_duration}[DV_DURATION][1]` +
+): `xref:{class_dv_time}[DV_TIME]`
 a|Subtract a Duration from this Time.
 
 h|*1..1 +
 (effected)*
 |*diff* __alias__ "-" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+other: `xref:{class_dv_time}[DV_TIME][1]` +
+): `xref:{class_dv_duration}[DV_DURATION]`
 a|Difference between this Time and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*less_than* __alias__ "<" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_dv_time}[DV_TIME][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +
  +
@@ -64,8 +64,8 @@ a|True if `_other_` is less than this Quantified object. Based on comparison of 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_time_class[DV_TIME][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_time}[DV_TIME][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|True, for any two Times.
 
 h|*Invariants*

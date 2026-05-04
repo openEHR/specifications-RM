@@ -9,30 +9,30 @@ h|*Description*
 An `ENTRY` is also the minimal unit of information any query should return, since a whole `ENTRY` (including subparts) records spatial structure, timing information, and contextual information, as well as the subject and generator of the information.
 
 h|*Inherit*
-2+|`xref:RM:ehr:content_package.adoc#_content_item_class[CONTENT_ITEM]`
+2+|`xref:{class_content_item}[CONTENT_ITEM]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*language*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*language*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Mandatory indicator of the localised language in which this Entry is written. Coded from openEHR Code Set  languages .
 
 h|*1..1*
-|*encoding*: `xref:RM:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+|*encoding*: `xref:{class_code_phrase}[CODE_PHRASE]`
 a|Name of character set in which text values in this Entry are encoded. Coded from openEHR Code Set  character sets.
 
 h|*0..1*
-|*other_participations*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:common:generic_package.adoc#_participation_class[PARTICIPATION]>`
+|*other_participations*: `xref:{class_list}[List]<xref:{class_participation}[PARTICIPATION]>`
 a|Other participations at `ENTRY` level.
 
 h|*0..1*
-|*workflow_id*: `xref:BASE:base_types:identification_package.adoc#_object_ref_class[OBJECT_REF]`
+|*workflow_id*: `xref:{class_object_ref}[OBJECT_REF]`
 a|Identifier of externally held workflow engine data for this workflow execution, for this subject of care.
 
 h|*1..1*
-|*subject*: `xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]`
+|*subject*: `xref:{class_party_proxy}[PARTY_PROXY]`
 a|Id of human subject of this `ENTRY`, e.g.: 
 
 * organ donor 
@@ -41,7 +41,7 @@ a|Id of human subject of this `ENTRY`, e.g.:
 * another clinically relevant person.
 
 h|*0..1*
-|*provider*: `xref:RM:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]`
+|*provider*: `xref:{class_party_proxy}[PARTY_PROXY]`
 a|Optional identification of provider of the information in this `ENTRY`, which might be: 
 
 * the patient 
@@ -56,7 +56,7 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*subject_is_self* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+|*subject_is_self* (): `xref:{class_boolean}[Boolean]` +
  +
 __Post_condition__: `Result implies subject.generating_type = “PARTY_SELF”`
 a|Returns True if this Entry is about the subject of the EHR, in which case the subject attribute is of type PARTY_SELF.

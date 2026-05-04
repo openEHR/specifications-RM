@@ -4,129 +4,129 @@
 
 2+a|Class of enumeration constants defining types of proportion for the `DV_PROPORTION` class.
 
-2+|Inherits: xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:overview.adoc#_any_class[Any], xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered], xref:BASE:foundation_types:primitive_types.adoc#_numeric_class[Numeric], xref:BASE:foundation_types:primitive_types.adoc#_ordered_numeric_class[Ordered_Numeric], xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]
+2+|Inherits: xref:{class_any}[Any], xref:{class_any}[Any], xref:{class_ordered}[Ordered], xref:{class_numeric}[Numeric], xref:{class_ordered_numeric}[Ordered_Numeric], xref:{class_integer}[Integer]
 
 2+h|*Constants*
 
-|*pk_ratio*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}0`
+|*pk_ratio*: `xref:{class_integer}[Integer]{nbsp}={nbsp}0`
 a|Ratio type. Numerator and denominator may be any value.
 
-|*pk_unitary*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}1`
+|*pk_unitary*: `xref:{class_integer}[Integer]{nbsp}={nbsp}1`
 a|Denominator must be 1.
 
-|*pk_percent*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}2`
+|*pk_percent*: `xref:{class_integer}[Integer]{nbsp}={nbsp}2`
 a|Denominator is 100, numerator is understood as a percentage value.
 
-|*pk_fraction*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}3`
+|*pk_fraction*: `xref:{class_integer}[Integer]{nbsp}={nbsp}3`
 a|Numerator and denominator are integral, and the presentation method uses a slash, e.g.  1/2 .
 
-|*pk_integer_fraction*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]{nbsp}={nbsp}4`
+|*pk_integer_fraction*: `xref:{class_integer}[Integer]{nbsp}={nbsp}4`
 a|Numerator and denominator are integral, and the presentation method uses a slash, e.g.  1/2 ; if the numerator is greater than the denominator, e.g. n=3, d=2, the presentation is  1 1/2 .
 
 2+h|*Functions*
 
 |*is_equal* ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+other: `xref:{class_integer}[Integer][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
+_Inherited from xref:{class_integer}[Integer]_
 
 |*equal* __alias__ "=", "==" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+other: `xref:{class_integer}[Integer][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|Reference equality for reference types, value equality for value types. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
+_Inherited from xref:{class_integer}[Integer]_
 
 |*instance_of* ( +
-a_type: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String][1]` +
-): `xref:BASE:foundation_types:overview.adoc#_any_class[Any]` [1..1]
+a_type: `xref:{class_string}[String][1]` +
+): `xref:{class_any}[Any]` [1..1]
 a|Create new instance of a type. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 |*type_of* ( +
-an_object: `xref:BASE:foundation_types:overview.adoc#_any_class[Any][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]` [1..1]
+an_object: `xref:{class_any}[Any][1]` +
+): `xref:{class_string}[String]` [1..1]
 a|Type name of an object as a string. May include generic parameters, as in `"Interval<Time>"`. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 |*not_equal* __alias__ "!=", "≠" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+other: `xref:{class_ordered}[Ordered][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|True if current object not equal to `_other_`. Returns not `_equal_()`. +
-_Inherited from xref:BASE:foundation_types:overview.adoc#_any_class[Any]_
+_Inherited from xref:{class_any}[Any]_
 
 |*less_than* __alias__ "<" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+other: `xref:{class_integer}[Integer][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|Returns True if current Integer is less than `_other_`. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
+_Inherited from xref:{class_integer}[Integer]_
 
 |*less_than_or_equal* __alias__ "<=", "≤" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_ordered}[Ordered][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `not (other < self)` [1..1]
 a|True if current object less than or equal to `_other_`. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+_Inherited from xref:{class_ordered}[Ordered]_
 
 |*greater_than* __alias__ ">" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_ordered}[Ordered][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = (other < self)` [1..1]
 a|True if current object greater than `_other_`. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+_Inherited from xref:{class_ordered}[Ordered]_
 
 |*greater_than_or_equal* __alias__ ">=", "≥" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_ordered}[Ordered][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Post_result__: `Result = (other \<= self)` [1..1]
 a|True if current object greater than or equal to `_other_`. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_ordered_class[Ordered]_
+_Inherited from xref:{class_ordered}[Ordered]_
 
 |*add* __alias__ "+" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+other: `xref:{class_integer}[Integer][1]` +
+): `xref:{class_integer}[Integer]` [1..1]
 a|Integer addition. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
+_Inherited from xref:{class_integer}[Integer]_
 
 |*subtract* __alias__ "-" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+other: `xref:{class_integer}[Integer][1]` +
+): `xref:{class_integer}[Integer]` [1..1]
 a|Integer subtraction. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
+_Inherited from xref:{class_integer}[Integer]_
 
 |*multiply* __alias__ "&#42;" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+other: `xref:{class_integer}[Integer][1]` +
+): `xref:{class_integer}[Integer]` [1..1]
 a|Integer multiplication. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
+_Inherited from xref:{class_integer}[Integer]_
 
 |*divide* __alias__ "/" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]` [1..1]
+other: `xref:{class_integer}[Integer][1]` +
+): `xref:{class_double}[Double]` [1..1]
 a|Integer division. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
+_Inherited from xref:{class_integer}[Integer]_
 
 |*exponent* __alias__ "^" ( +
-other: `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]` [1..1]
+other: `xref:{class_double}[Double][1]` +
+): `xref:{class_double}[Double]` [1..1]
 a|Integer exponentiation. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
+_Inherited from xref:{class_integer}[Integer]_
 
-|*negative* __alias__ "-" (): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+|*negative* __alias__ "-" (): `xref:{class_integer}[Integer]` [1..1]
 a|Generate negative of current Integer value. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
+_Inherited from xref:{class_integer}[Integer]_
 
 |*modulo* __alias__ "mod", "\\" ( +
-mod: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]` [1..1]
+mod: `xref:{class_integer}[Integer][1]` +
+): `xref:{class_integer}[Integer]` [1..1]
 a|Return self modulo other. +
-_Inherited from xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]_
+_Inherited from xref:{class_integer}[Integer]_
 
 |*valid_proportion_kind* ( +
-nq: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` [1..1]
+nq: `xref:{class_integer}[Integer][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
 a|True if n is one of the defined types.
 |===

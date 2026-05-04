@@ -9,24 +9,24 @@ h|*Description*
 Misuse: Not to be used for amounts of physical entities (which all have units).
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
+2+|`xref:{class_dv_amount}[DV_AMOUNT]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*magnitude*: `xref:BASE:foundation_types:primitive_types.adoc#_integer64_class[Integer64]`
+|*magnitude*: `xref:{class_integer64}[Integer64]`
 a|
 
 h|*0..1 +
 (redefined)*
-|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]<xref:RM:data_types:quantity_package.adoc#_dv_count_class[DV_COUNT]>`
+|*normal_range*: `xref:{class_dv_interval}[DV_INTERVAL]<xref:{class_dv_count}[DV_COUNT]>`
 a|Optional normal range.
 
 h|*0..1 +
 (redefined)*
-|*other_reference_ranges*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_count_class[DV_COUNT]>>`
+|*other_reference_ranges*: `xref:{class_list}[List]<xref:{class_reference_range}[REFERENCE_RANGE]<xref:{class_dv_count}[DV_COUNT]>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
 
 h|*Functions*
@@ -36,29 +36,29 @@ h|*Functions*
 h|*1..1 +
 (redefined)*
 |*add* __alias__ "+" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_count_class[DV_COUNT][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_count_class[DV_COUNT]`
+other: `xref:{class_dv_count}[DV_COUNT][1]` +
+): `xref:{class_dv_count}[DV_COUNT]`
 a|Sum of this `DV_COUNT` and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*subtract* __alias__ "-" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_count_class[DV_COUNT][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_count_class[DV_COUNT]`
+other: `xref:{class_dv_count}[DV_COUNT][1]` +
+): `xref:{class_dv_count}[DV_COUNT]`
 a|Difference of this `DV_COUNT` and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*multiply* __alias__ "&#42;" ( +
-factor: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_count_class[DV_COUNT]`
+factor: `xref:{class_real}[Real][1]` +
+): `xref:{class_dv_count}[DV_COUNT]`
 a|Product of this `DV_COUNT` and `_factor_`.
 
 h|*1..1 +
 (redefined)*
 |*less_than* __alias__ "<" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_count_class[DV_COUNT][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_dv_count}[DV_COUNT][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +
  +
@@ -68,7 +68,7 @@ a|True if `_other_` is less than this Quantified object. Based on comparison of 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_ordered}[DV_ORDERED][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|Return True.
 |===

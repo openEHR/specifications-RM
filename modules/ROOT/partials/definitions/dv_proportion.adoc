@@ -11,36 +11,36 @@ Used for recording titers (e.g. 1:128), concentration ratios, e.g. Na:K (unitary
 Misuse: Should not be used to represent things like blood pressure which are often written using a  '/' character, giving the misleading impression that the item is a ratio, when in fact it is a structured value. Similarly, visual acuity, often written as (e.g.) "6/24" in clinical notes is not a ratio but an ordinal (which includes non-numeric symbols like CF = count fingers etc). Should not be used for formulations.
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_proportion_kind_enumeration[PROPORTION_KIND]`, `xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
+2+|`xref:{class_proportion_kind}[PROPORTION_KIND]`, `xref:{class_dv_amount}[DV_AMOUNT]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*numerator*: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+|*numerator*: `xref:{class_real}[Real]`
 a|Numerator of ratio
 
 h|*1..1*
-|*denominator*: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+|*denominator*: `xref:{class_real}[Real]`
 a|Denominator of ratio.
 
 h|*1..1*
-|*type*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*type*: `xref:{class_integer}[Integer]`
 a|Indicates semantic type of proportion, including percent, unitary etc.
 
 h|*0..1*
-|*precision*: `xref:BASE:foundation_types:primitive_types.adoc#_integer_class[Integer]`
+|*precision*: `xref:{class_integer}[Integer]`
 a|Precision  to  which  the  `_numerator_` and `_denominator_` values of  the  proportion are expressed, in terms of number  of decimal places. The value 0 implies an integral quantity. The value -1 implies no limit, i.e. any number of decimal places.
 
 h|*0..1 +
 (redefined)*
-|*normal_range*: `xref:RM:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]<xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION]>`
+|*normal_range*: `xref:{class_dv_interval}[DV_INTERVAL]<xref:{class_dv_proportion}[DV_PROPORTION]>`
 a|Optional normal range.
 
 h|*0..1 +
 (redefined)*
-|*other_reference_ranges*: `xref:BASE:foundation_types:structure_types.adoc#_list_class[List]<xref:RM:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION]>>`
+|*other_reference_ranges*: `xref:{class_list}[List]<xref:{class_reference_range}[REFERENCE_RANGE]<xref:{class_dv_proportion}[DV_PROPORTION]>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
 
 h|*Functions*
@@ -49,46 +49,46 @@ h|*Functions*
 
 h|*1..1 +
 (effected)*
-|*magnitude* (): `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real]`
+|*magnitude* (): `xref:{class_real}[Real]`
 a|Effective magnitude represented by ratio.
 
 h|*1..1*
-|*is_integral* (): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+|*is_integral* (): `xref:{class_boolean}[Boolean]`
 a|True if the `_numerator_` and `_denominator_` values are integers, i.e. if `_precision_` is 0.
 
 h|*1..1 +
 (redefined)*
 |*add* __alias__ "+" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION]`
+other: `xref:{class_dv_proportion}[DV_PROPORTION][1]` +
+): `xref:{class_dv_proportion}[DV_PROPORTION]`
 a|Sum of two strictly comparable proportions.
 
 h|*1..1 +
 (redefined)*
 |*subtract* __alias__ "-" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION]`
+other: `xref:{class_dv_proportion}[DV_PROPORTION][1]` +
+): `xref:{class_dv_proportion}[DV_PROPORTION]`
 a|Difference between two strictly comparable proportions.
 
 h|*1..1 +
 (effected)*
 |*is_equal* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_proportion}[DV_PROPORTION][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|Return True if this `DV_AMOUNT` is considered equal to `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*multiply* __alias__ "&#42;" ( +
-factor: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION]`
+factor: `xref:{class_real}[Real][1]` +
+): `xref:{class_dv_proportion}[DV_PROPORTION]`
 a|Product of this Proportion and `_factor_`.
 
 h|*1..1 +
 (redefined)*
 |*less_than* __alias__ "<" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_proportion_class[DV_PROPORTION][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_dv_proportion}[DV_PROPORTION][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +
  +
@@ -98,8 +98,8 @@ a|True if this Proportion is less than  `_other_`. Only valid if `_is_strictly_c
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_ordered}[DV_ORDERED][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|Return True if the `_type_` of this proportion is the same as the `_type_` of `_other_`.
 
 h|*Invariants*

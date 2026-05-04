@@ -13,7 +13,7 @@ Used for recording the duration of something in the real world, particularly whe
 Misuse: Durations cannot be used to represent points in time, or intervals of time.
 
 h|*Inherit*
-2+|`xref:RM:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`, `xref:BASE:foundation_types:time_types.adoc#_iso8601_duration_class[Iso8601_duration]`
+2+|`xref:{class_dv_amount}[DV_AMOUNT]`, `xref:{class_iso8601_duration}[Iso8601_duration]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -21,7 +21,7 @@ h|*Attributes*
 
 h|*1..1 +
 (redefined)*
-|*value*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*value*: `xref:{class_string}[String]`
 a|ISO8601 duration string, including described deviations to support negative values and weeks.
 
 h|*Functions*
@@ -31,29 +31,29 @@ h|*Functions*
 h|*1..1 +
 (redefined)*
 |*add* __alias__ "+" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+other: `xref:{class_dv_duration}[DV_DURATION][1]` +
+): `xref:{class_dv_duration}[DV_DURATION]`
 a|Sum of this Duration and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*subtract* __alias__ "-" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+other: `xref:{class_dv_duration}[DV_DURATION][1]` +
+): `xref:{class_dv_duration}[DV_DURATION]`
 a|Difference of this Duration and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*multiply* __alias__ "&#42;" ( +
-factor: `xref:BASE:foundation_types:primitive_types.adoc#_real_class[Real][1]` +
-): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+factor: `xref:{class_real}[Real][1]` +
+): `xref:{class_dv_duration}[DV_DURATION]`
 a|Product of this Duration and `_factor_`.
 
 h|*1..1 +
 (redefined)*
 |*less_than* __alias__ "<" ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]` +
+other: `xref:{class_dv_duration}[DV_DURATION][1]` +
+): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +
  +
@@ -63,20 +63,20 @@ a|True if `_other_` is less than this Quantified object. Based on comparison of 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION][1]` +
-): `xref:BASE:foundation_types:primitive_types.adoc#_boolean_class[Boolean]`
+other: `xref:{class_dv_duration}[DV_DURATION][1]` +
+): `xref:{class_boolean}[Boolean]`
 a|True, for any two Durations.
 
 h|*1..1 +
 (redefined)*
-|*negative* __alias__ "-" (): `xref:RM:data_types:quantity_package.adoc#_dv_duration_class[DV_DURATION]`
+|*negative* __alias__ "-" (): `xref:{class_dv_duration}[DV_DURATION]`
 a|Negated version of current duration.
 
 Assuming the current duration is positive, the negated version represents a time prior to some origin point, or a negative age (e.g. so-called 'adjusted age' of premature infant).
 
 h|*1..1 +
 (effected)*
-|*magnitude* (): `xref:BASE:foundation_types:primitive_types.adoc#_double_class[Double]`
+|*magnitude* (): `xref:{class_double}[Double]`
 a|Numeric value of the duration as a number of seconds. Computed using the method `_to_seconds()_` inherited from `Iso8601_duration`.
 
 h|*Invariants*

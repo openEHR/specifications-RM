@@ -7,22 +7,22 @@ h|*Description*
 2+a|Used to record details of the Instruction causing an Action.
 
 h|*Inherit*
-2+|`xref:RM:common:archetyped_package.adoc#_pathable_class[PATHABLE]`
+2+|`xref:{class_pathable}[PATHABLE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*instruction_id*: `xref:BASE:base_types:identification_package.adoc#_locatable_ref_class[LOCATABLE_REF]`
+|*instruction_id*: `xref:{class_locatable_ref}[LOCATABLE_REF]`
 a|Reference to causing Instruction.
 
 h|*1..1*
-|*activity_id*: `xref:BASE:foundation_types:primitive_types.adoc#_string_class[String]`
+|*activity_id*: `xref:{class_string}[String]`
 a|Identifier of Activity within Instruction, in the form of its archetype path.
 
 h|*0..1*
-|*wf_details*: `xref:RM:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]`
+|*wf_details*: `xref:{class_item_structure}[ITEM_STRUCTURE]`
 a|Various workflow engine state details, potentially including such things as:
 
 * condition that fired to cause this Action to be done (with actual variables substituted); 

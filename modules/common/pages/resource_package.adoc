@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Resource Package
 
 NOTE: the version of the Resource package described below is used only in ADL 1.4 archetypes, i.e. via the {openehr_am_aom14}[AOM 1.4 archetype model]. A newer version of this package is defined in the {openehr_resource}[openEHR Resource Specfication] in the BASE component, and is used in ADL 2 archetypes (via the {openehr_am_aom2}[AOM 2 archetype model]) and in the {openehr_task_planning}[Task Planning specification]. The newer specification is almost completely backwards compatible, enabling for example easy upgrading of ADL1.4 archetype meta-data to the ADL2 form. It also specifies more comprehensive meta-data as well as annotations. The new specification should be used for all relevant needs in the future, with the older form here retained only while needed by AOM 1.4 based archetypes and tools.
@@ -8,7 +10,7 @@ The `common.resource` package defines the structure and semantics of the general
 
 [.text-center]
 .common.resource Package
-image::{uml_diagrams_uri}/RM-common.resource.svg[id=resource_package, align="center"]
+image::ROOT:uml/RM-common.resource.svg[id=resource_package, align="center"]
 
 === Natural Languages and Translation
 
@@ -34,10 +36,10 @@ Every change to a resource committed to the relevant repository causes a new add
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/authored_resource.adoc[]
+include::ROOT:partial$classes/authored_resource.adoc[]
 
-include::{uml_export_dir}/classes/translation_details.adoc[]
+include::ROOT:partial$classes/translation_details.adoc[]
 
-include::{uml_export_dir}/classes/resource_description.adoc[]
+include::ROOT:partial$classes/resource_description.adoc[]
 
-include::{uml_export_dir}/classes/resource_description_item.adoc[]
+include::ROOT:partial$classes/resource_description_item.adoc[]

@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Entry Package
 
 == Design Principles
@@ -94,7 +96,7 @@ The Entry model is defined by the `composition.content.entry package`, shown in 
 
 [.text-center]
 .rm.entry package
-image::{uml_diagrams_uri}/RM-composition.entry.svg[id=rm_entry, align="center"]
+image::ROOT:uml/RM-composition.entry.svg[id=rm_entry, align="center"]
 
 === The Entry class
 
@@ -279,7 +281,7 @@ The approach chosen here to support such functionality is to define a standard i
 
 [.text-center]
 .openEHR standard Instruction State Machine
-image::{uml_diagrams_uri}/RM-InstructionStateMachine.svg[id=instruction_state_machine, align="center"]
+image::ROOT:uml/RM-InstructionStateMachine.svg[id=instruction_state_machine, align="center"]
 
 This state machine is the result of long term experience with clinical workflows and act management systems. The states are as follows (Note: the SCHEDULED state was inspired by citenp:[Van_de_Velde_Degoulet2003], Fig 5.5).
 
@@ -380,25 +382,25 @@ The entire definition of a workflow is expressed as an optional parsable string,
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/entry.adoc[]
+include::ROOT:partial$classes/entry.adoc[]
 
-include::{uml_export_dir}/classes/admin_entry.adoc[]
+include::ROOT:partial$classes/admin_entry.adoc[]
 
-include::{uml_export_dir}/classes/care_entry.adoc[]
+include::ROOT:partial$classes/care_entry.adoc[]
 
-include::{uml_export_dir}/classes/observation.adoc[]
+include::ROOT:partial$classes/observation.adoc[]
 
-include::{uml_export_dir}/classes/evaluation.adoc[]
+include::ROOT:partial$classes/evaluation.adoc[]
 
-include::{uml_export_dir}/classes/instruction.adoc[]
+include::ROOT:partial$classes/instruction.adoc[]
 
-include::{uml_export_dir}/classes/activity.adoc[]
+include::ROOT:partial$classes/activity.adoc[]
 
-include::{uml_export_dir}/classes/action.adoc[]
+include::ROOT:partial$classes/action.adoc[]
 
-include::{uml_export_dir}/classes/instruction_details.adoc[]
+include::ROOT:partial$classes/instruction_details.adoc[]
 
-include::{uml_export_dir}/classes/ism_transition.adoc[]
+include::ROOT:partial$classes/ism_transition.adoc[]
 
 == Instance Structures
 
