@@ -56,6 +56,9 @@ h|*0..1*
 a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.
 
 h|*Invariants*
+2+a|__Valid_value__: `not value.is_empty`
+
+h|
 2+a|__Language_valid__: `language /= Void implies code_set (Code_set_id_languages).has_code (language)`
 
 h|

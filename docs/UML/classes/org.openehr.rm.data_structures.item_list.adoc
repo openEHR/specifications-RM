@@ -6,9 +6,9 @@ h|*Class*
 2+^h|*ITEM_LIST*
 
 h|*Description*
-2+a|Logical list data structure, where each item has a value and can be referred to by a name and a positional index in the list. The list may be empty.
+2+a|Logical list data structure, where each item has a value and can be referred to by a name and a positional index in the list. The list may be empty. 
 
-`ITEM_LIST` is used to represent any data which is logically a list of values, such as blood pressure, most protocols, many blood tests etc.
+`ITEM_LIST` is used to represent any data which is logically a list of values, such as blood pressure, most protocols, many blood tests etc. 
 
 Not to be used for time-based lists, which should be represented with the proper temporal class, i.e. `HISTORY`.
 
@@ -22,6 +22,7 @@ h|*Attributes*
 h|*0..1*
 |*items*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_element_class,ELEMENT>>>`
 a|Physical representation of the list.
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -52,5 +53,5 @@ h|*1..1 +
 a|Generate a CEN EN13606-compatible hierarchy consisting of a single `CLUSTER` containing the `ELEMENTs` of this list.
 
 h|*Invariants*
-2+a|__Valid_structure__: ` items.forall (i:ITEM &#124; i.type = "ELEMENT")`
+2+a|__Valid_structure__: `items.forall (i:ITEM &#124; i.type = "ELEMENT")`
 |===

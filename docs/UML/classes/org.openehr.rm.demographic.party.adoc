@@ -33,6 +33,7 @@ a|All other details for this Party.
 h|*0..1*
 |*relationships*: `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<<<_party_relationship_class,PARTY_RELATIONSHIP>>>`
 a|Relationships in which this Party takes part as source.
+
 h|*Functions*
 ^h|*Signature*
 ^h|*Meaning*
@@ -41,8 +42,17 @@ h|*1..1*
 |*type* (): `link:/releases/RM/{rm_release}/data_types.html#_dv_text_class[DV_TEXT^]`
 a|Type of party, such as  `PERSON`,  `ORGANISATION`, etc. Role name, e.g.  general practitioner ,  nurse ,  private citizen . Taken from inherited `_name_` attribute.
 
+h|*0..1*
+|*reverse_relationships* (): `link:/releases/BASE/{base_release}/foundation_types.html#_list_class[List^]<link:/releases/BASE/{base_release}/base_types.html#_locatable_ref_class[LOCATABLE_REF^]>` +
+ +
+__Post_reverse_relationships_validity__: `Result /= Void implies (not Result.empty and then Result.for_all (item &#124; repository ("demographics").all_party_relationships.has_object (item) and then repository ("demographics").all_party_relationships.object (item).target = self))`
+a|References to relationships in which this Party takes part as target.
+
 h|*Invariants*
 2+a|__Type_valid__: `type = name`
+
+h|
+2+a|__Identities_valid__: `not identities.is_empty`
 
 h|
 2+a|__Contacts_valid__: `contacts /= Void implies not contacts.is_empty`
