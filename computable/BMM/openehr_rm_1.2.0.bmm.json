@@ -1721,7 +1721,7 @@
                 "Languages_available_valid": "languages_available.has (original_language)",
                 "Revision_history_valid": "is_controlled xor revision_history = Void",
                 "Current_revision_valid": "(current_revision \/= Void and not is_controlled) implies current_revision.is_equal (\u201c(uncontrolled)\u201d)",
-                "Translations_valid": "translations \/= Void implies (not translations.is_empty and not translations.has (orginal_language.code_string))",
+                "Translations_valid": "translations \/= Void implies (not translations.is_empty and not translations.has (original_language.code_string))",
                 "Description_valid": "translations \/= Void implies (description.details.for_all (d |\ntranslations.has_key (d.language.code_string)))"
             }
         },
