@@ -106,6 +106,8 @@ All atomic text items are either instances of the type `DV_TEXT` or of `DV_CODED
 
 The attribute `CODE_PHRASE._code_string_` records a term code or code expression which may be used as an argument to a retrieval function in the terminology service interface to obtain the definition of the term or expression.
 
+NOTE: Since BASE Release 1.3.0, the `CODE_PHRASE` class is defined in the openEHR {openehr_base_types}[Base Types specification^] (`base_types.terminology` package) rather than in this specification; the Reference Model reuses that definition.
+
 The model of `DV_CODED_TEXT` is designed to capture the _actual_ term chosen by the user or software at runtime, i.e. preferred term or synonym (for terminologies supporting synonyms), or a post-coordination of underlying distinct terms if an expression was chosen as the term (such as an expression supported by SNOMED CT). A `DV_CODED_TEXT` instance is used if the final textual value chosen by the user is the exact term text (preferred or other) returned by the terminology service for the key (i.e. `_code_string_` value). If the user makes even the slightest modification during data entry, a mapping (see <<Mappings>>) to a `DV_TEXT` should be used instead.
 
 [.deprecated]
@@ -407,8 +409,6 @@ In a concrete instance of `DV_CODED_TEXT`, the following are the likely usages o
 include::{uml_export_dir}/classes/{pkg}dv_text.adoc[]
 
 include::{uml_export_dir}/classes/{pkg}term_mapping.adoc[]
-
-include::{uml_export_dir}/classes/{pkg}code_phrase.adoc[]
 
 include::{uml_export_dir}/classes/{pkg}dv_coded_text.adoc[]
 
