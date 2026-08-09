@@ -3,13 +3,9 @@
 == Overview
 
 The `data_types.uri` package includes two types used for referring to information resources. The
-`DV_URI` type allows data values which are references to objects on the world wide web to be created.
-Its specialisation, `DV_EHR_URI`, enables any element in an openEHR record to be identified in the
-same way as other objects on the web. The `DV_EHR_URI` type is convenient, because it is a string,
-like any other URI, and is therefore easily transportable and processable. Because it has its own
-scheme space, 'ehr', instances can be globally unique, as long as EHR identification is globally
-unique. `DV_EHR_URIs` are used to express all runtime paths in the EHR. The `uri` Package is illustrated
-below.
+`DV_URI` type allows data values which are references to objects on the world wide web to be created. The specialisation `DV_OPENEHR_URI` provides a representation for URIs that may be used within an openEHR data environment, i.e. to refer to any openEHR data artefact, including in the EHR, demographics, or future artefact types such as guidelines, plan etc.
+
+The final specialisation, `DV_EHR_URI`, provides the specific semantics for representing as a URI the reference to any element in an openEHR EHR. The `DV_EHR_URI` type is convenient, because it is a string, like any other URI, and is therefore easily transportable and processable. Because it has its own scheme space, 'ehr', instances can be globally unique, as long as EHR identification is globally unique. `DV_EHR_URIs` are used to express all runtime paths in the EHR. The `uri` Package is illustrated below.
 
 [.text-center]
 .rm.data_types.uri package
@@ -46,13 +42,19 @@ The following symbolic definitions are used in the classes below.
 
 include::{uml_export_dir}/classes/{pkg}dv_uri.adoc[]
 
+include::{uml_export_dir}/classes/{pkg}dv_openehr_uri.adoc[]
+
 include::{uml_export_dir}/classes/{pkg}dv_ehr_uri.adoc[]
 
 == Syntaxes
 
+=== DV_OPENEHR_URI Syntax
+
+The syntax of a `DV_OPENEHR_URI` is an openEHR path within any openEHR-defined data instance, scoped by any URI scheme-space used in openEHR.
+
 === DV_EHR_URI Syntax
 
-The syntax of a `DV_EHR_URI` is an openEHR path, inside the 'ehr' URI scheme-space, and is one of the forms:
+The syntax of a `DV_EHR_URI` is an openEHR path, inside the 'ehr' URI scheme-space, and takes one of the forms:
 
 ----
 ehr://system_id/ehr_id/top_level_structure_locator/path_inside_top_level_structure

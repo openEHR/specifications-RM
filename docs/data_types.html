@@ -10,6 +10,7 @@
 <title>Data Types Information Model</title>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
+<link rel="stylesheet" href="https://specifications.openehr.org/styles/asciidoctor-tabs.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -259,12 +260,14 @@
 <li><a href="#_class_descriptions_7">10.3. Class Descriptions</a>
 <ul class="sectlevel3">
 <li><a href="#_dv_uri_class">10.3.1. DV_URI Class</a></li>
-<li><a href="#_dv_ehr_uri_class">10.3.2. DV_EHR_URI Class</a></li>
+<li><a href="#_dv_openehr_uri_class">10.3.2. DV_OPENEHR_URI Class</a></li>
+<li><a href="#_dv_ehr_uri_class">10.3.3. DV_EHR_URI Class</a></li>
 </ul>
 </li>
 <li><a href="#_syntaxes_3">10.4. Syntaxes</a>
 <ul class="sectlevel3">
-<li><a href="#_dv_ehr_uri_syntax">10.4.1. DV_EHR_URI Syntax</a></li>
+<li><a href="#_dv_openehr_uri_syntax">10.4.1. DV_OPENEHR_URI Syntax</a></li>
+<li><a href="#_dv_ehr_uri_syntax">10.4.2. DV_EHR_URI Syntax</a></li>
 </ul>
 </li>
 </ul>
@@ -350,7 +353,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2023 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2024 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -390,11 +393,19 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue"></a>2.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-90" target="_blank" rel="noopener">SPECRM-90</a>: Add new <code>DV_OPENEHR_URI</code> type as descendant of <code>DV_URI</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
+E Sundvall,<br>
+M Polajnar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>01 Nov 2024</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-101" target="_blank" rel="noopener">SPECRM-101</a>: Correct error in <code><em>less_than()</em></code> description in various <code>DV_ORDERED</code> descendants: <code>DV_QUANTIFIED</code>, <code>DV_COUNT</code>, <code>DV_QUANTITY</code>, and the DV date/time types to indicate that the result is 'this object &lt; other'.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">B Verhees,<br>
  T Beale</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a id="latest_issue_date"></a>26 Dec 2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26 Dec 2020</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top" colspan="4"><p class="tableblock"><strong>RM Release 1.1.0</strong></p></th>
@@ -6230,13 +6241,10 @@ ED type from the HL7v3 data types specification.</p>
 <h3 id="_overview_8"><a class="anchor" href="#_overview_8"></a>10.1. Overview</h3>
 <div class="paragraph">
 <p>The <code>data_types.uri</code> package includes two types used for referring to information resources. The
-<code>DV_URI</code> type allows data values which are references to objects on the world wide web to be created.
-Its specialisation, <code>DV_EHR_URI</code>, enables any element in an openEHR record to be identified in the
-same way as other objects on the web. The <code>DV_EHR_URI</code> type is convenient, because it is a string,
-like any other URI, and is therefore easily transportable and processable. Because it has its own
-scheme space, 'ehr', instances can be globally unique, as long as EHR identification is globally
-unique. <code>DV_EHR_URIs</code> are used to express all runtime paths in the EHR. The <code>uri</code> Package is illustrated
-below.</p>
+<code>DV_URI</code> type allows data values which are references to objects on the world wide web to be created. The specialisation <code>DV_OPENEHR_URI</code> provides a representation for URIs that may be used within an openEHR data environment, i.e. to refer to any openEHR data artefact, including in the EHR, demographics, or future artefact types such as guidelines, plan etc.</p>
+</div>
+<div class="paragraph">
+<p>The final specialisation, <code>DV_EHR_URI</code>, provides the specific semantics for representing as a URI the reference to any element in an openEHR EHR. The <code>DV_EHR_URI</code> type is convenient, because it is a string, like any other URI, and is therefore easily transportable and processable. Because it has its own scheme space, 'ehr', instances can be globally unique, as long as EHR identification is globally unique. <code>DV_EHR_URIs</code> are used to express all runtime paths in the EHR. The <code>uri</code> Package is illustrated below.</p>
 </div>
 <div id="rm_data_types_uri" class="imageblock text-center text-center">
 <div class="content">
@@ -6366,7 +6374,43 @@ in the EHR and between EHRs.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_dv_ehr_uri_class"><a class="anchor" href="#_dv_ehr_uri_class"></a>10.3.2. DV_EHR_URI Class</h4>
+<h4 id="_dv_openehr_uri_class"><a class="anchor" href="#_dv_openehr_uri_class"></a>10.3.2. DV_OPENEHR_URI Class</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Class</strong></p></th>
+<th class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><strong>DV_OPENEHR_URI</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Description</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_dv_uri_class">DV_URI</a></code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Functions</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Signature</strong></p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Meaning</strong></p></th>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>as_urn</strong> (): <code><a href="/releases/BASE/latest/foundation_types.html#_string_class" target="_blank" rel="noopener">String</a></code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Generate URN form of this URI.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_dv_ehr_uri_class"><a class="anchor" href="#_dv_ehr_uri_class"></a>10.3.3. DV_EHR_URI Class</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -6389,7 +6433,7 @@ in the EHR and between EHRs.</p>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Inherit</strong></p></th>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_dv_uri_class">DV_URI</a></code></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><code><a href="#_dv_openehr_uri_class">DV_OPENEHR_URI</a></code></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>Invariants</strong></p></th>
@@ -6404,9 +6448,15 @@ in the EHR and between EHRs.</p>
 <div class="sect2">
 <h3 id="_syntaxes_3"><a class="anchor" href="#_syntaxes_3"></a>10.4. Syntaxes</h3>
 <div class="sect3">
-<h4 id="_dv_ehr_uri_syntax"><a class="anchor" href="#_dv_ehr_uri_syntax"></a>10.4.1. DV_EHR_URI Syntax</h4>
+<h4 id="_dv_openehr_uri_syntax"><a class="anchor" href="#_dv_openehr_uri_syntax"></a>10.4.1. DV_OPENEHR_URI Syntax</h4>
 <div class="paragraph">
-<p>The syntax of a <code>DV_EHR_URI</code> is an openEHR path, inside the 'ehr' URI scheme-space, and is one of the forms:</p>
+<p>The syntax of a <code>DV_OPENEHR_URI</code> is an openEHR path within any openEHR-defined data instance, scoped by any URI scheme-space used in openEHR.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_dv_ehr_uri_syntax"><a class="anchor" href="#_dv_ehr_uri_syntax"></a>10.4.2. DV_EHR_URI Syntax</h4>
+<div class="paragraph">
+<p>The syntax of a <code>DV_EHR_URI</code> is an openEHR path, inside the 'ehr' URI scheme-space, and takes one of the forms:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6999,5 +7049,6 @@ related by inheritance, as supported by all object-oriented languages.</p>
 Last updated 2022-11-17 15:24:01 UTC
 </div>
 </div>
+<script src="https://specifications.openehr.org/js/asciidoctor-tabs.js"></script>
 </body>
 </html>

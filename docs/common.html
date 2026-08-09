@@ -10,6 +10,7 @@
 <title>Common Information Model</title>
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/openehr.css">
 <link rel="stylesheet" href="https://specifications.openehr.org/styles/pygments-default.css">
+<link rel="stylesheet" href="https://specifications.openehr.org/styles/asciidoctor-tabs.css">
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
@@ -266,7 +267,7 @@
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2023 The openEHR Foundation</th>
+<th class="tableblock halign-center valign-top" colspan="2">&#169; 2003 - 2024 The openEHR Foundation</th>
 </tr>
 </thead>
 <tbody>
@@ -307,14 +308,26 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a id="latest_issue"></a>2.1.5</p>
+<p><a id="latest_issue"></a>2.2.0</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-90" target="_blank" rel="noopener">SPECRM-90</a>: Add new <code>DV_OPENEHR_URI</code> type; change <code>LINK.<em>target</em></code> to this type.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
+E Sundvall,<br>
+M Polajnar</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="latest_issue_date"></a>01 Nov 2024</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>2.1.5</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://specifications.openehr.org/tickets/SPECRM-87" target="_blank" rel="noopener">SPECRM-87</a>: Support tags: added <a href="#tags">Tags Package</a> (Addresses <a href="https://specifications.openehr.org/tickets/SPECPR-265" target="_blank" rel="noopener">SPECPR-265</a>).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">S Iancu,<br>
 B Næss,<br>
 M Polajnar</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><a id="latest_issue_date"></a>17 Nov 2022</p>
+<p>17 Nov 2022</p>
 </div></div></td>
 </tr>
 <tr>
@@ -1911,9 +1924,9 @@ a_loc: <code><a href="#_pathable_class">PATHABLE</a>[1]</code><br>
 </tr>
 <tr>
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>1..1</strong></p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_ehr_uri_class" target="_blank" rel="noopener">DV_EHR_URI</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>target</strong>: <code><a href="/releases/RM/latest/data_types.html#_dv_openehr_uri_class" target="_blank" rel="noopener">DV_OPENEHR_URI</a></code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>The logical  to  object in the link relation, as per the linguistic sense of the meaning attribute.</p>
+<p>The logical target object in the link relation, as per the linguistic sense of the meaning attribute. May be any openEHR data artefact, including in an EHR, PARTY etc.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2608,7 +2621,7 @@ terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_participati
 <th class="tableblock halign-center valign-top"><p class="tableblock"><strong>0..1</strong></p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>items</strong>: <code><a href="/releases/BASE/latest/foundation_types.html#_list_class">List<sup></a>&lt;<a href="/releases/RM/latest/data_types.html#_dv_ehr_uri_class">DV_EHR_URI</sup></a>&gt;</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Items attested, expressed as fully qualified runtime paths to the items in question. Although not recommended, these may include fine-grained items which have been attested in some other system. Otherwise it is assumed to be for the entire VERSION with which it is associated.</p>
+<p>Items attested, expressed as fully qualified runtime paths to the items in question. Although not recommended, these may include fine-grained items which have been attested in some other system. Otherwise it is assumed to be for the entire <code>VERSION</code> with which it is associated.</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4738,5 +4751,6 @@ translations.has_key (d.language.code_string)))</code></p>
 Last updated 2022-11-17 15:56:53 UTC
 </div>
 </div>
+<script src="https://specifications.openehr.org/js/asciidoctor-tabs.js"></script>
 </body>
 </html>
