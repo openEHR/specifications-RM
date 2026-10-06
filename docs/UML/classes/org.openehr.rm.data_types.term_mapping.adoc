@@ -68,7 +68,7 @@ __Post__: `Result := c = ‘>’ or c = ‘=’ or c = ‘<’ or c = ‘?’`
 a|True if match valid.
 
 h|*Invariants*
-2+a|__Purpose_valid__: `purpose /= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)`
+2+a|__Purpose_valid__: `purpose /= Void implies not purpose.is_empty`
 
 h|
 2+a|__Match_valid__: `is_valid_match_code (match)`

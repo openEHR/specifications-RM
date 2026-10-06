@@ -42,8 +42,7 @@ h|
 2+a|__Inv_null_flavour_indicated__: `is_null() xor null_flavour = Void`
 
 h|
-2+a|__Inv_null_flavour_valid__: `is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)`
-
+2+a|__Inv_null_flavour_valid__: `is_null implies null_flavour /= Void and null_flavour.defining_code /= Void``
 h|
 2+a|__Inv_null_reason_valid__: `null_reason /= Void implies is_null()`
 |===
