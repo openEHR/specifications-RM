@@ -26,6 +26,7 @@ The plugin carries the spec-authoring know-how — **prefer its skills/agents ov
 |------|-----|
 | Create/edit a spec, chapter, `master.adoc`, or `manifest.json` | skill `openehr-specs:authoring` |
 | Spec prose style — overviews, semantics, design rationale | skill `openehr-specs:content-patterns` |
+| Add or change classes, attributes, functions or invariants in the BMM | skill `openehr-specs:bmm-authoring` |
 | Regenerate class tables/diagrams from BMM (`bmm-publisher`) | skill `openehr-specs:class-generation` |
 | Amendment record (`master00-amendment_record.adoc`) | skill `openehr-specs:amendment-record` |
 | Releases, CR/PR, lifecycle status, Jira workflow | skill `openehr-specs:governance` |
@@ -53,7 +54,7 @@ The build prints `generated <file>` and exits 0 even when includes are missing, 
 ```bash
 # regenerate class tables (NEVER hand-edit docs/UML/classes/*.adoc) — run from this repo's root.
 # Pass the repo BMM by PATH: a bare schema id (openehr_rm_1.2.0) uses the image's bundled copy, which lags this repo.
-# RM classes refer to BASE types: load the sibling BASE BMM with -d, or their links come out as /classes/<Type>.
+# RM classes refer to types of other schemas: load each from its sibling clone with -d, or their links come out as /classes/<Type>.
 OUT=$(mktemp -d)
 docker run --rm --user $(id -u):$(id -g) \
   -v "$PWD/computable/BMM/openehr_rm_1.2.0.bmm.json":/in/openehr_rm_1.2.0.bmm.json:ro \
@@ -65,7 +66,7 @@ docker run --rm --user $(id -u):$(id -g) \
 # then diff "$OUT" against docs/UML/classes and copy over the tables you changed
 ```
 
-To change a class/attribute/function/invariant, edit the BMM schema and regenerate — never touch the generated tables (see skill `openehr-specs:class-generation`).
+To change a class/attribute/function/invariant, edit the BMM schema (skill `openehr-specs:bmm-authoring`, which also checks it) and regenerate (skill `openehr-specs:class-generation`) — never touch the generated tables.
 <!-- openehr-scaffold:end build -->
 
 ## Gotchas
