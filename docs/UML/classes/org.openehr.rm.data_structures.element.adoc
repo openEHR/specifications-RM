@@ -17,7 +17,7 @@ h|*Attributes*
 
 h|*0..1*
 |*null_flavour*: `link:/releases/RM/{rm_release}/data_types.html#_dv_coded_text_class[DV_CODED_TEXT^]`
-a|Flavour of null value, e.g. `253&#124;unknown&#124;`, `271&#124;no information&#124;`, `272&#124;masked&#124;`, and `273&#124;not applicable&#124;`.
+a|Flavour of null value, e.g. `253&#124;unknown&#124;`, `271&#124;no information&#124;`, `272&#124;masked&#124;`, and `273&#124;not applicable&#124;`. Coded using the openEHR Terminology `null flavours` group (binding strength: `extensible`).
 
 h|*0..1*
 |*value*: `link:/releases/RM/{rm_release}/data_types.html#_data_value_class[DATA_VALUE^]`
@@ -41,8 +41,6 @@ h|*Invariants*
 h|
 2+a|__Inv_null_flavour_indicated__: `is_null() xor null_flavour = Void`
 
-h|
-2+a|__Inv_null_flavour_valid__: `is_null implies null_flavour /= Void and null_flavour.defining_code /= Void``
 h|
 2+a|__Inv_null_reason_valid__: `null_reason /= Void implies is_null()`
 |===

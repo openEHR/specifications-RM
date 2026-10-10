@@ -27,7 +27,7 @@ The first three values are taken from the ISO standards 2788 ( Guide to Establis
 
 h|*0..1*
 |*purpose*: `<<_dv_coded_text_class,DV_CODED_TEXT>>`
-a|Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'.
+a|Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'. Coded using the openEHR Terminology `term mapping purpose` group (binding strength: `extensible`).
 
 h|*1..1*
 |*target*: `<<_code_phrase_class,CODE_PHRASE>>`
@@ -68,8 +68,5 @@ __Post__: `Result := c = ‘>’ or c = ‘=’ or c = ‘<’ or c = ‘?’`
 a|True if match valid.
 
 h|*Invariants*
-2+a|__Purpose_valid__: `purpose /= Void implies not purpose.is_empty`
-
-h|
 2+a|__Match_valid__: `is_valid_match_code (match)`
 |===

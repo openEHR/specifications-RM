@@ -19,7 +19,7 @@ h|*Attributes*
 
 h|*0..1*
 |*normal_status*: `<<_code_phrase_class,CODE_PHRASE>>`
-a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL;  'Example term-binding to the openEHR Terminology group  `normal_status`.
+a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see the openEHR Terminology code set `normal statuses` (binding strength: `extensible`). The code `N` means normal only in that code set, so the rules that depend on it apply only to its codes.
 
 h|*0..1*
 |*normal_range*: `<<_dv_interval_class,DV_INTERVAL>>`
@@ -50,7 +50,7 @@ h|*1..1*
 __Pre__: `normal_range /= Void or normal_status /= Void` +
  +
 __Post_range__: `normal_range /= Void implies Result = normal_range.has (self)` +
-__Post_status__: `normal_status /= Void implies normal_status.code_string.is_equal (“N”)`
+__Post_status__: `(normal_status /= Void and then normal_status.terminology_id.name.is_equal (Terminology_id_openehr)) implies normal_status.code_string.is_equal (“N”)`
 a|Value is in the normal range, determined by comparison of the value to `_normal_range_` if present, or by the `_normal_status_` marker if present.
 
 h|*1..1 +
@@ -67,8 +67,5 @@ h|
 2+a|__Is_simple_validity__: `(normal_range = Void and other_reference_ranges = Void) implies is_simple`
 
 h|
-2+a|__Normal_status_validity__: `normal_status /= Void implies not normal_status.is_empty`
-
-h|
-2+a|__Normal_range_and_status_consistency__: `(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))`
+2+a|__Normal_range_and_status_consistency__: `(normal_range /= Void and normal_status /= Void and then normal_status.terminology_id.name.is_equal (Terminology_id_openehr)) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))`
 |===
