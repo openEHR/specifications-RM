@@ -3,7 +3,7 @@
     "rm_publisher": "openehr",
     "schema_name": "rm",
     "rm_release": "1.2.0",
-    "schema_revision": "1.2.0.2",
+    "schema_revision": "1.2.0.3",
     "schema_lifecycle_state": "stable",
     "schema_description": "openEHR Reference Model",
     "schema_author": "Thomas Beale <thomas.beale@openehr.org>, code-generator",
@@ -2603,7 +2603,7 @@
                 "null_flavour": {
                     "_type": "P_BMM_SINGLE_PROPERTY",
                     "name": "null_flavour",
-                    "documentation": "Flavour of null value, e.g. `253|unknown|`, `271|no information|`, `272|masked|`, and `273|not applicable|`.",
+                    "documentation": "Flavour of null value, e.g. `253|unknown|`, `271|no information|`, `272|masked|`, and `273|not applicable|`. Coded using the openEHR Terminology `null flavours` group (binding strength: `extensible`).",
                     "type": "DV_CODED_TEXT"
                 },
                 "value": {
@@ -2632,7 +2632,6 @@
             "invariants": {
                 "Inv_is_null_valid": "is_null() = (value = Void)",
                 "Inv_null_flavour_indicated": "is_null() xor null_flavour = Void",
-                "Inv_null_flavour_valid": "is_null implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_null_flavour, null_flavour.defining_code)",
                 "Inv_null_reason_valid": "null_reason \/= Void implies is_null()"
             }
         },
@@ -3020,7 +3019,7 @@
                 "purpose": {
                     "_type": "P_BMM_SINGLE_PROPERTY",
                     "name": "purpose",
-                    "documentation": "Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'.",
+                    "documentation": "Purpose of the mapping e.g. 'automated data mining', 'billing', 'interoperability'. Coded using the openEHR Terminology `term mapping purpose` group (binding strength: `extensible`).",
                     "type": "DV_CODED_TEXT"
                 },
                 "target": {
@@ -3093,7 +3092,6 @@
                 }
             },
             "invariants": {
-                "Purpose_valid": "purpose \/= Void implies terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_term_mapping_purpose, purpose.defining_code)",
                 "Match_valid": "is_valid_match_code (match)"
             }
         },
@@ -3138,7 +3136,7 @@
                 "normal_status": {
                     "_type": "P_BMM_SINGLE_PROPERTY",
                     "name": "normal_status",
-                    "documentation": "Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`. ",
+                    "documentation": "Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see the openEHR Terminology code set `normal statuses` (binding strength: `extensible`).",
                     "type": "CODE_PHRASE"
                 },
                 "normal_range": {
@@ -3230,7 +3228,6 @@
             "invariants": {
                 "Other_reference_ranges_validity": "other_reference_ranges \/= Void implies not other_reference_ranges.is_empty",
                 "Is_simple_validity": "(normal_range = Void and other_reference_ranges = Void) implies is_simple",
-                "Normal_status_validity": "normal_status \/= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)",
                 "Normal_range_and_status_consistency": "(normal_range \/= Void and normal_status \/= Void) implies (normal_status.code_string.is_equal (\u201cN\u201d) xor not normal_range.has (self))"
             }
         },
@@ -7203,7 +7200,7 @@
                 "setting": {
                     "_type": "P_BMM_SINGLE_PROPERTY",
                     "name": "setting",
-                    "documentation": "The setting in which the clinical session took place. Coded using the openEHR Terminology,  setting  group. ",
+                    "documentation": "The setting in which the clinical session took place. The openEHR Terminology `setting` group gives example values (binding strength: `example`).",
                     "is_mandatory": true,
                     "type": "DV_CODED_TEXT"
                 },
@@ -7234,7 +7231,6 @@
                 }
             },
             "invariants": {
-                "Setting_valid": "Terminology (Terminology_id_openehr).has_code_for_group_id (Group_id_setting, setting.defining_code)",
                 "Participations_validity": "participations \/= Void implies not participations.is_empty",
                 "location_valid": "location \/= Void implies not location.is_empty"
             }
