@@ -3136,7 +3136,7 @@
                 "normal_status": {
                     "_type": "P_BMM_SINGLE_PROPERTY",
                     "name": "normal_status",
-                    "documentation": "Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see the openEHR Terminology code set `normal statuses` (binding strength: `extensible`).",
+                    "documentation": "Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see the openEHR Terminology code set `normal statuses` (binding strength: `extensible`). The code `N` means normal only in that code set, so the rules that depend on it apply only to its codes.",
                     "type": "CODE_PHRASE"
                 },
                 "normal_range": {
@@ -3198,7 +3198,7 @@
                     },
                     "post_conditions": {
                         "Post_range": "normal_range \/= Void implies Result = normal_range.has (self)",
-                        "Post_status": "normal_status \/= Void implies normal_status.code_string.is_equal (\u201cN\u201d)"
+                        "Post_status": "(normal_status \/= Void and then normal_status.terminology_id.name.is_equal (Terminology_id_openehr)) implies normal_status.code_string.is_equal (\u201cN\u201d)"
                     },
                     "result": {
                         "_type": "P_BMM_SIMPLE_TYPE",
@@ -3228,7 +3228,7 @@
             "invariants": {
                 "Other_reference_ranges_validity": "other_reference_ranges \/= Void implies not other_reference_ranges.is_empty",
                 "Is_simple_validity": "(normal_range = Void and other_reference_ranges = Void) implies is_simple",
-                "Normal_range_and_status_consistency": "(normal_range \/= Void and normal_status \/= Void) implies (normal_status.code_string.is_equal (\u201cN\u201d) xor not normal_range.has (self))"
+                "Normal_range_and_status_consistency": "(normal_range \/= Void and normal_status \/= Void and then normal_status.terminology_id.name.is_equal (Terminology_id_openehr)) implies (normal_status.code_string.is_equal (\u201cN\u201d) xor not normal_range.has (self))"
             }
         },
         "DV_INTERVAL": {
