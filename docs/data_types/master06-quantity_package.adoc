@@ -177,7 +177,7 @@ Lastly, the `_is_integral_` function indicates that the numerator and denominato
 
 Normal range for any of the quantity types (i.e. any instance of a subtype of `DV_ORDERED`) can be included via the attribute `DV_ORDERED`.`_normal_range_`, of type `REFERENCE_RANGE`. Other reference ranges (e.g. sub-critical, critical etc) can be included via the attribute `DV_ORDERED`.`_other_reference_ranges_`. The separation of normal and other reference range attributes is used because the former constitute the vast majority of ranges quoted for quantitative data.
 
-Normal status can be included via the attribute `DV_ORDERED`.`_normal_status_`, which takes the form of a `DV_ORDINAL`, whose symbol attribute is coded according to the openEHR terminology group "normal status", and takes values "HHH" (critically high), "HH" (abnormally high), "H" (borderline high)", "N" (normal), "L" ... "LLL".
+Normal status can be included via the attribute `DV_ORDERED`.`_normal_status_`, which is a `CODE_PHRASE`. Its `_code_string_` is taken from the openEHR code set "normal statuses" and has one of the values "HHH" (critically high), "HH" (abnormally high), "H" (borderline high), "N" (normal), "L" ... "LLL". The binding strength is `extensible` (see {openehr_rm_support}#_binding_strengths[Binding Strengths^]), so a code from another code set may be used. In that case the rules that depend on the code "N" do not apply.
 
 ==== Recording Time
 
