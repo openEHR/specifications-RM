@@ -1,0 +1,26 @@
+The SNOMED CT term _Essential hypertension_, with a mapping to ICD-10.
+
+[source,json]
+----
+{
+  "_type": "DV_CODED_TEXT",
+  "value": "Essential hypertension",
+  "defining_code": {
+    "terminology_id": {
+      "value": "SNOMED-CT"
+    },
+    "code_string": "59621000"
+  },
+  "mappings": [
+    {
+      "match": "=",
+      "target": {
+        "terminology_id": {
+          "value": "ICD10"
+        },
+        "code_string": "I10"
+      }
+    }
+  ]
+}
+----

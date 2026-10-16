@@ -1,0 +1,19 @@
+The audit of a commit that created a new version.
+
+[source,json]
+----
+{
+  "_type": "AUDIT_DETAILS",
+  "system_id": "openEHRSys.example.com",
+  "time_committed": {"value": "2026-10-16T09:50:00+02:00"},
+  "change_type": {
+    "value": "creation",
+    "defining_code": {
+      "terminology_id": {"value": "openehr"},
+      "code_string": "249"
+    }
+  },
+  "description": {"value": "Blood pressure recorded at ward round"},
+  "committer": {"_type": "PARTY_IDENTIFIED", "name": "Dr. Anna Schmidt"}
+}
+----
