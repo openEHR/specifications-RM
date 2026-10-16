@@ -1,0 +1,31 @@
+A medical device CLUSTER describing the blood pressure monitor used for a measurement.
+
+[source,json]
+----
+{
+  "_type": "CLUSTER",
+  "name": {"value": "Medical device"},
+  "archetype_node_id": "openEHR-EHR-CLUSTER.device.v1",
+  "archetype_details": {
+    "archetype_id": {"value": "openEHR-EHR-CLUSTER.device.v1"},
+    "rm_version": "1.1.0"
+  },
+  "items": [
+    {
+      "_type": "ELEMENT",
+      "name": {"value": "Device name"},
+      "archetype_node_id": "at0001",
+      "value": {
+        "_type": "DV_TEXT",
+        "value": "Automatic upper arm blood pressure monitor"
+      }
+    },
+    {
+      "_type": "ELEMENT",
+      "name": {"value": "Manufacturer"},
+      "archetype_node_id": "at0004",
+      "value": {"_type": "DV_TEXT", "value": "Example Medical Ltd"}
+    }
+  ]
+}
+----
