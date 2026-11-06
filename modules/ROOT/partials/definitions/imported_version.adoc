@@ -7,14 +7,14 @@ h|*Description*
 2+a|Versions whose content is an `ORIGINAL_VERSION` copied from another location; this class inherits `_commit_audit_` and `_contribution_` from `VERSION<T>`, providing imported versions with their own audit trail and Contribution, distinct from those of the imported `ORIGINAL_VERSION`.
 
 h|*Inherit*
-2+|`xref:{class_version}[VERSION]`
+2+|`xref:common:change_control_package.adoc#_version_class[VERSION]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*item*: `xref:{class_original_version}[ORIGINAL_VERSION]`
+|*item*: `xref:common:change_control_package.adoc#_original_version_class[ORIGINAL_VERSION]`
 a|The `ORIGINAL_VERSION` object that was imported.
 
 h|*Functions*
@@ -37,7 +37,7 @@ a|Computed version of inheritance precursor, derived as `_item.preceding_version
 
 h|*1..1 +
 (effected)*
-|*lifecycle_state* (): `xref:{class_dv_coded_text}[DV_CODED_TEXT]`
+|*lifecycle_state* (): `xref:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
 a|Lifecycle state of the content item in wrapped `ORIGINAL_VERSION`, derived as `_item.lifecycle_state_`; coded by openEHR vocabulary `version lifecycle state`.
 
 h|*1..1 +

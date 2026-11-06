@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Text Package
 
 == Overview
@@ -6,7 +8,7 @@ The `rm.data_types.text` package contains classes for representing all textual v
 
 [.text-center]
 .rm.data_types.text package
-image::{uml_diagrams_uri}/RM-data_types.text.svg[id=rm_data_types_text, align="center"]
+image::ROOT:uml/RM-data_types.text.svg[id=rm_data_types_text, align="center"]
 
 === Requirements
 
@@ -106,7 +108,7 @@ All atomic text items are either instances of the type `DV_TEXT` or of `DV_CODED
 
 The attribute `CODE_PHRASE._code_string_` records a term code or code expression which may be used as an argument to a retrieval function in the terminology service interface to obtain the definition of the term or expression.
 
-The model of `DV_CODED_TEXT` is designed to capture the _actual_ term chosen by the user or software at runtime, i.e. preferred term or synonym (for terminologies supporting synonyms), or a post-coordination of underlying distinct terms if an expression was chosen as the term (such as an expression supported by SNOMED CT). A `DV_CODED_TEXT` instance is used if the final textual value chosen by the user is the exact term text (preferred or other) returned by the terminology service for the key (i.e. `_code_string_` value). If the user makes even the slightest modification during data entry, a mapping (see <<Mappings>>) to a `DV_TEXT` should be used instead.
+The model of `DV_CODED_TEXT` is designed to capture the _actual_ term chosen by the user or software at runtime, i.e. preferred term or synonym (for terminologies supporting synonyms), or a post-coordination of underlying distinct terms if an expression was chosen as the term (such as an expression supported by SNOMED CT). A `DV_CODED_TEXT` instance is used if the final textual value chosen by the user is the exact term text (preferred or other) returned by the terminology service for the key (i.e. `_code_string_` value). If the user makes even the slightest modification during data entry, a mapping (see <<_mappings,Mappings>>) to a `DV_TEXT` should be used instead.
 
 [.deprecated]
 *Deprecated*: The type `DV_PARAGRAPH` was used to represent larger tracts of text built from lists of `DV_TEXT` instances, i.e. instances of `DV_TEXT` and `DV_CODED_TEXT`. Such text is now represented as plain text with new lines or markdown text, <<_formatting_and_hyperlinking,as described below>>.
@@ -404,15 +406,15 @@ In a concrete instance of `DV_CODED_TEXT`, the following are the likely usages o
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/{pkg}dv_text.adoc[]
+include::ROOT:partial$classes/dv_text.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}term_mapping.adoc[]
+include::ROOT:partial$classes/term_mapping.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}code_phrase.adoc[]
+include::ROOT:partial$classes/code_phrase.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}dv_coded_text.adoc[]
+include::ROOT:partial$classes/dv_coded_text.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}dv_paragraph.adoc[]
+include::ROOT:partial$classes/dv_paragraph.adoc[]
 
 == References
 bibliography::[]

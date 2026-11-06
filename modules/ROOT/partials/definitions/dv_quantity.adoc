@@ -9,7 +9,7 @@ h|*Description*
 Can also be used for time durations, where it is more convenient to treat these as simply a number of seconds rather than days, months, years (in the latter case, `DV_DURATION` may be used).
 
 h|*Inherit*
-2+|`xref:{class_dv_amount}[DV_AMOUNT]`
+2+|`xref:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -36,12 +36,12 @@ Example values from UCUM: "kg/m^2", “mm[Hg]", "ms-1", "km/h".
 
 h|*0..1 +
 (redefined)*
-|*normal_range*: `xref:{class_dv_interval}[DV_INTERVAL]<xref:{class_dv_quantity}[DV_QUANTITY]>`
+|*normal_range*: `xref:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]<xref:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]>`
 a|Optional normal range.
 
 h|*0..1 +
 (redefined)*
-|*other_reference_ranges*: `xref:{class_list}[List]<xref:{class_reference_range}[REFERENCE_RANGE]<xref:{class_dv_quantity}[DV_QUANTITY]>>`
+|*other_reference_ranges*: `xref:{class_list}[List]<xref:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]>>`
 a|Optional tagged other reference ranges for this value in its particular measurement context.
 
 h|*0..1*
@@ -65,28 +65,28 @@ h|*Functions*
 h|*1..1 +
 (redefined)*
 |*add* __alias__ "+" ( +
-other: `xref:{class_dv_quantity}[DV_QUANTITY][1]` +
-): `xref:{class_dv_quantity}[DV_QUANTITY]`
+other: `xref:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY][1]` +
+): `xref:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]`
 a|Sum of this `DV_QUANTITY` and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*subtract* __alias__ "-" ( +
-other: `xref:{class_dv_quantity}[DV_QUANTITY][1]` +
-): `xref:{class_dv_quantity}[DV_QUANTITY]`
+other: `xref:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY][1]` +
+): `xref:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]`
 a|Difference of this `DV_QUANTITY` and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*multiply* __alias__ "*" ( +
 factor: `xref:{class_real}[Real][1]` +
-): `xref:{class_dv_quantity}[DV_QUANTITY]`
+): `xref:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY]`
 a|Product of this `DV_QUANTITY` and `_factor_`.
 
 h|*1..1 +
 (redefined)*
 |*less_than* __alias__ "<" ( +
-other: `xref:{class_dv_quantity}[DV_QUANTITY][1]` +
+other: `xref:data_types:quantity_package.adoc#_dv_quantity_class[DV_QUANTITY][1]` +
 ): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +
@@ -101,7 +101,7 @@ a|True if `_precision_` = 0, meaning that the `_magnitude_` is a whole number.
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:{class_dv_ordered}[DV_ORDERED][1]` +
+other: `xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED][1]` +
 ): `xref:{class_boolean}[Boolean]`
 a|True if this quantity and `_other_` have the same `_units_` and also `_units_system_` if it exists.
 |===

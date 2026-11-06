@@ -7,7 +7,7 @@ h|*Description*
 2+a|Abstract class defining the concept of relative quantified  'amounts'. For relative quantities, the  `{plus}` and  `-` operators are defined (unlike descendants of `DV_ABSOLUTE_QUANTITY`, such as the date/time types).
 
 h|*Inherit*
-2+|`xref:{class_dv_quantified}[DV_QUANTIFIED]`
+2+|`xref:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -36,8 +36,8 @@ a|Test whether a number is a valid percentage, i.e. between 0 and 100.
 
 h|*1..1*
 |*add* __alias__ "+" ( +
-other: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
-): `xref:{class_dv_amount}[DV_AMOUNT]` +
+other: `xref:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
+): `xref:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)`
 a|Sum of this amount and another. The value of accuracy in the result is either:
@@ -49,8 +49,8 @@ If the accuracy value is a percentage in one operand and not in the other, the f
 
 h|*1..1*
 |*subtract* __alias__ "-" ( +
-other: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
-): `xref:{class_dv_amount}[DV_AMOUNT]`
+other: `xref:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
+): `xref:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
 a|Difference of this amount and another. The value of `_accuracy_` in the result is either:
 
 * the sum of the accuracies of the operands, if both present, or;
@@ -61,24 +61,24 @@ If the `_accuracy_` value is a percentage in one operand and not in the other, t
 h|*1..1 +
 (abstract)*
 |*is_equal* ( +
-other: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
+other: `xref:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
 ): `xref:{class_boolean}[Boolean]`
 a|Return True if this `DV_AMOUNT` is considered equal to `_other_`.
 
 h|*1..1*
 |*multiply* __alias__ "*" ( +
 factor: `xref:{class_real}[Real][1]` +
-): `xref:{class_dv_amount}[DV_AMOUNT]`
+): `xref:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
 a|Product of this Amount and `_factor_`.
 
 h|*1..1*
-|*negative* __alias__ "-" (): `xref:{class_dv_amount}[DV_AMOUNT]`
+|*negative* __alias__ "-" (): `xref:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`
 a|Negated version of current object, such as used for representing a difference, e.g. a weight loss.
 
 h|*1..1 +
 (redefined)*
 |*less_than* __alias__ "<" ( +
-other: `xref:{class_dv_amount}[DV_AMOUNT][1]` +
+other: `xref:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT][1]` +
 ): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +

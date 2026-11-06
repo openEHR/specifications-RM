@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = History Package
 
 == Overview
@@ -12,7 +14,7 @@ The model also supports the inclusion of 'summary' data, i.e. a textual or image
 
 In formal terms, the model defines the constrained generic (otherwise known as 'template' or 'parameterised') types `HISTORY<T->ITEM_STRUCTURE>`, `EVENT<T->ITEM_STRUCTURE>`, `POINT_EVENT<T>`, and `INTERVAL_EVENT<T>` where the `_type_` parameter is constrained to the `ITEM_STRUCTURE` type, and defines the type of the data recorded in an instance of `HISTORY`. The effect is that repeated instances of spatially complex data can recur in time, corresponding to the way data are actually measured. An aperiodic series of `POINT_EVENT` instances would typically be used to represent manual measurements repeated in time. Periodic histories of `INTERVAL_EVENT` instances would typically be used to represent vital signs monitor output (which is usually delivered in averaged form potentially with additional minimum and maximum values).
 
-As with all other parts of the openEHR reference model, the `history` package is designed so that archetypes define the domain semantics of `HISTORY` instances. The `history` package is shown on the left of <<data_structures_package>>.
+As with all other parts of the openEHR reference model, the `history` package is designed so that archetypes define the domain semantics of `HISTORY` instances. The `history` package is shown on the left of <<overview.adoc#data_structures_package,data_structures_package>>.
 
 === Basic Semantics
 
@@ -153,13 +155,13 @@ image::diagrams/history_ogtt.svg[id=history_ogtt, align="center"]
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/{pkg}history.adoc[]
+include::ROOT:partial$classes/history.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}event.adoc[]
+include::ROOT:partial$classes/event.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}point_event.adoc[]
+include::ROOT:partial$classes/point_event.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}interval_event.adoc[]
+include::ROOT:partial$classes/interval_event.adoc[]
 
 == History Instance Structures
 

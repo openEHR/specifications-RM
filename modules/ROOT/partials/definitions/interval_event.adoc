@@ -7,14 +7,14 @@ h|*Description*
 2+a|Defines a single interval event in a series.
 
 h|*Inherit*
-2+|`xref:{class_event}[EVENT]`
+2+|`xref:data_structures:history_package.adoc#_event_class[EVENT]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*width*: `xref:{class_dv_duration}[DV_DURATION]`
+|*width*: `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION]`
 a|Duration of the time interval during which the values recorded under `data` are true and, if set, the values recorded under `state` are true. Void if an instantaneous event.
 
 h|*0..1*
@@ -22,7 +22,7 @@ h|*0..1*
 a|Optional count of original samples to which this event corresponds.
 
 h|*1..1*
-|*math_function*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]`
+|*math_function*: `xref:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
 a|Mathematical function of the data of this event, e.g.  maximum, mean etc. Coded using https://github.com/openEHR/terminology/blob/master/openEHR_RM/en/openehr_terminology.xml[openEHR vocabulary `event math function`]. Default value `640&#124;actual&#124;`, meaning 'actual value'.
 
 Terminology: xref:TERM:SupportTerminology:terminology.adoc#_event_math_function[openEHR Terminology, event math function group]
@@ -32,7 +32,7 @@ h|*Functions*
 ^h|*Meaning*
 
 h|*1..1*
-|*interval_start_time* (): `xref:{class_dv_date_time}[DV_DATE_TIME]`
+|*interval_start_time* (): `xref:data_types:date_time_package.adoc#_dv_date_time_class[DV_DATE_TIME]`
 a|Start time of the interval of this event.
 
 h|*Invariants*

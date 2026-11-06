@@ -24,7 +24,7 @@ Borg CR 10 Scale
 
 For scores that include only Integers, `DV_SCALE` may also be used, but `DV_ORDINAL` should be supported to accommodate existing data instances of that type.
 
-2+|Inherits: xref:{class_basic_definitions}[BASIC_DEFINITIONS], xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS], xref:{class_any}[Any], xref:{class_data_value}[DATA_VALUE], xref:{class_ordered}[Ordered], xref:{class_dv_ordered}[DV_ORDERED]
+2+|Inherits: xref:{class_basic_definitions}[BASIC_DEFINITIONS], xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS], xref:{class_any}[Any], xref:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:{class_ordered}[Ordered], xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]
 
 2+h|*Constants*
 
@@ -58,21 +58,21 @@ _Inherited from xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS]_
 
 2+h|*Attributes*
 
-|*normal_status*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
+|*normal_status*: `xref:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
 a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`.
 
 Terminology: xref:TERM:SupportTerminology:terminology.adoc#_normal_statuses[openEHR code set normal statuses] +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
-|*normal_range*: `xref:{class_dv_interval}[DV_INTERVAL]` [0..1]
+|*normal_range*: `xref:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]` [0..1]
 a|Optional normal range. +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
-|*other_reference_ranges*: `xref:{class_list}[List]<xref:{class_reference_range}[REFERENCE_RANGE]<xref:{class_dv_ordered}[DV_ORDERED]>>` [0..1]
+|*other_reference_ranges*: `xref:{class_list}[List]<xref:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]>>` [0..1]
 a|Optional tagged other reference ranges for this value in its particular measurement context. +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
-|*symbol*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]` [1..1]
+|*symbol*: `xref:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]` [1..1]
 a|Coded textual representation of this value in the scale range, which may be strings made from symbols or other enumerations of terms such as  `no breathlessness`, `very very slight`, `slight breathlessness`. Codes come from archetypes.
 
 In some cases, a scale may include values that have no code/symbol. In this case, the symbol will be a `DV-CODED_TEXT` including the `_terminology_id_` and a blank String value for `_code_string_`.
@@ -121,7 +121,7 @@ a|True if current object not equal to `_other_`. Returns not `_equal_()`. +
 _Inherited from xref:{class_any}[Any]_
 
 |*less_than* __alias__ "<" ( +
-other: `xref:{class_dv_scale}[DV_SCALE][1]` +
+other: `xref:data_types:quantity_package.adoc#_dv_scale_class[DV_SCALE][1]` +
 ): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` [1..1]
@@ -152,13 +152,13 @@ a|True if current object greater than or equal to `_other_`. +
 _Inherited from xref:{class_ordered}[Ordered]_
 
 |*is_strictly_comparable_to* ( +
-other: `xref:{class_dv_scale}[DV_SCALE][1]` +
+other: `xref:data_types:quantity_package.adoc#_dv_scale_class[DV_SCALE][1]` +
 ): `xref:{class_boolean}[Boolean]` [1..1]
 a|Test if this Scale value is strictly comparable to `_other_`.
 
 |*is_simple* (): `xref:{class_boolean}[Boolean]` [1..1]
 a|True if this quantity has no reference ranges. +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 |*is_normal* (): `xref:{class_boolean}[Boolean]` +
  +
@@ -167,20 +167,20 @@ __Pre__: `normal_range /= Void or normal_status /= Void` +
 __Post_range__: `normal_range /= Void implies Result = normal_range.has (self)` +
 __Post_status__: `normal_status /= Void implies normal_status.code_string.is_equal (“N”)` [1..1]
 a|Value is in the normal range, determined by comparison of the value to `_normal_range_` if present, or by the `_normal_status_` marker if present. +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 2+h|*Invariants*
 
 2+a|__Other_reference_ranges_validity__: `other_reference_ranges /= Void implies not other_reference_ranges.is_empty` +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 2+a|__Is_simple_validity__: `(normal_range = Void and other_reference_ranges = Void) implies is_simple` +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 2+a|__Normal_status_validity__: `normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)` +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 2+a|__Normal_range_and_status_consistency__: `(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))` +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 |===

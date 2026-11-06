@@ -1,0 +1,21 @@
+= Reference Model
+
+[.spec-meta-line]
+Status: [.spec-status.spec-status-stable]#STABLE#  Release: [.release-tag]#{page-component-version}#
+
+
+Core information model of openEHR: EHR structure, demographic model, data types, data structures, common versioning and audit structures, and the EHR Extract model. Archetypes constrain RM instances to express domain content.
+
+.Specification Component Overview
+image::openehr_block_diagram.svg[openEHR Reference Model block diagram,role=block-diagram]
+
+== Specifications
+
+* xref:ehr:index.adoc[EHR Information Model] [.spec-status.spec-status-stable]#STABLE# — Top-level health record info model -- Core EHR structure: Compositions and the observation/instruction/action entry hierarchy
+* xref:demographic:index.adoc[Demographic Information Model] [.spec-status.spec-status-stable]#STABLE# — Top-level demographics info model -- Model for persons, organisations, roles, contacts, and party relationships
+* xref:common:index.adoc[Common Information Model] [.spec-status.spec-status-stable]#STABLE# — Common semantic patterns and structures -- Cross-cutting patterns: versioning, archetyped class hierarchy, and audit structures
+* xref:data_structures:index.adoc[Data Structures Information Model] [.spec-status.spec-status-stable]#STABLE# — Common data structures -- Generic containers: single items, lists, tables, and trees for any RM data type
+* xref:data_types:index.adoc[Data Types Information Model] [.spec-status.spec-status-stable]#STABLE# -- Quantities, coded text, date/time, proportions, media content, and URIs
+* xref:support:index.adoc[Support Information Model] [.spec-status.spec-status-stable]#STABLE# — (mostly obsolete) Terminology and Measurement service interfaces -- Foundation package: assumed types, terminology references, and measurement information
+* xref:integration:index.adoc[Integration Information Model] [.spec-status.spec-status-stable]#STABLE# — Model of free-form external system data -- Bridge representation for incorporating legacy non-archetyped data into an openEHR EHR
+* xref:ehr_extract:index.adoc[EHR Extract Information Model] [.spec-status.spec-status-stable]#STABLE# — Top-level EHR Extract request and response model -- Model for packaging and exchanging structured EHR subsets between systems

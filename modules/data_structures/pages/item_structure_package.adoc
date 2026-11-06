@@ -1,3 +1,5 @@
+include::partial$module_vars.adoc[]
+
 = Item Structure Package
 
 == Overview
@@ -19,7 +21,7 @@ Data values are connected to spatial structures via the `_value_` attribute of t
 
 In some circumstances however, additional detail is required in addition to the null flavour code. Examples include reporting and where specific reasons for lack of data have medico-legal ramifications, e.g. 'patient was unconscious', 'patient refused to tell me', 'no reason provided'. For these situations, the optional `_null_reason_` field may be used to record a specific reason.
 
-The openEHR class model for spatial structures is illustrated on the right-hand side of <<data_structures_package>>. It should be noted that these classes (`ITEM_LIST` etc) are not equivalents of similarly named classes (such as `List<T>`) in most data structure libraries - they also include per-node `_name_`,
+The openEHR class model for spatial structures is illustrated on the right-hand side of <<overview.adoc#data_structures_package,data_structures_package>>. It should be noted that these classes (`ITEM_LIST` etc) are not equivalents of similarly named classes (such as `List<T>`) in most data structure libraries - they also include per-node `_name_`,
 `_archetype_node_id_` and leaf node value and null flavour, and path capabilities.
 
 == ISO 13606 Encoding Rules
@@ -48,15 +50,15 @@ Data of an `ITEM_TREE` instance are simply replicated as is to produce the corre
 
 == Class Descriptions
 
-include::{uml_export_dir}/classes/{pkg}item_structure.adoc[]
+include::ROOT:partial$classes/item_structure.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}item_single.adoc[]
+include::ROOT:partial$classes/item_single.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}item_list.adoc[]
+include::ROOT:partial$classes/item_list.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}item_table.adoc[]
+include::ROOT:partial$classes/item_table.adoc[]
 
-include::{uml_export_dir}/classes/{pkg}item_tree.adoc[]
+include::ROOT:partial$classes/item_tree.adoc[]
 
 == Instance Structures
 

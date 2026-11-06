@@ -4,37 +4,37 @@
 
 2+a|Defines a single activity within an Instruction, such as a medication administration.
 
-2+|Inherits: xref:{class_any}[Any], xref:{class_pathable}[PATHABLE], xref:{class_locatable}[LOCATABLE]
+2+|Inherits: xref:{class_any}[Any], xref:common:archetyped_package.adoc#_pathable_class[PATHABLE], xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]
 
 2+h|*Attributes*
 
-|*name*: `xref:{class_dv_text}[DV_TEXT]` [1..1]
+|*name*: `xref:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
 a|Runtime name of this fragment, used to build runtime paths. This is the term provided via a clinical application or batch process to name this EHR construct: its retention in the EHR faithfully preserves the original label by which this entry was known to end users. +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
 |*archetype_node_id*: `xref:{class_string}[String]` [1..1]
 a|Design-time archetype identifier of this node taken from its generating archetype; used to build archetype paths. Always in the form of an at-code, e.g.  `at0005`. This value enables a 'standardised' name for this node to be generated, by referring to the generating archetype local terminology. 
 
 At an archetype root point, the value of this attribute is always the stringified form of the `_archetype_id_` found in the `_archetype_details_` object. +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
 |*uid*: `xref:{class_uid_based_id}[UID_BASED_ID]` [0..1]
 a|Optional globally unique object identifier for root points of archetyped structures. +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
-|*links*: `xref:{class_list}[List]<xref:{class_link}[LINK]>` [0..1]
+|*links*: `xref:{class_list}[List]<xref:common:archetyped_package.adoc#_link_class[LINK]>` [0..1]
 a|Links to other archetyped structures (data whose root object inherits from `ARCHETYPED`, such as `ENTRY`, `SECTION` and so on). Links may be to structures in other compositions. +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
-|*archetype_details*: `xref:{class_archetyped}[ARCHETYPED]` [0..1]
+|*archetype_details*: `xref:common:archetyped_package.adoc#_archetyped_class[ARCHETYPED]` [0..1]
 a|Details of archetyping used on this node. +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
-|*feeder_audit*: `xref:{class_feeder_audit}[FEEDER_AUDIT]` [0..1]
+|*feeder_audit*: `xref:common:archetyped_package.adoc#_feeder_audit_class[FEEDER_AUDIT]` [0..1]
 a|Audit trail from non-openEHR system of original commit of information forming the content of this node, or from a conversion gateway which has synthesised this node. +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
-|*timing*: `xref:{class_dv_parsable}[DV_PARSABLE]` [0..1]
+|*timing*: `xref:data_types:encapsulated_package.adoc#_dv_parsable_class[DV_PARSABLE]` [0..1]
 a|Timing of the activity, in the form of a parsable string. If used, the preferred syntax is ISO8601 'R' format, but other formats may be used including HL7 GTS.
 
 May be omitted if:
@@ -47,7 +47,7 @@ a|Perl-compliant regular expression pattern, enclosed in  '//' delimiters, indic
 
 Defaults to  `/.*/`, meaning any archetype.
 
-|*description*: `xref:{class_item_structure}[ITEM_STRUCTURE]` [1..1]
+|*description*: `xref:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]` [1..1]
 a|Description of the activity, in the form of an archetyped structure.
 
 2+h|*Functions*
@@ -90,9 +90,9 @@ other: `xref:{class_ordered}[Ordered][1]` +
 a|True if current object not equal to `_other_`. Returns not `_equal_()`. +
 _Inherited from xref:{class_any}[Any]_
 
-|*parent* (): `xref:{class_pathable}[PATHABLE]` [1..1]
+|*parent* (): `xref:common:archetyped_package.adoc#_pathable_class[PATHABLE]` [1..1]
 a|Parent of this node in a compositional hierarchy. +
-_Inherited from xref:{class_pathable}[PATHABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
 
 |*item_at_path* ( +
 a_path: `xref:{class_string}[String][1]` +
@@ -100,13 +100,13 @@ a_path: `xref:{class_string}[String][1]` +
  +
 __Pre__: `path_unique (a_path)` [1..1]
 a|The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item. +
-_Inherited from xref:{class_pathable}[PATHABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
 
 |*items_at_path* ( +
 a_path: `xref:{class_string}[String][1]` +
 ): `xref:{class_list}[List]<xref:{class_any}[Any]>` [0..1]
 a|List of items corresponding to a non-unique path. +
-_Inherited from xref:{class_pathable}[PATHABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
 
 |*path_exists* ( +
 a_path: `xref:{class_string}[String][1]` +
@@ -114,7 +114,7 @@ a_path: `xref:{class_string}[String][1]` +
  +
 __Pre__: `not a_path.is_empty` [1..1]
 a|True if the path exists in the data with respect to the current item. +
-_Inherited from xref:{class_pathable}[PATHABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
 
 |*path_unique* ( +
 a_path: `xref:{class_string}[String][1]` +
@@ -122,32 +122,32 @@ a_path: `xref:{class_string}[String][1]` +
  +
 __Pre__: `path_exists (a_path)` [1..1]
 a|True if the path corresponds to a single item in the data. +
-_Inherited from xref:{class_pathable}[PATHABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
 
 |*path_of_item* ( +
-a_loc: `xref:{class_pathable}[PATHABLE][1]` +
+a_loc: `xref:common:archetyped_package.adoc#_pathable_class[PATHABLE][1]` +
 ): `xref:{class_string}[String]` [1..1]
 a|The path to an item relative to the root of this archetyped structure. +
-_Inherited from xref:{class_pathable}[PATHABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_pathable_class[PATHABLE]_
 
-|*concept* (): `xref:{class_dv_text}[DV_TEXT]` [1..1]
+|*concept* (): `xref:data_types:text_package.adoc#_dv_text_class[DV_TEXT]` [1..1]
 a|Clinical concept of the archetype as a whole (= derived from the archetype_node_id' of the root node) +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
 |*is_archetype_root* (): `xref:{class_boolean}[Boolean]` [1..1]
 a|True if this node is the root of an archetyped structure. +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
 2+h|*Invariants*
 
 2+a|__Links_valid__: `links /= Void implies not links.is_empty` +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
 2+a|__Archetyped_valid__: `is_archetype_root xor archetype_details = Void` +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
 2+a|__Archetype_node_id_valid__: `not archetype_node_id.is_empty` +
-_Inherited from xref:{class_locatable}[LOCATABLE]_
+_Inherited from xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]_
 
 2+a|__Action_archetype_id_valid__: `not action_archetype_id.is_empty`
 
