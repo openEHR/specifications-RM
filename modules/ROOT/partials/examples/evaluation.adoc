@@ -1,0 +1,46 @@
+A problem/diagnosis EVALUATION recording hypertension with its date of onset.
+
+[source,json]
+----
+{
+  "_type": "EVALUATION",
+  "name": {"value": "Problem/Diagnosis"},
+  "archetype_node_id": "openEHR-EHR-EVALUATION.problem_diagnosis.v1",
+  "archetype_details": {
+    "archetype_id": {"value": "openEHR-EHR-EVALUATION.problem_diagnosis.v1"},
+    "rm_version": "1.1.0"
+  },
+  "language": {"terminology_id": {"value": "ISO_639-1"}, "code_string": "en"},
+  "encoding": {
+    "terminology_id": {"value": "IANA_character-sets"},
+    "code_string": "UTF-8"
+  },
+  "subject": {"_type": "PARTY_SELF"},
+  "data": {
+    "_type": "ITEM_TREE",
+    "name": {"value": "structure"},
+    "archetype_node_id": "at0001",
+    "items": [
+      {
+        "_type": "ELEMENT",
+        "name": {"value": "Problem/Diagnosis name"},
+        "archetype_node_id": "at0002",
+        "value": {
+          "_type": "DV_CODED_TEXT",
+          "value": "Hypertensive disorder, systemic arterial",
+          "defining_code": {
+            "terminology_id": {"value": "SNOMED-CT"},
+            "code_string": "38341003"
+          }
+        }
+      },
+      {
+        "_type": "ELEMENT",
+        "name": {"value": "Date/time of onset"},
+        "archetype_node_id": "at0077",
+        "value": {"_type": "DV_DATE_TIME", "value": "2024-03-12T10:00:00+01:00"}
+      }
+    ]
+  }
+}
+----

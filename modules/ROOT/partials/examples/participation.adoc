@@ -1,0 +1,25 @@
+A clinician who took part in an encounter face to face for a bounded period.
+
+[source,json]
+----
+{
+  "_type": "PARTICIPATION",
+  "function": {"value": "performer"},
+  "mode": {
+    "value": "face-to-face communication",
+    "defining_code": {
+      "terminology_id": {"value": "openehr"},
+      "code_string": "216"
+    }
+  },
+  "performer": {"_type": "PARTY_IDENTIFIED", "name": "Dr. Anna Schmidt"},
+  "time": {
+    "lower": {"_type": "DV_DATE_TIME", "value": "2026-10-16T09:30:00+02:00"},
+    "upper": {"_type": "DV_DATE_TIME", "value": "2026-10-16T09:45:00+02:00"},
+    "lower_unbounded": false,
+    "upper_unbounded": false,
+    "lower_included": true,
+    "upper_included": true
+  }
+}
+----
