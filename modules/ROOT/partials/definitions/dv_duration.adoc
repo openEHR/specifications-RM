@@ -13,7 +13,7 @@ Used for recording the duration of something in the real world, particularly whe
 Misuse: Durations cannot be used to represent points in time, or intervals of time.
 
 h|*Inherit*
-2+|`xref:{class_dv_amount}[DV_AMOUNT]`, `xref:{class_iso8601_duration}[Iso8601_duration]`
+2+|`xref:data_types:quantity_package.adoc#_dv_amount_class[DV_AMOUNT]`, `xref:{class_iso8601_duration}[Iso8601_duration]`
 
 h|*Attributes*
 ^h|*Signature*
@@ -31,28 +31,28 @@ h|*Functions*
 h|*1..1 +
 (redefined)*
 |*add* __alias__ "+" ( +
-other: `xref:{class_dv_duration}[DV_DURATION][1]` +
-): `xref:{class_dv_duration}[DV_DURATION]`
+other: `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION][1]` +
+): `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION]`
 a|Sum of this Duration and `_other_`.
 
 h|*1..1 +
 (redefined)*
 |*subtract* __alias__ "-" ( +
-other: `xref:{class_dv_duration}[DV_DURATION][1]` +
-): `xref:{class_dv_duration}[DV_DURATION]`
+other: `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION][1]` +
+): `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION]`
 a|Difference of this Duration and `_other_`.
 
 h|*1..1 +
 (redefined)*
-|*multiply* __alias__ "&#42;" ( +
+|*multiply* __alias__ "*" ( +
 factor: `xref:{class_real}[Real][1]` +
-): `xref:{class_dv_duration}[DV_DURATION]`
+): `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION]`
 a|Product of this Duration and `_factor_`.
 
 h|*1..1 +
 (redefined)*
 |*less_than* __alias__ "<" ( +
-other: `xref:{class_dv_duration}[DV_DURATION][1]` +
+other: `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION][1]` +
 ): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +
@@ -63,13 +63,13 @@ a|True if `_other_` is less than this Quantified object. Based on comparison of 
 h|*1..1 +
 (effected)*
 |*is_strictly_comparable_to* ( +
-other: `xref:{class_dv_duration}[DV_DURATION][1]` +
+other: `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION][1]` +
 ): `xref:{class_boolean}[Boolean]`
 a|True, for any two Durations.
 
 h|*1..1 +
 (redefined)*
-|*negative* __alias__ "-" (): `xref:{class_dv_duration}[DV_DURATION]`
+|*negative* __alias__ "-" (): `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION]`
 a|Negated version of current duration.
 
 Assuming the current duration is positive, the negated version represents a time prior to some origin point, or a negative age (e.g. so-called 'adjusted age' of premature infant).

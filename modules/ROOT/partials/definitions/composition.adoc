@@ -10,22 +10,26 @@ NOTE: It is strongly recommended that the inherited attribute `_uid_` be populat
 For example, the `ORIGINAL_VERSION.uid` `87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2` would be copied to the `_uid_` field of the Composition.
 
 h|*Inherit*
-2+|`xref:{class_locatable}[LOCATABLE]`
+2+|`xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*language*: `xref:{class_code_phrase}[CODE_PHRASE]`
+|*language*: `xref:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
 a|Mandatory indicator of the localised language in which this Composition is written. Coded from openEHR Code Set  `languages`. The language of an Entry if different from the Composition is indicated in `ENTRY._language_`.
 
-h|*1..1*
-|*territory*: `xref:{class_code_phrase}[CODE_PHRASE]`
-a|Name of territory in which this Composition was written. Coded from openEHR  countries  code set, which is an expression of the ISO 3166 standard.
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages]
 
 h|*1..1*
-|*category*: `xref:{class_dv_coded_text}[DV_CODED_TEXT]`
+|*territory*: `xref:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]`
+a|Name of territory in which this Composition was written. Coded from openEHR  countries  code set, which is an expression of the ISO 3166 standard.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_countries[openEHR code set countries]
+
+h|*1..1*
+|*category*: `xref:data_types:text_package.adoc#_dv_coded_text_class[DV_CODED_TEXT]`
 a|Temporal category of this Composition, i.e. 
 
 * `431&#124;persistent&#124;` - of potential life-time validity;
@@ -34,16 +38,18 @@ a|Temporal category of this Composition, i.e.
 
 or any other code defined in the openEHR terminology group 'category'.
 
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_composition_category[openEHR Terminology, composition category group]
+
 h|*0..1*
-|*context*: `xref:{class_event_context}[EVENT_CONTEXT]`
+|*context*: `xref:ehr:composition_package.adoc#_event_context_class[EVENT_CONTEXT]`
 a|The clinical session context of this Composition, i.e. the contextual attributes of the clinical session.
 
 h|*1..1*
-|*composer*: `xref:{class_party_proxy}[PARTY_PROXY]`
+|*composer*: `xref:common:generic_package.adoc#_party_proxy_class[PARTY_PROXY]`
 a|The person primarily responsible for the content of the Composition (but not necessarily its committal into the EHR system). This is the identifier which should appear on the screen. It may or may not be the person who entered the data. When it is the patient, the special self  instance of `PARTY_PROXY` will be used.
 
 h|*0..1*
-|*content*: `xref:{class_list}[List]<xref:{class_content_item}[CONTENT_ITEM]>`
+|*content*: `xref:{class_list}[List]<xref:ehr:content_package.adoc#_content_item_class[CONTENT_ITEM]>`
 a|The content of this Composition.
 
 h|*Functions*

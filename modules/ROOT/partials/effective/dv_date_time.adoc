@@ -6,7 +6,7 @@
 
 Used for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a `HISTORY` in an `OBSERVATION` which is only partially known.
 
-2+|Inherits: xref:{class_basic_definitions}[BASIC_DEFINITIONS], xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS], xref:{class_any}[Any], xref:{class_data_value}[DATA_VALUE], xref:{class_ordered}[Ordered], xref:{class_dv_ordered}[DV_ORDERED], xref:{class_dv_quantified}[DV_QUANTIFIED], xref:{class_dv_absolute_quantity}[DV_ABSOLUTE_QUANTITY], xref:{class_any}[Any], xref:{class_ordered}[Ordered], xref:{class_temporal}[Temporal], xref:{class_time_definitions}[Time_Definitions], xref:{class_iso8601_type}[Iso8601_type], xref:{class_dv_temporal}[DV_TEMPORAL], xref:{class_iso8601_date_time}[Iso8601_date_time]
+2+|Inherits: xref:{class_basic_definitions}[BASIC_DEFINITIONS], xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS], xref:{class_any}[Any], xref:data_types:basic_package.adoc#_data_value_class[DATA_VALUE], xref:{class_ordered}[Ordered], xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED], xref:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED], xref:data_types:quantity_package.adoc#_dv_absolute_quantity_class[DV_ABSOLUTE_QUANTITY], xref:{class_temporal}[Temporal], xref:{class_time_definitions}[Time_Definitions], xref:{class_iso8601_type}[Iso8601_type], xref:data_types:date_time_package.adoc#_dv_temporal_class[DV_TEMPORAL], xref:{class_iso8601_date_time}[Iso8601_date_time]
 
 2+h|*Constants*
 
@@ -22,7 +22,7 @@ _Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 a| +
 _Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
-|*Regex_any_pattern*: `xref:{class_string}[String]{nbsp}={nbsp}".&#42;"` [1..1]
+|*Regex_any_pattern*: `xref:{class_string}[String]{nbsp}={nbsp}".*"` [1..1]
 a| +
 _Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
 
@@ -100,17 +100,19 @@ _Inherited from xref:{class_time_definitions}[Time_Definitions]_
 
 2+h|*Attributes*
 
-|*normal_status*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
-a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`. +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+|*normal_status*: `xref:data_types:text_package.adoc#_code_phrase_class[CODE_PHRASE]` [0..1]
+a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`.
 
-|*normal_range*: `xref:{class_dv_interval}[DV_INTERVAL]` [0..1]
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_normal_statuses[openEHR code set normal statuses] +
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
+
+|*normal_range*: `xref:data_types:quantity_package.adoc#_dv_interval_class[DV_INTERVAL]` [0..1]
 a|Optional normal range. +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
-|*other_reference_ranges*: `xref:{class_list}[List]<xref:{class_reference_range}[REFERENCE_RANGE]<xref:{class_dv_ordered}[DV_ORDERED]>>` [0..1]
+|*other_reference_ranges*: `xref:{class_list}[List]<xref:data_types:quantity_package.adoc#_reference_range_class[REFERENCE_RANGE]<xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]>>` [0..1]
 a|Optional tagged other reference ranges for this value in its particular measurement context. +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 |*magnitude_status*: `xref:{class_string}[String]` [0..1]
 a|Optional status of magnitude with values: 
@@ -123,11 +125,11 @@ a|Optional status of magnitude with values:
 * `"~"`   :   value is approximately magnitude 
 
 If not present, assumed meaning is  `"="` . +
-_Inherited from xref:{class_dv_quantified}[DV_QUANTIFIED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
 
-|*accuracy*: `xref:{class_dv_duration}[DV_DURATION]` [0..1]
+|*accuracy*: `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION]` [0..1]
 a|Time accuracy, expressed as a duration. +
-_Inherited from xref:{class_dv_temporal}[DV_TEMPORAL]_
+_Inherited from xref:data_types:date_time_package.adoc#_dv_temporal_class[DV_TEMPORAL]_
 
 |*value*: `xref:{class_string}[String]` [1..1]
 a|ISO8601 date/time string.
@@ -135,14 +137,10 @@ a|ISO8601 date/time string.
 2+h|*Functions*
 
 |_(abstract)_ *is_equal* ( +
-other: `xref:{class_any}[Any][1]` +
+other: `xref:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED][1]` +
 ): `xref:{class_boolean}[Boolean]` [1..1]
-a|Value equality: return True if `this` and `_other_` are attached to objects considered to be equal in value. +
-_Inherited from xref:{class_any}[Any]_
-
-.Parameters +
-[horizontal]
-`_other_`:: Other object for comparison.
+a|Return True if this `DV_QUANTIFIED` is considered equal to `_other_`. +
+_Inherited from xref:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
 
 |*equal* __alias__ "=", "==" ( +
 other: `xref:{class_any}[Any][1]` +
@@ -173,7 +171,7 @@ a|True if current object not equal to `_other_`. Returns not `_equal_()`. +
 _Inherited from xref:{class_any}[Any]_
 
 |*less_than* __alias__ "<" ( +
-other: `xref:{class_dv_date_time}[DV_DATE_TIME][1]` +
+other: `xref:data_types:date_time_package.adoc#_dv_date_time_class[DV_DATE_TIME][1]` +
 ): `xref:{class_boolean}[Boolean]` +
  +
 __Pre_comparable__: `is_strictly_comparable_to (other)` +
@@ -181,7 +179,7 @@ __Pre_comparable__: `is_strictly_comparable_to (other)` +
 __Post_result__: `Result = magnitude > other.magnitude` [1..1]
 a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
 
-|*less_than_or_equal* __alias__ "<=", "≤" ( +
+|*less_than_or_equal* __alias__ "\<=", "≤" ( +
 other: `xref:{class_ordered}[Ordered][1]` +
 ): `xref:{class_boolean}[Boolean]` +
  +
@@ -206,13 +204,13 @@ a|True if current object greater than or equal to `_other_`. +
 _Inherited from xref:{class_ordered}[Ordered]_
 
 |*is_strictly_comparable_to* ( +
-other: `xref:{class_dv_date_time}[DV_DATE_TIME][1]` +
+other: `xref:data_types:date_time_package.adoc#_dv_date_time_class[DV_DATE_TIME][1]` +
 ): `xref:{class_boolean}[Boolean]` [1..1]
 a|True, for any two Date/times.
 
 |*is_simple* (): `xref:{class_boolean}[Boolean]` [1..1]
 a|True if this quantity has no reference ranges. +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 |*is_normal* (): `xref:{class_boolean}[Boolean]` +
  +
@@ -221,34 +219,34 @@ __Pre__: `normal_range /= Void or normal_status /= Void` +
 __Post_range__: `normal_range /= Void implies Result = normal_range.has (self)` +
 __Post_status__: `normal_status /= Void implies normal_status.code_string.is_equal (“N”)` [1..1]
 a|Value is in the normal range, determined by comparison of the value to `_normal_range_` if present, or by the `_normal_status_` marker if present. +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 |*valid_magnitude_status* (): `xref:{class_boolean}[Boolean]` +
  +
-__Post__: `Result = s in \{"=", "<", ">", "\<=", ">=", "~"}` [1..1]
+__Post__: `Result = s in {"=", "<", ">", "\<=", ">=", "~"}` [1..1]
 a|Test whether a string value is one of the valid values for the magnitude_status attribute. +
-_Inherited from xref:{class_dv_quantified}[DV_QUANTIFIED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
 
 |*magnitude* (): `xref:{class_double}[Double]` [1..1]
 a|Numeric value of the date/time as seconds since the calendar origin date/time `0001-01-01T00:00:00Z`.
 
 |*accuracy_unknown* (): `xref:{class_boolean}[Boolean]` [1..1]
 a|True if accuracy is not known, e.g. due to not being recorded or discernable. +
-_Inherited from xref:{class_dv_quantified}[DV_QUANTIFIED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
 
 |*add* __alias__ "+" ( +
-a_diff: `xref:{class_dv_duration}[DV_DURATION][1]` +
-): `xref:{class_dv_date_time}[DV_DATE_TIME]` [1..1]
+a_diff: `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION][1]` +
+): `xref:data_types:date_time_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [1..1]
 a|Addition of a Duration to this Date/time.
 
 |*subtract* __alias__ "-" ( +
-a_diff: `xref:{class_dv_duration}[DV_DURATION][1]` +
-): `xref:{class_dv_date_time}[DV_DATE_TIME]` [1..1]
+a_diff: `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION][1]` +
+): `xref:data_types:date_time_package.adoc#_dv_date_time_class[DV_DATE_TIME]` [1..1]
 a|Subtract a Duration from this Date/time.
 
 |*diff* __alias__ "-" ( +
-other: `xref:{class_dv_date_time}[DV_DATE_TIME][1]` +
-): `xref:{class_dv_duration}[DV_DURATION]` [1..1]
+other: `xref:data_types:date_time_package.adoc#_dv_date_time_class[DV_DATE_TIME][1]` +
+): `xref:data_types:date_time_package.adoc#_dv_duration_class[DV_DURATION]` [1..1]
 a|Difference between this Date/time and `_other_`.
 
 |*valid_year* ( +
@@ -333,8 +331,8 @@ s: `xref:{class_string}[String][1]` +
 ): `xref:{class_boolean}[Boolean]` [1..1]
 a|String is a valid ISO 8601 date, i.e. takes the form:
 
-* `hh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]]` (extended)
-* `hhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]` (compact)
+* `hh:mm:ss[(,&#124;.)s{plus}][Z&#124;±hh[:mm]]` (extended)
+* `hhmmss[(,&#124;.)s{plus}][Z&#124;±hh[mm]]` (compact)
 * or one of the partial forms:
 ** `hh:mm` (extended)
 ** `hhmm` or `hh` (compact)
@@ -348,8 +346,8 @@ Where:
 * `hh` is "00" - "23" (0-filled to two digits)
 * `mm` is "00" - "59" (0-filled to two digits)
 * `ss` is "00" - "60" (0-filled to two digits)
-* `[(,&#124;.)s+]` is an optional string consisting of a comma or decimal point followed by numeric string of 1 or more digits, representing a fractional second
-* `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `+0000` +
+* `[(,&#124;.)s{plus}]` is an optional string consisting of a comma or decimal point followed by numeric string of 1 or more digits, representing a fractional second
+* `Z` is a literal meaning UTC (modern replacement for GMT), i.e. timezone `{plus}0000` +
 _Inherited from xref:{class_time_definitions}[Time_Definitions]_
 
 |*valid_iso8601_date_time* ( +
@@ -357,8 +355,8 @@ s: `xref:{class_string}[String][1]` +
 ): `xref:{class_boolean}[Boolean]` [1..1]
 a|String is a valid ISO 8601 date-time, i.e. takes the form:
 
-* `YYYY-MM-DDThh:mm:ss[(,&#124;.)s+][Z&#124;±hh[:mm]]` (extended)
-* `YYYYMMDDThhmmss[(,&#124;.)s+][Z&#124;±hh[mm]]` (compact)
+* `YYYY-MM-DDThh:mm:ss[(,&#124;.)s{plus}][Z&#124;±hh[:mm]]` (extended)
+* `YYYYMMDDThhmmss[(,&#124;.)s{plus}][Z&#124;±hh[mm]]` (compact)
 * or one of the partial forms:
 ** `YYYY-MM-DDThh:mm` or `YYYY-MM-DDThh` (extended)
 ** `YYYYMMDDThhmm` or `YYYYMMDDThh` (compact) +
@@ -464,7 +462,7 @@ _Inherited from xref:{class_iso8601_date_time}[Iso8601_date_time]_
 a|Return the string value in extended format. +
 _Inherited from xref:{class_iso8601_date_time}[Iso8601_date_time]_
 
-|*add_nominal* __alias__ "++" ( +
+|*add_nominal* __alias__ "{plus}{plus}" ( +
 a_diff: `xref:{class_iso8601_duration}[Iso8601_duration][1]` +
 ): `xref:{class_iso8601_date}[Iso8601_date]` [1..1]
 a|Addition of nominal duration represented by `_a_diff_`. See `Iso8601_date._add_nominal_()` for semantics. +
@@ -479,19 +477,19 @@ _Inherited from xref:{class_iso8601_date_time}[Iso8601_date_time]_
 2+h|*Invariants*
 
 2+a|__Other_reference_ranges_validity__: `other_reference_ranges /= Void implies not other_reference_ranges.is_empty` +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 2+a|__Is_simple_validity__: `(normal_range = Void and other_reference_ranges = Void) implies is_simple` +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 2+a|__Normal_status_validity__: `normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)` +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 2+a|__Normal_range_and_status_consistency__: `(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))` +
-_Inherited from xref:{class_dv_ordered}[DV_ORDERED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_ordered_class[DV_ORDERED]_
 
 2+a|__Magnitude_status_valid__: `magnitude_status /= Void implies valid_magnitude_status (magnitude_status)` +
-_Inherited from xref:{class_dv_quantified}[DV_QUANTIFIED]_
+_Inherited from xref:data_types:quantity_package.adoc#_dv_quantified_class[DV_QUANTIFIED]_
 
 2+a|__Year_valid__: `valid_year (year)` +
 _Inherited from xref:{class_iso8601_date_time}[Iso8601_date_time]_

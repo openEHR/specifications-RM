@@ -10,14 +10,14 @@ NOTE: It is strongly recommended that the inherited attribute `_uid_` be populat
 For example, the `ORIGINAL_VERSION.uid` `87284370-2D4B-4e3d-A3F3-F303D2F4F34B::uk.nhs.ehr1::2`  would be copied to the `_uid_` field of the `EHR_STATUS` object.
 
 h|*Inherit*
-2+|`xref:{class_locatable}[LOCATABLE]`
+2+|`xref:common:archetyped_package.adoc#_locatable_class[LOCATABLE]`
 
 h|*Attributes*
 ^h|*Signature*
 ^h|*Meaning*
 
 h|*1..1*
-|*subject*: `xref:{class_party_self}[PARTY_SELF]`
+|*subject*: `xref:common:generic_package.adoc#_party_self_class[PARTY_SELF]`
 a|The subject of this EHR. The `_external_ref_` attribute can be used to contain a direct reference to the subject in a demographic or identity service. Alternatively, the association between patients and their records may be done elsewhere for security reasons.
 
 h|*1..1*
@@ -29,7 +29,7 @@ h|*1..1*
 a|True if the EHR, other than the `EHR_STATUS` object, is allowed to be written to. The `EHR_STATUS` object itself can always be written to.
 
 h|*0..1*
-|*other_details*: `xref:{class_item_structure}[ITEM_STRUCTURE]`
+|*other_details*: `xref:data_structures:item_structure_package.adoc#_item_structure_class[ITEM_STRUCTURE]`
 a|Any other details of the EHR summary object, in the form of an archetyped `ITEM_STRUCTURE`.
 
 h|*Invariants*

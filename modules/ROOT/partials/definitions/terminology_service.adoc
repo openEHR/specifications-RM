@@ -7,7 +7,7 @@ h|*Description*
 2+a|Defines an object providing proxy access to a terminology service.
 
 h|*Inherit*
-2+|`xref:{class_openehr_terminology_group_identifiers}[OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS]`, `xref:{class_openehr_code_set_identifiers}[OPENEHR_CODE_SET_IDENTIFIERS]`
+2+|`xref:support:terminology_package.adoc#_openehr_terminology_group_identifiers_class[OPENEHR_TERMINOLOGY_GROUP_IDENTIFIERS]`, `xref:support:terminology_package.adoc#_openehr_code_set_identifiers_class[OPENEHR_CODE_SET_IDENTIFIERS]`
 
 h|*Functions*
 ^h|*Signature*
@@ -16,7 +16,7 @@ h|*Functions*
 h|*1..1*
 |*terminology* ( +
 name: `xref:{class_string}[String][1]` +
-): `xref:RM:support:terminology_package.adoc#_terminology_access_interface[TERMINOLOGY_ACCESS]`
+): `xref:support:terminology_package.adoc#_terminology_access_interface[TERMINOLOGY_ACCESS]`
 a|Return an interface to the terminology named name. Allowable names include:-
 
 * openehr, 
@@ -26,7 +26,7 @@ a|Return an interface to the terminology named name. Allowable names include:-
 h|*1..1*
 |*code_set* ( +
 name: `xref:{class_string}[String][1]` +
-): `xref:RM:support:terminology_package.adoc#_code_set_access_interface[CODE_SET_ACCESS]` +
+): `xref:support:terminology_package.adoc#_code_set_access_interface[CODE_SET_ACCESS]` +
  +
 __Pre__: `has_code_set (name)`
 a|Return an interface to the code_set identified by the external identifier name (e.g.  ISO_639-1).
@@ -34,7 +34,7 @@ a|Return an interface to the code_set identified by the external identifier name
 h|*1..1*
 |*code_set_for_id* ( +
 id: `xref:{class_string}[String][1]` +
-): `xref:RM:support:terminology_package.adoc#_code_set_access_interface[CODE_SET_ACCESS]` +
+): `xref:support:terminology_package.adoc#_code_set_access_interface[CODE_SET_ACCESS]` +
  +
 __Pre__: `valid_code_set_id (id)`
 a|Return an interface to the code_set identified internally in openEHR by id.
