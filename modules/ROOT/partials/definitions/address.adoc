@@ -1,0 +1,30 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*ADDRESS*
+
+h|*Description*
+2+a|Address of contact, which may be electronic or geographic.
+
+h|*Inherit*
+2+|`xref:{class_locatable}[LOCATABLE]`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*details*: `xref:{class_item_structure}[ITEM_STRUCTURE]`
+a|Archetypable structured address.
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1*
+|*type* (): `xref:{class_dv_text}[DV_TEXT]`
+a|Type of address, e.g. electronic,  locality. Taken from value of inherited `_name_` attribute.
+
+h|*Invariants*
+2+a|__Type_valid__: `type = name`
+|===

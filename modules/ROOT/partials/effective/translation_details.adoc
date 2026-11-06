@@ -1,0 +1,27 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*TRANSLATION_DETAILS*
+
+2+a|Class providing details of a natural language translation.
+
+2+h|*Attributes*
+
+|*language*: `xref:{class_code_phrase}[CODE_PHRASE]` [1..1]
+a|Language of the translation.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages]
+
+|*author*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_string}[String]>` [1..1]
+a|Translator name and other demographic details.
+
+|*accreditaton*: `xref:{class_string}[String]` [0..1]
+a|Accreditation of translator, usually a national translator's registration or association membership id.
+
+|*other_details*: `xref:{class_hash}[Hash]<xref:{class_string}[String],xref:{class_string}[String]>` [0..1]
+a|Any other meta-data.
+
+2+h|*Invariants*
+
+2+a|__Language_valid__: `code_set (Code_set_id_languages).has_code (language)`
+
+|===

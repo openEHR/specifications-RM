@@ -1,0 +1,24 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*CODE_SET_ACCESS*
+
+2+a|Defines an object providing proxy access to a code_set.
+
+2+h|*Functions*
+
+|*id* (): `xref:{class_string}[String]` [1..1]
+a|External identifier of this code set.
+
+|*all_codes* (): `xref:{class_list}[List]<xref:{class_code_phrase}[CODE_PHRASE]>` [0..1]
+a|Return all codes known in this code set.
+
+|*has_lang* ( +
+a_lang: `xref:{class_string}[String][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
+a|True if code set knows about 'a_lang' .
+
+|*has_code* ( +
+a_code: `xref:{class_string}[String][1]` +
+): `xref:{class_boolean}[Boolean]` [1..1]
+a|True if code set knows about  'a_code'.
+|===

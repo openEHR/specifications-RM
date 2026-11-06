@@ -1,0 +1,73 @@
+[cols="^1,3,5"]
+|===
+h|*Class*
+2+^h|*DV_DATE_TIME*
+
+h|*Description*
+2+a|Represents an absolute point in time, specified to the second. Semantics defined by ISO 8601. 
+
+Used for recording a precise point in real world time, and for approximate time stamps, e.g. the origin of a `HISTORY` in an `OBSERVATION` which is only partially known.
+
+h|*Inherit*
+2+|`xref:{class_dv_temporal}[DV_TEMPORAL]`, `xref:{class_iso8601_date_time}[Iso8601_date_time]`
+
+h|*Attributes*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(redefined)*
+|*value*: `xref:{class_string}[String]`
+a|ISO8601 date/time string.
+
+h|*Functions*
+^h|*Signature*
+^h|*Meaning*
+
+h|*1..1 +
+(effected)*
+|*magnitude* (): `xref:{class_double}[Double]`
+a|Numeric value of the date/time as seconds since the calendar origin date/time `0001-01-01T00:00:00Z`.
+
+h|*1..1 +
+(effected)*
+|*add* __alias__ "+" ( +
+a_diff: `xref:{class_dv_duration}[DV_DURATION][1]` +
+): `xref:{class_dv_date_time}[DV_DATE_TIME]`
+a|Addition of a Duration to this Date/time.
+
+h|*1..1 +
+(effected)*
+|*subtract* __alias__ "-" ( +
+a_diff: `xref:{class_dv_duration}[DV_DURATION][1]` +
+): `xref:{class_dv_date_time}[DV_DATE_TIME]`
+a|Subtract a Duration from this Date/time.
+
+h|*1..1 +
+(effected)*
+|*diff* __alias__ "-" ( +
+other: `xref:{class_dv_date_time}[DV_DATE_TIME][1]` +
+): `xref:{class_dv_duration}[DV_DURATION]`
+a|Difference between this Date/time and `_other_`.
+
+h|*1..1 +
+(redefined)*
+|*less_than* __alias__ "<" ( +
+other: `xref:{class_dv_date_time}[DV_DATE_TIME][1]` +
+): `xref:{class_boolean}[Boolean]` +
+ +
+__Pre_comparable__: `is_strictly_comparable_to (other)` +
+ +
+__Post_result__: `Result = magnitude > other.magnitude`
+a|True if `_other_` is less than this Quantified object. Based on comparison of `_magnitude_`.
+
+h|*1..1 +
+(effected)*
+|*is_strictly_comparable_to* ( +
+other: `xref:{class_dv_date_time}[DV_DATE_TIME][1]` +
+): `xref:{class_boolean}[Boolean]`
+a|True, for any two Date/times.
+
+h|*Invariants*
+2+a|__Value_valid__: `valid_iso8601_date_time (value)`
+|===

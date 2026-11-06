@@ -1,0 +1,120 @@
+[cols="2,3", frame=none, grid=rows]
+|===
+2+^h|*DV_MULTIMEDIA*
+
+2+a|A specialisation of `DV_ENCAPSULATED` for audiovisual and bio-signal types. Includes further metadata relating to multimedia types which are not applicable to other subtypes of `DV_ENCAPSULATED`.
+
+2+|Inherits: xref:{class_basic_definitions}[BASIC_DEFINITIONS], xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS], xref:{class_data_value}[DATA_VALUE], xref:{class_dv_encapsulated}[DV_ENCAPSULATED]
+
+2+h|*Constants*
+
+|*CR*: `xref:{class_character}[Character]{nbsp}={nbsp}'\015'` [1..1]
+a|Carriage return character. +
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
+
+|*LF*: `xref:{class_character}[Character]{nbsp}={nbsp}'\012'` [1..1]
+a|Line feed character. +
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
+
+|*Any_type_name*: `xref:{class_string}[String]{nbsp}={nbsp}"Any"` [1..1]
+a| +
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
+
+|*Regex_any_pattern*: `xref:{class_string}[String]{nbsp}={nbsp}".*"` [1..1]
+a| +
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
+
+|*Default_encoding*: `xref:{class_string}[String]{nbsp}={nbsp}"UTF-8"` [1..1]
+a| +
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
+
+|*None_type_name*: `xref:{class_string}[String]{nbsp}={nbsp}"None"` [1..1]
+a| +
+_Inherited from xref:{class_basic_definitions}[BASIC_DEFINITIONS]_
+
+|*Local_terminology_id*: `xref:{class_string}[String]{nbsp}={nbsp}"local"` [1..1]
+a|Predefined terminology identifier to indicate it is local to the knowledge resource in which it occurs, e.g. an archetype +
+_Inherited from xref:{class_openehr_definitions}[OPENEHR_DEFINITIONS]_
+
+2+h|*Attributes*
+
+|*charset*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
+a|Name of character encoding scheme in which this value is encoded. Coded from openEHR Code Set  character sets . Unicode is the default assumption in openEHR, with UTF-8 being the assumed encoding. This attribute allows for variations from these assumptions.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_character_sets[openEHR code set character sets] +
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
+
+|*language*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
+a|Optional indicator of the localised language in which the data is written, if relevant. Coded from openEHR Code Set `languages`.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_languages[openEHR code set languages] +
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
+
+|*alternate_text*: `xref:{class_string}[String]` [0..1]
+a|Text to display in lieu of multimedia display/replay.
+
+|*uri*: `xref:{class_dv_uri}[DV_URI]` [0..1]
+a|URI reference to electronic information stored outside the record as a file, database entry etc, if supplied as a reference.
+
+|*data*: `xref:{class_array}[Array]<xref:{class_octet}[Octet]>` [0..1]
+a|The actual data found at `_uri_`, if supplied inline.
+
+|*media_type*: `xref:{class_code_phrase}[CODE_PHRASE]` [1..1]
+a|Data media type coded from openEHR code set  media types  (interface for the IANA MIME types code set).
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_media_types[openEHR code set media types]
+
+|*compression_algorithm*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
+a|Compression type, a coded value from the openEHR Integrity check code set. Void means no compression.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_compression_algorithms[openEHR code set compression algorithms]
+
+|*integrity_check*: `xref:{class_array}[Array]<xref:{class_octet}[Octet]>` [0..1]
+a|Binary cryptographic integrity checksum.
+
+|*integrity_check_algorithm*: `xref:{class_code_phrase}[CODE_PHRASE]` [0..1]
+a|Type of integrity check, a coded value from the openEHR `Integrity check` code set.
+
+Terminology: xref:TERM:SupportTerminology:terminology.adoc#_integrity_check_algorithms[openEHR code set integrity check algorithms]
+
+|*thumbnail*: `xref:{class_dv_multimedia}[DV_MULTIMEDIA]` [0..1]
+a|The thumbnail for this item, if one exists; mainly for graphics formats.
+
+|*size*: `xref:{class_integer}[Integer]` [1..1]
+a|Original size in bytes of unencoded encapsulated data. I.e. encodings such as base64, hexadecimal etc do not change the value of this attribute.
+
+2+h|*Functions*
+
+|*is_external* (): `xref:{class_boolean}[Boolean]` [1..1]
+a|Computed from the value of the `_uri_` attribute: True if  the data is stored externally to the record, as indicated by `_uri_`. A copy may also be stored internally, in which case `_is_expanded_` is also true.
+
+|*is_inline* (): `xref:{class_boolean}[Boolean]` [1..1]
+a|Computed from the value of the data attribute. True if  the  data is stored  in  expanded  form, ie within the EHR itself.
+
+|*is_compressed* (): `xref:{class_boolean}[Boolean]` [1..1]
+a|Computed from the value of the `_compression_algorithm_` attribute: True if  the  data is stored in compressed form.
+
+|*has_integrity_check* (): `xref:{class_boolean}[Boolean]` [1..1]
+a|Computed from the value of the `_integrity_check_algorithm_` attribute: True if an integrity check has been computed.
+
+2+h|*Invariants*
+
+2+a|__Language_valid__: `language /= Void implies code_set (Code_set_id_languages).has_code (language)` +
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
+
+2+a|__Charset_valid__: `charset /= Void implies code_set (Code_set_id_character_sets).has_code (charset)` +
+_Inherited from xref:{class_dv_encapsulated}[DV_ENCAPSULATED]_
+
+2+a|__Not_empty__: `is_inline or is_external`
+
+2+a|__Media_type_valid__: `media_type /= Void and then code_set (Code_set_id_media_types).has_code (media_type)`
+
+2+a|__Compression_algorithm_validity__: `compression_algorithm /= Void implies code_set (Code_set_id_compression_algorithms).has_code (compression_algorithm)`
+
+2+a|__Integrity_check_validity__: `integrity_check /= Void implies integrity_check_algorithm /= Void`
+
+2+a|__Integrity_check_algorithm_validity__: `integrity_check_algorithm /= Void implies code_set (Code_set_id_integrity_check_algorithms).has_code (integrity_check_algorithm)`
+
+2+a|__Size_valid__: `size >= 0`
+
+|===
