@@ -1,5 +1,11 @@
 An equivalent (`=`) mapping of a coded term to the ICD-10 code for _Essential (primary) hypertension_, for public health reporting.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The mapping with its match, purpose and target.
++
 [source,json]
 ----
 {
@@ -22,3 +28,20 @@ An equivalent (`=`) mapping of a coded term to the ICD-10 code for _Essential (p
   }
 }
 ----
+
+FLAT::
++
+The same mapping in the FLAT format, as the first mapping of an element. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0|match": "=",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0/target|terminology": "ICD10",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0/target|code": "I10",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0/purpose|terminology": "openehr",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0/purpose|code": "669",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0/purpose|value": "public health"
+}
+----
+======

@@ -1,5 +1,11 @@
 A hospital medical record number, issued and assigned by the same organisation.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The identifier with its issuer, assigner and type.
++
 [source,json]
 ----
 {
@@ -10,3 +16,18 @@ A hospital medical record number, issued and assigned by the same organisation.
   "type": "Medical record number"
 }
 ----
+
+FLAT::
++
+The same identifier in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|id": "MRN-0012345",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|issuer": "Example Hospital",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|assigner": "Example Hospital",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|type": "Medical record number"
+}
+----
+======

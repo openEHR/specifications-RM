@@ -1,5 +1,11 @@
 A PDF referral letter held externally and referenced by URI.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: a reference to the document, with its media type and size.
++
 [source,json]
 ----
 {
@@ -17,3 +23,77 @@ A PDF referral letter held externally and referenced by URI.
   "size": 245760
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_MULTIMEDIA`, including the optional ones inherited from `DV_ENCAPSULATED`. The inline `data` is shortened here.
++
+[source,json]
+----
+{
+  "_type": "DV_MULTIMEDIA",
+  "alternate_text": "Referral letter to cardiology",
+  "uri": {
+    "value": "https://records.example.org/documents/referral-0042.pdf"
+  },
+  "data": "H4sIAFeJ92oC/1MNcHHTNdQz51J99Pj8ZS5DBQOF/KQsLhsb",
+  "media_type": {
+    "terminology_id": {
+      "value": "IANA_media-types"
+    },
+    "code_string": "application/pdf"
+  },
+  "compression_algorithm": {
+    "terminology_id": {
+      "value": "openehr_compression_algorithms"
+    },
+    "code_string": "gzip"
+  },
+  "integrity_check": "F480J3SxevpFh6UNBto0ta7pUXNBafDoQTXa8GxzbHI=",
+  "integrity_check_algorithm": {
+    "terminology_id": {
+      "value": "openehr_integrity_check_algorithms"
+    },
+    "code_string": "SHA-256"
+  },
+  "thumbnail": {
+    "_type": "DV_MULTIMEDIA",
+    "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    "media_type": {
+      "terminology_id": {
+        "value": "IANA_media-types"
+      },
+      "code_string": "image/png"
+    },
+    "size": 70
+  },
+  "size": 245760,
+  "charset": {
+    "terminology_id": {
+      "value": "IANA_character-sets"
+    },
+    "code_string": "UTF-8"
+  },
+  "language": {
+    "terminology_id": {
+      "value": "ISO_639-1"
+    },
+    "code_string": "en"
+  }
+}
+----
+
+FLAT::
++
+The same reference in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME": "https://records.example.org/documents/referral-0042.pdf",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|mediatype": "application/pdf",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|size": 245760,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|alternatetext": "Referral letter to cardiology"
+}
+----
+======

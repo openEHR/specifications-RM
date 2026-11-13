@@ -1,5 +1,11 @@
 The SNOMED CT term _Essential hypertension_, with a mapping to ICD-10.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the term and its mapping.
++
 [source,json]
 ----
 {
@@ -24,3 +30,76 @@ The SNOMED CT term _Essential hypertension_, with a mapping to ICD-10.
   ]
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_CODED_TEXT`, including the optional ones inherited from `DV_TEXT`; `hyperlink` is deprecated.
++
+[source,json]
+----
+{
+  "_type": "DV_CODED_TEXT",
+  "value": "Essential hypertension",
+  "hyperlink": {
+    "value": "http://snomed.info/id/59621000"
+  },
+  "formatting": "plain",
+  "mappings": [
+    {
+      "match": "=",
+      "purpose": {
+        "value": "public health",
+        "defining_code": {
+          "terminology_id": {
+            "value": "openehr"
+          },
+          "code_string": "669"
+        }
+      },
+      "target": {
+        "terminology_id": {
+          "value": "ICD10"
+        },
+        "code_string": "I10",
+        "preferred_term": "Essential (primary) hypertension"
+      }
+    }
+  ],
+  "language": {
+    "terminology_id": {
+      "value": "ISO_639-1"
+    },
+    "code_string": "en"
+  },
+  "encoding": {
+    "terminology_id": {
+      "value": "IANA_character-sets"
+    },
+    "code_string": "UTF-8"
+  },
+  "defining_code": {
+    "terminology_id": {
+      "value": "SNOMED-CT"
+    },
+    "code_string": "59621000",
+    "preferred_term": "Essential hypertension"
+  }
+}
+----
+
+FLAT::
++
+The same term in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|value": "Essential hypertension",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|code": "59621000",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|terminology": "SNOMED-CT",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0|match": "=",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0/target|terminology": "ICD10",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0/target|code": "I10"
+}
+----
+======

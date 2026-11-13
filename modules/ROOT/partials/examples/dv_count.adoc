@@ -1,5 +1,11 @@
 A count of 2 falls in the last 12 months.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the magnitude only.
++
 [source,json]
 ----
 {
@@ -7,3 +13,67 @@ A count of 2 falls in the last 12 months.
   "magnitude": 2
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_COUNT`, including the optional ones inherited from `DV_AMOUNT`, `DV_QUANTIFIED` and `DV_ORDERED`.
++
+[source,json]
+----
+{
+  "_type": "DV_COUNT",
+  "magnitude": 2,
+  "magnitude_status": "=",
+  "accuracy": 0.0,
+  "accuracy_is_percent": false,
+  "normal_status": {
+    "terminology_id": {
+      "value": "openehr_normal_statuses"
+    },
+    "code_string": "H"
+  },
+  "normal_range": {
+    "lower": {
+      "_type": "DV_COUNT",
+      "magnitude": 0
+    },
+    "upper": {
+      "_type": "DV_COUNT",
+      "magnitude": 1
+    },
+    "lower_unbounded": false,
+    "upper_unbounded": false,
+    "lower_included": true,
+    "upper_included": true
+  },
+  "other_reference_ranges": [
+    {
+      "meaning": {
+        "value": "increased risk of falls"
+      },
+      "range": {
+        "lower": {
+          "_type": "DV_COUNT",
+          "magnitude": 2
+        },
+        "lower_unbounded": false,
+        "upper_unbounded": true,
+        "lower_included": true,
+        "upper_included": false
+      }
+    }
+  ]
+}
+----
+
+FLAT::
++
+The same count in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME": 2
+}
+----
+======

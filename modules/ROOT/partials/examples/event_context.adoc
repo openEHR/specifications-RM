@@ -1,5 +1,11 @@
 The context of a ward encounter, with its setting, facility and end time.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: start and end time, location, setting and facility.
++
 [source,json]
 ----
 {
@@ -8,12 +14,30 @@ The context of a ward encounter, with its setting, facility and end time.
   "end_time": {"value": "2026-10-16T09:45:00+02:00"},
   "location": "Ward 3",
   "setting": {
-    "value": "other care",
+    "value": "secondary medical care",
     "defining_code": {
       "terminology_id": {"value": "openehr"},
-      "code_string": "238"
+      "code_string": "232"
     }
   },
-  "health_care_facility": {"name": "City Hospital"}
+  "health_care_facility": {"name": "Example Hospital"}
 }
 ----
+
+FLAT::
++
+The same context in the FLAT format, under the `context` node of the composition. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/context/start_time": "2026-10-16T09:30:00+02:00",
+  "TEMPLATE_NAME/context/_end_time": "2026-10-16T09:45:00+02:00",
+  "TEMPLATE_NAME/context/_location": "Ward 3",
+  "TEMPLATE_NAME/context/setting|code": "232",
+  "TEMPLATE_NAME/context/setting|value": "secondary medical care",
+  "TEMPLATE_NAME/context/setting|terminology": "openehr",
+  "TEMPLATE_NAME/context/_health_care_facility|name": "Example Hospital"
+}
+----
+======

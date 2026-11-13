@@ -1,5 +1,11 @@
 A _critical high_ range for serum potassium, 6.0 mmol/L and above, with no upper limit.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The range with its meaning.
++
 [source,json]
 ----
 {
@@ -20,3 +26,19 @@ A _critical high_ range for serum potassium, 6.0 mmol/L and above, with no upper
   }
 }
 ----
+
+FLAT::
++
+The same range in the FLAT format, as the first other reference range of a `DV_QUANTITY` element; `lower_unbounded` and `lower_included` keep their defaults and are left out. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_other_reference_ranges:0/lower|magnitude": 6.0,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_other_reference_ranges:0/lower|unit": "mmol/L",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_other_reference_ranges:0|upper_unbounded": true,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_other_reference_ranges:0|upper_included": false,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_other_reference_ranges:0/meaning|value": "critical high"
+}
+----
+======

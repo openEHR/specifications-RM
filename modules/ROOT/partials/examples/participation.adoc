@@ -1,5 +1,11 @@
 A clinician who took part in an encounter face to face for a bounded period.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: function, mode, performer and the time of taking part.
++
 [source,json]
 ----
 {
@@ -23,3 +29,17 @@ A clinician who took part in an encounter face to face for a bounded period.
   }
 }
 ----
+
+FLAT::
++
+The same participation in the FLAT format, in the composition context; the performer is inlined and `time` has no FLAT path, so it is left out; `|mode` carries only the text, the code comes from the openEHR participation mode group. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/context/_participation:0|function": "performer",
+  "TEMPLATE_NAME/context/_participation:0|mode": "face-to-face communication",
+  "TEMPLATE_NAME/context/_participation:0|name": "Dr. Anna Schmidt"
+}
+----
+======

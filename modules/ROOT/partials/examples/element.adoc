@@ -1,5 +1,11 @@
 The systolic ELEMENT of a blood pressure reading, with a DV_QUANTITY value.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the element name, its node id and the measured value.
++
 [source,json]
 ----
 {
@@ -14,3 +20,17 @@ The systolic ELEMENT of a blood pressure reading, with a DV_QUANTITY value.
   }
 }
 ----
+
+FLAT::
++
+The same element in the FLAT format, where the element and its value share one path. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|magnitude": 120.0,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|unit": "mm[Hg]",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|precision": 0
+}
+----
+======

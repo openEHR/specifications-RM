@@ -1,14 +1,19 @@
 A clinician identified by name, a professional identifier and a reference to a demographic record.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: name, reference to the demographic record and one identifier.
++
 [source,json]
 ----
 {
   "_type": "PARTY_IDENTIFIED",
   "external_ref": {
     "id": {
-      "_type": "GENERIC_ID",
-      "value": "1f5d3a2c-7e1b-4b8e-9c0d-2a6f4e8b1c3d",
-      "scheme": "uuid"
+      "_type": "HIER_OBJECT_ID",
+      "value": "1f5d3a2c-7e1b-4b8e-9c0d-2a6f4e8b1c3d"
     },
     "namespace": "demographic",
     "type": "PERSON"
@@ -16,11 +21,29 @@ A clinician identified by name, a professional identifier and a reference to a d
   "name": "Dr. Anna Schmidt",
   "identifiers": [
     {
-      "issuer": "State Medical Board",
-      "assigner": "State Medical Board",
-      "id": "LANR-123456789",
-      "type": "Medical licence number"
+      "issuer": "Medical Council",
+      "assigner": "Medical Council",
+      "id": "MC-482913",
+      "type": "Professional registration number"
     }
   ]
 }
 ----
+
+FLAT::
++
+The same party in the FLAT format, as the composer of a composition; the reference `type` has no FLAT path and is left out. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/composer|name": "Dr. Anna Schmidt",
+  "TEMPLATE_NAME/composer|id": "1f5d3a2c-7e1b-4b8e-9c0d-2a6f4e8b1c3d",
+  "TEMPLATE_NAME/composer|id_namespace": "demographic",
+  "TEMPLATE_NAME/composer/_identifier:0|id": "MC-482913",
+  "TEMPLATE_NAME/composer/_identifier:0|issuer": "Medical Council",
+  "TEMPLATE_NAME/composer/_identifier:0|assigner": "Medical Council",
+  "TEMPLATE_NAME/composer/_identifier:0|type": "Professional registration number"
+}
+----
+======

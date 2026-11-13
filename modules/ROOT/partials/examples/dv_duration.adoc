@@ -1,5 +1,11 @@
 A duration of 3 days, e.g. how long a symptom has lasted.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the value only.
++
 [source,json]
 ----
 {
@@ -7,3 +13,67 @@ A duration of 3 days, e.g. how long a symptom has lasted.
   "value": "P3D"
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_DURATION`, including the optional ones inherited from `DV_AMOUNT`, `DV_QUANTIFIED` and `DV_ORDERED`.
++
+[source,json]
+----
+{
+  "_type": "DV_DURATION",
+  "value": "P3D",
+  "magnitude_status": "~",
+  "accuracy": 25.0,
+  "accuracy_is_percent": true,
+  "normal_status": {
+    "terminology_id": {
+      "value": "openehr_normal_statuses"
+    },
+    "code_string": "N"
+  },
+  "normal_range": {
+    "lower": {
+      "_type": "DV_DURATION",
+      "value": "P0D"
+    },
+    "upper": {
+      "_type": "DV_DURATION",
+      "value": "P7D"
+    },
+    "lower_unbounded": false,
+    "upper_unbounded": false,
+    "lower_included": true,
+    "upper_included": true
+  },
+  "other_reference_ranges": [
+    {
+      "meaning": {
+        "value": "prolonged"
+      },
+      "range": {
+        "lower": {
+          "_type": "DV_DURATION",
+          "value": "P7D"
+        },
+        "lower_unbounded": false,
+        "upper_unbounded": true,
+        "lower_included": false,
+        "upper_included": false
+      }
+    }
+  ]
+}
+----
+
+FLAT::
++
+The same duration in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME": "P3D"
+}
+----
+======

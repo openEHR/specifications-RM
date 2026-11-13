@@ -1,5 +1,11 @@
 A free-text clinical statement in English, encoded in UTF-8.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the text with its language and encoding.
++
 [source,json]
 ----
 {
@@ -19,3 +25,59 @@ A free-text clinical statement in English, encoded in UTF-8.
   }
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_TEXT`; `hyperlink` is deprecated.
++
+[source,json]
+----
+{
+  "_type": "DV_TEXT",
+  "value": "Intermittent frontal headache, worse in the mornings.",
+  "hyperlink": {
+    "value": "https://records.example.org/notes/consultation-0187.html"
+  },
+  "formatting": "plain",
+  "mappings": [
+    {
+      "match": ">",
+      "target": {
+        "terminology_id": {
+          "value": "SNOMED-CT"
+        },
+        "code_string": "25064002",
+        "preferred_term": "Headache"
+      }
+    }
+  ],
+  "language": {
+    "terminology_id": {
+      "value": "ISO_639-1"
+    },
+    "code_string": "en"
+  },
+  "encoding": {
+    "terminology_id": {
+      "value": "IANA_character-sets"
+    },
+    "code_string": "UTF-8"
+  }
+}
+----
+
+FLAT::
++
+The same text in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME": "Intermittent frontal headache, worse in the mornings.",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_language|code": "en",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_language|terminology": "ISO_639-1",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_encoding|code": "UTF-8",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_encoding|terminology": "IANA_character-sets"
+}
+----
+======
