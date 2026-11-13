@@ -19,7 +19,7 @@ h|*Attributes*
 
 h|*0..1*
 |*normal_status*: `<<_code_phrase_class,CODE_PHRASE>>`
-a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group  `normal_status`.
+a|Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL;  'Example term-binding to the openEHR Terminology group  `normal_status`.
 
 h|*0..1*
 |*normal_range*: `<<_dv_interval_class,DV_INTERVAL>>`
@@ -67,7 +67,7 @@ h|
 2+a|__Is_simple_validity__: `(normal_range = Void and other_reference_ranges = Void) implies is_simple`
 
 h|
-2+a|__Normal_status_validity__: `normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)`
+2+a|__Normal_status_validity__: `normal_status /= Void implies not normal_status.is_empty`
 
 h|
 2+a|__Normal_range_and_status_consistency__: `(normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))`
