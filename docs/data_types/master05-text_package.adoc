@@ -293,11 +293,13 @@ which becomes available in the future.
 In cases where legacy data has to be converted to openEHR-compliant data, and only codes are available,
 e.g. ICD or ICPC codes, the following approach is recommended:
 
-* create a new `DV_TEXT` whose value is "(not available)"
+* create a new `DV_TEXT` whose `_value_` is the rubric of the legacy code, if it can be obtained from the terminology; otherwise a placeholder text in the language of the data, e.g. "(not available)";
 * add a mapping to the `DV_TEXT`, with:
-** `_purpose_` = `"legacy conversion"`
+** `_purpose_` = `DV_CODED_TEXT` with the openEHR code for "legacy conversion" (group `term_mapping_purpose`);
 ** `_match_` = `"="`
 ** `_target_` = `CODE_PHRASE` object whose `_code_string_` and `_terminology_id_` are set to correspond to the available code in the legacy data.
+
+NOTE: `_value_` cannot be empty (`DV_TEXT` invariant `Valid_value`). Systems should detect a legacy conversion by the mapping `_purpose_` code, not by the text. A `null_flavour` is not appropriate: it belongs to `ELEMENT`, and the legacy data did contain a value.
 
 This expresses the reality that no text was ever recorded in the legacy system; rather a code was recorded directly in the data field. In the converted data, this code is more correctly considered a mapping.
 
