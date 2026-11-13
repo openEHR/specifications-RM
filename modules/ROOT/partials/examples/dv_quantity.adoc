@@ -1,5 +1,11 @@
 A body temperature of 38.4 °C to one decimal place, flagged as above normal.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: magnitude, units, precision, display name and normal status.
++
 [source,json]
 ----
 {
@@ -16,3 +22,78 @@ A body temperature of 38.4 °C to one decimal place, flagged as above normal.
   }
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_QUANTITY`, including the optional ones inherited from `DV_AMOUNT`, `DV_QUANTIFIED` and `DV_ORDERED`.
++
+[source,json]
+----
+{
+  "_type": "DV_QUANTITY",
+  "magnitude": 38.4,
+  "units": "Cel",
+  "precision": 1,
+  "units_system": "http://unitsofmeasure.org",
+  "units_display_name": "°C",
+  "magnitude_status": "=",
+  "accuracy": 0.1,
+  "accuracy_is_percent": false,
+  "normal_status": {
+    "terminology_id": {
+      "value": "openehr_normal_statuses"
+    },
+    "code_string": "H"
+  },
+  "normal_range": {
+    "lower": {
+      "_type": "DV_QUANTITY",
+      "magnitude": 36.1,
+      "units": "Cel"
+    },
+    "upper": {
+      "_type": "DV_QUANTITY",
+      "magnitude": 37.2,
+      "units": "Cel"
+    },
+    "lower_unbounded": false,
+    "upper_unbounded": false,
+    "lower_included": true,
+    "upper_included": true
+  },
+  "other_reference_ranges": [
+    {
+      "meaning": {
+        "value": "fever"
+      },
+      "range": {
+        "lower": {
+          "_type": "DV_QUANTITY",
+          "magnitude": 38.0,
+          "units": "Cel"
+        },
+        "lower_unbounded": false,
+        "upper_unbounded": true,
+        "lower_included": true,
+        "upper_included": false
+      }
+    }
+  ]
+}
+----
+
+FLAT::
++
+The same temperature in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|magnitude": 38.4,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|unit": "Cel",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|precision": 1,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|units_display_name": "°C",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|normal_status": "H"
+}
+----
+======

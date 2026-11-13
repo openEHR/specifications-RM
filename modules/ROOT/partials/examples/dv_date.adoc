@@ -1,5 +1,11 @@
 A complete calendar date, e.g. a date of birth.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the value only.
++
 [source,json]
 ----
 {
@@ -7,3 +13,69 @@ A complete calendar date, e.g. a date of birth.
   "value": "1968-07-21"
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_DATE`, including the optional ones inherited from `DV_TEMPORAL`, `DV_QUANTIFIED` and `DV_ORDERED`. Here an approximate date of birth (known to about six months), checked against an age band for a screening programme.
++
+[source,json]
+----
+{
+  "_type": "DV_DATE",
+  "value": "1968-07-21",
+  "magnitude_status": "~",
+  "accuracy": {
+    "_type": "DV_DURATION",
+    "value": "P6M"
+  },
+  "normal_status": {
+    "terminology_id": {
+      "value": "openehr_normal_statuses"
+    },
+    "code_string": "N"
+  },
+  "normal_range": {
+    "lower": {
+      "_type": "DV_DATE",
+      "value": "1951-11-14"
+    },
+    "upper": {
+      "_type": "DV_DATE",
+      "value": "1976-11-13"
+    },
+    "lower_unbounded": false,
+    "upper_unbounded": false,
+    "lower_included": true,
+    "upper_included": true
+  },
+  "other_reference_ranges": [
+    {
+      "meaning": {
+        "value": "below screening age"
+      },
+      "range": {
+        "lower": {
+          "_type": "DV_DATE",
+          "value": "1976-11-13"
+        },
+        "lower_unbounded": false,
+        "upper_unbounded": true,
+        "lower_included": false,
+        "upper_included": false
+      }
+    }
+  ]
+}
+----
+
+FLAT::
++
+The same date in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME": "1968-07-21"
+}
+----
+======

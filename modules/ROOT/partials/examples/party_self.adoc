@@ -1,5 +1,11 @@
-The subject of the record, optionally linked to a demographic record by external_ref.
+The patient as the subject of an entry, linked to their demographic record by medical record number.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: only the reference to the patient's demographic record.
++
 [source,json]
 ----
 {
@@ -7,11 +13,25 @@ The subject of the record, optionally linked to a demographic record by external
   "external_ref": {
     "id": {
       "_type": "GENERIC_ID",
-      "value": "9000000009",
-      "scheme": "national_patient_id"
+      "value": "MRN-0012345",
+      "scheme": "MRN"
     },
     "namespace": "demographic",
     "type": "PERSON"
   }
 }
 ----
+
+FLAT::
++
+The same party in the FLAT format, as the subject of an entry; the reference `type` has no FLAT path and is left out. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/subject|id": "MRN-0012345",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/subject|id_scheme": "MRN",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/subject|id_namespace": "demographic"
+}
+----
+======

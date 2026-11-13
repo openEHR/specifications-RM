@@ -33,7 +33,7 @@ The usual form: the term and its mapping.
 
 All attributes::
 +
-Every attribute of `DV_CODED_TEXT`, including the optional ones inherited from `DV_TEXT`.
+Every attribute of `DV_CODED_TEXT`, including the optional ones inherited from `DV_TEXT`; `hyperlink` is deprecated.
 +
 [source,json]
 ----
@@ -48,12 +48,12 @@ Every attribute of `DV_CODED_TEXT`, including the optional ones inherited from `
     {
       "match": "=",
       "purpose": {
-        "value": "reimbursement",
+        "value": "public health",
         "defining_code": {
           "terminology_id": {
             "value": "openehr"
           },
-          "code_string": "670"
+          "code_string": "669"
         }
       },
       "target": {
@@ -89,18 +89,17 @@ Every attribute of `DV_CODED_TEXT`, including the optional ones inherited from `
 
 FLAT::
 +
-The same term in the FLAT format, as the `problem_diagnosis_name` element of the archetype `openEHR-EHR-EVALUATION.problem_diagnosis.v1` in a template `problem_list`.
-FLAT paths depend on the web template, so the path prefix here is only illustrative.
+The same term in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
 +
 [source,json]
 ----
 {
-  "problem_list/problem_diagnosis:0/problem_diagnosis_name|value": "Essential hypertension",
-  "problem_list/problem_diagnosis:0/problem_diagnosis_name|code": "59621000",
-  "problem_list/problem_diagnosis:0/problem_diagnosis_name|terminology": "SNOMED-CT",
-  "problem_list/problem_diagnosis:0/problem_diagnosis_name/_mapping:0|match": "=",
-  "problem_list/problem_diagnosis:0/problem_diagnosis_name/_mapping:0/target|terminology": "ICD10",
-  "problem_list/problem_diagnosis:0/problem_diagnosis_name/_mapping:0/target|code": "I10"
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|value": "Essential hypertension",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|code": "59621000",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|terminology": "SNOMED-CT",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0|match": "=",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0/target|terminology": "ICD10",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/_mapping:0/target|code": "I10"
 }
 ----
 ======

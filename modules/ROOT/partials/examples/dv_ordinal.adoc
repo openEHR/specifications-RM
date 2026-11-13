@@ -1,5 +1,11 @@
 The best eye response _Spontaneous_ (ordinal value 4) in the Glasgow Coma Scale archetype `openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1`, coded by its local term `at0013`.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the ordinal value and its symbol.
++
 [source,json]
 ----
 {
@@ -16,3 +22,115 @@ The best eye response _Spontaneous_ (ordinal value 4) in the Glasgow Coma Scale 
   }
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_ORDINAL`, including the optional ones inherited from `DV_ORDERED`.
++
+[source,json]
+----
+{
+  "_type": "DV_ORDINAL",
+  "value": 4,
+  "symbol": {
+    "value": "Spontaneous",
+    "defining_code": {
+      "terminology_id": {
+        "value": "local"
+      },
+      "code_string": "at0013"
+    }
+  },
+  "normal_status": {
+    "terminology_id": {
+      "value": "openehr_normal_statuses"
+    },
+    "code_string": "N"
+  },
+  "normal_range": {
+    "lower": {
+      "_type": "DV_ORDINAL",
+      "value": 4,
+      "symbol": {
+        "value": "Spontaneous",
+        "defining_code": {
+          "terminology_id": {
+            "value": "local"
+          },
+          "code_string": "at0013"
+        }
+      }
+    },
+    "upper": {
+      "_type": "DV_ORDINAL",
+      "value": 4,
+      "symbol": {
+        "value": "Spontaneous",
+        "defining_code": {
+          "terminology_id": {
+            "value": "local"
+          },
+          "code_string": "at0013"
+        }
+      }
+    },
+    "lower_unbounded": false,
+    "upper_unbounded": false,
+    "lower_included": true,
+    "upper_included": true
+  },
+  "other_reference_ranges": [
+    {
+      "meaning": {
+        "value": "impaired eye response"
+      },
+      "range": {
+        "lower": {
+          "_type": "DV_ORDINAL",
+          "value": 1,
+          "symbol": {
+            "value": "None",
+            "defining_code": {
+              "terminology_id": {
+                "value": "local"
+              },
+              "code_string": "at0010"
+            }
+          }
+        },
+        "upper": {
+          "_type": "DV_ORDINAL",
+          "value": 3,
+          "symbol": {
+            "value": "To sound",
+            "defining_code": {
+              "terminology_id": {
+                "value": "local"
+              },
+              "code_string": "at0012"
+            }
+          }
+        },
+        "lower_unbounded": false,
+        "upper_unbounded": false,
+        "lower_included": true,
+        "upper_included": true
+      }
+    }
+  ]
+}
+----
+
+FLAT::
++
+The same response in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|code": "at0013",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|value": "Spontaneous",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|ordinal": 4
+}
+----
+======

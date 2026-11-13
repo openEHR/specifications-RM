@@ -1,5 +1,11 @@
-A Borg CR10 breathlessness score of 0.5, _Very, very slight_, coded by a local archetype term.
+A Borg CR10 breathlessness score of 0.5, _Very, very slight_, coded by a local archetype term (illustrative codes, no published Borg archetype exists).
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the scale value and its symbol.
++
 [source,json]
 ----
 {
@@ -16,3 +22,89 @@ A Borg CR10 breathlessness score of 0.5, _Very, very slight_, coded by a local a
   }
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_SCALE`, including the optional ones inherited from `DV_ORDERED`.
++
+[source,json]
+----
+{
+  "_type": "DV_SCALE",
+  "value": 0.5,
+  "symbol": {
+    "value": "Very, very slight",
+    "defining_code": {
+      "terminology_id": {
+        "value": "local"
+      },
+      "code_string": "at0011"
+    }
+  },
+  "normal_status": {
+    "terminology_id": {
+      "value": "openehr_normal_statuses"
+    },
+    "code_string": "N"
+  },
+  "normal_range": {
+    "lower": {
+      "_type": "DV_SCALE",
+      "value": 0.0,
+      "symbol": {
+        "value": "Nothing at all",
+        "defining_code": {
+          "terminology_id": {
+            "value": "local"
+          },
+          "code_string": "at0010"
+        }
+      }
+    },
+    "upper": {
+      "_type": "DV_SCALE",
+      "value": 1.0,
+      "symbol": {
+        "value": "Very slight",
+        "defining_code": {
+          "terminology_id": {
+            "value": "local"
+          },
+          "code_string": "at0012"
+        }
+      }
+    },
+    "lower_unbounded": false,
+    "upper_unbounded": false,
+    "lower_included": true,
+    "upper_included": true
+  },
+  "other_reference_ranges": [
+    {
+      "meaning": {
+        "value": "severe breathlessness"
+      },
+      "range": {
+        "lower": {
+          "_type": "DV_SCALE",
+          "value": 5.0,
+          "symbol": {
+            "value": "Severe",
+            "defining_code": {
+              "terminology_id": {
+                "value": "local"
+              },
+              "code_string": "at0016"
+            }
+          }
+        },
+        "lower_unbounded": false,
+        "upper_unbounded": true,
+        "lower_included": true,
+        "upper_included": false
+      }
+    }
+  ]
+}
+----
+======

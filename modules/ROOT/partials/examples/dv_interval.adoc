@@ -1,5 +1,11 @@
 A closed interval of 3.5 to 5.1 mmol/L, e.g. a serum potassium normal range.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+Both limits, with the bound and inclusion flags.
++
 [source,json]
 ----
 {
@@ -20,3 +26,18 @@ A closed interval of 3.5 to 5.1 mmol/L, e.g. a serum potassium normal range.
   "upper_included": true
 }
 ----
+
+FLAT::
++
+The same interval in the FLAT format; the four flags keep their defaults and are left out. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/lower|magnitude": 3.5,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/lower|unit": "mmol/L",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/upper|magnitude": 5.1,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME/upper|unit": "mmol/L"
+}
+----
+======

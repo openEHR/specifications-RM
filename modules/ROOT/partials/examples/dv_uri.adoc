@@ -1,5 +1,11 @@
 A link to a patient information leaflet on the web.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The value is the only attribute.
++
 [source,json]
 ----
 {
@@ -7,3 +13,15 @@ A link to a patient information leaflet on the web.
   "value": "https://www.example.org/leaflets/hypertension.html"
 }
 ----
+
+FLAT::
++
+The same link in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME": "https://www.example.org/leaflets/hypertension.html"
+}
+----
+======

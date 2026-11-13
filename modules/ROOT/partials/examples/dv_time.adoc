@@ -1,5 +1,11 @@
 A time of day, e.g. the time a medication dose was given.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the value only.
++
 [source,json]
 ----
 {
@@ -7,3 +13,73 @@ A time of day, e.g. the time a medication dose was given.
   "value": "08:15:00"
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_TIME`, including the optional ones inherited from `DV_TEMPORAL`, `DV_QUANTIFIED` and `DV_ORDERED`.
++
+[source,json]
+----
+{
+  "_type": "DV_TIME",
+  "value": "08:15:00",
+  "magnitude_status": "~",
+  "accuracy": {
+    "_type": "DV_DURATION",
+    "value": "PT5M"
+  },
+  "normal_status": {
+    "terminology_id": {
+      "value": "openehr_normal_statuses"
+    },
+    "code_string": "N"
+  },
+  "normal_range": {
+    "lower": {
+      "_type": "DV_TIME",
+      "value": "07:30:00"
+    },
+    "upper": {
+      "_type": "DV_TIME",
+      "value": "08:30:00"
+    },
+    "lower_unbounded": false,
+    "upper_unbounded": false,
+    "lower_included": true,
+    "upper_included": true
+  },
+  "other_reference_ranges": [
+    {
+      "meaning": {
+        "value": "late dose"
+      },
+      "range": {
+        "lower": {
+          "_type": "DV_TIME",
+          "value": "08:30:00"
+        },
+        "upper": {
+          "_type": "DV_TIME",
+          "value": "10:00:00"
+        },
+        "lower_unbounded": false,
+        "upper_unbounded": false,
+        "lower_included": false,
+        "upper_included": true
+      }
+    }
+  ]
+}
+----
+
+FLAT::
++
+The same time in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME": "08:15:00"
+}
+----
+======

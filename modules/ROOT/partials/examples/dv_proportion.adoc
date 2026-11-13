@@ -1,5 +1,11 @@
 An oxygen saturation (SpO~2~) of 97 %, a percent proportion (`type` 2 = `pk_percent`, denominator 100).
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: numerator, denominator, kind and precision.
++
 [source,json]
 ----
 {
@@ -10,3 +16,79 @@ An oxygen saturation (SpO~2~) of 97 %, a percent proportion (`type` 2 = `pk_perc
   "precision": 0
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_PROPORTION`, including the optional ones inherited from `DV_AMOUNT`, `DV_QUANTIFIED` and `DV_ORDERED`.
++
+[source,json]
+----
+{
+  "_type": "DV_PROPORTION",
+  "numerator": 97.0,
+  "denominator": 100.0,
+  "type": 2,
+  "precision": 0,
+  "magnitude_status": "=",
+  "accuracy": 0.02,
+  "accuracy_is_percent": false,
+  "normal_status": {
+    "terminology_id": {
+      "value": "openehr_normal_statuses"
+    },
+    "code_string": "N"
+  },
+  "normal_range": {
+    "lower": {
+      "_type": "DV_PROPORTION",
+      "numerator": 95.0,
+      "denominator": 100.0,
+      "type": 2
+    },
+    "upper": {
+      "_type": "DV_PROPORTION",
+      "numerator": 100.0,
+      "denominator": 100.0,
+      "type": 2
+    },
+    "lower_unbounded": false,
+    "upper_unbounded": false,
+    "lower_included": true,
+    "upper_included": true
+  },
+  "other_reference_ranges": [
+    {
+      "meaning": {
+        "value": "hypoxaemia"
+      },
+      "range": {
+        "upper": {
+          "_type": "DV_PROPORTION",
+          "numerator": 94.0,
+          "denominator": 100.0,
+          "type": 2
+        },
+        "lower_unbounded": true,
+        "upper_unbounded": false,
+        "lower_included": false,
+        "upper_included": true
+      }
+    }
+  ]
+}
+----
+
+FLAT::
++
+The same saturation in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|numerator": 97.0,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|denominator": 100.0,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|type": 2,
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME|precision": 0
+}
+----
+======

@@ -1,5 +1,11 @@
 A date and time with time zone offset, e.g. the time a sample was taken.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the value only.
++
 [source,json]
 ----
 {
@@ -7,3 +13,69 @@ A date and time with time zone offset, e.g. the time a sample was taken.
   "value": "2026-03-14T09:30:00+01:00"
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_DATE_TIME`, including the optional ones inherited from `DV_TEMPORAL`, `DV_QUANTIFIED` and `DV_ORDERED`.
++
+[source,json]
+----
+{
+  "_type": "DV_DATE_TIME",
+  "value": "2026-03-14T09:30:00+01:00",
+  "magnitude_status": "=",
+  "accuracy": {
+    "_type": "DV_DURATION",
+    "value": "PT5M"
+  },
+  "normal_status": {
+    "terminology_id": {
+      "value": "openehr_normal_statuses"
+    },
+    "code_string": "N"
+  },
+  "normal_range": {
+    "lower": {
+      "_type": "DV_DATE_TIME",
+      "value": "2026-03-14T07:00:00+01:00"
+    },
+    "upper": {
+      "_type": "DV_DATE_TIME",
+      "value": "2026-03-14T10:00:00+01:00"
+    },
+    "lower_unbounded": false,
+    "upper_unbounded": false,
+    "lower_included": true,
+    "upper_included": true
+  },
+  "other_reference_ranges": [
+    {
+      "meaning": {
+        "value": "too late for a fasting sample"
+      },
+      "range": {
+        "lower": {
+          "_type": "DV_DATE_TIME",
+          "value": "2026-03-14T10:00:00+01:00"
+        },
+        "lower_unbounded": false,
+        "upper_unbounded": true,
+        "lower_included": false,
+        "upper_included": false
+      }
+    }
+  ]
+}
+----
+
+FLAT::
++
+The same date and time in the FLAT format. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/ELEMENT_NAME": "2026-03-14T09:30:00+01:00"
+}
+----
+======

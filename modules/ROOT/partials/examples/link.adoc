@@ -1,5 +1,11 @@
 A LINK from a blood pressure OBSERVATION to the composition that records the related problem.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: meaning, type and the target as an EHR URI.
++
 [source,json]
 ----
 {
@@ -7,7 +13,21 @@ A LINK from a blood pressure OBSERVATION to the composition that records the rel
   "meaning": {"value": "related problem"},
   "type": {"value": "problem"},
   "target": {
-    "value": "ehr:/7d44b88c-4199-4bad-97dc-d78268e01398/compositions/a6f1c5d2-3b4e-4f7a-8c9d-0e1f2a3b4c5d::openEHRSys.example.com::1"
+    "value": "ehr:/7d44b88c-4199-4bad-97dc-d78268e01398/compositions/a6f1c5d2-3b4e-4f7a-8c9d-0e1f2a3b4c5d::org.example.ehr1::1"
   }
 }
 ----
+
+FLAT::
++
+The same link in the FLAT format, on the OBSERVATION. FLAT paths depend on the web template; `TEMPLATE_NAME`, `ARCHETYPE_NAME` and `ELEMENT_NAME` stand for the ids of a real web template.
++
+[source,json]
+----
+{
+  "TEMPLATE_NAME/ARCHETYPE_NAME/_link:0|meaning": "related problem",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/_link:0|type": "problem",
+  "TEMPLATE_NAME/ARCHETYPE_NAME/_link:0|target": "ehr:/7d44b88c-4199-4bad-97dc-d78268e01398/compositions/a6f1c5d2-3b4e-4f7a-8c9d-0e1f2a3b4c5d::org.example.ehr1::1"
+}
+----
+======
