@@ -284,7 +284,7 @@ image::{uml_diagrams_uri}/RM-InstructionStateMachine.svg[id=instruction_state_ma
 This state machine is the result of long term experience with clinical workflows and act management systems. The states are as follows (Note: the SCHEDULED state was inspired by citenp:[Van_de_Velde_Degoulet2003], Fig 5.5).
 
 [horizontal]
-INITIAL:: initial state, prior to planning activity (default starting state for computable representation of state machine).
+INITIAL:: starting state of an Activity that has been defined but not yet ordered (default starting state for computable representation of state machine). An Activity leaves it through the `initiate`, `schedule` or `start` transition.
 PLANNED:: the action has been described, but has not as yet been performed.
 POSTPONED:: the action has not been performed and will not without specific conditions being met. Specifically, events and conditions that would normally 'activate' the instruction will be ignored, until a restore event occurs.
 SCHEDULED:: the action will be performed at some designated future time, and has been booked in a scheduling system.
@@ -298,6 +298,11 @@ EXPIRED:: the time during which the action could have been relevant has expired;
 States `CANCELLED`, `ABORTED` and `COMPLETED` are all terminal states. The `EXPIRED` state is a pseudo-terminal state, from which transitions are allowed to proceed to any of the true terminal states, due to information being received after the fact (such as a patient reporting that they did indeed finish a course of antibiotics). However it is likely in the EHR that Instructions for many simple medications will finish in the `EXPIRED` state and remain there.
 
 The transitions are self-explanatory for the most part, however a few deserve comment. The `start` and `finish` events correspond to situations when the administration is not instantaneous, as is the situation with most medications. The `do` event is equivalent to the `finish` event occurring immediately after the `start` event, corresponding to an instantaneous administration, completion of which puts the Activity in the completed state. A single shot vaccination or patient taking a single tablet are typical examples. The states `PLANNED`, `POSTPONED`, `ACTIVE`, `SUSPENDED`, each have a `xxx_step` transition which return the state machine to the same state. Workflow steps that cause no transition are mapped to these events and thus leave the Instruction in the same state. An example is a medication review, which will leave the medication in the `ACTIVE` state, if the physician chooses to continue.
+
+The ISM state of an Activity is recorded only in `ACTION._ism_transition_`; `INSTRUCTION` and `ACTIVITY` have no state attribute. Committing an `INSTRUCTION` normally constitutes the order, so an Activity for which no `ACTION` has been committed is in the `PLANNED` state, as if the `initiate` transition had occurred. To record a different starting state, an `ACTION` is committed in the same Contribution as the `INSTRUCTION`:
+
+* when the Activity is booked or started at ordering time: `_current_state_` `scheduled` or `active`, with the `schedule` or `start` transition;
+* when the Instruction is defined but not yet a formal order: `_current_state_` `initial`, with no `_transition_`.
 
 In the future, if delegation of an Instruction to another Instruction is required, nesting of a new Instruction state machine within the Active state of a previous one might need to be supported.
 
