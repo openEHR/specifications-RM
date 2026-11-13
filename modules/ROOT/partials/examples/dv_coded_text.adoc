@@ -1,5 +1,11 @@
 The SNOMED CT term _Essential hypertension_, with a mapping to ICD-10.
 
+[tabs%sync]
+======
+Canonical JSON::
++
+The usual form: the term and its mapping.
++
 [source,json]
 ----
 {
@@ -24,3 +30,77 @@ The SNOMED CT term _Essential hypertension_, with a mapping to ICD-10.
   ]
 }
 ----
+
+All attributes::
++
+Every attribute of `DV_CODED_TEXT`, including the optional ones inherited from `DV_TEXT`.
++
+[source,json]
+----
+{
+  "_type": "DV_CODED_TEXT",
+  "value": "Essential hypertension",
+  "hyperlink": {
+    "value": "http://snomed.info/id/59621000"
+  },
+  "formatting": "plain",
+  "mappings": [
+    {
+      "match": "=",
+      "purpose": {
+        "value": "reimbursement",
+        "defining_code": {
+          "terminology_id": {
+            "value": "openehr"
+          },
+          "code_string": "670"
+        }
+      },
+      "target": {
+        "terminology_id": {
+          "value": "ICD10"
+        },
+        "code_string": "I10",
+        "preferred_term": "Essential (primary) hypertension"
+      }
+    }
+  ],
+  "language": {
+    "terminology_id": {
+      "value": "ISO_639-1"
+    },
+    "code_string": "en"
+  },
+  "encoding": {
+    "terminology_id": {
+      "value": "IANA_character-sets"
+    },
+    "code_string": "UTF-8"
+  },
+  "defining_code": {
+    "terminology_id": {
+      "value": "SNOMED-CT"
+    },
+    "code_string": "59621000",
+    "preferred_term": "Essential hypertension"
+  }
+}
+----
+
+FLAT::
++
+The same term in the FLAT format, as the `problem_diagnosis_name` element of the archetype `openEHR-EHR-EVALUATION.problem_diagnosis.v1` in a template `problem_list`.
+FLAT paths depend on the web template, so the path prefix here is only illustrative.
++
+[source,json]
+----
+{
+  "problem_list/problem_diagnosis:0/problem_diagnosis_name|value": "Essential hypertension",
+  "problem_list/problem_diagnosis:0/problem_diagnosis_name|code": "59621000",
+  "problem_list/problem_diagnosis:0/problem_diagnosis_name|terminology": "SNOMED-CT",
+  "problem_list/problem_diagnosis:0/problem_diagnosis_name/_mapping:0|match": "=",
+  "problem_list/problem_diagnosis:0/problem_diagnosis_name/_mapping:0/target|terminology": "ICD10",
+  "problem_list/problem_diagnosis:0/problem_diagnosis_name/_mapping:0/target|code": "I10"
+}
+----
+======
