@@ -20,4 +20,10 @@ h|*Attributes*
 h|*1..1*
 |*data*: `link:/releases/RM/{rm_release}/data_structures.html#_item_structure_class[ITEM_STRUCTURE^]`
 a|The data of this evaluation, in the form of a spatial data structure.
+
+h|*0..1*
+|*time_asserted*: `link:/releases/RM/{rm_release}/data_types.html#_dv_date_time_class[DV_DATE_TIME^]`
+a|Time at which the content of this Evaluation was asserted, i.e. the clinically relevant time of the opinion it records, such as when a diagnosis was made. It may be contemporary, normally the time of the assessment being recorded, or historical, e.g. a diagnosis made years earlier and reported by the patient; an approximate historical time may be indicated by setting `_magnitude_status_` to `~`. 
+
+Distinct from the time of the encounter in which the Evaluation was recorded (`COMPOSITION._context_._start_time_`) and from the time it was committed (`VERSION._commit_audit_._time_committed_`). Times specific to the content, such as time of onset or resolution, remain archetyped values within `_data_`.
 |===
