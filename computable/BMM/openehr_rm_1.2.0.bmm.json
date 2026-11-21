@@ -3,7 +3,7 @@
     "rm_publisher": "openehr",
     "schema_name": "rm",
     "rm_release": "1.2.0",
-    "schema_revision": "1.2.0.3",
+    "schema_revision": "1.2.0.4",
     "schema_lifecycle_state": "stable",
     "schema_description": "openEHR Reference Model",
     "schema_author": "Thomas Beale <thomas.beale@openehr.org>, code-generator",
@@ -7355,6 +7355,12 @@
                     "documentation": "The data of this evaluation, in the form of a spatial data structure.",
                     "is_mandatory": true,
                     "type": "ITEM_STRUCTURE"
+                },
+                "time_asserted": {
+                    "_type": "P_BMM_SINGLE_PROPERTY",
+                    "name": "time_asserted",
+                    "documentation": "Time at which the content of this Evaluation was last asserted to be correct, i.e. when it was first recorded, or last updated or re-asserted. On first recording it is normally the same as the start time of the encounter (`COMPOSITION._context_._start_time_`), where the Composition has a context; it differs when one Evaluation in a Composition is updated or re-asserted and others are not, as in a persistent problem list or allergy list. \n\nThis is the time of the statement, not a time in the clinical history of the subject: times such as when a diagnosis was made, time of onset or time of resolution remain archetyped values within `_data_`. It is also distinct from the time at which the Version containing the Evaluation was committed (`VERSION._commit_audit_._time_committed_`).",
+                    "type": "DV_DATE_TIME"
                 }
             }
         },

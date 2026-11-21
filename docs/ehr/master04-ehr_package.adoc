@@ -271,7 +271,7 @@ The last example shown below shows the relationship of time and EHR data for in-
 .Time in the EHR - Nursing observations
 image::{diagrams_uri}/time_in_the_ehr-nursing_obs.svg[id=time_in_the_ehr_nursing_obs, align="center"]
 
-Other times to do with diagnoses (time of onset, time of resolution, time of last episode) and medication management (time started taking medication, time stopped, time suspended, etc) are specific to the particular type of information (e.g. diagnosis versus prognosis versus recommendation) and are generally represented as archetyped date/time values within Evaluation objects. Basic timing information is modelled concretely in the Instruction and Action Entry types, while archetyping is used to express timing information that is specific to particular content.
+Other times to do with diagnoses (time of onset, time of resolution, time of last episode) and medication management (time started taking medication, time stopped, time suspended, etc) are specific to the particular type of information (e.g. diagnosis versus prognosis versus recommendation) and are generally represented as archetyped date/time values within Evaluation objects; the time at which the Evaluation itself was recorded or last asserted to be correct is recorded in `EVALUATION._time_asserted_`. Basic timing information is modelled concretely in the Instruction and Action Entry types, while archetyping is used to express timing information that is specific to particular content.
 
 == Historical Views of the Record
 
