@@ -23,7 +23,7 @@ a|The data of this evaluation, in the form of a spatial data structure.
 
 h|*0..1*
 |*time_asserted*: `link:/releases/RM/{rm_release}/data_types.html#_dv_date_time_class[DV_DATE_TIME^]`
-a|Time at which the content of this Evaluation was asserted, i.e. the clinically relevant time of the opinion it records, such as when a diagnosis was made. It may be contemporary, normally the time of the assessment being recorded, or historical, e.g. a diagnosis made years earlier and reported by the patient; an approximate historical time may be indicated by setting `_magnitude_status_` to `~`. 
+a|Time at which the content of this Evaluation was last asserted to be correct, i.e. when it was first recorded, or last updated or re-asserted. On first recording it is normally the same as the start time of the encounter (`COMPOSITION._context_._start_time_`), where the Composition has a context; it differs when one Evaluation in a Composition is updated or re-asserted and others are not, as in a persistent problem list or allergy list. 
 
-Distinct from the time of the encounter in which the Evaluation was recorded (`COMPOSITION._context_._start_time_`) and from the time it was committed (`VERSION._commit_audit_._time_committed_`). Times specific to the content, such as time of onset or resolution, remain archetyped values within `_data_`.
+This is the time of the statement, not a time in the clinical history of the subject: times such as when a diagnosis was made, time of onset or time of resolution remain archetyped values within `_data_`. It is also distinct from the time at which the Version containing the Evaluation was committed (`VERSION._commit_audit_._time_committed_`).
 |===
