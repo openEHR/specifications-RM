@@ -3,7 +3,7 @@
     "rm_publisher": "openehr",
     "schema_name": "rm",
     "rm_release": "1.2.0",
-    "schema_revision": "1.2.0.3",
+    "schema_revision": "1.2.0.4",
     "schema_lifecycle_state": "stable",
     "schema_description": "openEHR Reference Model",
     "schema_author": "Thomas Beale <thomas.beale@openehr.org>, code-generator",
@@ -6888,7 +6888,7 @@
         },
         "ROLE": {
             "name": "ROLE",
-            "documentation": "Generic description of a role performed by an Actor. The role corresponds to a competency of the Party. Roles are used to define the responsibilities undertaken by a Party for a purpose. Roles should have credentials qualifying the performer to perform the role.",
+            "documentation": "Generic description of a role performed by an Actor. The role corresponds to a competency of the Party. Roles are used to define the responsibilities undertaken by a Party for a purpose. Roles should have credentials qualifying the performer to perform the role. A Role without a performer is a generic role: a kind of role, or a post, that any number of Actors may play.",
             "ancestors": [
                 "PARTY"
             ],
@@ -6907,8 +6907,7 @@
                 "performer": {
                     "_type": "P_BMM_SINGLE_PROPERTY",
                     "name": "performer",
-                    "documentation": "Reference to Version container of Actor playing the role.",
-                    "is_mandatory": true,
+                    "documentation": "Reference to Version container of Actor playing the role. Void if the role is generic, i.e. not bound to one Actor; the Actors playing a generic role refer to it through `ACTOR._roles_`.",
                     "type": "PARTY_REF"
                 },
                 "capabilities": {
