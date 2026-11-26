@@ -43,6 +43,15 @@ The usual way to determine the directionality of a relationship between two Part
 
 `PARTY_RELATIONSHIPs` are stored as part of the data of the `PARTY` designated as the source. This means that the relationships attribute is by value, while the `PARTY_RELATIONSHIP._source_` and `_target_` are represented by references. The actual kind of reference is via the use of `OBJECT_REFs` containing `HIER_OBJECT_IDs` to denote the Version container of a Party, rather than `OBJECT_VERSION_IDs`, which would denote particular versions. Logically this implements the semantic that such relationships in the real world are between _continuants_, i.e. the real Parties, not just one of their version instances in a demographic system.
 
+=== Personal and Generic Roles
+
+A `ROLE` describes a Party acting in a particular capacity, such as a health care practitioner or a health care consumer. It is a Party in its own right, with its own identities, contacts, relationships and details, and it records the credentials the capacity requires in `_capabilities_`, and the period of the role in `_time_validity_`. A Role takes one of two forms, distinguished by the `_performer_` attribute:
+
+* a _personal role_ has a `_performer_` that refers to the Version container of the one Actor playing it; its identities, contacts, capabilities and validity are facts about that Actor in that capacity;
+* a _generic role_ has no `_performer_`; it describes a kind of role, or a post, that any number of Actors may play, and that may exist before any Actor is assigned to it.
+
+In both forms, each Actor that plays the Role refers to it from `ACTOR._roles_`. Facts about one Actor in a generic role, such as the period it was held or the registration that qualifies that Actor, are not part of the generic role: they are recorded in a personal role of that Actor, or in a `PARTY_RELATIONSHIP` whose `_source_` is the Actor and whose `_target_` is the generic role. An archetype of a Role states which form it allows by constraining the existence of `_performer_`. See <<_generic_role>> and <<_post>> for examples.
+
 === Versioning Semantics
 
 The class `PARTY` and its descendants `ACTOR` and `ROLE` are all potentially versioned in a demographic system. A Version of a `PARTY` includes all the compositional parts, such as identities, contacts, Party relationships of which it is the source. Every Party is stored in its own Version container.
@@ -102,6 +111,20 @@ The figure below illustrates the demographic information for a cardiac surgery t
 [.text-center]
 .Group Demographics
 image::{diagrams_uri}/group_demographics.png[id=group_demographics, align="center", width=80%]
+
+==== Generic Role
+
+A hospital defines one generic role for each kind of nursing post on a ward, for example "registered nurse, cardiology ward". The `ROLE` has no `_performer_`:
+
+* its `_identities_` carry the name of the role;
+* its `_contacts_` carry the ward telephone number and the team mailbox;
+* its `_capabilities_` state the qualifications any nurse in the post must hold, such as a nursing registration.
+
+Each nurse working on the ward is a `PERSON` whose `_roles_` refer to this one Role. When a nurse moves to another ward, the next version of that `PERSON` refers to the other ward's Role, and neither Role changes. The nurse's own registration and the period on the ward are recorded with the nurse, in a personal role or in a `PARTY_RELATIONSHIP` from the `PERSON` to the generic Role. Clinical data then refers either to the nurse or, where the record concerns the ward team as a whole, to the generic Role.
+
+==== Post
+
+A cardiac surgery service keeps its on-call rota in a separate rostering system. The demographic service records the post "on-call cardiac surgeon" as a `ROLE` without a `_performer_`, with a `PARTY_RELATIONSHIP` from the Role to the hospital `ORGANISATION`. The EHR can then refer to the post before anyone is named. For example, an `INSTRUCTION` for an urgent surgical review lists the post in `_other_participations_`: a `PARTICIPATION` whose `_performer_` is a `PARTY_IDENTIFIED` with an `_external_ref_` to the Role. When the review is done, the entry that records it names the surgeon who carried it out, as for any other activity.
 
 === Relationships
 
