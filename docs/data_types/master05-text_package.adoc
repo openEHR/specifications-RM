@@ -21,7 +21,7 @@ Terminology Ids are likely to be of various types.
 . Terminology Id = `"[authority]"`. This might be `"openehr"`, `"centc251"`, `"hl7"`, etc;
 . The variant Terminology Id = `"[authority]:[Domain value set]"` could also be supported, although it should not generally be necessary, since all codes should be unique within a given issuing authority. Examples might be `"openehr:event math function"`, `"hl7:gender"`;
 . Terminology Id = a URI, e.g. `"\http://snomed.info/sct"`, `"\http://loinc.org"`. This is the recommended form for external terminologies, aligned with HL7: the URI listed in HL7 Terminology is used where one exists. The version of the terminology is recorded separately, in `TERMINOLOGY_ID._version_`. See the `terminology` package in the {openehr_rm_support}#_terminology_identifiers[Support IM specification^] for details.
-. Terminology Id = `"SNOMED-CT"`, `"ICD10AM"`, etc. (legacy). Names from the US National Library of Medicine's UMLS terminology name list. These remain valid for existing data, but new systems should use URIs; platforms resolve them to URIs using the legacy conversion table in the openEHR Terminology specification.
+. Terminology Id = `"SNOMED-CT"`, `"ICD10AM"`, etc. (legacy). Names from the US National Library of Medicine's UMLS terminology name list. These remain valid for existing data, but new systems should use URIs. Platforms can relate them to URIs using the legacy conversion table in the openEHR Terminology specification.
 
 ==== Narrative Text
 

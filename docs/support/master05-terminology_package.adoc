@@ -82,16 +82,15 @@ sets used by the openEHR Reference Model are defined in the openEHR Support Term
 
 The recommended value of `_terminology_id_` for an external terminology is a URI. openEHR aligns this with HL7, following the https://hl7.org/fhir/R5/terminologies.html#system[FHIR rules for choosing a code system identifier^]:
 
-* If the code system is listed in https://terminology.hl7.org/en/external_code_systems.html[HL7 Terminology^], its canonical URL SHALL be used, e.g. `\http://snomed.info/sct`, `\http://loinc.org`.
-* If the code system is external to HL7 and not listed, the identifier authorised by the HL7 Terminology Authority (HTA) SHALL be used; if there is none, the HTA process should be started to request one.
-* An `http:` address SHOULD resolve to some useful description of the code system, and should be a permalink.
-* If the official list provides no URI (e.g. for a local code system), a URI is still recommended, since a URI is more easily resolved, e.g. by a terminology server.
+* If the code system is listed in the HL7 https://terminology.hl7.org/en/external_code_systems.html[External Code Systems^], the URI given there must be used, e.g. `\http://snomed.info/sct`, `\http://loinc.org`.
+* If it is not listed, a URI can be requested from HL7 via the HL7 Terminology Authority (HTA) process.
+* Otherwise, e.g. for a local code system, a custom URI should be used, preferably one that resolves to a description of the code system, e.g. on a terminology server, and that does not change over time.
 
-The version of the terminology is not part of the URI; it is recorded in the `_version_` attribute of `TERMINOLOGY_ID`, as described in the {openehr_base_types}#_terminology_identifiers[BASE Base Types specification^]. For SNOMED CT, the version is the full version URI as defined by SNOMED International, e.g. `\http://snomed.info/sct/900000000000207008/version/20260101`.
+The version of the terminology is not part of the URI. It is recorded in the `_version_` attribute of `TERMINOLOGY_ID`, as described in the {openehr_base_types}#_terminology_identifiers[BASE Base Types specification^]. For SNOMED CT, the version is the full version URI as defined by SNOMED International, e.g. `\http://snomed.info/sct/900000000000207008/version/20260101`.
 
 ==== Legacy Terminology Names
 
-The terminology names described in this section, including the UMLS-based names in the table below, are _legacy_. They remain valid, so that existing data stays valid, but new systems should use URIs as described above. Platforms resolve legacy names to URIs using the legacy conversion table published in the {openehr_term_latest_terminology}[openEHR Terminology specification^].
+The terminology names described in this section, including the UMLS-based names in the table below, are _legacy_. They remain valid, so that existing data stays valid, but new systems should use URIs as described above, and migrating existing data to URIs is recommended. Platforms can relate legacy names to URIs using the legacy conversion table published in the {openehr_term_latest_terminology}[openEHR Terminology specification^].
 
 Valid legacy identifiers that can be used for this attribute for terminologies include but are not limited to the
 following:
